@@ -1,0 +1,5 @@
+^tiltIndicator\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^vignettes/articles$
+^README\.Rmd$
