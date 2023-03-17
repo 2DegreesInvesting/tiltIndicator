@@ -1,0 +1,293 @@
+MVP Product Carbon TR Indicator
+================
+
+`{r, include = FALSE} knitr::opts_chunk$set(   collapse = TRUE,   comment = "#>",   out.width = "100%" )`
+
+### Introduction
+
+The Product Carbon Transition Risk measures the transition risk on the
+product-level of a company. The indicator is expressed in the percentage
+of all products that are at high risk, medium risk or low risk due to
+the products’ relative carbon footprint. The assessment is first
+performed on a product-level and can then be aggregated to the
+company-level.
+
+The Product Carbon Transition Risk measures the relative carbon
+footprint per product. As a default option each product will be compared
+to the carbon footprint of every other product. Alternatively, users can
+also choose to compare those products of the same type, so e.g.,
+comparing only raw materials with each other. Products with a higher
+carbon-footprint will also face a higher risk.
+
+After identifying each carbon footprint for one product, the products
+will be ranked according to their carbon footprint. Products in the
+highest percentile (≥70%) will be classified as high transition risk
+products. Products in the medium percentile (between ≥30% and \<70%)
+will be classified as medium transition risk products. Products in the
+lowest percentile (\<30%) will be classified as low transition risk
+products.
+
+After categorisation, we will aggregate all products from the same
+category and set them in relation to all products that the company
+produces. We derive the Product Carbon Transition Risks.
+
+Please note that carbon footprints, and emissions are used equivalently.
+Carbon footprint refers only on the emissions which occur at the
+production stage of the product and not the emissions from the inputs.
+The unit is CO2e in kg.
+
+The goal of the transition risk MVP is to create a first draft of how
+the transition risk indicator for products would be build in code in
+order to convert it into code production easily in the future. This MVP
+should provide the share of products with “low”, “medium”, or “high”
+relative production emissions per company.
+
+In this markdown file the aim is to prepare data so that they contain
+the following:
+
+- a column with production emissions
+- a column indicating the percentile relative to (i) all products with
+  same unit (ii) products in same sector (iii) products in same segment
+- a column indicating whether the product has “low”, “medium” or “high”
+  relative production emissions
+
+The product carbon transition risk indicator consists of 2 main steps:
+
+    - Step 1: Calculating the relative carbon footprint per product
+    - Step 2: Aggregating on the company-level
+
+### Step 1: Calculating the relative carbon footprint per product
+
+## Data
+
+## Prepare data so that they contain the respective columns:
+
+- replace sample activities for companies with “real activities” from
+  Hanish’s sample
+- include absolute score
+- use ecoinvent’s v3.9 data
+
+## 1. Load packages and ecoinvent data
+
+``` {r}
+library(tidyverse)
+library(fs)
+library(here)
+library(readr)
+library(dplyr)
+library(graphics)
+
+data_ecoinvent <- read_csv(here("input_data", "ecoinvent_activities.csv"))
+```
+
+## 2. Create subset of data with relevant columns
+
+``` {r}
+data_short <- data_ecoinvent %>%
+  select(all_of(c(
+    "Activity Name",
+    "Geography",
+    "Time Period",
+    "Special Activity Type",
+    "Sector",
+    "ISIC Classification",
+    "ISIC Section",
+    "Reference Product Name",
+    "CPC Classification",
+    "Unit"
+  )))
+
+# renaming
+names(data_short)[names(data_short) == "Activity Name"] <- "activity"
+names(data_short)[names(data_short) == "Geography"] <- "geo"
+names(data_short)[names(data_short) == "Time Period"] <- "time"
+names(data_short)[names(data_short) == "Special Activity Type"] <- "special_act_type"
+names(data_short)[names(data_short) == "Sector"] <- "sec"
+names(data_short)[names(data_short) == "ISIC Classification"] <- "isic_class"
+names(data_short)[names(data_short) == "ISIC Section"] <- "isic_sec"
+names(data_short)[names(data_short) == "Reference Product Name"] <- "ref_prod"
+names(data_short)[names(data_short) == "CPC Classification"] <- "cpc_class"
+names(data_short)[names(data_short) == "Unit"] <- "unit"
+```
+
+## 3. Add column “production_emissions_per_product”
+
+``` {r}
+# create column with sample emission data, using "rnorm" with normal distribution
+values <- rnorm(nrow(data_short), mean = 6, sd = 1.5)
+data_short <- data_short %>%
+  mutate(production_emissions = values, emissions_unit = "per product unit")
+```
+
+## B) Calculation of transition risks
+
+## 1. Calculate percentiles in comparison to different sub-sets
+
+``` {r}
+# percentile of all products: 'perc_all'
+data_short <- data_short %>%
+  mutate(perc_all = rank(production_emissions) / length(production_emissions))
+
+# percentile of all products with same unit: 'perc_unit'
+data_short <- data_short %>%
+  group_by(unit) %>%
+  mutate(perc_unit = rank(production_emissions) / length(production_emissions)) %>%
+  ungroup()
+
+# percentile of all products with same sector 'ISIC Classification' and 'Unit':
+# 'perc_unit_isic'
+data_short <- data_short %>%
+  group_by(unit, isic_class) %>%
+  mutate(perc_unit_isic = rank(production_emissions) / length(production_emissions)) %>%
+  ungroup()
+```
+
+## 2. Assign scores to the activities based on their position within the distribution
+
+``` {r}
+# assign scores to percentiles
+data_short <- data_short %>%
+  mutate(score_all = case_when(
+    perc_all < 0.3 ~ "low",
+    perc_all >= 0.3 & perc_all < 0.7 ~ "medium",
+    perc_all >= 0.7 ~ "high",
+  ))
+
+data_short <- data_short %>%
+  mutate(score_unit = case_when(
+    perc_unit < 0.33 ~ "low",
+    perc_unit >= 0.3 & perc_unit < 0.7 ~ "medium",
+    perc_unit >= 0.7 ~ "high",
+  ))
+
+data_short <- data_short %>%
+  mutate(score_unit_isic = case_when(
+    perc_unit_isic < 0.3 ~ "low",
+    perc_unit_isic >= 0.3 & perc_unit_isic < 0.7 ~ "medium",
+    perc_unit_isic >= 0.7 ~ "high",
+  ))
+
+# show distributions (each score should have same probability for score_all)
+barplot(prop.table(table(data_short$score_all)))
+barplot(prop.table(table(data_short$score_unit)))
+barplot(prop.table(table(data_short$score_unit_isic)))
+```
+
+### Step 2: Aggregating on the company-level
+
+      Aggregating on the company-level the percentage of transistion risk products for each company.
+      Calculate 'Product Carbon TR Indicator' for example companies from Hanish's compiled dataset
+
+## Data
+
+## 1. Loading sample company data set & create sample product list
+
+    NOTE: 
+
+    - Problem A with dataset: in the MVP_company_sample dataset the activity names from ecoinvent have an underscore "\_" instead
+      of space in their name. E.g., there is an activity called "treatment_of_tyre_wear_emissions_passenger_car" instead of            "treatment of tyre wear emissions, passenger car" as in the original dataset.
+
+    - Quick solution for now (I don't want to invest time in replacing underscores with spaces and vice versa: I replace the            products with random example from ecoinvent
+
+    - Problem B with dataset: in the sample MVP dataset, some company_name were associated with multiple company_ids (example:          instead of ID number 00001 for each row, excel filled in 00002, 00003, 00004 in the following rows). I adjusted that            manually, i.e. the issue is resolved in the following dataset.
+
+``` {r}
+# load sample data
+data_companies <- read_csv(here("input_data", "MVP_sample_dataset.csv"))
+
+# select relevant columns
+data_companies <- data_companies %>%
+  select(all_of(c(
+    "Company_ID", "Company_Name", "Products", "activity", "unit_of_product"
+  )))
+
+column_names <- c("company_id", "company_name", "products", "activity", "unit")
+names(data_companies)[c(1, 2, 3, 4, 5)] <- column_names
+
+# select random sample of unique activities, including their unit (uniqueness is
+# for now important because it will make the inner_join easier) two variables
+# sub sample
+sub_sample <- data_short %>%
+  distinct(activity, .keep_all = TRUE)
+
+# random selection of 82 activities incl. unit
+sub_sample <- sub_sample[sample(c(1:nrow(sub_sample)), size = 82, replace = TRUE), c("activity", "unit")]
+
+# replace activity list with new sample from above
+data_companies$activity <- sub_sample$activity
+data_companies$unit <- sub_sample$unit
+rm(sub_sample)
+```
+
+## 2. Match data_short and data_companies so that data_companies includes emissions columns + scores
+
+    Result: we end up with a dataset 'companies_emissions' consisting of 1257 observations. This is because the ecoinvent            database consists of multiple rows with the same activity_name & unit.
+
+``` {r}
+# select relevant columns from data_short
+data_short <- data_short %>%
+  select(all_of(c(
+    "activity",
+    "isic_class",
+    "unit",
+    "production_emissions",
+    "emissions_unit",
+    "perc_all",
+    "perc_unit",
+    "perc_unit_isic",
+    "score_all",
+    "score_unit",
+    "score_unit_isic"
+  )))
+
+# join actvity from companies with activity from data_short
+data_companies <- inner_join(data_companies, data_short, by = c("activity", "unit"))
+
+# issue: join increases the amount of observations because the data_short
+# dataset contains multiple rows with the same activity-unit combinations
+# solution: eliminate duplicates (we probably need another solution for the
+# final MVP)
+data_companies <- data_companies %>%
+  distinct(company_id, activity, .keep_all = TRUE)
+
+```
+
+## 3. Caclulate the scores for each company (i.e. shares for each company)
+
+\#Question: How to include results for different scores in one dataset,
+i.e. not only grouping by score_all but also all other scores?
+
+``` {r}
+company_scores <- data_companies %>%
+  group_by(company_id, score_all) %>%
+  summarise(n = n()) %>%
+  mutate(freq = n / sum(n))
+
+names(company_scores)[c(2, 4)] <- c("risk_groups", "risk_shares")
+```
+
+## 4. Create final dataset: should have three rows per company, i.e. one for each risk_group low-RCF, medium-RCF, high-RCF. Column risk_shares indicates per risk_group the % of products of the respective company.
+
+``` {r}
+# create dataset sceleton
+dt_scelecton <- tibble(
+  company_id = rep(unique(data_companies$company_id), each = 3),
+  risk_groups = rep(c("low", "medium", "high"), 9),
+  risk_shares = rep(NA, 27)
+)
+
+company_scores <- company_scores %>%
+  select(c(1, 2, 4))
+
+# insert calculated data
+company_scores <- dt_scelecton %>% 
+  left_join(company_scores, by = c("company_id", "risk_groups")) %>%
+  select(-risk_shares.x)
+
+names(company_scores)[3] <- "risk_shares"
+
+company_scores <- company_scores %>%
+  replace_na(list(risk_shares = 0))
+
+write_csv(company_scores, here("output_data", "mvp_product_carbon_tr_output.csv"))
+```
