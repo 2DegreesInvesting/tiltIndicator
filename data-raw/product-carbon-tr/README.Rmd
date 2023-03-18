@@ -84,8 +84,9 @@ library(here)
 library(readr)
 library(dplyr)
 library(graphics)
+devtools::load_all()
 
-data_ecoinvent <- read_csv(here("input_data", "ecoinvent_activities.csv"))
+data_ecoinvent <- read_csv(product_carbon_tr_path("input_data", "ecoinvent_activities.csv"))
 ```
 
 ## 2. Create subset of data with relevant columns
@@ -201,7 +202,7 @@ barplot(prop.table(table(data_short$score_unit_isic)))
 
 ``` {r}
 # load sample data
-data_companies <- read_csv(here("input_data", "MVP_sample_dataset.csv"))
+data_companies <- read_csv(product_carbon_tr_path("input_data", "MVP_sample_dataset.csv"))
 
 # select relevant columns
 data_companies <- data_companies %>%
@@ -296,5 +297,6 @@ names(company_scores)[3] <- "risk_shares"
 company_scores <- company_scores %>%
   replace_na(list(risk_shares = 0))
 
-write_csv(company_scores, here("output_data", "mvp_product_carbon_tr_output.csv"))
+dir_create(product_carbon_tr_path("output_data"))
+write_csv(company_scores, product_carbon_tr_path("output_data", "mvp_product_carbon_tr_output.csv"))
 ```
