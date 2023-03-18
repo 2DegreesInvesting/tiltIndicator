@@ -35,4 +35,10 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 
 ## Example
 
-We currently have no public example.
+Private data must be stored outside this repository.
+
+```{r}
+private_data <- tiltIndicator::data_dir()
+fs::dir_tree(private_data)
+```
+

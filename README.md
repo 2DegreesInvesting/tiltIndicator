@@ -26,4 +26,20 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 
 ## Example
 
-We currently have no public example.
+Private data must be stored outside this repository.
+
+``` r
+private_data <- tiltIndicator::data_dir()
+fs::dir_tree(private_data)
+#> ~/.local/share/tiltIndicator
+#> └── product-carbon-tr
+#>     ├── ep
+#>     │   ├── categories.csv
+#>     │   ├── categories_lookup.csv
+#>     │   ├── companies.csv
+#>     │   ├── products.csv
+#>     │   └── products_lookup.csv
+#>     └── input_data
+#>         ├── MVP_sample_dataset.csv
+#>         └── ecoinvent_activities.csv
+```
