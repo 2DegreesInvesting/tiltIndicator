@@ -14,3 +14,10 @@ Refactor prototype to production:
 
 - [ ] Copy prototype code to `data-raw/<prototype-name>/README.md`
 - [ ] Document authorship in the prototype directory and in DESCRIPTION.
+
+Principles, guides and tools:
+
+* [Tidyverse style guide](https://style.tidyverse.org/): `usethis::use_tidy_style()`.
+* Tidyverse spelling: `usethis::use_spell_check()`.
+* [Tidyverse design guide](https://design.tidyverse.org/).
+* [Tidyverse code review principles](https://davisvaughan.github.io/code-review/).
