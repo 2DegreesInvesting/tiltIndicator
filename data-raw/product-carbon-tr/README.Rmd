@@ -1,7 +1,15 @@
-MVP Product Carbon TR Indicator
-================
+---
+title: "MVP Product Carbon TR Indicator"
+author: "Tilman Trompke"
+---
 
-`{r, include = FALSE} knitr::opts_chunk$set(   collapse = TRUE,   comment = "#>",   out.width = "100%" )`
+```{r, include = FALSE} 
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  out.width = "100%"
+)
+```
 
 ### Introduction
 
