@@ -257,7 +257,6 @@ data_companies <- inner_join(data_companies, data_short, by = c("activity", "uni
 # final MVP)
 data_companies <- data_companies %>%
   distinct(company_id, activity, .keep_all = TRUE)
-
 ```
 
 ## 3. Caclulate the scores for each company (i.e. shares for each company)
@@ -288,7 +287,7 @@ company_scores <- company_scores %>%
   select(c(1, 2, 4))
 
 # insert calculated data
-company_scores <- dt_scelecton %>% 
+company_scores <- dt_scelecton %>%
   left_join(company_scores, by = c("company_id", "risk_groups")) %>%
   select(-risk_shares.x)
 
