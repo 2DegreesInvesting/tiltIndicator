@@ -38,7 +38,9 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 Private data must be stored outside this repository.
 
 ```{r}
-private_data <- tiltIndicator::data_dir()
+library(tiltIndicator)
+
+private_data <- tilt_path()
 fs::dir_tree(private_data)
 ```
 

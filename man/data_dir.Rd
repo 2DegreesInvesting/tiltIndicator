@@ -35,7 +35,7 @@ requested directory. Possible values are "win", "mac", "unix". If \code{NULL}
   }}
 }
 \value{
-A character.
+A NULL.
 }
 \description{
 Path to user data directories

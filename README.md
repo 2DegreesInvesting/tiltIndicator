@@ -29,17 +29,23 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 Private data must be stored outside this repository.
 
 ``` r
-private_data <- tiltIndicator::data_dir()
+library(tiltIndicator)
+
+private_data <- tilt_path()
 fs::dir_tree(private_data)
-#> ~/.local/share/tiltIndicator
-#> └── product-carbon-tr
-#>     ├── ep
-#>     │   ├── categories.csv
-#>     │   ├── categories_lookup.csv
-#>     │   ├── companies.csv
-#>     │   ├── products.csv
-#>     │   └── products_lookup.csv
-#>     └── input_data
-#>         ├── MVP_sample_dataset.csv
-#>         └── ecoinvent_activities.csv
+#> /home/rstudio/Downloads/tilt
+#> └── tiltIndicator
+#>     └── pctr
+#>         ├── ep
+#>         │   ├── categories.csv
+#>         │   ├── categories_lookup.csv
+#>         │   ├── companies.csv
+#>         │   ├── products.csv
+#>         │   └── products_lookup.csv
+#>         ├── input_data
+#>         │   ├── MVP_sample_dataset.csv
+#>         │   └── ecoinvent_activities.csv
+#>         └── output_data
+#>             ├── mvp_pctr_output.csv
+#>             └── mvp_product_carbon_tr_output.csv
 ```
