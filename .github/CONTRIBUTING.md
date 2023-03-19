@@ -4,33 +4,34 @@ Checklist to add a new indicator:
 
 Build infrastructure:
 
-- [ ] Enable developer workflow: `usethis::create_package()`.
-- [ ] Use a license: `usethis::use_mit_license()`.
-- [ ] Enable tests: `usethis::use_testthat()`
+- [ ] Enable developer workflow: `create_package()`.
+- [ ] Use a license: `use_mit_license()`.
+- [ ] Enable tests: `use_testthat()`
 - [ ] Enable CI: `use_github_action_check_standard()`.
-- [ ] Enable publishing: `usethis::use_pkgdown_github_pages()`.
-- [ ] Avoid leaking private data in sensitive directories, e.g.:
-```
-# data-raw/.gitignore
+- [ ] Enable publishing: `use_pkgdown(); use_pkgdown_github_pages()`.
 
-# Avoid leaking private data that might result from rendering files
-*.html
-*.md
-*_files
-```
+Refactor indicator code to production:
 
-Refactor prototype to production:
+- [ ] `use_article("ind")`.
+- [ ] Avoid leaking private data: In vignettes ignore all files except .Rmd:
 
-- [ ] Copy prototype code to `data-raw/<prototype-name>/README.md`
-- [ ] Document authorship in the prototype directory and in DESCRIPTION.
-- [ ] Redirect paths with a helper to `path(data_dir(), "<indicator name>")`.
-- [ ] Access outputs with a helper to `path(data_dir(), "<indicator name>")`.
-- [ ] Confirm you can knit, and that you won't commit private data!
-- [ ] Capture the important outputs for regression tests.
+    ```
+    # vignettes/.gitignore
+    *.*
+    !*.Rmd
+    ```
+
+- [ ] Document authorship in the article and in DESCRIPTION.
+- [ ] Redirect inputs to read from private data dir: `here <- indicator_path`.
+- [ ] Redirect outputs to write to "obj.csv": `write_csv(obj, "obj.csv")`.
+- [ ] Confirm the article doesn't leak private data.
+- [ ] Confirm the article is reproducible: `pkgdown::build_articles()`.
+- [ ] Create `ind_obj()` to return "obj" from `wrap_rmd(".../ind.Rmd")`.
+- [ ] Characterize current behavior with a test.
 
 Principles, guides and tools:
 
-* [Tidyverse style guide](https://style.tidyverse.org/): `usethis::use_tidy_style()`.
-* Tidyverse spelling: `usethis::use_spell_check()`.
+* [Tidyverse style guide](https://style.tidyverse.org/): `use_tidy_style()`.
+* Tidyverse spelling: `use_spell_check()`.
 * [Tidyverse design guide](https://design.tidyverse.org/).
 * [Tidyverse code review principles](https://davisvaughan.github.io/code-review/).
