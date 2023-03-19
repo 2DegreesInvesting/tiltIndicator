@@ -1,4 +1,0 @@
-# Avoid leaking private data that might result from rendering files
-*.html
-*.md
-*_files
