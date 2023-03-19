@@ -23,7 +23,8 @@ Refactor prototype to production:
 
 - [ ] Copy prototype code to `data-raw/<prototype-name>/README.md`
 - [ ] Document authorship in the prototype directory and in DESCRIPTION.
-- [ ] Redirect paths from `here()` to `path(data_dir(), "<indicator name>")`.
+- [ ] Redirect paths with a helper to `path(data_dir(), "<indicator name>")`.
+- [ ] Access outputs with a helper to `path(data_dir(), "<indicator name>")`.
 - [ ] Confirm you can knit, and that you won't commit private data!
 - [ ] Capture the important outputs for regression tests.
 
