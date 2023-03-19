@@ -12,7 +12,9 @@ License: file LICENSE
 URL: https://2degreesinvesting.github.io/tiltIndicator/
 Imports: 
     fs,
-    rappdirs
+    rappdirs,
+    readr,
+    withr
 Suggests: 
     rmarkdown,
     testthat (>= 3.0.0)
