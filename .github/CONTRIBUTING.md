@@ -25,6 +25,7 @@ Refactor prototype to production:
 - [ ] Document authorship in the prototype directory and in DESCRIPTION.
 - [ ] Redirect paths from `here()` to `path(data_dir(), "<indicator name>")`.
 - [ ] Confirm you can knit, and that you won't commit private data!
+- [ ] Capture the important outputs for regression tests.
 
 Principles, guides and tools:
 
