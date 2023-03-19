@@ -14,6 +14,8 @@ Refactor prototype to production:
 
 - [ ] Copy prototype code to `data-raw/<prototype-name>/README.md`
 - [ ] Document authorship in the prototype directory and in DESCRIPTION.
+- [ ] Redirect paths from `here()` to `path(data_dir(), "<indicator name>")`.
+- [ ] Confirm you can knit. Be careful to not leak private data!
 
 Principles, guides and tools:
 
