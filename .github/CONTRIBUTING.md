@@ -9,13 +9,22 @@ Build infrastructure:
 - [ ] Enable tests: `usethis::use_testthat()`
 - [ ] Enable CI: `use_github_action_check_standard()`.
 - [ ] Enable publishing: `usethis::use_pkgdown_github_pages()`.
+- [ ] Avoid leaking private data in sensitive directories, e.g.:
+```
+# data-raw/.gitignore
+
+# Avoid leaking private data that might result from rendering files
+*.html
+*.md
+*_files
+```
 
 Refactor prototype to production:
 
 - [ ] Copy prototype code to `data-raw/<prototype-name>/README.md`
 - [ ] Document authorship in the prototype directory and in DESCRIPTION.
 - [ ] Redirect paths from `here()` to `path(data_dir(), "<indicator name>")`.
-- [ ] Confirm you can knit. Be careful to not leak private data!
+- [ ] Confirm you can knit, and that you won't commit private data!
 
 Principles, guides and tools:
 
