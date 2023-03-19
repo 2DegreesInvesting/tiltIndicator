@@ -3,5 +3,6 @@ pctr_path <- function(...) {
 }
 
 pctr_company_scores <- function() {
-  readr::read_csv(pctr_path("output_data", "mvp_pctr_output.csv"))
+  file <- pctr_path("output_data", "mvp_pctr_output.csv")
+  readr::read_csv(file)
 }
