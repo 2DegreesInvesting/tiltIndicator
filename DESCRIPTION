@@ -11,10 +11,10 @@ Description: What the package does (one paragraph).
 License: file LICENSE
 Imports: 
     fs,
-    here,
     readr,
     withr
 Suggests: 
+    here,
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
