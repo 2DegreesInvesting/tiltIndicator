@@ -12,6 +12,7 @@ License: file LICENSE
 URL: https://2degreesinvesting.github.io/tiltIndicator/
 Imports: 
     fs,
+    here,
     readr,
     withr
 Suggests: 
