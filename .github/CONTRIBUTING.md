@@ -15,6 +15,9 @@ Build infrastructure:
     *.*
     !*.Rmd
     ```
+
+- [ ] Create a website: `use_pkgdown_github_pages()`
+
 Refactor indicator code to production:
 
 - [ ] Add each indicator as inst/extdata/mvp/indicator.Rmd.
