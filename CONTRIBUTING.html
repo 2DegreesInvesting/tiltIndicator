@@ -48,16 +48,25 @@
 <p><input type="checkbox" disabled>Avoid leaking private data: In inst/extdata/mvp/.gitignore add:</p>
 <pre><code>*.*
 !*.Rmd</code></pre>
-<p>Refactor indicator code to production:</p>
 </li>
-<li><p><input type="checkbox" disabled>Add each indicator as inst/extdata/mvp/indicator.Rmd.</p></li>
-<li><p><input type="checkbox" disabled>Document authorship in the indocator.Rmd and in DESCRIPTION.</p></li>
-<li><p><input type="checkbox" disabled>Redirect inputs to read from private data dir: <code>here &lt;- indicator_path</code>.</p></li>
-<li><p><input type="checkbox" disabled>Redirect outputs to write to “obj.csv”: <code>write_csv(obj, "obj.csv")</code>.</p></li>
-<li><p><input type="checkbox" disabled>Confirm rendering the indicator.Rmd doesn’t leak private data.</p></li>
-<li><p><input type="checkbox" disabled>Confirm rendering the indicator.Rmd doesn’t leak private data.</p></li>
-<li><p><input type="checkbox" disabled>Create <code>ind_obj()</code> to return “obj” from <code>wrap_rmd(".../ind.Rmd")</code>.</p></li>
-<li><p><input type="checkbox" disabled>Characterize current behavior with a test.</p></li>
+<li><p><input type="checkbox" disabled>Create a website: <code>use_pkgdown_github_pages()</code></p></li>
+</ul><p>Refactor indicator code to production:</p>
+<ul class="task-list"><li>
+<input type="checkbox" disabled>Add each indicator as inst/extdata/mvp/indicator.Rmd.</li>
+<li>
+<input type="checkbox" disabled>Document authorship in the indocator.Rmd and in DESCRIPTION.</li>
+<li>
+<input type="checkbox" disabled>Redirect inputs to read from private data dir: <code>here &lt;- indicator_path</code>.</li>
+<li>
+<input type="checkbox" disabled>Redirect outputs to write to “obj.csv”: <code>write_csv(obj, "obj.csv")</code>.</li>
+<li>
+<input type="checkbox" disabled>Confirm rendering the indicator.Rmd doesn’t leak private data.</li>
+<li>
+<input type="checkbox" disabled>Confirm rendering the indicator.Rmd doesn’t leak private data.</li>
+<li>
+<input type="checkbox" disabled>Create <code>ind_obj()</code> to return “obj” from <code>wrap_rmd(".../ind.Rmd")</code>.</li>
+<li>
+<input type="checkbox" disabled>Characterize current behavior with a test.</li>
 </ul><p>Principles, guides and tools:</p>
 <ul><li>
 <a href="https://style.tidyverse.org/" class="external-link">Tidyverse style guide</a>: <code>use_tidy_style()</code>.</li>
