@@ -26,26 +26,12 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 
 ## Example
 
-Private data must be stored outside this repository.
+Private data must be stored outside this repository. A good place is in
+a tilt/ directory under Downloads/.
 
 ``` r
 library(tiltIndicator)
 
-private_data <- tilt_path()
-fs::dir_tree(private_data)
+tilt_path()
 #> /home/rstudio/Downloads/tilt
-#> └── tiltIndicator
-#>     └── pctr
-#>         ├── ep
-#>         │   ├── categories.csv
-#>         │   ├── categories_lookup.csv
-#>         │   ├── companies.csv
-#>         │   ├── products.csv
-#>         │   └── products_lookup.csv
-#>         ├── input_data
-#>         │   ├── MVP_sample_dataset.csv
-#>         │   └── ecoinvent_activities.csv
-#>         └── output_data
-#>             ├── mvp_pctr_output.csv
-#>             └── mvp_product_carbon_tr_output.csv
 ```

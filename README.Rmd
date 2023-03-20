@@ -35,12 +35,12 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 
 ## Example
 
-Private data must be stored outside this repository.
+Private data must be stored outside this repository. A good place is in a tilt/
+directory under Downloads/.
 
 ```{r}
 library(tiltIndicator)
 
-private_data <- tilt_path()
-fs::dir_tree(private_data)
+tilt_path()
 ```
 
