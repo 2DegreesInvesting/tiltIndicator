@@ -8,23 +8,21 @@ Build infrastructure:
 - [ ] Use a license: `use_mit_license()`.
 - [ ] Enable tests: `use_testthat()`
 - [ ] Enable CI: `use_github_action_check_standard()`.
-
-Refactor indicator code to production:
-
-- [ ] `use_article("ind")`.
-- [ ] Avoid leaking private data: In vignettes ignore all files except .Rmd:
+- [ ] Create a directory for each mvp.Rmd at: inst/extdata/mvp/.
+- [ ] Avoid leaking private data: In inst/extdata/mvp/.gitignore add:
 
     ```
-    # vignettes/.gitignore
     *.*
     !*.Rmd
     ```
+Refactor indicator code to production:
 
-- [ ] Document authorship in the article and in DESCRIPTION.
+- [ ] Add each indicator as inst/extdata/mvp/indicator.Rmd.
+- [ ] Document authorship in the indocator.Rmd and in DESCRIPTION.
 - [ ] Redirect inputs to read from private data dir: `here <- indicator_path`.
 - [ ] Redirect outputs to write to "obj.csv": `write_csv(obj, "obj.csv")`.
-- [ ] Confirm the article doesn't leak private data.
-- [ ] Confirm the article is reproducible: `pkgdown::build_articles()`.
+- [ ] Confirm rendering the indicator.Rmd doesn't leak private data.
+- [ ] Confirm rendering the indicator.Rmd doesn't leak private data.
 - [ ] Create `ind_obj()` to return "obj" from `wrap_rmd(".../ind.Rmd")`.
 - [ ] Characterize current behavior with a test.
 
