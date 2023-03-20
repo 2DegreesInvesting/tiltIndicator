@@ -3,4 +3,5 @@
 export(data_dir)
 export(mvp_path)
 export(mvp_paths)
+export(pctr_path)
 export(tilt_path)

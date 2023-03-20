@@ -17,7 +17,7 @@
 #' mvp_paths()
 #' mvp_path("product-carbon-transition-risk.Rmd")
 mvp_path <- function(path) {
-  system.file("extdata", "mvp", path,  package = "tiltIndicator")
+  system.file("extdata", "mvp", path, package = "tiltIndicator")
 }
 
 #' @rdname mvp_path

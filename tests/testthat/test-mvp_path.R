@@ -5,11 +5,10 @@ test_that("returns a path under the parent 'mvp'", {
 })
 
 test_that("mvp_paths() returns a one expected file", {
-  expect_true(grepl("product-carbon-transition-risk.Rmd", mvp_paths()))
+  expect_true(any(grepl("product-carbon-transition-risk.Rmd", mvp_paths())))
 })
 
 test_that("is sensitive to `pattern`", {
   expect_true(length(mvp_paths(pattern = ".Rmd")) > 0L)
   expect_true(length(mvp_paths(pattern = "bad")) == 0L)
 })
-
