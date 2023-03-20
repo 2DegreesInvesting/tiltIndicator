@@ -27,7 +27,7 @@ Refactor indicator code to production:
 - [ ] Confirm rendering the indicator.Rmd doesn't leak private data.
 - [ ] Confirm rendering the indicator.Rmd doesn't leak private data.
 - [ ] Create `ind_obj()` to return "obj" from `wrap_rmd(".../ind.Rmd")`.
-- [ ] Characterize current behavior with a test.
+- [ ] Snapshot-test `ind_obj` via `test_dir("/path/to/private/directory/")`.
 
 Principles, guides and tools:
 
