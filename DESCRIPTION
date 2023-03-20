@@ -14,6 +14,7 @@ Imports:
     readr,
     withr
 Suggests: 
+    covr,
     here,
     rmarkdown,
     testthat (>= 3.0.0)
