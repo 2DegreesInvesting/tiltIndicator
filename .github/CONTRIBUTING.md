@@ -8,7 +8,6 @@ Build infrastructure:
 - [ ] Use a license: `use_mit_license()`.
 - [ ] Enable tests: `use_testthat()`
 - [ ] Enable CI: `use_github_action_check_standard()`.
-- [ ] Enable publishing: `use_pkgdown(); use_pkgdown_github_pages()`.
 
 Refactor indicator code to production:
 
