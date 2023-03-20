@@ -4,10 +4,9 @@
 #'
 #' @return A data frame.term
 #'
-#' @export
-#'
 #' @examples
 #' pctr()
+#' @noRd
 pctr <- function(path = here::here("vignettes/articles/pctr.Rmd")) {
   wrap_rmd(path)[["company_scores"]]
 }
@@ -17,12 +16,11 @@ pctr <- function(path = here::here("vignettes/articles/pctr.Rmd")) {
 #' @inheritDotParams fs::path
 #'
 #' @return A path
-#' @export
-#' @keywords internal
 #'
 #' @examples
 #' pctr_path()
 #' fs::dir_tree(pctr_path())
+#' @noRd
 pctr_path <- function(...) {
   tilt_path("tiltIndicator", "pctr", ...)
 }
