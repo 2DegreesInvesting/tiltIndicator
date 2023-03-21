@@ -37,40 +37,26 @@
 
 <div id="contributing-to-tiltindicator" class="section level1">
 
-<p>Build package infrastructure:</p>
-<ul class="task-list"><li><p><input type="checkbox" disabled>Enable developer workflow: <code>create_package()</code>.</p></li>
-<li><p><input type="checkbox" disabled>Use a license: <code>use_mit_license()</code>.</p></li>
-<li><p><input type="checkbox" disabled>Enable tests: <code>use_testthat()</code></p></li>
-<li><p><input type="checkbox" disabled>Enable CI: <code>use_github_action_check_standard()</code>.</p></li>
-<li><p><input type="checkbox" disabled>Create a directory for each mvp.Rmd at: inst/extdata/mvp/.</p></li>
+<div class="section level2">
+<h2 id="build-package-infrastructure">Build package infrastructure<a class="anchor" aria-label="anchor" href="#build-package-infrastructure"></a></h2>
+<ul><li><p>Enable developer workflow: <code>create_package()</code>.</p></li>
+<li><p>Use a license: <code>use_mit_license()</code>.</p></li>
+<li><p>Enable tests: <code>use_testthat()</code></p></li>
+<li><p>Enable CI: <code>use_github_action_check_standard()</code>.</p></li>
+<li><p>Create a directory for each mvp.Rmd at: inst/extdata/mvp/.</p></li>
 <li>
-<p><input type="checkbox" disabled>Avoid leaking private data: In inst/extdata/mvp/.gitignore add:</p>
+<p>Avoid leaking private data: In inst/extdata/mvp/.gitignore add:</p>
 <pre><code>*.*
 !*.Rmd</code></pre>
 </li>
-<li><p><input type="checkbox" disabled>Create a website: <code>use_pkgdown_github_pages()</code></p></li>
-</ul><p>Refactor each indicator’s MVP to production:</p>
-<ul class="task-list"><li>
-<input type="checkbox" disabled>Add each indicator as inst/extdata/mvp/indicator.Rmd.</li>
-<li>
-<input type="checkbox" disabled>Document authorship in the indocator.Rmd and in DESCRIPTION.</li>
-<li>
-<input type="checkbox" disabled>Redirect inputs to read from private data dir: <code>here &lt;- indicator_path</code>.</li>
-<li>
-<input type="checkbox" disabled>Redirect outputs to write to “obj.csv”: <code>write_csv(obj, "obj.csv")</code>.</li>
-<li>
-<input type="checkbox" disabled>Confirm rendering the indicator.Rmd doesn’t leak private data.</li>
-<li>
-<input type="checkbox" disabled>Confirm rendering the indicator.Rmd doesn’t leak private data.</li>
-<li>
-<input type="checkbox" disabled>Create <code>ind_obj()</code> to return “obj” from <code>wrap_rmd(".../ind.Rmd")</code>.</li>
-<li>
-<input type="checkbox" disabled>Snapshot <code>ind_obj()</code> via <code>test_dir("/path/to/private/directory/")</code>.</li>
-<li>
-<input type="checkbox" disabled>Document <code>ind_obj()</code>.</li>
-<li>
-<input type="checkbox" disabled>Refactor <code>ind_obj()</code>.</li>
-</ul><p>Principles, guides and tools:</p>
+<li><p>Create a website: <code>use_pkgdown_github_pages()</code></p></li>
+</ul></div>
+<div class="section level2">
+<h2 id="refactor-each-indicators-mvp-to-production">Refactor each indicator’s MVP to production<a class="anchor" aria-label="anchor" href="#refactor-each-indicators-mvp-to-production"></a></h2>
+<p>For each indicator <code><a href="reference/use_indicator_issue.html">use_indicator_issue()</a></code> on GitHub and do what it says.</p>
+</div>
+<div class="section level2">
+<h2 id="principles-guides-and-tools">Principles, guides and tools<a class="anchor" aria-label="anchor" href="#principles-guides-and-tools"></a></h2>
 <ul><li>
 <a href="https://style.tidyverse.org/" class="external-link">Tidyverse style guide</a>: <code>use_tidy_style()</code>.</li>
 <li>Tidyverse spelling: <code>use_spell_check()</code>.</li>
@@ -79,8 +65,10 @@
 <li>
 <a href="https://davisvaughan.github.io/code-review/" class="external-link">Tidyverse code review principles</a>.</li>
 </ul></div>
+</div>
 
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
