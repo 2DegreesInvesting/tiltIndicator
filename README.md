@@ -12,7 +12,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 coverage](https://codecov.io/gh/2DegreesInvesting/tiltIndicator/branch/main/graph/badge.svg)](https://app.codecov.io/gh/2DegreesInvesting/tiltIndicator?branch=main)
 <!-- badges: end -->
 
-The goal of tiltIndicator is to help you calculate each TILT indicator.
+The goal of tiltIndicator is to help you develop each TILT indicator.
 
 This repository hosts only public code and may only show only fake data.
 
@@ -28,12 +28,16 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 
 ## Example
 
-Private data must be stored outside this repository. A good place is in
-a tilt/ directory under Downloads/.
-
 ``` r
 library(tiltIndicator)
+```
 
+As a user you’ll need a good place to keep private data and an easy way
+to access it.
+
+``` r
 tilt_path()
 #> /home/rstudio/Downloads/tilt
 ```
+
+[CONTRIBUTING](https://github.com/2DegreesInvesting/tiltIndicator/blob/main/.github/CONTRIBUTING.md)
