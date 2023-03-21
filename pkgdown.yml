@@ -1,8 +1,9 @@
 pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
-articles: {}
-last_built: 2023-03-21T15:47Z
+articles:
+  indicator-docs: indicator-docs.html
+last_built: 2023-03-21T15:51Z
 urls:
   reference: https://2degreesinvesting.github.io/tiltIndicator/reference
   article: https://2degreesinvesting.github.io/tiltIndicator/articles
