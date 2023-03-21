@@ -1,8 +1,6 @@
 # Contributing to tiltIndicator
 
-Checklist to add a new indicator:
-
-Build infrastructure:
+Build package infrastructure:
 
 - [ ] Enable developer workflow: `create_package()`.
 - [ ] Use a license: `use_mit_license()`.
@@ -18,7 +16,7 @@ Build infrastructure:
 
 - [ ] Create a website: `use_pkgdown_github_pages()`
 
-Refactor indicator code to production:
+Refactor each indicator's MVP to production:
 
 - [ ] Add each indicator as inst/extdata/mvp/indicator.Rmd.
 - [ ] Document authorship in the indocator.Rmd and in DESCRIPTION.
@@ -27,7 +25,9 @@ Refactor indicator code to production:
 - [ ] Confirm rendering the indicator.Rmd doesn't leak private data.
 - [ ] Confirm rendering the indicator.Rmd doesn't leak private data.
 - [ ] Create `ind_obj()` to return "obj" from `wrap_rmd(".../ind.Rmd")`.
-- [ ] Snapshot-test `ind_obj` via `test_dir("/path/to/private/directory/")`.
+- [ ] Snapshot `ind_obj()` via `test_dir("/path/to/private/directory/")`.
+- [ ] Document `ind_obj()`.
+- [ ] Refactor `ind_obj()`.
 
 Principles, guides and tools:
 
