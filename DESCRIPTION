@@ -8,7 +8,7 @@ Authors@R: c(
     person("2 Degrees Investing Initiative", , , "contact@2degrees-investing.org", role = c("cph", "fnd"))
   )
 Description: Indicators for the 'TILT' project.
-License: file LICENSE
+License: MIT + file LICENSE
 URL: https://2degreesinvesting.github.io/tiltIndicator/
 Imports: 
     fs,

@@ -9,3 +9,4 @@
 ^pkgdown$
 ^codecov\.yml$
 ^inst/extdata/mvp/\.gitignore$
+^LICENSE\.md$
