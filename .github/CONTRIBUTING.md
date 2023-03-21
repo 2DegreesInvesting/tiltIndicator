@@ -1,11 +1,11 @@
 # Contributing to tiltIndicator
 
-This article if for the developer of each indicator, responsible to converting
-MVP code into production code. Here you'll find guides and tools to ensure each
-indicator is documented and developed consistently with other indicators, and
-accordingly to the requirements of the indicator author.
+This article if for the developer who transforms the MVP code of each indicator
+into production code. Here you'll find guides and tools to ensure each indicator
+is developed and documented consistently with other indicators, and according to
+the requirements of the indicator's author.
 
-## Meta: Building the infrastructure of this package
+Building the infrastructure of this package:
 
 * Enable developer workflow: `create_package()`.
 * Use a license: `use_mit_license()`.
@@ -21,15 +21,16 @@ accordingly to the requirements of the indicator author.
 
 * Create a website: `use_pkgdown_github_pages()`
 
-## Documentation
+Documentation:
 
-* Guide to documentation[this article](https://2degreesinvesting.github.io/tiltIndicator/articles/indicator-docs.html).
+* [Guide to documenting each indicator](https://2degreesinvesting.github.io/tiltIndicator/articles/indicator-docs.html).
 
-## Tools
+Tools:
 
-* [Developer-oriented functions](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#developer-oriented-functions).
+* [Developer-oriented
+functions](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#developer-oriented-functions).
 
-## Principles, guides and tools
+More general guides, tools and principles.
 
 * [Tidyverse style guide](https://style.tidyverse.org/): `use_tidy_style()`.
 * Tidyverse spelling: `use_spell_check()`.
