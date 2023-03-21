@@ -1,13 +1,16 @@
-#' Product carbon transition risk indicator
+#' Typically one sentence like "Given an INPUT returns an OUTPUT"
 #'
-#' @param path TODO: Replace with input data frames.
+#' A short introduction, typically one paragraph but maybe more.
 #'
-#' @return A data frame
+#' A longer explanation, typically multiple paragraphs but maybe one.
+#'
+#' @param data (Typically one or more data frames with crucial columns)
+#'
+#' @return (Typically one or more data frames with crucial columns)
+#' @export
 #'
 #' @examples
-#' path <- mvp_path("product-carbon-transition-risk.Rmd")
-#' pctr_pctr_company_scores(path)
-#' @noRd
+#' # TODO
 pctr_company_scores <- function(path) {
   # TODO: Refactor
   # Tests run privately until we have public toy data
