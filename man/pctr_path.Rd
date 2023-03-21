@@ -21,6 +21,5 @@ Path to indicator
 }
 \examples{
 pctr_path()
-fs::dir_tree(pctr_path())
 }
 \keyword{internal}
