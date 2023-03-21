@@ -2,3 +2,12 @@ url: https://2degreesinvesting.github.io/tiltIndicator/
 template:
   bootstrap: 5
 
+reference:
+
+  - title: User-oriented fucntions
+    contents:
+      - -has_concept("developer-oriented functions")
+
+  - title: Developer-oriented functions
+    contents:
+      - has_concept("developer-oriented functions")

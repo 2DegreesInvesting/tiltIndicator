@@ -4,7 +4,7 @@
 #'
 #' @return A path
 #' @export
-#' @keywords internal
+#' @family developer-oriented functions
 #'
 #' @examples
 #' pctr_path()
