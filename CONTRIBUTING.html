@@ -37,8 +37,7 @@
 
 <div id="contributing-to-tiltindicator" class="section level1">
 
-<p>Checklist to add a new indicator:</p>
-<p>Build infrastructure:</p>
+<p>Build package infrastructure:</p>
 <ul class="task-list"><li><p><input type="checkbox" disabled>Enable developer workflow: <code>create_package()</code>.</p></li>
 <li><p><input type="checkbox" disabled>Use a license: <code>use_mit_license()</code>.</p></li>
 <li><p><input type="checkbox" disabled>Enable tests: <code>use_testthat()</code></p></li>
@@ -50,7 +49,7 @@
 !*.Rmd</code></pre>
 </li>
 <li><p><input type="checkbox" disabled>Create a website: <code>use_pkgdown_github_pages()</code></p></li>
-</ul><p>Refactor indicator code to production:</p>
+</ul><p>Refactor each indicator’s MVP to production:</p>
 <ul class="task-list"><li>
 <input type="checkbox" disabled>Add each indicator as inst/extdata/mvp/indicator.Rmd.</li>
 <li>
@@ -66,7 +65,11 @@
 <li>
 <input type="checkbox" disabled>Create <code>ind_obj()</code> to return “obj” from <code>wrap_rmd(".../ind.Rmd")</code>.</li>
 <li>
-<input type="checkbox" disabled>Snapshot-test <code>ind_obj</code> via <code>test_dir("/path/to/private/directory/")</code>.</li>
+<input type="checkbox" disabled>Snapshot <code>ind_obj()</code> via <code>test_dir("/path/to/private/directory/")</code>.</li>
+<li>
+<input type="checkbox" disabled>Document <code>ind_obj()</code>.</li>
+<li>
+<input type="checkbox" disabled>Refactor <code>ind_obj()</code>.</li>
 </ul><p>Principles, guides and tools:</p>
 <ul><li>
 <a href="https://style.tidyverse.org/" class="external-link">Tidyverse style guide</a>: <code>use_tidy_style()</code>.</li>
