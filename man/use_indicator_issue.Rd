@@ -23,6 +23,8 @@ use_indicator_issue("product-carbon-transition-risk")
 Other developer-oriented functions: 
 \code{\link{mvp_path}()},
 \code{\link{pctr_path}()},
+\code{\link{snapshot_accept_private}()},
+\code{\link{test_private}()},
 \code{\link{wrap_rmd}()}
 }
 \concept{developer-oriented functions}

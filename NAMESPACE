@@ -3,6 +3,8 @@
 export(mvp_path)
 export(mvp_paths)
 export(pctr_path)
+export(snapshot_accept_private)
+export(test_private)
 export(tilt_path)
 export(use_indicator_issue)
 export(wrap_rmd)
