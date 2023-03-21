@@ -8,7 +8,6 @@
 #'
 #' @examples
 #' pctr_path()
-#' fs::dir_tree(pctr_path())
 pctr_path <- function(...) {
   tilt_path("tiltIndicator", "pctr", ...)
 }
