@@ -1,0 +1,7 @@
+---
+title: "Untitled"
+---
+
+```{r}
+readr::write_csv(mtcars, "mtcars.csv")
+```
