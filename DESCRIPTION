@@ -1,5 +1,5 @@
 Package: tiltIndicator
-Title: What the Package Does (One Line, Title Case)
+Title: Indicators for the 'TILT' Project
 Version: 0.0.0.9000
 Authors@R: c(
     person("Mauro", "Lepore", , "maurolepore@gmail.com", role = c("aut", "cre"),
@@ -7,7 +7,7 @@ Authors@R: c(
     person("Tilman", "Trompke", , "tilman@2degrees-investing.org", role = "aut"),
     person("2 Degrees Investing Initiative", , , "contact@2degrees-investing.org", role = c("cph", "fnd"))
   )
-Description: What the package does (one paragraph).
+Description: Indicators for the 'TILT' project.
 License: file LICENSE
 URL: https://2degreesinvesting.github.io/tiltIndicator/
 Imports: 
