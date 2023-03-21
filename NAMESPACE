@@ -2,7 +2,6 @@
 
 export(mvp_path)
 export(mvp_paths)
-export(pctr_company_scores)
 export(pctr_path)
 export(tilt_path)
 export(use_indicator_issue)
