@@ -1,6 +1,11 @@
 # Contributing to tiltIndicator
 
-## Build package infrastructure
+This article if for the developer of each indicator, responsible to converting
+MVP code into production code. Here you'll find guides and tools to ensure each
+indicator is documented and developed consistently with other indicators, and
+accordingly to the requirements of the indicator author.
+
+## Meta: Building the infrastructure of this package
 
 * Enable developer workflow: `create_package()`.
 * Use a license: `use_mit_license()`.
@@ -16,9 +21,13 @@
 
 * Create a website: `use_pkgdown_github_pages()`
 
-## Refactor each indicator's MVP to production
+## Documentation
 
-For each indicator `use_indicator_issue()` on GitHub and do what it says.
+* Guide to documentation[this article](https://2degreesinvesting.github.io/tiltIndicator/articles/indicator-docs.html).
+
+## Tools
+
+* [Developer-oriented functions](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#developer-oriented-functions).
 
 ## Principles, guides and tools
 
