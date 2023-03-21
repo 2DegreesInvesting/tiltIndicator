@@ -3,7 +3,7 @@
 #' The minimal-viable-product (MVP) of each indicator was originally developed
 #' in an .Rmd file that we gradually refactored towards production. They are
 #' stored in inst/extdata/mvp/ in their original form -- except for minimal
-#' changes such as redirection of inputs and outputs to avoid leaking privage
+#' changes such as redirection of inputs and outputs to avoid leaking private
 #' data.
 #'
 #' @param path Name of file.

@@ -22,4 +22,8 @@ Path to indicator
 \examples{
 pctr_path()
 }
-\keyword{internal}
+\seealso{
+Other developer-oriented functions: 
+\code{\link{use_indicator_issue}()}
+}
+\concept{developer-oriented functions}
