@@ -21,6 +21,8 @@ use_indicator_issue("product-carbon-transition-risk")
 }
 \seealso{
 Other developer-oriented functions: 
-\code{\link{pctr_path}()}
+\code{\link{mvp_path}()},
+\code{\link{pctr_path}()},
+\code{\link{wrap_rmd}()}
 }
 \concept{developer-oriented functions}

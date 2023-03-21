@@ -10,6 +10,8 @@
 #' @param pattern A regular expression of filenames to match. If NULL all
 #'   available files are returned. listed.
 #'
+#' @family developer-oriented functions
+#'
 #' @return `r class(mvp_paths())`
 #' @export
 #'

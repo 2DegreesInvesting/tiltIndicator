@@ -1,3 +1,21 @@
+#' Given an .Rmd file returns a list of it's .csv outputs
+#'
+#' This function helps in the early steps of refactoring code from an .Rmd file
+#' into a function. With relatively save, minimal changes to the .Rmd file you
+#' can generate testable output, that you can later use to do more risky
+#' refactoring steps.
+#'
+#' @param path Character. Path to an .Rmd file.
+#'
+#' @family developer-oriented functions
+#'
+#' @return A named list where each element is one .csv output at the working
+#'   directory of the .Rmd file.
+#' @export
+#'
+#' @examples
+#' rmd <- system.file("extdata/mtcars.Rmd", package = "tiltIndicator")
+#' wrap_rmd(rmd)
 wrap_rmd <- function(path) {
   tmp_dir <- withr::local_tempdir()
   tmp_rmd <- fs::path(tmp_dir, fs::path_file(path))
