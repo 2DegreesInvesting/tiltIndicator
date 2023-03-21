@@ -1,0 +1,46 @@
+---
+title: "Please help me document your indicator"
+autor: "Mauro Lepore"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This article is for indicator authors. We need
+to deliver the indicators shortly and to meet the deadline I need your help.
+
+For each output of your indicator, please document these elements:
+https://bit.ly/mvp-docs. You may copy the template into a new GoogleDocs
+document, edit it and share the link with me.
+
+## FYI
+
+If you're interested in the details of the process, here are some examples that
+can help you understand between code and documentation in an MPV versus
+production. Notice that the process involves separating the code and
+documentation, and structuring it all in a specific way. You know best where to
+find each element, and I know best where to put it, so together we can work
+efficiently :-).
+
+### Example of MVP code
+
+* [Toy example of "My cool indicator"](https://gist.github.com/maurolepore/321d2ef358be76eb8b42629e2c640853).
+
+* Real examples of the MVP code of "matching companies" (See [Section 1 here](https://2degreesinvesting.github.io/tilt.company.match/articles/tilt-company-match.html#in-r-session-1)).
+
+### Example of production code
+
+* Toy example of `calculate_indicator_value()`: [Source code](https://gist.github.com/maurolepore/6a2214244c307c3ca764920a04c905d2).
+
+* Real examples of the production code of `suggest_match()`:
+
+    * [Helpfile](https://2degreesinvesting.github.io/tilt.company.match/reference/suggest_match.html).
+    * [Source code](https://github.com/2DegreesInvesting/tilt.company.match/blob/main/R/suggest_match.R)
+
+Note the production code wraps the MVP code and documents each and every element
+in a structured way
+
