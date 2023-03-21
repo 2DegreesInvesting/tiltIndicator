@@ -15,14 +15,20 @@ use_indicator_issue <- function(indicator = "indicator") {
 
   glue::glue("
   - [ ] Add inst/extdata/mvp/{indicator}.Rmd.
-  - [ ] Document authorship in */{indicator}.Rmd
+  - [ ] Document authorship in `*/{indicator}.Rmd`
   - [ ] Document authorship DESCRIPTION.
   - [ ] Redirect inputs to read from private data dir: `here <- {ind}_path`.
   - [ ] Redirect outputs to write to 'obj.csv': `write_csv(obj, 'obj.csv')`.
-  - [ ] Confirm rendering */{indicator}.Rmd doesn't leak private data.
+  - [ ] Confirm rendering `*/{indicator}.Rmd` doesn't leak private data.
   - [ ] Create `{ind}_obj()` to return 'obj' from `wrap_rmd('*/{ind}.Rmd')`.
   - [ ] Snapshot `{ind}_obj()` via `test_dir('/path/to/private/directory/')`.
+
+  Refactor:
+
+  - [ ] Rename `{ind}_obj()` -> `{ind}_obj_old()`.
+  - [ ] Create `{ind}_obj()` with code from `*/{indicator}.Rmd` via `knitr::purl()`.
+  - [ ] Replace outputs with named elements in a list.
+  - [ ] Replace inputs with data frame arguments.
   - [ ] Document `{ind}_obj()`.
-  - [ ] Refactor `{ind}_obj()`.
   ")
 }
