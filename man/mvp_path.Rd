@@ -29,3 +29,10 @@ data.
 mvp_paths()
 mvp_path("product-carbon-transition-risk.Rmd")
 }
+\seealso{
+Other developer-oriented functions: 
+\code{\link{pctr_path}()},
+\code{\link{use_indicator_issue}()},
+\code{\link{wrap_rmd}()}
+}
+\concept{developer-oriented functions}

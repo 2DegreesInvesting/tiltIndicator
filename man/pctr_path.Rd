@@ -24,6 +24,8 @@ pctr_path()
 }
 \seealso{
 Other developer-oriented functions: 
-\code{\link{use_indicator_issue}()}
+\code{\link{mvp_path}()},
+\code{\link{use_indicator_issue}()},
+\code{\link{wrap_rmd}()}
 }
 \concept{developer-oriented functions}
