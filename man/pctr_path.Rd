@@ -25,8 +25,6 @@ pctr_path()
 \seealso{
 Other developer-oriented functions: 
 \code{\link{mvp_path}()},
-\code{\link{snapshot_accept_private}()},
-\code{\link{test_private}()},
 \code{\link{use_indicator_issue}()},
 \code{\link{wrap_rmd}()}
 }
