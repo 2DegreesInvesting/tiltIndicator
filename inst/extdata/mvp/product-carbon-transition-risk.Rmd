@@ -4,7 +4,6 @@ author: "Tilman Trompke"
 params:
   input1: NULL
   input2: NULL
-  output: NULL
 ---
 
 ```{r, include = FALSE}
@@ -81,17 +80,18 @@ The product carbon transition risk indicator consists of 2 main steps:
 ## 1. Load packages and ecoinvent data
 
 ``` {r}
+library(rlang)
 library(fs)
 library(tidyr)
+library(readr)
 library(dplyr)
 library(graphics)
 library(tiltIndicator)
 
-if (is.null(params$input1)) {
-  data_ecoinvent <- readr::read_csv(tiltIndicator:::pctr_path("input_data", "ecoinvent_activities.csv"))
-} else {
-  data_ecoinvent <- params$input1
-}
+set.seed(123)
+
+data_ecoinvent <- params$input1 %||% 
+    read_csv(pctr_path("input_data", "ecoinvent_activities.csv"))
 ```
 
 ## 2. Create subset of data with relevant columns
@@ -207,12 +207,8 @@ barplot(prop.table(table(data_short$score_unit_isic)))
 
 ``` {r}
 # load sample data
-
-if (is.null(params$input1)) {
-  data_companies <- readr::read_csv(tiltIndicator:::pctr_path("input_data", "MVP_sample_dataset.csv"))
-} else {
-  data_companies <- params$input2
-}
+data_companies <- params$input2 %||% 
+  read_csv(pctr_path("input_data", "MVP_sample_dataset.csv"))
 
 # select relevant columns
 data_companies <- data_companies %>%
@@ -307,6 +303,6 @@ names(company_scores)[3] <- "risk_shares"
 company_scores <- company_scores %>%
   replace_na(list(risk_shares = 0))
 
-readr::write_csv(company_scores, "company_scores.csv")
+write_csv(company_scores, "company_scores.csv")
 ```
 
