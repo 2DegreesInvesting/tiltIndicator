@@ -1,7 +1,12 @@
 ---
 title: "Untitled"
+params:
+  input1: NULL
 ---
 
 ```{r}
-readr::write_csv(mtcars, "mtcars.csv")
+library(rlang)
+
+data <- params$input1 %||% mtcars
+readr::write_csv(data, "mtcars.csv")
 ```
