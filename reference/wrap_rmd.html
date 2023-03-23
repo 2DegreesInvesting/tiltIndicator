@@ -57,13 +57,120 @@ refactoring steps.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">wrap_rmd</span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">wrap_rmd</span><span class="op">(</span><span class="va">path</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>path</dt>
 <dd><p>Character. Path to an .Rmd file.</p></dd>
+
+
+<dt>...</dt>
+<dd><p>Arguments passed on to <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">rmarkdown::render</a></code></p><dl><dt><code>input</code></dt>
+<dd><p>The input file to be rendered. This can be an R script (.R),
+an R Markdown document (.Rmd), or a plain markdown document.</p></dd>
+
+    <dt><code>output_format</code></dt>
+<dd><p>The R Markdown output format to convert to. The option
+<code>"all"</code> will render all formats defined within the file. The option can
+be the name of a format (e.g. <code>"html_document"</code>) and that will render
+the document to that single format. One can also use a vector of format
+names to render to multiple formats. Alternatively, you can pass an output
+format object (e.g. <code>html_document()</code>). If using <code>NULL</code> then the
+output format is the first one defined in the YAML frontmatter in the input
+file (this defaults to HTML if no format is specified there).
+If you pass an output format object to <code>output_format</code>, the options
+specified in the YAML header or <code>_output.yml</code> will be ignored and you
+must explicitly set all the options you want when you construct the object.
+If you pass a string, the output format will use the output parameters in
+the YAML header or <code>_output.yml</code>.</p></dd>
+
+    <dt><code>output_file</code></dt>
+<dd><p>The name of the output file. If using <code>NULL</code> then the
+output filename will be based on filename for the input file. If a filename
+is provided, a path to the output file can also be provided. Note that the
+<code>output_dir</code> option allows for specifying the output file path as well,
+however, if also specifying the path, the directory must exist. If
+<code>output_file</code> is specified but does not have a file extension, an
+extension will be automatically added according to the output format. To
+avoid the automatic file extension, put the <code>output_file</code> value in
+<code><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a>()</code>, e.g., <code>I('my-output')</code>.</p></dd>
+
+    <dt><code>output_dir</code></dt>
+<dd><p>The output directory for the rendered <code>output_file</code>.
+This allows for a choice of an alternate directory to which the output file
+should be written (the default output directory of that of the input file).
+If a path is provided with a filename in <code>output_file</code> the directory
+specified here will take precedence. Please note that any directory path
+provided will create any necessary directories if they do not exist.</p></dd>
+
+    <dt><code>output_options</code></dt>
+<dd><p>List of output options that can override the options
+specified in metadata (e.g. could be used to force <code>self_contained</code> or
+<code>mathjax = "local"</code>). Note that this is only valid when the output
+format is read from metadata (i.e. not a custom format object passed to
+<code>output_format</code>).</p></dd>
+
+    <dt><code>output_yaml</code></dt>
+<dd><p>Paths to YAML files specifying output formats and their
+configurations. The first existing one is used. If none are found, then
+the function searches YAML files specified to the <code>output_yaml</code> top-level
+parameter in the YAML front matter, _output.yml or _output.yaml, and then uses
+the first existing one.</p></dd>
+
+    <dt><code>intermediates_dir</code></dt>
+<dd><p>Intermediate files directory. If a path is specified
+then intermediate files will be written to that path. If <code>NULL</code>,
+intermediate files are written to the same directory as the input file.</p></dd>
+
+    <dt><code>knit_root_dir</code></dt>
+<dd><p>The working directory in which to knit the document;
+uses knitr's <code>root.dir</code> knit option. If <code>NULL</code> then the behavior
+will follow the knitr default, which is to use the parent directory of the
+document.</p></dd>
+
+    <dt><code>runtime</code></dt>
+<dd><p>The runtime target for rendering. The <code>static</code> option
+produces output intended for static files; <code>shiny</code> produces output
+suitable for use in a Shiny document (see <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/run.html" class="external-link">run</a></code>). The default,
+<code>auto</code>, allows the <code>runtime</code> target specified in the YAML metadata
+to take precedence, and renders for a <code>static</code> runtime target otherwise.</p></dd>
+
+    <dt><code>clean</code></dt>
+<dd><p>Using <code>TRUE</code> will clean intermediate files that are created
+during rendering.</p></dd>
+
+    <dt><code>params</code></dt>
+<dd><p>A list of named parameters that override custom params
+specified within the YAML front-matter (e.g. specifying a dataset to read or
+a date range to confine output to). Pass <code>"ask"</code> to start an
+application that helps guide parameter configuration.</p></dd>
+
+    <dt><code>knit_meta</code></dt>
+<dd><p>(This option is reserved for expert use.) Metadata
+generated by <span class="pkg">knitr</span>.</p></dd>
+
+    <dt><code>envir</code></dt>
+<dd><p>The environment in which the code chunks are to be evaluated
+during knitting (can use <code><a href="https://rdrr.io/r/base/environment.html" class="external-link">new.env</a>()</code> to guarantee an empty new
+environment).</p></dd>
+
+    <dt><code>run_pandoc</code></dt>
+<dd><p>An option for whether to run pandoc to convert Markdown
+output.</p></dd>
+
+    <dt><code>quiet</code></dt>
+<dd><p>An option to suppress printing during rendering from knitr,
+pandoc command line and others. To only suppress printing of the last
+"Output created: " message, you can set <code>rmarkdown.render.message</code> to
+<code>FALSE</code></p></dd>
+
+    <dt><code>encoding</code></dt>
+<dd><p>Ignored. The encoding is always assumed to be UTF-8.</p></dd>
+
+  
+</dl></dd>
 
 </dl></div>
     <div class="section level2">
@@ -84,6 +191,20 @@ directory of the .Rmd file.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">rmd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/mtcars.Rmd"</span>, package <span class="op">=</span> <span class="st">"tiltIndicator"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">rmd</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> title: "Untitled"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> params:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   input1: NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ```{r}</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> library(rlang)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> data &lt;- params$input1 %||% mtcars</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> readr::write_csv(data, "mtcars.csv")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ```</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">wrap_rmd</span><span class="op">(</span><span class="va">rmd</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mtcars</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 32 × 11</span></span>
@@ -100,6 +221,20 @@ directory of the .Rmd file.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 22 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># You may pass `...` to `rmarkdown::render()`, e.g. `params`</span></span></span>
+<span class="r-in"><span><span class="fu">wrap_rmd</span><span class="op">(</span><span class="va">rmd</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>input1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $mtcars</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>  21       6   160   110  3.9   2.62  16.5     0     1     4     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>  21       6   160   110  3.9   2.88  17.0     0     1     4     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>  22.8     4   108    93  3.85  2.32  18.6     1     1     4     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
