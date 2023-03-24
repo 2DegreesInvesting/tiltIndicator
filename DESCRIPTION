@@ -22,6 +22,7 @@ Suggests:
     covr,
     ggplot2,
     here,
+    rlang,
     rmarkdown,
     testthat (>= 3.0.0),
     tibble
