@@ -1,11 +1,7 @@
 ---
-output: github_document
-title: "Transition risk MVP"
-date: 2022-12-19
+title: "Product sector transition risk"
 author: "Linda Delacombaz"
-editor_options:
-  markdown:
-    wrap: 72
+output: github_document
 ---
 
 ```{r, include = FALSE}
@@ -20,9 +16,10 @@ knitr::opts_chunk$set(
 Packages
 
 ```{r}
-library(tidyverse)
+library(ggplot2, warn.conflicts = FALSE)
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
 library(readxl)
-library(knitr)
 library(tiltIndicator)
 ```
 
@@ -95,14 +92,14 @@ Let us print the demo companies toy data set that has the company name along
 with its products, sector and subsector information.
 
 ```{r}
-kable(head(demo_companies))
+demo_companies
 ```
 
 Let us print the mapper, which serves as a sector classification bridge between
 the Europages' sectors and subsectors and the WEO 2022 file.
 
 ```{r}
-kable(head(ep_weo_mapper))
+ep_weo_mapper
 ```
 
 We join this on the sectors and subsectors columns.
@@ -111,7 +108,7 @@ We join this on the sectors and subsectors columns.
 joined_df <- demo_companies |>
   left_join(ep_weo_mapper, by = c("sector" = "EP_sector", "subsector" = "EP_subsector"))
 
-kable(head(joined_df))
+joined_df
 ```
 
 ## Step 2: Identifying sector-specific emission reduction targets
@@ -120,7 +117,7 @@ Let us print the WEO file that contains the scenario, year, product and
 reductions information.
 
 ```{r}
-kable(head(weo_2022))
+weo_2022
 ```
 
 Let's join that again with our previously joined data frame:
@@ -129,7 +126,7 @@ Let's join that again with our previously joined data frame:
 final_df <- joined_df |>
   left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
 
-kable(head(final_df))
+final_df
 
 final_df |> write_csv("with_reductions.csv")
 ```
@@ -156,7 +153,7 @@ final_df_cat <- final_df |>
        )
      )
 
-kable(head(final_df_cat))
+final_df_cat
 
 final_df_cat |> write_csv("with_transition_risk.csv")
 ```
@@ -209,7 +206,7 @@ aggregated_score_df <- final_df_cat |>
   summarise(score_aggregated = (n()/total_products_per_company*100), .groups = 'keep') |>
   distinct_all()
 
-kable(head(aggregated_score_df))
+aggregated_score_df
 
 aggregated_score_df |> write_csv("with_score_aggregated.csv")
 ```
