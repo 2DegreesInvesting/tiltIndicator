@@ -87,9 +87,9 @@ The `pstr_*()` functions help you work with the
 product-sector-transition-risk indicator.
 
 ``` r
-with_scores <- companies |> 
-  pstr_add_reductions(ep_weo, weo_2022) |> 
-  pstr_add_transition_risk() |> 
+with_scores <- companies |>
+  pstr_add_reductions(ep_weo, weo_2022) |>
+  pstr_add_transition_risk() |>
   pstr_aggregate_scores()
 #> Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
 #> dplyr 1.1.0.
