@@ -9,4 +9,7 @@ library(rlang)
 
 data <- params$input1 %||% mtcars
 data
+envir <- 1
+expr <- 1
+other <- 1
 ```

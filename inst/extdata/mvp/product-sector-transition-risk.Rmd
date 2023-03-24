@@ -31,9 +31,9 @@ To be done
 products, sector and subsector information.
 
 ```{r}
-demo_companies <- tiltIndicator::companies
+companies <- tiltIndicator::companies
 
-demo_companies
+companies
 ```
 
 2. Mapper, which serves as a sector classification bridge between the
@@ -90,7 +90,7 @@ Let us print the demo companies toy data set that has the company name along
 with its products, sector and subsector information.
 
 ```{r}
-demo_companies
+companies
 ```
 
 Let us print the mapper, which serves as a sector classification bridge between
@@ -103,7 +103,7 @@ ep_weo_mapper
 We join this on the sectors and subsectors columns.
 
 ```{r}
-joined_df <- demo_companies |>
+joined_df <- companies |>
   left_join(ep_weo_mapper, by = c("sector" = "EP_sector", "subsector" = "EP_subsector"))
 
 joined_df
@@ -182,7 +182,7 @@ join the data frame to have the data with the numbers of products that a
 company produces.
 
 ```{r}
-n_products_per_companies <- demo_companies |>
+n_products_per_companies <- companies |>
   group_by(company_name) |>
   summarise(total_products_per_company = n())
 ```
