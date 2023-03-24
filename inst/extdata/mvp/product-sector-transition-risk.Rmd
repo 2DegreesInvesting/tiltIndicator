@@ -40,9 +40,9 @@ companies
 Europages' sectors and subsectors and the WEO 2022 file.
 
 ```{r}
-ep_weo_mapper <- tiltIndicator::ep_weo
+ep_weo <- tiltIndicator::ep_weo
 
-summary(ep_weo_mapper)
+summary(ep_weo)
 ```
 
 3. WEO file that contains the scenario, year, product and reductions
@@ -97,14 +97,14 @@ Let us print the mapper, which serves as a sector classification bridge between
 the Europages' sectors and subsectors and the WEO 2022 file.
 
 ```{r}
-ep_weo_mapper
+ep_weo
 ```
 
 We join this on the sectors and subsectors columns.
 
 ```{r}
 joined_df <- companies |>
-  left_join(ep_weo_mapper, by = c("sector" = "EP_sector", "subsector" = "EP_subsector"))
+  left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector"))
 
 joined_df
 ```
