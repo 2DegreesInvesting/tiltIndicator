@@ -45,7 +45,7 @@ To be done
 products, sector and subsector information.
 
 ```{r}
-demo_companies <- tiltIndicator::pstr_demo_companies
+demo_companies <- tiltIndicator::companies
 
 demo_companies
 ```
@@ -54,7 +54,7 @@ demo_companies
 Europages' sectors and subsectors and the WEO 2022 file.
 
 ```{r}
-ep_weo_mapper <- tiltIndicator::pstr_demo_ep_weo
+ep_weo_mapper <- tiltIndicator::ep_weo
 
 summary(ep_weo_mapper)
 ```
@@ -63,7 +63,7 @@ summary(ep_weo_mapper)
 information.
 
 ```{r}
-weo_2022 <- read_csv(here("data", "weo_2022.csv"))
+weo_2022 <- tiltIndicator::weo_2022
 
 weo_2022
 ```
