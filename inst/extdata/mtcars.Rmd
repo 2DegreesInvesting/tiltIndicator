@@ -8,5 +8,5 @@ params:
 library(rlang)
 
 data <- params$input1 %||% mtcars
-readr::write_csv(data, "mtcars.csv")
+data
 ```
