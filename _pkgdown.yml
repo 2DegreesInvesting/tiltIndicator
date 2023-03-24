@@ -4,10 +4,15 @@ template:
 
 reference:
 
-  - title: User-oriented fucntions
+  - title: Datasets used in the product-sector-transition-risk indicator
     contents:
-      - -has_concept("developer-oriented functions")
+      - has_concept("datasets used in the product-sector-transition-risk indicator.")
 
   - title: Developer-oriented functions
     contents:
       - has_concept("developer-oriented functions")
+
+  - title: Other fucntions
+    contents:
+      - -has_concept("datasets used in the product-sector-transition-risk indicator.")
+      - -has_concept("developer-oriented functions")
