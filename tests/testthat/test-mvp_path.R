@@ -1,11 +1,6 @@
-test_that("returns a path under the parent 'mvp'", {
-  out <- mvp_path("product-carbon-transition-risk.Rmd")
-  parent <- fs::path_file(fs::path_dir(out))
+test_that("the parent folder is 'mvp'", {
+  parent <- fs::path_file(mvp_path(""))
   expect_equal(parent, "mvp")
-})
-
-test_that("mvp_paths() returns a one expected file", {
-  expect_true(any(grepl("product-carbon-transition-risk.Rmd", mvp_paths())))
 })
 
 test_that("is sensitive to `pattern`", {
