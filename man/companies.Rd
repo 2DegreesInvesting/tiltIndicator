@@ -17,9 +17,9 @@ Fake data of some companies and their products
 companies
 }
 \seealso{
-Other datasets used in the product-sector-transition-risk indicator.: 
+Other datasets for product sector transition risk.: 
 \code{\link{ep_weo}},
 \code{\link{weo_2022}}
 }
-\concept{datasets used in the product-sector-transition-risk indicator.}
+\concept{datasets for product sector transition risk.}
 \keyword{datasets}

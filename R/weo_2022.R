@@ -1,6 +1,6 @@
 #' WEO 2022
 #'
-#' @family datasets used in the product-sector-transition-risk indicator.
+#' @family datasets for product sector transition risk.
 #' @examples
 #' weo_2022
 "weo_2022"

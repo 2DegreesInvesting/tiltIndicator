@@ -17,9 +17,9 @@ Mapper between europages and WEO sectors
 ep_weo
 }
 \seealso{
-Other datasets used in the product-sector-transition-risk indicator.: 
+Other datasets for product sector transition risk.: 
 \code{\link{companies}},
 \code{\link{weo_2022}}
 }
-\concept{datasets used in the product-sector-transition-risk indicator.}
+\concept{datasets for product sector transition risk.}
 \keyword{datasets}
