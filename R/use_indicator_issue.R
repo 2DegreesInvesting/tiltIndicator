@@ -14,6 +14,7 @@ use_refactoring_checklist <- function(indicator = "indicator") {
   ind <- paste(substr(split, 1L, 1L), collapse = "")
 
   glue::glue("
+  - [ ] `use_version()`.
   - [ ] Confirm the data is public.
   - [ ] Add inst/extdata/mvp/{indicator}.Rmd.
   - [ ] Document authorship in */{indicator}.Rmd.
@@ -21,9 +22,13 @@ use_refactoring_checklist <- function(indicator = "indicator") {
   - [ ] Document authorship in DESCRIPTION, article, and mvp.
   - [ ] Redirect inputs, e.g.: `here <- {ind}_path`.
   - [ ] Snapshot useful objects from the .Rmd environment via `render_list()`.
+  - [ ] Update NEWS.md.
+  - [ ] `use_version()`.
   - [ ] Refactor: `use_data()` and ask the author to document it.
   - [ ] Refactor: Use package data.
   - [ ] Refactor: Extract functions in the .Rmd.
   - [ ] Refactor: Move functions to R/ and ask the author to document it.
+  - [ ] Update NEWS.md.
+  - [ ] `use_version()`.
   ")
 }
