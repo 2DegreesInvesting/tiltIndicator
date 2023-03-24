@@ -104,6 +104,7 @@ We join this on the sectors and subsectors columns.
 #' @export
 #'
 #' @examples
+#' TODO: Move to R/function-name.R
 pstr_add_reductions <- function(companies, ep_weo, weo_2022) {
   companies |>
     left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |> 
@@ -137,6 +138,7 @@ the value of the reductions.
 #' @export
 #'
 #' @examples
+#' TODO: Move to R/function-name.R
 pstr_add_transition_risk <- function(data) {
   data |>
     mutate(
@@ -192,6 +194,7 @@ products over the total numbers of products per company.
 #' @export
 #'
 #' @examples
+#' TODO: Move to R/function-name.R
 pstr_aggregate_scores <- function(data) {
   n_products_per_companies <- companies |>
     group_by(company_name) |>
@@ -230,6 +233,7 @@ that the user could chose, for example.
 #' @export
 #'
 #' @examples
+#' TODO: Move to R/function-name.R
 pstr_plot_company <- function(with_score_aggregated) {
   level_order <- c("low", "medium", "high")
   
