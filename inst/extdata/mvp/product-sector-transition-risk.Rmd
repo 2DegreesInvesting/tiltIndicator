@@ -149,9 +149,9 @@ add_transition_risk <- function(data) {
     )
 }
 
-with_transition_risk <- add_transition_risk(with_reductions)
+with_rt <- add_transition_risk(with_reductions)
 
-with_transition_risk
+with_rt
 ```
 
 ## Step 4: Aggregating on the company-level
@@ -175,27 +175,21 @@ Here are the calculation rules:
 -   No Sector Transition Risk Products (in %) = ∑ of all no sector
     transition risk products / ∑ of all products
 
-Here I calculate the numbers of products per companies in a new column, and
-join the data frame to have the data with the numbers of products that a
-company produces.
-
-```{r}
-n_products_per_companies <- companies |>
-  group_by(company_name) |>
-  summarise(total_products_per_company = n())
-```
-
-```{r}
-with_transition_risk <- with_transition_risk |>
-  left_join(n_products_per_companies, by = "company_name")
-
-with_transition_risk
-```
+Here I calculate the numbers of products per companies in a new column, and join
+the data frame to have the data with the numbers of products that a company
+produces.
 
 Then, I calculate the score aggregated by summing (per transition risk) the
 products over the total numbers of products per company.
 
 ```{r}
+n_products_per_companies <- companies |>
+  group_by(company_name) |>
+  summarise(total_products_per_company = n())
+
+with_transition_risk <- with_rt |>
+  left_join(n_products_per_companies, by = "company_name")
+
 with_score_aggregated <- with_transition_risk |>
   select(company_id, company_name, transition_risk, total_products_per_company, scenario, year) |>
   group_by(company_name, transition_risk, scenario, year) |>
