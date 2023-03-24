@@ -10,7 +10,7 @@ Authors@R: c(
   )
 Description: Indicators for the 'TILT' project.
 License: MIT + file LICENSE
-URL: https://2degreesinvesting.github.io/tiltIndicator/
+URL: https://github.com/2DegreesInvesting/tiltIndicator
 Depends: 
     R (>= 2.10)
 Imports: 
@@ -33,3 +33,4 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+BugReports: https://github.com/2DegreesInvesting/tiltIndicator/issues
