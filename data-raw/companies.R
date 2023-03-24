@@ -1,5 +1,6 @@
+# Source: Linda
 # styler: off
-pstr_demo_companies <- tibble::tribble(
+companies <- tibble::tribble(
   ~company_id,        ~company_name,               ~products,                      ~sector,                     ~subsector,
             1,      "Peasant Peter",                "screws", "steel_metal_transformation",    "bending_steels_and_metals",
             2,      "Peasant Peter",       "aluminium_alloy",               "steel_metals",             "aluminium_alloys",
@@ -14,4 +15,4 @@ pstr_demo_companies <- tibble::tribble(
 )
 # styler: on
 
-usethis::use_data(pstr_demo_companies, overwrite = TRUE)
+usethis::use_data(companies, overwrite = TRUE)
