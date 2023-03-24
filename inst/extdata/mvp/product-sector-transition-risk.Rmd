@@ -95,13 +95,6 @@ joined_df
 
 ## Step 2: Identifying sector-specific emission reduction targets
 
-Let us print the WEO file that contains the scenario, year, product and
-reductions information.
-
-```{r}
-weo_2022
-```
-
 Let's join that again with our previously joined data frame:
 
 ```{r}
