@@ -4,9 +4,9 @@ template:
 
 reference:
 
-  - title: Datasets used in the product-sector-transition-risk indicator
+  - title: Datasets for product sector transition risk
     contents:
-      - has_concept("datasets used in the product-sector-transition-risk indicator.")
+      - has_concept("datasets for product sector transition risk.")
 
   - title: Developer-oriented functions
     contents:
@@ -14,5 +14,5 @@ reference:
 
   - title: Other fucntions
     contents:
-      - -has_concept("datasets used in the product-sector-transition-risk indicator.")
+      - -has_concept("datasets for product sector transition risk.")
       - -has_concept("developer-oriented functions")
