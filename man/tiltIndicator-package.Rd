@@ -11,7 +11,8 @@ Indicators for the 'TILT' project.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://2degreesinvesting.github.io/tiltIndicator/}
+  \item \url{https://github.com/2DegreesInvesting/tiltIndicator}
+  \item Report bugs at \url{https://github.com/2DegreesInvesting/tiltIndicator/issues}
 }
 
 }
