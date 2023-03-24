@@ -13,6 +13,13 @@ weo_2022
 \description{
 WEO 2022
 }
-\concept{datasets used in the product-sector-transition-risk indicator.
-weo_2022}
+\examples{
+weo_2022
+}
+\seealso{
+Other datasets used in the product-sector-transition-risk indicator.: 
+\code{\link{companies}},
+\code{\link{ep_weo}}
+}
+\concept{datasets used in the product-sector-transition-risk indicator.}
 \keyword{datasets}

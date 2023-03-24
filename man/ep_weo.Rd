@@ -13,6 +13,13 @@ ep_weo
 \description{
 Mapper between europages and WEO sectors
 }
-\concept{datasets used in the product-sector-transition-risk indicator.
-ep_weo}
+\examples{
+ep_weo
+}
+\seealso{
+Other datasets used in the product-sector-transition-risk indicator.: 
+\code{\link{companies}},
+\code{\link{weo_2022}}
+}
+\concept{datasets used in the product-sector-transition-risk indicator.}
 \keyword{datasets}

@@ -13,6 +13,13 @@ companies
 \description{
 Fake data of some companies and their products
 }
-\concept{datasets used in the product-sector-transition-risk indicator.
-companies}
+\examples{
+companies
+}
+\seealso{
+Other datasets used in the product-sector-transition-risk indicator.: 
+\code{\link{ep_weo}},
+\code{\link{weo_2022}}
+}
+\concept{datasets used in the product-sector-transition-risk indicator.}
 \keyword{datasets}
