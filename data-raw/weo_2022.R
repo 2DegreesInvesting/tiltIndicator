@@ -1,3 +1,4 @@
+# styler: off
 weo_2022 <- tibble::tribble(
   ~publication,                             ~scenario, ~region,        ~category, ~product,                               ~flow,    ~unit, ~year,  ~value, ~reductions,
   "World Energy Outlook 2021",            "Stated Policies Scenario", "world", "co2 combustion",  "Total", "Road passenger light duty vehicle", "mt co2",  2020, 2787.63,           0,
@@ -9,5 +10,6 @@ weo_2022 <- tibble::tribble(
   "World Energy Outlook 2021", "Net Zero Emissions by 2050 Scenario", "world", "co2 combustion",  "Total",                    "Iron and steel", "mt co2",  2040, 10122.9,       66.86,
   "World Energy Outlook 2021", "Net Zero Emissions by 2050 Scenario", "world", "co2 combustion",  "Total",                    "Iron and steel", "mt co2",  2050, 7426.46,       91.49
 )
+# styler: on
 
 usethis::use_data(weo_2022, overwrite = TRUE)
