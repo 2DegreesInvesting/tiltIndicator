@@ -1,0 +1,20 @@
+---
+title: "Product sector transition risk"
+author: "Linda Delacombaz"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+path <- system.file(
+  "extdata", "mvp", "product-sector-transition-risk.Rmd", 
+  package = "tiltIndicator"
+)
+```
+
+```{r child=path}
+```
+
