@@ -1,13 +1,12 @@
-# TODO: Complete documentation
 #' Title
 #'
 #' @param data A data frame. The ouptput of [pstr_aggregate_scores()].
 #'
-#' @return
+#' @return TODO
 #' @export
 #'
 #' @examples
-#' TODO: Move to R/function-name.R
+#' # TODO
 pstr_plot_company <- function(with_score_aggregated, company_name) {
   .company_name <- company_name
   level_order <- c("low", "medium", "high")

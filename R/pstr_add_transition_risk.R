@@ -1,13 +1,12 @@
-# TODO: Complete documentation
 #' Title
 #'
 #' @param data A data frame. The ouptput of [pstr_add_reductions()].
 #'
-#' @return
+#' @return TODO
 #' @export
 #'
 #' @examples
-#' TODO: Move to R/function-name.R
+#' # TODO
 pstr_add_transition_risk <- function(data) {
   data |>
     mutate(

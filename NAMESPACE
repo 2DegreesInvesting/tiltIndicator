@@ -2,6 +2,10 @@
 
 export(mvp_path)
 export(mvp_paths)
+export(pstr_add_reductions)
+export(pstr_add_transition_risk)
+export(pstr_aggregate_scores)
+export(pstr_plot_company)
 export(render_list)
 export(tilt_path)
 export(use_indicator_issue)

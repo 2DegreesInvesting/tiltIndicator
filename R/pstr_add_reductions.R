@@ -1,15 +1,14 @@
-# TODO: Complete documentation
 #' Title
 #'
-#' @param companies
-#' @param ep_weo
-#' @param weo_2022
+#' @param companies TODO
+#' @param ep_weo TODO
+#' @param weo_2022 TODO
 #'
-#' @return
+#' @return TODO
 #' @export
 #'
 #' @examples
-#' TODO: Move to R/function-name.R
+#' # TODO
 pstr_add_reductions <- function(companies, ep_weo, weo_2022) {
   companies |>
     left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |>

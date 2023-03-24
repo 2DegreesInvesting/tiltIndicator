@@ -1,13 +1,12 @@
-# TODO: Complete documentation
 #' Title
 #'
 #' @param data A data frame. The ouptput of [pstr_add_transition_risk()].
 #'
-#' @return
+#' @return TODO
 #' @export
 #'
 #' @examples
-#' TODO: Move to R/function-name.R
+#' # TODO
 pstr_aggregate_scores <- function(data) {
   n_products_per_companies <- companies |>
     group_by(company_name) |>
