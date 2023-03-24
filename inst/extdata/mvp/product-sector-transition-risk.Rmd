@@ -182,8 +182,6 @@ with_score_aggregated <- with_transition_risk |>
   distinct_all()
 
 with_score_aggregated
-
-with_score_aggregated
 ```
 
 ## Step 5: Vizualisation example
