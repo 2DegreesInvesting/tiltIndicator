@@ -3,5 +3,5 @@ test_that("outputs a named list of one tibble element per output.csv", {
   out <- render_list(path)
   expect_type(out, "list")
   expect_true(any(grepl("data", names(out))))
-  expect_equal(out[["data"]], mtcarst)
+  expect_equal(out[["data"]], mtcars)
 })

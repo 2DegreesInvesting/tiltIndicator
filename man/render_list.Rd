@@ -103,7 +103,6 @@ render_list(path, params = list(input1 = head(mtcars)))
 \seealso{
 Other developer-oriented functions: 
 \code{\link{mvp_path}()},
-\code{\link{use_indicator_issue}()},
-\code{\link{wrap_rmd}()}
+\code{\link{use_indicator_issue}()}
 }
 \concept{developer-oriented functions}

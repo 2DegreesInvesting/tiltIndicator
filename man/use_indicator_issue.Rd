@@ -22,7 +22,6 @@ use_indicator_issue("product-carbon-transition-risk")
 \seealso{
 Other developer-oriented functions: 
 \code{\link{mvp_path}()},
-\code{\link{render_list}()},
-\code{\link{wrap_rmd}()}
+\code{\link{render_list}()}
 }
 \concept{developer-oriented functions}
