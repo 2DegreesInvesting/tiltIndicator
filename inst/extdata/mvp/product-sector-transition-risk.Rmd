@@ -104,14 +104,14 @@ We join this on the sectors and subsectors columns.
 #' @export
 #'
 #' @examples
-add_reductions <- function(companies, ep_weo, weo_2022) {
+pstr_add_reductions <- function(companies, ep_weo, weo_2022) {
   companies |>
     left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |> 
     left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
 }
 
 # FIXME: Do what the warning says
-with_reductions <- add_reductions(companies, ep_weo, weo_2022)
+with_reductions <- pstr_add_reductions(companies, ep_weo, weo_2022)
 
 with_reductions
 ```
@@ -131,13 +131,13 @@ the value of the reductions.
 # TODO: Complete documentation
 #' Title
 #'
-#' @param data A data frame. The ouptput of [add_reductions()].
+#' @param data A data frame. The ouptput of [pstr_add_reductions()].
 #'
 #' @return
 #' @export
 #'
 #' @examples
-add_transition_risk <- function(data) {
+pstr_add_transition_risk <- function(data) {
   data |>
     mutate(
       transition_risk = case_when(
@@ -149,7 +149,7 @@ add_transition_risk <- function(data) {
     )
 }
 
-with_transition_risk <- add_transition_risk(with_reductions)
+with_transition_risk <- pstr_add_transition_risk(with_reductions)
 
 with_transition_risk
 ```
@@ -183,7 +183,16 @@ Then, I calculate the score aggregated by summing (per transition risk) the
 products over the total numbers of products per company.
 
 ```{r}
-aggregate_scores <- function(data) {
+# TODO: Complete documentation
+#' Title
+#'
+#' @param data A data frame. The ouptput of [pstr_add_transition_risk()].
+#'
+#' @return
+#' @export
+#'
+#' @examples
+pstr_aggregate_scores <- function(data) {
   n_products_per_companies <- companies |>
     group_by(company_name) |>
     summarise(total_products_per_company = n())
@@ -198,7 +207,7 @@ aggregate_scores <- function(data) {
     distinct_all()
 }
 
-with_score_aggregated <- aggregate_scores(with_transition_risk)
+with_score_aggregated <- pstr_aggregate_scores(with_transition_risk)
 
 with_score_aggregated
 ```
@@ -212,13 +221,26 @@ either low, medium or high transition risk, relatively to a scenario and year
 that the user could chose, for example.
 
 ```{r}
-level_order <- c("low", "medium", "high")
+# TODO: Complete documentation
+#' Title
+#'
+#' @param data A data frame. The ouptput of [pstr_aggregate_scores()].
+#'
+#' @return
+#' @export
+#'
+#' @examples
+pstr_plot_company <- function(with_score_aggregated) {
+  level_order <- c("low", "medium", "high")
+  
+  with_score_aggregated |>
+    filter(company_name == "Peasant Peter") |>
+    ggplot(aes(x = transition_risk, y = score_aggregated, fill = score_aggregated)) +
+    scale_x_discrete(limits = level_order) +
+    geom_col() +
+    scale_fill_gradient2(midpoint = 0, low = "red", high = "blue") +
+    facet_grid(company_name ~ scenario + year)
+}
 
-with_score_aggregated |>
-  filter(company_name == "Peasant Peter") |>
-  ggplot(aes(x = transition_risk, y = score_aggregated, fill = score_aggregated)) +
-  scale_x_discrete(limits = level_order) +
-  geom_col() +
-  scale_fill_gradient2(midpoint = 0, low = "red", high = "blue") +
-  facet_grid(company_name ~ scenario + year)
+pstr_plot_company(with_score_aggregated)
 ```
