@@ -8,21 +8,22 @@
 #'
 #' @export
 #' @examples
-#' use_indicator_issue("product-carbon-transition-risk")
+#' use_indicator_issue("product-sector-transition-risk")
 use_indicator_issue <- function(indicator = "indicator") {
   split <- unlist(strsplit(indicator, split = "-"))
   ind <- paste(substr(split, 1L, 1L), collapse = "")
 
   glue::glue("
+  - [ ] Confirm the data is public.
   - [ ] Add inst/extdata/mvp/{indicator}.Rmd.
-  - [ ] Document authorship in */{indicator}.Rmd
-  - [ ] Document authorship DESCRIPTION.
-  - [ ] Redirect inputs to read from private data dir: `here <- {ind}_path`.
-  - [ ] Redirect outputs to write to 'obj.csv': `write_csv(obj, 'obj.csv')`.
-  - [ ] Confirm rendering */{indicator}.Rmd doesn't leak private data.
-  - [ ] Create `{ind}_obj()` to return 'obj' from `wrap_rmd('*/{ind}.Rmd')`.
-  - [ ] Snapshot `{ind}_obj()` via `test_dir('/path/to/private/directory/')`.
-  - [ ] Document `{ind}_obj()`.
-  - [ ] Refactor `{ind}_obj()`.
+  - [ ] Document authorship in */{indicator}.Rmd.
+  - [ ] `use_article('{indicator}')` with mvp as child document.
+  - [ ] Document authorship in DESCRIPTION, article, and mvp.
+  - [ ] Redirect inputs, e.g.: `here <- {ind}_path`.
+  - [ ] Snapshot useful objects from the .Rmd environment via `render_list()`.
+  - [ ] Refactor: `use_data()` and ask the author to document it.
+  - [ ] Refactor: Use package data.
+  - [ ] Refactor: Extract functions in the .Rmd.
+  - [ ] Refactor: Move functions to R/ and ask the author to document it.
   ")
 }

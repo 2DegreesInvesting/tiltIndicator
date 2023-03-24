@@ -17,7 +17,7 @@ Character. A checklist you can paste on a GitHub issue.
 Create a task list that you can paste on a GitHub issue and follow up
 }
 \examples{
-use_indicator_issue("product-carbon-transition-risk")
+use_indicator_issue("product-sector-transition-risk")
 }
 \seealso{
 Other developer-oriented functions: 
