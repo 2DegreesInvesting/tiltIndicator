@@ -21,4 +21,3 @@ pstr_aggregate_scores <- function(data) {
     summarise(score_aggregated = (n() / total_products_per_company * 100), .groups = "keep") |>
     distinct_all()
 }
-
