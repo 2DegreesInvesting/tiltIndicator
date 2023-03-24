@@ -93,14 +93,25 @@ those that cannot be matched to one of the sectors, we classify them as ‘Other
 We join this on the sectors and subsectors columns.
 
 ```{r}
-# TODO: Extract `add_reductions()`
+# TODO: Complete documentation
+#' Title
+#'
+#' @param companies 
+#' @param ep_weo 
+#' @param weo_2022 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 add_reductions <- function(companies, ep_weo, weo_2022) {
-  
+  companies |>
+    left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |> 
+    left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
 }
 
-with_reductions <- companies |>
-  left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |> 
-  left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
+# FIXME: Do what the warning says
+with_reductions <- add_reductions(companies, ep_weo, weo_2022)
 
 with_reductions
 ```
@@ -117,17 +128,28 @@ the value of the reductions.
 -   reductions \> 70% means high product sector transition risk.
 
 ```{r}
-with_transition_risk <- with_reductions |>
-  mutate(
-    transition_risk = case_when(
-      reductions <= 30 ~ "low",
-      reductions > 30 & reductions <= 70 ~ "medium",
-      reductions >= 70 ~ "high",
-      TRUE ~ "no_sector",
+# TODO: Complete documentation
+#' Title
+#'
+#' @param data A data frame. The ouptput of [add_reductions()].
+#'
+#' @return
+#' @export
+#'
+#' @examples
+add_transition_risk <- function(data) {
+  data |>
+    mutate(
+      transition_risk = case_when(
+        reductions <= 30 ~ "low",
+        reductions > 30 & reductions <= 70 ~ "medium",
+        reductions >= 70 ~ "high",
+        TRUE ~ "no_sector",
+      )
     )
-  )
+}
 
-with_transition_risk
+with_transition_risk <- add_transition_risk(with_reductions)
 
 with_transition_risk
 ```
