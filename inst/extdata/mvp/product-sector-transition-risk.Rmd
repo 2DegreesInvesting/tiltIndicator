@@ -34,19 +34,23 @@ To be done
 
 ```{r}
 #' A dataset with fake companies, products, sectors and subsectors
-#' 
+#'
 #' TODO: Does it have any relationship with tiltData?
 #' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
+#' FIXME: Rename to match existing tiltData, e.g. `company_id` -> `companies_id`
 companies <- params$input1 %||% tiltIndicator::companies |> glimpse()
 
 #' A bridge between sector and subsectors in europages and in `weo_2022`.
-#' 
+#'
 #' TODO: Where does it come from and what wrangling did you do?
 #' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
+#' FIXME: Rename to match existing tiltData and to use lowercase. E.g.
+#' removing the prefix "ep_" makes it more compatible with tiltData
+#' and makes it easier to join here.
 ep_weo <- params$input2 %||% tiltIndicator::ep_weo |> glimpse()
 
 #' A dataset with scenario, year, product and reductions information
-#' 
+#'
 #' TODO: Where does it come from and what wrangling did you do?
 #' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
 weo_2022 <- params$input3 %||% tiltIndicator::weo_2022 |> glimpse()
@@ -78,30 +82,25 @@ The transition risk indicator consists of 4 main steps:
     medium, and low product sector transition risk
 -   Step 4: Aggregating on the company-level
 
-## Step 1: Matching the products to the sectors
+## Step 1 and 2
+
+1. Matching the products to the sectors
+2. Identifying sector-specific emission reduction targets
 
 Each product of the company will be matched to a climate-relevant sector. For
-those that cannot be matched to one of the sectors, we classify them as
-‘Other’.
+those that cannot be matched to one of the sectors, we classify them as ‘Other’.
 
 We join this on the sectors and subsectors columns.
 
 ```{r}
-companies_categorized <- companies |>
-  left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector"))
+# TODO: Extract `add_reductions()`
+add_reductions <- function(companies, ep_weo, weo_2022) {
+  
+}
 
-companies_categorized
-```
-
-## Step 2: Identifying sector-specific emission reduction targets
-
-Let's join that again with our previously joined data frame:
-
-```{r}
-with_reductions <- companies_categorized |>
+with_reductions <- companies |>
+  left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |> 
   left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
-
-with_reductions
 
 with_reductions
 ```
@@ -119,14 +118,14 @@ the value of the reductions.
 
 ```{r}
 with_transition_risk <- with_reductions |>
-   mutate(
-     transition_risk = case_when(
-       reductions <= 30 ~ "low",
-       reductions > 30 & reductions <= 70 ~ "medium",
-       reductions >= 70 ~ "high",
-       TRUE ~ "no_sector",
-       )
-     )
+  mutate(
+    transition_risk = case_when(
+      reductions <= 30 ~ "low",
+      reductions > 30 & reductions <= 70 ~ "medium",
+      reductions >= 70 ~ "high",
+      TRUE ~ "no_sector",
+    )
+  )
 
 with_transition_risk
 
@@ -166,7 +165,7 @@ n_products_per_companies <- companies |>
 
 ```{r}
 with_transition_risk <- with_transition_risk |>
-  left_join(n_products_per_companies, by = 'company_name')
+  left_join(n_products_per_companies, by = "company_name")
 
 with_transition_risk
 ```
@@ -178,7 +177,7 @@ products over the total numbers of products per company.
 with_score_aggregated <- with_transition_risk |>
   select(company_id, company_name, transition_risk, total_products_per_company, scenario, year) |>
   group_by(company_name, transition_risk, scenario, year) |>
-  summarise(score_aggregated = (n()/total_products_per_company*100), .groups = 'keep') |>
+  summarise(score_aggregated = (n() / total_products_per_company * 100), .groups = "keep") |>
   distinct_all()
 
 with_score_aggregated
@@ -193,13 +192,13 @@ either low, medium or high transition risk, relatively to a scenario and year
 that the user could chose, for example.
 
 ```{r}
-level_order <- c('low', 'medium', 'high')
+level_order <- c("low", "medium", "high")
 
-with_score_aggregated  |>
+with_score_aggregated |>
   filter(company_name == "Peasant Peter") |>
   ggplot(aes(x = transition_risk, y = score_aggregated, fill = score_aggregated)) +
   scale_x_discrete(limits = level_order) +
   geom_col() +
   scale_fill_gradient2(midpoint = 0, low = "red", high = "blue") +
-  facet_grid(company_name ~ scenario+year)
+  facet_grid(company_name ~ scenario + year)
 ```
