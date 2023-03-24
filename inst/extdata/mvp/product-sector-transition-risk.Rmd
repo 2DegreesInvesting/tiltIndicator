@@ -127,7 +127,7 @@ final_df <- joined_df |>
 
 final_df
 
-final_df |> write_csv("with_reductions.csv")
+final_df
 ```
 
 ## Step 3: Categorizing sector emission reduction targets into high, medium, and low product sector transition risk
@@ -154,7 +154,7 @@ final_df_cat <- final_df |>
 
 final_df_cat
 
-final_df_cat |> write_csv("with_transition_risk.csv")
+final_df_cat
 ```
 
 ## Step 4: Aggregating on the company-level
@@ -207,7 +207,7 @@ aggregated_score_df <- final_df_cat |>
 
 aggregated_score_df
 
-aggregated_score_df |> write_csv("with_score_aggregated.csv")
+aggregated_score_df
 ```
 
 ## Step 5: Vizualisation example
