@@ -87,10 +87,10 @@ those that cannot be matched to one of the sectors, we classify them as
 We join this on the sectors and subsectors columns.
 
 ```{r}
-joined_df <- companies |>
+companies_categorized <- companies |>
   left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector"))
 
-joined_df
+companies_categorized
 ```
 
 ## Step 2: Identifying sector-specific emission reduction targets
@@ -98,12 +98,12 @@ joined_df
 Let's join that again with our previously joined data frame:
 
 ```{r}
-final_df <- joined_df |>
+with_reductions <- companies_categorized |>
   left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
 
-final_df
+with_reductions
 
-final_df
+with_reductions
 ```
 
 ## Step 3: Categorizing sector emission reduction targets into high, medium, and low product sector transition risk
@@ -118,7 +118,7 @@ the value of the reductions.
 -   reductions \> 70% means high product sector transition risk.
 
 ```{r}
-final_df_cat <- final_df |>
+with_transition_risk <- with_reductions |>
    mutate(
      transition_risk = case_when(
        reductions <= 30 ~ "low",
@@ -128,9 +128,9 @@ final_df_cat <- final_df |>
        )
      )
 
-final_df_cat
+with_transition_risk
 
-final_df_cat
+with_transition_risk
 ```
 
 ## Step 4: Aggregating on the company-level
@@ -165,25 +165,25 @@ n_products_per_companies <- companies |>
 ```
 
 ```{r}
-final_df_cat <- final_df_cat |>
+with_transition_risk <- with_transition_risk |>
   left_join(n_products_per_companies, by = 'company_name')
 
-final_df_cat
+with_transition_risk
 ```
 
 Then, I calculate the score aggregated by summing (per transition risk) the
 products over the total numbers of products per company.
 
 ```{r}
-aggregated_score_df <- final_df_cat |>
+with_score_aggregated <- with_transition_risk |>
   select(company_id, company_name, transition_risk, total_products_per_company, scenario, year) |>
   group_by(company_name, transition_risk, scenario, year) |>
   summarise(score_aggregated = (n()/total_products_per_company*100), .groups = 'keep') |>
   distinct_all()
 
-aggregated_score_df
+with_score_aggregated
 
-aggregated_score_df
+with_score_aggregated
 ```
 
 ## Step 5: Vizualisation example
@@ -197,7 +197,7 @@ that the user could chose, for example.
 ```{r}
 level_order <- c('low', 'medium', 'high')
 
-aggregated_score_df  |>
+with_score_aggregated  |>
   filter(company_name == "Peasant Peter") |>
   ggplot(aes(x = transition_risk, y = score_aggregated, fill = score_aggregated)) +
   scale_x_discrete(limits = level_order) +
