@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param data A data frame. The ouptput of [pstr_aggregate_scores()].
+#' @param data A data frame. The output of [pstr_aggregate_scores()].
 #'
 #' @return TODO
 #' @export

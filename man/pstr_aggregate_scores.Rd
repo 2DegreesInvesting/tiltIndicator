@@ -7,7 +7,7 @@
 pstr_aggregate_scores(data)
 }
 \arguments{
-\item{data}{A data frame. The ouptput of \code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
+\item{data}{A data frame. The output of \code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
 }
 \value{
 TODO

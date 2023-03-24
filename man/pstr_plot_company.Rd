@@ -7,7 +7,7 @@
 pstr_plot_company(with_score_aggregated, company_name)
 }
 \arguments{
-\item{data}{A data frame. The ouptput of \code{\link[=pstr_aggregate_scores]{pstr_aggregate_scores()}}.}
+\item{data}{A data frame. The output of \code{\link[=pstr_aggregate_scores]{pstr_aggregate_scores()}}.}
 }
 \value{
 TODO

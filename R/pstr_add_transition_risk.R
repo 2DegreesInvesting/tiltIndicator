@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param data A data frame. The ouptput of [pstr_add_reductions()].
+#' @param data A data frame. The output of [pstr_add_reductions()].
 #'
 #' @return TODO
 #' @export

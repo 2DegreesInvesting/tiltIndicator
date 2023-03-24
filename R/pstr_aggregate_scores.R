@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param data A data frame. The ouptput of [pstr_add_transition_risk()].
+#' @param data A data frame. The output of [pstr_add_transition_risk()].
 #'
 #' @return TODO
 #' @export
