@@ -16,36 +16,21 @@ knitr::opts_chunk$set(
 Packages
 
 ```{r}
-library(ggplot2, warn.conflicts = FALSE)
 library(dplyr, warn.conflicts = FALSE)
-library(rlang)
+library(ggplot2, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
 ## Data
 
+The tiltIndicator package comes with example datasets ([reference](https://2degreesinvesting.github.io/tiltIndicator/reference/)).
+
 ```{r}
-#' A dataset with fake companies, products, sectors and subsectors
-#'
-#' TODO: Does it have any relationship with tiltData?
-#' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
-#' FIXME: Rename to match existing tiltData, e.g. `company_id` -> `companies_id`
-companies <- tiltIndicator::companies |> glimpse()
+glimpse(companies)
 
-#' A bridge between sector and subsectors in europages and in `weo_2022`.
-#'
-#' TODO: Where does it come from and what wrangling did you do?
-#' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
-#' FIXME: Rename to match existing tiltData and to use lowercase. E.g.
-#' removing the prefix "ep_" makes it more compatible with tiltData
-#' and makes it easier to join here.
-ep_weo <- tiltIndicator::ep_weo |> glimpse()
+glimpse(ep_weo)
 
-#' A dataset with scenario, year, product and reductions information
-#'
-#' TODO: Where does it come from and what wrangling did you do?
-#' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
-weo_2022 <- tiltIndicator::weo_2022 |> glimpse()
+glimpse(weo_2022)
 ```
 
 ## Analysis

@@ -3,7 +3,7 @@
 \docType{data}
 \name{companies}
 \alias{companies}
-\title{Fake data of some companies and their products}
+\title{A dataset with fake companies, products, sectors and subsectors}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 10 rows and 5 columns.
 }
@@ -11,7 +11,10 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 companies
 }
 \description{
-Fake data of some companies and their products
+\itemize{
+\item TODO: Does it have any relationship with tiltData?
+\item FIXME: Rename to match existing tiltData, e.g. \code{company_id} -> \code{companies_id}
+}
 }
 \examples{
 companies

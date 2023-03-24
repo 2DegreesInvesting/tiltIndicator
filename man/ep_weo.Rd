@@ -3,7 +3,7 @@
 \docType{data}
 \name{ep_weo}
 \alias{ep_weo}
-\title{Mapper between europages and WEO sectors}
+\title{A bridge between sector and subsectors in europages and in \code{weo_2022}.}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 133 rows and 6 columns.
 }
@@ -11,7 +11,12 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 ep_weo
 }
 \description{
-Mapper between europages and WEO sectors
+\itemize{
+\item TODO: Where does it come from and what wrangling did you do?
+\item FIXME: Rename to match existing tiltData and to use lowercase. E.g. removing
+the prefix "ep_" makes it more compatible with tiltData and makes it easier
+to join.
+}
 }
 \examples{
 ep_weo

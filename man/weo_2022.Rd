@@ -3,7 +3,7 @@
 \docType{data}
 \name{weo_2022}
 \alias{weo_2022}
-\title{WEO 2022}
+\title{A dataset with scenario, year, product and reductions information}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 8 rows and 10 columns.
 }
@@ -11,7 +11,9 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 weo_2022
 }
 \description{
-WEO 2022
+\itemize{
+\item TODO: Where does it come from and what wrangling did you do?
+}
 }
 \examples{
 weo_2022
