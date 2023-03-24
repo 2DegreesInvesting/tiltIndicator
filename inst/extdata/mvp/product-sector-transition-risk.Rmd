@@ -149,9 +149,9 @@ add_transition_risk <- function(data) {
     )
 }
 
-with_rt <- add_transition_risk(with_reductions)
+with_transition_risk <- add_transition_risk(with_reductions)
 
-with_rt
+with_transition_risk
 ```
 
 ## Step 4: Aggregating on the company-level
@@ -187,7 +187,7 @@ n_products_per_companies <- companies |>
   group_by(company_name) |>
   summarise(total_products_per_company = n())
 
-with_transition_risk2 <- with_rt |>
+with_transition_risk2 <- with_transition_risk |>
   left_join(n_products_per_companies, by = "company_name")
 
 with_score_aggregated <- with_transition_risk2 |>

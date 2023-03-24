@@ -8,8 +8,8 @@ test_that("`with_reductions` remains the same", {
 
 test_that("`with_transition_risk` remains the same", {
   path <- mvp_path("product-sector-transition-risk.Rmd")
-  with_transition_risk2 <- render_list(path)$with_transition_risk2
-  out <- format_robust_snapshot(with_transition_risk2)
+  with_transition_risk <- render_list(path)$with_transition_risk
+  out <- format_robust_snapshot(with_transition_risk)
   expect_snapshot(out)
 })
 
