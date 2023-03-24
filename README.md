@@ -129,5 +129,3 @@ with_scores |> pstr_plot_company("Peasant Peter")
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
-
-[CONTRIBUTING](https://github.com/2DegreesInvesting/tiltIndicator/blob/main/.github/CONTRIBUTING.md)

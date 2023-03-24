@@ -63,5 +63,3 @@ with_scores
 
 with_scores |> pstr_plot_company("Peasant Peter")
 ```
-
-[CONTRIBUTING](https://github.com/2DegreesInvesting/tiltIndicator/blob/main/.github/CONTRIBUTING.md)
