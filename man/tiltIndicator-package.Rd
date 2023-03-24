@@ -21,6 +21,7 @@ Useful links:
 Authors:
 \itemize{
   \item Tilman Trompke \email{tilman@2degrees-investing.org}
+  \item Linda Delacombaz \email{linda@2degrees-investing.org}
 }
 
 Other contributors:
