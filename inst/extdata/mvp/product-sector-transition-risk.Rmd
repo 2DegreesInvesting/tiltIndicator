@@ -32,31 +32,24 @@ To be done
 
 ### Data
 
-1. Demo companies toy data set that has the company name along with its
-products, sector and subsector information.
-
 ```{r}
-companies <- params$input1 %||% tiltIndicator::companies
+#' A dataset with fake companies, products, sectors and subsectors
+#' 
+#' TODO: Does it have any relationship with tiltData?
+#' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
+companies <- params$input1 %||% tiltIndicator::companies |> glimpse()
 
-companies
-```
+#' A bridge between sector and subsectors in europages and in `weo_2022`.
+#' 
+#' TODO: Where does it come from and what wrangling did you do?
+#' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
+ep_weo <- params$input2 %||% tiltIndicator::ep_weo |> glimpse()
 
-2. Mapper, which serves as a sector classification bridge between the
-Europages' sectors and subsectors and the WEO 2022 file.
-
-```{r}
-ep_weo <- params$input2 %||% tiltIndicator::ep_weo
-
-summary(ep_weo)
-```
-
-3. WEO file that contains the scenario, year, product and reductions
-information.
-
-```{r}
-weo_2022 <- params$input3 %||% tiltIndicator::weo_2022
-
-weo_2022
+#' A dataset with scenario, year, product and reductions information
+#' 
+#' TODO: Where does it come from and what wrangling did you do?
+#' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
+weo_2022 <- params$input3 %||% tiltIndicator::weo_2022 |> glimpse()
 ```
 
 # Analysis
@@ -90,20 +83,6 @@ The transition risk indicator consists of 4 main steps:
 Each product of the company will be matched to a climate-relevant sector. For
 those that cannot be matched to one of the sectors, we classify them as
 ‘Other’.
-
-Let us print the demo companies toy data set that has the company name along
-with its products, sector and subsector information.
-
-```{r}
-companies
-```
-
-Let us print the mapper, which serves as a sector classification bridge between
-the Europages' sectors and subsectors and the WEO 2022 file.
-
-```{r}
-ep_weo
-```
 
 We join this on the sectors and subsectors columns.
 
