@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
 )
 
 path <- system.file(
-  "extdata", "mvp", "product-sector-transition-risk.Rmd", 
+  "extdata", "mvp", "product-sector-transition-risk.Rmd",
   package = "tiltIndicator"
 )
 ```
