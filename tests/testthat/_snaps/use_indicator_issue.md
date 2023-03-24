@@ -1,7 +1,7 @@
 # outputs a multi-line checklist
 
     Code
-      use_indicator_issue()
+      use_refactoring_checklist()
     Output
       - [ ] Add inst/extdata/mvp/indicator.Rmd.
       - [ ] Document authorship in */indicator.Rmd

@@ -8,8 +8,8 @@
 #'
 #' @export
 #' @examples
-#' use_indicator_issue("product-sector-transition-risk")
-use_indicator_issue <- function(indicator = "indicator") {
+#' use_refactoring_checklist("product-sector-transition-risk")
+use_refactoring_checklist <- function(indicator = "indicator") {
   split <- unlist(strsplit(indicator, split = "-"))
   ind <- paste(substr(split, 1L, 1L), collapse = "")
 
