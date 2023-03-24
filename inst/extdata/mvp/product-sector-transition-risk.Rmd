@@ -2,6 +2,10 @@
 title: "Product sector transition risk"
 author: "Linda Delacombaz"
 output: github_document
+params:
+  input1: NULL
+  input2: NULL
+  input3: NULL
 ---
 
 ```{r, include = FALSE}
@@ -18,6 +22,7 @@ Packages
 ```{r}
 library(ggplot2, warn.conflicts = FALSE)
 library(dplyr, warn.conflicts = FALSE)
+library(rlang)
 library(tiltIndicator)
 ```
 
@@ -31,7 +36,7 @@ To be done
 products, sector and subsector information.
 
 ```{r}
-companies <- tiltIndicator::companies
+companies <- params$input1 %||% tiltIndicator::companies
 
 companies
 ```
@@ -40,7 +45,7 @@ companies
 Europages' sectors and subsectors and the WEO 2022 file.
 
 ```{r}
-ep_weo <- tiltIndicator::ep_weo
+ep_weo <- params$input2 %||% tiltIndicator::ep_weo
 
 summary(ep_weo)
 ```
@@ -49,7 +54,7 @@ summary(ep_weo)
 information.
 
 ```{r}
-weo_2022 <- tiltIndicator::weo_2022
+weo_2022 <- params$input3 %||% tiltIndicator::weo_2022
 
 weo_2022
 ```
