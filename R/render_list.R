@@ -25,6 +25,6 @@ render_list <- function(path, ...) {
   withr::local_dir(tmp_dir)
 
   e <- withr::local_environment(new.env())
-  rmarkdown::render(path, envir = e, quiet = TRUE, ...)
+  rmarkdown::render(tmp_rmd, envir = e, quiet = TRUE, knit_root_dir = tmp_dir, ...)
   as.list(e)
 }
