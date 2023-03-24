@@ -73,80 +73,68 @@ Delacombaz</h4>
 
     
     
-<div class="section level4">
-<h4 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
-</h4>
+<div class="section level2">
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h2>
 <p>Packages</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rlang.r-lib.org" class="external-link">rlang</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltIndicator/">tiltIndicator</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
-</h4>
-<p>To be done</p>
-</div>
-<div class="section level4">
-<h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
-</h4>
-<ol style="list-style-type: decimal">
-<li>Demo companies toy data set that has the company name along with its
-products, sector and subsector information.</li>
-</ol>
+<div class="section level2">
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">demo_companies</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/companies.html">companies</a></span></span>
+<code class="sourceCode R"><span><span class="co">#' A dataset with fake companies, products, sectors and subsectors</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' TODO: Does it have any relationship with tiltData?</span></span>
+<span><span class="co">#' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R</span></span>
+<span><span class="co">#' FIXME: Rename to match existing tiltData, e.g. `company_id` -&gt; `companies_id`</span></span>
+<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/companies.html">companies</a></span> <span class="op">|&gt;</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 10</span></span>
+<span><span class="co">#&gt; Columns: 5</span></span>
+<span><span class="co">#&gt; $ company_id   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span></span>
+<span><span class="co">#&gt; $ company_name <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Peasant Peter", "Peasant Peter", "Peasant Peter", "Peasa…</span></span>
+<span><span class="co">#&gt; $ products     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "screws", "aluminium_alloy", "ultrafilstration", "frozen_…</span></span>
+<span><span class="co">#&gt; $ sector       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "steel_metal_transformation", "steel_metals", "cars", "fr…</span></span>
+<span><span class="co">#&gt; $ subsector    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "bending_steels_and_metals", "aluminium_alloys", "vehicle…</span></span>
 <span></span>
-<span><span class="va">demo_companies</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 5</span></span></span>
-<span><span class="co">#&gt;    company_id company_name       products              sector          subsector</span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter      screws                steel_metal_tr… bending_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          2 Peasant Peter      aluminium_alloy       steel_metals    aluminiu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          3 Peasant Peter      ultrafilstration      cars            vehicle_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          4 Peasant Paul       frozen_food           frozen_food     cheese_s…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          5 Tom's Car Company  oils                  cars            automobi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          6 Tom's Car Company  bolts                 steel_metal_tr… bending_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          7 Screwdriver Expert chucks                steel_metal_tr… boring_s…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          8 Screwdriver Expert adaptator_plate       steel_metal_tr… boring_s…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          9 John Meier's Cars  disinfection_products cars            vehicle_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>         10 John Meier's Cars  ultrafilstration      cars            vehicle_…</span></span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Mapper, which serves as a sector classification bridge between the
-Europages’ sectors and subsectors and the WEO 2022 file.</li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ep_weo_mapper</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/ep_weo.html">ep_weo</a></span></span>
+<span><span class="co">#' A bridge between sector and subsectors in europages and in `weo_2022`.</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' TODO: Where does it come from and what wrangling did you do?</span></span>
+<span><span class="co">#' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R</span></span>
+<span><span class="co">#' FIXME: Rename to match existing tiltData and to use lowercase. E.g.</span></span>
+<span><span class="co">#' removing the prefix "ep_" makes it more compatible with tiltData</span></span>
+<span><span class="co">#' and makes it easier to join here.</span></span>
+<span><span class="va">ep_weo</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/ep_weo.html">ep_weo</a></span> <span class="op">|&gt;</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 133</span></span>
+<span><span class="co">#&gt; Columns: 6</span></span>
+<span><span class="co">#&gt; $ EP_categories_id   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "d3a7a3c40afd18a7a840942262099f23f65c19a0", "8d926b…</span></span>
+<span><span class="co">#&gt; $ EP_group           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "metallurgy_metalworking", "metallurgy_metalworking…</span></span>
+<span><span class="co">#&gt; $ EP_sector          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "steel_metal_transformation", "steel_metal_transfor…</span></span>
+<span><span class="co">#&gt; $ EP_subsector       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "bending_steels_and_metals", "boilers_stainless_ste…</span></span>
+<span><span class="co">#&gt; $ weo_product_mapper <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Total", "Total", "Total", "Total", "Total", "Total…</span></span>
+<span><span class="co">#&gt; $ weo_flow_mapper    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Iron and steel", "Iron and steel", "Iron and steel…</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ep_weo_mapper</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  EP_categories_id     EP_group          EP_sector         EP_subsector      </span></span>
-<span><span class="co">#&gt;  Length:133         Length:133         Length:133         Length:133        </span></span>
-<span><span class="co">#&gt;  Class :character   Class :character   Class :character   Class :character  </span></span>
-<span><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character   Mode  :character  </span></span>
-<span><span class="co">#&gt;  weo_product_mapper weo_flow_mapper   </span></span>
-<span><span class="co">#&gt;  Length:133         Length:133        </span></span>
-<span><span class="co">#&gt;  Class :character   Class :character  </span></span>
-<span><span class="co">#&gt;  Mode  :character   Mode  :character</span></span></code></pre></div>
-<ol start="3" style="list-style-type: decimal">
-<li>WEO file that contains the scenario, year, product and reductions
-information.</li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">weo_2022</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/weo_2022.html">weo_2022</a></span></span>
-<span></span>
-<span><span class="va">weo_2022</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 10</span></span></span>
-<span><span class="co">#&gt;   publication          scenario region category product flow  unit   year  value</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> World Energy Outloo… Stated … world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>020 2.79<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> World Energy Outloo… Net Zer… world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>030 1.63<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> World Energy Outloo… Net Zer… world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>040 5.47<span style="color: #949494;">e</span>2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> World Energy Outloo… Net Zer… world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>050 8.46<span style="color: #949494;">e</span>1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> World Energy Outloo… Stated … world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>020 2.59<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> World Energy Outloo… Net Zer… world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>030 1.95<span style="color: #949494;">e</span>2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> World Energy Outloo… Net Zer… world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>040 1.01<span style="color: #949494;">e</span>4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> World Energy Outloo… Net Zer… world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>050 7.43<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: reductions &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#' A dataset with scenario, year, product and reductions information</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' TODO: Where does it come from and what wrangling did you do?</span></span>
+<span><span class="co">#' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R</span></span>
+<span><span class="va">weo_2022</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/weo_2022.html">weo_2022</a></span> <span class="op">|&gt;</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 8</span></span>
+<span><span class="co">#&gt; Columns: 10</span></span>
+<span><span class="co">#&gt; $ publication <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "World Energy Outlook 2021", "World Energy Outlook 2021", …</span></span>
+<span><span class="co">#&gt; $ scenario    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Stated Policies Scenario", "Net Zero Emissions by 2050 Sc…</span></span>
+<span><span class="co">#&gt; $ region      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "world", "world", "world", "world", "world", "world", "wor…</span></span>
+<span><span class="co">#&gt; $ category    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "co2 combustion", "co2 combustion", "co2 combustion", "co2…</span></span>
+<span><span class="co">#&gt; $ product     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Total", "Total", "Total", "Total", "Total", "Total", "Tot…</span></span>
+<span><span class="co">#&gt; $ flow        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Road passenger light duty vehicle", "Road passenger light…</span></span>
+<span><span class="co">#&gt; $ unit        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "mt co2", "mt co2", "mt co2", "mt co2", "mt co2", "mt co2"…</span></span>
+<span><span class="co">#&gt; $ year        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2020, 2030, 2040, 2050, 2020, 2030, 2040, 2050</span></span>
+<span><span class="co">#&gt; $ value       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2787.63, 1626.32, 546.54, 84.56, 2590.57, 194.53, 10122.90…</span></span>
+<span><span class="co">#&gt; $ reductions  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00, 41.66, 80.39, 96.97, 0.00, 31.35, 66.86, 91.49</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="analysis">Analysis<a class="anchor" aria-label="anchor" href="#analysis"></a>
@@ -176,118 +164,44 @@ medium, and low product sector transition risk</li>
 </ul>
 </div>
 <div class="section level3">
-<h3 id="step-1-matching-the-products-to-the-sectors">Step 1: Matching the products to the sectors<a class="anchor" aria-label="anchor" href="#step-1-matching-the-products-to-the-sectors"></a>
+<h3 id="step-1-and-2">Step 1 and 2<a class="anchor" aria-label="anchor" href="#step-1-and-2"></a>
 </h3>
+<ol style="list-style-type: decimal">
+<li>Matching the products to the sectors</li>
+<li>Identifying sector-specific emission reduction targets</li>
+</ol>
 <p>Each product of the company will be matched to a climate-relevant
 sector. For those that cannot be matched to one of the sectors, we
 classify them as ‘Other’.</p>
-<p>Let us print the demo companies toy data set that has the company
-name along with its products, sector and subsector information.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">demo_companies</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 5</span></span></span>
-<span><span class="co">#&gt;    company_id company_name       products              sector          subsector</span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter      screws                steel_metal_tr… bending_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          2 Peasant Peter      aluminium_alloy       steel_metals    aluminiu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          3 Peasant Peter      ultrafilstration      cars            vehicle_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          4 Peasant Paul       frozen_food           frozen_food     cheese_s…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          5 Tom's Car Company  oils                  cars            automobi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          6 Tom's Car Company  bolts                 steel_metal_tr… bending_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          7 Screwdriver Expert chucks                steel_metal_tr… boring_s…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          8 Screwdriver Expert adaptator_plate       steel_metal_tr… boring_s…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          9 John Meier's Cars  disinfection_products cars            vehicle_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>         10 John Meier's Cars  ultrafilstration      cars            vehicle_…</span></span></code></pre></div>
-<p>Let us print the mapper, which serves as a sector classification
-bridge between the Europages’ sectors and subsectors and the WEO 2022
-file.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ep_weo_mapper</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 133 × 6</span></span></span>
-<span><span class="co">#&gt;    EP_categories_id           EP_group EP_sector EP_subsector weo_product_mapper</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> d3a7a3c40afd18a7a84094226… metallu… steel_me… bending_ste… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 8d926b734410de5ba68daa170… metallu… steel_me… boilers_sta… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2eed5a1fd604b1d3ec561a072… metallu… steel_me… boring_stee… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 157f4f5953d1a5bfee4742175… metallu… steel_me… brazing_ste… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2092de203e479b67bea023563… metallu… steel_me… broaching_s… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 62dea331c70a02280d5f71a27… metallu… steel_me… bronzing_st… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 8c02cdfddde68d166c1352fa7… metallu… steel_me… canopies_me… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> e593b1156ce341881d18b8274… metallu… steel_me… chrome_plat… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> b044eec1205c7ef2fde9e38db… metallu… steel_me… cleaning_st… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 0880f49af456479b3e4f99c1e… metallu… steel_me… cutting_ste… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 123 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: weo_flow_mapper &lt;chr&gt;</span></span></span></code></pre></div>
 <p>We join this on the sectors and subsectors columns.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">joined_df</span> <span class="op">&lt;-</span> <span class="va">demo_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">ep_weo_mapper</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sector"</span> <span class="op">=</span> <span class="st">"EP_sector"</span>, <span class="st">"subsector"</span> <span class="op">=</span> <span class="st">"EP_subsector"</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># TODO: Complete documentation</span></span>
+<span><span class="co">#' Title</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @param companies </span></span>
+<span><span class="co">#' @param ep_weo </span></span>
+<span><span class="co">#' @param weo_2022 </span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @return</span></span>
+<span><span class="co">#' @export</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @examples</span></span>
+<span><span class="co">#' TODO: Move to R/function-name.R</span></span>
+<span><span class="va">pstr_add_reductions</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">companies</span>, <span class="va">ep_weo</span>, <span class="va">weo_2022</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">companies</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">ep_weo</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sector"</span> <span class="op">=</span> <span class="st">"EP_sector"</span>, <span class="st">"subsector"</span> <span class="op">=</span> <span class="st">"EP_subsector"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">weo_2022</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"weo_product_mapper"</span> <span class="op">=</span> <span class="st">"product"</span>, <span class="st">"weo_flow_mapper"</span> <span class="op">=</span> <span class="st">"flow"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
-<span><span class="va">joined_df</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 9</span></span></span>
-<span><span class="co">#&gt;    company_id company_name   products sector subsector EP_categories_id EP_group</span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter  screws   steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          2 Peasant Peter  alumini… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          3 Peasant Peter  ultrafi… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          4 Peasant Paul   frozen_… froze… cheese_s… <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          5 Tom's Car Com… oils     cars   automobi… 0d63a8380d924eb… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          6 Tom's Car Com… bolts    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          7 Screwdriver E… chucks   steel… boring_s… 2eed5a1fd604b1d… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          8 Screwdriver E… adaptat… steel… boring_s… 2eed5a1fd604b1d… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          9 John Meier's … disinfe… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>         10 John Meier's … ultrafi… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: weo_product_mapper &lt;chr&gt;, weo_flow_mapper &lt;chr&gt;</span></span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="step-2-identifying-sector-specific-emission-reduction-targets">Step 2: Identifying sector-specific emission reduction targets<a class="anchor" aria-label="anchor" href="#step-2-identifying-sector-specific-emission-reduction-targets"></a>
-</h3>
-<p>Let us print the WEO file that contains the scenario, year, product
-and reductions information.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">weo_2022</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 10</span></span></span>
-<span><span class="co">#&gt;   publication          scenario region category product flow  unit   year  value</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> World Energy Outloo… Stated … world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>020 2.79<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> World Energy Outloo… Net Zer… world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>030 1.63<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> World Energy Outloo… Net Zer… world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>040 5.47<span style="color: #949494;">e</span>2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> World Energy Outloo… Net Zer… world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>050 8.46<span style="color: #949494;">e</span>1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> World Energy Outloo… Stated … world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>020 2.59<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> World Energy Outloo… Net Zer… world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>030 1.95<span style="color: #949494;">e</span>2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> World Energy Outloo… Net Zer… world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>040 1.01<span style="color: #949494;">e</span>4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> World Energy Outloo… Net Zer… world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>050 7.43<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: reductions &lt;dbl&gt;</span></span></span></code></pre></div>
-<p>Let’s join that again with our previously joined data frame:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">final_df</span> <span class="op">&lt;-</span> <span class="va">joined_df</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">weo_2022</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"weo_product_mapper"</span> <span class="op">=</span> <span class="st">"product"</span>, <span class="st">"weo_flow_mapper"</span> <span class="op">=</span> <span class="st">"flow"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in left_join(joined_df, weo_2022, by = c(weo_product_mapper = "product", : Detected an unexpected many-to-many relationship between `x` and `y`.</span></span>
+<span><span class="co"># FIXME: Do what the warning says</span></span>
+<span><span class="va">with_reductions</span> <span class="op">&lt;-</span> <span class="fu">pstr_add_reductions</span><span class="op">(</span><span class="va">companies</span>, <span class="va">ep_weo</span>, <span class="va">weo_2022</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in left_join(left_join(companies, ep_weo, by = c(sector = "EP_sector", : Detected an unexpected many-to-many relationship between `x` and `y`.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Row 1 of `x` matches multiple rows in `y`.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Row 5 of `y` matches multiple rows in `x`.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> If a many-to-many relationship is expected, set `relationship =</span></span>
 <span><span class="co">#&gt;   "many-to-many"` to silence this warning.</span></span>
 <span></span>
-<span><span class="va">final_df</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 17</span></span></span>
-<span><span class="co">#&gt;    company_id company_name  products  sector subsector EP_categories_id EP_group</span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: weo_product_mapper &lt;chr&gt;, weo_flow_mapper &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   publication &lt;chr&gt;, scenario &lt;chr&gt;, region &lt;chr&gt;, category &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   unit &lt;chr&gt;, year &lt;dbl&gt;, value &lt;dbl&gt;, reductions &lt;dbl&gt;</span></span></span>
-<span></span>
-<span><span class="va">final_df</span></span>
+<span><span class="va">with_reductions</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 17</span></span></span>
 <span><span class="co">#&gt;    company_id company_name  products  sector subsector EP_categories_id EP_group</span></span>
 <span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
@@ -320,38 +234,32 @@ risk.</p></li>
 <li><p>reductions &gt; 70% means high product sector transition
 risk.</p></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">final_df_cat</span> <span class="op">&lt;-</span> <span class="va">final_df</span> <span class="op">|&gt;</span></span>
-<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
-<span>     transition_risk <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
-<span>       <span class="va">reductions</span> <span class="op">&lt;=</span> <span class="fl">30</span> <span class="op">~</span> <span class="st">"low"</span>,</span>
-<span>       <span class="va">reductions</span> <span class="op">&gt;</span> <span class="fl">30</span> <span class="op">&amp;</span> <span class="va">reductions</span> <span class="op">&lt;=</span> <span class="fl">70</span> <span class="op">~</span> <span class="st">"medium"</span>,</span>
-<span>       <span class="va">reductions</span> <span class="op">&gt;=</span> <span class="fl">70</span> <span class="op">~</span> <span class="st">"high"</span>,</span>
-<span>       <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"no_sector"</span>,</span>
-<span>       <span class="op">)</span></span>
-<span>     <span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># TODO: Complete documentation</span></span>
+<span><span class="co">#' Title</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @param data A data frame. The ouptput of [pstr_add_reductions()].</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @return</span></span>
+<span><span class="co">#' @export</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @examples</span></span>
+<span><span class="co">#' TODO: Move to R/function-name.R</span></span>
+<span><span class="va">pstr_add_transition_risk</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">data</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>      transition_risk <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>        <span class="va">reductions</span> <span class="op">&lt;=</span> <span class="fl">30</span> <span class="op">~</span> <span class="st">"low"</span>,</span>
+<span>        <span class="va">reductions</span> <span class="op">&gt;</span> <span class="fl">30</span> <span class="op">&amp;</span> <span class="va">reductions</span> <span class="op">&lt;=</span> <span class="fl">70</span> <span class="op">~</span> <span class="st">"medium"</span>,</span>
+<span>        <span class="va">reductions</span> <span class="op">&gt;=</span> <span class="fl">70</span> <span class="op">~</span> <span class="st">"high"</span>,</span>
+<span>        <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"no_sector"</span>,</span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
-<span><span class="va">final_df_cat</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 18</span></span></span>
-<span><span class="co">#&gt;    company_id company_name  products  sector subsector EP_categories_id EP_group</span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more variables: weo_product_mapper &lt;chr&gt;, weo_flow_mapper &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   publication &lt;chr&gt;, scenario &lt;chr&gt;, region &lt;chr&gt;, category &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   unit &lt;chr&gt;, year &lt;dbl&gt;, value &lt;dbl&gt;, reductions &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   transition_risk &lt;chr&gt;</span></span></span>
+<span><span class="va">with_transition_risk</span> <span class="op">&lt;-</span> <span class="fu">pstr_add_transition_risk</span><span class="op">(</span><span class="va">with_reductions</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">final_df_cat</span></span>
+<span><span class="va">with_transition_risk</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 18</span></span></span>
 <span><span class="co">#&gt;    company_id company_name  products  sector subsector EP_categories_id EP_group</span></span>
 <span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
@@ -393,41 +301,35 @@ transition risk products / ∑ of all products</p></li>
 <p>Here I calculate the numbers of products per companies in a new
 column, and join the data frame to have the data with the numbers of
 products that a company produces.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">n_products_per_companies</span> <span class="op">&lt;-</span> <span class="va">demo_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">company_name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>total_products_per_company <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">final_df_cat</span> <span class="op">&lt;-</span> <span class="va">final_df_cat</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">n_products_per_companies</span>, by <span class="op">=</span> <span class="st">'company_name'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">final_df_cat</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 19</span></span></span>
-<span><span class="co">#&gt;    company_id company_name  products  sector subsector EP_categories_id EP_group</span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 12 more variables: weo_product_mapper &lt;chr&gt;, weo_flow_mapper &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   publication &lt;chr&gt;, scenario &lt;chr&gt;, region &lt;chr&gt;, category &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   unit &lt;chr&gt;, year &lt;dbl&gt;, value &lt;dbl&gt;, reductions &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   transition_risk &lt;chr&gt;, total_products_per_company &lt;int&gt;</span></span></span></code></pre></div>
 <p>Then, I calculate the score aggregated by summing (per transition
 risk) the products over the total numbers of products per company.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aggregated_score_df</span> <span class="op">&lt;-</span> <span class="va">final_df_cat</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">company_id</span>, <span class="va">company_name</span>, <span class="va">transition_risk</span>, <span class="va">total_products_per_company</span>, <span class="va">scenario</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">company_name</span>, <span class="va">transition_risk</span>, <span class="va">scenario</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>score_aggregated <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">/</span><span class="va">total_products_per_company</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">'keep'</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct_all.html" class="external-link">distinct_all</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># TODO: Complete documentation</span></span>
+<span><span class="co">#' Title</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @param data A data frame. The ouptput of [pstr_add_transition_risk()].</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @return</span></span>
+<span><span class="co">#' @export</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @examples</span></span>
+<span><span class="co">#' TODO: Move to R/function-name.R</span></span>
+<span><span class="va">pstr_aggregate_scores</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">n_products_per_companies</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">company_name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>total_products_per_company <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">with_transition_risk2</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">n_products_per_companies</span>, by <span class="op">=</span> <span class="st">"company_name"</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">with_transition_risk2</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">company_id</span>, <span class="va">company_name</span>, <span class="va">transition_risk</span>, <span class="va">total_products_per_company</span>, <span class="va">scenario</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">company_name</span>, <span class="va">transition_risk</span>, <span class="va">scenario</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>score_aggregated <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">/</span> <span class="va">total_products_per_company</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"keep"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct_all.html" class="external-link">distinct_all</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">with_score_aggregated</span> <span class="op">&lt;-</span> <span class="fu">pstr_aggregate_scores</span><span class="op">(</span><span class="va">with_transition_risk</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in</span></span>
 <span><span class="co">#&gt; dplyr 1.1.0.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `reframe()` instead.</span></span>
@@ -436,32 +338,7 @@ risk) the products over the total numbers of products per company.</p>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
 <span></span>
-<span><span class="va">aggregated_score_df</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 19 × 5</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   company_name, transition_risk, scenario, year [19]</span></span></span>
-<span><span class="co">#&gt;    company_name       transition_risk scenario             year score_aggregated</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> John Meier's Cars  high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> John Meier's Cars  high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>050            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> John Meier's Cars  low             Stated Policies Sc…  <span style="text-decoration: underline;">2</span>020            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> John Meier's Cars  medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>030            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Peasant Paul       no_sector       <span style="color: #BB0000;">NA</span>                     <span style="color: #BB0000;">NA</span>            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Peasant Peter      high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040             33.3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Peasant Peter      high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>050            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Peasant Peter      low             Stated Policies Sc…  <span style="text-decoration: underline;">2</span>020            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Peasant Peter      medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>030            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Peasant Peter      medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040             66.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Screwdriver Expert high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>050            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Screwdriver Expert low             Stated Policies Sc…  <span style="text-decoration: underline;">2</span>020            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Screwdriver Expert medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>030            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Screwdriver Expert medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Tom's Car Company  high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040             50  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Tom's Car Company  high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>050            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Tom's Car Company  low             Stated Policies Sc…  <span style="text-decoration: underline;">2</span>020            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Tom's Car Company  medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>030            100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Tom's Car Company  medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040             50</span></span>
-<span></span>
-<span><span class="va">aggregated_score_df</span></span>
+<span><span class="va">with_score_aggregated</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 19 × 5</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   company_name, transition_risk, scenario, year [19]</span></span></span>
 <span><span class="co">#&gt;    company_name       transition_risk scenario             year score_aggregated</span></span>
@@ -493,17 +370,31 @@ risk) the products over the total numbers of products per company.</p>
 <p>The score aggregated is the percentage of products of that company
 that are in either low, medium or high transition risk, relatively to a
 scenario and year that the user could chose, for example.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">level_order</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'low'</span>, <span class="st">'medium'</span>, <span class="st">'high'</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># TODO: Complete documentation</span></span>
+<span><span class="co">#' Title</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @param data A data frame. The ouptput of [pstr_aggregate_scores()].</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @return</span></span>
+<span><span class="co">#' @export</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @examples</span></span>
+<span><span class="co">#' TODO: Move to R/function-name.R</span></span>
+<span><span class="va">pstr_plot_company</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">with_score_aggregated</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">level_order</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">with_score_aggregated</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">==</span> <span class="st">"Peasant Peter"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">transition_risk</span>, y <span class="op">=</span> <span class="va">score_aggregated</span>, fill <span class="op">=</span> <span class="va">score_aggregated</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" class="external-link">scale_x_discrete</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="va">level_order</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient2</a></span><span class="op">(</span>midpoint <span class="op">=</span> <span class="fl">0</span>, low <span class="op">=</span> <span class="st">"red"</span>, high <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">~</span> <span class="va">scenario</span> <span class="op">+</span> <span class="va">year</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
-<span><span class="va">aggregated_score_df</span>  <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">==</span> <span class="st">"Peasant Peter"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">transition_risk</span>, y <span class="op">=</span> <span class="va">score_aggregated</span>, fill <span class="op">=</span> <span class="va">score_aggregated</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" class="external-link">scale_x_discrete</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="va">level_order</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_fill_gradient2</a></span><span class="op">(</span>midpoint <span class="op">=</span> <span class="fl">0</span>, low <span class="op">=</span> <span class="st">"red"</span>, high <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></span><span class="op">(</span><span class="va">company_name</span> <span class="op">~</span> <span class="va">scenario</span><span class="op">+</span><span class="va">year</span><span class="op">)</span></span></code></pre></div>
-<p><img src="product-sector-transition-risk_files/figure-html/unnamed-chunk-17-1.png" width="700"></p>
+<span><span class="fu">pstr_plot_company</span><span class="op">(</span><span class="va">with_score_aggregated</span><span class="op">)</span></span></code></pre></div>
+<p><img src="product-sector-transition-risk_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
