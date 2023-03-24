@@ -106,7 +106,6 @@ wrap_rmd(rmd, params = list(input1 = head(mtcars)))
 \seealso{
 Other developer-oriented functions: 
 \code{\link{mvp_path}()},
-\code{\link{pctr_path}()},
 \code{\link{use_indicator_issue}()}
 }
 \concept{developer-oriented functions}
