@@ -37,6 +37,7 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 ## Example
 
 ```{r}
+library(tidyverse, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
@@ -44,8 +45,14 @@ As a user you'll need a good place to keep private data and an easy way to
 access it.
 
 ```{r}
-tilt_path()
-```
+with_scores <- companies |> 
+  pstr_add_reductions(ep_weo, weo_2022) |> 
+  pstr_add_transition_risk() |> 
+  pstr_aggregate_scores()
 
+with_scores
+
+with_scores |> pstr_plot_company("Peasant Peter")
+```
 
 [CONTRIBUTING](https://github.com/2DegreesInvesting/tiltIndicator/blob/main/.github/CONTRIBUTING.md)
