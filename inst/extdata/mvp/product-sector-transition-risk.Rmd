@@ -23,6 +23,7 @@ Packages
 library(tidyverse)
 library(readxl)
 library(knitr)
+library(tiltIndicator)
 ```
 
 ```{r}
@@ -44,7 +45,7 @@ To be done
 products, sector and subsector information.
 
 ```{r}
-demo_companies <- read_csv(here("data", "demo_companies.csv"))
+demo_companies <- pstr_demo_companies
 
 demo_companies
 ```
