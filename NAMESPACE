@@ -2,6 +2,7 @@
 
 export(mvp_path)
 export(mvp_paths)
+export(render_list)
 export(tilt_path)
 export(use_indicator_issue)
 export(wrap_rmd)

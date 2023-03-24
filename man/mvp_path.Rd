@@ -31,6 +31,7 @@ mvp_path("product-carbon-transition-risk.Rmd")
 }
 \seealso{
 Other developer-oriented functions: 
+\code{\link{render_list}()},
 \code{\link{use_indicator_issue}()},
 \code{\link{wrap_rmd}()}
 }
