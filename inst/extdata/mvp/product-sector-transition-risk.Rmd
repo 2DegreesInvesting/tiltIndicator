@@ -161,11 +161,12 @@ that the user could chose, for example.
 #'
 #' @examples
 #' TODO: Move to R/function-name.R
-pstr_plot_company <- function(with_score_aggregated) {
+pstr_plot_company <- function(with_score_aggregated, company_name) {
+  .company_name <- company_name
   level_order <- c("low", "medium", "high")
   
   with_score_aggregated |>
-    filter(company_name == "Peasant Peter") |>
+    filter(.data$company_name == .company_name) |>
     ggplot(aes(x = transition_risk, y = score_aggregated, fill = score_aggregated)) +
     scale_x_discrete(limits = level_order) +
     geom_col() +
@@ -173,5 +174,6 @@ pstr_plot_company <- function(with_score_aggregated) {
     facet_grid(company_name ~ scenario + year)
 }
 
-pstr_plot_company(with_score_aggregated)
+with_score_aggregated |> 
+  pstr_plot_company("Peasant Peter")
 ```
