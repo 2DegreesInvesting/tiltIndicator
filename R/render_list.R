@@ -18,6 +18,12 @@
 #' # You may pass `...` to `rmarkdown::render()`, e.g. `params`
 #' render_list(path, params = list(input1 = head(mtcars)))
 render_list <- function(path, ...) {
+  tmp_dir <- withr::local_tempdir()
+  tmp_rmd <- fs::path(tmp_dir, fs::path_file(path))
+  fs::file_copy(path, tmp_rmd)
+
+  withr::local_dir(tmp_dir)
+
   e <- withr::local_environment(new.env())
   rmarkdown::render(path, envir = e, quiet = TRUE, ...)
   as.list(e)
