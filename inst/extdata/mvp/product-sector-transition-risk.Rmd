@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-### Setup
+## Setup
 
 Packages
 
@@ -26,11 +26,7 @@ library(rlang)
 library(tiltIndicator)
 ```
 
-### Functions
-
-To be done
-
-### Data
+## Data
 
 ```{r}
 #' A dataset with fake companies, products, sectors and subsectors
@@ -56,9 +52,9 @@ ep_weo <- params$input2 %||% tiltIndicator::ep_weo |> glimpse()
 weo_2022 <- params$input3 %||% tiltIndicator::weo_2022 |> glimpse()
 ```
 
-# Analysis
+## Analysis
 
-## Introduction
+### Introduction
 
 The Product Sector Transition Risk Indicator measures the transition risk of
 products based on the sector’s emissions targets the product belongs to. Those
@@ -82,7 +78,7 @@ The transition risk indicator consists of 4 main steps:
     medium, and low product sector transition risk
 -   Step 4: Aggregating on the company-level
 
-## Step 1 and 2
+### Step 1 and 2
 
 1. Matching the products to the sectors
 2. Identifying sector-specific emission reduction targets
@@ -117,7 +113,7 @@ with_reductions <- pstr_add_reductions(companies, ep_weo, weo_2022)
 with_reductions
 ```
 
-## Step 3: Categorizing sector emission reduction targets into high, medium, and low product sector transition risk
+### Step 3: Categorizing sector emission reduction targets into high, medium, and low product sector transition risk
 
 Let us categorize the transition risk into low, medium and high risk, based on
 the value of the reductions.
@@ -156,7 +152,7 @@ with_transition_risk <- pstr_add_transition_risk(with_reductions)
 with_transition_risk
 ```
 
-## Step 4: Aggregating on the company-level
+### Step 4: Aggregating on the company-level
 
 To derive a company-level indicator for a company that has more than one
 product in its portfolio, it is necessary to aggregate the Product sector
@@ -215,7 +211,7 @@ with_score_aggregated <- pstr_aggregate_scores(with_transition_risk)
 with_score_aggregated
 ```
 
-## Step 5: Vizualisation example
+### Step 5: Vizualisation example
 
 Let us plot the result for the Peasant Peter company.
 
