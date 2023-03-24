@@ -22,9 +22,18 @@ Packages
 ```{r}
 library(tidyverse)
 library(readxl)
-library(here)
 library(knitr)
 ```
+
+```{r}
+# FIXME: Temporarily overwrite to redirect inputs
+pstr_path <- function(...) {
+  here::here("data-raw", "pstr", ...)
+}
+here <- pstr_path
+here()
+```
+
 
 ### Functions
 
