@@ -2,10 +2,6 @@
 title: "Product sector transition risk"
 author: "Linda Delacombaz"
 output: github_document
-params:
-  input1: NULL
-  input2: NULL
-  input3: NULL
 ---
 
 ```{r, include = FALSE}
@@ -34,7 +30,7 @@ library(tiltIndicator)
 #' TODO: Does it have any relationship with tiltData?
 #' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
 #' FIXME: Rename to match existing tiltData, e.g. `company_id` -> `companies_id`
-companies <- params$input1 %||% tiltIndicator::companies |> glimpse()
+companies <- tiltIndicator::companies |> glimpse()
 
 #' A bridge between sector and subsectors in europages and in `weo_2022`.
 #'
@@ -43,13 +39,13 @@ companies <- params$input1 %||% tiltIndicator::companies |> glimpse()
 #' FIXME: Rename to match existing tiltData and to use lowercase. E.g.
 #' removing the prefix "ep_" makes it more compatible with tiltData
 #' and makes it easier to join here.
-ep_weo <- params$input2 %||% tiltIndicator::ep_weo |> glimpse()
+ep_weo <- tiltIndicator::ep_weo |> glimpse()
 
 #' A dataset with scenario, year, product and reductions information
 #'
 #' TODO: Where does it come from and what wrangling did you do?
 #' TODO: Move this documetation to R/dataset-name.R and data-raw/dataset-name.R
-weo_2022 <- params$input3 %||% tiltIndicator::weo_2022 |> glimpse()
+weo_2022 <- tiltIndicator::weo_2022 |> glimpse()
 ```
 
 ## Analysis
