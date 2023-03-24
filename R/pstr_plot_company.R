@@ -1,17 +1,18 @@
 #' Title
 #'
 #' @param data A data frame. The output of [pstr_aggregate_scores()].
+#' @param company_name TODO
 #'
 #' @return TODO
 #' @export
 #'
 #' @examples
 #' # TODO
-pstr_plot_company <- function(with_score_aggregated, company_name) {
+pstr_plot_company <- function(data, company_name) {
   .company_name <- company_name
   level_order <- c("low", "medium", "high")
 
-  with_score_aggregated |>
+  data |>
     filter(.data$company_name == .company_name) |>
     ggplot(aes(x = transition_risk, y = score_aggregated, fill = score_aggregated)) +
     scale_x_discrete(limits = level_order) +

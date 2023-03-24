@@ -4,10 +4,12 @@
 \alias{pstr_plot_company}
 \title{Title}
 \usage{
-pstr_plot_company(with_score_aggregated, company_name)
+pstr_plot_company(data, company_name)
 }
 \arguments{
 \item{data}{A data frame. The output of \code{\link[=pstr_aggregate_scores]{pstr_aggregate_scores()}}.}
+
+\item{company_name}{TODO}
 }
 \value{
 TODO
