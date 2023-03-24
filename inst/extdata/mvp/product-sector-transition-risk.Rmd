@@ -26,15 +26,6 @@ library(knitr)
 library(tiltIndicator)
 ```
 
-```{r}
-# FIXME: Temporarily overwrite to redirect inputs
-pstr_path <- function(...) {
-  fs::path_home("Downloads", "tilt", "tiltIndicator", "pstr", ...)
-}
-here <- pstr_path
-here() |> fs::dir_tree()
-```
-
 ### Functions
 
 To be done
