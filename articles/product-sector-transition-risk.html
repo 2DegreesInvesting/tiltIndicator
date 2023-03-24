@@ -80,7 +80,6 @@ Delacombaz</h4>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltIndicator/">tiltIndicator</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -288,7 +287,24 @@ and reductions information.</p>
 <span><span class="co">#&gt; <span style="color: #949494;">#   publication &lt;chr&gt;, scenario &lt;chr&gt;, region &lt;chr&gt;, category &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   unit &lt;chr&gt;, year &lt;dbl&gt;, value &lt;dbl&gt;, reductions &lt;dbl&gt;</span></span></span>
 <span></span>
-<span><span class="va">final_df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"with_reductions.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">final_df</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 17</span></span></span>
+<span><span class="co">#&gt;    company_id company_name  products  sector subsector EP_categories_id EP_group</span></span>
+<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: weo_product_mapper &lt;chr&gt;, weo_flow_mapper &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   publication &lt;chr&gt;, scenario &lt;chr&gt;, region &lt;chr&gt;, category &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   unit &lt;chr&gt;, year &lt;dbl&gt;, value &lt;dbl&gt;, reductions &lt;dbl&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="step-3-categorizing-sector-emission-reduction-targets-into-high-medium-and-low-product-sector-transition-risk">Step 3: Categorizing sector emission reduction targets into high,
@@ -335,7 +351,25 @@ risk.</p></li>
 <span><span class="co">#&gt; <span style="color: #949494;">#   unit &lt;chr&gt;, year &lt;dbl&gt;, value &lt;dbl&gt;, reductions &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   transition_risk &lt;chr&gt;</span></span></span>
 <span></span>
-<span><span class="va">final_df_cat</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"with_transition_risk.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">final_df_cat</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 18</span></span></span>
+<span><span class="co">#&gt;    company_id company_name  products  sector subsector EP_categories_id EP_group</span></span>
+<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          2 Peasant Peter aluminiu… steel… aluminiu… cff53720714f146… metallu…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more variables: weo_product_mapper &lt;chr&gt;, weo_flow_mapper &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   publication &lt;chr&gt;, scenario &lt;chr&gt;, region &lt;chr&gt;, category &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   unit &lt;chr&gt;, year &lt;dbl&gt;, value &lt;dbl&gt;, reductions &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   transition_risk &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="step-4-aggregating-on-the-company-level">Step 4: Aggregating on the company-level<a class="anchor" aria-label="anchor" href="#step-4-aggregating-on-the-company-level"></a>
@@ -427,7 +461,30 @@ risk) the products over the total numbers of products per company.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Tom's Car Company  medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>030            100  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Tom's Car Company  medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040             50</span></span>
 <span></span>
-<span><span class="va">aggregated_score_df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"with_score_aggregated.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">aggregated_score_df</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 19 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   company_name, transition_risk, scenario, year [19]</span></span></span>
+<span><span class="co">#&gt;    company_name       transition_risk scenario             year score_aggregated</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> John Meier's Cars  high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> John Meier's Cars  high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>050            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> John Meier's Cars  low             Stated Policies Sc…  <span style="text-decoration: underline;">2</span>020            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> John Meier's Cars  medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>030            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Peasant Paul       no_sector       <span style="color: #BB0000;">NA</span>                     <span style="color: #BB0000;">NA</span>            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Peasant Peter      high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040             33.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Peasant Peter      high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>050            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Peasant Peter      low             Stated Policies Sc…  <span style="text-decoration: underline;">2</span>020            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Peasant Peter      medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>030            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Peasant Peter      medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040             66.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Screwdriver Expert high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>050            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Screwdriver Expert low             Stated Policies Sc…  <span style="text-decoration: underline;">2</span>020            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Screwdriver Expert medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>030            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Screwdriver Expert medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Tom's Car Company  high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040             50  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Tom's Car Company  high            Net Zero Emissions…  <span style="text-decoration: underline;">2</span>050            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Tom's Car Company  low             Stated Policies Sc…  <span style="text-decoration: underline;">2</span>020            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Tom's Car Company  medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>030            100  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Tom's Car Company  medium          Net Zero Emissions…  <span style="text-decoration: underline;">2</span>040             50</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="step-5-vizualisation-example">Step 5: Vizualisation example<a class="anchor" aria-label="anchor" href="#step-5-vizualisation-example"></a>
