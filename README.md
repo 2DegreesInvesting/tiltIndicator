@@ -29,20 +29,62 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 ## Example
 
 ``` r
-library(tidyverse, warn.conflicts = FALSE)
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-#> ✔ ggplot2 3.4.1     ✔ purrr   1.0.1
-#> ✔ tibble  3.1.8     ✔ dplyr   1.1.0
-#> ✔ tidyr   1.3.0     ✔ stringr 1.5.0
-#> ✔ readr   2.1.4     ✔ forcats 1.0.0
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
 library(tiltIndicator)
 ```
 
-As a user you’ll need a good place to keep private data and an easy way
-to access it.
+We’ll use datasets that come with the tiltIndicator package.
+
+``` r
+companies
+#> # A tibble: 10 × 5
+#>    company_id company_name       products              sector            subse…¹
+#>         <dbl> <chr>              <chr>                 <chr>             <chr>  
+#>  1          1 Peasant Peter      screws                steel_metal_tran… bendin…
+#>  2          2 Peasant Peter      aluminium_alloy       steel_metals      alumin…
+#>  3          3 Peasant Peter      ultrafilstration      cars              vehicl…
+#>  4          4 Peasant Paul       frozen_food           frozen_food       cheese…
+#>  5          5 Tom's Car Company  oils                  cars              automo…
+#>  6          6 Tom's Car Company  bolts                 steel_metal_tran… bendin…
+#>  7          7 Screwdriver Expert chucks                steel_metal_tran… boring…
+#>  8          8 Screwdriver Expert adaptator_plate       steel_metal_tran… boring…
+#>  9          9 John Meier's Cars  disinfection_products cars              vehicl…
+#> 10         10 John Meier's Cars  ultrafilstration      cars              vehicl…
+#> # … with abbreviated variable name ¹​subsector
+
+ep_weo
+#> # A tibble: 133 × 6
+#>    EP_categories_id                      EP_gr…¹ EP_se…² EP_su…³ weo_p…⁴ weo_f…⁵
+#>    <chr>                                 <chr>   <chr>   <chr>   <chr>   <chr>  
+#>  1 d3a7a3c40afd18a7a840942262099f23f65c… metall… steel_… bendin… Total   Iron a…
+#>  2 8d926b734410de5ba68daa17089a14c1bc1b… metall… steel_… boiler… Total   Iron a…
+#>  3 2eed5a1fd604b1d3ec561a07257b8a1eb99f… metall… steel_… boring… Total   Iron a…
+#>  4 157f4f5953d1a5bfee474217567dc2e65068… metall… steel_… brazin… Total   Iron a…
+#>  5 2092de203e479b67bea02356318c0c8fc8e0… metall… steel_… broach… Total   Iron a…
+#>  6 62dea331c70a02280d5f71a27ec140305aff… metall… steel_… bronzi… Total   Iron a…
+#>  7 8c02cdfddde68d166c1352fa745df959f4ff… metall… steel_… canopi… Total   Iron a…
+#>  8 e593b1156ce341881d18b82747a3c0bb490c… metall… steel_… chrome… Total   Iron a…
+#>  9 b044eec1205c7ef2fde9e38db6b9b308a1bd… metall… steel_… cleani… Total   Iron a…
+#> 10 0880f49af456479b3e4f99c1ed0d14217e26… metall… steel_… cuttin… Total   Iron a…
+#> # … with 123 more rows, and abbreviated variable names ¹​EP_group, ²​EP_sector,
+#> #   ³​EP_subsector, ⁴​weo_product_mapper, ⁵​weo_flow_mapper
+
+weo_2022
+#> # A tibble: 8 × 10
+#>   publication    scena…¹ region categ…² product flow  unit   year  value reduc…³
+#>   <chr>          <chr>   <chr>  <chr>   <chr>   <chr> <chr> <dbl>  <dbl>   <dbl>
+#> 1 World Energy … Stated… world  co2 co… Total   Road… mt c…  2020 2.79e3     0  
+#> 2 World Energy … Net Ze… world  co2 co… Total   Road… mt c…  2030 1.63e3    41.7
+#> 3 World Energy … Net Ze… world  co2 co… Total   Road… mt c…  2040 5.47e2    80.4
+#> 4 World Energy … Net Ze… world  co2 co… Total   Road… mt c…  2050 8.46e1    97.0
+#> 5 World Energy … Stated… world  co2 co… Total   Iron… mt c…  2020 2.59e3     0  
+#> 6 World Energy … Net Ze… world  co2 co… Total   Iron… mt c…  2030 1.95e2    31.4
+#> 7 World Energy … Net Ze… world  co2 co… Total   Iron… mt c…  2040 1.01e4    66.9
+#> 8 World Energy … Net Ze… world  co2 co… Total   Iron… mt c…  2050 7.43e3    91.5
+#> # … with abbreviated variable names ¹​scenario, ²​category, ³​reductions
+```
+
+The `pstr_*()` functions help you work with the
+product-sector-transition-risk indicator.
 
 ``` r
 with_scores <- companies |> 
@@ -86,6 +128,6 @@ with_scores
 with_scores |> pstr_plot_company("Peasant Peter")
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 [CONTRIBUTING](https://github.com/2DegreesInvesting/tiltIndicator/blob/main/.github/CONTRIBUTING.md)

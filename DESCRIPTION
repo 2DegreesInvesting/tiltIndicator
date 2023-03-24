@@ -16,12 +16,12 @@ Depends:
 Imports: 
     dplyr,
     fs,
+    ggplot2,
     glue,
     tidyr,
     withr
 Suggests: 
     covr,
-    ggplot2,
     here,
     rlang,
     rmarkdown,

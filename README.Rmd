@@ -37,12 +37,21 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 ## Example
 
 ```{r}
-library(tidyverse, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
-As a user you'll need a good place to keep private data and an easy way to
-access it.
+We'll use datasets that come with the tiltIndicator package.
+
+```{r}
+companies
+
+ep_weo
+
+weo_2022
+```
+
+The `pstr_*()` functions help you work with the product-sector-transition-risk
+indicator.
 
 ```{r}
 with_scores <- companies |> 
