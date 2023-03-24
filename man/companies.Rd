@@ -3,7 +3,7 @@
 \docType{data}
 \name{companies}
 \alias{companies}
-\title{Fake dataset of some companies and their products}
+\title{Fake data of some companies and their products}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 10 rows and 5 columns.
 }
@@ -11,7 +11,7 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 companies
 }
 \description{
-Fake dataset of some companies and their products
+Fake data of some companies and their products
 }
 \examples{
 companies

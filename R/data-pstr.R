@@ -1,4 +1,4 @@
-#' Fake dataset of some companies and their products
+#' Fake data of some companies and their products
 #'
 #' @examples
 #' companies
