@@ -28,10 +28,10 @@ library(knitr)
 ```{r}
 # FIXME: Temporarily overwrite to redirect inputs
 pstr_path <- function(...) {
-  here::here("data-raw", "pstr", ...)
+  fs::path_home("Downloads", "tilt", "tiltIndicator", "pstr", ...)
 }
 here <- pstr_path
-here()
+here() |> fs::dir_tree()
 ```
 
 
@@ -220,7 +220,7 @@ aggregated_score_df <- final_df_cat |>
 
 kable(head(aggregated_score_df))
 
-aggregated_score_df |> write_csv("score_aggregated.csv")
+aggregated_score_df |> write_csv("with_score_aggregated.csv")
 ```
 
 ## Step 5: Vizualisation example
