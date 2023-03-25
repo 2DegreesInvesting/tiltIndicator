@@ -21,9 +21,8 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/2DegreesInvesting/tiltIndicator/branch/main/graph/badge.svg)](https://app.codecov.io/gh/2DegreesInvesting/tiltIndicator?branch=main)
 <!-- badges: end -->
 
-The goal of tiltIndicator is to help you develop each TILT indicator.
-
-This repository hosts only public code and may only show only fake data.
+The goal of tiltIndicator is to help you develop each TILT indicator. This
+repository hosts only public code and data.
 
 ## Installation
 
