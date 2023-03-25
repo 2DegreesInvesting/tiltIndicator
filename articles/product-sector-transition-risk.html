@@ -169,8 +169,7 @@ sector. For those that cannot be matched to one of the sectors, we
 classify them as ‘Other’.</p>
 <p>We join this on the sectors and subsectors columns.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># FIXME: Do what the warning says</span></span>
-<span><span class="va">with_reductions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">ep_weo</span>, <span class="va">weo_2022</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">with_reductions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">ep_weo</span>, <span class="va">weo_2022</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">with_reductions</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 17</span></span></span>
@@ -299,9 +298,7 @@ risk) the products over the total numbers of products per company.</p>
 that are in either low, medium or high transition risk, relatively to a
 scenario and year that the user could chose, for example.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># TODO: Allow multiple values of company_name?</span></span>
-<span><span class="co"># TODO: Remove redundant mapping to color?</span></span>
-<span><span class="va">with_score_aggregated</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/pstr_plot_company.html">pstr_plot_company</a></span><span class="op">(</span><span class="st">"Peasant Peter"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">with_score_aggregated</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/pstr_plot_company.html">pstr_plot_company</a></span><span class="op">(</span><span class="st">"Peasant Peter"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="product-sector-transition-risk_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 </div>
