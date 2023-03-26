@@ -7,8 +7,8 @@
 use_refactoring_checklist(indicator = "indicator")
 }
 \arguments{
-\item{indicator}{Character. Hyphen-separated string giving the full name of
-the indicator, e.g. "product-carbon-transition-risk".}
+\item{indicator}{Character. The indicator abbreviation, e.g. for
+"product-carbon-transition-risk" use "pstr".}
 }
 \value{
 Character. A checklist you can paste on a GitHub issue.
@@ -17,7 +17,7 @@ Character. A checklist you can paste on a GitHub issue.
 Create a task list that you can paste on a GitHub issue and follow up
 }
 \examples{
-use_refactoring_checklist("product-sector-transition-risk")
+use_refactoring_checklist("pstr")
 }
 \seealso{
 Other developer-oriented functions: 

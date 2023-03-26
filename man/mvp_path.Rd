@@ -27,7 +27,7 @@ data.
 }
 \examples{
 mvp_paths()
-mvp_path("product-carbon-transition-risk.Rmd")
+mvp_path("pstr.Rmd")
 }
 \seealso{
 Other developer-oriented functions: 
