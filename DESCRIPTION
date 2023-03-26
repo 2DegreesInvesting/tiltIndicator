@@ -19,14 +19,15 @@ Imports:
     fs,
     ggplot2,
     glue,
+    rlang (>= 0.4.11),
     tidyr,
     tidyselect,
     withr
 Suggests: 
     covr,
     here,
-    rlang,
     rmarkdown,
+    roxygen2,
     testthat (>= 3.0.0),
     tibble
 Config/testthat/edition: 3
