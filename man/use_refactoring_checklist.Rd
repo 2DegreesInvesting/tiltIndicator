@@ -4,7 +4,7 @@
 \alias{use_refactoring_checklist}
 \title{Create a task list that you can paste on a GitHub issue and follow up}
 \usage{
-use_refactoring_checklist(indicator = "indicator")
+use_refactoring_checklist(indicator)
 }
 \arguments{
 \item{indicator}{Character. The indicator abbreviation, e.g. for
