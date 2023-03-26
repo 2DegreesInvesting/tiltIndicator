@@ -31,7 +31,7 @@ pstr_aggregate_scores <- function(data) {
   with_transition_risk2 |>
     select(all_of(all_of(useful_cols))) |>
     group_by(company_name, transition_risk, scenario, year) |>
-    reframe(score_aggregated = (n() / total_products_per_company * 100)) |>
+    reframe(score_aggregated = (n() / .data$total_products_per_company * 100)) |>
     # FIXME? Do we really want grouped output?
     group_by(company_name, transition_risk, scenario, year) |>
     # FIXME: Do we really want distinct_all()? It's superseded by
