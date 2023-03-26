@@ -2,14 +2,13 @@
 
 # tiltIndicator 0.0.0.9006
 
-* Use new argument to left_join():
+## Internal
 
+* dev: Use new argument to `left_join()`.
 
 # tiltIndicator 0.0.0.9004
 
-## Internal
-
-* Address dplyr warnings (#32).
+* dev: Address dplyr warnings (#32).
 
 # tiltIndicator 0.0.0.9003
 
