@@ -1,0 +1,232 @@
+---
+title: "Input sector TR"
+author: "Lyanne Ho"
+date: "2023-03-09"
+output: html_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Setup
+
+Packages
+
+```{r}
+library(tidyverse, warn.conflicts = FALSE)
+library(vroom)
+library(here)
+```
+
+```{r}
+params$version
+```
+
+## Data
+
+Sample data set includes inputs and sectors/ subsectors from Europages. NOTE: the following columns are a complete random selection and do not reflect the true information:
+
+    - 'input_1_sector_ecoinvent_delimited',                 'input_2_sector_ecoinvent_delimited' and                'input_3_sector_ecoinvent_delimited': as the             matching with ecoinvent is not done yet, we              do not have one sector per input product yet
+
+### 1. Demo companies data set that has the company name along with its input products CO2 footprints, sectors and even more corresponding variables.
+
+```{r}
+demo_companies <- read.csv(here("data", "230309_tilt_sample_data_units.csv"), sep = ";")
+```
+
+#### Reshape dataframe to have all Ecoinvents' sectors in one column.
+
+```{r}
+# reshape wide dataframe to long data frame
+# FIXME: Can we use tidyr::pivot_longer()?
+demo_companies <- reshape(
+  demo_companies,
+  direction = "long",
+  varying = list(
+    c("input_1", "input_2", "input_3"),
+    c("input_1_sector_ecoinvent_delimited", "input_2_sector_ecoinvent_delimited", "input_3_sector_ecoinvent_delimited")
+  ),
+  v.names = c("inputs", "eco_sectors")
+)
+```
+
+### 2. Mapper, which serves as a sector classification bridge between the Ecoinvents' sectors and the WEO 2022 file.
+
+```{r}
+eco_weo_mapper <- readxl::read_xlsx((here('data/ECO_weo_sector_mapper_sample.xlsx')))
+
+summary(eco_weo_mapper)
+```
+
+### 3. 
+
+3. WEO file that contains the scenario, year, product and reductions information.
+
+```{r}
+weo_2022 <- readr::read_csv(here('data/weo_2022.csv'), show_col_types = FALSE)
+
+spec(weo_2022)
+```
+
+# Analysis
+
+## Introduction
+
+The Input Product Sector Risk Indicator assesses the transition risk of the input products based on the sector’s emissions targets the input product belongs to. Those sector emission reduction targets vary across scenarios (e.g., net zero scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in 2030, 2040, 2050 to achieve the targets). It, therefore, is similar to the Product Sector Risk Indicator but focuses on the input products that the company needs to produce its products.The input products are, for example, resources, packaging materials, energy and enabling services (such as tractor use on farm) to produce the product.
+
+If an input product belongs to a sector in which reduction targets are over 70%, it belongs to a high-risk sector and is classified as ‘high sector transition risk’. If the input product belongs to a sector in which reduction targets are between 30-70%, the product is classified into the category ‘medium sector transition risk’ and if it is below 30% it belongs to the category of ‘low sector transition risk’. If it does not belong to a sector that has decarbonization targets, it is classified as ‘no sector transition risk’.
+
+After assessing the input products for each product, they will be aggregated at company-level to derive what percentage of the input products required by the company to produce its products have high, medium and low sector transition risk. We, therefore, derive the company-level information.
+
+Please note that carbon emissions or emissions always mean CO2e.
+
+The goal of the transition risk MVP is to create a first draft of how the sector transition risk indicator for inputs would be build in code in order to convert it into code production easily in the future.
+
+The transition risk indicator consists of 5 main steps:
+
+- Step 1: Identifying the input products for each product
+- Step 2: Matching the input products to the sectors
+- Step 3: Identifying sector-specific emission reduction targets
+- Step 4: Categorising sector emission reduction targets into high, medium, and low sector transition risk
+- Step 5: Aggregating on the company-level
+
+## Step 1: Identifying
+
+Let us print the demo companies data set that has the company name along with its input products and sector information.
+
+```{r}
+knitr::kable(head(demo_companies))
+```
+
+
+Let us print the mapper, which serves as a sector classification bridge between the Ecoinvent's' sectors and the WEO 2022 file.
+
+```{r}
+knitr::kable(head(eco_weo_mapper))
+```
+
+We join this on the sectors columns.
+
+```{r}
+joined_df <- demo_companies |> 
+  dplyr::left_join(eco_weo_mapper, by = c("eco_sectors" = "ECO_sector"))
+
+knitr::kable(head(joined_df))
+```
+
+## Step 2: Matching the input products to the sectors
+
+Let us print the WEO file that contains the scenario, year, product and reductions information.
+
+```{r}
+knitr::kable(head(weo_2022))
+```
+
+Let's join that again with our previously joined data frame:
+
+```{r}
+final_df <- joined_df |> 
+  dplyr::left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
+
+knitr::kable(head(final_df))
+
+```
+
+## Step 3: Identifying sector-specific emission reduction targets
+
+Let us categorize the transition risk into low, medium and high risk,
+based on the value of the reductions.
+
+-   reductions ≤ 30% means low product sector transition risk.
+
+-   30% \< reductions ≤ 70% means medium product sector transition risk.
+
+-   reductions \> 70% means high product sector transition risk.
+
+```{r}
+final_df <- final_df |> 
+   dplyr::mutate(
+     transition_risk = dplyr::case_when(
+       reductions <= 30 ~ "low",
+       reductions > 30 & reductions <= 70 ~ "medium",
+       reductions >= 70 ~ "high",
+       TRUE ~ "no_sector",
+       )
+     )
+
+knitr::kable(head(final_df))
+```
+
+## Step 4: Aggregating on the company-level
+
+To derive a company-level indicator for a company that has more than one
+input product in its portfolio, it is necessary to aggregate the Input product
+sector transition Risk Indicator of each product into one indicator. The
+proposed method for that is to assume the same weights for each input product.
+
+Here are the calculation rules:
+
+-   High Sector Transition Risk Input Products (in %) = ∑ of all high sector
+    transition risk input products / ∑ of all inputs
+
+-   Medium Sector Transition Risk Input Products (in %) = ∑ of all medium
+    sector transition risk products / ∑ of all inputs
+
+-   Low Sector Transition Risk Input Products (in %) = ∑ of all low sector
+    transition risk products / ∑ of all inputs
+
+-   No Sector Transition Risk Input Products (in %) = ∑ of all no sector
+    transition risk products / ∑ of all inputs
+
+Here numbers of input products per companies is calculated in a new column, and join the data frame to have the data with the numbers of products
+that a company produces.
+
+
+```{r}
+n_inputs_per_companies <- joined_df |> 
+  dplyr::group_by(company_name) |>
+  dplyr::summarise(total_inputs_per_company = n()) 
+```
+
+```{r}
+final_df <- final_df |> 
+  dplyr::left_join(n_inputs_per_companies, by = 'company_name')
+
+final_df
+```
+
+Then, the score aggregated score is calculated by summing (per transition risk) the input products over the total numbers of products per company.
+
+```{r}
+aggregated_score_df <- final_df |> 
+  dplyr::select(company_name, transition_risk, total_inputs_per_company, scenario, year) |> 
+  dplyr::group_by(company_name, transition_risk, scenario, year) |> 
+  dplyr::summarise(score_aggregated = (n()/total_inputs_per_company*100), .groups = 'keep') |> 
+  dplyr::distinct_all()
+
+knitr::kable(aggregated_score_df)
+```
+
+## Final step: Vizualisation example
+
+Let us plot the result for the Fleischerei Stiefsohn company.
+
+The score aggregated is the percentage of products of that company that
+are in either low, medium or high transition risk, relatively to a
+scenario and year that the user could chose, for example.
+
+```{r}
+level_order <- c('low', 'medium', 'high') 
+
+aggregated_score_df  |> 
+  dplyr::filter(company_name == "fleischerei stiefsohn") |> 
+  ggplot(aes(x = transition_risk, y = score_aggregated, fill = score_aggregated)) +
+  scale_x_discrete(limits = level_order) +
+  geom_col() +
+  scale_fill_gradient2(midpoint = 0, low = "red", high = "blue") +
+  facet_grid(company_name ~ scenario+year)
+```
