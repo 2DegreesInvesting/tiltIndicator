@@ -13,15 +13,12 @@ pstr_aggregate_scores <- function(data) {
     summarise(total_products_per_company = n())
 
   with_transition_risk2 <- data |>
-    # TODO: Confirm we want multiple = "all"
-    #   Warning in `left_join()`:
-    #   Each row in `x` is expected to match at most 1 row in `y`.
-    # i Row 1 of `x` matches multiple rows.
-    # i If multiple matches are expected, set `multiple = "all"` to silence this warning.
-    dplyr::left_join(n_products_per_companies, by = "company_name", multiple = "all") |>
-    # FIXME: There seems to be a bug where `dplyr::left_join()` is insensitive
-    # to `multiple = "all"`
-    suppressWarnings(classes = "dplyr_warning_join_relationship_many_to_many")
+    left_join(
+      n_products_per_companies,
+      by = "company_name",
+      # TODO: ASK Linda to confirm we want this relationship
+      relationship = "many-to-many"
+    )
 
   with_transition_risk2 |>
     select(company_id, company_name, transition_risk, total_products_per_company, scenario, year) |>
