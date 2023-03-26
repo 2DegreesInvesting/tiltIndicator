@@ -1,15 +1,19 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9009
+
+* dev: Rename data-files related to pstr so it's easier to express Linda's
+ownership (#41).
+
 # tiltIndicator 0.0.0.9008
 
-* Use CODEOWNERS (#39)
-
+* dev: Use CODEOWNERS (#39).
 
 # tiltIndicator 0.0.0.9007
 
-* In `pstr_aggregate_scores()` fix missing argument `companies` (#38)
+* In `pstr_aggregate_scores()` fix missing argument `companies` (#38).
 
-* dev: Address R CMD Check about undefined global variables (#37)
+* dev: Address R CMD Check about undefined global variables (#37).
 
 # tiltIndicator 0.0.0.9006
 
