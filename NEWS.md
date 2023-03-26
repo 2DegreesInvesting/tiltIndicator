@@ -1,10 +1,15 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9005
+
+- Same as previous version.
+
+
 # tiltIndicator 0.0.0.9004
 
 ## Internal
 
-* Address dplyr warnings (#32)
+* Address dplyr warnings (#32).
 
 # tiltIndicator 0.0.0.9003
 
