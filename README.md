@@ -13,7 +13,8 @@ coverage](https://codecov.io/gh/2DegreesInvesting/tiltIndicator/branch/main/grap
 <!-- badges: end -->
 
 The goal of tiltIndicator is to help you develop each TILT indicator.
-This repository hosts only public code and data.
+
+This repository hosts only public code and may only show only fake data.
 
 ## Installation
 
@@ -96,8 +97,7 @@ with_scores <- companies |>
 #> ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
 #>   always returns an ungrouped data frame and adjust accordingly.
 #> ℹ The deprecated feature was likely used in the tiltIndicator package.
-#>   Please report the issue at
-#>   <]8;;https://github.com/2DegreesInvesting/tiltIndicator/issueshttps://github.com/2DegreesInvesting/tiltIndicator/issues]8;;>.
+#>   Please report the issue to the authors.
 
 with_scores
 #> # A tibble: 19 × 5
