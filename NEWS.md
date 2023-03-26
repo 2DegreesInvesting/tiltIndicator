@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9006
+
+* Use new argument to left_join():
+
+
 # tiltIndicator 0.0.0.9004
 
 ## Internal
