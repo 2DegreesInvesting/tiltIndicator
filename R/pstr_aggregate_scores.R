@@ -9,7 +9,7 @@
 #' # TODO
 pstr_aggregate_scores <- function(data) {
   n_products_per_companies <- companies |>
-    group_by(company_name) |>
+    group_by(.data$company_name) |>
     summarise(total_products_per_company = n())
 
   with_transition_risk2 <- data |>

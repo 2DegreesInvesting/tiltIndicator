@@ -20,6 +20,7 @@
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 scale_fill_gradient2
 #' @importFrom ggplot2 scale_x_discrete
+#' @importFrom rlang .env
 #' @importFrom tidyr replace_na
 #' @importFrom tidyselect all_of
 ## usethis namespace: end
