@@ -2,7 +2,6 @@ test_that("`with_reductions` remains the same", {
   path <- mvp_path("pstr.Rmd")
   with_reductions <- render_list(path)$with_reductions
   out <- format_robust_snapshot(with_reductions)
-
   expect_snapshot(out)
 })
 
