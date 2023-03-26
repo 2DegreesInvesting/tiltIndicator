@@ -4,6 +4,7 @@
 
 * New `pstr_*()` family for product sector transition risk.
 
-# tiltIndicator 0.0.0.9001
+* New `pstr_*()` family of functions for product sector transition risk.
 
 * New article "Product sector transition risk" (@lindadelacombaz, #18, #22).
+
