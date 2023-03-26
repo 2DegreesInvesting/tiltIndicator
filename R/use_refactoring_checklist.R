@@ -9,7 +9,7 @@
 #' @export
 #' @examples
 #' use_refactoring_checklist("pstr")
-use_refactoring_checklist <- function(indicator = "indicator") {
+use_refactoring_checklist <- function(indicator) {
   split <- unlist(strsplit(indicator, split = "-"))
   ind <- paste(substr(split, 1L, 1L), collapse = "")
 
