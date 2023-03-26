@@ -1,15 +1,15 @@
 #' Create a task list that you can paste on a GitHub issue and follow up
 #'
-#' @param indicator Character. Hyphen-separated string giving the full name of
-#'   the indicator, e.g. "product-carbon-transition-risk".
+#' @param indicator Character. The indicator abbreviation, e.g. for
+#'   "product-carbon-transition-risk" use "pstr".
 #'
 #' @return Character. A checklist you can paste on a GitHub issue.
 #' @family developer-oriented functions
 #'
 #' @export
 #' @examples
-#' use_refactoring_checklist("product-sector-transition-risk")
-use_refactoring_checklist <- function(indicator = "indicator") {
+#' use_refactoring_checklist("pstr")
+use_refactoring_checklist <- function(indicator) {
   split <- unlist(strsplit(indicator, split = "-"))
   ind <- paste(substr(split, 1L, 1L), collapse = "")
 
