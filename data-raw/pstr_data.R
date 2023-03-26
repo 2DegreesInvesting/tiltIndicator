@@ -1,5 +1,23 @@
 # Source: Linda
 # styler: off
+companies <- tibble::tribble(
+  ~company_id,        ~company_name,               ~products,                      ~sector,                     ~subsector,
+            1,      "Peasant Peter",                "screws", "steel_metal_transformation",    "bending_steels_and_metals",
+            2,      "Peasant Peter",       "aluminium_alloy",               "steel_metals",             "aluminium_alloys",
+            3,      "Peasant Peter",      "ultrafilstration",                       "cars", "vehicle_maintenance_products",
+            4,       "Peasant Paul",           "frozen_food",                "frozen_food",                "cheese_slicer",
+            5,  "Tom's Car Company",                  "oils",                       "cars",                  "automobiles",
+            6,  "Tom's Car Company",                 "bolts", "steel_metal_transformation",    "bending_steels_and_metals",
+            7, "Screwdriver Expert",                "chucks", "steel_metal_transformation",     "boring_steels_and_metals",
+            8, "Screwdriver Expert",       "adaptator_plate", "steel_metal_transformation",     "boring_steels_and_metals",
+            9,  "John Meier's Cars", "disinfection_products",                       "cars", "vehicle_maintenance_products",
+            10,  "John Meier's Cars",      "ultrafilstration",                       "cars", "vehicle_maintenance_products"
+)
+# styler: on
+
+usethis::use_data(companies, overwrite = TRUE)
+# Source: Linda
+# styler: off
 ep_weo <- tibble::tribble(
                            ~EP_categories_id,                      ~EP_group,                                                ~EP_sector,                                   ~EP_subsector, ~weo_product_mapper,                    ~weo_flow_mapper,
   "d3a7a3c40afd18a7a840942262099f23f65c19a0",      "metallurgy_metalworking",                              "steel_metal_transformation",                     "bending_steels_and_metals",             "Total",                    "Iron and steel",
@@ -139,3 +157,18 @@ ep_weo <- tibble::tribble(
 # styler: on
 
 usethis::use_data(ep_weo, overwrite = TRUE)
+# styler: off
+weo_2022 <- tibble::tribble(
+  ~publication,                             ~scenario, ~region,        ~category, ~product,                               ~flow,    ~unit, ~year,  ~value, ~reductions,
+  "World Energy Outlook 2021",            "Stated Policies Scenario", "world", "co2 combustion",  "Total", "Road passenger light duty vehicle", "mt co2",  2020, 2787.63,           0,
+  "World Energy Outlook 2021", "Net Zero Emissions by 2050 Scenario", "world", "co2 combustion",  "Total", "Road passenger light duty vehicle", "mt co2",  2030, 1626.32,       41.66,
+  "World Energy Outlook 2021", "Net Zero Emissions by 2050 Scenario", "world", "co2 combustion",  "Total", "Road passenger light duty vehicle", "mt co2",  2040,  546.54,       80.39,
+  "World Energy Outlook 2021", "Net Zero Emissions by 2050 Scenario", "world", "co2 combustion",  "Total", "Road passenger light duty vehicle", "mt co2",  2050,   84.56,       96.97,
+  "World Energy Outlook 2021",            "Stated Policies Scenario", "world", "co2 combustion",  "Total",                    "Iron and steel", "mt co2",  2020, 2590.57,           0,
+  "World Energy Outlook 2021", "Net Zero Emissions by 2050 Scenario", "world", "co2 combustion",  "Total",                    "Iron and steel", "mt co2",  2030,  194.53,       31.35,
+  "World Energy Outlook 2021", "Net Zero Emissions by 2050 Scenario", "world", "co2 combustion",  "Total",                    "Iron and steel", "mt co2",  2040, 10122.9,       66.86,
+  "World Energy Outlook 2021", "Net Zero Emissions by 2050 Scenario", "world", "co2 combustion",  "Total",                    "Iron and steel", "mt co2",  2050, 7426.46,       91.49
+)
+# styler: on
+
+usethis::use_data(weo_2022, overwrite = TRUE)
