@@ -90,7 +90,7 @@ product-sector-transition-risk indicator.
 with_scores <- companies |>
   pstr_add_reductions(ep_weo, weo_2022) |>
   pstr_add_transition_risk() |>
-  pstr_aggregate_scores()
+  pstr_aggregate_scores(companies)
 
 with_scores
 #> # A tibble: 19 × 5
@@ -119,7 +119,6 @@ with_scores
 #> # … with abbreviated variable name ¹​score_aggregated
 
 with_scores |> pstr_plot_company("Peasant Peter")
-#> Warning: Removed 1 rows containing missing values (`position_stack()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
