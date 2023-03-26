@@ -4,10 +4,10 @@
 \alias{pstr_add_transition_risk}
 \title{Title}
 \usage{
-pstr_add_transition_risk(data)
+pstr_add_transition_risk(with_reductions)
 }
 \arguments{
-\item{data}{A data frame. The output of \code{\link[=pstr_add_reductions]{pstr_add_reductions()}}.}
+\item{with_reductions}{A data frame. The output of \code{\link[=pstr_add_reductions]{pstr_add_reductions()}}.}
 }
 \value{
 TODO

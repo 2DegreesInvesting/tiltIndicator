@@ -4,10 +4,13 @@
 \alias{pstr_aggregate_scores}
 \title{Title}
 \usage{
-pstr_aggregate_scores(data)
+pstr_aggregate_scores(with_transition_risk, companies)
 }
 \arguments{
-\item{data}{A data frame. The output of \code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
+\item{with_transition_risk}{A data frame. The output of
+\code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
+
+\item{companies}{TODO}
 }
 \value{
 TODO
