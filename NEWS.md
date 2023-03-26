@@ -1,8 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-# tiltIndicator 0.0.0.9006
+# tiltIndicator 0.0.0.9007
 
-## Internal
+* In `pstr_aggregate_scores()` fix missing argument `companies` (#38)
+
+* dev: Address R CMD Check about undefined global variables (#37)
+
+# tiltIndicator 0.0.0.9006
 
 * dev: Use new argument to `left_join()`.
 
