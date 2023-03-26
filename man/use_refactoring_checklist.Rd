@@ -22,6 +22,6 @@ use_refactoring_checklist("pstr")
 \seealso{
 Other developer-oriented functions: 
 \code{\link{mvp_path}()},
-\code{\link{render_list}()}
+\code{\link{render_to_list}()}
 }
 \concept{developer-oriented functions}

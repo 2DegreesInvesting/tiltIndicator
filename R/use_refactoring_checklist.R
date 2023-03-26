@@ -21,7 +21,7 @@ use_refactoring_checklist <- function(indicator) {
   - [ ] `use_article('{indicator}')` with mvp as child document.
   - [ ] Document authorship in DESCRIPTION, article, and mvp.
   - [ ] Redirect inputs, e.g.: `here <- {ind}_path`.
-  - [ ] Snapshot useful objects from the .Rmd environment via `render_list()`.
+  - [ ] Snapshot useful objects from the .Rmd environment via `render_to_list()`.
   - [ ] Update NEWS.md.
   - [ ] `use_version()`.
   - [ ] Refactor: `use_data()` and ask the author to document it.

@@ -13,11 +13,11 @@
 #' path <- system.file("extdata", "mtcars.Rmd", package = "tiltIndicator")
 #' writeLines(readLines(path))
 #'
-#' render_list(path)
+#' render_to_list(path)
 #'
 #' # You may pass `...` to `rmarkdown::render()`, e.g. `params`
-#' render_list(path, params = list(input1 = head(mtcars)))
-render_list <- function(path, ...) {
+#' render_to_list(path, params = list(input1 = head(mtcars)))
+render_to_list <- function(path, ...) {
   tmp_dir <- withr::local_tempdir()
   tmp_rmd <- fs::path(tmp_dir, fs::path_file(path))
   fs::file_copy(path, tmp_rmd)
