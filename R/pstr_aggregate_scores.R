@@ -23,12 +23,12 @@ pstr_aggregate_scores <- function(with_transition_risk, companies) {
     )
 
   useful_cols <- c(
-      "company_id",
-      "company_name",
-      "transition_risk",
-      "total_products_per_company",
-      "scenario",
-      "year"
+    "company_id",
+    "company_name",
+    "transition_risk",
+    "total_products_per_company",
+    "scenario",
+    "year"
   )
   with_transition_risk2 |>
     select(all_of(all_of(useful_cols))) |>
