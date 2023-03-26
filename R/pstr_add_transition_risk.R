@@ -1,14 +1,14 @@
 #' Title
 #'
-#' @param data A data frame. The output of [pstr_add_reductions()].
+#' @param with_reductions A data frame. The output of [pstr_add_reductions()].
 #'
 #' @return TODO
 #' @export
 #'
 #' @examples
 #' # TODO
-pstr_add_transition_risk <- function(data) {
-  data |>
+pstr_add_transition_risk <- function(with_reductions) {
+  with_reductions |>
     mutate(
       transition_risk = case_when(
         reductions <= 30 ~ "low",
