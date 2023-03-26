@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9008
+
+* Use CODEOWNERS (#39)
+
+
 # tiltIndicator 0.0.0.9007
 
 * In `pstr_aggregate_scores()` fix missing argument `companies` (#38)
