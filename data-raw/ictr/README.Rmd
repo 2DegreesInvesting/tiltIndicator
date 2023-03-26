@@ -1,0 +1,209 @@
+---
+title: "Input Carbon"
+author: "Lyanne Ho"
+date: "2023-02-10"
+output: github_document
+params: 
+  version: "0.0.0.9000"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Setup
+
+Packages
+
+```{r}
+library(tidyverse, warn.conflicts = FALSE)
+library(vroom)
+library(here)
+```
+
+## Analysis
+
+```{r}
+params$version
+```
+
+### Introduction
+
+The Input Product Carbon Transition Risk Indicator assesses the transition risk
+of the input products due to their relative carbon footprint to other input
+products. As a default option, each input product will be compared to the carbon
+footprint of every other input product. Alternatively, users can also choose to
+compare those input products of the same type, so e.g., comparing only raw
+materials with each other. Input products with a higher carbon footprint will
+also face a higher risk.
+
+The Input Product Carbon Transition Risk Indicator is therefore similar to the
+Product Carbon Transition Risk Indicator, but it focuses on the input products
+and not the product of the company. Input products are, for example, resources,
+packaging materials, energy and enabling services (such as tractor use on farm)
+to produce the product.
+
+After identifying each carbon footprint for one input product, the input
+products will be ranked according to their footprint. Input products in the
+highest percentile (≥70%) will be classified as high transition risk input
+products. Input products in the medium percentile (between ≥30% and <70%) will
+be classified as medium transition risk input products. Products in the lowest
+percentile (<30%) will be classified as low transition risk input products.
+
+After assessing the input products transition risk based on its carbon footprint
+for each product, they will be aggregated at company-level. We derive what
+percentage of the input products are high, medium and low transition risk.
+
+The goal of the transition risk MVP is to create a first draft of how the
+transition risk indicator for inputs would be build in code in order to convert
+it into code production easily in the future.
+
+The transition risk indicator consists of 3 main steps:
+
+- Step 1: Identifying the input products for each product
+- Step 2: Calculating the relative carbon footprint per input product
+- Step 3: Aggregating on the company-level
+
+### Step 1: Identifying
+
+Identifying the input products for each product
+
+#### Data
+
+1. Sample data set includes inputs and co2 footprints for each product from
+Ecoinvent and sectors from Europages. NOTE: the following columns are a complete
+random selection and do not reflect the true information:
+
+    - co2 footprints (not allowed to share licensed data right now)
+    - sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)
+
+```{r}
+inputs <- read.csv(here("data", "230207_tilt_sample_data_units.csv"), sep = ";")
+```
+
+#### Reshape dataframe to have all inputs and CO2 footprints in one column.
+
+```{r}
+# reshape wide dataframe to long data frame
+# FIXME: Can we use tidyr::pivot_longer()?
+inputs2 <- reshape(
+  inputs,
+  direction = "long",
+  varying = list(
+    c("input_1", "input_2", "input_3"),
+    c("co2_input_1", "co2_input_2", "co2_input_3")
+  ),
+  v.names = c("inputs", "co2_input")
+)
+```
+
+Let us create a new column with the relative carbon footprint for each input
+product.
+
+```{r}
+# 1. Relative to all products
+inputs2 <- inputs2 %>%
+  mutate(relative_all = rank(co2_input) / nrow(inputs2))
+```
+
+Use group_by to make different relative calculations.
+
+```{r}
+# 2. Relative to all input products in the same sector.
+inputs2 <- inputs2 %>%
+  group_by(clustered_unit_ecoinvent) %>%
+  mutate(relative_unit = rank(co2_input) / length(co2_input)) %>%
+  ungroup()
+
+# 3. Relative to all input products with the same unit.
+inputs2 <- inputs2 %>%
+  group_by(sector_ecoinvent_delimited) %>%
+  mutate(relative_sector = rank(co2_input) / length(co2_input)) %>%
+  ungroup()
+
+# 4. Relative to all input products in the same sector with the same unit.
+inputs2 <- inputs2 %>%
+  group_by(sector_ecoinvent_delimited, clustered_unit_ecoinvent) %>%
+  mutate(relative_sector_unit = rank(co2_input) / length(co2_input)) %>%
+  ungroup()
+```
+
+Let us create a new columns assigning the input products to "low", "medium" or
+"high" risk by using a for loop that loops over the columns containing relative
+CO2 footprints.
+
+```{r}
+# create of columns names starting with relative
+relatives <- inputs2 %>%
+  select(starts_with("relative"))
+
+relative_col <- colnames(relatives)
+
+for (footprint in relative_col) {
+  # create the new column names for the transition risks indication
+  new_col_name <- paste0("TR_", footprint) 
+
+  inputs2 <- inputs2 %>%
+    mutate(!!sym(new_col_name) := case_when(
+      inputs2[[footprint]] < 0.3 ~ "low",
+      inputs2[[footprint]] >= 0.3 & inputs2[[footprint]] < 0.7 ~ "medium",
+      inputs2[[footprint]] >= 0.7 ~ "high",
+    ))
+}
+```
+
+### Step 3: Aggregating
+
+Aggregating on the company-level the percentage of transistion risk input
+products for each company. This is the sum of low, medium or high divided by the
+total number of input products for that company.
+
+```{r}
+# create of columns names starting with relative
+TR_df <- inputs2 %>%
+  select(starts_with("TR_relative"))
+
+TR_col <- colnames(TR_df)
+
+for (TR in TR_col) {
+  # create the new column names for the transition risks indication
+  low_col_name <- paste0("low_", TR)
+  medium_col_name <- paste0("medium_", TR)
+  high_col_name <- paste0("high_", TR)
+
+
+  inputs2 <- inputs2 %>%
+    group_by(company_name) %>%
+    # create new column with % of all input products that have low transition
+    # risk NOTE: !!as.note is necessary to refer to the columns ( for the mutate
+    # function, the argument must be the column name without quotas
+    mutate(!!sym(low_col_name) := (sum(str_count(!!as.name(TR), "low"))) / length(!!as.name(TR)) * 100) %>%
+    
+    #  create new column with % of all input products that have medium
+    #  transition risk
+    mutate(!!sym(medium_col_name) := (sum(str_count(!!as.name(TR), "medium"))) / length(!!as.name(TR)) * 100) %>%
+    # create new column with % of all input products that have low transition risk
+    mutate(!!sym(high_col_name) := (sum(str_count(!!as.name(TR), "high"))) / length(!!as.name(TR)) * 100) %>%
+    # NOTE: these numbers are already multiplied by 100, so the new columns
+    # consist of percentages
+    ungroup()
+}
+```
+
+#### Creata a separate dataframe containing the companies and all transition risks calculated
+
+```{r}
+transition_risk_df <- inputs2 %>%
+  select(
+    "company_name",
+    starts_with("low"),
+    starts_with("medium"),
+    starts_with("high")
+  )
+
+transition_risk_df <- transition_risk_df %>%
+  distinct(company_name, .keep_all = TRUE)
+```
