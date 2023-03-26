@@ -31,7 +31,7 @@ mvp_path("pstr.Rmd")
 }
 \seealso{
 Other developer-oriented functions: 
-\code{\link{render_list}()},
+\code{\link{render_to_list}()},
 \code{\link{use_refactoring_checklist}()}
 }
 \concept{developer-oriented functions}
