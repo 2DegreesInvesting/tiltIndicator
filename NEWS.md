@@ -1,9 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-# tiltIndicator 0.0.0.9003
+# tiltIndicator 0.0.0.9004
 
-* Address odd behavior (#32)
+## Internal
 
+* Address dplyr warnings (#32)
 
 # tiltIndicator 0.0.0.9003
 
