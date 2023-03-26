@@ -1,18 +1,20 @@
 #' Title
 #'
-#' @param data A data frame. The output of [pstr_add_transition_risk()].
+#' @param with_transition_risk A data frame. The output of
+#'   [pstr_add_transition_risk()].
+#' @inheritParams pstr_add_reductions
 #'
 #' @return TODO
 #' @export
 #'
 #' @examples
 #' # TODO
-pstr_aggregate_scores <- function(data) {
+pstr_aggregate_scores <- function(with_transition_risk, companies) {
   n_products_per_companies <- companies |>
     group_by(company_name) |>
     summarise(total_products_per_company = n())
 
-  with_transition_risk2 <- data |>
+  with_transition_risk2 <- with_transition_risk |>
     left_join(
       n_products_per_companies,
       by = "company_name",
