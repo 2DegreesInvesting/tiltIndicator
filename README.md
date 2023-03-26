@@ -91,17 +91,6 @@ with_scores <- companies |>
   pstr_add_reductions(ep_weo, weo_2022) |>
   pstr_add_transition_risk() |>
   pstr_aggregate_scores()
-#> Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
-#> dplyr 1.1.0.
-#> ℹ Please use `reframe()` instead.
-#> ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
-#>   always returns an ungrouped data frame and adjust accordingly.
-#> ℹ The deprecated feature was likely used in the tiltIndicator package.
-#>   Please report the issue at
-#>   <]8;;https://github.com/2DegreesInvesting/tiltIndicator/issueshttps://github.com/2DegreesInvesting/tiltIndicator/issues]8;;>.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-#> generated.
 
 with_scores
 #> # A tibble: 19 × 5

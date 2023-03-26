@@ -9,11 +9,10 @@
 #' @examples
 #' # TODO
 pstr_plot_company <- function(data, company_name) {
-  .company_name <- company_name
   level_order <- c("low", "medium", "high")
 
   data |>
-    filter(.data$company_name == .company_name) |>
+    filter(.data$company_name == .env$company_name) |>
     ggplot(aes(x = .data$transition_risk, y = .data$score_aggregated, fill = .data$score_aggregated)) +
     scale_x_discrete(limits = level_order) +
     geom_col() +
