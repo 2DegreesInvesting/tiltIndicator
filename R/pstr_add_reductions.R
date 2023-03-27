@@ -26,7 +26,6 @@
 #'  pstr_add_reductions(ep_weo, weo_2022)
 #'
 #' companies_with_reductions
-#'
 pstr_add_reductions <- function(companies, ep_weo, weo_2022) {
   companies |>
     left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |>

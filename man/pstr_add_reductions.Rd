@@ -40,5 +40,4 @@ companies_with_reductions <- companies |>
  pstr_add_reductions(ep_weo, weo_2022)
 
 companies_with_reductions
-
 }

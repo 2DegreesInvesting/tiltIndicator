@@ -14,7 +14,15 @@
 #' @export
 #'
 #' @examples
-#' # TODO
+#' library(tiltIndicator)
+#'
+#' companies
+#'
+#' companies_with_transition_risk <- companies |>
+#' pstr_add_reductions(ep_weo, weo_2022) |>
+#' pstr_add_transition_risk()
+#'
+#' companies_with_transition_risk
 pstr_add_transition_risk <- function(with_reductions) {
   with_reductions |>
     mutate(
