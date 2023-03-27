@@ -2,8 +2,7 @@
 % Please edit documentation in R/pstr_add_transition_risk.R
 \name{pstr_add_transition_risk}
 \alias{pstr_add_transition_risk}
-\title{Categorizes sector emission reduction targets into high, medium, and low
-product sector transition risk.}
+\title{Categorize sector emission reduction targets}
 \usage{
 pstr_add_transition_risk(with_reductions)
 }
@@ -24,8 +23,12 @@ column.
 }
 }
 \description{
-Categorizes sector emission reduction targets into high, medium, and low
-product sector transition risk.
+Translates the \code{reductions} column into three categories :
+\itemize{
+\item "low" if \code{reductions} <= 30.0
+\item "medium" if 30.0 < \code{reductions} <= 70.0
+\item "high" if \code{reductions} > 70.0
+}
 }
 \examples{
 library(tiltIndicator)
