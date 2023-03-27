@@ -2,7 +2,8 @@
 % Please edit documentation in R/pstr_add_transition_risk.R
 \name{pstr_add_transition_risk}
 \alias{pstr_add_transition_risk}
-\title{Title}
+\title{Categorizes sector emission reduction targets into high, medium, and low
+product sector transition risk.}
 \usage{
 pstr_add_transition_risk(with_reductions)
 }
@@ -10,10 +11,21 @@ pstr_add_transition_risk(with_reductions)
 \item{with_reductions}{A data frame. The output of \code{\link[=pstr_add_reductions]{pstr_add_reductions()}}.}
 }
 \value{
-TODO
+A data frame with:
+\itemize{
+\item All the columns from the \code{companies} dataset.
+\item All the columns from the \code{ep_weo} dataset.
+\item All the columns from the \code{weo_2022}dataset.
+\item New column :
+\itemize{
+\item \code{transtion_risk} that holds the categorization of the \code{reductions}
+column.
+}
+}
 }
 \description{
-Title
+Categorizes sector emission reduction targets into high, medium, and low
+product sector transition risk.
 }
 \examples{
 # TODO

@@ -1,8 +1,16 @@
-#' Title
+#' Categorizes sector emission reduction targets into high, medium, and low
+#' product sector transition risk.
 #'
 #' @param with_reductions A data frame. The output of [pstr_add_reductions()].
 #'
-#' @return TODO
+#' @return A data frame with:
+#'    * All the columns from the `companies` dataset.
+#'    * All the columns from the `ep_weo` dataset.
+#'    * All the columns from the `weo_2022`dataset.
+#'    * New column :
+#'       * `transtion_risk` that holds the categorization of the `reductions`
+#'       column.
+#'
 #' @export
 #'
 #' @examples
