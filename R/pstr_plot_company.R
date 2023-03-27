@@ -1,6 +1,5 @@
 #' Plot the product sector transition risk for a company
 #'
-#' @description
 #' Outputs a plot on which the x-axis is the product sector
 #' transition risk and the y-axis is the aggregated product score in % for
 #' the company `company_name`.
@@ -13,12 +12,11 @@
 #' @export
 #'
 #' @examples
-#'
 #'library(tibble)
 #'
 #'data <- tibble(
 #'          company_name = "a",
-#'          transition_risk = c("high","low"),
+#'          transition_risk = c("low","high"),
 #'          scenario = c("A", "B"),
 #'          year = 2020,
 #'          score_aggregated = 50
@@ -26,7 +24,6 @@
 #'data
 #'
 #'company_name <- "a"
-#'company_name
 #'
 #'pstr_plot_company(data, company_name)
 pstr_plot_company <- function(data, company_name) {

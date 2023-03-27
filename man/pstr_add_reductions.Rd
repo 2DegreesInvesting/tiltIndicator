@@ -2,7 +2,7 @@
 % Please edit documentation in R/pstr_add_reductions.R
 \name{pstr_add_reductions}
 \alias{pstr_add_reductions}
-\title{Add the emission reduction targets to the companies dataset.}
+\title{Add the emission reduction targets to the companies dataset}
 \usage{
 pstr_add_reductions(companies, ep_weo, weo_2022)
 }
@@ -29,7 +29,7 @@ respectively.
 }
 }
 \description{
-Add the emission reduction targets to the companies dataset.
+Add the emission reduction targets to the companies dataset
 }
 \examples{
 library(tiltIndicator)

@@ -1,5 +1,9 @@
-#' Categorizes sector emission reduction targets into high, medium, and low
-#' product sector transition risk.
+#' Categorize sector emission reduction targets
+#'
+#' Translates the `reductions` column into three categories :
+#' * "low" if `reductions` <= 30.0
+#' * "medium" if 30.0 < `reductions` <= 70.0
+#' * "high" if `reductions` > 70.0
 #'
 #' @param with_reductions A data frame. The output of [pstr_add_reductions()].
 #'
@@ -16,13 +20,10 @@
 #' @examples
 #' library(tiltIndicator)
 #'
-#' companies
+#' with_reductions <- companies |>
+#'   pstr_add_reductions(ep_weo, weo_2022)
 #'
-#' companies_with_transition_risk <- companies |>
-#' pstr_add_reductions(ep_weo, weo_2022) |>
-#' pstr_add_transition_risk()
-#'
-#' companies_with_transition_risk
+#' pstr_add_transition_risk(with_reductions)
 pstr_add_transition_risk <- function(with_reductions) {
   with_reductions |>
     mutate(
