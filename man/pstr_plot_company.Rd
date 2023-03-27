@@ -2,21 +2,39 @@
 % Please edit documentation in R/pstr_plot_company.R
 \name{pstr_plot_company}
 \alias{pstr_plot_company}
-\title{Title}
+\title{Plot the product sector transition risk for a company}
 \usage{
 pstr_plot_company(data, company_name)
 }
 \arguments{
 \item{data}{A data frame. The output of \code{\link[=pstr_aggregate_scores]{pstr_aggregate_scores()}}.}
 
-\item{company_name}{TODO}
+\item{company_name}{A string. Name of the company in the portfolio that
+the user wants to plot.}
 }
 \value{
-TODO
+A \code{\link[=ggplot]{ggplot()}}.
 }
 \description{
-Title
+Outputs a plot on which the x-axis is the product sector
+transition risk and the y-axis is the aggregated product score in \% for
+the company \code{company_name}.
 }
 \examples{
-# TODO
+
+library(tibble)
+
+data <- tibble(
+         company_name = "a",
+         transition_risk = c("high","low"),
+         scenario = c("A", "B"),
+         year = 2020,
+         score_aggregated = 50
+         )
+data
+
+company_name <- "a"
+company_name
+
+pstr_plot_company(data, company_name)
 }
