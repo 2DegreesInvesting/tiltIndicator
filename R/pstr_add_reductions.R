@@ -1,14 +1,28 @@
-#' Title
+#' Add the emission reduction targets to the companies dataset.
 #'
-#' @param companies TODO
-#' @param ep_weo TODO
-#' @param weo_2022 TODO
 #'
-#' @return TODO
+#' @param companies A `companies` dataframe like [`companies`].
+#' @param ep_weo A `ep_weo` dataframe like [`ep_weo`].
+#' @param weo_2022 A `weo_2022` dataframe like [`weo_2022`].
+#'
+#' @return A dataframe with:
+#'   * All the columns from the `companies` dataset.
+#'   * New columns :
+#'       * All the columns from the `ep_weo` dataset.
+#'       * All the columns from the `weo_2022` dataset.
+#'
 #' @export
 #'
 #' @examples
-#' # TODO
+#' library(tiltIndicator)
+#'
+#' companies
+#'
+#' companies_with_reductions <- companies |>
+#'  pstr_add_reductions(ep_weo, weo_2022)
+#'
+#' companies_with_reductions
+#'
 pstr_add_reductions <- function(companies, ep_weo, weo_2022) {
   companies |>
     left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |>

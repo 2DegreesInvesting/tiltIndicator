@@ -10,7 +10,7 @@ pstr_aggregate_scores(with_transition_risk, companies)
 \item{with_transition_risk}{A data frame. The output of
 \code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
 
-\item{companies}{TODO}
+\item{companies}{A \code{companies} dataframe like \code{\link{companies}}.}
 }
 \value{
 TODO
