@@ -24,12 +24,12 @@ the company \code{company_name}.
 library(tibble)
 
 data <- tibble(
-         company_name = "a",
-         transition_risk = c("low","high"),
-         scenario = c("A", "B"),
-         year = 2020,
-         score_aggregated = 50
-         )
+  company_name = "a",
+  transition_risk = c("low", "high"),
+  scenario = c("A", "B"),
+  year = 2020,
+  score_aggregated = 50
+)
 data
 
 company_name <- "a"

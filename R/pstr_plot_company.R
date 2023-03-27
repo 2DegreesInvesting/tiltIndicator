@@ -12,20 +12,20 @@
 #' @export
 #'
 #' @examples
-#'library(tibble)
+#' library(tibble)
 #'
-#'data <- tibble(
-#'          company_name = "a",
-#'          transition_risk = c("low","high"),
-#'          scenario = c("A", "B"),
-#'          year = 2020,
-#'          score_aggregated = 50
-#'          )
-#'data
+#' data <- tibble(
+#'   company_name = "a",
+#'   transition_risk = c("low", "high"),
+#'   scenario = c("A", "B"),
+#'   year = 2020,
+#'   score_aggregated = 50
+#' )
+#' data
 #'
-#'company_name <- "a"
+#' company_name <- "a"
 #'
-#'pstr_plot_company(data, company_name)
+#' pstr_plot_company(data, company_name)
 pstr_plot_company <- function(data, company_name) {
   level_order <- c("low", "medium", "high")
 
@@ -36,4 +36,3 @@ pstr_plot_company <- function(data, company_name) {
     geom_col() +
     facet_grid(.data$company_name ~ .data$scenario + .data$year)
 }
-
