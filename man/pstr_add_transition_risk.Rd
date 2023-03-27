@@ -33,11 +33,8 @@ Translates the \code{reductions} column into three categories :
 \examples{
 library(tiltIndicator)
 
-companies
+with_reductions <- companies |>
+  pstr_add_reductions(ep_weo, weo_2022)
 
-companies_with_transition_risk <- companies |>
-pstr_add_reductions(ep_weo, weo_2022) |>
-pstr_add_transition_risk()
-
-companies_with_transition_risk
+pstr_add_transition_risk(with_reductions)
 }

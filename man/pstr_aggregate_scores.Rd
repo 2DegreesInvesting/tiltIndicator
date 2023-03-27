@@ -29,13 +29,9 @@ the percentage of products that are in low / medium / high transition risk.
 \examples{
 library(tiltIndicator)
 
-companies
-
 with_transition_risk <- companies |>
   pstr_add_reductions(ep_weo, weo_2022) |>
   pstr_add_transition_risk()
-
-with_transition_risk
 
 pstr_aggregate_scores(with_transition_risk, companies)
 }

@@ -34,10 +34,5 @@ Add the emission reduction targets to the companies dataset
 \examples{
 library(tiltIndicator)
 
-companies
-
-companies_with_reductions <- companies |>
- pstr_add_reductions(ep_weo, weo_2022)
-
-companies_with_reductions
+pstr_add_reductions(companies, ep_weo, weo_2022)
 }
