@@ -8,8 +8,12 @@
 #' @return A dataframe with:
 #'   * All the columns from the `companies` dataset.
 #'   * New columns :
-#'       * All the columns from the `ep_weo` dataset.
-#'       * All the columns from the `weo_2022` dataset.
+#'       * All the columns from the `ep_weo` dataset, but the columns
+#'       `EP_sector` and `EP_subsector` are named `sector` and `subsector`
+#'       respectively.
+#'       * All the columns from the `weo_2022` dataset, but the colmns
+#'       `weo_product_mapper` and `weo_flow_mapper` are named `product` and
+#'       `flow`, respectively.
 #'
 #' @export
 #'
