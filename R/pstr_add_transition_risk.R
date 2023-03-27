@@ -12,7 +12,7 @@
 #'    * All the columns from the `ep_weo` dataset.
 #'    * All the columns from the `weo_2022`dataset.
 #'    * New column :
-#'       * `transtion_risk` that holds the categorization of the `reductions`
+#'       * `transition_risk` that holds the categorization of the `reductions`
 #'       column.
 #'
 #' @export

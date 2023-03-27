@@ -17,7 +17,7 @@ A data frame with:
 \item All the columns from the \code{weo_2022}dataset.
 \item New column :
 \itemize{
-\item \code{transtion_risk} that holds the categorization of the \code{reductions}
+\item \code{transition_risk} that holds the categorization of the \code{reductions}
 column.
 }
 }
