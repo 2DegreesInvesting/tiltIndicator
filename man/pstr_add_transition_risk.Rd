@@ -13,8 +13,12 @@ pstr_add_transition_risk(with_reductions)
 A data frame with:
 \itemize{
 \item All the columns from the \code{companies} dataset.
-\item All the columns from the \code{ep_weo} dataset.
-\item All the columns from the \code{weo_2022}dataset.
+\item All the columns from the \code{ep_weo} dataset, but the columns
+\code{EP_sector} and \code{EP_subsector} are named \code{sector} and \code{subsector}
+respectively.
+\item All the columns from the \code{weo_2022}dataset, but the columns
+\code{weo_product_mapper} and \code{weo_flow_mapper} are named \code{product} and
+\code{flow}, respectively.
 \item New column :
 \itemize{
 \item \code{transition_risk} that holds the categorization of the \code{reductions}
@@ -31,10 +35,7 @@ Translates the \code{reductions} column into three categories :
 }
 }
 \examples{
-library(tiltIndicator)
-
-with_reductions <- companies |>
-  pstr_add_reductions(ep_weo, weo_2022)
-
-pstr_add_transition_risk(with_reductions)
+companies |>
+  pstr_add_reductions(ep_weo, weo_2022) |>
+  pstr_add_transition_risk()
 }

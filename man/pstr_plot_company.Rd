@@ -21,18 +21,11 @@ transition risk and the y-axis is the aggregated product score in \% for
 the company \code{company_name}.
 }
 \examples{
-library(tibble)
+data <- companies |>
+pstr_add_reductions(ep_weo, weo_2022) |>
+pstr_add_transition_risk() |>
+pstr_aggregate_scores(companies)
 
-data <- tibble(
-  company_name = "a",
-  transition_risk = c("low", "high"),
-  scenario = c("A", "B"),
-  year = 2020,
-  score_aggregated = 50
-)
-data
-
-company_name <- "a"
-
-pstr_plot_company(data, company_name)
+data |>
+  pstr_plot_company("Peasant Peter")
 }

@@ -16,13 +16,10 @@
 #' @export
 #'
 #' @examples
-#' library(tiltIndicator)
-#'
-#' with_transition_risk <- companies |>
+#' companies |>
 #'   pstr_add_reductions(ep_weo, weo_2022) |>
-#'   pstr_add_transition_risk()
-#'
-#' pstr_aggregate_scores(with_transition_risk, companies)
+#'   pstr_add_transition_risk() |>
+#'   pstr_aggregate_scores(companies)
 pstr_aggregate_scores <- function(with_transition_risk, companies) {
   n_products_per_companies <- companies |>
     group_by(.data$company_name) |>
