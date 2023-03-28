@@ -2,7 +2,7 @@
 % Please edit documentation in R/pstr_add_transition_risk.R
 \name{pstr_add_transition_risk}
 \alias{pstr_add_transition_risk}
-\title{Title}
+\title{Categorize sector emission reduction targets}
 \usage{
 pstr_add_transition_risk(with_reductions)
 }
@@ -10,11 +10,32 @@ pstr_add_transition_risk(with_reductions)
 \item{with_reductions}{A data frame. The output of \code{\link[=pstr_add_reductions]{pstr_add_reductions()}}.}
 }
 \value{
-TODO
+A data frame with:
+\itemize{
+\item All the columns from the \code{companies} dataset.
+\item All the columns from the \code{ep_weo} dataset, but the columns
+\code{EP_sector} and \code{EP_subsector} are named \code{sector} and \code{subsector}
+respectively.
+\item All the columns from the \code{weo_2022}dataset, but the columns
+\code{weo_product_mapper} and \code{weo_flow_mapper} are named \code{product} and
+\code{flow} respectively.
+\item New column :
+\itemize{
+\item \code{transition_risk} that holds the categorization of the \code{reductions}
+column.
+}
+}
 }
 \description{
-Title
+\code{pstr_add_transition_risk()} translates the \code{reductions} column into three categories :
+\itemize{
+\item "low" if \code{reductions} <= 30.0
+\item "medium" if 30.0 < \code{reductions} <= 70.0
+\item "high" if \code{reductions} > 70.0
+}
 }
 \examples{
-# TODO
+companies |>
+  pstr_add_reductions(ep_weo, weo_2022) |>
+  pstr_add_transition_risk()
 }

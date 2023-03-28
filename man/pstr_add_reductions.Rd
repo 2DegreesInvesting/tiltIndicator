@@ -2,23 +2,38 @@
 % Please edit documentation in R/pstr_add_reductions.R
 \name{pstr_add_reductions}
 \alias{pstr_add_reductions}
-\title{Title}
+\title{Add the emission reduction targets to the companies dataset}
 \usage{
 pstr_add_reductions(companies, ep_weo, weo_2022)
 }
 \arguments{
-\item{companies}{TODO}
+\item{companies}{A \code{companies} dataframe like \code{\link{companies}}.}
 
-\item{ep_weo}{TODO}
+\item{ep_weo}{A \code{ep_weo} dataframe like \code{\link{ep_weo}}.}
 
-\item{weo_2022}{TODO}
+\item{weo_2022}{A \code{weo_2022} dataframe like \code{\link{weo_2022}}.}
 }
 \value{
-TODO
+A dataframe with:
+\itemize{
+\item All the columns from the \code{companies} dataset.
+\item New columns :
+\itemize{
+\item All the columns from the \code{ep_weo} dataset, but the columns
+\code{EP_sector} and \code{EP_subsector} are named \code{sector} and \code{subsector}
+respectively.
+\item All the columns from the \code{weo_2022} dataset, but the columns
+\code{weo_product_mapper} and \code{weo_flow_mapper} are named \code{product} and
+\code{flow}, respectively.
+}
+}
 }
 \description{
-Title
+\code{pstr_add_reductions()} joins the \code{ep_weo}and \code{weo_2022} datasets
+to the \code{companies} dataset to add the emission reduction values for
+each company's product(s).
 }
 \examples{
-# TODO
+companies |>
+  pstr_add_reductions(ep_weo, weo_2022)
 }

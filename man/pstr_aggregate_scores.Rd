@@ -2,7 +2,7 @@
 % Please edit documentation in R/pstr_aggregate_scores.R
 \name{pstr_aggregate_scores}
 \alias{pstr_aggregate_scores}
-\title{Title}
+\title{Aggregate the products' scores for each company}
 \usage{
 pstr_aggregate_scores(with_transition_risk, companies)
 }
@@ -10,14 +10,25 @@ pstr_aggregate_scores(with_transition_risk, companies)
 \item{with_transition_risk}{A data frame. The output of
 \code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
 
-\item{companies}{TODO}
+\item{companies}{A \code{companies} dataframe like \code{\link{companies}}.}
 }
 \value{
-TODO
+A data frame with the columns :
+\itemize{
+\item \code{company_name}
+\item \code{transition_risk}
+\item \code{scenario}
+\item \code{year}
+\item \code{score_aggregated}, which holds the aggregated scores in percentage.
+}
 }
 \description{
-Title
+\code{pstr_aggregated_scores()} calculates on a company-level
+the percentage of products that are in low / medium / high transition risk.
 }
 \examples{
-# TODO
+companies |>
+  pstr_add_reductions(ep_weo, weo_2022) |>
+  pstr_add_transition_risk() |>
+  pstr_aggregate_scores(companies)
 }

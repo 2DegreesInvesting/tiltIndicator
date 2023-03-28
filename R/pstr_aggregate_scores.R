@@ -1,14 +1,25 @@
-#' Title
+#' Aggregate the products' scores for each company
+#'
+#' `pstr_aggregated_scores()` calculates on a company-level
+#' the percentage of products that are in low / medium / high transition risk.
 #'
 #' @param with_transition_risk A data frame. The output of
 #'   [pstr_add_transition_risk()].
 #' @inheritParams pstr_add_reductions
 #'
-#' @return TODO
+#' @return A data frame with the columns :
+#'   * `company_name`
+#'   * `transition_risk`
+#'   * `scenario`
+#'   * `year`
+#'   * `score_aggregated`, which holds the aggregated scores in percentage.
 #' @export
 #'
 #' @examples
-#' # TODO
+#' companies |>
+#'   pstr_add_reductions(ep_weo, weo_2022) |>
+#'   pstr_add_transition_risk() |>
+#'   pstr_aggregate_scores(companies)
 pstr_aggregate_scores <- function(with_transition_risk, companies) {
   n_products_per_companies <- companies |>
     group_by(.data$company_name) |>
