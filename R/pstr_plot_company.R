@@ -13,9 +13,9 @@
 #'
 #' @examples
 #' data <- companies |>
-#' pstr_add_reductions(ep_weo, weo_2022) |>
-#' pstr_add_transition_risk() |>
-#' pstr_aggregate_scores(companies)
+#'   pstr_add_reductions(ep_weo, weo_2022) |>
+#'   pstr_add_transition_risk() |>
+#'   pstr_aggregate_scores(companies)
 #'
 #' data |>
 #'   pstr_plot_company("Peasant Peter")
