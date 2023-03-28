@@ -14,7 +14,7 @@
 #'    respectively.
 #'    * All the columns from the `weo_2022`dataset, but the columns
 #'    `weo_product_mapper` and `weo_flow_mapper` are named `product` and
-#'    `flow`, respectively.
+#'    `flow` respectively.
 #'    * New column :
 #'       * `transition_risk` that holds the categorization of the `reductions`
 #'       column.

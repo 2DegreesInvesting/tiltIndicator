@@ -18,7 +18,7 @@ A data frame with:
 respectively.
 \item All the columns from the \code{weo_2022}dataset, but the columns
 \code{weo_product_mapper} and \code{weo_flow_mapper} are named \code{product} and
-\code{flow}, respectively.
+\code{flow} respectively.
 \item New column :
 \itemize{
 \item \code{transition_risk} that holds the categorization of the \code{reductions}
