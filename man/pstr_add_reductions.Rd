@@ -29,7 +29,9 @@ respectively.
 }
 }
 \description{
-Add the emission reduction targets to the companies dataset
+\code{pstr_add_reductions()} joins the \code{ep_weo}and \code{weo_2022} datasets
+to the \code{companies} dataset to add the emission reduction values for
+each company.
 }
 \examples{
 companies |>

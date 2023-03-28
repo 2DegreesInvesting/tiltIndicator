@@ -12,7 +12,7 @@
 #'   * `transition_risk`
 #'   * `scenario`
 #'   * `year`
-#'   * `score_aggregated`, which holds the aggregated score in percentage.
+#'   * `score_aggregated`, which holds the aggregated scores in percentage.
 #' @export
 #'
 #' @examples

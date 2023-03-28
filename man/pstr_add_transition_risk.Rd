@@ -27,7 +27,7 @@ column.
 }
 }
 \description{
-Translates the \code{reductions} column into three categories :
+\code{pstr_add_transition_risk()} translates the \code{reductions} column into three categories :
 \itemize{
 \item "low" if \code{reductions} <= 30.0
 \item "medium" if 30.0 < \code{reductions} <= 70.0

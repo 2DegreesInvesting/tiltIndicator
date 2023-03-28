@@ -19,7 +19,7 @@ A data frame with the columns :
 \item \code{transition_risk}
 \item \code{scenario}
 \item \code{year}
-\item \code{score_aggregated}, which holds the aggregated score in percentage.
+\item \code{score_aggregated}, which holds the aggregated scores in percentage.
 }
 }
 \description{

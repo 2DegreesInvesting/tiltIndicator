@@ -16,15 +16,15 @@ the user wants to plot.}
 A \code{\link[=ggplot]{ggplot()}}.
 }
 \description{
-Outputs a plot on which the x-axis is the product sector
+\code{pstr_plot_company()} outputs a plot on which the x-axis is the product sector
 transition risk and the y-axis is the aggregated product score in \% for
-the company \code{company_name}.
+the company called \code{company_name}.
 }
 \examples{
 data <- companies |>
-pstr_add_reductions(ep_weo, weo_2022) |>
-pstr_add_transition_risk() |>
-pstr_aggregate_scores(companies)
+  pstr_add_reductions(ep_weo, weo_2022) |>
+  pstr_add_transition_risk() |>
+  pstr_aggregate_scores(companies)
 
 data |>
   pstr_plot_company("Peasant Peter")

@@ -1,8 +1,8 @@
 #' Plot the product sector transition risk for a company
 #'
-#' Outputs a plot on which the x-axis is the product sector
+#' `pstr_plot_company()` outputs a plot on which the x-axis is the product sector
 #' transition risk and the y-axis is the aggregated product score in % for
-#' the company `company_name`.
+#' the company called `company_name`.
 #'
 #' @param data A data frame. The output of [pstr_aggregate_scores()].
 #' @param company_name A string. Name of the company in the portfolio that
