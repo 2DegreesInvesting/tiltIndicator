@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9011
+
+* FIX: The article pstr now shows the expected content (#52).
+* FIX: `mvp_path()` with nonexistent path now throws an error (#51).
+
+
 # tiltIndicator 0.0.0.9010
 
 * Document the `pstr_*()` functions (@lindadelacombaz, #50)
