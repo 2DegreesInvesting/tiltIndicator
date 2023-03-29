@@ -1318,3 +1318,42 @@
       9      0.25
       
 
+# `scores_unit` remains the same
+
+    Code
+      out
+    Output
+      [[1]]
+                                                 company_id
+      1                       ebtor_00000005324899621837001
+      2                       ebtor_00000005324899621837001
+      3                           mbdgmbh_00000004773428001
+      4                           mbdgmbh_00000004773428001
+      5                           mbdgmbh_00000004773428001
+      6 powerstartmanufacturinggmbh_00000005460100827307001
+      7 powerstartmanufacturinggmbh_00000005460100827307001
+      8 powerstartmanufacturinggmbh_00000005460100827307001
+      
+      [[2]]
+         score
+      1   high
+      2 medium
+      3   high
+      4    low
+      5 medium
+      6   high
+      7    low
+      8 medium
+      
+      [[3]]
+        share_unit
+      1     0.6000
+      2     0.4000
+      3     0.4375
+      4     0.1875
+      5     0.3750
+      6     0.5000
+      7     0.2500
+      8     0.2500
+      
+
