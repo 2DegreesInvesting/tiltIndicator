@@ -32,3 +32,10 @@ test_that("`scores_unit` remains the same", {
   out <- format_robust_snapshot(scores_unit)
   expect_snapshot(out)
 })
+
+test_that("`scores_unit_sec` remains the same", {
+  path <- mvp_path("pctr.Rmd")
+  scores_unit_sec <- render_to_list(path)$scores_unit_sec
+  out <- format_robust_snapshot(scores_unit_sec)
+  expect_snapshot(out)
+})
