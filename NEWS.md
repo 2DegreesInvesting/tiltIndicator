@@ -1,5 +1,17 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9010
+
+* Document the `pstr_*()` functions (@lindadelacombaz, #50)
+
+* dev: Rename helper to `render_to_list()` (#43).
+
+* dev: Prune needless helpers (#42).
+
+* dev: Rename data-files related to pstr (#41).
+
+* dev: Fix CODEOWNERS.
+
 # tiltIndicator 0.0.0.9009
 
 * dev: Rename data-files related to pstr so it's easier to express Linda's
