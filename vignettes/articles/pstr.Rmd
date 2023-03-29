@@ -1,0 +1,15 @@
+---
+title: "Product sector transition risk (pstr)"
+author: "Linda Delacombaz"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r child=tiltIndicator::mvp_path("pstr.Rmd")}
+```
+
