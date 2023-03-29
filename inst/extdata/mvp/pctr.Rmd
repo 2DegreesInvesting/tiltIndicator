@@ -31,7 +31,7 @@ library(graphics)
 # B. Data
 ## Load ecoinvent and tilt company data
 ```{r}
-
+here <- function(...) fs::path("~/Downloads/mvp/pctr", ...)
 ecoinvent_co2 <- read_csv(here("02_input_data", "data_ecoinvent_co2.csv"))
 companies <- read_csv(here("02_input_data", "tilt_companies.csv"))
 
