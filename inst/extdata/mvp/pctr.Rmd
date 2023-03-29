@@ -33,8 +33,10 @@ library(graphics)
 ```{r}
 here <- function(...) fs::path("~/Downloads/mvp/pctr", ...)
 ecoinvent_co2 <- read_csv(here("02_input_data", "data_ecoinvent_co2.csv"))
-companies <- read_csv(here("02_input_data", "tilt_companies.csv"))
+ecoinvent_co2 |> glimpse()
 
+companies <- read_csv(here("02_input_data", "tilt_companies.csv"))
+companies |> glimpse()
 ```
 
 # C. Analysis
@@ -85,6 +87,7 @@ ecoinvent_ranks <- ecoinvent_ranks |>
   mutate(perc_unit_sec = rank(co2_footprint) / length(co2_footprint)) %>%
   ungroup()
 
+ecoinvent_ranks |> glimpse()
 ```
 
 ### C.2.2. Assign scores to the activities
@@ -122,10 +125,7 @@ ecoinvent_scores <- ecoinvent_scores %>%
       perc_unit_sec >= high_threshold ~ "high",
   ))
 
-rm(ecoinvent_co2)
-rm(ecoinvent_ranks)
-rm(high_threshold)
-rm(low_threshold)
+ecoinvent_scores |> glimpse()
 
 # show distributions
 barplot(prop.table(table(ecoinvent_scores$score_all)))
@@ -141,8 +141,7 @@ This is needed required to combine company-level information with LCA info from 
 companies_scores <- companies |> 
   inner_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
 
-rm(companies)
-rm(ecoinvent_scores)
+companies_scores |> glimpse()
 ```
 
 ### C.3.2. Caclulate the scores for each company
@@ -157,6 +156,8 @@ scores_all <- companies_scores|>
   select(-n_all) |>
   rename("score" = "score_all")
 
+scores_all |> glimpse()
+
 # scores in comparison to products with same unit
 scores_unit <- companies_scores |>
   group_by(company_id, score_unit) |>
@@ -164,6 +165,8 @@ scores_unit <- companies_scores |>
   mutate(share_unit = n_unit / sum(n_unit)) |>
   select(-n_unit)|>
   rename("score" = "score_unit")
+
+scores_unit |> glimpse()
 
 # scores in comparison to products with same unit and sector
 scores_unit_sec <- companies_scores |>
@@ -173,6 +176,7 @@ scores_unit_sec <- companies_scores |>
   select(-n_unit_sec)|>
   rename("score" = "score_unit_sec")
 
+scores_unit_sec |> glimpse()
 ```
 
 ### C.3.3. Create final dataset
@@ -194,12 +198,7 @@ pctr_output <- dt_sceleton |>
 pctr_output <- pctr_output |>
   replace(is.na(pctr_output), 0)
 
-rm(companies_scores)
-rm(scores_all)
-rm(scores_unit)
-rm(scores_unit_sec)
-rm(dt_sceleton)
-
+pctr_output |> glimpse()
 ```
 
 ## C.4. Vizualisation example
@@ -212,9 +211,3 @@ To do: Create a function that shows the scores per benchmark for one example com
 
 ```
 
-
-## C.5. write csv into output folder
-```{r}
-write_csv(pctr_output, here("03_output_file", "mvp_pctr_output.csv"))
-
-```
