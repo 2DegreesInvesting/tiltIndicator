@@ -18,8 +18,12 @@
 #' @examples
 #' mvp_paths()
 #' mvp_path("pstr.Rmd")
+#' try(mvp_path())
+#' try(mvp_path("inexistent.file"))
 mvp_path <- function(path) {
-  system.file("extdata", "mvp", path, package = "tiltIndicator")
+  system.file(
+    "extdata", "mvp", path, package = "tiltIndicator", mustWork = TRUE
+  )
 }
 
 #' @rdname mvp_path
