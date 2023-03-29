@@ -3,8 +3,8 @@
 # tiltIndicator 0.0.0.9011
 
 * FIX: The article pstr now shows the expected content (#52).
-* FIX: `mvp_path()` with nonexistent path now throws an error (#51).
 
+* FIX: `mvp_path()` with nonexistent path now throws an error (#51).
 
 # tiltIndicator 0.0.0.9010
 
