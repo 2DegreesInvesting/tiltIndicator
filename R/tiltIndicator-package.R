@@ -2,8 +2,6 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-# FIXME: pstr please import each dplyr function individually
-# FIXME: pstr please import each ggplot2 function individually
 #' @importFrom dplyr case_when
 #' @importFrom dplyr distinct_all
 #' @importFrom dplyr filter
