@@ -28,6 +28,8 @@ data.
 \examples{
 mvp_paths()
 mvp_path("pstr.Rmd")
+try(mvp_path())
+try(mvp_path("inexistent.file"))
 }
 \seealso{
 Other developer-oriented functions: 
