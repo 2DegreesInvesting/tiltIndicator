@@ -1,0 +1,15 @@
+---
+title: "Product carbon transition risk (pctr)"
+author: "Tilman Trompke"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r child=tiltIndicator::mvp_path("pctr.Rmd")}
+```
+
