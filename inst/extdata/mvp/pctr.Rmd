@@ -1,5 +1,5 @@
 ---
-title: "Product carbon transition risk (pctr)"
+title: "Product carbon transition risk (PCTR)"
 author: "Tilman Trompke"
 output: github_document
 ---
@@ -21,14 +21,12 @@ library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
-The tiltIndicator package comes with example datasets.
+The tiltIndicator package comes with example datasets for the PCTR indicator.
 
 ```{r}
-ecoinvent_co2 <- tiltIndicator::pctr_ecoinvent_co2
-ecoinvent_co2 |> glimpse()
+ecoinvent_co2 <- pctr_ecoinvent_co2 |> glimpse()
 
-companies <- tiltIndicator::pctr_companies
-companies |> glimpse()
+companies <- pctr_companies |> glimpse()
 ```
 
 #  Analysis
