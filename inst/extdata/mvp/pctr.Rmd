@@ -4,7 +4,6 @@ author: "Tilman Trompke"
 output: github_document
 ---
 
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -13,23 +12,21 @@ knitr::opts_chunk$set(
 )
 ```
 
-# A. Setup
-## Load packages
+# Setup
+
+Packages
+
 ```{r}
-
-library(tidyverse)
-library(fs)
-library(here)
+library(dplyr, warn.conflicts = FALSE)
 library(readr)
-library(dplyr)
-library(graphics)
-
 ```
 
-# B. Data
-## Load ecoinvent and tilt company data
+Data.
+
 ```{r}
+# FIXME: Temporarily redirect inputs
 here <- function(...) fs::path("~/Downloads/mvp/pctr", ...)
+
 ecoinvent_co2 <- read_csv(here("02_input_data", "data_ecoinvent_co2.csv"))
 ecoinvent_co2 |> glimpse()
 
@@ -37,8 +34,9 @@ companies <- read_csv(here("02_input_data", "tilt_companies.csv"))
 companies |> glimpse()
 ```
 
-# C. Analysis
-## C.1. Introduction
+#  Analysis
+
+## 1. Introduction
 
 The Product Carbon Transition Risk measures the transition risk on the product-level of a company. The indicator is expressed in the percentage of all products that are at high risk, medium risk or low risk due to the products’ relative carbon footprint. The assessment is first performed on a product-level and can then be aggregated to the company-level.
 
@@ -65,9 +63,11 @@ The product carbon transition risk indicator consists of 2 main steps:
 
 
 
-## C.2. Calculate ranks per activity and assign scores
-### C.2.1. Calculate the rank of each activity
+## 2. Calculate ranks per activity and assign scores
+### 2.1. Calculate the rank of each activity
+
 This is done based on the activities' carbon footprint compared to 3 different benchmarks (all products, products with same unit, products with same unit and sector)
+
 ```{r}
 # rank in comparison to all products
 ecoinvent_ranks <- ecoinvent_co2 |>
@@ -88,8 +88,10 @@ ecoinvent_ranks <- ecoinvent_ranks |>
 ecoinvent_ranks |> glimpse()
 ```
 
-### C.2.2. Assign scores to the activities
+### 2.2. Assign scores to the activities
+
 This is done based on their position within the distribution of co2 footprints in comparison to different benchmarks. 
+
 ```{r}
 # creat variables for thresholds
 low_threshold <- 0.3
@@ -131,9 +133,12 @@ barplot(prop.table(table(ecoinvent_scores$score_unit)))
 barplot(prop.table(table(ecoinvent_scores$score_unit_sec)))
 ```
 
-## C.3. Calculate scores per company
-### C.3.1. Join dataset companies and ecoinvent_scores
+## 3. Calculate scores per company
+
+### 3.1. Join dataset companies and ecoinvent_scores
+
 This is needed required to combine company-level information with LCA info from ecoinvent.
+
 ```{r}
 # join by activity_product_uuid and other joint columns from companies with ecoinvent_scores
 companies_scores <- companies |> 
@@ -142,10 +147,11 @@ companies_scores <- companies |>
 companies_scores |> glimpse()
 ```
 
-### C.3.2. Caclulate the scores for each company
-This is done by calculating the share of products with each score. 
-```{r}
+### 3.2. Caclulate the scores for each company
 
+This is done by calculating the share of products with each score.
+
+```{r}
 # scores in comparison to all products
 scores_all <- companies_scores|>
   group_by(company_id, score_all) |>
@@ -177,8 +183,10 @@ scores_unit_sec <- companies_scores |>
 scores_unit_sec |> glimpse()
 ```
 
-### C.3.3. Create final dataset
+### 3.3. Create final dataset
+
 The final dataset should have three rows per company, i.e. one for each risk_group (low, medium, high) and one column each indicating the share of products in the respective risk groups for the three different benchmarks (all products, products with same unit, products with same unit and sector)
+
 ```{r}
 # create dataset sceleton
 dt_sceleton <- tibble(
@@ -199,7 +207,8 @@ pctr_output <- pctr_output |>
 pctr_output |> glimpse()
 ```
 
-## C.4. Vizualisation example
+## 4. Vizualisation example
+
 Let us plot the result for the company id "ebtor_00000005324899621837001".
 The score aggregated is the percentage of products of that company that are based on their carbon footprint in either low, medium or high transition risk, relatively 3 different benchmarks (all products, products with same unit, products with same unit and sector).
 
