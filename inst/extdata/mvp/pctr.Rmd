@@ -94,32 +94,35 @@ low_threshold <- 0.3
 high_threshold <- 0.7
 
 # assign scores to position within percentile distribution
-  # for all products
+# for all products
 ecoinvent_scores <- ecoinvent_ranks %>%
   mutate(
     score_all = case_when(
       perc_all < low_threshold ~ "low",
       perc_all >= low_threshold & perc_all < high_threshold ~ "medium",
       perc_all >= high_threshold ~ "high"
-  ))
+    )
+  )
 
-  # for products with same unit
+# for products with same unit
 ecoinvent_scores <- ecoinvent_scores %>%
   mutate(
     score_unit = case_when(
       perc_unit < low_threshold ~ "low",
       perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
       perc_unit >= low_threshold ~ "high"
-  ))
-  
-  # for products with same unit and sector
+    )
+  )
+
+# for products with same unit and sector
 ecoinvent_scores <- ecoinvent_scores %>%
   mutate(
     score_unit_sec = case_when(
       perc_unit_sec < low_threshold ~ "low",
       perc_unit_sec >= low_threshold & perc_unit_sec < high_threshold ~ "medium",
       perc_unit_sec >= high_threshold ~ "high",
-  ))
+    )
+  )
 
 ecoinvent_scores |> glimpse()
 
@@ -137,7 +140,7 @@ This is needed required to combine company-level information with LCA info from 
 
 ```{r}
 # join by activity_product_uuid and other joint columns from companies with ecoinvent_scores
-companies_scores <- companies |> 
+companies_scores <- companies |>
   inner_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
 
 companies_scores |> glimpse()
@@ -149,7 +152,7 @@ This is done by calculating the share of products with each score.
 
 ```{r}
 # scores in comparison to all products
-scores_all <- companies_scores|>
+scores_all <- companies_scores |>
   group_by(company_id, score_all) |>
   summarise(n_all = n()) |>
   mutate(share_all = n_all / sum(n_all)) |>
@@ -163,7 +166,7 @@ scores_unit <- companies_scores |>
   group_by(company_id, score_unit) |>
   summarise(n_unit = n()) |>
   mutate(share_unit = n_unit / sum(n_unit)) |>
-  select(-n_unit)|>
+  select(-n_unit) |>
   rename("score" = "score_unit")
 
 scores_unit |> glimpse()
@@ -172,8 +175,8 @@ scores_unit |> glimpse()
 scores_unit_sec <- companies_scores |>
   group_by(company_id, score_unit_sec) |>
   summarise(n_unit_sec = n()) |>
-  mutate(share_unit_sec = n_unit_sec / sum(n_unit_sec))|>
-  select(-n_unit_sec)|>
+  mutate(share_unit_sec = n_unit_sec / sum(n_unit_sec)) |>
+  select(-n_unit_sec) |>
   rename("score" = "score_unit_sec")
 
 scores_unit_sec |> glimpse()
@@ -190,7 +193,7 @@ dt_sceleton <- tibble(
   score = rep(c("high", "medium", "low"), 3),
 )
 
-# join scores with dt_sceleton so that each company is shown with 3 rows for low, medium, and high, even if the share is 0. 
+# join scores with dt_sceleton so that each company is shown with 3 rows for low, medium, and high, even if the share is 0.
 pctr_output <- dt_sceleton |>
   left_join(scores_all, by = c("company_id", "score")) |>
   left_join(scores_unit, by = c("company_id", "score")) |>
@@ -211,6 +214,4 @@ The score aggregated is the percentage of products of that company that are base
 To do: Create a function that shows the scores per benchmark for one example company, as Linda did in her pstr mvp. 
 
 ```{r}
-
 ```
-
