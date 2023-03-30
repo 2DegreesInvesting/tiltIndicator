@@ -31,7 +31,7 @@ companies <- pctr_companies |> glimpse()
 
 #  Analysis
 
-## 1. Introduction
+## Introduction
 
 The Product Carbon Transition Risk measures the transition risk on the product-level of a company. The indicator is expressed in the percentage of all products that are at high risk, medium risk or low risk due to the products’ relative carbon footprint. The assessment is first performed on a product-level and can then be aggregated to the company-level.
 
@@ -53,12 +53,12 @@ In this markdown file the aim is to prepare data so that they contain the follow
 
 The product carbon transition risk indicator consists of 2 main steps:
 
-    - Step 1: Calculating the relative carbon footprint per product
-    - Step 2: Aggregating on the company-level
+- Step 1: Calculate ranks per activity and assign scores
+- Step 2: Calculate scores per company
 
-## 2. Calculate ranks per activity and assign scores
+## 1: Calculate ranks per activity and assign scores
 
-### 2.1. Calculate the rank of each activity
+### Calculate the rank of each activity
 
 This is done based on the activities' carbon footprint compared to 3 different benchmarks (all products, products with same unit, products with same unit and sector)
 
@@ -82,7 +82,7 @@ ecoinvent_ranks <- ecoinvent_ranks |>
 ecoinvent_ranks
 ```
 
-### 2.2. Assign scores to the activities
+### Assign scores to the activities
 
 This is done based on their position within the distribution of co2 footprints in comparison to different benchmarks. 
 
@@ -130,9 +130,9 @@ barplot(prop.table(table(ecoinvent_scores$score_unit)))
 barplot(prop.table(table(ecoinvent_scores$score_unit_sec)))
 ```
 
-## 3. Calculate scores per company
+## 2: Calculate scores per company
 
-### 3.1. Join dataset companies and ecoinvent_scores
+### Join dataset companies and ecoinvent_scores
 
 This is needed required to combine company-level information with LCA info from ecoinvent.
 
@@ -144,7 +144,7 @@ companies_scores <- companies |>
 companies_scores
 ```
 
-### 3.2. Caclulate the scores for each company
+### Caclulate the scores for each company
 
 This is done by calculating the share of products with each score.
 
@@ -180,7 +180,7 @@ scores_unit_sec <- companies_scores |>
 scores_unit_sec
 ```
 
-### 3.3. Create final dataset
+### Create final dataset
 
 The final dataset should have three rows per company, i.e. one for each risk_group (low, medium, high) and one column each indicating the share of products in the respective risk groups for the three different benchmarks (all products, products with same unit, products with same unit and sector)
 
@@ -204,7 +204,7 @@ pctr_output <- pctr_output |>
 pctr_output
 ```
 
-## 4. Vizualisation example
+## Vizualisation
 
 Let us plot the result for the company id "ebtor_00000005324899621837001".
 The score aggregated is the percentage of products of that company that are based on their carbon footprint in either low, medium or high transition risk, relatively 3 different benchmarks (all products, products with same unit, products with same unit and sector).
