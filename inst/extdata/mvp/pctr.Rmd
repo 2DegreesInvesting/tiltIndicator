@@ -64,7 +64,7 @@ This is done based on the activities' carbon footprint compared to 3 different b
 
 ```{r}
 # rank in comparison to all products
-pctr_step1 <- function(ecoinvent_co2) {
+pctr_add_ranks <- function(ecoinvent_co2) {
   # FIXME: "perc" suggests "percent" but "proportion" seems more accurate. Also
   # if the main goal is to rank, then maybe the columns should use the prefix
   # `rank_*` instead. Or maybe the goal is not to calculate the ranks, in which
@@ -81,7 +81,7 @@ pctr_step1 <- function(ecoinvent_co2) {
     ungroup()
 }
 
-ecoinvent_ranks <- pctr_step1(ecoinvent_co2)
+ecoinvent_ranks <- pctr_add_ranks(ecoinvent_co2)
 ecoinvent_ranks
 ```
 
