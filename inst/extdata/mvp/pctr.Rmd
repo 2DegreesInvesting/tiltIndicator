@@ -68,6 +68,12 @@ same unit, products with same unit and sector)
 distribution of co2 footprints in comparison to different benchmarks.
 
 ```{r}
+pctr_score_activities <- function(ecoinvent_co2, low_threshold, high_threshold){
+  ecoinvent_co2 |> 
+    pctr_add_ranks() |> 
+    pctr_add_scores(low_threshold, high_threshold)
+}
+
 # rank in comparison to all products
 pctr_add_ranks <- function(ecoinvent_co2) {
   # FIXME: "perc" suggests "percent" but "proportion" seems more accurate. Also
