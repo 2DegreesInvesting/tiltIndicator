@@ -53,10 +53,10 @@ In this markdown file the aim is to prepare data so that they contain the follow
 
 The product carbon transition risk indicator consists of 2 main steps:
 
-- Step 1: Calculate ranks per activity and assign scores
-- Step 2: Calculate scores per company
+- Step 1: Score activities
+- Step 2: Score companies
 
-## 1: Calculate ranks per activity and assign scores
+## 1: Score activities
 
 ### Calculate the rank of each activity
 
@@ -133,7 +133,7 @@ barplot(prop.table(table(ecoinvent_scores$score_unit)))
 barplot(prop.table(table(ecoinvent_scores$score_unit_sec)))
 ```
 
-## 2: Calculate scores per company
+## 2: Score companies
 
 The final dataset should have three rows per company, i.e. one for each
 risk_group (low, medium, high) and one column each indicating the share of
