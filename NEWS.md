@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9012
+
+* Add pctr (@Tilmon, #56)
+
 # tiltIndicator 0.0.0.9011
 
 * FIX: The article pstr now shows the expected content (#52).
