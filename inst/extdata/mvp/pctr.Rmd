@@ -146,7 +146,7 @@ Intermediate steps:
 * Calculate the share of products with each score.
 
 ```{r}
-pctr_step2 <- function(companies, ecoinvent_scores) {
+pctr_score_companies <- function(companies, ecoinvent_scores) {
   # join by activity_product_uuid and other joint columns from companies with ecoinvent_scores
   companies_scores <- companies |>
     inner_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
@@ -194,6 +194,6 @@ pctr_step2 <- function(companies, ecoinvent_scores) {
     replace(is.na(pctr_output), 0)
 }
 
-pctr_output <- pctr_step2(companies, ecoinvent_scores)
+pctr_output <- pctr_score_companies(companies, ecoinvent_scores)
 pctr_output
 ```
