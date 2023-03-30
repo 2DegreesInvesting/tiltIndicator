@@ -81,7 +81,7 @@ ecoinvent_ranks <- ecoinvent_ranks |>
   mutate(perc_unit_sec = rank(co2_footprint) / length(co2_footprint)) %>%
   ungroup()
 
-ecoinvent_ranks |> glimpse()
+ecoinvent_ranks
 ```
 
 ### 2.2. Assign scores to the activities
@@ -124,7 +124,7 @@ ecoinvent_scores <- ecoinvent_scores %>%
     )
   )
 
-ecoinvent_scores |> glimpse()
+ecoinvent_scores
 
 # show distributions
 barplot(prop.table(table(ecoinvent_scores$score_all)))
@@ -143,7 +143,7 @@ This is needed required to combine company-level information with LCA info from 
 companies_scores <- companies |>
   inner_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
 
-companies_scores |> glimpse()
+companies_scores
 ```
 
 ### 3.2. Caclulate the scores for each company
@@ -159,7 +159,7 @@ scores_all <- companies_scores |>
   select(-n_all) |>
   rename("score" = "score_all")
 
-scores_all |> glimpse()
+scores_all
 
 # scores in comparison to products with same unit
 scores_unit <- companies_scores |>
@@ -169,7 +169,7 @@ scores_unit <- companies_scores |>
   select(-n_unit) |>
   rename("score" = "score_unit")
 
-scores_unit |> glimpse()
+scores_unit
 
 # scores in comparison to products with same unit and sector
 scores_unit_sec <- companies_scores |>
@@ -179,7 +179,7 @@ scores_unit_sec <- companies_scores |>
   select(-n_unit_sec) |>
   rename("score" = "score_unit_sec")
 
-scores_unit_sec |> glimpse()
+scores_unit_sec
 ```
 
 ### 3.3. Create final dataset
@@ -203,7 +203,7 @@ pctr_output <- dt_sceleton |>
 pctr_output <- pctr_output |>
   replace(is.na(pctr_output), 0)
 
-pctr_output |> glimpse()
+pctr_output
 ```
 
 ## 4. Vizualisation example
