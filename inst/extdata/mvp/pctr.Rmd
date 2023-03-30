@@ -65,7 +65,7 @@ This is done based on the activities' carbon footprint compared to 3 different b
 ```{r}
 # FIXME: "perc" suggests "percent" but "proportion" seems more accurate
 # rank in comparison to all products
-pctr_add_perc <- function(ecoinvent_co2) {
+pctr_add_ranks <- function(ecoinvent_co2) {
   ecoinvent_co2 |>
     mutate(perc_all = rank(co2_footprint) / length(co2_footprint)) |> 
     # rank in comparison to all products with same unit
@@ -78,7 +78,7 @@ pctr_add_perc <- function(ecoinvent_co2) {
     ungroup()
 }
 
-ecoinvent_ranks <- pctr_add_perc(ecoinvent_co2)
+ecoinvent_ranks <- pctr_add_ranks(ecoinvent_co2)
 ecoinvent_ranks
 ```
 
