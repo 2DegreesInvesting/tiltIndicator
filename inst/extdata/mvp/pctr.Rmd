@@ -121,16 +121,16 @@ pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
     )
 }
 
-ecoinvent_scores <- ecoinvent_co2 |> 
+scored_activities <- ecoinvent_co2 |> 
   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7)
 ```
 
 Show distributions
 
 ```{r}
-barplot(prop.table(table(ecoinvent_scores$score_all)))
-barplot(prop.table(table(ecoinvent_scores$score_unit)))
-barplot(prop.table(table(ecoinvent_scores$score_unit_sec)))
+barplot(prop.table(table(scored_activities$score_all)))
+barplot(prop.table(table(scored_activities$score_unit)))
+barplot(prop.table(table(scored_activities$score_unit_sec)))
 ```
 
 ## Score companies
@@ -146,10 +146,10 @@ Intermediate steps:
 * Calculate the share of products with each score.
 
 ```{r}
-pctr_score_companies <- function(companies, ecoinvent_scores) {
-  # join by activity_product_uuid and other joint columns from companies with ecoinvent_scores
+pctr_score_companies <- function(companies, scored_activities) {
+  # join by activity_product_uuid and other joint columns from companies with scored_activities
   companies_scores <- companies |>
-    inner_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
+    inner_join(scored_activities, by = c("activity_product_uuid", "ei_activity", "unit"))
   
   
   
@@ -184,16 +184,16 @@ pctr_score_companies <- function(companies, ecoinvent_scores) {
   )
   
   # join scores with dt_sceleton so that each company is shown with 3 rows for low, medium, and high, even if the share is 0.
-  pctr_output <- dt_sceleton |>
+  scored_companies <- dt_sceleton |>
     left_join(scores_all, by = c("company_id", "score")) |>
     left_join(scores_unit, by = c("company_id", "score")) |>
     left_join(scores_unit_sec, by = c("company_id", "score"))
   
   # replace NAs with 0
-  pctr_output <- pctr_output |>
-    replace(is.na(pctr_output), 0)
+  scored_companies <- scored_companies |>
+    replace(is.na(scored_companies), 0)
 }
 
-pctr_output <- pctr_score_companies(companies, ecoinvent_scores)
-pctr_output
+scored_companies <- pctr_score_companies(companies, scored_activities)
+scored_companies
 ```

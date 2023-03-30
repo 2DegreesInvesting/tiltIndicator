@@ -1,4 +1,4 @@
-# `ecoinvent_scores` remains the same
+# `scored_activities` remains the same
 
     Code
       out
@@ -424,7 +424,7 @@
       25         medium
       
 
-# `pctr_output` remains the same
+# `scored_companies` remains the same
 
     Code
       out
