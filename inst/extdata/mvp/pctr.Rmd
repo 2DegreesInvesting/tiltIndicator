@@ -56,11 +56,16 @@ The product carbon transition risk indicator consists of 2 main steps:
 - Step 1: Score activities
 - Step 2: Score companies
 
-## 1: Score activities
+## Score activities
 
-### Calculate the rank of each activity
+Sub-steps:
 
-This is done based on the activities' carbon footprint compared to 3 different benchmarks (all products, products with same unit, products with same unit and sector)
+* Calculate the rank of each activity: This is done based on the activities'
+carbon footprint compared to 3 different benchmarks (all products, products with
+same unit, products with same unit and sector)
+
+* Assign scores to the activities: This is done based on their position within the
+distribution of co2 footprints in comparison to different benchmarks.
 
 ```{r}
 # rank in comparison to all products
@@ -81,15 +86,6 @@ pctr_add_ranks <- function(ecoinvent_co2) {
     ungroup()
 }
 
-ecoinvent_ranks <- pctr_add_ranks(ecoinvent_co2)
-ecoinvent_ranks
-```
-
-### Assign scores to the activities
-
-This is done based on their position within the distribution of co2 footprints in comparison to different benchmarks. 
-
-```{r}
 # assign scores to position within percentile distribution
 # for all products
 pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
@@ -118,6 +114,11 @@ pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
       )
     )
 }
+```
+
+```{r}
+ecoinvent_ranks <- pctr_add_ranks(ecoinvent_co2)
+ecoinvent_ranks
 
 ecoinvent_scores <- ecoinvent_ranks |> 
   pctr_add_scores(low_threshold = 0.3, high_threshold = 0.7)
@@ -133,7 +134,7 @@ barplot(prop.table(table(ecoinvent_scores$score_unit)))
 barplot(prop.table(table(ecoinvent_scores$score_unit_sec)))
 ```
 
-## 2: Score companies
+## Score companies
 
 The final dataset should have three rows per company, i.e. one for each
 risk_group (low, medium, high) and one column each indicating the share of
