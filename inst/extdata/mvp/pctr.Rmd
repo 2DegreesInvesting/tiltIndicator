@@ -58,9 +58,8 @@ The product carbon transition risk indicator consists of 2 main steps:
     - Step 1: Calculating the relative carbon footprint per product
     - Step 2: Aggregating on the company-level
 
-
-
 ## 2. Calculate ranks per activity and assign scores
+
 ### 2.1. Calculate the rank of each activity
 
 This is done based on the activities' carbon footprint compared to 3 different benchmarks (all products, products with same unit, products with same unit and sector)
