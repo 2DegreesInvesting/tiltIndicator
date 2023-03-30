@@ -18,19 +18,16 @@ Packages
 
 ```{r}
 library(dplyr, warn.conflicts = FALSE)
-library(readr)
+library(tiltIndicator)
 ```
 
-Data.
+The tiltIndicator package comes with example datasets.
 
 ```{r}
-# FIXME: Temporarily redirect inputs
-here <- function(...) fs::path("~/Downloads/mvp/pctr", ...)
-
-ecoinvent_co2 <- read_csv(here("02_input_data", "data_ecoinvent_co2.csv"))
+ecoinvent_co2 <- tiltIndicator::pctr_ecoinvent_co2
 ecoinvent_co2 |> glimpse()
 
-companies <- read_csv(here("02_input_data", "tilt_companies.csv"))
+companies <- tiltIndicator::pctr_companies
 companies |> glimpse()
 ```
 

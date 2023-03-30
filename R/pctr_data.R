@@ -2,8 +2,8 @@
 #'
 #' @source TODO add source
 #' @examples
-#' pctr_ecoinvent_c02
-"pctr_ecoinvent_c02"
+#' pctr_ecoinvent_co2
+"pctr_ecoinvent_co2"
 
 #' TODO add title
 #'
