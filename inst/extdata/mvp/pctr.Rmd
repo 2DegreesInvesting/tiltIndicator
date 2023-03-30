@@ -198,13 +198,3 @@ pctr_output <- pctr_output |>
 
 pctr_output
 ```
-
-## Vizualisation
-
-Let us plot the result for the company id "ebtor_00000005324899621837001".
-The score aggregated is the percentage of products of that company that are based on their carbon footprint in either low, medium or high transition risk, relatively 3 different benchmarks (all products, products with same unit, products with same unit and sector).
-
-To do: Create a function that shows the scores per benchmark for one example company, as Linda did in her pstr mvp. 
-
-```{r}
-```
