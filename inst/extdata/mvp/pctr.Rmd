@@ -53,11 +53,10 @@ In this markdown file the aim is to prepare data so that they contain the follow
 
 The product carbon transition risk indicator consists of 2 main steps:
 
-- Step 1: Score activities
-- Step 2: Score companies
+1. Score activities.
+2. Score companies.
 
 ## Score activities
-
 
 ```{r echo=FALSE}
 pctr_score_activities <- function(ecoinvent_co2, low_threshold, high_threshold){
