@@ -64,18 +64,20 @@ This is done based on the activities' carbon footprint compared to 3 different b
 
 ```{r}
 # rank in comparison to all products
-ecoinvent_ranks <- ecoinvent_co2 |>
-  mutate(perc_all = rank(co2_footprint) / length(co2_footprint)) |> 
-  # rank in comparison to all products with same unit
-  group_by(unit) |>
-  mutate(perc_unit = rank(co2_footprint) / length(co2_footprint)) %>%
-  ungroup() |> 
-  # rank in comparison to all products with same unit and sector
-  group_by(unit, sec) |>
-  mutate(perc_unit_sec = rank(co2_footprint) / length(co2_footprint)) %>%
-  ungroup()
+pctr_rank_co2_footprint <- function(ecoinvent_co2) {
+  ecoinvent_ranks <- ecoinvent_co2 |>
+    mutate(perc_all = rank(co2_footprint) / length(co2_footprint)) |> 
+    # rank in comparison to all products with same unit
+    group_by(unit) |>
+    mutate(perc_unit = rank(co2_footprint) / length(co2_footprint)) %>%
+    ungroup() |> 
+    # rank in comparison to all products with same unit and sector
+    group_by(unit, sec) |>
+    mutate(perc_unit_sec = rank(co2_footprint) / length(co2_footprint)) %>%
+    ungroup()
+}
 
-ecoinvent_ranks
+ecoinvent_ranks <- pctr_rank_co2_footprint(ecoinvent_co2)
 ```
 
 ### Assign scores to the activities
