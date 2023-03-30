@@ -14,19 +14,15 @@ knitr::opts_chunk$set(
 
 # Setup
 
-Packages
+The tiltIndicator package comes with example datasets for the PCTR indicator.
 
 ```{r}
 library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
-```
 
-The tiltIndicator package comes with example datasets for the PCTR indicator.
+ecoinvent_co2 <- glimpse(pctr_ecoinvent_co2)
 
-```{r}
-ecoinvent_co2 <- pctr_ecoinvent_co2 |> glimpse()
-
-companies <- pctr_companies |> glimpse()
+companies <- glimpse(pctr_companies)
 ```
 
 #  Analysis
