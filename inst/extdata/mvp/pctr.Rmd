@@ -120,14 +120,6 @@ pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
       )
     )
 }
-```
-
-```{r}
-ecoinvent_ranks <- pctr_add_ranks(ecoinvent_co2)
-ecoinvent_ranks
-
-# ecoinvent_scores <- ecoinvent_ranks |> 
-#   pctr_add_scores(low_threshold = 0.3, high_threshold = 0.7)
 
 ecoinvent_scores <- ecoinvent_co2 |> 
   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7)
