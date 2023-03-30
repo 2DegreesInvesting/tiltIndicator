@@ -140,7 +140,7 @@ products, products with same unit, products with same unit and sector).
 # Intermediate steps:
 # * Combine company-level information with LCA info from ecoinvent.
 # * Calculate the share of products with each score.
-pctr_score_companies <- function(companies, scored_activities) {
+pctr_score_companies <- function(scored_activities, companies) {
   # join by activity_product_uuid and other joint columns from companies with scored_activities
   companies_scores <- companies |>
     inner_join(scored_activities, by = c("activity_product_uuid", "ei_activity", "unit"))
@@ -188,7 +188,7 @@ pctr_score_companies <- function(companies, scored_activities) {
 ```
 
 ```{r}
-scored_companies <- pctr_score_companies(companies, scored_activities)
+scored_companies <- pctr_score_companies(scored_activities, companies)
 
 scored_companies
 ```
