@@ -123,8 +123,11 @@ ecoinvent_scores <- ecoinvent_scores %>%
   )
 
 ecoinvent_scores
+```
 
-# show distributions
+Show distributions
+
+```{r}
 barplot(prop.table(table(ecoinvent_scores$score_all)))
 barplot(prop.table(table(ecoinvent_scores$score_unit)))
 barplot(prop.table(table(ecoinvent_scores$score_unit_sec)))
