@@ -90,36 +90,37 @@ ecoinvent_ranks
 This is done based on their position within the distribution of co2 footprints in comparison to different benchmarks. 
 
 ```{r}
-# creat variables for thresholds
-low_threshold <- 0.3
-high_threshold <- 0.7
-
 # assign scores to position within percentile distribution
 # for all products
-ecoinvent_scores <- ecoinvent_ranks %>%
-  mutate(
-    score_all = case_when(
-      perc_all < low_threshold ~ "low",
-      perc_all >= low_threshold & perc_all < high_threshold ~ "medium",
-      perc_all >= high_threshold ~ "high"
+pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
+  ecoinvent_ranks %>%
+    mutate(
+      score_all = case_when(
+        perc_all < low_threshold ~ "low",
+        perc_all >= low_threshold & perc_all < high_threshold ~ "medium",
+        perc_all >= high_threshold ~ "high"
+      )
+    ) |> 
+    # for products with same unit
+    mutate(
+      score_unit = case_when(
+        perc_unit < low_threshold ~ "low",
+        perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
+        perc_unit >= low_threshold ~ "high"
+      )
+    ) |> 
+    # for products with same unit and sector
+    mutate(
+      score_unit_sec = case_when(
+        perc_unit_sec < low_threshold ~ "low",
+        perc_unit_sec >= low_threshold & perc_unit_sec < high_threshold ~ "medium",
+        perc_unit_sec >= high_threshold ~ "high",
+      )
     )
-  ) |> 
-  # for products with same unit
-  mutate(
-    score_unit = case_when(
-      perc_unit < low_threshold ~ "low",
-      perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
-      perc_unit >= low_threshold ~ "high"
-    )
-  ) |> 
-  # for products with same unit and sector
-  mutate(
-    score_unit_sec = case_when(
-      perc_unit_sec < low_threshold ~ "low",
-      perc_unit_sec >= low_threshold & perc_unit_sec < high_threshold ~ "medium",
-      perc_unit_sec >= high_threshold ~ "high",
-    )
-  )
+}
+
+ecoinvent_scores <- ecoinvent_ranks |> 
+  pctr_add_scores(low_threshold = 0.3, high_threshold = 0.7)
 
 ecoinvent_scores
 ```
@@ -134,23 +135,25 @@ barplot(prop.table(table(ecoinvent_scores$score_unit_sec)))
 
 ## 2: Calculate scores per company
 
-### Join dataset companies and ecoinvent_scores
+### Caclulate the scores for each company
 
-This is needed required to combine company-level information with LCA info from ecoinvent.
+The final dataset should have three rows per company, i.e. one for each
+risk_group (low, medium, high) and one column each indicating the share of
+products in the respective risk groups for the three different benchmarks (all
+products, products with same unit, products with same unit and sector).
+
+Intermediate steps:
+
+* Combine company-level information with LCA info from ecoinvent.
+* Calculate the share of products with each score.
 
 ```{r}
 # join by activity_product_uuid and other joint columns from companies with ecoinvent_scores
 companies_scores <- companies |>
   inner_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
 
-companies_scores
-```
 
-### Caclulate the scores for each company
 
-This is done by calculating the share of products with each score.
-
-```{r}
 # scores in comparison to all products
 scores_all <- companies_scores |>
   group_by(company_id, score_all) |>
@@ -158,8 +161,6 @@ scores_all <- companies_scores |>
   mutate(share_all = n_all / sum(n_all)) |>
   select(-n_all) |>
   rename("score" = "score_all")
-
-scores_all
 
 # scores in comparison to products with same unit
 scores_unit <- companies_scores |>
@@ -169,8 +170,6 @@ scores_unit <- companies_scores |>
   select(-n_unit) |>
   rename("score" = "score_unit")
 
-scores_unit
-
 # scores in comparison to products with same unit and sector
 scores_unit_sec <- companies_scores |>
   group_by(company_id, score_unit_sec) |>
@@ -179,14 +178,6 @@ scores_unit_sec <- companies_scores |>
   select(-n_unit_sec) |>
   rename("score" = "score_unit_sec")
 
-scores_unit_sec
-```
-
-### Create final dataset
-
-The final dataset should have three rows per company, i.e. one for each risk_group (low, medium, high) and one column each indicating the share of products in the respective risk groups for the three different benchmarks (all products, products with same unit, products with same unit and sector)
-
-```{r}
 # create dataset sceleton
 dt_sceleton <- tibble(
   company_id = rep(unique(companies_scores$company_id), each = 3),
