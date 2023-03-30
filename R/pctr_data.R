@@ -11,4 +11,3 @@
 #' @examples
 #' pctr_companies
 "pctr_companies"
-
