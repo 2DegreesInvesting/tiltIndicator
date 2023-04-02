@@ -1,7 +1,78 @@
-# hasn't changed
+# `pstr_companies` hasn't changed
 
     Code
-      format_robust_snapshot(ep_weo)
+      format_robust_snapshot(pstr_companies)
+    Output
+      [[1]]
+         company_id
+      1           1
+      2           2
+      3           3
+      4           4
+      5           5
+      6           6
+      7           7
+      8           8
+      9           9
+      10         10
+      
+      [[2]]
+               company_name
+      1       Peasant Peter
+      2       Peasant Peter
+      3       Peasant Peter
+      4        Peasant Paul
+      5   Tom's Car Company
+      6   Tom's Car Company
+      7  Screwdriver Expert
+      8  Screwdriver Expert
+      9   John Meier's Cars
+      10  John Meier's Cars
+      
+      [[3]]
+                      products
+      1                 screws
+      2        aluminium_alloy
+      3       ultrafilstration
+      4            frozen_food
+      5                   oils
+      6                  bolts
+      7                 chucks
+      8        adaptator_plate
+      9  disinfection_products
+      10      ultrafilstration
+      
+      [[4]]
+                             sector
+      1  steel_metal_transformation
+      2                steel_metals
+      3                        cars
+      4                 frozen_food
+      5                        cars
+      6  steel_metal_transformation
+      7  steel_metal_transformation
+      8  steel_metal_transformation
+      9                        cars
+      10                       cars
+      
+      [[5]]
+                            subsector
+      1     bending_steels_and_metals
+      2              aluminium_alloys
+      3  vehicle_maintenance_products
+      4                 cheese_slicer
+      5                   automobiles
+      6     bending_steels_and_metals
+      7      boring_steels_and_metals
+      8      boring_steels_and_metals
+      9  vehicle_maintenance_products
+      10 vehicle_maintenance_products
+      
+
+# `pstr_ep_weo` hasn't changed
+
+    Code
+      format_robust_snapshot(pstr_ep_weo)
     Output
       [[1]]
                                   EP_categories_id
@@ -818,5 +889,121 @@
       131 Road passenger light duty vehicle
       132 Road passenger light duty vehicle
       133                    Iron and steel
+      
+
+# `pstr_weo_2022` hasn't changed
+
+    Code
+      format_robust_snapshot(pstr_weo_2022)
+    Output
+      [[1]]
+                      publication
+      1 World Energy Outlook 2021
+      2 World Energy Outlook 2021
+      3 World Energy Outlook 2021
+      4 World Energy Outlook 2021
+      5 World Energy Outlook 2021
+      6 World Energy Outlook 2021
+      7 World Energy Outlook 2021
+      8 World Energy Outlook 2021
+      
+      [[2]]
+                                   scenario
+      1            Stated Policies Scenario
+      2 Net Zero Emissions by 2050 Scenario
+      3 Net Zero Emissions by 2050 Scenario
+      4 Net Zero Emissions by 2050 Scenario
+      5            Stated Policies Scenario
+      6 Net Zero Emissions by 2050 Scenario
+      7 Net Zero Emissions by 2050 Scenario
+      8 Net Zero Emissions by 2050 Scenario
+      
+      [[3]]
+        region
+      1  world
+      2  world
+      3  world
+      4  world
+      5  world
+      6  world
+      7  world
+      8  world
+      
+      [[4]]
+              category
+      1 co2 combustion
+      2 co2 combustion
+      3 co2 combustion
+      4 co2 combustion
+      5 co2 combustion
+      6 co2 combustion
+      7 co2 combustion
+      8 co2 combustion
+      
+      [[5]]
+        product
+      1   Total
+      2   Total
+      3   Total
+      4   Total
+      5   Total
+      6   Total
+      7   Total
+      8   Total
+      
+      [[6]]
+                                     flow
+      1 Road passenger light duty vehicle
+      2 Road passenger light duty vehicle
+      3 Road passenger light duty vehicle
+      4 Road passenger light duty vehicle
+      5                    Iron and steel
+      6                    Iron and steel
+      7                    Iron and steel
+      8                    Iron and steel
+      
+      [[7]]
+          unit
+      1 mt co2
+      2 mt co2
+      3 mt co2
+      4 mt co2
+      5 mt co2
+      6 mt co2
+      7 mt co2
+      8 mt co2
+      
+      [[8]]
+        year
+      1 2020
+      2 2030
+      3 2040
+      4 2050
+      5 2020
+      6 2030
+      7 2040
+      8 2050
+      
+      [[9]]
+           value
+      1  2787.63
+      2  1626.32
+      3   546.54
+      4    84.56
+      5  2590.57
+      6   194.53
+      7 10122.90
+      8  7426.46
+      
+      [[10]]
+        reductions
+      1       0.00
+      2      41.66
+      3      80.39
+      4      96.97
+      5       0.00
+      6      31.35
+      7      66.86
+      8      91.49
       
 
