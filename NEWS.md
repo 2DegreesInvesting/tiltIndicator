@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9013
+
+* New `pctr_*()` family of functions and datasets (#60, #61).
+
 # tiltIndicator 0.0.0.9012
 
 * Add pctr (@Tilmon, #56)
