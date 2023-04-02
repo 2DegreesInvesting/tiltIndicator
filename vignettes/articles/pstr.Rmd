@@ -70,7 +70,7 @@ those that cannot be matched to one of the sectors, we classify them as ‘Other
 We join this on the sectors and subsectors columns.
 
 ```{r}
-with_reductions <- pstr_companies |> 
+with_reductions <- pstr_companies |>
   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022)
 
 with_reductions

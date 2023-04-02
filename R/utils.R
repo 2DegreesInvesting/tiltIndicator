@@ -33,7 +33,6 @@ mvp_paths <- function(pattern = NULL) {
 #' @export
 #' @examples
 #' use_refactoring_checklist()
-
 use_refactoring_checklist <- function() {
   glue::glue("
   - [ ] Confirm the data is public.
@@ -59,4 +58,3 @@ use_refactoring_checklist <- function() {
   - [ ] Refactor: Move mvp to article.
   ")
 }
-
