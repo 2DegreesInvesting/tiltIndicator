@@ -6,11 +6,11 @@ reference:
 
   - title: Datasets for product sector transition risk
     contents:
-      - has_concept("datasets for product sector transition risk.")
+      - has_concept("datasets for product sector transition risk")
 
   - title: Datasets for product carbon transition risk
     contents:
-      - has_concept("datasets for product carbon transition risk.")
+      - has_concept("datasets for product carbon transition risk")
 
   - title: Developer-oriented functions
     contents:
@@ -18,5 +18,5 @@ reference:
 
   - title: Other fucntions
     contents:
-      - -has_concept("datasets for product sector transition risk.")
+      - -has_concept("datasets for product sector transition risk")
       - -has_concept("developer-oriented functions")
