@@ -13,7 +13,7 @@ pstr_aggregate_scores(with_transition_risk, companies)
 \item{companies}{A \code{companies} dataframe like \code{\link{companies}}.}
 }
 \value{
-A data frame with the columns :
+A data frame with the columns:
 \itemize{
 \item \code{company_name}
 \item \code{transition_risk}
@@ -23,8 +23,8 @@ A data frame with the columns :
 }
 }
 \description{
-\code{pstr_aggregated_scores()} calculates on a company-level
-the percentage of products that are in low / medium / high transition risk.
+Calculates on a company-level the percentage of products that are in low /
+medium / high transition risk.
 }
 \examples{
 pstr_companies |>
