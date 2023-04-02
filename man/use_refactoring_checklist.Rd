@@ -4,11 +4,7 @@
 \alias{use_refactoring_checklist}
 \title{Create a task list that you can paste on a GitHub issue and follow up}
 \usage{
-use_refactoring_checklist(indicator)
-}
-\arguments{
-\item{indicator}{Character. The indicator abbreviation, e.g. for
-"product-carbon-transition-risk" use "pstr".}
+use_refactoring_checklist()
 }
 \value{
 Character. A checklist you can paste on a GitHub issue.
@@ -17,6 +13,6 @@ Character. A checklist you can paste on a GitHub issue.
 Create a task list that you can paste on a GitHub issue and follow up
 }
 \examples{
-use_refactoring_checklist("pstr")
+use_refactoring_checklist()
 }
 \keyword{internal}
