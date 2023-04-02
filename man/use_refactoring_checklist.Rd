@@ -19,9 +19,4 @@ Create a task list that you can paste on a GitHub issue and follow up
 \examples{
 use_refactoring_checklist("pstr")
 }
-\seealso{
-Other internals: 
-\code{\link{mvp_path}()},
-\code{\link{render_to_list}()}
-}
-\concept{internals}
+\keyword{internal}
