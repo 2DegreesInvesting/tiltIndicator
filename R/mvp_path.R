@@ -22,7 +22,8 @@
 #' try(mvp_path("inexistent.file"))
 mvp_path <- function(path) {
   system.file(
-    "extdata", "mvp", path, package = "tiltIndicator", mustWork = TRUE
+    "extdata", "mvp", path,
+    package = "tiltIndicator", mustWork = TRUE
   )
 }
 
