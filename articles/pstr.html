@@ -169,7 +169,8 @@ sector. For those that cannot be matched to one of the sectors, we
 classify them as ‘Other’.</p>
 <p>We join this on the sectors and subsectors columns.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">with_reductions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">ep_weo</span>, <span class="va">weo_2022</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">with_reductions</span> <span class="op">&lt;-</span> <span class="va">pstr_companies</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">pstr_ep_weo</span>, <span class="va">pstr_weo_2022</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">with_reductions</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 17</span></span></span>

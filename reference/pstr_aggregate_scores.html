@@ -95,10 +95,10 @@ the percentage of products that are in low / medium / high transition risk.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">ep_weo</span>, <span class="va">weo_2022</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">pstr_companies</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">pstr_ep_weo</span>, <span class="va">pstr_weo_2022</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="pstr_add_transition_risk.html">pstr_add_transition_risk</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu">pstr_aggregate_scores</span><span class="op">(</span><span class="va">companies</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">pstr_aggregate_scores</span><span class="op">(</span><span class="va">pstr_companies</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 19 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Groups:   company_name, transition_risk, scenario, year [19]</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    company_name       transition_risk scenario             year score_aggregated</span>
