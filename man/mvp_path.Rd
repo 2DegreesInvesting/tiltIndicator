@@ -31,9 +31,4 @@ mvp_path("pstr.Rmd")
 try(mvp_path())
 try(mvp_path("inexistent.file"))
 }
-\seealso{
-Other internals: 
-\code{\link{render_to_list}()},
-\code{\link{use_refactoring_checklist}()}
-}
-\concept{internals}
+\keyword{internal}

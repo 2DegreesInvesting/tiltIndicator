@@ -19,7 +19,3 @@ reference:
   - title: PCTR functions
     contents:
       - has_concept("PCTR functions")
-
-  - title: Internals
-    contents:
-      - has_concept("internals")
