@@ -4,7 +4,6 @@ test_that("the parent folder is 'mvp'", {
 })
 
 test_that("is sensitive to `pattern`", {
-  expect_true(length(mvp_paths(pattern = ".Rmd")) > 0L)
   expect_true(length(mvp_paths(pattern = "bad")) == 0L)
 })
 

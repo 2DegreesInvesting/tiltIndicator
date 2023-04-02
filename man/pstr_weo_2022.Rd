@@ -16,6 +16,9 @@ pstr_weo_2022
 \item TODO: Where does it come from and what wrangling did you do?
 }
 }
+\examples{
+pstr_weo_2022
+}
 \seealso{
 Other PSTR datasets: 
 \code{\link{pstr_companies}},

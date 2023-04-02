@@ -17,6 +17,9 @@ pstr_companies
 \item FIXME: Rename to match existing tiltData, e.g. \code{company_id} -> \code{companies_id}
 }
 }
+\examples{
+pstr_companies
+}
 \seealso{
 Other PSTR datasets: 
 \code{\link{pstr_ep_weo}},

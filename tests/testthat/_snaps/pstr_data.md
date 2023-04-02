@@ -1,7 +1,7 @@
 # `companies` hasn't changed
 
     Code
-      format_robust_snapshot(companies)
+      format_robust_snapshot(pstr_companies)
     Output
       [[1]]
          company_id
@@ -72,7 +72,7 @@
 # `ep_weo` hasn't changed
 
     Code
-      format_robust_snapshot(ep_weo)
+      format_robust_snapshot(pstr_ep_weo)
     Output
       [[1]]
                                   EP_categories_id
@@ -894,7 +894,7 @@
 # `weo_2022` hasn't changed
 
     Code
-      format_robust_snapshot(weo_2022)
+      format_robust_snapshot(pstr_weo_2022)
     Output
       [[1]]
                       publication

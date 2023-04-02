@@ -5,9 +5,9 @@
 #'
 #' @family PSTR datasets
 #'
-#' @examples
 #' @aliases companies
-#' companies
+#' @examples
+#' pstr_companies
 "pstr_companies"
 
 #' A bridge between sector and subsectors in europages and in `weo_2022`.
@@ -19,9 +19,9 @@
 #'
 #' @family PSTR datasets
 #'
-#' @examples
 #' @aliases ep_weo
-#' ep_weo
+#' @examples
+#' pstr_ep_weo
 "pstr_ep_weo"
 
 #' A dataset with scenario, year, product and reductions information
@@ -30,7 +30,7 @@
 #'
 #' @family PSTR datasets
 #'
-#' @examples
 #' @aliases weo_2022
-#' weo_2022
+#' @examples
+#' pstr_weo_2022
 "pstr_weo_2022"

@@ -19,6 +19,9 @@ the prefix "ep_" makes it more compatible with tiltData and makes it easier
 to join.
 }
 }
+\examples{
+pstr_ep_weo
+}
 \seealso{
 Other PSTR datasets: 
 \code{\link{pstr_companies}},
