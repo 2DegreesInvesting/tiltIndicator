@@ -6,7 +6,7 @@ reference:
 
   - title: Datasets for product sector transition risk (PSTR)
     contents:
-      - has_concept("datasets for product sector transition risk.")
+      - has_concept("datasets for product sector transition risk")
 
   - title: Functions for product sector transition risk  (PSTR)
     contents:
@@ -23,4 +23,3 @@ reference:
   - title: Developer-oriented functions
     contents:
       - has_concept("developer-oriented functions")
-

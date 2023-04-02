@@ -22,9 +22,9 @@ to join.
 ep_weo
 }
 \seealso{
-Other datasets for product sector transition risk.: 
+Other datasets for product sector transition risk: 
 \code{\link{companies}},
 \code{\link{weo_2022}}
 }
-\concept{datasets for product sector transition risk.}
+\concept{datasets for product sector transition risk}
 \keyword{datasets}
