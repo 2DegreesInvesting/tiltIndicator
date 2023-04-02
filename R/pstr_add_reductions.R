@@ -1,18 +1,16 @@
 #' Add the emission reduction targets to the companies dataset
 #'
-#' `pstr_add_reductions()` joins the `ep_weo`and `weo_2022` datasets
-#' to the `companies` dataset to add the emission reduction values for
-#' each company's product(s).
+#' Adds the emission reduction values for each company's product(s).
 #'
-#' @param companies A `companies` dataframe like [`companies`].
-#' @param ep_weo A `ep_weo` dataframe like [`ep_weo`].
-#' @param weo_2022 A `weo_2022` dataframe like [`weo_2022`].
+#' @param companies A [data.frame] like [pstr_companies].
+#' @param ep_weo A [data.frame] like [pstr_ep_weo].
+#' @param weo_2022 A [data.frame] like [pstr_weo_2022].
 #'
 #' @family PSTR functions
 #'
 #' @return A dataframe with:
 #'   * All the columns from the `companies` dataset.
-#'   * New columns :
+#'   * New columns:
 #'       * All the columns from the `ep_weo` dataset, but the columns
 #'       `EP_sector` and `EP_subsector` are named `sector` and `subsector`
 #'       respectively.
@@ -23,8 +21,8 @@
 #' @export
 #'
 #' @examples
-#' companies |>
-#'   pstr_add_reductions(ep_weo, weo_2022)
+#' pstr_companies |>
+#'   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022)
 pstr_add_reductions <- function(companies, ep_weo, weo_2022) {
   companies |>
     left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |>

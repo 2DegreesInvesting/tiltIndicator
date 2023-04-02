@@ -7,17 +7,17 @@
 pstr_add_reductions(companies, ep_weo, weo_2022)
 }
 \arguments{
-\item{companies}{A \code{companies} dataframe like \code{\link{companies}}.}
+\item{companies}{A \link{data.frame} like \link{pstr_companies}.}
 
-\item{ep_weo}{A \code{ep_weo} dataframe like \code{\link{ep_weo}}.}
+\item{ep_weo}{A \link{data.frame} like \link{pstr_ep_weo}.}
 
-\item{weo_2022}{A \code{weo_2022} dataframe like \code{\link{weo_2022}}.}
+\item{weo_2022}{A \link{data.frame} like \link{pstr_weo_2022}.}
 }
 \value{
 A dataframe with:
 \itemize{
 \item All the columns from the \code{companies} dataset.
-\item New columns :
+\item New columns:
 \itemize{
 \item All the columns from the \code{ep_weo} dataset, but the columns
 \code{EP_sector} and \code{EP_subsector} are named \code{sector} and \code{subsector}
@@ -29,13 +29,11 @@ respectively.
 }
 }
 \description{
-\code{pstr_add_reductions()} joins the \code{ep_weo}and \code{weo_2022} datasets
-to the \code{companies} dataset to add the emission reduction values for
-each company's product(s).
+Adds the emission reduction values for each company's product(s).
 }
 \examples{
-companies |>
-  pstr_add_reductions(ep_weo, weo_2022)
+pstr_companies |>
+  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022)
 }
 \seealso{
 Other PSTR functions: 

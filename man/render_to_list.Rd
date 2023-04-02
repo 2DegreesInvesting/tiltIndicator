@@ -100,9 +100,4 @@ render_to_list(path)
 # You may pass `...` to `rmarkdown::render()`, e.g. `params`
 render_to_list(path, params = list(input1 = head(mtcars)))
 }
-\seealso{
-Other internals: 
-\code{\link{mvp_path}()},
-\code{\link{use_refactoring_checklist}()}
-}
-\concept{internals}
+\keyword{internal}

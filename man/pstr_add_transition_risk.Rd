@@ -19,7 +19,7 @@ respectively.
 \item All the columns from the \code{weo_2022}dataset, but the columns
 \code{weo_product_mapper} and \code{weo_flow_mapper} are named \code{product} and
 \code{flow} respectively.
-\item New column :
+\item New column:
 \itemize{
 \item \code{transition_risk} that holds the categorization of the \code{reductions}
 column.
@@ -27,7 +27,7 @@ column.
 }
 }
 \description{
-\code{pstr_add_transition_risk()} translates the \code{reductions} column into three categories :
+Translates the \code{reductions} column into three categories:
 \itemize{
 \item "low" if \code{reductions} <= 30.0
 \item "medium" if 30.0 < \code{reductions} <= 70.0
@@ -35,8 +35,8 @@ column.
 }
 }
 \examples{
-companies |>
-  pstr_add_reductions(ep_weo, weo_2022) |>
+pstr_companies |>
+  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk()
 }
 \seealso{

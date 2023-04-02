@@ -1,6 +1,6 @@
 #' Categorize sector emission reduction targets
 #'
-#' `pstr_add_transition_risk()` translates the `reductions` column into three categories :
+#' Translates the `reductions` column into three categories:
 #' * "low" if `reductions` <= 30.0
 #' * "medium" if 30.0 < `reductions` <= 70.0
 #' * "high" if `reductions` > 70.0
@@ -17,15 +17,15 @@
 #'    * All the columns from the `weo_2022`dataset, but the columns
 #'    `weo_product_mapper` and `weo_flow_mapper` are named `product` and
 #'    `flow` respectively.
-#'    * New column :
+#'    * New column:
 #'       * `transition_risk` that holds the categorization of the `reductions`
 #'       column.
 #'
 #' @export
 #'
 #' @examples
-#' companies |>
-#'   pstr_add_reductions(ep_weo, weo_2022) |>
+#' pstr_companies |>
+#'   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
 #'   pstr_add_transition_risk()
 pstr_add_transition_risk <- function(with_reductions) {
   with_reductions |>

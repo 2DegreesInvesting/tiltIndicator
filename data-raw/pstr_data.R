@@ -1,6 +1,6 @@
 # Source: Linda
 # styler: off
-companies <- tibble::tribble(
+pstr_companies <- tibble::tribble(
   ~company_id,        ~company_name,               ~products,                      ~sector,                     ~subsector,
             1,      "Peasant Peter",                "screws", "steel_metal_transformation",    "bending_steels_and_metals",
             2,      "Peasant Peter",       "aluminium_alloy",               "steel_metals",             "aluminium_alloys",
@@ -15,10 +15,14 @@ companies <- tibble::tribble(
 )
 # styler: on
 
+usethis::use_data(pstr_companies, overwrite = TRUE)
+# For backward compatibility
+companies <- pstr_companies
 usethis::use_data(companies, overwrite = TRUE)
+
 # Source: Linda
 # styler: off
-ep_weo <- tibble::tribble(
+pstr_ep_weo <- tibble::tribble(
                            ~EP_categories_id,                      ~EP_group,                                                ~EP_sector,                                   ~EP_subsector, ~weo_product_mapper,                    ~weo_flow_mapper,
   "d3a7a3c40afd18a7a840942262099f23f65c19a0",      "metallurgy_metalworking",                              "steel_metal_transformation",                     "bending_steels_and_metals",             "Total",                    "Iron and steel",
   "8d926b734410de5ba68daa17089a14c1bc1b70f7",      "metallurgy_metalworking",                              "steel_metal_transformation",                       "boilers_stainless_steel",             "Total",                    "Iron and steel",
@@ -156,9 +160,13 @@ ep_weo <- tibble::tribble(
 )
 # styler: on
 
+usethis::use_data(pstr_ep_weo, overwrite = TRUE)
+# For backward compatibility
+ep_weo <- pstr_ep_weo
 usethis::use_data(ep_weo, overwrite = TRUE)
+
 # styler: off
-weo_2022 <- tibble::tribble(
+pstr_weo_2022 <- tibble::tribble(
   ~publication,                             ~scenario, ~region,        ~category, ~product,                               ~flow,    ~unit, ~year,  ~value, ~reductions,
   "World Energy Outlook 2021",            "Stated Policies Scenario", "world", "co2 combustion",  "Total", "Road passenger light duty vehicle", "mt co2",  2020, 2787.63,           0,
   "World Energy Outlook 2021", "Net Zero Emissions by 2050 Scenario", "world", "co2 combustion",  "Total", "Road passenger light duty vehicle", "mt co2",  2030, 1626.32,       41.66,
@@ -171,4 +179,7 @@ weo_2022 <- tibble::tribble(
 )
 # styler: on
 
+usethis::use_data(pstr_weo_2022, overwrite = TRUE)
+# For backward compatibility
+weo_2022 <- pstr_weo_2022
 usethis::use_data(weo_2022, overwrite = TRUE)

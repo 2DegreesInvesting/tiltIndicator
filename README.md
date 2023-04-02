@@ -35,7 +35,7 @@ library(tiltIndicator)
 We’ll use datasets that come with the tiltIndicator package.
 
 ``` r
-companies
+pstr_companies
 #> # A tibble: 10 × 5
 #>    company_id company_name       products              sector            subse…¹
 #>         <dbl> <chr>              <chr>                 <chr>             <chr>  
@@ -51,7 +51,7 @@ companies
 #> 10         10 John Meier's Cars  ultrafilstration      cars              vehicl…
 #> # … with abbreviated variable name ¹​subsector
 
-ep_weo
+pstr_ep_weo
 #> # A tibble: 133 × 6
 #>    EP_categories_id                      EP_gr…¹ EP_se…² EP_su…³ weo_p…⁴ weo_f…⁵
 #>    <chr>                                 <chr>   <chr>   <chr>   <chr>   <chr>  
@@ -68,7 +68,7 @@ ep_weo
 #> # … with 123 more rows, and abbreviated variable names ¹​EP_group, ²​EP_sector,
 #> #   ³​EP_subsector, ⁴​weo_product_mapper, ⁵​weo_flow_mapper
 
-weo_2022
+pstr_weo_2022
 #> # A tibble: 8 × 10
 #>   publication    scena…¹ region categ…² product flow  unit   year  value reduc…³
 #>   <chr>          <chr>   <chr>  <chr>   <chr>   <chr> <chr> <dbl>  <dbl>   <dbl>
@@ -87,10 +87,10 @@ The `pstr_*()` functions help you work with the
 product-sector-transition-risk indicator.
 
 ``` r
-with_scores <- companies |>
-  pstr_add_reductions(ep_weo, weo_2022) |>
+with_scores <- pstr_companies |>
+  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk() |>
-  pstr_aggregate_scores(companies)
+  pstr_aggregate_scores(pstr_companies)
 
 with_scores
 #> # A tibble: 19 × 5

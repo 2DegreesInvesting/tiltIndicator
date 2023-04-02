@@ -7,13 +7,13 @@
 pstr_aggregate_scores(with_transition_risk, companies)
 }
 \arguments{
-\item{with_transition_risk}{A data frame. The output of
+\item{with_transition_risk}{A \link{data.frame}. The output of
 \code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
 
-\item{companies}{A \code{companies} dataframe like \code{\link{companies}}.}
+\item{companies}{A \link{data.frame} like \link{pstr_companies}.}
 }
 \value{
-A data frame with the columns :
+A \link{data.frame} with the columns:
 \itemize{
 \item \code{company_name}
 \item \code{transition_risk}
@@ -23,14 +23,14 @@ A data frame with the columns :
 }
 }
 \description{
-\code{pstr_aggregated_scores()} calculates on a company-level
-the percentage of products that are in low / medium / high transition risk.
+Calculates on a company-level the percentage of products that are in low /
+medium / high transition risk.
 }
 \examples{
-companies |>
-  pstr_add_reductions(ep_weo, weo_2022) |>
+pstr_companies |>
+  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk() |>
-  pstr_aggregate_scores(companies)
+  pstr_aggregate_scores(pstr_companies)
 }
 \seealso{
 Other PSTR functions: 
