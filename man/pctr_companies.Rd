@@ -19,4 +19,9 @@ TODO add title
 \examples{
 pctr_companies
 }
+\seealso{
+Other datasets for product carbon transition risk.: 
+\code{\link{pctr_ecoinvent_co2}}
+}
+\concept{datasets for product carbon transition risk.}
 \keyword{datasets}
