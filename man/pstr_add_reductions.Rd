@@ -34,8 +34,8 @@ to the \code{companies} dataset to add the emission reduction values for
 each company's product(s).
 }
 \examples{
-companies |>
-  pstr_add_reductions(ep_weo, weo_2022)
+pstr_companies |>
+  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022)
 }
 \seealso{
 Other PSTR functions: 

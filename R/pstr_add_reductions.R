@@ -23,8 +23,8 @@
 #' @export
 #'
 #' @examples
-#' companies |>
-#'   pstr_add_reductions(ep_weo, weo_2022)
+#' pstr_companies |>
+#'   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022)
 pstr_add_reductions <- function(companies, ep_weo, weo_2022) {
   companies |>
     left_join(ep_weo, by = c("sector" = "EP_sector", "subsector" = "EP_subsector")) |>
