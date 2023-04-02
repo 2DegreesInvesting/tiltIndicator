@@ -1,5 +1,5 @@
 #' Create a task list that you can paste on a GitHub issue and follow up
-'
+#'
 #' @return Character. A checklist you can paste on a GitHub issue.
 #' @keywords internal
 #'
