@@ -3,7 +3,7 @@
 #' * TODO: Does it have any relationship with tiltData?
 #' * FIXME: Rename to match existing tiltData, e.g. `company_id` -> `companies_id`
 #'
-#' @family datasets for product sector transition risk
+#' @family PSTR datasets
 #' @examples
 #' companies
 "companies"
@@ -15,7 +15,7 @@
 #' the prefix "ep_" makes it more compatible with tiltData and makes it easier
 #' to join.
 #'
-#' @family datasets for product sector transition risk
+#' @family PSTR datasets
 #' @examples
 #' ep_weo
 "ep_weo"
@@ -24,7 +24,7 @@
 #'
 #' * TODO: Where does it come from and what wrangling did you do?
 #'
-#' @family datasets for product sector transition risk
+#' @family PSTR datasets
 #' @examples
 #' weo_2022
 "weo_2022"
