@@ -1,5 +1,5 @@
 ---
-title: "Product sector transition risk"
+title: "Product sector transition risk (PSTR)"
 author: "Linda Delacombaz"
 output: github_document
 ---
