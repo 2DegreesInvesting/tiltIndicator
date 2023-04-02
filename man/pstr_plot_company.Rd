@@ -21,10 +21,10 @@ transition risk and the y-axis is the aggregated product score in \% for
 the company called \code{company_name}.
 }
 \examples{
-data <- companies |>
-  pstr_add_reductions(ep_weo, weo_2022) |>
+data <- pstr_companies |>
+  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk() |>
-  pstr_aggregate_scores(companies)
+  pstr_aggregate_scores(pstr_companies)
 
 data |>
   pstr_plot_company("Peasant Peter")
