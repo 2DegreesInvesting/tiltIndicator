@@ -10,14 +10,10 @@
 #' @param pattern A regular expression of filenames to match. If NULL all
 #'   available files are returned. listed.
 #'
-#' @keywords internal
-#'
-#' @return `r class(mvp_paths())`
-#' @export
-#'
 #' @examples
 #' mvp_paths()
 #' try(mvp_path("inexistent.file"))
+#' @noRd
 mvp_path <- function(path) {
   system.file(
     "extdata", "mvp", path,
@@ -25,8 +21,6 @@ mvp_path <- function(path) {
   )
 }
 
-#' @rdname mvp_path
-#' @export
 mvp_paths <- function(pattern = NULL) {
   dir <- system.file("extdata", "mvp", package = "tiltIndicator")
   list.files(dir, pattern = pattern)
