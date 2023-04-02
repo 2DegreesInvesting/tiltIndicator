@@ -59,14 +59,6 @@ scored_activities <- ecoinvent_co2 |>
   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7)
 ```
 
-Show distributions.
-
-```{r}
-barplot(prop.table(table(scored_activities$score_all)))
-barplot(prop.table(table(scored_activities$score_unit)))
-barplot(prop.table(table(scored_activities$score_unit_sec)))
-```
-
 ## Score companies
 
 The final dataset should have three rows per company, i.e. one for each
