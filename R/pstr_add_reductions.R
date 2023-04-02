@@ -1,8 +1,6 @@
 #' Add the emission reduction targets to the companies dataset
 #'
-#' `pstr_add_reductions()` joins the `ep_weo`and `weo_2022` datasets
-#' to the `companies` dataset to add the emission reduction values for
-#' each company's product(s).
+#' Adds the emission reduction values for each company's product(s).
 #'
 #' @param companies A `companies` dataframe like [`companies`].
 #' @param ep_weo A `ep_weo` dataframe like [`ep_weo`].
@@ -12,7 +10,7 @@
 #'
 #' @return A dataframe with:
 #'   * All the columns from the `companies` dataset.
-#'   * New columns :
+#'   * New columns:
 #'       * All the columns from the `ep_weo` dataset, but the columns
 #'       `EP_sector` and `EP_subsector` are named `sector` and `subsector`
 #'       respectively.
