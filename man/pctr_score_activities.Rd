@@ -23,4 +23,8 @@ Title TODO
 pctr_ecoinvent_co2 |>
   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7)
 }
-\concept{functions for product sector transition risk}
+\seealso{
+Other PCTR functions: 
+\code{\link{pctr_score_companies}()}
+}
+\concept{PCTR functions}

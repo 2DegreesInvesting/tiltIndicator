@@ -12,13 +12,13 @@ reference:
     contents:
       - has_concept("PSTR functions")
 
-  - title: Datasets for product carbon transition risk (PCTR)
+  - title: PCTR datasets
     contents:
-      - has_concept("datasets for product carbon transition risk")
+      - has_concept("PCTR datasets")
 
-  - title: Functions for product carbon transition risk  (PCTR)
+  - title: PCTR functions
     contents:
-      - starts_with("pctr_")
+      - has_concept("PCTR functions")
 
   - title: Developer-oriented functions
     contents:
