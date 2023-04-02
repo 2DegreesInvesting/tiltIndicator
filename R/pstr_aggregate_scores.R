@@ -18,10 +18,10 @@
 #' @export
 #'
 #' @examples
-#' companies |>
-#'   pstr_add_reductions(ep_weo, weo_2022) |>
+#' pstr_companies |>
+#'   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
 #'   pstr_add_transition_risk() |>
-#'   pstr_aggregate_scores(companies)
+#'   pstr_aggregate_scores(pstr_companies)
 pstr_aggregate_scores <- function(with_transition_risk, companies) {
   n_products_per_companies <- companies |>
     group_by(.data$company_name) |>
