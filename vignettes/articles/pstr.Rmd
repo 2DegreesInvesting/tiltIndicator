@@ -1,6 +1,7 @@
 ---
-title: "Product sector transition risk (pstr)"
+title: "Product sector transition risk"
 author: "Linda Delacombaz"
+output: github_document
 ---
 
 ```{r, include = FALSE}
@@ -10,6 +11,129 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r child=tiltIndicator::mvp_path("pstr.Rmd")}
+## Setup
+
+Packages
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(ggplot2, warn.conflicts = FALSE)
+library(tiltIndicator)
 ```
 
+## Data
+
+The tiltIndicator package comes with example datasets ([reference](https://2degreesinvesting.github.io/tiltIndicator/reference/)).
+
+```{r}
+glimpse(companies)
+
+glimpse(ep_weo)
+
+glimpse(weo_2022)
+```
+
+## Analysis
+
+### Introduction
+
+The Product Sector Transition Risk Indicator measures the transition risk of
+products based on the sector’s emissions targets the product belongs to. Those
+sector emission reduction targets vary across scenarios (e.g., net zero
+scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in
+2030, 2040, 2050 to achieve the targets).
+
+After assessing each product, all the products with the same category will be
+aggregated and set in relation to all products of the company. We, therefore,
+derive company-level information.
+
+The goal of the transition risk MVP is to create a first draft of how the
+transition risk indicator would be build in code in order to convert it into
+code production easily in the future.
+
+The transition risk indicator consists of 4 main steps:
+
+-   Step 1: Matching the products to the sectors
+-   Step 2: Identifying sector-specific emission reduction targets
+-   Step 3: Categorizing sector emission reduction targets into high,
+    medium, and low product sector transition risk
+-   Step 4: Aggregating on the company-level
+
+### Step 1 and 2
+
+1. Matching the products to the sectors
+2. Identifying sector-specific emission reduction targets
+
+Each product of the company will be matched to a climate-relevant sector. For
+those that cannot be matched to one of the sectors, we classify them as ‘Other’.
+
+We join this on the sectors and subsectors columns.
+
+```{r}
+with_reductions <- pstr_add_reductions(companies, ep_weo, weo_2022)
+
+with_reductions
+```
+
+### Step 3: Categorizing sector emission reduction targets into high, medium, and low product sector transition risk
+
+Let us categorize the transition risk into low, medium and high risk, based on
+the value of the reductions.
+
+-   reductions ≤ 30% means low product sector transition risk.
+
+-   30% \< reductions ≤ 70% means medium product sector transition risk.
+
+-   reductions \> 70% means high product sector transition risk.
+
+```{r}
+with_transition_risk <- pstr_add_transition_risk(with_reductions)
+
+with_transition_risk
+```
+
+### Step 4: Aggregating on the company-level
+
+To derive a company-level indicator for a company that has more than one
+product in its portfolio, it is necessary to aggregate the Product sector
+transition Risk Indicator of each product into one indicator. The proposed
+method for that is to assume the same weights for each product.
+
+Here are the calculation rules:
+
+-   High Sector Transition Risk Products (in %) = ∑ of all high sector
+    transition risk products / ∑ of all products
+
+-   Medium Sector Transition Risk Products (in %) = ∑ of all medium
+    sector transition risk products / ∑ of all products
+
+-   Low Sector Transition Risk Products (in %) = ∑ of all low sector
+    transition risk products / ∑ of all products
+
+-   No Sector Transition Risk Products (in %) = ∑ of all no sector
+    transition risk products / ∑ of all products
+
+Here I calculate the numbers of products per companies in a new column, and join
+the data frame to have the data with the numbers of products that a company
+produces.
+
+Then, I calculate the score aggregated by summing (per transition risk) the
+products over the total numbers of products per company.
+
+```{r}
+with_score_aggregated <- pstr_aggregate_scores(with_transition_risk, companies)
+
+with_score_aggregated
+```
+
+### Step 5: Vizualisation example
+
+Let us plot the result for the Peasant Peter company.
+
+The score aggregated is the percentage of products of that company that are in
+either low, medium or high transition risk, relatively to a scenario and year
+that the user could chose, for example.
+
+```{r}
+with_score_aggregated |> pstr_plot_company("Peasant Peter")
+```
