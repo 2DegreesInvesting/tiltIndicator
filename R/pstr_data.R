@@ -4,9 +4,11 @@
 #' * FIXME: Rename to match existing tiltData, e.g. `company_id` -> `companies_id`
 #'
 #' @family PSTR datasets
+#'
 #' @examples
+#' @aliases companies
 #' companies
-"companies"
+"pstr_companies"
 
 #' A bridge between sector and subsectors in europages and in `weo_2022`.
 #'
@@ -16,15 +18,19 @@
 #' to join.
 #'
 #' @family PSTR datasets
+#'
 #' @examples
+#' @aliases ep_weo
 #' ep_weo
-"ep_weo"
+"pstr_ep_weo"
 
 #' A dataset with scenario, year, product and reductions information
 #'
 #' * TODO: Where does it come from and what wrangling did you do?
 #'
 #' @family PSTR datasets
+#'
 #' @examples
+#' @aliases weo_2022
 #' weo_2022
-"weo_2022"
+"pstr_weo_2022"

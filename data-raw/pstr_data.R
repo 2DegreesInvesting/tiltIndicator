@@ -16,6 +16,9 @@ companies <- tibble::tribble(
 # styler: on
 
 usethis::use_data(companies, overwrite = TRUE)
+pstr_companies <- companies
+usethis::use_data(pstr_companies, overwrite = TRUE)
+
 # Source: Linda
 # styler: off
 ep_weo <- tibble::tribble(
@@ -157,6 +160,9 @@ ep_weo <- tibble::tribble(
 # styler: on
 
 usethis::use_data(ep_weo, overwrite = TRUE)
+pstr_ep_weo <- ep_weo
+usethis::use_data(pstr_ep_weo, overwrite = TRUE)
+
 # styler: off
 weo_2022 <- tibble::tribble(
   ~publication,                             ~scenario, ~region,        ~category, ~product,                               ~flow,    ~unit, ~year,  ~value, ~reductions,
@@ -172,3 +178,5 @@ weo_2022 <- tibble::tribble(
 # styler: on
 
 usethis::use_data(weo_2022, overwrite = TRUE)
+pstr_weo_2022 <- weo_2022
+usethis::use_data(pstr_weo_2022, overwrite = TRUE)
