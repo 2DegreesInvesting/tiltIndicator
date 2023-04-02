@@ -1,6 +1,6 @@
 #' TODO add title
 #'
-#' @family datasets for product carbon transition risk.
+#' @family datasets for product carbon transition risk
 #'
 #' @source TODO add source
 #' @examples
@@ -9,7 +9,7 @@
 
 #' TODO add title
 #'
-#' @family datasets for product carbon transition risk.
+#' @family datasets for product carbon transition risk
 #' @source TODO add source
 #' @examples
 #' pctr_companies

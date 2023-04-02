@@ -54,68 +54,6 @@ The product carbon transition risk indicator consists of 2 main steps:
 
 ## Score activities
 
-```{r echo=FALSE}
-pctr_score_activities <- function(ecoinvent_co2, low_threshold, high_threshold){
-  ecoinvent_co2 |> 
-    pctr_add_ranks() |> 
-    pctr_add_scores(low_threshold, high_threshold)
-}
-
-# Calculate the rank of each activity: This is done based on the activities'
-# carbon footprint compared to 3 different benchmarks (all products, products
-# with same unit, products with same unit and sector)
-# 
-# rank in comparison to all products
-pctr_add_ranks <- function(ecoinvent_co2) {
-  # FIXME: "perc" suggests "percent" but "proportion" seems more accurate. Also
-  # if the main goal is to rank, then maybe the columns should use the prefix
-  # `rank_*` instead. Or maybe the goal is not to calculate the ranks, in which
-  # case we need a different title?
-  ecoinvent_co2 |>
-    mutate(perc_all = rank(co2_footprint) / length(co2_footprint)) |> 
-    # rank in comparison to all products with same unit
-    group_by(unit) |>
-    mutate(perc_unit = rank(co2_footprint) / length(co2_footprint)) %>%
-    ungroup() |> 
-    # rank in comparison to all products with same unit and sector
-    group_by(unit, sec) |>
-    mutate(perc_unit_sec = rank(co2_footprint) / length(co2_footprint)) %>%
-    ungroup()
-}
-
-# Assign scores to the activities: This is done based on their position within
-# the distribution of co2 footprints in comparison to different benchmarks.
-#
-# assign scores to position within percentile distribution
-# for all products
-pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
-  ecoinvent_ranks %>%
-    mutate(
-      score_all = case_when(
-        perc_all < low_threshold ~ "low",
-        perc_all >= low_threshold & perc_all < high_threshold ~ "medium",
-        perc_all >= high_threshold ~ "high"
-      )
-    ) |> 
-    # for products with same unit
-    mutate(
-      score_unit = case_when(
-        perc_unit < low_threshold ~ "low",
-        perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
-        perc_unit >= low_threshold ~ "high"
-      )
-    ) |> 
-    # for products with same unit and sector
-    mutate(
-      score_unit_sec = case_when(
-        perc_unit_sec < low_threshold ~ "low",
-        perc_unit_sec >= low_threshold & perc_unit_sec < high_threshold ~ "medium",
-        perc_unit_sec >= high_threshold ~ "high",
-      )
-    )
-}
-```
-
 ```{r}
 scored_activities <- ecoinvent_co2 |> 
   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7)
@@ -135,59 +73,6 @@ The final dataset should have three rows per company, i.e. one for each
 risk_group (low, medium, high) and one column each indicating the share of
 products in the respective risk groups for the three different benchmarks (all
 products, products with same unit, products with same unit and sector).
-
-```{r echo=FALSE}
-# Intermediate steps:
-# * Combine company-level information with LCA info from ecoinvent.
-# * Calculate the share of products with each score.
-pctr_score_companies <- function(scored_activities, companies) {
-  # join by activity_product_uuid and other joint columns from companies with scored_activities
-  companies_scores <- companies |>
-    inner_join(scored_activities, by = c("activity_product_uuid", "ei_activity", "unit"))
-
-  # scores in comparison to all products
-  scores_all <- companies_scores |>
-    group_by(company_id, score_all) |>
-    summarise(n_all = n()) |>
-    mutate(share_all = n_all / sum(n_all)) |>
-    select(-n_all) |>
-    rename("score" = "score_all")
-  
-  # scores in comparison to products with same unit
-  scores_unit <- companies_scores |>
-    group_by(company_id, score_unit) |>
-    summarise(n_unit = n()) |>
-    mutate(share_unit = n_unit / sum(n_unit)) |>
-    select(-n_unit) |>
-    rename("score" = "score_unit")
-  
-  # scores in comparison to products with same unit and sector
-  scores_unit_sec <- companies_scores |>
-    group_by(company_id, score_unit_sec) |>
-    summarise(n_unit_sec = n()) |>
-    mutate(share_unit_sec = n_unit_sec / sum(n_unit_sec)) |>
-    select(-n_unit_sec) |>
-    rename("score" = "score_unit_sec")
-  
-  # create dataset sceleton
-  dt_sceleton <- tibble(
-    company_id = rep(unique(companies_scores$company_id), each = 3),
-    score = rep(c("high", "medium", "low"), 3),
-  )
-  
-  # join scores with dt_sceleton so that each company is shown with 3 rows for low, medium, and high, even if the share is 0.
-  scored_companies <- dt_sceleton |>
-    left_join(scores_all, by = c("company_id", "score")) |>
-    left_join(scores_unit, by = c("company_id", "score")) |>
-    left_join(scores_unit_sec, by = c("company_id", "score"))
-  
-  # replace NAs with 0
-  scored_companies <- scored_companies |>
-    replace(is.na(scored_companies), 0)
-  
-  scored_companies
-}
-```
 
 ```{r}
 scored_companies <- pctr_score_companies(scored_activities, companies)
