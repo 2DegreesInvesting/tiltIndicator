@@ -12,7 +12,7 @@
 #' @examples
 #' pctr_ecoinvent_co2 |>
 #'   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7)
-pctr_score_activities <- function(ecoinvent_co2, low_threshold, high_threshold){
+pctr_score_activities <- function(ecoinvent_co2, low_threshold, high_threshold) {
   ecoinvent_co2 |>
     pctr_add_ranks() |>
     pctr_add_scores(low_threshold, high_threshold)
