@@ -8,6 +8,8 @@
 #' @param company_name A string. Name of the company in the portfolio that
 #' the user wants to plot.
 #'
+#' @family PSTR functions
+#'
 #' @return A [ggplot()].
 #' @export
 #'

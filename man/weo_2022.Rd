@@ -19,9 +19,9 @@ weo_2022
 weo_2022
 }
 \seealso{
-Other datasets for product sector transition risk: 
+Other PSTR datasets: 
 \code{\link{companies}},
 \code{\link{ep_weo}}
 }
-\concept{datasets for product sector transition risk}
+\concept{PSTR datasets}
 \keyword{datasets}

@@ -4,17 +4,17 @@ template:
 
 reference:
 
-  - title: Datasets for product sector transition risk (PSTR)
+  - title: PSTR datasets
     contents:
-      - has_concept("datasets for product sector transition risk")
+      - has_concept("PSTR datasets")
 
-  - title: Functions for product sector transition risk  (PSTR)
+  - title: PSTR functions
     contents:
-      - starts_with("pstr_")
+      - has_concept("PSTR functions")
 
   - title: Datasets for product carbon transition risk (PCTR)
     contents:
-      - has_concept("datasets for product sector transition risk.")
+      - has_concept("datasets for product carbon transition risk")
 
   - title: Functions for product carbon transition risk  (PCTR)
     contents:

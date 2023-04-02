@@ -7,6 +7,8 @@
 #'
 #' @param with_reductions A data frame. The output of [pstr_add_reductions()].
 #'
+#' @family PSTR functions
+#'
 #' @return A data frame with:
 #'    * All the columns from the `companies` dataset.
 #'    * All the columns from the `ep_weo` dataset, but the columns

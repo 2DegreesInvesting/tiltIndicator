@@ -53,7 +53,7 @@ ownership (#41).
 
 * New `pstr_*()` family for product sector transition risk.
 
-* New `pstr_*()` family of functions for product sector transition risk.
+* New `pstr_*()` family of PSTR functions.
 
 * New article "Product sector transition risk" (@lindadelacombaz, #18, #22).
 

@@ -7,6 +7,8 @@
 #'   [pstr_add_transition_risk()].
 #' @inheritParams pstr_add_reductions
 #'
+#' @family PSTR functions
+#'
 #' @return A data frame with the columns :
 #'   * `company_name`
 #'   * `transition_risk`

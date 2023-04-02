@@ -8,6 +8,8 @@
 #' @param ep_weo A `ep_weo` dataframe like [`ep_weo`].
 #' @param weo_2022 A `weo_2022` dataframe like [`weo_2022`].
 #'
+#' @family PSTR functions
+#'
 #' @return A dataframe with:
 #'   * All the columns from the `companies` dataset.
 #'   * New columns :
