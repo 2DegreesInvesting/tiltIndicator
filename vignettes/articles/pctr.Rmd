@@ -55,7 +55,7 @@ The product carbon transition risk indicator consists of 2 main steps:
 ## Score activities
 
 ```{r}
-scored_activities <- ecoinvent_co2 |> 
+scored_activities <- ecoinvent_co2 |>
   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7)
 ```
 

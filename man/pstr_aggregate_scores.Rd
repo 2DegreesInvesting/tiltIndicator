@@ -27,10 +27,10 @@ A data frame with the columns :
 the percentage of products that are in low / medium / high transition risk.
 }
 \examples{
-companies |>
-  pstr_add_reductions(ep_weo, weo_2022) |>
+pstr_companies |>
+  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk() |>
-  pstr_aggregate_scores(companies)
+  pstr_aggregate_scores(pstr_companies)
 }
 \seealso{
 Other PSTR functions: 
