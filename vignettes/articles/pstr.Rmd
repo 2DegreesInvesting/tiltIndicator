@@ -26,11 +26,11 @@ library(tiltIndicator)
 The tiltIndicator package comes with example datasets ([reference](https://2degreesinvesting.github.io/tiltIndicator/reference/)).
 
 ```{r}
-glimpse(companies)
+glimpse(pstr_companies)
 
-glimpse(ep_weo)
+glimpse(pstr_ep_weo)
 
-glimpse(weo_2022)
+glimpse(pstr_weo_2022)
 ```
 
 ## Analysis
