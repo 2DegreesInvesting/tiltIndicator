@@ -4,7 +4,7 @@
 #' @param low_threshold A numeric value of length 1 giving ... TODO.
 #' @param high_threshold A numeric value of length 1 giving ... TODO.
 #'
-#' @family functions for product sector transition risk
+#' @family PCTR functions
 #'
 #' @return A [data.frame] with columns ... TODO.
 #' @export

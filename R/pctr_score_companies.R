@@ -8,6 +8,8 @@
 #'   [pctr_score_activities].
 #' @param companies A [data.frame] like [pctr_companies].
 #'
+#' @family PCTR functions
+#'
 #' @return A [data.frame] with columns ... TODO
 #' @export
 #'
