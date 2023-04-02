@@ -60,6 +60,4 @@ with_scores <- companies |>
   pstr_aggregate_scores(companies)
 
 with_scores
-
-with_scores |> pstr_plot_company("Peasant Peter")
 ```

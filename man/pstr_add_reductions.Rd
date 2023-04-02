@@ -40,7 +40,6 @@ companies |>
 \seealso{
 Other PSTR functions: 
 \code{\link{pstr_add_transition_risk}()},
-\code{\link{pstr_aggregate_scores}()},
-\code{\link{pstr_plot_company}()}
+\code{\link{pstr_aggregate_scores}()}
 }
 \concept{PSTR functions}
