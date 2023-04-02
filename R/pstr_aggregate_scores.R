@@ -3,13 +3,13 @@
 #' Calculates on a company-level the percentage of products that are in low /
 #' medium / high transition risk.
 #'
-#' @param with_transition_risk A data frame. The output of
+#' @param with_transition_risk A [data.frame]. The output of
 #'   [pstr_add_transition_risk()].
 #' @inheritParams pstr_add_reductions
 #'
 #' @family PSTR functions
 #'
-#' @return A data frame with the columns:
+#' @return A [data.frame] with the columns:
 #'   * `company_name`
 #'   * `transition_risk`
 #'   * `scenario`

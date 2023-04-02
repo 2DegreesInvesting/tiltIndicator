@@ -7,11 +7,11 @@
 pstr_add_reductions(companies, ep_weo, weo_2022)
 }
 \arguments{
-\item{companies}{A \code{companies} dataframe like \code{\link{companies}}.}
+\item{companies}{A \link{data.frame} like \link{pstr_companies}.}
 
-\item{ep_weo}{A \code{ep_weo} dataframe like \code{\link{ep_weo}}.}
+\item{ep_weo}{A \link{data.frame} like \link{pstr_ep_weo}.}
 
-\item{weo_2022}{A \code{weo_2022} dataframe like \code{\link{weo_2022}}.}
+\item{weo_2022}{A \link{data.frame} like \link{pstr_weo_2022}.}
 }
 \value{
 A dataframe with:

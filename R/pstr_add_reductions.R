@@ -2,9 +2,9 @@
 #'
 #' Adds the emission reduction values for each company's product(s).
 #'
-#' @param companies A `companies` dataframe like [`companies`].
-#' @param ep_weo A `ep_weo` dataframe like [`ep_weo`].
-#' @param weo_2022 A `weo_2022` dataframe like [`weo_2022`].
+#' @param companies A [data.frame] like [pstr_companies].
+#' @param ep_weo A [data.frame] like [pstr_ep_weo].
+#' @param weo_2022 A [data.frame] like [pstr_weo_2022].
 #'
 #' @family PSTR functions
 #'

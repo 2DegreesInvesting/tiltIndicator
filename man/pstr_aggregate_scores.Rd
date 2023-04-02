@@ -7,13 +7,13 @@
 pstr_aggregate_scores(with_transition_risk, companies)
 }
 \arguments{
-\item{with_transition_risk}{A data frame. The output of
+\item{with_transition_risk}{A \link{data.frame}. The output of
 \code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
 
-\item{companies}{A \code{companies} dataframe like \code{\link{companies}}.}
+\item{companies}{A \link{data.frame} like \link{pstr_companies}.}
 }
 \value{
-A data frame with the columns:
+A \link{data.frame} with the columns:
 \itemize{
 \item \code{company_name}
 \item \code{transition_risk}
