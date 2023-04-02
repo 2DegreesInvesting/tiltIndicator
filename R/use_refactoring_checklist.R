@@ -1,8 +1,5 @@
 #' Create a task list that you can paste on a GitHub issue and follow up
-#'
-#' @param indicator Character. The indicator abbreviation, e.g. for
-#'   "product-carbon-transition-risk" use "pstr".
-#'
+'
 #' @return Character. A checklist you can paste on a GitHub issue.
 #' @keywords internal
 #'
