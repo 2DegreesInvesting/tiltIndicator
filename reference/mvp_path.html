@@ -33,7 +33,7 @@ data."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathj
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/pctr.html">Product carbon transition risk (pctr)</a>
-    <a class="dropdown-item" href="../articles/pstr.html">Product sector transition risk (pstr)</a>
+    <a class="dropdown-item" href="../articles/pstr.html">Product sector transition risk</a>
   </div>
 </li>
 <li class="nav-item">
@@ -96,12 +96,7 @@ available files are returned. listed.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">mvp_paths</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "pctr.Rmd" "pstr.Rmd"</span>
-<span class="r-in"><span><span class="fu">mvp_path</span><span class="op">(</span><span class="st">"pstr.Rmd"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/home/runner/work/_temp/Library/tiltIndicator/extdata/mvp/pstr.Rmd"</span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">mvp_path</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in system.file("extdata", "mvp", path, package = "tiltIndicator",  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   argument "path" is missing, with no default</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "pctr.Rmd"</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">mvp_path</span><span class="op">(</span><span class="st">"inexistent.file"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in system.file("extdata", "mvp", path, package = "tiltIndicator",  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   no file found</span>
