@@ -32,8 +32,8 @@ try(mvp_path())
 try(mvp_path("inexistent.file"))
 }
 \seealso{
-Other developer-oriented functions: 
+Other internals: 
 \code{\link{render_to_list}()},
 \code{\link{use_refactoring_checklist}()}
 }
-\concept{developer-oriented functions}
+\concept{internals}

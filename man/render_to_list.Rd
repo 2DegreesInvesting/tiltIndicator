@@ -101,8 +101,8 @@ render_to_list(path)
 render_to_list(path, params = list(input1 = head(mtcars)))
 }
 \seealso{
-Other developer-oriented functions: 
+Other internals: 
 \code{\link{mvp_path}()},
 \code{\link{use_refactoring_checklist}()}
 }
-\concept{developer-oriented functions}
+\concept{internals}

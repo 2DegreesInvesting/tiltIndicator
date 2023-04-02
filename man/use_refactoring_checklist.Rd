@@ -20,8 +20,8 @@ Create a task list that you can paste on a GitHub issue and follow up
 use_refactoring_checklist("pstr")
 }
 \seealso{
-Other developer-oriented functions: 
+Other internals: 
 \code{\link{mvp_path}()},
 \code{\link{render_to_list}()}
 }
-\concept{developer-oriented functions}
+\concept{internals}

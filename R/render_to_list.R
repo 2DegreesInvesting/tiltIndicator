@@ -3,7 +3,7 @@
 #' @inheritDotParams rmarkdown::render
 #' @param path Character. Path to an .Rmd file.
 #'
-#' @family developer-oriented functions
+#' @family internals
 #'
 #' @return A named list with one element per object in the rendering
 #'   environment.

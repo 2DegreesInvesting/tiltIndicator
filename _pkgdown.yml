@@ -20,6 +20,6 @@ reference:
     contents:
       - has_concept("PCTR functions")
 
-  - title: Developer-oriented functions
+  - title: Internals
     contents:
-      - has_concept("developer-oriented functions")
+      - has_concept("internals")

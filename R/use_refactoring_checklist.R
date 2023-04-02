@@ -4,7 +4,7 @@
 #'   "product-carbon-transition-risk" use "pstr".
 #'
 #' @return Character. A checklist you can paste on a GitHub issue.
-#' @family developer-oriented functions
+#' @family internals
 #'
 #' @export
 #' @examples
