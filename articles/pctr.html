@@ -175,17 +175,17 @@ steps:</p>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scored_activities</span> <span class="op">&lt;-</span> <span class="va">ecoinvent_co2</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">pctr_score_activities</span><span class="op">(</span>low_threshold <span class="op">=</span> <span class="fl">0.3</span>, high_threshold <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span>low_threshold <span class="op">=</span> <span class="fl">0.3</span>, high_threshold <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span></code></pre></div>
 <p>Show distributions.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html" class="external-link">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">scored_activities</span><span class="op">$</span><span class="va">score_all</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="pctr_files/figure-html/unnamed-chunk-7-1.png" width="60%"></p>
+<p><img src="pctr_files/figure-html/unnamed-chunk-6-1.png" width="60%"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html" class="external-link">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">scored_activities</span><span class="op">$</span><span class="va">score_unit</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="pctr_files/figure-html/unnamed-chunk-7-2.png" width="60%"></p>
+<p><img src="pctr_files/figure-html/unnamed-chunk-6-2.png" width="60%"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html" class="external-link">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">scored_activities</span><span class="op">$</span><span class="va">score_unit_sec</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="pctr_files/figure-html/unnamed-chunk-7-3.png" width="60%"></p>
+<p><img src="pctr_files/figure-html/unnamed-chunk-6-3.png" width="60%"></p>
 </div>
 <div class="section level3">
 <h3 id="score-companies">Score companies<a class="anchor" aria-label="anchor" href="#score-companies"></a>
@@ -196,13 +196,7 @@ share of products in the respective risk groups for the three different
 benchmarks (all products, products with same unit, products with same
 unit and sector).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">scored_companies</span> <span class="op">&lt;-</span> <span class="fu">pctr_score_companies</span><span class="op">(</span><span class="va">scored_activities</span>, <span class="va">companies</span><span class="op">)</span></span>
-<span><span class="co">#&gt; `summarise()` has grouped output by 'company_id'. You can override using the</span></span>
-<span><span class="co">#&gt; `.groups` argument.</span></span>
-<span><span class="co">#&gt; `summarise()` has grouped output by 'company_id'. You can override using the</span></span>
-<span><span class="co">#&gt; `.groups` argument.</span></span>
-<span><span class="co">#&gt; `summarise()` has grouped output by 'company_id'. You can override using the</span></span>
-<span><span class="co">#&gt; `.groups` argument.</span></span>
+<code class="sourceCode R"><span><span class="va">scored_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">scored_activities</span>, <span class="va">companies</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">scored_companies</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 5</span></span></span>
