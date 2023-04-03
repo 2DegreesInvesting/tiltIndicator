@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9014
+
+* Remove `pstr_plot_company()` (#84).
+* The name of PSTR datasets now include the prefix "pstr_" (#74).
+* The developer-oriented functions are now internal (#67).
+* Remove internal article (#66).
+
 # tiltIndicator 0.0.0.9013
 
 * New `pctr_*()` family of functions and datasets (#60, #61).
