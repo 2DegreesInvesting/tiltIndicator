@@ -35,7 +35,6 @@ pstr_companies |>
 \seealso{
 Other PSTR functions: 
 \code{\link{pstr_add_reductions}()},
-\code{\link{pstr_add_transition_risk}()},
-\code{\link{pstr_plot_company}()}
+\code{\link{pstr_add_transition_risk}()}
 }
 \concept{PSTR functions}
