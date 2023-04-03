@@ -117,8 +117,4 @@ with_scores
 #> 18 Tom's Car Company  medium          Net Zero Emissions by 2050 …  2030   100  
 #> 19 Tom's Car Company  medium          Net Zero Emissions by 2050 …  2040    50  
 #> # … with abbreviated variable name ¹​score_aggregated
-
-with_scores |> pstr_plot_company("Peasant Peter")
 ```
-
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />

@@ -1,5 +1,5 @@
 ---
-title: "Product sector transition risk"
+title: "Product sector transition risk (PSTR)"
 author: "Linda Delacombaz"
 output: github_document
 ---
@@ -126,16 +126,4 @@ with_score_aggregated <- with_transition_risk |>
   pstr_aggregate_scores(pstr_companies)
 
 with_score_aggregated
-```
-
-### Step 5: Vizualisation example
-
-Let us plot the result for the Peasant Peter company.
-
-The score aggregated is the percentage of products of that company that are in
-either low, medium or high transition risk, relatively to a scenario and year
-that the user could chose, for example.
-
-```{r}
-with_score_aggregated |> pstr_plot_company("Peasant Peter")
 ```
