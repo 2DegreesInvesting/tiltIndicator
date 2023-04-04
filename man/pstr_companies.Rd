@@ -3,7 +3,6 @@
 \docType{data}
 \name{pstr_companies}
 \alias{pstr_companies}
-\alias{companies}
 \title{A dataset with fake companies, products, sectors and subsectors}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 10 rows and 5 columns.

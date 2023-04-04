@@ -16,9 +16,6 @@ pstr_companies <- tibble::tribble(
 # styler: on
 
 usethis::use_data(pstr_companies, overwrite = TRUE)
-# For backward compatibility
-companies <- pstr_companies
-usethis::use_data(companies, overwrite = TRUE)
 
 # Source: Linda
 # styler: off
@@ -161,9 +158,6 @@ pstr_ep_weo <- tibble::tribble(
 # styler: on
 
 usethis::use_data(pstr_ep_weo, overwrite = TRUE)
-# For backward compatibility
-ep_weo <- pstr_ep_weo
-usethis::use_data(ep_weo, overwrite = TRUE)
 
 # styler: off
 pstr_weo_2022 <- tibble::tribble(
@@ -180,6 +174,3 @@ pstr_weo_2022 <- tibble::tribble(
 # styler: on
 
 usethis::use_data(pstr_weo_2022, overwrite = TRUE)
-# For backward compatibility
-weo_2022 <- pstr_weo_2022
-usethis::use_data(weo_2022, overwrite = TRUE)

@@ -1,4 +1,4 @@
-# `companies` hasn't changed
+# `pstr_companies` hasn't changed
 
     Code
       format_robust_snapshot(pstr_companies)
@@ -69,7 +69,7 @@
       10 vehicle_maintenance_products
       
 
-# `ep_weo` hasn't changed
+# `pstr_ep_weo` hasn't changed
 
     Code
       format_robust_snapshot(pstr_ep_weo)
@@ -891,7 +891,7 @@
       133                    Iron and steel
       
 
-# `weo_2022` hasn't changed
+# `pstr_weo_2022` hasn't changed
 
     Code
       format_robust_snapshot(pstr_weo_2022)
