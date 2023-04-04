@@ -78,5 +78,3 @@ test_that("outputs 0-rows with an empty data frame as input", {
   out_3 <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022()[FALSE, ])
   expect_equal(nrow(out), 0L)
 })
-
-

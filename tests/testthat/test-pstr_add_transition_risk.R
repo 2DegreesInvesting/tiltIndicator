@@ -60,10 +60,8 @@ test_that("outputs 0-rows with an empty data frame as input", {
 })
 
 test_that("outputs correct values for edge cases", {
-  edge_cases <- pstr_toy_weo_2022(reductions = c(NA,30, 30.1, 70, 70.1))
+  edge_cases <- pstr_toy_weo_2022(reductions = c(NA, 30, 30.1, 70, 70.1))
   with_reductions <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), edge_cases)
   out <- pstr_add_transition_risk(with_reductions)
   expect_equal(c("no_sector", "low", "medium", "medium", "high"), out$transition_risk)
-
 })
-
