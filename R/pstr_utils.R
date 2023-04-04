@@ -17,7 +17,8 @@ pstr_toy_companies <- function(company_id = 1, company_name = "a",
     company_name = company_name,
     products = products,
     sector = sector,
-    subsector = subsector
+    subsector = subsector,
+    ...
   )
 }
 
@@ -41,7 +42,8 @@ pstr_toy_ep_weo <- function(EP_categories_id = 1, EP_group = "a",
     EP_sector = EP_sector,
     EP_subsector = EP_subsector,
     weo_product_mapper = weo_product_mapper,
-    weo_flow_mapper = weo_flow_mapper
+    weo_flow_mapper = weo_flow_mapper,
+    ...
   )
 }
 
@@ -74,7 +76,8 @@ pstr_toy_weo_2022 <- function(publication = "A", scenario = "B", region = "C",
     unit = unit,
     year = year,
     value = value,
-    reductions = reductions
+    reductions = reductions,
+    ...
   )
 }
 
