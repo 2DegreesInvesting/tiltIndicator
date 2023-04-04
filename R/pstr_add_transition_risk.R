@@ -1,5 +1,6 @@
 #' Categorize sector emission reduction targets
 #'
+#' #TODO : Ask what are the obsoletes reductions values
 #' Translates the `reductions` column into three categories:
 #' * "low" if `reductions` <= 30.0
 #' * "medium" if 30.0 < `reductions` <= 70.0
@@ -33,7 +34,7 @@ pstr_add_transition_risk <- function(with_reductions) {
       transition_risk = case_when(
         reductions <= 30 ~ "low",
         reductions > 30 & reductions <= 70 ~ "medium",
-        reductions >= 70 ~ "high",
+        reductions > 70 ~ "high",
         TRUE ~ "no_sector",
       )
     )
