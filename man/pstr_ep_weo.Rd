@@ -3,7 +3,6 @@
 \docType{data}
 \name{pstr_ep_weo}
 \alias{pstr_ep_weo}
-\alias{ep_weo}
 \title{A bridge between sector and subsectors in europages and in \code{weo_2022}.}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 133 rows and 6 columns.

@@ -5,7 +5,6 @@
 #'
 #' @family PSTR datasets
 #'
-#' @aliases companies
 #' @examples
 #' pstr_companies
 "pstr_companies"
@@ -19,7 +18,6 @@
 #'
 #' @family PSTR datasets
 #'
-#' @aliases ep_weo
 #' @examples
 #' pstr_ep_weo
 "pstr_ep_weo"
@@ -30,7 +28,6 @@
 #'
 #' @family PSTR datasets
 #'
-#' @aliases weo_2022
 #' @examples
 #' pstr_weo_2022
 "pstr_weo_2022"

@@ -1,6 +1,8 @@
-# tiltIndicator (development version)
-
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# tiltIndicator 0.0.0.9016
+
+* The unprefixed pstr datasets are now defunc (#79).
 
 # tiltIndicator 0.0.0.9014
 
