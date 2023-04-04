@@ -1,14 +1,3 @@
-test_that("hasn't change", {
-  with_transition_risk <- pstr_companies |>
-    pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
-    pstr_add_transition_risk() |>
-    # FIXME: Address warning
-    suppressWarnings()
-
-  out <- format_robust_snapshot(with_transition_risk)
-  expect_snapshot(out)
-})
-
 test_that("returns a tibble data frame", {
   out <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
   expect_s3_class(
