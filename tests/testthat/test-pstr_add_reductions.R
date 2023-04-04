@@ -28,7 +28,7 @@ test_that("returns a tibble data frame", {
 test_that("adds twelve new columns: `EP_categories_id`, `EP_group`, `weo_product_mapper`,
           `weo_flow_mapper`, `publication`, `scenario`, `region`, `category`,
           `unit`,`year`, `value`, `reductions`", {
-  #TODO : Can we make this less redundant ?
+  # TODO : Can we make this less redundant ?
   expect_false(hasName(pstr_toy_companies(), "EP_categories_id"))
   expect_false(hasName(pstr_toy_companies(), "EP_categories_id"))
   expect_false(hasName(pstr_toy_companies(), "EP_group"))
@@ -45,11 +45,13 @@ test_that("adds twelve new columns: `EP_categories_id`, `EP_group`, `weo_product
 
   out <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
   new_columns <- setdiff(names(out), names(pstr_toy_companies()))
-      expect_equal(
-        new_columns, c("EP_categories_id", "EP_group", "weo_product_mapper",
-                       "weo_flow_mapper", "publication", "scenario", "region",
-                       "category", "unit", "year", "value", "reductions")
-            )
+  expect_equal(
+    new_columns, c(
+      "EP_categories_id", "EP_group", "weo_product_mapper",
+      "weo_flow_mapper", "publication", "scenario", "region",
+      "category", "unit", "year", "value", "reductions"
+    )
+  )
 })
 
 test_that("additional columns appear in the output", {
@@ -67,13 +69,12 @@ test_that("preserves typeof() input columns", {
 })
 
 test_that("outputs 0-rows with an empty data frame as input", {
-  out <- pstr_add_reductions(pstr_toy_companies()[FALSE,], pstr_toy_ep_weo(), pstr_toy_weo_2022())
+  out <- pstr_add_reductions(pstr_toy_companies()[FALSE, ], pstr_toy_ep_weo(), pstr_toy_weo_2022())
   expect_equal(nrow(out), 0L)
 
-  out_2 <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo()[FALSE,], pstr_toy_weo_2022())
+  out_2 <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo()[FALSE, ], pstr_toy_weo_2022())
   expect_equal(nrow(out), 0L)
 
-  out_3 <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022()[FALSE,])
+  out_3 <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022()[FALSE, ])
   expect_equal(nrow(out), 0L)
 })
-
