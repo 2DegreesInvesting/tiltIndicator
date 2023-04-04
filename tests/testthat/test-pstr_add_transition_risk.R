@@ -19,7 +19,7 @@ test_that("returns a tibble data frame", {
 
 test_that("adds one column: `transition_risk`", {
   with_reductions <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
-  expect_false(has_name(with_reductions, "transition_risk"))
+  expect_false(hasName(with_reductions, "transition_risk"))
 
   out <- pstr_add_transition_risk(with_reductions)
   new_columns <- setdiff(names(out), names(with_reductions))
