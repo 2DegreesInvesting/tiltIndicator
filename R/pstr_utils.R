@@ -63,8 +63,8 @@ pstr_toy_ep_weo <- function(EP_categories_id = 1, EP_group = "a",
 #' @return A toy data set that has the same columns as `pstr_weo_2022`.
 #' @noRd
 pstr_toy_weo_2022 <- function(publication = "A", scenario = "B", region = "C",
-                              category = "D", product = "b",
-                              flow = "E", unit = "F", year = 1,
+                              category = "D", product = "e",
+                              flow = "f", unit = "F", year = 1,
                               value = 2, reductions = 3, ...) {
   tibble(
     publication = publication,
