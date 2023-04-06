@@ -278,6 +278,7 @@ Use mapper that serves as a sector classification bridge between the Ecoinvent's
 
 ```{r}
 istr_companies <- istr_mapping(reshaped_istr_companies, istr_ep_weo)
+istr_companies |> tibble::as_tibble()
 ```
 
 ## Step 2: Matching the input products to the sectors
@@ -289,6 +290,7 @@ We join this on the sectors.
 ```{r}
 with_reductions <- istr_companies |>
   istr_add_reductions(istr_weo_2022)
+with_reductions |> tibble::as_tibble()
 ```
 
 ## Step 3: Identifying sector-specific emission reduction targets
