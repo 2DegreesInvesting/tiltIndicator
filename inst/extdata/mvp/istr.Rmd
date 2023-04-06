@@ -247,6 +247,8 @@ glimpse(istr_weo_2022)
 # Data Preperation
 ```{r}
 reshaped_istr_companies <- istr_reshaping(raw_istr_companies)
+
+reshaped_istr_companies |> tibble::as_tibble()
 ```
 
 # Analysis
@@ -303,7 +305,7 @@ based on the value of the reductions.
 ```{r}
 with_transition_risk <- istr_add_transition_risk(with_reductions)
 
-with_transition_risk
+with_transition_risk |> tibble::as_tibble()
 ```
 
 ## Step 4: Aggregating on the company-level
