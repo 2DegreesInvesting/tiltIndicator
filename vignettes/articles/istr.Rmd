@@ -1,0 +1,14 @@
+---
+title: "istr"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r child=here::here('inst/extdata/mvp/istr.Rmd')}
+
+```
