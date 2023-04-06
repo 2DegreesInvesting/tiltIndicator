@@ -1,5 +1,7 @@
 ---
-title: "istr"
+title: "Input sector transition risk (ISTR)"
+author: "Lyanne Ho"
+output: github_document
 ---
 
 ```{r, include = FALSE}
