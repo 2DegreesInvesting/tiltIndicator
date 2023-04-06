@@ -1,0 +1,203 @@
+---
+title: "ictr_data_prep"
+author: "Kalash Singhal"
+date: "2023-04-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. Setup
+Load packages
+```{r}
+library(tidyverse)
+library(fs)
+library(vroom)
+library(here)
+library(dplyr)
+library(stats)
+```
+
+# 2. Data
+Load data:
+  - ecoinvent dataset containing activities
+  - company dataset containing company data and inputs data (the carbon emission data and inputs data will come from ecoinvent dataset in the future)
+```{r}
+ecoinvent_raw <- vroom(here("data_prep","01_prep_data", "ecoinvent_activities.csv"))
+inputs_raw <- vroom(here("data_prep","01_prep_data", "230207_tilt_sample_data_units.csv"))
+```
+
+# 3. Ecoinvent Data prep
+
+## 3.1. subset of ecoinvent data with relevant columns
+
+```{r}
+# selecting relevant columns
+ecoinvent <- ecoinvent_raw %>%
+  select(all_of(c(
+    "Activity UUID & Product UUID",
+    "Activity Name",
+    "Geography",
+    "ISIC Classification",
+    "Reference Product Name",
+    "Unit"
+  )))
+
+# renaming
+ecoinvent <- ecoinvent |> rename(
+  "activity_product_uuid" = "Activity UUID & Product UUID",
+  "ei_activity" = "Activity Name",
+  "geo" = "Geography",
+  "isic_class" = "ISIC Classification",
+  "ref_prod" = "Reference Product Name",
+  "unit" = "Unit"
+)
+```
+
+## 3.2. Select random subset of ecoinvent data with unique ei_activity (25 rows are selected as sample which are also to be used with the company sample file under 5.)
+
+```{r}
+set.seed(87)
+
+unique_ecoinvent <- ecoinvent %>%
+  distinct(ei_activity, .keep_all = TRUE)
+
+ecoinvent_co2_subset <- unique_ecoinvent[sample(c(1:nrow(unique_ecoinvent)), size = 25, replace = TRUE), ]
+
+ecoinvent_co2_subset <- as_tibble(ecoinvent_co2_subset)
+ecoinvent_co2_subset
+```
+
+# 4. Inputs data prep
+
+## 4.1. Select subset of 25 rows from inputs/company dataset file (as same as the number of rows selected from ecoinvent data)
+
+```{r}
+# 3 inputs of different unique products
+set.seed(87)
+
+inputs_subset <- inputs_raw[sample(c(1:nrow(inputs_raw)), size = 25, replace = TRUE), ]
+inputs_subset <- as_tibble(inputs_subset)
+inputs_subset
+```
+
+## 4.2. Select relevant columns inputs dataset and add column with activity identifier "activity_product_uuid" from ecoinvent
+
+```{r}
+# select relevant columns
+inputs <- inputs_subset |>
+  select(input_1, input_2, input_3, input_1_sector_ecoinvent_delimited, input_2_sector_ecoinvent_delimited, input_3_sector_ecoinvent_delimited, co2_input_1, co2_input_2, co2_input_3)
+
+# add random identifier column from ecoinvent
+inputs$ei_activity <- ecoinvent_co2_subset$ei_activity
+inputs$activity_product_uuid <- ecoinvent_co2_subset$activity_product_uuid
+
+inputs <- inputs |>
+  relocate(ei_activity, .before = input_1) |>
+  relocate(activity_product_uuid, .before = input_1)
+
+inputs <- as_tibble(inputs)
+inputs
+```
+
+## 4.3. Reshape input file 
+
+```{r}
+# reshape wide dataframe to long data frame
+inputs_long <- inputs |>
+  reshape(
+    direction = "long",
+    varying = list(
+      c("input_1", "input_2", "input_3"),
+      c("co2_input_1", "co2_input_2", "co2_input_3"),
+      c("input_1_sector_ecoinvent_delimited", "input_2_sector_ecoinvent_delimited", "input_3_sector_ecoinvent_delimited")
+    ),
+    v.names = c("inputs", "input_co2", "input_sector"),
+    idvar = c("ei_activity", "activity_product_uuid"),
+    timevar = "input_number"
+  )
+```
+
+## 4.4 Join ecoinvent columns after reshaping
+
+```{r}
+final_inputs <- inputs_long |>
+  left_join(ecoinvent_co2_subset, by = c("activity_product_uuid", "ei_activity"))
+
+# Note: One single activity id from "ecoinvent_co2_subset" has 3 potential
+# matches of same activity id from "inputs_long" due to wide-long conversion.
+# Therefore, the left_join will create a one-to-many join in the "final_inputs".
+
+# I will use the same activity ids in the company dataset as well.
+```
+
+## 4.5. save new ecoinvent file
+
+```{r}
+rm(ecoinvent)
+rm(inputs)
+rm(ecoinvent_raw)
+rm(inputs_subset)
+rm(inputs_long)
+rm(unique_ecoinvent)
+
+write_csv(final_inputs, "02_input_data/data_ecoinvent_co2.csv")
+```
+
+# 5. Company Data Prep
+
+## 5.1. Create subset of data with relevant columns
+
+```{r}
+# select relevant columns from company data
+companies <- inputs_raw %>%
+  select(all_of(c(
+    "companies_id",
+    "company_name",
+    "clustered"
+  )))
+
+companies <- companies |>
+  rename(
+    "company_id" = "companies_id",
+    "ep_product" = "clustered"
+  )
+
+# Select subset of companies and unique products (25 rows)
+companies_short <- companies |>
+  head(25)
+```
+
+## 5.2. Map each product from Europages (ep_product) to the respective ecoinvent activity incl. its LCA data (activity, etc.). For now, I join the activity list from ecoinvent to the company data. In the final indicator calculation, this matching will be done beforehand via NLP models. 
+
+```{r}
+# matching ep products to ei activities
+
+# 25 unique ep_product to be matched with 25 unique ecoinvent activity ids which
+# were also used to match input products from company dataset in step 4.2
+
+companies_activity <- companies_short
+
+companies_activity$activity_product_uuid <- ecoinvent_co2_subset$activity_product_uuid
+companies_activity$ei_activity <- ecoinvent_co2_subset$ei_activity
+companies_activity$unit <- ecoinvent_co2_subset$unit
+
+companies_activity <- as_tibble(companies_activity)
+companies_activity
+
+# Each ep_product have a unique activity id which will be joined with 3 similar
+# activity ids (due to 3 inputs for a single activity id) in the ictr_main.Rmd
+# file
+```
+
+## 5.3. Save company file
+
+```{r}
+rm(companies)
+rm(companies_short)
+rm(inputs_raw)
+
+write_csv(companies_activity, "02_input_data/tilt_companies.csv")
+```
