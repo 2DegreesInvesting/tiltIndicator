@@ -74,10 +74,10 @@ random selection and do not reflect the true information:
 # FIXME: Temporarily redirect to where the data actually is
 here <- function(...) here::here("~/Downloads/mvp/ictr", ...)
 
-inputs <- read.csv(here("data_prep","02_input_data", "data_ecoinvent_co2.csv"))
+inputs <- read.csv(here("data_prep", "02_input_data", "data_ecoinvent_co2.csv"))
 inputs |> glimpse()
 
-companies <- read.csv(here("data_prep","02_input_data", "tilt_companies.csv"))
+companies <- read.csv(here("data_prep", "02_input_data", "tilt_companies.csv"))
 
 # FIXME: Can we reuse pctr_companies?
 companies |> glimpse()
