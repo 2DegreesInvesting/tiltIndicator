@@ -4,7 +4,7 @@
 \alias{pctr_score_activities}
 \title{Title TODO}
 \usage{
-pctr_score_activities(ecoinvent_co2, low_threshold, high_threshold)
+pctr_score_activities(ecoinvent_co2, low_threshold = 0.3, high_threshold = 0.7)
 }
 \arguments{
 \item{ecoinvent_co2}{A \link{data.frame} like \link{pctr_ecoinvent_co2}.}
@@ -21,7 +21,7 @@ Title TODO
 }
 \examples{
 pctr_ecoinvent_co2 |>
-  pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7)
+  pctr_score_activities()
 }
 \seealso{
 Other PCTR functions: 
