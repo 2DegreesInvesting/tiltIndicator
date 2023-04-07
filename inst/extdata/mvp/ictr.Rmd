@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 Load Packages
 ```{r}
-library(tidyverse, warn.conflicts = FALSE)
+library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
