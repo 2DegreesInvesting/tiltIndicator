@@ -20,143 +20,12 @@ library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
-Functions.
-
-```{r}
-ictr_add_ranks <- function(inputs) {
-  inputs %>%
-    ## rank in comparison to all input products
-    mutate(perc_all = rank(input_co2) / length(input_co2)) |> 
-    ## rank in comparison to all input products with same unit
-    group_by(unit) |>
-    mutate(perc_unit = rank(input_co2) / length(input_co2)) %>%
-    ungroup() |> 
-    ## rank in comparison to all input products with same input sector
-    group_by(input_sector) |>
-    mutate(perc_sec = rank(input_co2) / length(input_co2)) %>%
-    ungroup() |> 
-    ## rank in comparison to all input products with same unit and input sector
-    group_by(unit, input_sector) |>
-    mutate(perc_unit_sec = rank(input_co2) / length(input_co2)) %>%
-    ungroup()
-}
-
-ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
-  ## assign scores to position within percentile distribution
-  ecoinvent_input %>%
-    ## for all input products
-    mutate(
-      score_all = case_when(
-        perc_all < low_threshold ~ "low",
-        perc_all >= low_threshold & perc_all < high_threshold ~ "medium",
-        perc_all >= high_threshold ~ "high"
-      )
-    ) |> 
-    ## for products with same unit
-    mutate(
-      score_unit = case_when(
-        perc_unit < low_threshold ~ "low",
-        perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
-        perc_unit >= low_threshold ~ "high"
-      )
-    ) |> 
-    ## for products with same sector
-    mutate(
-      score_sector = case_when(
-        perc_sec < low_threshold ~ "low",
-        perc_sec >= low_threshold & perc_sec < high_threshold ~ "medium",
-        perc_sec >= low_threshold ~ "high"
-      )
-    ) |> 
-    ## for products with same unit and sector
-    mutate(
-      score_unit_sec = case_when(
-        perc_unit_sec < low_threshold ~ "low",
-        perc_unit_sec >= low_threshold & perc_unit_sec < high_threshold ~ "medium",
-        perc_unit_sec >= high_threshold ~ "high",
-      )
-    )
-}
-
-ictr_score_companies <- function(ecoinvent_scores, companies) {
-  ## join by activity_product_uuid and other joint columns from companies with
-  ## ecoinvent_scores
-  
-  companies_scores <- companies |>
-    left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
-  
-  companies_scores
-  
-  
-  
-  ## scores in comparison to all input products
-  scores_all <- companies_scores |>
-    group_by(company_id, score_all) |>
-    summarise(n_all = n()) |>
-    mutate(share_all = n_all / sum(n_all)) |>
-    select(-n_all) |>
-    rename("score" = "score_all")
-  scores_all
-  
-  ## scores in comparison to input products with same unit
-  scores_unit <- companies_scores |>
-    group_by(company_id, score_unit) |>
-    summarise(n_unit = n()) |>
-    mutate(share_unit = n_unit / sum(n_unit)) |>
-    select(-n_unit) |>
-    rename("score" = "score_unit")
-  scores_unit
-  
-  ## scores in comparison to input products with same input sector
-  scores_sector <- companies_scores |>
-    group_by(company_id, score_sector) |>
-    summarise(n_sector = n()) |>
-    mutate(share_sector = n_sector / sum(n_sector)) |>
-    select(-n_sector) |>
-    rename("score" = "score_sector")
-  scores_sector
-  
-  ## scores in comparison to input products with same unit and input sector
-  scores_unit_sec <- companies_scores |>
-    group_by(company_id, score_unit_sec) |>
-    summarise(n_unit_sec = n()) |>
-    mutate(share_unit_sec = n_unit_sec / sum(n_unit_sec)) |>
-    select(-n_unit_sec) |>
-    rename("score" = "score_unit_sec")
-  scores_unit_sec
-  
-  
-  
-  ## create dataset sceleton
-  dt_sceleton <- tibble(
-    company_id = rep(unique(companies_scores$company_id), each = 3),
-    score = rep(c("high", "medium", "low"), 5),
-  )
-  dt_sceleton
-  
-  ## join scores with dt_sceleton so that each company is shown with 3 rows for
-  ## low, medium, and high, even if the share is 0.
-  pctr_output <- dt_sceleton |>
-    left_join(scores_all, by = c("company_id", "score")) |>
-    left_join(scores_unit, by = c("company_id", "score")) |>
-    left_join(scores_sector, by = c("company_id", "score")) |>
-    left_join(scores_unit_sec, by = c("company_id", "score"))
-  
-  ## replace NAs with 0
-  pctr_output <- pctr_output |>
-    replace(is.na(pctr_output), 0)
-}
-```
-
 The tiltIndicator package comes with example datasets.
 
 ```{r}
-inputs <- ictr_inputs
-inputs |> glimpse()
+inputs <- ictr_inputs |> glimpse()
 
-## FIXME: Can we reuse pctr_companies?
-companies <- ictr_companies
-companies |> glimpse()
+companies <- ictr_companies |> glimpse()
 ```
 
 ## Introduction
@@ -214,15 +83,8 @@ sector, products with same unit and sector)
 in comparison to different benchmarks.
 
 ```{r}
-ecoinvent_input <- ictr_add_ranks(inputs)
-
-ecoinvent_input
-
-## creat variables for thresholds
-low_threshold <- 0.3
-high_threshold <- 0.7
-
-ecoinvent_scores <- ictr_add_scores(ecoinvent_input, low_threshold, high_threshold)
+ecoinvent_scores <- inputs |> 
+  ictr_score_inputs(low_threshold = 0.3, high_threshold = 0.7)
 
 ecoinvent_scores
 ```
