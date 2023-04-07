@@ -45,8 +45,8 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   scores_unit_sec <- companies_scores |>
     group_by(.data$company_id, .data$score_unit_sec) |>
     summarise(n_unit_sec = n()) |>
-    mutate(share_unit_sec = n_unit_sec / sum(n_unit_sec)) |>
-    select(-n_unit_sec) |>
+    mutate(share_unit_sec = .data$n_unit_sec / sum(.data$n_unit_sec)) |>
+    select(-"n_unit_sec") |>
     rename("score" = "score_unit_sec")
 
   ## create dataset sceleton
