@@ -4,7 +4,7 @@
 #'
 #' Details (optional) TODO
 #'
-#' @param scored_activities A [data.frame]. The output of
+#' @param scored A [data.frame]. The output of
 #'   [pctr_score_activities].
 #' @param companies A [data.frame] like [pctr_companies].
 #'
@@ -17,14 +17,14 @@
 #' pctr_ecoinvent_co2 |>
 #'   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7) |>
 #'   pctr_score_companies(pctr_companies)
-pctr_score_companies <- function(scored_activities, companies) {
+pctr_score_companies <- function(scored, companies) {
   # Intermediate steps:
   # * Combine company-level information with LCA info from ecoinvent.
   # * Calculate the share of products with each score.
 
-  # join by activity_product_uuid and other joint columns from companies with scored_activities
+  # join by activity_product_uuid and other joint columns from companies with scored
   companies_scores <- companies |>
-    inner_join(scored_activities, by = c("activity_product_uuid", "ei_activity", "unit"))
+    inner_join(scored, by = c("activity_product_uuid", "ei_activity", "unit"))
 
   # scores in comparison to all products
   scores_all <- companies_scores |>

@@ -4,10 +4,10 @@
 \alias{pctr_score_companies}
 \title{Title TODO}
 \usage{
-pctr_score_companies(scored_activities, companies)
+pctr_score_companies(scored, companies)
 }
 \arguments{
-\item{scored_activities}{A \link{data.frame}. The output of
+\item{scored}{A \link{data.frame}. The output of
 \link{pctr_score_activities}.}
 
 \item{companies}{A \link{data.frame} like \link{pctr_companies}.}
