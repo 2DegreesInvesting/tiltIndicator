@@ -1,6 +1,6 @@
 #' TODO
 #'
-#' @param ecoinvent_scores TODO
+#' @param scored TODO
 #' @param companies TODO
 #'
 #' @family ICTR functions
@@ -12,12 +12,12 @@
 #' ictr_inputs |>
 #'   ictr_score_inputs() |>
 #'   ictr_score_companies(ictr_companies)
-ictr_score_companies <- function(ecoinvent_scores, companies) {
+ictr_score_companies <- function(scored, companies) {
   ## join by activity_product_uuid and other joint columns from companies with
-  ## ecoinvent_scores
+  ## scored
 
   companies_scores <- companies |>
-    left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
+    left_join(scored, by = c("activity_product_uuid", "ei_activity", "unit"))
 
   ## scores in comparison to all input products
   scores_all <- companies_scores |>

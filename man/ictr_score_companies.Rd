@@ -4,10 +4,10 @@
 \alias{ictr_score_companies}
 \title{TODO}
 \usage{
-ictr_score_companies(ecoinvent_scores, companies)
+ictr_score_companies(scored, companies)
 }
 \arguments{
-\item{ecoinvent_scores}{TODO}
+\item{scored}{TODO}
 
 \item{companies}{TODO}
 }
