@@ -72,7 +72,7 @@ random selection and do not reflect the true information:
 
 ```{r}
 # FIXME: Temporarily redirect to where the data actually is
-here <- function(...) here::here("data-raw", "ictr", ...)
+here <- function(...) here::here("~/Downloads/mvp/ictr", ...)
 
 inputs <- read.csv(here("data_prep","02_input_data", "data_ecoinvent_co2.csv"))
 inputs |> glimpse()
