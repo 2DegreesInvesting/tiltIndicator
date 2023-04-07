@@ -11,14 +11,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Setup
+## Setup
 
 ```{r}
 library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
-# Introduction
+## Introduction
 
 The Input Product Carbon Transition Risk Indicator assesses the transition risk
 of the input products due to their relative carbon footprint to other input
@@ -55,11 +55,11 @@ The transition risk indicator consists of 3 main steps:
 - Step 2: Calculating the relative carbon footprint per input product
 - Step 3: Aggregating on the company-level
 
-# Step 1: Identifying
+## Step 1: Identifying
 
 Identifying the input products for each product
 
-## 1.1 Load company data and inputs data
+### 1.1 Load company data and inputs data
 
 Sample data set includes inputs and co2 footprints for each product from
 Ecoinvent and sectors from Europages. NOTE: the following columns are a complete
@@ -72,37 +72,37 @@ random selection and do not reflect the true information:
 inputs <- ictr_inputs
 inputs |> glimpse()
 
-# FIXME: Can we reuse pctr_companies?
+## FIXME: Can we reuse pctr_companies?
 companies <- ictr_companies
 companies |> glimpse()
 ```
 
-# Step 2: Calculate ranks per input product and assign scores
+## Step 2: Calculate ranks per input product and assign scores
 
-## 2.1 Calculate the rank of each input product
+### 2.1 Calculate the rank of each input product
 
 This is done based on the input products' carbon footprints compared to 4
 different benchmarks (all products, products with same unit, products with same
 sector, products with same unit and sector)
 
 ```{r}
-# rank in comparison to all input products
+## rank in comparison to all input products
 ecoinvent_input <- inputs %>%
   mutate(perc_all = rank(input_co2) / length(input_co2))
 
-# rank in comparison to all input products with same unit
+## rank in comparison to all input products with same unit
 ecoinvent_input <- ecoinvent_input |>
   group_by(unit) |>
   mutate(perc_unit = rank(input_co2) / length(input_co2)) %>%
   ungroup()
 
-# rank in comparison to all input products with same input sector
+## rank in comparison to all input products with same input sector
 ecoinvent_input <- ecoinvent_input |>
   group_by(input_sector) |>
   mutate(perc_sec = rank(input_co2) / length(input_co2)) %>%
   ungroup()
 
-# rank in comparison to all input products with same unit and input sector
+## rank in comparison to all input products with same unit and input sector
 ecoinvent_input <- ecoinvent_input |>
   group_by(unit, input_sector) |>
   mutate(perc_unit_sec = rank(input_co2) / length(input_co2)) %>%
@@ -111,18 +111,18 @@ ecoinvent_input <- ecoinvent_input |>
 ecoinvent_input
 ```
 
-## 2.2 Assign scores to the input products
+### 2.2 Assign scores to the input products
 
 This is done based on their position within the distribution of co2 footprints
 in comparison to different benchmarks.
 
 ```{r}
-# creat variables for thresholds
+## creat variables for thresholds
 low_threshold <- 0.3
 high_threshold <- 0.7
 
-# assign scores to position within percentile distribution
-# for all input products
+## assign scores to position within percentile distribution
+## for all input products
 ecoinvent_scores <- ecoinvent_input %>%
   mutate(
     score_all = case_when(
@@ -132,7 +132,7 @@ ecoinvent_scores <- ecoinvent_input %>%
     )
   )
 
-# for products with same unit
+## for products with same unit
 ecoinvent_scores <- ecoinvent_scores %>%
   mutate(
     score_unit = case_when(
@@ -142,7 +142,7 @@ ecoinvent_scores <- ecoinvent_scores %>%
     )
   )
 
-# for products with same sector
+## for products with same sector
 ecoinvent_scores <- ecoinvent_scores %>%
   mutate(
     score_sector = case_when(
@@ -152,7 +152,7 @@ ecoinvent_scores <- ecoinvent_scores %>%
     )
   )
 
-# for products with same unit and sector
+## for products with same unit and sector
 ecoinvent_scores <- ecoinvent_scores %>%
   mutate(
     score_unit_sec = case_when(
@@ -165,16 +165,16 @@ ecoinvent_scores <- ecoinvent_scores %>%
 ecoinvent_scores
 ```
 
-# Step 3. Aggregating on the company level
+## Step 3. Aggregating on the company level
 
-## 3.1 Join dataset `companies` and `ecoinvent_scores`
+### 3.1 Join dataset `companies` and `ecoinvent_scores`
 
 This is required to combine company-level information with LCA info from
 ecoinvent.
 
 ```{r}
-# join by activity_product_uuid and other joint columns from companies with
-# ecoinvent_scores
+## join by activity_product_uuid and other joint columns from companies with
+## ecoinvent_scores
 
 companies_scores <- companies |>
   left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
@@ -182,12 +182,12 @@ companies_scores <- companies |>
 companies_scores |> tibble::as_tibble()
 ```
 
-## 3.2 Caclulate the scores for each company
+### 3.2 Caclulate the scores for each company
 
 This is done by calculating the share of input products with each score. 
 
 ```{r}
-# scores in comparison to all input products
+## scores in comparison to all input products
 scores_all <- companies_scores |>
   group_by(company_id, score_all) |>
   summarise(n_all = n()) |>
@@ -196,7 +196,7 @@ scores_all <- companies_scores |>
   rename("score" = "score_all")
 scores_all
 
-# scores in comparison to input products with same unit
+## scores in comparison to input products with same unit
 scores_unit <- companies_scores |>
   group_by(company_id, score_unit) |>
   summarise(n_unit = n()) |>
@@ -205,7 +205,7 @@ scores_unit <- companies_scores |>
   rename("score" = "score_unit")
 scores_unit
 
-# scores in comparison to input products with same input sector
+## scores in comparison to input products with same input sector
 scores_sector <- companies_scores |>
   group_by(company_id, score_sector) |>
   summarise(n_sector = n()) |>
@@ -214,7 +214,7 @@ scores_sector <- companies_scores |>
   rename("score" = "score_sector")
 scores_sector
 
-# scores in comparison to input products with same unit and input sector
+## scores in comparison to input products with same unit and input sector
 scores_unit_sec <- companies_scores |>
   group_by(company_id, score_unit_sec) |>
   summarise(n_unit_sec = n()) |>
@@ -223,7 +223,7 @@ scores_unit_sec <- companies_scores |>
   rename("score" = "score_unit_sec")
 scores_unit_sec
 ```
-## 3.3 Create final dataset
+### 3.3 Create final dataset
 
 The final dataset should have three rows per company, i.e. one for each
 risk_group (low, medium, high) and one column each indicating the share of
@@ -232,22 +232,22 @@ input products, input products with same unit, input products with same input
 sector, and input products with same unit and input sector)
 
 ```{r}
-# create dataset sceleton
+## create dataset sceleton
 dt_sceleton <- tibble(
   company_id = rep(unique(companies_scores$company_id), each = 3),
   score = rep(c("high", "medium", "low"), 5),
 )
 dt_sceleton
 
-# join scores with dt_sceleton so that each company is shown with 3 rows for
-# low, medium, and high, even if the share is 0.
+## join scores with dt_sceleton so that each company is shown with 3 rows for
+## low, medium, and high, even if the share is 0.
 pctr_output <- dt_sceleton |>
   left_join(scores_all, by = c("company_id", "score")) |>
   left_join(scores_unit, by = c("company_id", "score")) |>
   left_join(scores_sector, by = c("company_id", "score")) |>
   left_join(scores_unit_sec, by = c("company_id", "score"))
 
-# replace NAs with 0
+## replace NAs with 0
 pctr_output <- pctr_output |>
   replace(is.na(pctr_output), 0)
 
