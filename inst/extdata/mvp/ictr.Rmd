@@ -86,24 +86,18 @@ different benchmarks (all products, products with same unit, products with same
 sector, products with same unit and sector)
 
 ```{r}
-## rank in comparison to all input products
 ecoinvent_input <- inputs %>%
-  mutate(perc_all = rank(input_co2) / length(input_co2))
-
-## rank in comparison to all input products with same unit
-ecoinvent_input <- ecoinvent_input |>
+  ## rank in comparison to all input products
+  mutate(perc_all = rank(input_co2) / length(input_co2)) |> 
+  ## rank in comparison to all input products with same unit
   group_by(unit) |>
   mutate(perc_unit = rank(input_co2) / length(input_co2)) %>%
-  ungroup()
-
-## rank in comparison to all input products with same input sector
-ecoinvent_input <- ecoinvent_input |>
+  ungroup() |> 
+  ## rank in comparison to all input products with same input sector
   group_by(input_sector) |>
   mutate(perc_sec = rank(input_co2) / length(input_co2)) %>%
-  ungroup()
-
-## rank in comparison to all input products with same unit and input sector
-ecoinvent_input <- ecoinvent_input |>
+  ungroup() |> 
+  ## rank in comparison to all input products with same unit and input sector
   group_by(unit, input_sector) |>
   mutate(perc_unit_sec = rank(input_co2) / length(input_co2)) %>%
   ungroup()
@@ -122,38 +116,32 @@ low_threshold <- 0.3
 high_threshold <- 0.7
 
 ## assign scores to position within percentile distribution
-## for all input products
 ecoinvent_scores <- ecoinvent_input %>%
+  ## for all input products
   mutate(
     score_all = case_when(
       perc_all < low_threshold ~ "low",
       perc_all >= low_threshold & perc_all < high_threshold ~ "medium",
       perc_all >= high_threshold ~ "high"
     )
-  )
-
-## for products with same unit
-ecoinvent_scores <- ecoinvent_scores %>%
+  ) |> 
+  ## for products with same unit
   mutate(
     score_unit = case_when(
       perc_unit < low_threshold ~ "low",
       perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
       perc_unit >= low_threshold ~ "high"
     )
-  )
-
-## for products with same sector
-ecoinvent_scores <- ecoinvent_scores %>%
+  ) |> 
+  ## for products with same sector
   mutate(
     score_sector = case_when(
       perc_sec < low_threshold ~ "low",
       perc_sec >= low_threshold & perc_sec < high_threshold ~ "medium",
       perc_sec >= low_threshold ~ "high"
     )
-  )
-
-## for products with same unit and sector
-ecoinvent_scores <- ecoinvent_scores %>%
+  ) |> 
+  ## for products with same unit and sector
   mutate(
     score_unit_sec = case_when(
       perc_unit_sec < low_threshold ~ "low",
