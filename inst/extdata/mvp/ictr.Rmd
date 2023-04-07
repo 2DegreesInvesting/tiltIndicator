@@ -13,77 +13,14 @@ knitr::opts_chunk$set(
 
 ## Setup
 
+Packages.
+
 ```{r}
 library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
-## Introduction
-
-The Input Product Carbon Transition Risk Indicator assesses the transition risk
-of the input products due to their relative carbon footprint to other input
-products. As a default option, each input product will be compared to the carbon
-footprint of every other input product. Alternatively, users can also choose to
-compare those input products of the same type, so e.g., comparing only raw
-materials with each other. Input products with a higher carbon footprint will
-also face a higher risk.
-
-The Input Product Carbon Transition Risk Indicator is therefore similar to the
-Product Carbon Transition Risk Indicator, but it focuses on the input products
-and not the product of the company. Input products are, for example, resources,
-packaging materials, energy and enabling services (such as tractor use on farm)
-to produce the product.
-
-After identifying each carbon footprint for one input product, the input
-products will be ranked according to their footprint. Input products in the
-highest percentile (≥70%) will be classified as high transition risk input
-products. Input products in the medium percentile (between ≥30% and <70%) will
-be classified as medium transition risk input products. Products in the lowest
-percentile (<30%) will be classified as low transition risk input products.
-
-After assessing the input products transition risk based on its carbon footprint
-for each product, they will be aggregated at company-level. We derive what
-percentage of the input products are high, medium and low transition risk.
-
-The goal of the transition risk MVP is to create a first draft of how the
-transition risk indicator for inputs would be build in code in order to convert
-it into code production easily in the future.
-
-The transition risk indicator consists of 3 main steps:
-
-- Step 1: Identifying the input products for each product
-- Step 2: Calculating the relative carbon footprint per input product
-- Step 3: Aggregating on the company-level
-
-## 1. Identifying
-
-Identifying the input products for each product
-
-### 1.1 Load company data and inputs data
-
-Sample data set includes inputs and co2 footprints for each product from
-Ecoinvent and sectors from Europages. NOTE: the following columns are a complete
-random selection and do not reflect the true information:
-
-- co2 footprints (not allowed to share licensed data right now)
-- sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)
-
-```{r}
-inputs <- ictr_inputs
-inputs |> glimpse()
-
-## FIXME: Can we reuse pctr_companies?
-companies <- ictr_companies
-companies |> glimpse()
-```
-
-## 2. Calculate ranks per input product and assign scores
-
-### 2.1 Calculate the rank of each input product
-
-This is done based on the input products' carbon footprints compared to 4
-different benchmarks (all products, products with same unit, products with same
-sector, products with same unit and sector)
+Functions.
 
 ```{r}
 ictr_add_ranks <- function(inputs) {
@@ -103,20 +40,6 @@ ictr_add_ranks <- function(inputs) {
     mutate(perc_unit_sec = rank(input_co2) / length(input_co2)) %>%
     ungroup()
 }
-ecoinvent_input <- ictr_add_ranks(inputs)
-
-ecoinvent_input
-```
-
-### 2.2 Assign scores to the input products
-
-This is done based on their position within the distribution of co2 footprints
-in comparison to different benchmarks.
-
-```{r}
-## creat variables for thresholds
-low_threshold <- 0.3
-high_threshold <- 0.7
 
 ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
   ## assign scores to position within percentile distribution
@@ -154,97 +77,171 @@ ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
       )
     )
 }
+
+ictr_score_companies <- function(ecoinvent_scores, companies) {
+  ## join by activity_product_uuid and other joint columns from companies with
+  ## ecoinvent_scores
+  
+  companies_scores <- companies |>
+    left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
+  
+  companies_scores
+  
+  
+  
+  ## scores in comparison to all input products
+  scores_all <- companies_scores |>
+    group_by(company_id, score_all) |>
+    summarise(n_all = n()) |>
+    mutate(share_all = n_all / sum(n_all)) |>
+    select(-n_all) |>
+    rename("score" = "score_all")
+  scores_all
+  
+  ## scores in comparison to input products with same unit
+  scores_unit <- companies_scores |>
+    group_by(company_id, score_unit) |>
+    summarise(n_unit = n()) |>
+    mutate(share_unit = n_unit / sum(n_unit)) |>
+    select(-n_unit) |>
+    rename("score" = "score_unit")
+  scores_unit
+  
+  ## scores in comparison to input products with same input sector
+  scores_sector <- companies_scores |>
+    group_by(company_id, score_sector) |>
+    summarise(n_sector = n()) |>
+    mutate(share_sector = n_sector / sum(n_sector)) |>
+    select(-n_sector) |>
+    rename("score" = "score_sector")
+  scores_sector
+  
+  ## scores in comparison to input products with same unit and input sector
+  scores_unit_sec <- companies_scores |>
+    group_by(company_id, score_unit_sec) |>
+    summarise(n_unit_sec = n()) |>
+    mutate(share_unit_sec = n_unit_sec / sum(n_unit_sec)) |>
+    select(-n_unit_sec) |>
+    rename("score" = "score_unit_sec")
+  scores_unit_sec
+  
+  
+  
+  ## create dataset sceleton
+  dt_sceleton <- tibble(
+    company_id = rep(unique(companies_scores$company_id), each = 3),
+    score = rep(c("high", "medium", "low"), 5),
+  )
+  dt_sceleton
+  
+  ## join scores with dt_sceleton so that each company is shown with 3 rows for
+  ## low, medium, and high, even if the share is 0.
+  pctr_output <- dt_sceleton |>
+    left_join(scores_all, by = c("company_id", "score")) |>
+    left_join(scores_unit, by = c("company_id", "score")) |>
+    left_join(scores_sector, by = c("company_id", "score")) |>
+    left_join(scores_unit_sec, by = c("company_id", "score"))
+  
+  ## replace NAs with 0
+  pctr_output <- pctr_output |>
+    replace(is.na(pctr_output), 0)
+}
+```
+
+The tiltIndicator package comes with example datasets.
+
+```{r}
+inputs <- ictr_inputs
+inputs |> glimpse()
+
+## FIXME: Can we reuse pctr_companies?
+companies <- ictr_companies
+companies |> glimpse()
+```
+
+## Introduction
+
+The Input Product Carbon Transition Risk Indicator assesses the transition risk
+of the input products due to their relative carbon footprint to other input
+products. As a default option, each input product will be compared to the carbon
+footprint of every other input product. Alternatively, users can also choose to
+compare those input products of the same type, so e.g., comparing only raw
+materials with each other. Input products with a higher carbon footprint will
+also face a higher risk.
+
+The Input Product Carbon Transition Risk Indicator is therefore similar to the
+Product Carbon Transition Risk Indicator, but it focuses on the input products
+and not the product of the company. Input products are, for example, resources,
+packaging materials, energy and enabling services (such as tractor use on farm)
+to produce the product.
+
+After identifying each carbon footprint for one input product, the input
+products will be ranked according to their footprint. Input products in the
+highest percentile (≥70%) will be classified as high transition risk input
+products. Input products in the medium percentile (between ≥30% and <70%) will
+be classified as medium transition risk input products. Products in the lowest
+percentile (<30%) will be classified as low transition risk input products.
+
+After assessing the input products transition risk based on its carbon footprint
+for each product, they will be aggregated at company-level. We derive what
+percentage of the input products are high, medium and low transition risk.
+
+The goal of the transition risk MVP is to create a first draft of how the
+transition risk indicator for inputs would be build in code in order to convert
+it into code production easily in the future.
+
+The transition risk indicator consists of 2 broad steps:
+
+1. Score input products: Identifying the input products for each product, and
+calculating the relative carbon footprint per input product.
+2. Score companies: Aggregating on the company-level.
+
+
+Sample data set includes inputs and co2 footprints for each product from
+Ecoinvent and sectors from Europages. NOTE: the following columns are a complete
+random selection and do not reflect the true information:
+
+- co2 footprints (not allowed to share licensed data right now)
+- sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)
+
+## Score input products
+
+* Calculate the rank of each input product. This is done based on the input products' carbon footprints compared to 4
+different benchmarks (all products, products with same unit, products with same
+sector, products with same unit and sector)
+
+* Assign scores to the input products. This is done based on their position within the distribution of co2 footprints
+in comparison to different benchmarks.
+
+```{r}
+ecoinvent_input <- ictr_add_ranks(inputs)
+
+ecoinvent_input
+
+## creat variables for thresholds
+low_threshold <- 0.3
+high_threshold <- 0.7
+
 ecoinvent_scores <- ictr_add_scores(ecoinvent_input, low_threshold, high_threshold)
 
 ecoinvent_scores
 ```
 
-## 3. Aggregating on the company level
+## Aggregating on the company level
 
-### 3.1 Join dataset `companies` and `ecoinvent_scores`
-
-This is required to combine company-level information with LCA info from
+* Join dataset `companies` and `ecoinvent_scores`. This is required to combine company-level information with LCA info from
 ecoinvent.
 
-### 3.2 Caclulate the scores for each company
+* Caclulate the scores for each company. This is done by calculating the share of input products with each score. 
 
-This is done by calculating the share of input products with each score. 
-
-### 3.3 Create final dataset
-
-The final dataset should have three rows per company, i.e. one for each
+* Create final dataset. The final dataset should have three rows per company, i.e. one for each
 risk_group (low, medium, high) and one column each indicating the share of
 products in the respective risk groups for the four  different benchmarks (all
 input products, input products with same unit, input products with same input
 sector, and input products with same unit and input sector)
 
 ```{r}
-## join by activity_product_uuid and other joint columns from companies with
-## ecoinvent_scores
-
-companies_scores <- companies |>
-  left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
-
-companies_scores
-
-
-
-## scores in comparison to all input products
-scores_all <- companies_scores |>
-  group_by(company_id, score_all) |>
-  summarise(n_all = n()) |>
-  mutate(share_all = n_all / sum(n_all)) |>
-  select(-n_all) |>
-  rename("score" = "score_all")
-scores_all
-
-## scores in comparison to input products with same unit
-scores_unit <- companies_scores |>
-  group_by(company_id, score_unit) |>
-  summarise(n_unit = n()) |>
-  mutate(share_unit = n_unit / sum(n_unit)) |>
-  select(-n_unit) |>
-  rename("score" = "score_unit")
-scores_unit
-
-## scores in comparison to input products with same input sector
-scores_sector <- companies_scores |>
-  group_by(company_id, score_sector) |>
-  summarise(n_sector = n()) |>
-  mutate(share_sector = n_sector / sum(n_sector)) |>
-  select(-n_sector) |>
-  rename("score" = "score_sector")
-scores_sector
-
-## scores in comparison to input products with same unit and input sector
-scores_unit_sec <- companies_scores |>
-  group_by(company_id, score_unit_sec) |>
-  summarise(n_unit_sec = n()) |>
-  mutate(share_unit_sec = n_unit_sec / sum(n_unit_sec)) |>
-  select(-n_unit_sec) |>
-  rename("score" = "score_unit_sec")
-scores_unit_sec
-
-
-
-## create dataset sceleton
-dt_sceleton <- tibble(
-  company_id = rep(unique(companies_scores$company_id), each = 3),
-  score = rep(c("high", "medium", "low"), 5),
-)
-dt_sceleton
-
-## join scores with dt_sceleton so that each company is shown with 3 rows for
-## low, medium, and high, even if the share is 0.
-pctr_output <- dt_sceleton |>
-  left_join(scores_all, by = c("company_id", "score")) |>
-  left_join(scores_unit, by = c("company_id", "score")) |>
-  left_join(scores_sector, by = c("company_id", "score")) |>
-  left_join(scores_unit_sec, by = c("company_id", "score"))
-
-## replace NAs with 0
-pctr_output <- pctr_output |>
-  replace(is.na(pctr_output), 0)
+pctr_output <- ictr_score_companies(ecoinvent_scores, companies)
 
 pctr_output
 ```
