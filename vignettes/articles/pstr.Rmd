@@ -122,7 +122,7 @@ Then, I calculate the score aggregated by summing (per transition risk) the
 products over the total numbers of products per company.
 
 ```{r}
-with_score_aggregated <- with_transition_risk |> 
+with_score_aggregated <- with_transition_risk |>
   pstr_aggregate_scores(pstr_companies)
 
 with_score_aggregated
