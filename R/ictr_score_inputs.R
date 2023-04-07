@@ -11,7 +11,7 @@
 #' ictr_score_inputs(ictr_inputs)
 ictr_score_inputs <- function(inputs,
                               low_threshold = 0.3,
-                              high_threshold =  0.7) {
+                              high_threshold = 0.7) {
   inputs |>
     ictr_add_ranks() |>
     ictr_add_scores(
