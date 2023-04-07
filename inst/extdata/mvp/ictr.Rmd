@@ -23,6 +23,12 @@ library(tiltIndicator)
 Functions.
 
 ```{r}
+ictr_score_inputs <- function(inputs, low_threshold, high_threshold) {
+  ecoinvent_scores <- inputs |> 
+    ictr_add_ranks() |> 
+    ictr_add_scores(low_threshold = 0.3, high_threshold = 0.7)
+}
+
 ictr_add_ranks <- function(inputs) {
   inputs %>%
     ## rank in comparison to all input products
@@ -214,15 +220,8 @@ sector, products with same unit and sector)
 in comparison to different benchmarks.
 
 ```{r}
-ecoinvent_input <- ictr_add_ranks(inputs)
-
-ecoinvent_input
-
-## creat variables for thresholds
-low_threshold <- 0.3
-high_threshold <- 0.7
-
-ecoinvent_scores <- ictr_add_scores(ecoinvent_input, low_threshold, high_threshold)
+ecoinvent_scores <- inputs |> 
+  ictr_score_inputs(low_threshold = 0.3, high_threshold = 0.7)
 
 ecoinvent_scores
 ```
