@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9017
+
+* Add ICTR MVP (#90).
+
 # tiltIndicator 0.0.0.9016
 
 * The unprefixed pstr datasets are now defunc (#79).
