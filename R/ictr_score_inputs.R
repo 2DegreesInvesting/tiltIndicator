@@ -25,7 +25,7 @@ ictr_add_ranks <- function(inputs) {
     ## rank in comparison to all input products
     mutate(perc_all = rank(.data$input_co2) / length(.data$input_co2)) |>
     ## rank in comparison to all input products with same unit
-    group_by(unit) |>
+    group_by(.data$unit) |>
     mutate(perc_unit = rank(.data$input_co2) / length(.data$input_co2)) %>%
     ungroup() |>
     ## rank in comparison to all input products with same input sector
