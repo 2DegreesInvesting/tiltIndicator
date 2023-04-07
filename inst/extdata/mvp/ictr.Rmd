@@ -11,14 +11,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Setup
-
-Load Packages
-```{r}
-library(dplyr, warn.conflicts = FALSE)
-library(tiltIndicator)
-```
-
 # Introduction
 
 The Input Product Carbon Transition Risk Indicator assesses the transition risk
@@ -56,6 +48,13 @@ The transition risk indicator consists of 3 main steps:
 - Step 2: Calculating the relative carbon footprint per input product
 - Step 3: Aggregating on the company-level
 
+# Setup
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(tiltIndicator)
+```
+
 # Step 1: Identifying
 
 Identifying the input products for each product
@@ -66,8 +65,8 @@ Sample data set includes inputs and co2 footprints for each product from
 Ecoinvent and sectors from Europages. NOTE: the following columns are a complete
 random selection and do not reflect the true information:
 
-    - co2 footprints (not allowed to share licensed data right now)
-    - sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)
+- co2 footprints (not allowed to share licensed data right now)
+- sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)
 
 ```{r}
 inputs <- ictr_inputs
