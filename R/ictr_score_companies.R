@@ -13,9 +13,6 @@
 #'   ictr_score_inputs() |>
 #'   ictr_score_companies(ictr_companies)
 ictr_score_companies <- function(scored, companies) {
-  ## join by activity_product_uuid and other joint columns from companies with
-  ## scored
-
   companies_scores <- companies |>
     left_join(scored, by = c("activity_product_uuid", "ei_activity", "unit"))
 

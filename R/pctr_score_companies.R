@@ -22,7 +22,6 @@ pctr_score_companies <- function(scored, companies) {
   # * Combine company-level information with LCA info from ecoinvent.
   # * Calculate the share of products with each score.
 
-  # join by activity_product_uuid and other joint columns from companies with scored
   companies_scores <- companies |>
     inner_join(scored, by = c("activity_product_uuid", "ei_activity", "unit"))
 
