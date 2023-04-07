@@ -13,20 +13,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Installation 
-Install the development version of tiltIndicator from GitHub with:
-```{r}
-# install.packages("devtools")
-# devtools::install_github("2DegreesInvesting/tiltIndicator") #
-```
-
-Packages
-
 ```{r}
 library(tidyverse, warn.conflicts = FALSE)
 library(vroom)
 library(here)
-# library(tiltIndicator) # can be used when functions are added in the repo
+# FIXME: Redirecting temporarily
 here <- function(...) fs::path("~/Downloads/mvp/istr", ...)
 ```
 
@@ -290,6 +281,7 @@ We join this on the sectors.
 ```{r}
 with_reductions <- istr_companies |>
   istr_add_reductions(istr_weo_2022)
+
 with_reductions |> tibble::as_tibble()
 ```
 
@@ -336,16 +328,9 @@ that a company produces.
 
 Then, the score aggregated is calculated by summing (per transition risk) the products over the total numbers of products per company.
 
-
 ```{r}
 with_score_aggregated <- with_transition_risk |> 
   istr_aggregate_scores(istr_companies)
 
 with_score_aggregated
-```
-
-
-## C.5. write csv into output folder
-```{r}
-write_csv(with_score_aggregated, here("output_file", "mvp_istr_output.csv"))
 ```
