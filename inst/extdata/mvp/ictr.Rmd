@@ -23,12 +23,9 @@ library(tiltIndicator)
 The tiltIndicator package comes with example datasets.
 
 ```{r}
-inputs <- ictr_inputs
-inputs |> glimpse()
+inputs <- ictr_inputs |> glimpse()
 
-## FIXME: Can we reuse pctr_companies?
-companies <- ictr_companies
-companies |> glimpse()
+companies <- ictr_companies |> glimpse()
 ```
 
 ## Introduction
