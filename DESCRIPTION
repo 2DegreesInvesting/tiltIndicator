@@ -6,6 +6,7 @@ Authors@R: c(
            comment = c(ORCID = "https://orcid.org/0000-0002-1986-7988")),
     person("Tilman", "Trompke", , "tilman@2degrees-investing.org", role = "aut"),
     person("Linda", "Delacombaz", , "linda@2degrees-investing.org", role = "aut"),
+    person("Kalash", "Singhal", , "kalash@2degrees-investing.org", role = "aut"),
     person("2 Degrees Investing Initiative", , , "contact@2degrees-investing.org", role = c("cph", "fnd"))
   )
 Description: Indicators for the 'TILT' project.
