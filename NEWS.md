@@ -6,7 +6,7 @@
 
 # tiltIndicator 0.0.0.9016
 
-* The unprefixed pstr datasets are now defunc (#79).
+* The un-prefixed pstr datasets are now retired (#79).
 
 # tiltIndicator 0.0.0.9014
 
