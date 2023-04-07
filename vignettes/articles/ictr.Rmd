@@ -1,0 +1,15 @@
+---
+title: "Input carbon transition risk (ICTR)"
+author: "Kalash Singhal"
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r child=tiltIndicator:::mvp_path("ictr.Rmd")}
+```
