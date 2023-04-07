@@ -29,8 +29,8 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   scores_unit <- companies_scores |>
     group_by(.data$company_id, .data$score_unit) |>
     summarise(n_unit = n()) |>
-    mutate(share_unit = n_unit / sum(n_unit)) |>
-    select(-n_unit) |>
+    mutate(share_unit = .data$n_unit / sum(.data$n_unit)) |>
+    select(-"n_unit") |>
     rename("score" = "score_unit")
 
   ## scores in comparison to input products with same input sector
