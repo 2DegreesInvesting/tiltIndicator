@@ -55,7 +55,7 @@ The transition risk indicator consists of 3 main steps:
 - Step 2: Calculating the relative carbon footprint per input product
 - Step 3: Aggregating on the company-level
 
-## Step 1: Identifying
+## 1. Identifying
 
 Identifying the input products for each product
 
@@ -77,7 +77,7 @@ companies <- ictr_companies
 companies |> glimpse()
 ```
 
-## Step 2: Calculate ranks per input product and assign scores
+## 2. Calculate ranks per input product and assign scores
 
 ### 2.1 Calculate the rank of each input product
 
@@ -153,7 +153,7 @@ ecoinvent_scores <- ecoinvent_input %>%
 ecoinvent_scores
 ```
 
-## Step 3. Aggregating on the company level
+## 3. Aggregating on the company level
 
 ### 3.1 Join dataset `companies` and `ecoinvent_scores`
 
@@ -167,7 +167,7 @@ ecoinvent.
 companies_scores <- companies |>
   left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
 
-companies_scores |> tibble::as_tibble()
+companies_scores
 ```
 
 ### 3.2 Caclulate the scores for each company
