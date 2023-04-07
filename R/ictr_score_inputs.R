@@ -1,7 +1,23 @@
-ictr_score_inputs <- function(inputs, low_threshold, high_threshold) {
-  ecoinvent_scores <- inputs |>
+#' TODO
+#'
+#' @param inputs TODO
+#' @param low_threshold TODO
+#' @param high_threshold TODO
+#'
+#' @return TODO
+#' @export
+#'
+#' @examples
+#' ictr_score_inputs(ictr_inputs)
+ictr_score_inputs <- function(inputs,
+                              low_threshold = 0.3,
+                              high_threshold =  0.7) {
+  inputs |>
     ictr_add_ranks() |>
-    ictr_add_scores(low_threshold = 0.3, high_threshold = 0.7)
+    ictr_add_scores(
+      low_threshold = low_threshold,
+      high_threshold = high_threshold
+    )
 }
 
 ictr_add_ranks <- function(inputs) {

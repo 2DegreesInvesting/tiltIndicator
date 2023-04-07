@@ -1,3 +1,15 @@
+#' TODO
+#'
+#' @param ecoinvent_scores TODO
+#' @param companies TODO
+#'
+#' @return TODO
+#' @export
+#'
+#' @examples
+#' ictr_inputs |>
+#'   ictr_score_inputs() |>
+#'   ictr_score_companies(ictr_companies)
 ictr_score_companies <- function(ecoinvent_scores, companies) {
   ## join by activity_product_uuid and other joint columns from companies with
   ## ecoinvent_scores
@@ -65,4 +77,6 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   ## replace NAs with 0
   pctr_output <- pctr_output |>
     replace(is.na(pctr_output), 0)
+
+  pctr_output
 }
