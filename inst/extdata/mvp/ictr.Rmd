@@ -11,6 +11,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Setup
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(tiltIndicator)
+```
+
 # Introduction
 
 The Input Product Carbon Transition Risk Indicator assesses the transition risk
@@ -47,13 +54,6 @@ The transition risk indicator consists of 3 main steps:
 - Step 1: Identifying the input products for each product
 - Step 2: Calculating the relative carbon footprint per input product
 - Step 3: Aggregating on the company-level
-
-# Setup
-
-```{r}
-library(dplyr, warn.conflicts = FALSE)
-library(tiltIndicator)
-```
 
 # Step 1: Identifying
 
