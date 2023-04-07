@@ -166,6 +166,18 @@ ecoinvent_scores
 This is required to combine company-level information with LCA info from
 ecoinvent.
 
+### 3.2 Caclulate the scores for each company
+
+This is done by calculating the share of input products with each score. 
+
+### 3.3 Create final dataset
+
+The final dataset should have three rows per company, i.e. one for each
+risk_group (low, medium, high) and one column each indicating the share of
+products in the respective risk groups for the four  different benchmarks (all
+input products, input products with same unit, input products with same input
+sector, and input products with same unit and input sector)
+
 ```{r}
 ## join by activity_product_uuid and other joint columns from companies with
 ## ecoinvent_scores
@@ -174,13 +186,9 @@ companies_scores <- companies |>
   left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
 
 companies_scores
-```
 
-### 3.2 Caclulate the scores for each company
 
-This is done by calculating the share of input products with each score. 
 
-```{r}
 ## scores in comparison to all input products
 scores_all <- companies_scores |>
   group_by(company_id, score_all) |>
@@ -216,16 +224,9 @@ scores_unit_sec <- companies_scores |>
   select(-n_unit_sec) |>
   rename("score" = "score_unit_sec")
 scores_unit_sec
-```
-### 3.3 Create final dataset
 
-The final dataset should have three rows per company, i.e. one for each
-risk_group (low, medium, high) and one column each indicating the share of
-products in the respective risk groups for the four  different benchmarks (all
-input products, input products with same unit, input products with same input
-sector, and input products with same unit and input sector)
 
-```{r}
+
 ## create dataset sceleton
 dt_sceleton <- tibble(
   company_id = rep(unique(companies_scores$company_id), each = 3),
