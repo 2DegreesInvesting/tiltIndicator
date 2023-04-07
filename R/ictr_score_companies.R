@@ -17,10 +17,6 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   companies_scores <- companies |>
     left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
 
-  companies_scores
-
-
-
   ## scores in comparison to all input products
   scores_all <- companies_scores |>
     group_by(.data$company_id, .data$score_all) |>
@@ -28,7 +24,6 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
     mutate(share_all = n_all / sum(n_all)) |>
     select(-n_all) |>
     rename("score" = "score_all")
-  scores_all
 
   ## scores in comparison to input products with same unit
   scores_unit <- companies_scores |>
@@ -37,7 +32,6 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
     mutate(share_unit = n_unit / sum(n_unit)) |>
     select(-n_unit) |>
     rename("score" = "score_unit")
-  scores_unit
 
   ## scores in comparison to input products with same input sector
   scores_sector <- companies_scores |>
