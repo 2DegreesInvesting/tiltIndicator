@@ -12,5 +12,4 @@ knitr::opts_chunk$set(
 ```
 
 ```{r child=here::here("inst/extdata/mvp/ictr.Rmd")}
-
 ```
