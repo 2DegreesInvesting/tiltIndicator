@@ -23,7 +23,7 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
 
   ## scores in comparison to all input products
   scores_all <- companies_scores |>
-    group_by(company_id, score_all) |>
+    group_by(.data$company_id, .data$score_all) |>
     summarise(n_all = n()) |>
     mutate(share_all = n_all / sum(n_all)) |>
     select(-n_all) |>
@@ -32,7 +32,7 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
 
   ## scores in comparison to input products with same unit
   scores_unit <- companies_scores |>
-    group_by(company_id, score_unit) |>
+    group_by(.data$company_id, .data$score_unit) |>
     summarise(n_unit = n()) |>
     mutate(share_unit = n_unit / sum(n_unit)) |>
     select(-n_unit) |>
@@ -41,7 +41,7 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
 
   ## scores in comparison to input products with same input sector
   scores_sector <- companies_scores |>
-    group_by(company_id, score_sector) |>
+    group_by(.data$company_id, .data$score_sector) |>
     summarise(n_sector = n()) |>
     mutate(share_sector = n_sector / sum(n_sector)) |>
     select(-n_sector) |>
@@ -50,7 +50,7 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
 
   ## scores in comparison to input products with same unit and input sector
   scores_unit_sec <- companies_scores |>
-    group_by(company_id, score_unit_sec) |>
+    group_by(.data$company_id, .data$score_unit_sec) |>
     summarise(n_unit_sec = n()) |>
     mutate(share_unit_sec = n_unit_sec / sum(n_unit_sec)) |>
     select(-n_unit_sec) |>
