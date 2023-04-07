@@ -23,3 +23,7 @@ reference:
   - title: ICTR datasets
     contents:
       - has_concept("ICTR datasets")
+
+  - title: ICTR functions
+    contents:
+      - has_concept("ICTR functions")

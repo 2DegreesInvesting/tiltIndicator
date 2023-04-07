@@ -3,6 +3,8 @@
 #' @param ecoinvent_scores TODO
 #' @param companies TODO
 #'
+#' @family ICTR functions
+#'
 #' @return TODO
 #' @export
 #'

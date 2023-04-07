@@ -4,6 +4,8 @@
 #' @param low_threshold TODO
 #' @param high_threshold TODO
 #'
+#' @family ICTR functions
+#'
 #' @return TODO
 #' @export
 #'

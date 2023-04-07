@@ -22,3 +22,8 @@ ictr_inputs |>
   ictr_score_inputs() |>
   ictr_score_companies(ictr_companies)
 }
+\seealso{
+Other ICTR functions: 
+\code{\link{ictr_score_inputs}()}
+}
+\concept{ICTR functions}
