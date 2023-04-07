@@ -23,18 +23,18 @@ ictr_score_inputs <- function(inputs,
 ictr_add_ranks <- function(inputs) {
   inputs %>%
     ## rank in comparison to all input products
-    mutate(perc_all = rank(input_co2) / length(input_co2)) |>
+    mutate(perc_all = rank(.data$input_co2) / length(input_co2)) |>
     ## rank in comparison to all input products with same unit
     group_by(unit) |>
-    mutate(perc_unit = rank(input_co2) / length(input_co2)) %>%
+    mutate(perc_unit = rank(.data$input_co2) / length(input_co2)) %>%
     ungroup() |>
     ## rank in comparison to all input products with same input sector
     group_by(input_sector) |>
-    mutate(perc_sec = rank(input_co2) / length(input_co2)) %>%
+    mutate(perc_sec = rank(.data$input_co2) / length(input_co2)) %>%
     ungroup() |>
     ## rank in comparison to all input products with same unit and input sector
     group_by(unit, input_sector) |>
-    mutate(perc_unit_sec = rank(input_co2) / length(input_co2)) %>%
+    mutate(perc_unit_sec = rank(.data$input_co2) / length(input_co2)) %>%
     ungroup()
 }
 
