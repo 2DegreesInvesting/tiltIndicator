@@ -2,6 +2,8 @@
 title: "Input sector transition risk (ISTR)"
 author: "Lyanne Ho"
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Setup
@@ -222,7 +224,10 @@ The tiltIndicator package comes with example datasets
 
 ```{r}
 raw_istr_companies <- read.csv(here("data-raw", "istr_companies.csv"), sep = ";")
-glimpse(raw_istr_companies)
+
+
+raw_istr_companies |> 
+  glimpse()
 ```
 
 ```{r}
@@ -268,8 +273,10 @@ The transition risk indicator consists of 5 main steps:
 Use mapper that serves as a sector classification bridge between the Ecoinvent's' sectors and the WEO 2022 file.
 
 ```{r}
-istr_companies <- istr_mapping(reshaped_istr_companies, istr_ep_weo)
-istr_companies |> tibble::as_tibble()
+istr_companies <- istr_mapping(reshaped_istr_companies, istr_ep_weo) |> 
+  tibble::as_tibble()
+
+istr_companies
 ```
 
 ## Step 2: Matching the input products to the sectors
