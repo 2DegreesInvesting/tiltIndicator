@@ -43,10 +43,9 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   scores_sector <- companies_scores |>
     group_by(.data$company_id, .data$score_sector) |>
     summarise(n_sector = n()) |>
-    mutate(share_sector = n_sector / sum(n_sector)) |>
-    select(-n_sector) |>
+    mutate(share_sector = .data$n_sector / sum(.data$n_sector)) |>
+    select(-"n_sector") |>
     rename("score" = "score_sector")
-  scores_sector
 
   ## scores in comparison to input products with same unit and input sector
   scores_unit_sec <- companies_scores |>
@@ -55,16 +54,12 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
     mutate(share_unit_sec = n_unit_sec / sum(n_unit_sec)) |>
     select(-n_unit_sec) |>
     rename("score" = "score_unit_sec")
-  scores_unit_sec
-
-
 
   ## create dataset sceleton
   dt_sceleton <- tibble(
     company_id = rep(unique(companies_scores$company_id), each = 3),
     score = rep(c("high", "medium", "low"), 5),
   )
-  dt_sceleton
 
   ## join scores with dt_sceleton so that each company is shown with 3 rows for
   ## low, medium, and high, even if the share is 0.
