@@ -16,8 +16,7 @@ knitr::opts_chunk$set(
 Load Packages
 ```{r}
 library(tidyverse, warn.conflicts = FALSE)
-library(vroom)
-library(here)
+library(tiltIndicator)
 ```
 
 # Introduction
@@ -71,15 +70,11 @@ random selection and do not reflect the true information:
     - sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)
 
 ```{r}
-# FIXME: Temporarily redirect to where the data actually is
-here <- function(...) here::here("~/Downloads/mvp/ictr", ...)
-
-inputs <- read.csv(here("data_prep", "02_input_data", "data_ecoinvent_co2.csv"))
+inputs <- ictr_inputs
 inputs |> glimpse()
 
-companies <- read.csv(here("data_prep", "02_input_data", "tilt_companies.csv"))
-
 # FIXME: Can we reuse pctr_companies?
+companies <- ictr_companies
 companies |> glimpse()
 ```
 
