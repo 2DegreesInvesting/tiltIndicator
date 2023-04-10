@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' library(dplyr)
+#' library(dplyr, warn.conflicts = FALSE)
 #'
 #' # Minimum dataset
 #' crucial <- c("input_co2", "input_sector", "unit")
