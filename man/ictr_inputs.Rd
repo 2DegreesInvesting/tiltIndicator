@@ -18,8 +18,7 @@ ictr_inputs
 }
 \seealso{
 Other ICTR datasets: 
-\code{\link{ictr_companies}},
-\code{\link{ictr_toy_inputs}()}
+\code{\link{ictr_companies}}
 }
 \concept{ICTR datasets}
 \keyword{datasets}

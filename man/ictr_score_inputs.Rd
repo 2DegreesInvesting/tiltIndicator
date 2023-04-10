@@ -23,24 +23,32 @@ TODO
 library(dplyr)
 
 # Minimum dataset
-data <- ictr_toy_inputs()
+crucial <- c("input_co2", "input_sector", "unit")
+data <- ictr_inputs |>
+  slice(1L) |>
+  select(all_of(crucial))
 data
 
 ictr_score_inputs(data) |> glimpse()
 
 # With fewer columns returns an error
-data <- ictr_toy_inputs() |> select(-1)
-try(ictr_score_inputs(data))
+data2 <- data |> select(-unit)
+try(ictr_score_inputs(data2))
 
 # Additional columns are added to the output
-data <- ictr_toy_inputs() |> mutate(new = 1)
-ictr_score_inputs(data) |> relocate(new)
+data3 <- data |> mutate(new = 1)
+ictr_score_inputs(data3) |> relocate(new)
 
 # You may customize thresholds
-data <- ictr_toy_inputs(input_co2 = c(1, 1.1, 2, 2.1, 3))
-data
+data4 <- ictr_inputs |>
+  slice(1:3) |>
+  select(all_of(crucial))
 
-ictr_score_inputs(data, low_threshold = 1, high_threshold = 2)
+# Default
+ictr_score_inputs(data4)
+
+# Custom
+ictr_score_inputs(data4, low_threshold = 1, high_threshold = 2)
 }
 \seealso{
 Other ICTR functions: 
