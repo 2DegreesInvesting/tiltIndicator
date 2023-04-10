@@ -35,10 +35,12 @@
 #'   select(all_of(crucial))
 #'
 #' # Default
-#' ictr_score_inputs(data4)
+#' ictr_score_inputs(data4) |>
+#'   relocate(starts_with("score_"))
 #'
 #' # Custom
-#' ictr_score_inputs(data4, low_threshold = 1, high_threshold = 2)
+#' ictr_score_inputs(data4, low_threshold = 1, high_threshold = 2) |>
+#'   relocate(starts_with("score_"))
 ictr_score_inputs <- function(inputs,
                               low_threshold = 0.3,
                               high_threshold = 0.7) {
