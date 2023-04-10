@@ -10,7 +10,27 @@
 #' @export
 #'
 #' @examples
-#' ictr_score_inputs(ictr_inputs)
+#' library(dplyr)
+#'
+#' # Minimum dataset
+#' data <- ictr_toy_inputs()
+#' data
+#'
+#' ictr_score_inputs(data) |> glimpse()
+#'
+#' # With fewer columns returns an error
+#' data <- ictr_toy_inputs() |> select(-1)
+#' try(ictr_score_inputs(data))
+#'
+#' # Additional columns are added to the output
+#' data <- ictr_toy_inputs() |> mutate(new = 1)
+#' ictr_score_inputs(data) |> relocate(new)
+#'
+#' # You may customize thresholds
+#' data <- ictr_toy_inputs(input_co2 = c(1, 1.1, 2, 2.1, 3))
+#' data
+#'
+#' ictr_score_inputs(data, low_threshold = 1, high_threshold = 2)
 ictr_score_inputs <- function(inputs,
                               low_threshold = 0.3,
                               high_threshold = 0.7) {

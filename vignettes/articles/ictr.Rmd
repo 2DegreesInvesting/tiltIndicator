@@ -83,7 +83,7 @@ sector, products with same unit and sector)
 in comparison to different benchmarks.
 
 ```{r}
-ecoinvent_scores <- inputs |> 
+ecoinvent_scores <- inputs |>
   ictr_score_inputs(low_threshold = 0.3, high_threshold = 0.7)
 
 ecoinvent_scores
