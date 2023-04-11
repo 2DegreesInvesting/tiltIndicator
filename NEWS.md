@@ -2,7 +2,7 @@
 
 # tiltIndicator 0.0.0.9018
 
-* Document PCTR functions (@kalashsinghal, #104)
+* Document PCTR functions (@kalashsinghal, #104).
 
 * New ICTR functions and datasets (@kalashsinghal, #90).
 
