@@ -2,7 +2,7 @@
 % Please edit documentation in R/pctr_score_companies.R
 \name{pctr_score_companies}
 \alias{pctr_score_companies}
-\title{Title TODO}
+\title{Aggregate the products' scores for each company}
 \usage{
 pctr_score_companies(scored_activities, companies)
 }
@@ -13,13 +13,23 @@ pctr_score_companies(scored_activities, companies)
 \item{companies}{A \link{data.frame} like \link{pctr_companies}.}
 }
 \value{
-A \link{data.frame} with columns ... TODO
+A \link{data.frame} with columns:
+\itemize{
+\item \code{company_id}
+\item \code{score}
+\item \code{share_all}
+\item \code{share_unit}
+\item \code{share_unit_sec}
+where \code{share_all}, \code{share_unit}, and \code{share_unit_sec} holds the
+aggregated scores in percentage.
+}
 }
 \description{
-Description TODO
-}
-\details{
-Details (optional) TODO
+Calculates on a company-level the percentage of products that are in low /
+medium / high transition risk due to the products’ relative carbon footprint.
+
+Activities are mapped with the companies' products using common columns
+present in dataframes \code{scored_activities} and \code{companies}
 }
 \examples{
 pctr_ecoinvent_co2 |>

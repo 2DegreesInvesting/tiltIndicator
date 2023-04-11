@@ -19,3 +19,11 @@ reference:
   - title: PCTR functions
     contents:
       - has_concept("PCTR functions")
+
+  - title: ICTR datasets
+    contents:
+      - has_concept("ICTR datasets")
+
+  - title: ICTR functions
+    contents:
+      - has_concept("ICTR functions")

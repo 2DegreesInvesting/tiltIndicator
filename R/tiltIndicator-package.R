@@ -13,6 +13,7 @@
 #' @importFrom dplyr reframe
 #' @importFrom dplyr rename
 #' @importFrom dplyr select
+#' @importFrom dplyr slice
 #' @importFrom dplyr summarise
 #' @importFrom dplyr ungroup
 #' @importFrom ggplot2 aes

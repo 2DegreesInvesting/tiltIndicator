@@ -1,18 +1,40 @@
-#' Title TODO
+#' Aggregate rank and score for each activity
+#'
+#' @description
+#' Activities will be ranked according to their carbon footprint. Activities in
+#' the highest percentile (≥70%) will be classified as high transition risk
+#' products. Activities in the medium percentile (between ≥30% and <70%) will be
+#' classified as medium transition risk products. Activities in the lowest
+#' percentile (<30%) will be classified as low transition risk products.
+#'
+#' Therefore, each activity will receive either a score of 'high', 'medium', or
+#' 'low' based on the above mentioned classification criteria.
 #'
 #' @param ecoinvent_co2 A [data.frame] like [pctr_ecoinvent_co2].
-#' @param low_threshold A numeric value of length 1 giving ... TODO.
-#' @param high_threshold A numeric value of length 1 giving ... TODO.
+#' @param low_threshold A numeric value to segment low and medium transition
+#'   risk products.
+#' @param high_threshold A numeric value to segment medium and high transition
+#'   risk products.
 #'
 #' @family PCTR functions
 #'
-#' @return A [data.frame] with columns ... TODO.
+#' @return A [data.frame] with columns:
+#'   * All the columns from the `ecoinvent_co2` dataset.
+#'   * New columns:
+#'        * `perc_all`
+#'        * `perc_unit`
+#'        * `perc_unit_sec`
+#'        * `score_all`
+#'        * `score_unit`
+#'        * `score_unit_sec`
 #' @export
 #'
 #' @examples
 #' pctr_ecoinvent_co2 |>
-#'   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7)
-pctr_score_activities <- function(ecoinvent_co2, low_threshold, high_threshold) {
+#'   pctr_score_activities()
+pctr_score_activities <- function(ecoinvent_co2,
+                                  low_threshold = 0.3,
+                                  high_threshold = 0.7) {
   ecoinvent_co2 |>
     pctr_add_ranks() |>
     pctr_add_scores(low_threshold, high_threshold)

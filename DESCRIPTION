@@ -1,12 +1,13 @@
 Package: tiltIndicator
 Title: Indicators for the 'TILT' Project
-Version: 0.0.0.9016
+Version: 0.0.0.9018
 Authors@R: c(
     person("Mauro", "Lepore", , "maurolepore@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0002-1986-7988")),
     person("Tilman", "Trompke", , "tilman@2degrees-investing.org", role = "aut"),
     person("Linda", "Delacombaz", , "linda@2degrees-investing.org", role = "aut"),
     person("Lyanne", "Ho", , "yho@deloitte.nl", role = "aut"),
+    person("Kalash", "Singhal", , "kalash@2degrees-investing.org", role = "aut"),
     person("2 Degrees Investing Initiative", , , "contact@2degrees-investing.org", role = c("cph", "fnd"))
   )
 Description: Indicators for the 'TILT' project.

@@ -1,8 +1,11 @@
-#' Title TODO
+#' Aggregate the products' scores for each company
 #'
-#' Description TODO
+#' @description
+#' Calculates on a company-level the percentage of products that are in low /
+#' medium / high transition risk due to the products’ relative carbon footprint.
 #'
-#' Details (optional) TODO
+#' Activities are mapped with the companies' products using common columns
+#' present in dataframes `scored_activities` and `companies`
 #'
 #' @param scored_activities A [data.frame]. The output of
 #'   [pctr_score_activities].
@@ -10,7 +13,14 @@
 #'
 #' @family PCTR functions
 #'
-#' @return A [data.frame] with columns ... TODO
+#' @return A [data.frame] with columns:
+#'   * `company_id`
+#'   * `score`
+#'   * `share_all`
+#'   * `share_unit`
+#'   * `share_unit_sec`
+#'   where `share_all`, `share_unit`, and `share_unit_sec` holds the
+#'   aggregated scores in percentage.
 #' @export
 #'
 #' @examples
