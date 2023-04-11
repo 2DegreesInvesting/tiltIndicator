@@ -2,22 +2,44 @@
 % Please edit documentation in R/pctr_score_activities.R
 \name{pctr_score_activities}
 \alias{pctr_score_activities}
-\title{Title TODO}
+\title{Aggregate rank and score for each activity}
 \usage{
 pctr_score_activities(ecoinvent_co2, low_threshold = 0.3, high_threshold = 0.7)
 }
 \arguments{
 \item{ecoinvent_co2}{A \link{data.frame} like \link{pctr_ecoinvent_co2}.}
 
-\item{low_threshold}{A numeric value of length 1 giving ... TODO.}
+\item{low_threshold}{A numeric value to segment low and medium transition
+risk products.}
 
-\item{high_threshold}{A numeric value of length 1 giving ... TODO.}
+\item{high_threshold}{A numeric value to segment medium and high transition
+risk products.}
 }
 \value{
-A \link{data.frame} with columns ... TODO.
+A \link{data.frame} with columns:
+\itemize{
+\item All the columns from the \code{ecoinvent_co2} dataset.
+\item New columns:
+\itemize{
+\item \code{perc_all}
+\item \code{perc_unit}
+\item \code{perc_unit_sec}
+\item \code{score_all}
+\item \code{score_unit}
+\item \code{score_unit_sec}
+}
+}
 }
 \description{
-Title TODO
+Therefore, each activity will receive either a score of 'high', 'medium', or
+'low' based on the above mentioned classification criteria.
+}
+\details{
+Activities will be ranked according to their carbon footprint. Activities in
+the highest percentile (≥70\%) will be classified as high transition risk
+products. Activities in the medium percentile (between ≥30\% and <70\%) will be
+classified as medium transition risk products. Activities in the lowest
+percentile (<30\%) will be classified as low transition risk products.
 }
 \examples{
 pctr_ecoinvent_co2 |>
