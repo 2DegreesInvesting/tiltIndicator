@@ -31,15 +31,14 @@ A \link{data.frame} with columns:
 }
 }
 \description{
-Therefore, each activity will receive either a score of 'high', 'medium', or
-'low' based on the above mentioned classification criteria.
-}
-\details{
 Activities will be ranked according to their carbon footprint. Activities in
 the highest percentile (≥70\%) will be classified as high transition risk
 products. Activities in the medium percentile (between ≥30\% and <70\%) will be
 classified as medium transition risk products. Activities in the lowest
 percentile (<30\%) will be classified as low transition risk products.
+
+Therefore, each activity will receive either a score of 'high', 'medium', or
+'low' based on the above mentioned classification criteria.
 }
 \examples{
 pctr_ecoinvent_co2 |>
