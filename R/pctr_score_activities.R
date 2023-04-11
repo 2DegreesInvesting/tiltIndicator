@@ -6,14 +6,15 @@
 #' classified as medium transition risk products. Activities in the lowest
 #' percentile (<30%) will be classified as low transition risk products.
 #'
+#'@description
 #' Therefore, each activity will receive either a score of 'high', 'medium', or
 #' 'low' based on the above mentioned classification criteria.
 #'
 #' @param ecoinvent_co2 A [data.frame] like [pctr_ecoinvent_co2].
-#' @param low_threshold A numeric value of `0.3` to segment low and medium
-#'   transition risk products
-#' @param high_threshold A numeric value of `0.7` to segment medium and high
-#'   transition risk products
+#' @param low_threshold A numeric value to segment low and medium transition
+#'   risk products.
+#' @param high_threshold A numeric value to segment medium and high transition
+#'   risk products.
 #'
 #' @family PCTR functions
 #'
