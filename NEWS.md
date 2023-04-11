@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9018
+
+* Document PCTR functions (@kalashsinghal, #104)
+
+* New ICTR functions and datasets (@kalashsinghal, #90).
+
 # tiltIndicator 0.0.0.9017
 
 * Add ICTR MVP (#90).
