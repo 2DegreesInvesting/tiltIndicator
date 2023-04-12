@@ -6,8 +6,8 @@
 #' pctr_toy_pctr_ecoinvent_co2(new = 1)
 #' @noRd
 pctr_toy_pctr_ecoinvent_co2 <- function(sec = "Transport",
-                              unit = "metric ton*km",
-                              co2_footprint = 4, ...) {
+                                        unit = "metric ton*km",
+                                        co2_footprint = 4, ...) {
   tibble::tibble(
     sec = sec,
     unit = unit,

@@ -93,4 +93,3 @@ test_that("is sensitive to high_threshold with 2 or more input rows but not 1", 
   out2 <- pctr_score_activities(data, high_threshold = .9)
   expect_true(identical(out1, out2))
 })
-
