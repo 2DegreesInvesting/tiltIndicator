@@ -15,3 +15,15 @@ pctr_toy_pctr_ecoinvent_co2 <- function(sec = "Transport",
     ...
   )
 }
+
+#' Crucial columns for pctr_score_companies
+pctr_score_companies_crucial <- function() {
+  c(
+    "unit",
+    "score_unit_sec",
+    "ei_activity",
+    "activity_product_uuid",
+    "score_all",
+    "score_unit"
+  )
+}
