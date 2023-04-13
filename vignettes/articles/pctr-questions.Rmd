@@ -92,8 +92,8 @@ pctr_ecoinvent_co2_new |>
   pctr_score_activities_new() |> 
   glimpse()
 
+# Same despite `out_new` results from smaller data
 out |> glimpse()
-# Same despite we used smaller data
 out_new |> glimpse()
 ```
 
