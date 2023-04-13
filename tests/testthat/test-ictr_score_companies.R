@@ -6,7 +6,7 @@ test_that("hasn't change", {
   expect_snapshot(out)
 })
 
-test_that("data must must have activity_product_uuid and ei_activity", {
+test_that("data must have activity_product_uuid and ei_activity", {
   ictr_toy_inputs() |>
     ictr_score_inputs() |>
     ictr_score_companies(ictr_companies) |>
