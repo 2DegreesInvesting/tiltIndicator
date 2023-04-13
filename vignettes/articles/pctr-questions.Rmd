@@ -98,7 +98,13 @@ Questions:
 
 ## 2. Required rows
 
-`pctr_score_activities()` has a clear, 1 to 1 realationship between the number
+In addition to removing needless columns, we may also remove needless rows. But
+I'm struggling to understand how to do that. I plan to explore the code in
+debugger mode, but it would also help to discuss with the indicator author. The
+knowledge I gain I should turn into better designed interfaces, more informative
+error messages, and more complete help files.
+
+`pctr_score_activities()` has a clear 1 to 1 relationship between the number
 of rows of the input and output. If it gets 1 row it returns 1 row.
 
 ```{r}
@@ -111,58 +117,98 @@ pctr_ecoinvent_co2 |>
   pctr_score_activities()
 ```
 
-`pctr_score_copmanies()` is puzzling. If I change the number of rows of
+But `pctr_score_copmanies()` is puzzling. If I change the number of rows of
 `pctr_ecoinvent_co2` I can't predict if the code will work of fail.
 
 ```{r}
 #| error=TRUE
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
+  pctr_score_companies(pctr_companies) |> 
+  dim()
+
 # Fails
 pctr_ecoinvent_co2 |>
   slice(1) |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies)
+  pctr_score_companies(pctr_companies) |> 
+  dim()
 
 pctr_ecoinvent_co2 |>
   slice(1:15) |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies)
+  pctr_score_companies(pctr_companies) |> 
+  dim()
 
 pctr_ecoinvent_co2 |>
   slice(4:15) |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies)
+  pctr_score_companies(pctr_companies) |> 
+  dim()
 
 # Fails
 pctr_ecoinvent_co2 |>
   slice(5:15) |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies)
+  pctr_score_companies(pctr_companies) |> 
+  dim()
 ```
 
-The same unpredictable success happens if I change the number or rows in the
-`pctr_companies` dataset.
+The same hard-to-understand success happens if I change the number or rows in
+the `pctr_companies` dataset. The oddest behaviour is that it seems that all
+companies are required. So companies doesn't seem to be a parameter we're free
+to change.
 
 ```{r}
 #| error=TRUE
-# Fails
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies |> slice(1))
-
-pctr_ecoinvent_co2 |>
-  pctr_score_activities() |>
-  pctr_score_companies(pctr_companies |> slice(1:10))
-
-pctr_ecoinvent_co2 |>
-  pctr_score_activities() |>
-  pctr_score_companies(pctr_companies |> slice(4:10))
+  pctr_score_companies(pctr_companies) |> 
+  dim()
 
 # Fails
+first_row <- pctr_companies |> slice(1)
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies |> slice(5:15))
+  pctr_score_companies(first_row) |> 
+  dim()
+
+# Fails
+first_company <- pctr_companies |> filter(company_id %in% first(company_id))
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
+  pctr_score_companies(first_company) |> 
+  dim()
+
+first_row_of_each_company <- pctr_companies |> 
+  group_by(company_id) |> 
+  slice(1) |> 
+  ungroup()
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
+  pctr_score_companies(first_row_of_each_company) |> 
+  dim()
+
+# Fails (oddest) Why do we need every one of these companies?
+first_row_of_two_out_of_three_companies <- pctr_companies |> 
+  group_by(company_id) |> 
+  slice(1) |> 
+  ungroup() |> 
+  slice(1:2)
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
+  pctr_score_companies(first_row_of_two_out_of_three_companies) |> 
+  dim()
+
+first_two_rows_of_each_company <- pctr_companies |> 
+  group_by(company_id) |> 
+  slice(1:2) |> 
+  ungroup()
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
+  pctr_score_companies(first_two_rows_of_each_company) |> 
+  dim()
 ```
-
 
 Questions:
 
