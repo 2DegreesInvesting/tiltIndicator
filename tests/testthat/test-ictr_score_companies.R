@@ -61,7 +61,7 @@ test_that("the ictr_companies dataset must have some mysterious rows", {
     expect_no_error()
 })
 
-test_that("without `company_name` and `ep_product` outputs the same", {
+test_that("without `company_name` and `ep_product` outputs are the same", {
   data <- ictr_toy_inputs2() |> ictr_score_inputs()
 
   companies <- ictr_toy_companies() |>
