@@ -3,6 +3,7 @@
 
 ## usethis namespace: start
 #' @importFrom dplyr case_when
+#' @importFrom dplyr distinct
 #' @importFrom dplyr distinct_all
 #' @importFrom dplyr filter
 #' @importFrom dplyr group_by

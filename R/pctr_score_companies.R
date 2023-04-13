@@ -13,7 +13,7 @@
 #'
 #' @family PCTR functions
 #'
-#' @return A [data.frame] with columns:
+#' @return A [data.frame] with three rows for each company and these columns:
 #'   * `company_id`
 #'   * `score`
 #'   * `share_all`
@@ -24,9 +24,14 @@
 #' @export
 #'
 #' @examples
+#' library(dplyr, warn.conflicts = FALSE)
+#'
+#' one_company <- pctr_companies |> filter(company_id %in% first(company_id))
+#' one_company
+#'
 #' pctr_ecoinvent_co2 |>
 #'   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7) |>
-#'   pctr_score_companies(pctr_companies)
+#'   pctr_score_companies(one_company)
 pctr_score_companies <- function(scored_activities, companies) {
   # Intermediate steps:
   # * Combine company-level information with LCA info from ecoinvent.

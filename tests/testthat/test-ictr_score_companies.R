@@ -48,17 +48,25 @@ test_that("with valid inputs not all shares are 0", {
   expect_false(identical(share, 0))
 })
 
-test_that("the ictr_companies dataset must have some mysterious rows", {
-  data <- ictr_toy_inputs2() |>
-    ictr_score_inputs()
+test_that("returns 3 rows for each company", {
+  # Keep all columns picking the first row for each non-unique combination
+  companies <- distinct(ictr_companies, company_id, .keep_all = TRUE)
+  inputs <- ictr_inputs
 
-  data |>
-    ictr_score_companies(ictr_companies |> slice(1:14)) |>
-    expect_no_error()
+  out <- inputs |>
+    ictr_score_inputs() |>
+    ictr_score_companies(companies |> slice(1))
+  expect_equal(nrow(out), 3L)
 
-  data |>
-    ictr_score_companies(ictr_companies |> slice(7:15)) |>
-    expect_no_error()
+  out <- inputs |>
+    ictr_score_inputs() |>
+    ictr_score_companies(companies |> slice(1:2))
+  expect_equal(nrow(out), 6L)
+
+  out <- inputs |>
+    ictr_score_inputs() |>
+    ictr_score_companies(companies |> slice(1:3))
+  expect_equal(nrow(out), 9L)
 })
 
 test_that("without `company_name` and `ep_product` outputs are the same", {

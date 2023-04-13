@@ -114,21 +114,23 @@ test_that("the number of required data rows is hard to predict", {
     expect_no_error()
 })
 
-test_that("the number of required pctr_companies rows is hard to predict", {
-  data <- pctr_ecoinvent_co2 |>
-    pctr_score_activities() |>
-    select(all_of(pctr_score_companies_crucial()))
+test_that("returns 3 rows for each company", {
+  # Keep all columns picking the first row for each non-unique combination
+  companies <- distinct(pctr_companies, company_id, .keep_all = TRUE)
+  co2 <- pctr_ecoinvent_co2
 
-  data |>
-    pctr_score_companies(pctr_companies |> slice(1)) |>
-    expect_no_error()
-  data |>
-    pctr_score_companies(pctr_companies |> slice(1:15)) |>
-    expect_no_error()
-  data |>
-    pctr_score_companies(pctr_companies |> slice(4:15)) |>
-    expect_no_error()
-  data |>
-    pctr_score_companies(pctr_companies |> slice(5:15)) |>
-    expect_no_error()
+  out <- co2 |>
+    pctr_score_activities() |>
+    pctr_score_companies(companies |> slice(1))
+  expect_equal(nrow(out), 3L)
+
+  out <- co2 |>
+    pctr_score_activities() |>
+    pctr_score_companies(companies |> slice(1:2))
+  expect_equal(nrow(out), 6L)
+
+  out <- co2 |>
+    pctr_score_activities() |>
+    pctr_score_companies(companies |> slice(1:3))
+  expect_equal(nrow(out), 9L)
 })
