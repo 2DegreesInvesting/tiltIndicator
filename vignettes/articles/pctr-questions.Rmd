@@ -34,8 +34,8 @@ You can find all PCTR data and functions in RStudio with auto-complete.
 You can use it all in a single pipe.
 
 ```{r}
-out <- pctr_ecoinvent_co2 |> 
-  pctr_score_activities() |> 
+out <- pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies)
 
 out
@@ -54,21 +54,21 @@ the output of `pctr_score_activities()`.
 ```{r}
 #| echo=FALSE
 
-pctr_ecoinvent_co2_new <- pctr_ecoinvent_co2 |> 
+pctr_ecoinvent_co2_new <- pctr_ecoinvent_co2 |>
   select(all_of(pctr_ecoinvent_co2_crucial()))
 
-pctr_companies_new <- pctr_companies |> 
+pctr_companies_new <- pctr_companies |>
   select(all_of(pctr_companies_crucial()))
 
 pctr_score_activities_new <- function(...) {
-  pctr_score_activities(...) |> 
+  pctr_score_activities(...) |>
     select(all_of(pctr_score_companies_crucial()))
 }
 ```
 
 ```{r}
-out_new <- pctr_ecoinvent_co2_new |> 
-  pctr_score_activities() |> 
+out_new <- pctr_ecoinvent_co2_new |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies_new)
 
 out_new
@@ -102,12 +102,12 @@ Questions:
 of rows of the input and output. If it gets 1 row it returns 1 row.
 
 ```{r}
-pctr_ecoinvent_co2 |> 
-  slice(1) |> 
+pctr_ecoinvent_co2 |>
+  slice(1) |>
   pctr_score_activities()
 
-pctr_ecoinvent_co2 |> 
-  slice(1:2) |> 
+pctr_ecoinvent_co2 |>
+  slice(1:2) |>
   pctr_score_activities()
 ```
 
@@ -117,25 +117,25 @@ pctr_ecoinvent_co2 |>
 ```{r}
 #| error=TRUE
 # Fails
-pctr_ecoinvent_co2 |> 
-  slice(1) |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2 |>
+  slice(1) |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies)
 
-pctr_ecoinvent_co2 |> 
-  slice(1:15) |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2 |>
+  slice(1:15) |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies)
 
-pctr_ecoinvent_co2 |> 
-  slice(4:15) |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2 |>
+  slice(4:15) |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies)
 
 # Fails
-pctr_ecoinvent_co2 |> 
-  slice(5:15) |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2 |>
+  slice(5:15) |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies)
 ```
 
@@ -145,21 +145,21 @@ The same unpredictable success happens if I change the number or rows in the
 ```{r}
 #| error=TRUE
 # Fails
-pctr_ecoinvent_co2 |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies |> slice(1))
 
-pctr_ecoinvent_co2 |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies |> slice(1:10))
 
-pctr_ecoinvent_co2 |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies |> slice(4:10))
 
 # Fails
-pctr_ecoinvent_co2 |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies |> slice(5:15))
 ```
 
