@@ -13,7 +13,7 @@ pctr_score_companies(scored_activities, companies)
 \item{companies}{A \link{data.frame} like \link{pctr_companies}.}
 }
 \value{
-A \link{data.frame} with columns:
+A \link{data.frame} with three rows for each company and these columns:
 \itemize{
 \item \code{company_id}
 \item \code{score}
@@ -32,9 +32,14 @@ Activities are mapped with the companies' products using common columns
 present in dataframes \code{scored_activities} and \code{companies}
 }
 \examples{
+library(dplyr, warn.conflicts = FALSE)
+
+first_company <- pctr_companies |> filter(company_id \%in\% first(company_id))
+first_company
+
 pctr_ecoinvent_co2 |>
   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7) |>
-  pctr_score_companies(pctr_companies)
+  pctr_score_companies(first_company)
 }
 \seealso{
 Other PCTR functions: 
