@@ -5,7 +5,7 @@
 \alias{pctr_ecoinvent_co2}
 \title{TODO add title}
 \format{
-An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 25 rows and 9 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 25 rows and 5 columns.
 }
 \source{
 TODO add source

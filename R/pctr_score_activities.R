@@ -38,6 +38,7 @@ pctr_score_activities <- function(ecoinvent_co2,
   ecoinvent_co2 |>
     pctr_add_ranks() |>
     pctr_add_scores(low_threshold, high_threshold)
+
 }
 
 # Calculate the rank of each activity: This is done based on the activities'
