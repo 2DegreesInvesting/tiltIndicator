@@ -44,7 +44,7 @@ out
 
 ## 1. Required columns
 
-It's best to [miminize the size of the inputs and
+It's best to [minimize the size of the inputs and
 outputs](https://gist.github.com/maurolepore/17b468dd8c3a603c668220563754ad7f#minimize-the-size-of-the-inputs-and-ouptuts),
 so that the data is easier to understand and easier to work with. Smaller data
 fits better on screen, uses less disk space, and takes less time to compute on.

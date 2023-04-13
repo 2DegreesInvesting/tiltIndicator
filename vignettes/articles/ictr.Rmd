@@ -94,7 +94,7 @@ ecoinvent_scores
 * Join dataset `companies` and `ecoinvent_scores`. This is required to combine company-level information with LCA info from
 ecoinvent.
 
-* Caclulate the scores for each company. This is done by calculating the share of input products with each score. 
+* Calculate the scores for each company. This is done by calculating the share of input products with each score. 
 
 * Create final dataset. The final dataset should have three rows per company, i.e. one for each
 risk_group (low, medium, high) and one column each indicating the share of

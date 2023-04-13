@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Calculates on a company-level the percentage of products that are in low /
-#' medium / high transition risk due to the products’ relative carbon footprint.
+#' medium / high transition risk due to the products' relative carbon footprint.
 #'
 #' Activities are mapped with the companies' products using common columns
 #' present in dataframes `scored_activities` and `companies`
