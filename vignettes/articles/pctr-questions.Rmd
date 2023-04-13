@@ -49,24 +49,21 @@ outputs](https://gist.github.com/maurolepore/17b468dd8c3a603c668220563754ad7f#mi
 so that the data is easier to understand and easier to work with. Smaller data
 fits better on screen, uses less disk space, and takes less time to compute on.
 
+
 Questions:
 
-1.1. RESOLVED (#116).
-
-1.2. Is there any additional column we could remove from `out_new`?
-
-> We could remove `pctr_companies_new$ei_activity` and
-`pctr_companies_new$unit`. But this would then affect the join between company
-data and ecoinvent data, which then would only need to be done by =
-"activity_product_uuid" -- Tilman
+* 1.1. We call `inner_join()` with `by = c("activity_product_uuid", "ei_activity",
+"unit")` and Tilman suggested we might remove `"ei_activity"` and `"unit"`. 
+Do we expect them to be always redundant with the groups defined by
+`"activity_product_uuid"` alone? Or do you mean they are redundant in this
+specific toy dataset?
 
 ## 2. Required rows
 
 In addition to removing needless columns, we may also be able to remove needless
 rows, or restructure the data to make it easier to understand and work with.
 
-`pctr_score_activities()` has a clear 1 to 1 relationship between the number of
-rows of the input and output. If it gets 1 row it returns 1 row.
+`pctr_score_activities()` returns 1 row for each row in the co2 data.
 
 ```{r}
 pctr_ecoinvent_co2 |>
@@ -78,53 +75,109 @@ pctr_ecoinvent_co2 |>
   pctr_score_activities()
 ```
 
-`pctr_score_copmanies()` returns three rows for every input company.
+`pctr_score_copmanies()` returns 3 rows for each company (regardless the number
+of rows per company).
 
 ```{r}
 #| error=TRUE
-first1_company <- pctr_companies |> filter(company_id %in% unique(company_id)[1])
-pctr_ecoinvent_co2 |>
-  pctr_score_activities() |>
-  pctr_score_companies(first1_company) |>
-  dim()
+one_company <- pctr_companies |> filter(company_id %in% first(company_id))
+one_company
 
-first2_company <- pctr_companies |> filter(company_id %in% unique(company_id)[1:2])
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(first2_company) |>
-  dim()
+  pctr_score_companies(one_company)
 
-first3_company <- pctr_companies |> filter(company_id %in% unique(company_id)[1:3])
+another_company <- pctr_companies |> filter(company_id %in% last(company_id))
+two_companies <- bind_rows(one_company, another_company)
+two_companies
+
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(first3_company) |>
-  dim()
+  pctr_score_companies(two_companies)
 ```
 
-The number of rows in the output doesn't depend on the number of rows in the
-`pctr_ecoinvent_co2` dataset.
+Focusing on a single company, the number of rows of in the output doesn't seem
+to depend on the number of rows in the co2 data. But it may be surprising that
+the number of rows in the co2 data can be such that the output seems useless and
+you get no warning.
 
 ```{r}
 #| error=TRUE
-first1_company <- pctr_companies |> filter(company_id %in% unique(company_id)[1])
-pctr_ecoinvent_co2 |>
-  slice(1) |>
+one_company <- pctr_companies |> filter(company_id %in% first(company_id))
+one_company
+
+too_few_co2_rows <- pctr_ecoinvent_co2 |> slice(1)
+too_few_co2_rows
+
+too_few_co2_rows |> 
   pctr_score_activities() |>
-  pctr_score_companies(first1_company) |>
-  dim()
-pctr_ecoinvent_co2 |>
-  slice(1:2) |>
-  pctr_score_activities() |>
-  pctr_score_companies(first1_company) |>
-  dim()
-pctr_ecoinvent_co2 |>
-  slice(1:10) |>
-  pctr_score_activities() |>
-  pctr_score_companies(first1_company) |>
-  dim()
+  pctr_score_companies(one_company)
 ```
 
 Questions:
 
-2.1. Why is `pctr_ecoinvent_co2` 25 rows long?
-2.2. Can we reduce the size of `pctr_ecoinvent_co2` to, say, 5 rows?
+* 2.1. Is this output useful?
+* 2.2. Should we allow this output with a warning or throw an error and stop?
+
+And considering multiple companies, it's definitely surprising is that the
+number of rows in the co2 data can be such that the output loses companies --
+again you get no warning.
+
+```{r}
+one_company |> distinct(company_id)
+too_few_co2_rows |> 
+  pctr_score_activities() |>
+  pctr_score_companies(one_company)
+
+two_companies |> distinct(company_id)
+too_few_co2_rows |> 
+  pctr_score_activities() |>
+  pctr_score_companies(two_companies)
+
+all_companies <- pctr_companies
+all_companies |> distinct(company_id)
+too_few_co2_rows |> 
+  pctr_score_activities() |>
+  pctr_score_companies(all_companies)
+```
+
+Questions:
+
+* 2.3. Should we allow this output with a warning or throw an error and stop?
+
+When the number of rows in the co2 data is 10 or more, we get what we expect.
+
+```{r}
+# Surprising
+two_companies |> distinct(company_id)
+pctr_ecoinvent_co2 |> 
+  slice(1:9) |> 
+  pctr_score_activities() |>
+  pctr_score_companies(two_companies)
+
+# Expected
+two_companies |> distinct(company_id)
+pctr_ecoinvent_co2 |> 
+  slice(1:10) |> 
+  pctr_score_activities() |>
+  pctr_score_companies(two_companies)
+
+# Expected
+all_companies |> distinct(company_id)
+pctr_ecoinvent_co2 |> 
+  slice(1:10) |> 
+  pctr_score_activities() |>
+  pctr_score_companies(all_companies)
+
+# Expected
+all_companies |> distinct(company_id)
+pctr_ecoinvent_co2 |> 
+  slice(1:15) |> 
+  pctr_score_activities() |>
+  pctr_score_companies(all_companies)
+```
+
+Questions:
+
+* 2.4. Why 10?
+* 2.5. Can/should we reduce the co2 data to exactly 10 rows?
