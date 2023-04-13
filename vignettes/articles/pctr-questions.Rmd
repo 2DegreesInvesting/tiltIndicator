@@ -109,7 +109,7 @@ one_company
 too_few_co2_rows <- pctr_ecoinvent_co2 |> slice(1)
 too_few_co2_rows
 
-too_few_co2_rows |> 
+too_few_co2_rows |>
   pctr_score_activities() |>
   pctr_score_companies(one_company)
 ```
@@ -125,18 +125,18 @@ again you get no warning.
 
 ```{r}
 one_company |> distinct(company_id)
-too_few_co2_rows |> 
+too_few_co2_rows |>
   pctr_score_activities() |>
   pctr_score_companies(one_company)
 
 two_companies |> distinct(company_id)
-too_few_co2_rows |> 
+too_few_co2_rows |>
   pctr_score_activities() |>
   pctr_score_companies(two_companies)
 
 all_companies <- pctr_companies
 all_companies |> distinct(company_id)
-too_few_co2_rows |> 
+too_few_co2_rows |>
   pctr_score_activities() |>
   pctr_score_companies(all_companies)
 ```
@@ -150,29 +150,29 @@ When the number of rows in the co2 data is 10 or more, we get what we expect.
 ```{r}
 # Surprising
 two_companies |> distinct(company_id)
-pctr_ecoinvent_co2 |> 
-  slice(1:9) |> 
+pctr_ecoinvent_co2 |>
+  slice(1:9) |>
   pctr_score_activities() |>
   pctr_score_companies(two_companies)
 
 # Expected
 two_companies |> distinct(company_id)
-pctr_ecoinvent_co2 |> 
-  slice(1:10) |> 
+pctr_ecoinvent_co2 |>
+  slice(1:10) |>
   pctr_score_activities() |>
   pctr_score_companies(two_companies)
 
 # Expected
 all_companies |> distinct(company_id)
-pctr_ecoinvent_co2 |> 
-  slice(1:10) |> 
+pctr_ecoinvent_co2 |>
+  slice(1:10) |>
   pctr_score_activities() |>
   pctr_score_companies(all_companies)
 
 # Expected
 all_companies |> distinct(company_id)
-pctr_ecoinvent_co2 |> 
-  slice(1:15) |> 
+pctr_ecoinvent_co2 |>
+  slice(1:15) |>
   pctr_score_activities() |>
   pctr_score_companies(all_companies)
 ```
