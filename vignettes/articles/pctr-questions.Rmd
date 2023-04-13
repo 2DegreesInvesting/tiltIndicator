@@ -21,7 +21,7 @@ find bugs and potential improvements. I start with an overview, then explore req
 ## Overview
 
 ```{r setup}
-library(tidyverse)
+library(dplyr, warn.conflicts = TRUE)
 devtools::load_all()
 
 packageVersion("tiltIndicator")
