@@ -121,7 +121,7 @@ test_that("returns 3 rows for each company", {
 
   out <- co2 |>
     pctr_score_activities() |>
-    pctr_score_companies(first1_company |> slice(1))
+    pctr_score_companies(companies |> slice(1))
   expect_equal(nrow(out), 3L)
 
   out <- co2 |>
