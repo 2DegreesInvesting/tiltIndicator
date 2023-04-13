@@ -26,12 +26,12 @@
 #' @examples
 #' library(dplyr, warn.conflicts = FALSE)
 #'
-#' first_company <- pctr_companies |> filter(company_id %in% first(company_id))
-#' first_company
+#' one_company <- pctr_companies |> filter(company_id %in% first(company_id))
+#' one_company
 #'
 #' pctr_ecoinvent_co2 |>
 #'   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7) |>
-#'   pctr_score_companies(first_company)
+#'   pctr_score_companies(one_company)
 pctr_score_companies <- function(scored_activities, companies) {
   # Intermediate steps:
   # * Combine company-level information with LCA info from ecoinvent.

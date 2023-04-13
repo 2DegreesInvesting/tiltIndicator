@@ -21,12 +21,12 @@ TODO
 \examples{
 library(dplyr, warn.conflicts = FALSE)
 
-first_company <- ictr_companies |> filter(company_id \%in\% first(company_id))
-first_company
+one_company <- ictr_companies |> filter(company_id \%in\% first(company_id))
+one_company
 
 ictr_inputs |>
   ictr_score_inputs() |>
-  ictr_score_companies(first_company)
+  ictr_score_companies(one_company)
 }
 \seealso{
 Other ICTR functions: 
