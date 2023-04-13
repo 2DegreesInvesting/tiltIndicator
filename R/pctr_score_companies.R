@@ -63,7 +63,7 @@ pctr_score_companies <- function(scored_activities, companies) {
   # create dataset sceleton
   dt_sceleton <- tibble(
     company_id = rep(unique(companies_scores$company_id), each = 3),
-    score = rep(c("high", "medium", "low"), 3),
+    score = rep(c("high", "medium", "low"), length(unique(companies_scores$company_id))),
   )
 
   # join scores with dt_sceleton so that each company is shown with 3 rows for low, medium, and high, even if the share is 0.

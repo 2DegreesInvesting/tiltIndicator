@@ -49,20 +49,19 @@ test_that("with valid inputs not all shares are 0", {
 })
 
 test_that("the ictr_companies dataset must have some mysterious rows", {
-  # TODO ASK why
   data <- ictr_toy_inputs2() |>
     ictr_score_inputs()
 
   data |>
     ictr_score_companies(ictr_companies |> slice(1:14)) |>
-    expect_error()
+    expect_no_error()
 
   data |>
     ictr_score_companies(ictr_companies |> slice(7:15)) |>
     expect_no_error()
 })
 
-test_that("without `company_name` and `ep_product` outputs the same", {
+test_that("without `company_name` and `ep_product` outputs are the same", {
   data <- ictr_toy_inputs2() |> ictr_score_inputs()
 
   companies <- ictr_toy_companies() |>
