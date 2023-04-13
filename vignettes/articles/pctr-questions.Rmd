@@ -85,11 +85,11 @@ pctr_ecoinvent_co2_new |> glimpse()
 pctr_companies |> glimpse()
 pctr_companies_new |> glimpse()
 
-pctr_ecoinvent_co2_new |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2_new |>
+  pctr_score_activities() |>
   glimpse()
-pctr_ecoinvent_co2_new |> 
-  pctr_score_activities_new() |> 
+pctr_ecoinvent_co2_new |>
+  pctr_score_activities_new() |>
   glimpse()
 
 # Same despite `out_new` results from smaller data
@@ -151,17 +151,17 @@ The number of rows in the output doesn't depend on the number of rows in the
 #| error=TRUE
 first1_company <- pctr_companies |> filter(company_id %in% unique(company_id)[1])
 pctr_ecoinvent_co2 |>
-  slice(1) |> 
+  slice(1) |>
   pctr_score_activities() |>
   pctr_score_companies(first1_company) |>
   dim()
 pctr_ecoinvent_co2 |>
-  slice(1:2) |> 
+  slice(1:2) |>
   pctr_score_activities() |>
   pctr_score_companies(first1_company) |>
   dim()
 pctr_ecoinvent_co2 |>
-  slice(1:10) |> 
+  slice(1:10) |>
   pctr_score_activities() |>
   pctr_score_companies(first1_company) |>
   dim()
