@@ -53,7 +53,6 @@ the output of `pctr_score_activities()`.
 
 ```{r}
 #| echo=FALSE
-
 pctr_ecoinvent_co2_new <- pctr_ecoinvent_co2 |>
   select(all_of(tiltIndicator:::pctr_ecoinvent_co2_crucial()))
 
