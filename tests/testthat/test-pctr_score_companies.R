@@ -92,8 +92,6 @@ test_that("without crucial columns errors gracefully", {
 })
 
 test_that("the number of required data rows is hard to predict", {
-  # TODO ASK/explore why
-  # I may need to re-design the API or throw a more informative error
   data <- pctr_ecoinvent_co2 |>
     pctr_score_activities() |>
     select(all_of(pctr_score_companies_crucial()))
@@ -101,7 +99,7 @@ test_that("the number of required data rows is hard to predict", {
   data |>
     slice(1L) |>
     pctr_score_companies(pctr_companies) |>
-    expect_error("must have compatible size")
+    expect_no_error()
   data |>
     slice(1:15) |>
     pctr_score_companies(pctr_companies) |>
@@ -113,18 +111,17 @@ test_that("the number of required data rows is hard to predict", {
   data |>
     slice(5:15) |>
     pctr_score_companies(pctr_companies) |>
-    expect_error("must have compatible size")
+    expect_no_error()
 })
 
 test_that("the number of required pctr_companies rows is hard to predict", {
-  # I may need to re-design the API or throw a more informative error
   data <- pctr_ecoinvent_co2 |>
     pctr_score_activities() |>
     select(all_of(pctr_score_companies_crucial()))
 
   data |>
     pctr_score_companies(pctr_companies |> slice(1)) |>
-    expect_error("must have compatible size")
+    expect_no_error()
   data |>
     pctr_score_companies(pctr_companies |> slice(1:15)) |>
     expect_no_error()
@@ -133,5 +130,5 @@ test_that("the number of required pctr_companies rows is hard to predict", {
     expect_no_error()
   data |>
     pctr_score_companies(pctr_companies |> slice(5:15)) |>
-    expect_error("must have compatible size")
+    expect_no_error()
 })
