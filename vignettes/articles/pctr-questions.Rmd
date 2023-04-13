@@ -1,0 +1,176 @@
+---
+title: "PCTR questions"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The goal of this article is to communicate what I found while characterizing
+PCTR data and tests. 
+
+Here I show code and ask questions that migh help me reduce
+the size of the example data, define the code's intended behaviour, and maybe
+find bugs and potential improvements. I start with an overview, then explore required columns and rows.
+
+## Overview
+
+```{r setup}
+library(tidyverse)
+devtools::load_all()
+
+packageVersion("tiltIndicator")
+```
+
+You can find all PCTR data and functions in RStudio with auto-complete.
+
+<img src=https://user-images.githubusercontent.com/5856545/231594835-7ff10ec8-5e91-4362-a5c2-23718c8afc34.png width=800>
+
+You can use it all in a single pipe.
+
+```{r}
+out <- pctr_ecoinvent_co2 |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies)
+
+out
+```
+
+## 1. Required columns
+
+It's best to [miminize the size of the inputs and
+outputs](https://gist.github.com/maurolepore/17b468dd8c3a603c668220563754ad7f#minimize-the-size-of-the-inputs-and-ouptuts),
+so the data is easier to understant and easier to work with. Smaller data fits
+better on screen, takes up less spaces and less time to compute on.
+
+Characterization tests show we can remove columns from both datasets, and from
+the output of `pctr_score_activities()`.
+
+```{r}
+#| echo=FALSE
+
+pctr_ecoinvent_co2_new <- pctr_ecoinvent_co2 |> 
+  select(all_of(pctr_ecoinvent_co2_crucial()))
+
+pctr_companies_new <- pctr_companies |> 
+  select(all_of(pctr_companies_crucial()))
+
+pctr_score_activities_new <- function(...) {
+  pctr_score_activities(...) |> 
+    select(all_of(pctr_score_companies_crucial()))
+}
+```
+
+```{r}
+out_new <- pctr_ecoinvent_co2_new |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies_new)
+
+out_new
+```
+
+Compare
+
+```{r}
+pctr_ecoinvent_co2 |> glimpse()
+
+pctr_ecoinvent_co2_new |> glimpse()
+
+pctr_companies |> glimpse()
+
+pctr_companies_new |> glimpse()
+
+out |> glimpse()
+
+out_new |> glimpse()
+```
+
+Questions:
+
+1.1. Is it OK to remove the proposed columns?
+
+1.2. Can we also remove any column from the final output (see `out2`)?
+
+## 2. Required rows
+
+`pctr_score_activities()` has a clear, 1 to 1 realationship between the number
+of rows of the input and output. If it gets 1 row it returns 1 row.
+
+```{r}
+pctr_ecoinvent_co2 |> 
+  slice(1) |> 
+  pctr_score_activities()
+
+pctr_ecoinvent_co2 |> 
+  slice(1:2) |> 
+  pctr_score_activities()
+```
+
+`pctr_score_copmanies()` is puzzling. If I change the number of rows of
+`pctr_ecoinvent_co2` I can't predict if the code will work of fail.
+
+```{r}
+#| error=TRUE
+# Fails
+pctr_ecoinvent_co2 |> 
+  slice(1) |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies)
+
+pctr_ecoinvent_co2 |> 
+  slice(1:15) |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies)
+
+pctr_ecoinvent_co2 |> 
+  slice(4:15) |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies)
+
+# Fails
+pctr_ecoinvent_co2 |> 
+  slice(5:15) |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies)
+```
+
+The same unpredictable success happens if I change the number or rows in the
+`pctr_companies` dataset.
+
+```{r}
+#| error=TRUE
+# Fails
+pctr_ecoinvent_co2 |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies |> slice(1))
+
+pctr_ecoinvent_co2 |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies |> slice(1:10))
+
+pctr_ecoinvent_co2 |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies |> slice(4:10))
+
+# Fails
+pctr_ecoinvent_co2 |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies |> slice(5:15))
+```
+
+
+Questions:
+
+Well designed code is easy to understand and use, so this suggests I need to
+improve it. What might be the problem?
+
+2.1. The way I divided the code across the two functions isn't the best.
+
+2.2. There is a bug.
+
+2.3. The logic is clear but I don't understand it.
