@@ -2,11 +2,10 @@
 
 # tiltIndicator 0.0.0.9019
 
-* bug resolved
-* fix bug in pctr function
-* fix tests
-* FIX:  no longer require a surprisingly unpredictable number of companies (@kalashsinghal  #111)
+BUG FIXES
 
+* `pctr_score_companies()` and `ictr_score_companies()` now return three rows
+per company (@kalashsinghal  #111).
 
 # tiltIndicator 0.0.0.9018
 
