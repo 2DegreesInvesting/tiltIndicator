@@ -85,10 +85,10 @@
     
 <p>The goal of this article is to communicate what I found while
 characterizing PCTR data and tests.</p>
-<p>Here I show code and ask questions that migh help me reduce the size
-of the example data, define the code’s intended behaviour, and maybe
-find bugs and potential improvements. I start with an overview, then
-explore required columns and rows.</p>
+<p>Here I show code to ask questions that might help us reduce the size
+of the example data, define the code’s intended behavior, and maybe find
+bugs and potential improvements. I start with an overview, then explore
+required columns and rows.</p>
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
@@ -133,14 +133,17 @@ auto-complete.</p>
 <h2 id="required-columns">1. Required columns<a class="anchor" aria-label="anchor" href="#required-columns"></a>
 </h2>
 <p>It’s best to <a href="https://gist.github.com/maurolepore/17b468dd8c3a603c668220563754ad7f#minimize-the-size-of-the-inputs-and-ouptuts" class="external-link">miminize
-the size of the inputs and outputs</a>, so the data is easier to
-understant and easier to work with. Smaller data fits better on screen,
-takes up less spaces and less time to compute on.</p>
-<p>Characterization tests show we can remove columns from both datasets,
-and from the output of <code><a href="../reference/pctr_score_activities.html">pctr_score_activities()</a></code>.</p>
+the size of the inputs and outputs</a>, so that the data is easier to
+understand and easier to work with. Smaller data fits better on screen,
+uses less disk space, and takes less time to compute on.</p>
+<p>Characterization tests show that we may be able to remove columns
+from both PCTR datasets, and from the output of
+<code><a href="../reference/pctr_score_activities.html">pctr_score_activities()</a></code>. Here is the same pipe I showed
+above but this time with the proposed <code>*_new</code> version of data
+and code.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">out_new</span> <span class="op">&lt;-</span> <span class="va">pctr_ecoinvent_co2_new</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">pctr_score_activities_new</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">pctr_companies_new</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">out_new</span></span>
@@ -217,21 +220,21 @@ and from the output of <code><a href="../reference/pctr_score_activities.html">p
 <span><span class="co">#&gt; $ share_unit_sec <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.5000, 0.2500, 0.2500, 0.8000, 0.2000, 0.0000, 0.6875,…</span></span></code></pre></div>
 <p>Questions:</p>
 <p>1.1. Is it OK to remove the proposed columns?</p>
-<p>1.2. Can we also remove any column from the final output (see
-<code>out2</code>)?</p>
+<p>1.2. Is there any additional column we could remove from
+<code>out_new</code>?</p>
 </div>
 <div class="section level2">
 <h2 id="required-rows">2. Required rows<a class="anchor" aria-label="anchor" href="#required-rows"></a>
 </h2>
-<p>In addition to removing needless columns, we may also remove needless
-rows. But I’m struggling to understand how to do that. I plan to explore
-the code in debugger mode, but it would also help to discuss with the
-indicator author. The knowledge I gain I should turn into better
-designed interfaces, more informative error messages, and more complete
-help files.</p>
-<p><code><a href="../reference/pctr_score_activities.html">pctr_score_activities()</a></code> has a clear 1 to 1 relationship
-between the number of rows of the input and output. If it gets 1 row it
-returns 1 row.</p>
+<p>In addition to removing needless columns, we may also be able to
+remove needless rows, or restructure the data to make it easier to
+understand and work with. But I’m struggling to understand how to do
+that. Soon I’ll learn more from running the code in debugger mode, but
+some of my questions may already be clear to Tilman, so I share this
+maybe a bit before I’m fully done with my own thinking.</p>
+<p><code><a href="../reference/pctr_score_activities.html">pctr_score_activities()</a></code> seems straightforward. It has a
+clear 1 to 1 relationship between the number of rows of the input and
+output. If it gets 1 row it returns 1 row.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -302,10 +305,10 @@ code will work of fail.</p>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> Size 6: Existing data.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> Size 9: Column `score`.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Only values of size one are recycled.</span></span></code></pre></div>
-<p>The same hard-to-understand success happens if I change the number or
-rows in the <code>pctr_companies</code> dataset. The oddest behaviour is
-that it seems that all companies are required. So companies doesn’t seem
-to be a parameter we’re free to change.</p>
+<p>Similarly puzzling is what happens if I change the number or rows in
+the <code>pctr_companies</code> dataset. The oddest behavior is that it
+seems that all companies are required rather than being a parameter
+we’re free to change.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -373,12 +376,12 @@ to be a parameter we’re free to change.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 9 5</span></span></code></pre></div>
 <p>Questions:</p>
-<p>Well designed code is easy to understand and use, so this suggests I
-need to improve it. What might be the problem?</p>
+<p>What might be the problem?</p>
 <p>2.1. The way I divided the code across the two functions isn’t the
 best.</p>
 <p>2.2. There is a bug.</p>
-<p>2.3. The logic is clear but I don’t understand it.</p>
+<p>2.3. The problem is clear to Tilman but I still don’t understand
+it.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
