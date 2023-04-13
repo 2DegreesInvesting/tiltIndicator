@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9019
+
+BUG FIXES
+
+* `pctr_score_companies()` and `ictr_score_companies()` now return three rows
+per company (@kalashsinghal  #111).
+
 # tiltIndicator 0.0.0.9018
 
 * Document PCTR functions (@kalashsinghal, #104).
