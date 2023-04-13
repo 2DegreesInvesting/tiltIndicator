@@ -80,15 +80,20 @@ Compare
 
 ```{r}
 pctr_ecoinvent_co2 |> glimpse()
-
 pctr_ecoinvent_co2_new |> glimpse()
 
 pctr_companies |> glimpse()
-
 pctr_companies_new |> glimpse()
 
-out |> glimpse()
+pctr_ecoinvent_co2_new |> 
+  pctr_score_activities() |> 
+  glimpse()
+pctr_ecoinvent_co2_new |> 
+  pctr_score_activities_new() |> 
+  glimpse()
 
+out |> glimpse()
+# Same despite we used smaller data
 out_new |> glimpse()
 ```
 
