@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9019
+
+* bug resolved
+* fix bug in pctr function
+* fix tests
+* FIX:  no longer require a surprisingly unpredictable number of companies (@kalashsinghal  #111)
+
+
 # tiltIndicator 0.0.0.9018
 
 * Document PCTR functions (@kalashsinghal, #104).
