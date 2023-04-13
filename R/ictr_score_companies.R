@@ -5,13 +5,19 @@
 #'
 #' @family ICTR functions
 #'
-#' @return TODO
+#' @return A [data.frame] with three rows for each company and these columns:
+#' TODO
 #' @export
 #'
 #' @examples
+#' library(dplyr, warn.conflicts = FALSE)
+#'
+#' first_company <- ictr_companies |> filter(company_id %in% first(company_id))
+#' first_company
+#'
 #' ictr_inputs |>
 #'   ictr_score_inputs() |>
-#'   ictr_score_companies(ictr_companies)
+#'   ictr_score_companies(first_company)
 ictr_score_companies <- function(ecoinvent_scores, companies) {
   ## join by activity_product_uuid and other joint columns from companies with
   ## ecoinvent_scores

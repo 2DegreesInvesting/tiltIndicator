@@ -12,15 +12,21 @@ ictr_score_companies(ecoinvent_scores, companies)
 \item{companies}{TODO}
 }
 \value{
+A \link{data.frame} with three rows for each company and these columns:
 TODO
 }
 \description{
 TODO
 }
 \examples{
+library(dplyr, warn.conflicts = FALSE)
+
+first_company <- ictr_companies |> filter(company_id \%in\% first(company_id))
+first_company
+
 ictr_inputs |>
   ictr_score_inputs() |>
-  ictr_score_companies(ictr_companies)
+  ictr_score_companies(first_company)
 }
 \seealso{
 Other ICTR functions: 
