@@ -22,7 +22,7 @@ find bugs and potential improvements. I start with an overview, then explore req
 
 ```{r setup}
 library(dplyr, warn.conflicts = TRUE)
-devtools::load_all()
+library(tiltIndicator)
 
 packageVersion("tiltIndicator")
 ```
@@ -55,14 +55,14 @@ the output of `pctr_score_activities()`.
 #| echo=FALSE
 
 pctr_ecoinvent_co2_new <- pctr_ecoinvent_co2 |>
-  select(all_of(pctr_ecoinvent_co2_crucial()))
+  select(all_of(tiltIndicator:::pctr_ecoinvent_co2_crucial()))
 
 pctr_companies_new <- pctr_companies |>
-  select(all_of(pctr_companies_crucial()))
+  select(all_of(tiltIndicator:::pctr_companies_crucial()))
 
 pctr_score_activities_new <- function(...) {
   pctr_score_activities(...) |>
-    select(all_of(pctr_score_companies_crucial()))
+    select(all_of(tiltIndicator:::pctr_score_companies_crucial()))
 }
 ```
 
