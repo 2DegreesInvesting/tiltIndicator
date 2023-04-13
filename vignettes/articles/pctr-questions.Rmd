@@ -124,33 +124,33 @@ But `pctr_score_copmanies()` is puzzling. If I change the number of rows of
 #| error=TRUE
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies) |> 
+  pctr_score_companies(pctr_companies) |>
   dim()
 
 # Fails
 pctr_ecoinvent_co2 |>
   slice(1) |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies) |> 
+  pctr_score_companies(pctr_companies) |>
   dim()
 
 pctr_ecoinvent_co2 |>
   slice(1:15) |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies) |> 
+  pctr_score_companies(pctr_companies) |>
   dim()
 
 pctr_ecoinvent_co2 |>
   slice(4:15) |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies) |> 
+  pctr_score_companies(pctr_companies) |>
   dim()
 
 # Fails
 pctr_ecoinvent_co2 |>
   slice(5:15) |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies) |> 
+  pctr_score_companies(pctr_companies) |>
   dim()
 ```
 
@@ -163,50 +163,50 @@ to change.
 #| error=TRUE
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(pctr_companies) |> 
+  pctr_score_companies(pctr_companies) |>
   dim()
 
 # Fails
 first_row <- pctr_companies |> slice(1)
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(first_row) |> 
+  pctr_score_companies(first_row) |>
   dim()
 
 # Fails
 first_company <- pctr_companies |> filter(company_id %in% first(company_id))
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(first_company) |> 
+  pctr_score_companies(first_company) |>
   dim()
 
-first_row_of_each_company <- pctr_companies |> 
-  group_by(company_id) |> 
-  slice(1) |> 
+first_row_of_each_company <- pctr_companies |>
+  group_by(company_id) |>
+  slice(1) |>
   ungroup()
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(first_row_of_each_company) |> 
+  pctr_score_companies(first_row_of_each_company) |>
   dim()
 
 # Fails (oddest) Why do we need every one of these companies?
-first_row_of_two_out_of_three_companies <- pctr_companies |> 
-  group_by(company_id) |> 
-  slice(1) |> 
-  ungroup() |> 
+first_row_of_two_out_of_three_companies <- pctr_companies |>
+  group_by(company_id) |>
+  slice(1) |>
+  ungroup() |>
   slice(1:2)
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(first_row_of_two_out_of_three_companies) |> 
+  pctr_score_companies(first_row_of_two_out_of_three_companies) |>
   dim()
 
-first_two_rows_of_each_company <- pctr_companies |> 
-  group_by(company_id) |> 
-  slice(1:2) |> 
+first_two_rows_of_each_company <- pctr_companies |>
+  group_by(company_id) |>
+  slice(1:2) |>
   ungroup()
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
-  pctr_score_companies(first_two_rows_of_each_company) |> 
+  pctr_score_companies(first_two_rows_of_each_company) |>
   dim()
 ```
 
