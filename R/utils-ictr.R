@@ -1,4 +1,3 @@
-
 #' Toy `ictr_inputs`
 #'
 #' @examples
