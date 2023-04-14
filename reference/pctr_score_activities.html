@@ -120,22 +120,21 @@ risk products.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">pctr_score_activities</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 25 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    activity_product_uuid       ei_activity geo   sec   isic_class ref_prod unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0a242b09-772a-5edf-8e82-9c… transport,… RoW   Tran… 4923:Frei… transpo… metr…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> be06d25c-73dc-55fb-965b-0f… treatment … GLO   Wast… 3822:Trea… residue… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 977d997e-c257-5033-ba39-d0… market gro… RER   Tran… 4912:Frei… transpo… metr…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 5fd7fca0-0700-51fd-877a-72… treatment … GLO   Wast… 3821:Trea… waste p… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ebb8475e-ff57-5e4e-937b-b5… market for… GLO   Infr… 2819:Manu… ventila… m    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2f7b77a7-1556-5c1b-b0aa-c4… market for… RER   Chem… 2011:Manu… sodium … kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> edd290d2-a5b0-56ec-aaf3-ad… transport,… RoW   Tran… 4922:Othe… transpo… km   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> d2c0844e-6e5b-52a3-802c-b1… market for… GLO   Agri… 1080:Manu… mineral… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> abdb78ee-ddb9-5552-9c4c-ed… citric aci… RNA   Chem… 2011:Manu… citric … kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 16e1dc41-2793-521c-b4c9-81… sodium eth… ZA    Chem… 2011:Manu… sodium … kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 25 × 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    co2_footprint sec            unit  activity_product_uuid ei_activity perc_all</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>          4.33 Transport      metr… 0a242b09-772a-5edf-8… transport,…     0.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>          3.94 Waste Treatme… kg    be06d25c-73dc-55fb-9… treatment …     0.04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>          6.26 Transport      metr… 977d997e-c257-5033-b… market gro…     0.68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>          6.99 Waste Treatme… kg    5fd7fca0-0700-51fd-8… treatment …     0.88</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>          7.83 Infrastructur… m     ebb8475e-ff57-5e4e-9… market for…     0.96</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>          5.97 Chemicals      kg    2f7b77a7-1556-5c1b-b… market for…     0.6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>          9.00 Transport      km    edd290d2-a5b0-56ec-a… transport,…     1   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>          5.10 Agriculture &amp;… kg    d2c0844e-6e5b-52a3-8… market for…     0.28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>          7.50 Chemicals      kg    abdb78ee-ddb9-5552-9… citric aci…     0.92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>          6.60 Chemicals      kg    16e1dc41-2793-521c-b… sodium eth…     0.72</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 15 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: co2_footprint &lt;dbl&gt;, emissions_unit &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_all &lt;dbl&gt;, perc_unit &lt;dbl&gt;, perc_unit_sec &lt;dbl&gt;, score_all &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: perc_unit &lt;dbl&gt;, perc_unit_sec &lt;dbl&gt;, score_all &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   score_unit &lt;chr&gt;, score_unit_sec &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
