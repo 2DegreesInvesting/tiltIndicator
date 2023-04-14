@@ -48,25 +48,34 @@ test_that("with valid inputs not all shares are 0", {
   expect_false(identical(share, 0))
 })
 
-test_that("returns 3 rows for each company", {
-  # Keep all columns picking the first row for each non-unique combination
-  companies <- distinct(ictr_companies, company_id, .keep_all = TRUE)
-  inputs <- ictr_inputs
+test_that("returns 3 rows per company for any slice of companies", {
+  two_inputs <- slice(ictr_inputs, 1:2)
+  data <- ictr_score_inputs(two_inputs)
 
-  out <- inputs |>
-    ictr_score_inputs() |>
-    ictr_score_companies(companies |> slice(1))
+  one_company <- distinct(ictr_companies, company_id, .keep_all = TRUE) |>
+    slice(1)
+  out <- ictr_score_companies(data, one_company)
   expect_equal(nrow(out), 3L)
 
-  out <- inputs |>
-    ictr_score_inputs() |>
-    ictr_score_companies(companies |> slice(1:2))
+  three_companies <- distinct(ictr_companies, company_id, .keep_all = TRUE) |>
+    slice(1:3)
+  out <- ictr_score_companies(data, three_companies)
+  expect_equal(nrow(out), 9L)
+})
+
+test_that("returns 3 rows per company for any slice of inputs", {
+  two_companies <- distinct(ictr_companies, company_id, .keep_all = TRUE) |>
+    slice(1:2)
+
+  one_inputs <- slice(ictr_inputs, 1)
+  data <- ictr_score_inputs(one_inputs)
+  out <- ictr_score_companies(data, two_companies)
   expect_equal(nrow(out), 6L)
 
-  out <- inputs |>
-    ictr_score_inputs() |>
-    ictr_score_companies(companies |> slice(1:3))
-  expect_equal(nrow(out), 9L)
+  three_inputs <- slice(ictr_inputs, 1:3)
+  data <- ictr_score_inputs(three_inputs)
+  out <- ictr_score_companies(data, two_companies)
+  expect_equal(nrow(out), 6L)
 })
 
 test_that("without `company_name` and `ep_product` outputs are the same", {
