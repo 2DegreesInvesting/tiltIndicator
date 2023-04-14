@@ -120,7 +120,6 @@ test_that("no longer drops companies depending on co2 data (#122)", {
 })
 
 test_that("returns 3 rows for each company", {
-  # Keep all columns picking the first row for each non-unique combination
   companies <- distinct(pctr_companies, company_id, .keep_all = TRUE)
   co2 <- pctr_ecoinvent_co2
 
@@ -138,4 +137,50 @@ test_that("returns 3 rows for each company", {
     pctr_score_activities() |>
     pctr_score_companies(companies |> slice(1:3))
   expect_equal(nrow(out), 9L)
+})
+
+test_that("FIXME: Under 5 co2 rows some company gets all 0 without warning", {
+  companies <- pctr_companies
+  two_comp <- filter(companies, company_id %in% unique(company_id)[c(1, 2)])
+
+  too_few_co2 <- slice(pctr_ecoinvent_co2, 1)
+  data <- pctr_score_activities(too_few_co2)
+
+  out <- pctr_score_companies(data, two_comp)
+  sum_of_share_by_company <- out |>
+    group_by(company_id) |>
+    dplyr::rowwise() |>
+    dplyr::reframe(share = sum(dplyr::c_across(starts_with("share_")))) |>
+    group_by(company_id) |>
+    dplyr::summarise(share = sum(share)) |>
+    dplyr::pull()
+  FIXME_expected_false <- any(sum_of_share_by_company == 0)
+  expect_true(FIXME_expected_false)
+
+  too_few_co2 <- slice(pctr_ecoinvent_co2, 1:4)
+  data <- pctr_score_activities(too_few_co2)
+
+  out <- pctr_score_companies(data, two_comp)
+  sum_of_share_by_company <- out |>
+    group_by(company_id) |>
+    dplyr::rowwise() |>
+    dplyr::reframe(share = sum(dplyr::c_across(starts_with("share_")))) |>
+    group_by(company_id) |>
+    dplyr::summarise(share = sum(share)) |>
+    dplyr::pull()
+  FIXME_expected_false <- any(sum_of_share_by_company == 0)
+  expect_true(FIXME_expected_false)
+
+  enough_co2 <- slice(pctr_ecoinvent_co2, 1:5)
+  data <- pctr_score_activities(enough_co2)
+
+  out <- pctr_score_companies(data, two_comp)
+  sum_of_share_by_company <- out |>
+    group_by(company_id) |>
+    dplyr::rowwise() |>
+    dplyr::reframe(share = sum(dplyr::c_across(starts_with("share_")))) |>
+    group_by(company_id) |>
+    dplyr::summarise(share = sum(share)) |>
+    dplyr::pull()
+  expect_false(any(sum_of_share_by_company == 0))
 })
