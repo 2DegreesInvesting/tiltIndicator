@@ -1,5 +1,7 @@
 #' TODO
 #'
+#' @author Kalash Singhal.
+#'
 #' @param inputs TODO
 #' @param low_threshold TODO
 #' @param high_threshold TODO

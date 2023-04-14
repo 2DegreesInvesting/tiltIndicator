@@ -44,4 +44,7 @@ Other PSTR functions:
 \code{\link{pstr_add_reductions}()},
 \code{\link{pstr_aggregate_scores}()}
 }
+\author{
+Linda Delacombaz.
+}
 \concept{PSTR functions}

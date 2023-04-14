@@ -1,23 +1,17 @@
 #' A dataset with fake companies, products, sectors and subsectors
 #'
-#' * TODO: Does it have any relationship with tiltData?
-#' * FIXME: Rename to match existing tiltData, e.g. `company_id` -> `companies_id`
-#'
+#' @author Linda Delacombaz.
+#' @source TODO
 #' @family PSTR datasets
-#'
 #' @examples
 #' pstr_companies
 "pstr_companies"
 
 #' A bridge between sector and subsectors in europages and in `weo_2022`.
 #'
-#' * TODO: Where does it come from and what wrangling did you do?
-#' * FIXME: Rename to match existing tiltData and to use lowercase. E.g. removing
-#' the prefix "ep_" makes it more compatible with tiltData and makes it easier
-#' to join.
-#'
+#' @author Linda Delacombaz.
+#' @source TODO
 #' @family PSTR datasets
-#'
 #' @examples
 #' pstr_ep_weo
 "pstr_ep_weo"
@@ -26,8 +20,9 @@
 #'
 #' * TODO: Where does it come from and what wrangling did you do?
 #'
+#' @author Linda Delacombaz.
+#' @source TODO
 #' @family PSTR datasets
-#'
 #' @examples
 #' pstr_weo_2022
 "pstr_weo_2022"

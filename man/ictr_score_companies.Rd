@@ -32,4 +32,7 @@ ictr_inputs |>
 Other ICTR functions: 
 \code{\link{ictr_score_inputs}()}
 }
+\author{
+Kalash Singhal.
+}
 \concept{ICTR functions}

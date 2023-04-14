@@ -7,6 +7,8 @@
 #' Activities are mapped with the companies' products using common columns
 #' present in dataframes `scored_activities` and `companies`
 #'
+#' @author Tilman Trompke.
+#'
 #' @param scored_activities A [data.frame]. The output of
 #'   [pctr_score_activities].
 #' @param companies A [data.frame] like [pctr_companies].
