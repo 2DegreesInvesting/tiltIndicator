@@ -24,7 +24,7 @@ packageVersion("tiltIndicator")
 
 Questions:
 
-* 1.1. We call `inner_join()` with `by = c("activity_product_uuid", "ei_activity",
+* 1.1. We call `*_join()` with `by = c("activity_product_uuid", "ei_activity",
 "unit")` and Tilman suggested we might remove `"ei_activity"` and `"unit"`. 
 Do we expect them to be always redundant with the groups defined by
 `"activity_product_uuid"` alone? Or do you mean they are redundant in this

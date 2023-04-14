@@ -91,7 +91,7 @@ test_that("without crucial columns errors gracefully", {
     expect_error("score_unit")
 })
 
-test_that("FIXME co2 data must have a mysterious number of rows that depends on the specific companies chosen -- else the output looses companies", {
+test_that("no longer drops companies depending on co2 data (#122)", {
   # Expected
   odd_boundary_1_5 <- pctr_ecoinvent_co2 |> slice(1:5)
   companies_1_2 <- pctr_companies |>
@@ -101,18 +101,14 @@ test_that("FIXME co2 data must have a mysterious number of rows that depends on 
     pctr_score_companies(companies_1_2)
   expect_equal(length(unique(out$company_id)), 2L)
 
-  # Unexpected
   below_odd_boundary_1_5 <- pctr_ecoinvent_co2 |> slice(1:4)
   companies_1_2 <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
   out <- below_odd_boundary_1_5 |>
     pctr_score_activities() |>
     pctr_score_companies(companies_1_2)
-  FIXME_expected_2 <- 1L
-  expect_equal(length(unique(out$company_id)), FIXME_expected_2)
+  expect_equal(length(unique(out$company_id)), 2L)
 
-  # Different companies impose a different boundary
-  # Expected
   odd_boundary_1_10 <- pctr_ecoinvent_co2 |> slice(1:10)
   companies_1_3 <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
@@ -122,7 +118,6 @@ test_that("FIXME co2 data must have a mysterious number of rows that depends on 
     pctr_score_companies(companies_1_3)
   expect_equal(length(unique(out$company_id)), 2L)
 
-  # Unexpected
   below_odd_boundary_1_10 <- pctr_ecoinvent_co2 |> slice(1:9)
   companies_1_3 <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
@@ -130,8 +125,7 @@ test_that("FIXME co2 data must have a mysterious number of rows that depends on 
   out <- below_odd_boundary_1_10 |>
     pctr_score_activities() |>
     pctr_score_companies(companies_1_3)
-  FIXME_expected_2 <- 1L
-  expect_equal(length(unique(out$company_id)), FIXME_expected_2)
+  expect_equal(length(unique(out$company_id)), 2L)
 })
 
 test_that("returns 3 rows for each company", {
