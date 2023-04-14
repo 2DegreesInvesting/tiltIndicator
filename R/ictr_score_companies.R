@@ -1,5 +1,7 @@
 #' TODO
 #'
+#' @author Kalash Singhal.
+#'
 #' @param ecoinvent_scores TODO
 #' @param companies TODO
 #'
