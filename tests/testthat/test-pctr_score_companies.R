@@ -92,35 +92,29 @@ test_that("without crucial columns errors gracefully", {
 })
 
 test_that("no longer drops companies depending on co2 data (#122)", {
-  good_co2_slice <- slice(pctr_ecoinvent_co2, 1:5)
-  companies_1_2 <- pctr_companies |>
-    filter(company_id %in% unique(company_id)[c(1, 2)])
-  data <- pctr_score_activities(good_co2_slice)
+  companies <- pctr_companies
 
+  good_co2_slice <- slice(pctr_ecoinvent_co2, 1:5)
+  companies_1_2 <- filter(companies, company_id %in% unique(company_id)[c(1, 2)])
+  data <- pctr_score_activities(good_co2_slice)
   out <- pctr_score_companies(data, companies_1_2)
   expect_equal(length(unique(out$company_id)), 2L)
 
   bad_co2_slice <- slice(pctr_ecoinvent_co2, 1:4)
-  companies_1_2 <- pctr_companies |>
-    filter(company_id %in% unique(company_id)[c(1, 2)])
+  companies_1_2 <- filter(companies, company_id %in% unique(company_id)[c(1, 2)])
   data <- pctr_score_activities(bad_co2_slice)
-
   out <- pctr_score_companies(data, companies_1_2)
   expect_equal(length(unique(out$company_id)), 2L)
 
   another_good_co2_slice <- slice(pctr_ecoinvent_co2, 1:10)
-  companies_1_3 <- pctr_companies |>
-    filter(company_id %in% unique(company_id)[c(1, 3)])
+  companies_1_3 <- filter(companies, company_id %in% unique(company_id)[c(1, 3)])
   data <- pctr_score_activities(another_good_co2_slice)
-
   out <- pctr_score_companies(data, companies_1_3)
   expect_equal(length(unique(out$company_id)), 2L)
 
   another_bad_co2_slice <- slice(pctr_ecoinvent_co2, 1:9)
-  companies_1_3 <- pctr_companies |>
-    filter(company_id %in% unique(company_id)[c(1, 3)])
+  companies_1_3 <- filter(companies, company_id %in% unique(company_id)[c(1, 3)])
   data <- pctr_score_activities(another_bad_co2_slice)
-
   out <- pctr_score_companies(data, companies_1_3)
   expect_equal(length(unique(out$company_id)), 2L)
 })
