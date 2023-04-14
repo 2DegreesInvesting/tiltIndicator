@@ -44,13 +44,13 @@ test_that("without crucial data errors gracefully", {
 })
 
 test_that("without crucial columns errors gracefully", {
-  data <- pctr_toy_pctr_ecoinvent_co2(sec = NULL)
+  data <- pctr_ecoinvent_co2 |> slice(1) |> select(-"sec")
   expect_error(pctr_score_activities(data), "sec.*not found")
 
-  data <- pctr_toy_pctr_ecoinvent_co2(unit = NULL)
+  data <- pctr_ecoinvent_co2 |> slice(1) |> select(-"unit")
   expect_error(pctr_score_activities(data), "unit.*not found")
 
-  data <- pctr_toy_pctr_ecoinvent_co2(co2_footprint = NULL)
+  data <- pctr_ecoinvent_co2 |> slice(1) |> select(-"co2_footprint")
   expect_error(pctr_score_activities(data), "co2_footprint.*not found")
 })
 
