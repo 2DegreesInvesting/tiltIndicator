@@ -30,7 +30,7 @@ Do we expect them to be always redundant with the groups defined by
 `"activity_product_uuid"` alone? Or do you mean they are redundant in this
 specific toy dataset?
 
-## 2. Edge case with too few co2 data and a single company
+## 2. Edge case with too few co2 data
 
 `pctr_score_copmanies()` returns 3 rows for each company (regardless the number
 of rows per company). This seems expected.
@@ -38,16 +38,12 @@ of rows per company). This seems expected.
 ```{r}
 #| error=TRUE
 one_company <- pctr_companies |> filter(company_id %in% first(company_id))
-one_company
-
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
   pctr_score_companies(one_company)
 
 another_company <- pctr_companies |> filter(company_id %in% last(company_id))
 two_companies <- bind_rows(one_company, another_company)
-two_companies
-
 pctr_ecoinvent_co2 |>
   pctr_score_activities() |>
   pctr_score_companies(two_companies)
@@ -58,85 +54,19 @@ useless and you get no warning.
 
 ```{r}
 #| error=TRUE
-one_company <- pctr_companies |> filter(company_id %in% first(company_id))
-one_company
-
 too_few_co2_rows <- pctr_ecoinvent_co2 |> slice(1)
 too_few_co2_rows
 
 too_few_co2_rows |>
   pctr_score_activities() |>
   pctr_score_companies(one_company)
+
+too_few_co2_rows |>
+  pctr_score_activities() |>
+  pctr_score_companies(two_companies)
 ```
 
 Questions:
 
 * 2.1. Is this output useful?
 * 2.2. Should we allow this output with a warning or throw an error and stop?
-
-## 3. Edge case with too few co2 data and multiple companies
-
-The case above gets much worse with multiple companies because some of them
-dissapear from the output with no warning.
-
-```{r}
-one_company |> distinct(company_id)
-too_few_co2_rows |>
-  pctr_score_activities() |>
-  pctr_score_companies(one_company)
-
-two_companies |> distinct(company_id)
-too_few_co2_rows |>
-  pctr_score_activities() |>
-  pctr_score_companies(two_companies)
-
-all_companies <- pctr_companies
-all_companies |> distinct(company_id)
-too_few_co2_rows |>
-  pctr_score_activities() |>
-  pctr_score_companies(all_companies)
-```
-
-Questions:
-
-* 3.1. Is this a bug or is it expected behaviour?
-* 3.2. Should we throw a warning and continue or throw an error and stop?
-
-## 4. The boundary case
-
-When the number of rows in the co2 data is 10 or more, we get what we expect.
-
-```{r}
-# Surprising
-two_companies |> distinct(company_id)
-pctr_ecoinvent_co2 |>
-  slice(1:9) |>
-  pctr_score_activities() |>
-  pctr_score_companies(two_companies)
-
-# Expected
-two_companies |> distinct(company_id)
-pctr_ecoinvent_co2 |>
-  slice(1:10) |>
-  pctr_score_activities() |>
-  pctr_score_companies(two_companies)
-
-# Expected
-all_companies |> distinct(company_id)
-pctr_ecoinvent_co2 |>
-  slice(1:10) |>
-  pctr_score_activities() |>
-  pctr_score_companies(all_companies)
-
-# Expected
-all_companies |> distinct(company_id)
-pctr_ecoinvent_co2 |>
-  slice(1:15) |>
-  pctr_score_activities() |>
-  pctr_score_companies(all_companies)
-```
-
-Questions:
-
-* 4.1. Why 10?
-* 4.2. Can/should we reduce the co2 data to exactly 10 rows?
