@@ -47,7 +47,7 @@ use_refactoring_checklist <- function() {
   - [ ] Polish and publish article.
   - [ ] Announce new Article on Slack.
   - [ ] Refactor: Extract functions in place.
-  - [ ] Refactor: Move functions to R/ and document @author
+  - [ ] Refactor: Move functions to R/ and document @author.
   - [ ] Refactor: Address R CMD check issues.
   - [ ] Ask authors to document data and functions, then prune the article.
   - [ ] Snapshot each feature and remove the general mvp-level snapshot.
