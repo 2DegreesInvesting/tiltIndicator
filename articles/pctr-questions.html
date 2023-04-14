@@ -83,15 +83,8 @@
 
     
     
-<p>The goal of this article is to communicate what I found while
-characterizing PCTR data and tests.</p>
-<p>Here I show code to ask questions that might help us reduce the size
-of the example data, define the code’s intended behavior, and maybe find
-bugs and potential improvements. I start with an overview, then explore
-required columns and rows.</p>
-<div class="section level2">
-<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
-</h2>
+<p>Here I ask the questions I have when I characterize the PCTR data and
+code.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -106,36 +99,9 @@ required columns and rows.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"tiltIndicator"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] '0.0.0.9019'</span></span></code></pre></div>
-<p>You can find all PCTR data and functions in RStudio with
-auto-complete.</p>
-<p><img src="https://user-images.githubusercontent.com/5856545/231594835-7ff10ec8-5e91-4362-a5c2-23718c8afc34.png" width="800"></p>
-<p>You can use it all in a single pipe.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">pctr_companies</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">out</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 5</span></span></span>
-<span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high       0.25      0.5           0.5   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…      0.25      0.25          0.25  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low        0.5       0.25          0.25  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> ebtor_00000005324899621837001        high       0.6       0.6           0.8   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> ebtor_00000005324899621837001        medi…      0.2       0.4           0.2   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ebtor_00000005324899621837001        low        0.2       0             0     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> mbdgmbh_00000004773428001            high       0.25      0.438         0.688 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> mbdgmbh_00000004773428001            medi…      0.5       0.375         0.25  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> mbdgmbh_00000004773428001            low        0.25      0.188         0.062<span style="text-decoration: underline;">5</span></span></span></code></pre></div>
-</div>
 <div class="section level2">
-<h2 id="required-columns">1. Required columns<a class="anchor" aria-label="anchor" href="#required-columns"></a>
+<h2 id="joining-by-redundant-columns">1. Joining by redundant columns<a class="anchor" aria-label="anchor" href="#joining-by-redundant-columns"></a>
 </h2>
-<p>It’s best to <a href="https://gist.github.com/maurolepore/17b468dd8c3a603c668220563754ad7f#minimize-the-size-of-the-inputs-and-ouptuts" class="external-link">minimize
-the size of the inputs and outputs</a>, so that the data is easier to
-understand and easier to work with. Smaller data fits better on screen,
-uses less disk space, and takes less time to compute on.</p>
 <p>Questions:</p>
 <ul>
 <li>1.1. We call <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join()</a></code> with
@@ -147,37 +113,11 @@ mean they are redundant in this specific toy dataset?</li>
 </ul>
 </div>
 <div class="section level2">
-<h2 id="required-rows">2. Required rows<a class="anchor" aria-label="anchor" href="#required-rows"></a>
+<h2 id="edge-case-with-too-few-co2-data-and-a-single-company">2. Edge case with too few co2 data and a single company<a class="anchor" aria-label="anchor" href="#edge-case-with-too-few-co2-data-and-a-single-company"></a>
 </h2>
-<p>In addition to removing needless columns, we may also be able to
-remove needless rows, or restructure the data to make it easier to
-understand and work with.</p>
-<p><code><a href="../reference/pctr_score_activities.html">pctr_score_activities()</a></code> returns 1 row for each row in
-the co2 data.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 11</span></span></span>
-<span><span class="co">#&gt;   co2_footprint sec   unit  activity_product_uuid ei_activity perc_all perc_unit</span></span>
-<span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>          4.33 Tran… metr… 0a242b09-772a-5edf-8… transport,…        1         1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: perc_unit_sec &lt;dbl&gt;, score_all &lt;chr&gt;, score_unit &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   score_unit_sec &lt;chr&gt;</span></span></span>
-<span></span>
-<span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 11</span></span></span>
-<span><span class="co">#&gt;   co2_footprint sec   unit  activity_product_uuid ei_activity perc_all perc_unit</span></span>
-<span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>          4.33 Tran… metr… 0a242b09-772a-5edf-8… transport,…      1           1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>          3.94 Wast… kg    be06d25c-73dc-55fb-9… treatment …      0.5         1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: perc_unit_sec &lt;dbl&gt;, score_all &lt;chr&gt;, score_unit &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   score_unit_sec &lt;chr&gt;</span></span></span></code></pre></div>
 <p><code>pctr_score_copmanies()</code> returns 3 rows for each company
-(regardless the number of rows per company).</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+(regardless the number of rows per company). This seems expected.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">one_company</span> <span class="op">&lt;-</span> <span class="va">pctr_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">first</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">one_company</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
@@ -237,11 +177,9 @@ the co2 data.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> mbdgmbh_00000004773428001            high       0.25      0.438         0.688 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> mbdgmbh_00000004773428001            medi…      0.5       0.375         0.25  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> mbdgmbh_00000004773428001            low        0.25      0.188         0.062<span style="text-decoration: underline;">5</span></span></span></code></pre></div>
-<p>Focusing on a single company, the number of rows of in the output
-doesn’t seem to depend on the number of rows in the co2 data. But it may
-be surprising that the number of rows in the co2 data can be such that
-the output seems useless and you get no warning.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<p>But the number number of rows in the co2 data can be such that the
+output seems useless and you get no warning.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">one_company</span> <span class="op">&lt;-</span> <span class="va">pctr_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">first</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">one_company</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
@@ -274,10 +212,13 @@ the output seems useless and you get no warning.</p>
 <li>2.2. Should we allow this output with a warning or throw an error
 and stop?</li>
 </ul>
-<p>And considering multiple companies, it’s definitely surprising is
-that the number of rows in the co2 data can be such that the output
-loses companies – again you get no warning.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+</div>
+<div class="section level2">
+<h2 id="edge-case-with-too-few-co2-data-and-multiple-companies">3. Edge case with too few co2 data and multiple companies<a class="anchor" aria-label="anchor" href="#edge-case-with-too-few-co2-data-and-multiple-companies"></a>
+</h2>
+<p>The case above gets much worse with multiple companies because some
+of them dissapear from the output with no warning.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">one_company</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
 <span><span class="co">#&gt;   company_id                                         </span></span>
@@ -328,12 +269,17 @@ loses companies – again you get no warning.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low           0          0              0</span></span></code></pre></div>
 <p>Questions:</p>
 <ul>
-<li>2.3. Should we allow this output with a warning or throw an error
-and stop?</li>
+<li>3.1. Is this a bug or is it expected behaviour?</li>
+<li>3.2. Should we throw a warning and continue or throw an error and
+stop?</li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="the-boundary-case">4. The boundary case<a class="anchor" aria-label="anchor" href="#the-boundary-case"></a>
+</h2>
 <p>When the number of rows in the co2 data is 10 or more, we get what we
 expect.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Surprising</span></span>
 <span><span class="va">two_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 1</span></span></span>
@@ -424,8 +370,8 @@ expect.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> mbdgmbh_00000004773428001            low       0.333      0.167          0.167</span></span></code></pre></div>
 <p>Questions:</p>
 <ul>
-<li>2.4. Why 10?</li>
-<li>2.5. Can/should we reduce the co2 data to exactly 10 rows?</li>
+<li>4.1. Why 10?</li>
+<li>4.2. Can/should we reduce the co2 data to exactly 10 rows?</li>
 </ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
