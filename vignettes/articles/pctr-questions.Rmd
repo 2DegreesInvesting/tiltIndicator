@@ -11,15 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The goal of this article is to communicate what I found while characterizing
-PCTR data and tests. 
-
-Here I show code to ask questions that might help us reduce the size of the
-example data, define the code's intended behavior, and maybe find bugs and
-potential improvements. I start with an overview, then explore required columns
-and rows.
-
-## Overview
+Here I ask the questions I have when I characterize the PCTR data and code.
 
 ```{r setup}
 library(dplyr, warn.conflicts = TRUE)
@@ -28,27 +20,7 @@ library(tiltIndicator)
 packageVersion("tiltIndicator")
 ```
 
-You can find all PCTR data and functions in RStudio with auto-complete.
-
-<img src=https://user-images.githubusercontent.com/5856545/231594835-7ff10ec8-5e91-4362-a5c2-23718c8afc34.png width=800>
-
-You can use it all in a single pipe.
-
-```{r}
-out <- pctr_ecoinvent_co2 |>
-  pctr_score_activities() |>
-  pctr_score_companies(pctr_companies)
-
-out
-```
-
-## 1. Required columns
-
-It's best to [minimize the size of the inputs and
-outputs](https://gist.github.com/maurolepore/17b468dd8c3a603c668220563754ad7f#minimize-the-size-of-the-inputs-and-ouptuts),
-so that the data is easier to understand and easier to work with. Smaller data
-fits better on screen, uses less disk space, and takes less time to compute on.
-
+## 1. Joining by redundant columns
 
 Questions:
 
@@ -58,25 +30,10 @@ Do we expect them to be always redundant with the groups defined by
 `"activity_product_uuid"` alone? Or do you mean they are redundant in this
 specific toy dataset?
 
-## 2. Required rows
-
-In addition to removing needless columns, we may also be able to remove needless
-rows, or restructure the data to make it easier to understand and work with.
-
-`pctr_score_activities()` returns 1 row for each row in the co2 data.
-
-```{r}
-pctr_ecoinvent_co2 |>
-  slice(1) |>
-  pctr_score_activities()
-
-pctr_ecoinvent_co2 |>
-  slice(1:2) |>
-  pctr_score_activities()
-```
+## 2. Edge case with too few co2 data and a single company
 
 `pctr_score_copmanies()` returns 3 rows for each company (regardless the number
-of rows per company).
+of rows per company). This seems expected.
 
 ```{r}
 #| error=TRUE
@@ -96,10 +53,8 @@ pctr_ecoinvent_co2 |>
   pctr_score_companies(two_companies)
 ```
 
-Focusing on a single company, the number of rows of in the output doesn't seem
-to depend on the number of rows in the co2 data. But it may be surprising that
-the number of rows in the co2 data can be such that the output seems useless and
-you get no warning.
+But the number number of rows in the co2 data can be such that the output seems
+useless and you get no warning.
 
 ```{r}
 #| error=TRUE
@@ -119,9 +74,10 @@ Questions:
 * 2.1. Is this output useful?
 * 2.2. Should we allow this output with a warning or throw an error and stop?
 
-And considering multiple companies, it's definitely surprising is that the
-number of rows in the co2 data can be such that the output loses companies --
-again you get no warning.
+## 3. Edge case with too few co2 data and multiple companies
+
+The case above gets much worse with multiple companies because some of them
+dissapear from the output with no warning.
 
 ```{r}
 one_company |> distinct(company_id)
@@ -143,7 +99,10 @@ too_few_co2_rows |>
 
 Questions:
 
-* 2.3. Should we allow this output with a warning or throw an error and stop?
+* 3.1. Is this a bug or is it expected behaviour?
+* 3.2. Should we throw a warning and continue or throw an error and stop?
+
+## 4. The boundary case
 
 When the number of rows in the co2 data is 10 or more, we get what we expect.
 
@@ -179,5 +138,5 @@ pctr_ecoinvent_co2 |>
 
 Questions:
 
-* 2.4. Why 10?
-* 2.5. Can/should we reduce the co2 data to exactly 10 rows?
+* 4.1. Why 10?
+* 4.2. Can/should we reduce the co2 data to exactly 10 rows?
