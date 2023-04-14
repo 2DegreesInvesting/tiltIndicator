@@ -140,41 +140,12 @@ test_that("returns 3 rows for each company", {
 })
 
 test_that("FIXME: Under 5 co2 rows some company gets all 0 without warning", {
-  companies <- pctr_companies
-  two_comp <- filter(companies, company_id %in% unique(company_id)[c(1, 2)])
-
-  too_few_co2 <- slice(pctr_ecoinvent_co2, 1)
-  data <- pctr_score_activities(too_few_co2)
-
-  out <- pctr_score_companies(data, two_comp)
-  sum_of_share_by_company <- out |>
-    group_by(company_id) |>
-    dplyr::rowwise() |>
-    dplyr::reframe(share = sum(dplyr::c_across(starts_with("share_")))) |>
-    group_by(company_id) |>
-    dplyr::summarise(share = sum(share)) |>
-    dplyr::pull()
-  FIXME_expected_false <- any(sum_of_share_by_company == 0)
-  expect_true(FIXME_expected_false)
-
-  too_few_co2 <- slice(pctr_ecoinvent_co2, 1:4)
-  data <- pctr_score_activities(too_few_co2)
-
-  out <- pctr_score_companies(data, two_comp)
-  sum_of_share_by_company <- out |>
-    group_by(company_id) |>
-    dplyr::rowwise() |>
-    dplyr::reframe(share = sum(dplyr::c_across(starts_with("share_")))) |>
-    group_by(company_id) |>
-    dplyr::summarise(share = sum(share)) |>
-    dplyr::pull()
-  FIXME_expected_false <- any(sum_of_share_by_company == 0)
-  expect_true(FIXME_expected_false)
+  companies <- filter(pctr_companies, company_id %in% unique(company_id)[c(1, 2)])
 
   enough_co2 <- slice(pctr_ecoinvent_co2, 1:5)
   data <- pctr_score_activities(enough_co2)
-
-  out <- pctr_score_companies(data, two_comp)
+  expect_no_warning(out <- pctr_score_companies(data, companies))
+  out <- pctr_score_companies(data, companies)
   sum_of_share_by_company <- out |>
     group_by(company_id) |>
     dplyr::rowwise() |>
@@ -183,4 +154,32 @@ test_that("FIXME: Under 5 co2 rows some company gets all 0 without warning", {
     dplyr::summarise(share = sum(share)) |>
     dplyr::pull()
   expect_false(any(sum_of_share_by_company == 0))
+
+  insufficient_co2 <- slice(pctr_ecoinvent_co2, 1)
+  data <- pctr_score_activities(insufficient_co2)
+  # FIXME We may need a warning
+  expect_no_warning(out <- pctr_score_companies(data, companies))
+  sum_of_share_by_company <- out |>
+    group_by(company_id) |>
+    dplyr::rowwise() |>
+    dplyr::reframe(share = sum(dplyr::c_across(starts_with("share_")))) |>
+    group_by(company_id) |>
+    dplyr::summarise(share = sum(share)) |>
+    dplyr::pull()
+  FIXME_expected_false <- any(sum_of_share_by_company == 0)
+  expect_true(FIXME_expected_false)
+
+  insufficient_co2 <- slice(pctr_ecoinvent_co2, 1:4)
+  data <- pctr_score_activities(insufficient_co2)
+  # FIXME We may need a warning
+  expect_no_warning(out <- pctr_score_companies(data, companies))
+  sum_of_share_by_company <- out |>
+    group_by(company_id) |>
+    dplyr::rowwise() |>
+    dplyr::reframe(share = sum(dplyr::c_across(starts_with("share_")))) |>
+    group_by(company_id) |>
+    dplyr::summarise(share = sum(share)) |>
+    dplyr::pull()
+  FIXME_expected_false <- any(sum_of_share_by_company == 0)
+  expect_true(FIXME_expected_false)
 })
