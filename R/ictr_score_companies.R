@@ -65,15 +65,15 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
 
   ## join scores with dt_sceleton so that each company is shown with 3 rows for
   ## low, medium, and high, even if the share is 0.
-  pctr_output <- dt_sceleton |>
+  ictr_output <- dt_sceleton |>
     left_join(scores_all, by = c("company_id", "score")) |>
     left_join(scores_unit, by = c("company_id", "score")) |>
     left_join(scores_sector, by = c("company_id", "score")) |>
     left_join(scores_unit_sec, by = c("company_id", "score"))
 
   ## replace NAs with 0
-  pctr_output <- pctr_output |>
-    replace(is.na(pctr_output), 0)
+  ictr_output <- ictr_output |>
+    replace(is.na(ictr_output), 0)
 
-  pctr_output
+  ictr_output
 }
