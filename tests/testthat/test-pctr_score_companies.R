@@ -91,27 +91,47 @@ test_that("without crucial columns errors gracefully", {
     expect_error("score_unit")
 })
 
-test_that("the number of required data rows is hard to predict", {
-  data <- pctr_ecoinvent_co2 |>
+test_that("FIXME co2 data must have a mysterious number of rows that depends on the specific companies chosen -- else the output looses companies", {
+  # Expected
+  odd_boundary_1_5 <- pctr_ecoinvent_co2 |> slice(1:5)
+  companies_1_2 <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 2)])
+  out <- odd_boundary_1_5 |>
     pctr_score_activities() |>
-    select(all_of(pctr_score_companies_crucial()))
+    pctr_score_companies(companies_1_2)
+  expect_equal(length(unique(out$company_id)), 2L)
 
-  data |>
-    slice(1L) |>
-    pctr_score_companies(pctr_companies) |>
-    expect_no_error()
-  data |>
-    slice(1:15) |>
-    pctr_score_companies(pctr_companies) |>
-    expect_no_error()
-  data |>
-    slice(4:15) |>
-    pctr_score_companies(pctr_companies) |>
-    expect_no_error()
-  data |>
-    slice(5:15) |>
-    pctr_score_companies(pctr_companies) |>
-    expect_no_error()
+  # Unexpected
+  below_odd_boundary_1_5 <- pctr_ecoinvent_co2 |> slice(1:4)
+  companies_1_2 <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 2)])
+  out <- below_odd_boundary_1_5 |>
+    pctr_score_activities() |>
+    pctr_score_companies(companies_1_2)
+  FIXME_expected_2 <- 1L
+  expect_equal(length(unique(out$company_id)), FIXME_expected_2)
+
+  # Different companies impose a different boundary
+  # Expected
+  odd_boundary_1_10 <- pctr_ecoinvent_co2 |> slice(1:10)
+  companies_1_3 <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 3)])
+
+  out <- odd_boundary_1_10 |>
+    pctr_score_activities() |>
+    pctr_score_companies(companies_1_3)
+  expect_equal(length(unique(out$company_id)), 2L)
+
+  # Unexpected
+  below_odd_boundary_1_10 <- pctr_ecoinvent_co2 |> slice(1:9)
+  companies_1_3 <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 3)])
+
+  out <- below_odd_boundary_1_10 |>
+    pctr_score_activities() |>
+    pctr_score_companies(companies_1_3)
+  FIXME_expected_2 <- 1L
+  expect_equal(length(unique(out$company_id)), FIXME_expected_2)
 })
 
 test_that("returns 3 rows for each company", {
