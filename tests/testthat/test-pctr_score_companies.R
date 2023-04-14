@@ -92,39 +92,36 @@ test_that("without crucial columns errors gracefully", {
 })
 
 test_that("no longer drops companies depending on co2 data (#122)", {
-  # Expected
-  odd_boundary_1_5 <- pctr_ecoinvent_co2 |> slice(1:5)
+  good_co2_slice <- slice(pctr_ecoinvent_co2, 1:5)
   companies_1_2 <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
-  out <- odd_boundary_1_5 |>
-    pctr_score_activities() |>
-    pctr_score_companies(companies_1_2)
+  data <- pctr_score_activities(good_co2_slice)
+
+  out <- pctr_score_companies(data, companies_1_2)
   expect_equal(length(unique(out$company_id)), 2L)
 
-  below_odd_boundary_1_5 <- pctr_ecoinvent_co2 |> slice(1:4)
+  bad_co2_slice <- slice(pctr_ecoinvent_co2, 1:4)
   companies_1_2 <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
-  out <- below_odd_boundary_1_5 |>
-    pctr_score_activities() |>
-    pctr_score_companies(companies_1_2)
+  data <- pctr_score_activities(bad_co2_slice)
+
+  out <- pctr_score_companies(data, companies_1_2)
   expect_equal(length(unique(out$company_id)), 2L)
 
-  odd_boundary_1_10 <- pctr_ecoinvent_co2 |> slice(1:10)
+  another_good_co2_slice <- slice(pctr_ecoinvent_co2, 1:10)
   companies_1_3 <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
+  data <- pctr_score_activities(another_good_co2_slice)
 
-  out <- odd_boundary_1_10 |>
-    pctr_score_activities() |>
-    pctr_score_companies(companies_1_3)
+  out <- pctr_score_companies(data, companies_1_3)
   expect_equal(length(unique(out$company_id)), 2L)
 
-  below_odd_boundary_1_10 <- pctr_ecoinvent_co2 |> slice(1:9)
+  another_bad_co2_slice <- slice(pctr_ecoinvent_co2, 1:9)
   companies_1_3 <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
+  data <- pctr_score_activities(another_bad_co2_slice)
 
-  out <- below_odd_boundary_1_10 |>
-    pctr_score_activities() |>
-    pctr_score_companies(companies_1_3)
+  out <- pctr_score_companies(data, companies_1_3)
   expect_equal(length(unique(out$company_id)), 2L)
 })
 
