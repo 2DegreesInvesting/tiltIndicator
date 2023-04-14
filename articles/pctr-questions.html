@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tiltIndicator</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9019</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9020</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,13 +98,13 @@ code.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"tiltIndicator"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] '0.0.0.9019'</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] '0.0.0.9020'</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="joining-by-redundant-columns">1. Joining by redundant columns<a class="anchor" aria-label="anchor" href="#joining-by-redundant-columns"></a>
 </h2>
 <p>Questions:</p>
 <ul>
-<li>1.1. We call <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join()</a></code> with
+<li>1.1. We call <code>*_join()</code> with
 <code>by = c("activity_product_uuid", "ei_activity", "unit")</code> and
 Tilman suggested we might remove <code>"ei_activity"</code> and
 <code>"unit"</code>. Do we expect them to be always redundant with the
@@ -113,21 +113,12 @@ mean they are redundant in this specific toy dataset?</li>
 </ul>
 </div>
 <div class="section level2">
-<h2 id="edge-case-with-too-few-co2-data-and-a-single-company">2. Edge case with too few co2 data and a single company<a class="anchor" aria-label="anchor" href="#edge-case-with-too-few-co2-data-and-a-single-company"></a>
+<h2 id="edge-case-with-too-few-co2-data">2. Edge case with too few co2 data<a class="anchor" aria-label="anchor" href="#edge-case-with-too-few-co2-data"></a>
 </h2>
 <p><code>pctr_score_copmanies()</code> returns 3 rows for each company
 (regardless the number of rows per company). This seems expected.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">one_company</span> <span class="op">&lt;-</span> <span class="va">pctr_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">first</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">one_company</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
-<span><span class="co">#&gt;   activity_product_uuid                             company_id ei_activity unit </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4… powerstar… transport,… metr…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-22… powerstar… treatment … kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-ec… powerstar… market gro… metr…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7a… powerstar… treatment … kg</span></span>
-<span></span>
 <span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">one_company</span><span class="op">)</span></span>
@@ -140,31 +131,6 @@ mean they are redundant in this specific toy dataset?</li>
 <span></span>
 <span><span class="va">another_company</span> <span class="op">&lt;-</span> <span class="va">pctr_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">last</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">two_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="va">one_company</span>, <span class="va">another_company</span><span class="op">)</span></span>
-<span><span class="va">two_companies</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 20 × 4</span></span></span>
-<span><span class="co">#&gt;    activity_product_uuid                            company_id ei_activity unit </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d… powerstar… transport,… metr…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2… powerstar… treatment … kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-e… powerstar… market gro… metr…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7… powerstar… treatment … kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 16e1dc41-2793-521c-b4c9-811cbaa6d36a_7655baa9-a… mbdgmbh_0… sodium eth… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 8496d0e1-83eb-5a8d-8290-3394bb282f7e_1c2b2eb7-c… mbdgmbh_0… stone meal… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ae3ff8b8-2fca-5654-a7c6-1dcaf31d7c32_d3a29af5-3… mbdgmbh_0… hydroformy… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1636162a-eac4-59da-9430-96ad54cbdafa_6eb8dc11-5… mbdgmbh_0… market for… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1899920a-4828-5d6d-b601-6ccf625a2b15_ca8ec222-f… mbdgmbh_0… market for… unit </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 85ba1478-38fa-5c5a-86a7-51e4a3615705_3d0a8c4e-a… mbdgmbh_0… polysulfid… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 71ae23f5-c5f7-5d2b-aec9-e417b2e6f813_8f7f787b-1… mbdgmbh_0… market for… hour </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> c8467c8e-2c09-50ca-a441-d4b5e3d29d1b_e03dc076-2… mbdgmbh_0… ammonium c… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> 2522595d-dee3-5326-bb66-febbebe86d1a_7dd1dea7-8… mbdgmbh_0… market for… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> 0dcaf497-b74d-5585-ac55-8eed868183ea_386915d8-2… mbdgmbh_0… heat produ… MJ   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> 164ce725-4895-548e-84b4-3103aec0f8ab_6c8d3210-3… mbdgmbh_0… yarn produ… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> d8f0cc89-f688-5151-8393-c039c71f1ed5_f31d1245-8… mbdgmbh_0… photovolta… m2   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> de0e2098-cda6-53c6-90a9-46ff6b66f900_efe650ec-2… mbdgmbh_0… market for… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> 29e4dc13-8200-5800-854c-699a06dd4215_079ce451-c… mbdgmbh_0… treatment … kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> 44260694-ed88-563a-b7b7-4737fdfb2279_efccec02-1… mbdgmbh_0… television… unit </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span> 06cbe7d7-5278-5fbc-ad20-d96261c18373_03bf1369-1… mbdgmbh_0… transport,… metr…</span></span>
-<span></span>
 <span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">two_companies</span><span class="op">)</span></span>
@@ -180,17 +146,7 @@ mean they are redundant in this specific toy dataset?</li>
 <p>But the number number of rows in the co2 data can be such that the
 output seems useless and you get no warning.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">one_company</span> <span class="op">&lt;-</span> <span class="va">pctr_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">first</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">one_company</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 4</span></span></span>
-<span><span class="co">#&gt;   activity_product_uuid                             company_id ei_activity unit </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4… powerstar… transport,… metr…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-22… powerstar… treatment … kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-ec… powerstar… market gro… metr…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7a… powerstar… treatment … kg</span></span>
-<span></span>
-<span><span class="va">too_few_co2_rows</span> <span class="op">&lt;-</span> <span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">too_few_co2_rows</span> <span class="op">&lt;-</span> <span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">too_few_co2_rows</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 5</span></span></span>
 <span><span class="co">#&gt;   co2_footprint sec       unit          activity_product_uuid        ei_activity</span></span>
@@ -203,175 +159,27 @@ output seems useless and you get no warning.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span></span>
 <span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high          1          1              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…         0          0              0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low           0          0              0</span></span></code></pre></div>
-<p>Questions:</p>
-<ul>
-<li>2.1. Is this output useful?</li>
-<li>2.2. Should we allow this output with a warning or throw an error
-and stop?</li>
-</ul>
-</div>
-<div class="section level2">
-<h2 id="edge-case-with-too-few-co2-data-and-multiple-companies">3. Edge case with too few co2 data and multiple companies<a class="anchor" aria-label="anchor" href="#edge-case-with-too-few-co2-data-and-multiple-companies"></a>
-</h2>
-<p>The case above gets much worse with multiple companies because some
-of them dissapear from the output with no warning.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">one_company</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
-<span><span class="co">#&gt;   company_id                                         </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_00000005460100827307001</span></span>
-<span><span class="va">too_few_co2_rows</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">one_company</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span></span>
-<span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high          1          1              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…         0          0              0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low           0          0              0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high       0.25       0.25           0.25</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…      0          0              0   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low        0          0              0</span></span>
 <span></span>
-<span><span class="va">two_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 1</span></span></span>
-<span><span class="co">#&gt;   company_id                                         </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_00000005460100827307001</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> mbdgmbh_00000004773428001</span></span>
 <span><span class="va">too_few_co2_rows</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">two_companies</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span></span>
-<span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high          1          1              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…         0          0              0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low           0          0              0</span></span>
-<span></span>
-<span><span class="va">all_companies</span> <span class="op">&lt;-</span> <span class="va">pctr_companies</span></span>
-<span><span class="va">all_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 1</span></span></span>
-<span><span class="co">#&gt;   company_id                                         </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_00000005460100827307001</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ebtor_00000005324899621837001                      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> mbdgmbh_00000004773428001</span></span>
-<span><span class="va">too_few_co2_rows</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">all_companies</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span></span>
-<span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high          1          1              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…         0          0              0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low           0          0              0</span></span></code></pre></div>
-<p>Questions:</p>
-<ul>
-<li>3.1. Is this a bug or is it expected behaviour?</li>
-<li>3.2. Should we throw a warning and continue or throw an error and
-stop?</li>
-</ul>
-</div>
-<div class="section level2">
-<h2 id="the-boundary-case">4. The boundary case<a class="anchor" aria-label="anchor" href="#the-boundary-case"></a>
-</h2>
-<p>When the number of rows in the co2 data is 10 or more, we get what we
-expect.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Surprising</span></span>
-<span><span class="va">two_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 1</span></span></span>
-<span><span class="co">#&gt;   company_id                                         </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_00000005460100827307001</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> mbdgmbh_00000004773428001</span></span>
-<span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">two_companies</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span></span>
-<span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high        0         0.5             0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…       0.5       0.25            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low         0.5       0.25            0</span></span>
-<span></span>
-<span><span class="co"># Expected</span></span>
-<span><span class="va">two_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 1</span></span></span>
-<span><span class="co">#&gt;   company_id                                         </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_00000005460100827307001</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> mbdgmbh_00000004773428001</span></span>
-<span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">two_companies</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
 <span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high       0.25       0.5             0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…      0.25       0.25            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low        0.5        0.25            0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> mbdgmbh_00000004773428001            high       0          0               0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> mbdgmbh_00000004773428001            medi…      1          1               1  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> mbdgmbh_00000004773428001            low        0          0               0</span></span>
-<span></span>
-<span><span class="co"># Expected</span></span>
-<span><span class="va">all_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 1</span></span></span>
-<span><span class="co">#&gt;   company_id                                         </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_00000005460100827307001</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ebtor_00000005324899621837001                      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> mbdgmbh_00000004773428001</span></span>
-<span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">all_companies</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 5</span></span></span>
-<span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high       0.25       0.5             0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…      0.25       0.25            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low        0.5        0.25            0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> ebtor_00000005324899621837001        high       0.6        0.6             0.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> ebtor_00000005324899621837001        medi…      0.4        0.4             0.2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ebtor_00000005324899621837001        low        0          0               0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> mbdgmbh_00000004773428001            high       0          0               0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> mbdgmbh_00000004773428001            medi…      1          1               1  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> mbdgmbh_00000004773428001            low        0          0               0</span></span>
-<span></span>
-<span><span class="co"># Expected</span></span>
-<span><span class="va">all_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 1</span></span></span>
-<span><span class="co">#&gt;   company_id                                         </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_00000005460100827307001</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> ebtor_00000005324899621837001                      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> mbdgmbh_00000004773428001</span></span>
-<span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">all_companies</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 5</span></span></span>
-<span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high      0.25       0.5            0.5  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…     0.25       0.25           0.5  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low       0.5        0.25           0    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> ebtor_00000005324899621837001        high      0.6        0.6            0.8  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> ebtor_00000005324899621837001        medi…     0.4        0.4            0.2  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ebtor_00000005324899621837001        low       0          0              0    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> mbdgmbh_00000004773428001            high      0.167      0.5            0.667</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> mbdgmbh_00000004773428001            medi…     0.5        0.333          0.167</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> mbdgmbh_00000004773428001            low       0.333      0.167          0.167</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high       0.25       0.25           0.25</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…      0          0              0   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low        0          0              0   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> mbdgmbh_00000004773428001            high       0          0              0   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> mbdgmbh_00000004773428001            medi…      0          0              0   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> mbdgmbh_00000004773428001            low        0          0              0</span></span></code></pre></div>
 <p>Questions:</p>
 <ul>
-<li>4.1. Why 10?</li>
-<li>4.2. Can/should we reduce the co2 data to exactly 10 rows?</li>
+<li>2.1. Is this output useful?</li>
+<li>2.2. Should we allow this output with a warning or throw an error
+and stop?</li>
 </ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
