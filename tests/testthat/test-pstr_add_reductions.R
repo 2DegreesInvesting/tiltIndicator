@@ -26,24 +26,24 @@ test_that("with pstr_toy_* companies outputs the expected columns", {
   out <- pstr_add_reductions(companies, ep_weo, weo)
 
   expected <- c(
-      "company_id",
-      "company_name",
-      "products",
-      "sector",
-      "subsector",
-      "EP_categories_id",
-      "EP_group",
-      "weo_product_mapper",
-      "weo_flow_mapper",
-      "publication",
-      "scenario",
-      "region",
-      "category",
-      "unit",
-      "year",
-      "value",
-      "reductions"
-    )
+    "company_id",
+    "company_name",
+    "products",
+    "sector",
+    "subsector",
+    "EP_categories_id",
+    "EP_group",
+    "weo_product_mapper",
+    "weo_flow_mapper",
+    "publication",
+    "scenario",
+    "region",
+    "category",
+    "unit",
+    "year",
+    "value",
+    "reductions"
+  )
   expect_named(out, expected)
 })
 
