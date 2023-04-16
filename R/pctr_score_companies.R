@@ -7,6 +7,8 @@
 #' Activities are mapped with the companies' products using common columns
 #' present in dataframes `scored_activities` and `companies`
 #'
+#' @author Tilman Trompke.
+#'
 #' @param scored_activities A [data.frame]. The output of
 #'   [pctr_score_activities].
 #' @param companies A [data.frame] like [pctr_companies].
@@ -39,7 +41,7 @@ pctr_score_companies <- function(scored_activities, companies) {
 
   # join by activity_product_uuid and other joint columns from companies with scored_activities
   companies_scores <- companies |>
-    inner_join(scored_activities, by = c("activity_product_uuid", "ei_activity", "unit"))
+    left_join(scored_activities, by = c("activity_product_uuid", "ei_activity", "unit"))
 
   # scores in comparison to all products
   scores_all <- companies_scores |>

@@ -45,4 +45,7 @@ pctr_ecoinvent_co2 |>
 Other PCTR functions: 
 \code{\link{pctr_score_activities}()}
 }
+\author{
+Tilman Trompke.
+}
 \concept{PCTR functions}

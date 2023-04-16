@@ -7,6 +7,9 @@
 \format{
 An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 25 rows and 6 columns.
 }
+\source{
+TODO
+}
 \usage{
 ictr_companies
 }
@@ -19,6 +22,9 @@ ictr_companies
 \seealso{
 Other ICTR datasets: 
 \code{\link{ictr_inputs}}
+}
+\author{
+Kalash Singhal.
 }
 \concept{ICTR datasets}
 \keyword{datasets}

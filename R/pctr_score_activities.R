@@ -10,6 +10,8 @@
 #' Therefore, each activity will receive either a score of 'high', 'medium', or
 #' 'low' based on the above mentioned classification criteria.
 #'
+#' @author Tilman Trompke.
+#'
 #' @param ecoinvent_co2 A [data.frame] like [pctr_ecoinvent_co2].
 #' @param low_threshold A numeric value to segment low and medium transition
 #'   risk products.

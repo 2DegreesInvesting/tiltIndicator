@@ -91,27 +91,32 @@ test_that("without crucial columns errors gracefully", {
     expect_error("score_unit")
 })
 
-test_that("the number of required data rows is hard to predict", {
-  data <- pctr_ecoinvent_co2 |>
-    pctr_score_activities() |>
-    select(all_of(pctr_score_companies_crucial()))
+test_that("no longer drops companies depending on co2 data (#122)", {
+  companies <- pctr_companies
 
-  data |>
-    slice(1L) |>
-    pctr_score_companies(pctr_companies) |>
-    expect_no_error()
-  data |>
-    slice(1:15) |>
-    pctr_score_companies(pctr_companies) |>
-    expect_no_error()
-  data |>
-    slice(4:15) |>
-    pctr_score_companies(pctr_companies) |>
-    expect_no_error()
-  data |>
-    slice(5:15) |>
-    pctr_score_companies(pctr_companies) |>
-    expect_no_error()
+  good_co2_slice <- slice(pctr_ecoinvent_co2, 1:5)
+  companies_1_2 <- filter(companies, company_id %in% unique(company_id)[c(1, 2)])
+  data <- pctr_score_activities(good_co2_slice)
+  out <- pctr_score_companies(data, companies_1_2)
+  expect_equal(length(unique(out$company_id)), 2L)
+
+  bad_co2_slice <- slice(pctr_ecoinvent_co2, 1:4)
+  companies_1_2 <- filter(companies, company_id %in% unique(company_id)[c(1, 2)])
+  data <- pctr_score_activities(bad_co2_slice)
+  out <- pctr_score_companies(data, companies_1_2)
+  expect_equal(length(unique(out$company_id)), 2L)
+
+  another_good_co2_slice <- slice(pctr_ecoinvent_co2, 1:10)
+  companies_1_3 <- filter(companies, company_id %in% unique(company_id)[c(1, 3)])
+  data <- pctr_score_activities(another_good_co2_slice)
+  out <- pctr_score_companies(data, companies_1_3)
+  expect_equal(length(unique(out$company_id)), 2L)
+
+  another_bad_co2_slice <- slice(pctr_ecoinvent_co2, 1:9)
+  companies_1_3 <- filter(companies, company_id %in% unique(company_id)[c(1, 3)])
+  data <- pctr_score_activities(another_bad_co2_slice)
+  out <- pctr_score_companies(data, companies_1_3)
+  expect_equal(length(unique(out$company_id)), 2L)
 })
 
 test_that("returns 3 rows for each company", {

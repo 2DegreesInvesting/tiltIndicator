@@ -3,6 +3,8 @@
 #' Calculates on a company-level the percentage of products that are in low /
 #' medium / high transition risk.
 #'
+#' @author Linda Delacombaz.
+#'
 #' @param with_transition_risk A [data.frame]. The output of
 #'   [pstr_add_transition_risk()].
 #' @inheritParams pstr_add_reductions

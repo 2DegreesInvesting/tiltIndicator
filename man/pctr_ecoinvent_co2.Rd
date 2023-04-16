@@ -23,5 +23,8 @@ pctr_ecoinvent_co2
 Other PCTR datasets: 
 \code{\link{pctr_companies}}
 }
+\author{
+Tilman Trompke.
+}
 \concept{PCTR datasets}
 \keyword{datasets}

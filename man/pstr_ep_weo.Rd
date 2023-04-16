@@ -7,16 +7,14 @@
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 133 rows and 6 columns.
 }
+\source{
+TODO
+}
 \usage{
 pstr_ep_weo
 }
 \description{
-\itemize{
-\item TODO: Where does it come from and what wrangling did you do?
-\item FIXME: Rename to match existing tiltData and to use lowercase. E.g. removing
-the prefix "ep_" makes it more compatible with tiltData and makes it easier
-to join.
-}
+A bridge between sector and subsectors in europages and in \code{weo_2022}.
 }
 \examples{
 pstr_ep_weo
@@ -25,6 +23,9 @@ pstr_ep_weo
 Other PSTR datasets: 
 \code{\link{pstr_companies}},
 \code{\link{pstr_weo_2022}}
+}
+\author{
+Linda Delacombaz.
 }
 \concept{PSTR datasets}
 \keyword{datasets}
