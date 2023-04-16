@@ -5,7 +5,7 @@
 \alias{ictr_companies}
 \title{TODO: Document}
 \format{
-An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 25 rows and 6 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 25 rows and 4 columns.
 }
 \source{
 TODO

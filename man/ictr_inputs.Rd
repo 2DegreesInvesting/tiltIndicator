@@ -5,7 +5,7 @@
 \alias{ictr_inputs}
 \title{TODO: Document}
 \format{
-An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 75 rows and 10 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 75 rows and 5 columns.
 }
 \source{
 TODO
