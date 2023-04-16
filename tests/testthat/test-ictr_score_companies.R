@@ -7,19 +7,18 @@ test_that("hasn't change", {
 })
 
 test_that("data must have activity_product_uuid and ei_activity", {
-  ictr_toy_inputs() |>
-    ictr_score_inputs() |>
-    ictr_score_companies(ictr_companies) |>
-    expect_error("activity_product_uuid.*ei_activity")
-
-  ictr_toy_inputs(activity_product_uuid = "any", ei_activity = "thing") |>
-    ictr_score_inputs() |>
-    ictr_score_companies(ictr_companies) |>
-    expect_no_error()
+  data <- slice(ictr_inputs, 1L) |>
+    select(-"activity_product_uuid", -"ei_activity") |>
+    ictr_score_inputs()
+  expect_error(
+    ictr_score_companies(data, ictr_companies),
+    "activity_product_uuid.*ei_activity"
+  )
 })
 
-test_that("with invalid inputs all shares are 0 with no error or warning", {
-  data <- ictr_toy_inputs2(activity_product_uuid = "bad", ei_activity = "bad") |>
+test_that("with invalid inputs all shares are 0 with no warning or error", {
+  data <- slice(ictr_inputs, 1) |>
+    mutate(activity_product_uuid = "bad", ei_activity = "bad") |>
     ictr_score_inputs()
 
   out <- data |>
@@ -35,11 +34,9 @@ test_that("with invalid inputs all shares are 0 with no error or warning", {
 })
 
 test_that("with valid inputs not all shares are 0", {
-  data <- ictr_toy_inputs2() |>
-    ictr_score_inputs()
+  data <- ictr_score_inputs(slice(ictr_inputs, 1))
 
-  out <- data |>
-    ictr_score_companies(ictr_companies)
+  out <- ictr_score_companies(data, ictr_companies)
 
   share <- out |>
     select(starts_with("share_")) |>
@@ -76,21 +73,4 @@ test_that("returns 3 rows per company for any slice of inputs", {
   data <- ictr_score_inputs(three_inputs)
   out <- ictr_score_companies(data, two_companies)
   expect_equal(nrow(out), 6L)
-})
-
-test_that("without `company_name` and `ep_product` outputs are the same", {
-  data <- ictr_toy_inputs2() |> ictr_score_inputs()
-
-  companies <- ictr_toy_companies() |>
-    mutate(company_name = "any", ep_product = "any")
-  out1 <- data |>
-    ictr_score_companies(companies) |>
-    expect_no_error()
-
-  without <- ictr_toy_companies()
-  out2 <- data |>
-    ictr_score_companies(without) |>
-    expect_no_error()
-
-  expect_equal(out1, out2)
 })

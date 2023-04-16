@@ -512,21 +512,3 @@
       25 metric ton*km
       
 
-# `ictr_toy_inputs()` hasn't changed
-
-    Code
-      out
-    Output
-      [[1]]
-        input_co2
-      1         1
-      
-      [[2]]
-        input_sector
-      1            a
-      
-      [[3]]
-        unit
-      1    u
-      
-
