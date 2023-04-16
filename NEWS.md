@@ -1,15 +1,17 @@
-# tiltIndicator (development version)
-
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9021
+
+BREAKING CHANGES
+
+* `ictr_inputs` and `ictr_companies` loose non-crucial columns(@kalashsingal #117).
+
+* `pctr_ecoinvent_co2` and `pctr_companies` loose non-crucial columns (#116).
+
 BUG FIXES
 
-* `pctr_score_companies()` and `ictr_score_companies()` now return three rows
+* `ictr_score_companies()` and `ictr_score_companies()` now return three rows
 per company regardless the number of rows in the co2 data (#122).
-
-# tiltIndicator 0.0.0.9019
-
-BUG FIXES
 
 * `pctr_score_companies()` and `ictr_score_companies()` now return three rows
 per company (@kalashsinghal  #111).

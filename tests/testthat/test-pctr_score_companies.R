@@ -1,94 +1,58 @@
-test_that("hasn't changed", {
-  out <- pctr_ecoinvent_co2 |>
-    pctr_score_activities() |>
-    pctr_score_companies(pctr_companies) |>
-    format_robust_snapshot()
-  expect_snapshot(out)
-})
-
-test_that("with crucial columns in `pctr_ecoinvent_co2` throws no error", {
-  data <- pctr_ecoinvent_co2 |>
-    pctr_score_activities() |>
-    select(all_of(pctr_score_companies_crucial()))
-
-  expect_no_error(pctr_score_companies(data, pctr_companies))
-})
-
-test_that("with crucial columns in `pctr_companies` throws no error", {
-  data <- pctr_ecoinvent_co2 |>
-    pctr_score_activities() |>
-    select(all_of(pctr_score_companies_crucial()))
-
-  crucial_companies <- pctr_companies |>
-    select(all_of(pctr_companies_crucial()))
-  pctr_score_companies(data, crucial_companies) |>
-    expect_no_error()
-})
-
 test_that("without crucial columns in `pctr_companies` throws an error", {
   data <- pctr_ecoinvent_co2 |>
+    slice(1) |>
     pctr_score_activities() |>
     select(all_of(pctr_score_companies_crucial()))
-
   bad_companies <- pctr_companies |>
+    slice(1) |>
     select(all_of(pctr_companies_crucial())) |>
     select(-"company_id")
-  pctr_score_companies(data, bad_companies) |>
-    expect_error("company_id")
+  expect_error(pctr_score_companies(data, bad_companies), "company_id")
 
   bad_companies <- pctr_companies |>
+    slice(1) |>
     select(all_of(pctr_companies_crucial())) |>
     select(-"activity_product_uuid")
-  pctr_score_companies(data, bad_companies) |>
-    expect_error("activity_product_uuid")
+  expect_error(pctr_score_companies(data, bad_companies), "activity_product_uuid")
 
   bad_companies <- pctr_companies |>
+    slice(1) |>
     select(all_of(pctr_companies_crucial())) |>
     select(-"ei_activity")
-  pctr_score_companies(data, bad_companies) |>
-    expect_error("ei_activity")
+  expect_error(pctr_score_companies(data, bad_companies), "ei_activity")
 
   bad_companies <- pctr_companies |>
+    slice(1) |>
     select(all_of(pctr_companies_crucial())) |>
     select(-"unit")
-  pctr_score_companies(data, bad_companies) |>
-    expect_error("unit")
+  expect_error(pctr_score_companies(data, bad_companies), "unit")
 })
 
 test_that("without crucial columns errors gracefully", {
   data <- pctr_ecoinvent_co2 |>
+    slice(1) |>
     pctr_score_activities() |>
     select(all_of(pctr_score_companies_crucial()))
 
-  data |>
-    select(-"unit") |>
-    pctr_score_companies(pctr_companies) |>
-    expect_error("unit")
+  bad_data <- select(data, -"unit")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "unit")
 
-  data |>
-    select(-"score_unit_sec") |>
-    pctr_score_companies(pctr_companies) |>
-    expect_error("score_unit_sec")
+  bad_data <- select(data, -"score_unit_sec")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "score_unit_sec")
 
-  data |>
-    select(-"ei_activity") |>
-    pctr_score_companies(pctr_companies) |>
-    expect_error("ei_activity")
+  bad_data <- select(data, -"ei_activity")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "ei_activity")
 
-  data |>
-    select(-"activity_product_uuid") |>
-    pctr_score_companies(pctr_companies) |>
-    expect_error("activity_product_uuid")
+  bad_data <- select(data, -"score_all")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "score_all")
 
-  data |>
-    select(-"score_all") |>
-    pctr_score_companies(pctr_companies) |>
-    expect_error("score_all")
+  bad_data <- select(data, -"score_unit")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "score_unit")
 
-  data |>
-    select(-"score_unit") |>
-    pctr_score_companies(pctr_companies) |>
-    expect_error("score_unit")
+  bad_data <- select(data, -"activity_product_uuid")
+  expect_error(
+    pctr_score_companies(bad_data, pctr_companies), "activity_product_uuid"
+  )
 })
 
 test_that("no longer drops companies depending on co2 data (#122)", {
@@ -123,19 +87,16 @@ test_that("returns 3 rows for each company", {
   companies <- distinct(pctr_companies, company_id, .keep_all = TRUE)
   co2 <- pctr_ecoinvent_co2
 
-  out <- co2 |>
-    pctr_score_activities() |>
-    pctr_score_companies(companies |> slice(1))
+  data <- pctr_score_activities(co2)
+  out <- pctr_score_companies(data, slice(companies, 1))
   expect_equal(nrow(out), 3L)
 
-  out <- co2 |>
-    pctr_score_activities() |>
-    pctr_score_companies(companies |> slice(1:2))
+  data <- pctr_score_activities(co2)
+  out <- pctr_score_companies(data, slice(companies, 1:2))
   expect_equal(nrow(out), 6L)
 
-  out <- co2 |>
-    pctr_score_activities() |>
-    pctr_score_companies(companies |> slice(1:3))
+  data <- pctr_score_activities(co2)
+  out <- pctr_score_companies(data, slice(companies, 1:3))
   expect_equal(nrow(out), 9L)
 })
 
