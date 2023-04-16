@@ -3,6 +3,7 @@
 
 ## usethis namespace: start
 #' @importFrom dplyr case_when
+#' @importFrom dplyr distinct
 #' @importFrom dplyr distinct_all
 #' @importFrom dplyr filter
 #' @importFrom dplyr group_by
@@ -13,6 +14,7 @@
 #' @importFrom dplyr reframe
 #' @importFrom dplyr rename
 #' @importFrom dplyr select
+#' @importFrom dplyr slice
 #' @importFrom dplyr summarise
 #' @importFrom dplyr ungroup
 #' @importFrom ggplot2 aes

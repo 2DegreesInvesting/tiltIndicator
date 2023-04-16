@@ -2,6 +2,8 @@
 #'
 #' Adds the emission reduction values for each company's product(s).
 #'
+#' @author Linda Delacombaz.
+#'
 #' @param companies A [data.frame] like [pstr_companies].
 #' @param ep_weo A [data.frame] like [pstr_ep_weo].
 #' @param weo_2022 A [data.frame] like [pstr_weo_2022].

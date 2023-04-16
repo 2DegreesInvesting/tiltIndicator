@@ -1,0 +1,76 @@
+test_that("hasn't change", {
+  out <- ictr_inputs |>
+    ictr_score_inputs() |>
+    ictr_score_companies(ictr_companies) |>
+    format_robust_snapshot()
+  expect_snapshot(out)
+})
+
+test_that("data must have activity_product_uuid and ei_activity", {
+  data <- slice(ictr_inputs, 1L) |>
+    select(-"activity_product_uuid", -"ei_activity") |>
+    ictr_score_inputs()
+  expect_error(
+    ictr_score_companies(data, ictr_companies),
+    "activity_product_uuid.*ei_activity"
+  )
+})
+
+test_that("with invalid inputs all shares are 0 with no warning or error", {
+  data <- slice(ictr_inputs, 1) |>
+    mutate(activity_product_uuid = "bad", ei_activity = "bad") |>
+    ictr_score_inputs()
+
+  out <- data |>
+    ictr_score_companies(ictr_companies) |>
+    expect_no_warning() |>
+    expect_no_error()
+
+  share <- out |>
+    select(starts_with("share_")) |>
+    sapply(unique) |>
+    unique()
+  expect_true(identical(share, 0))
+})
+
+test_that("with valid inputs not all shares are 0", {
+  data <- ictr_score_inputs(slice(ictr_inputs, 1))
+
+  out <- ictr_score_companies(data, ictr_companies)
+
+  share <- out |>
+    select(starts_with("share_")) |>
+    sapply(unique) |>
+    unique()
+  expect_false(identical(share, 0))
+})
+
+test_that("returns 3 rows per company for any slice of companies", {
+  two_inputs <- slice(ictr_inputs, 1:2)
+  data <- ictr_score_inputs(two_inputs)
+
+  one_company <- distinct(ictr_companies, company_id, .keep_all = TRUE) |>
+    slice(1)
+  out <- ictr_score_companies(data, one_company)
+  expect_equal(nrow(out), 3L)
+
+  three_companies <- distinct(ictr_companies, company_id, .keep_all = TRUE) |>
+    slice(1:3)
+  out <- ictr_score_companies(data, three_companies)
+  expect_equal(nrow(out), 9L)
+})
+
+test_that("returns 3 rows per company for any slice of inputs", {
+  two_companies <- distinct(ictr_companies, company_id, .keep_all = TRUE) |>
+    slice(1:2)
+
+  one_inputs <- slice(ictr_inputs, 1)
+  data <- ictr_score_inputs(one_inputs)
+  out <- ictr_score_companies(data, two_companies)
+  expect_equal(nrow(out), 6L)
+
+  three_inputs <- slice(ictr_inputs, 1:3)
+  data <- ictr_score_inputs(three_inputs)
+  out <- ictr_score_companies(data, two_companies)
+  expect_equal(nrow(out), 6L)
+})

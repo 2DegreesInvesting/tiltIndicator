@@ -7,14 +7,14 @@
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 10 rows and 5 columns.
 }
+\source{
+TODO
+}
 \usage{
 pstr_companies
 }
 \description{
-\itemize{
-\item TODO: Does it have any relationship with tiltData?
-\item FIXME: Rename to match existing tiltData, e.g. \code{company_id} -> \code{companies_id}
-}
+A dataset with fake companies, products, sectors and subsectors
 }
 \examples{
 pstr_companies
@@ -23,6 +23,9 @@ pstr_companies
 Other PSTR datasets: 
 \code{\link{pstr_ep_weo}},
 \code{\link{pstr_weo_2022}}
+}
+\author{
+Linda Delacombaz.
 }
 \concept{PSTR datasets}
 \keyword{datasets}

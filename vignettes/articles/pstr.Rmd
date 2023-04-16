@@ -38,7 +38,7 @@ glimpse(pstr_weo_2022)
 ### Introduction
 
 The Product Sector Transition Risk Indicator measures the transition risk of
-products based on the sector’s emissions targets the product belongs to. Those
+products based on the sector's emissions targets the product belongs to. Those
 sector emission reduction targets vary across scenarios (e.g., net zero
 scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in
 2030, 2040, 2050 to achieve the targets).
@@ -65,7 +65,7 @@ The transition risk indicator consists of 4 main steps:
 2. Identifying sector-specific emission reduction targets
 
 Each product of the company will be matched to a climate-relevant sector. For
-those that cannot be matched to one of the sectors, we classify them as ‘Other’.
+those that cannot be matched to one of the sectors, we classify them as 'Other'.
 
 We join this on the sectors and subsectors columns.
 
@@ -122,7 +122,7 @@ Then, I calculate the score aggregated by summing (per transition risk) the
 products over the total numbers of products per company.
 
 ```{r}
-with_score_aggregated <- with_transition_risk |> 
+with_score_aggregated <- with_transition_risk |>
   pstr_aggregate_scores(pstr_companies)
 
 with_score_aggregated

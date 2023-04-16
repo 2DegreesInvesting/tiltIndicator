@@ -6,6 +6,8 @@
 #' * "medium" if 30.0 < `reductions` <= 70.0
 #' * "high" if `reductions` > 70.0
 #'
+#' @author Linda Delacombaz.
+#'
 #' @param with_reductions A data frame. The output of [pstr_add_reductions()].
 #'
 #' @family PSTR functions

@@ -1,0 +1,72 @@
+---
+title: "PCTR questions"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Here I ask the questions I have when I characterize the PCTR data and code.
+
+```{r setup}
+library(dplyr, warn.conflicts = TRUE)
+library(tiltIndicator)
+
+packageVersion("tiltIndicator")
+```
+
+## 1. Joining by redundant columns
+
+Questions:
+
+* 1.1. We call `*_join()` with `by = c("activity_product_uuid", "ei_activity",
+"unit")` and Tilman suggested we might remove `"ei_activity"` and `"unit"`. 
+Do we expect them to be always redundant with the groups defined by
+`"activity_product_uuid"` alone? Or do you mean they are redundant in this
+specific toy dataset?
+
+## 2. Edge case with too few co2 data
+
+`pctr_score_copmanies()` returns 3 rows for each company (regardless the number
+of rows per company). This seems expected.
+
+```{r}
+#| error=TRUE
+one_company <- pctr_companies |> filter(company_id %in% first(company_id))
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
+  pctr_score_companies(one_company)
+
+another_company <- pctr_companies |> filter(company_id %in% last(company_id))
+two_companies <- bind_rows(one_company, another_company)
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
+  pctr_score_companies(two_companies)
+```
+
+But the number number of rows in the co2 data can be such that the output seems
+useless and you get no warning.
+
+```{r}
+#| error=TRUE
+too_few_co2_rows <- pctr_ecoinvent_co2 |> slice(1)
+too_few_co2_rows
+
+too_few_co2_rows |>
+  pctr_score_activities() |>
+  pctr_score_companies(one_company)
+
+too_few_co2_rows |>
+  pctr_score_activities() |>
+  pctr_score_companies(two_companies)
+```
+
+Questions:
+
+* 2.1. Is this output useful?
+* 2.2. Should we allow this output with a warning or throw an error and stop?

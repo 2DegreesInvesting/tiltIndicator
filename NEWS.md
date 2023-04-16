@@ -1,8 +1,34 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9021
+
+BREAKING CHANGES
+
+* `ictr_inputs` and `ictr_companies` loose non-crucial columns(@kalashsingal #117).
+
+* `pctr_ecoinvent_co2` and `pctr_companies` loose non-crucial columns (#116).
+
+BUG FIXES
+
+* `ictr_score_companies()` and `ictr_score_companies()` now return three rows
+per company regardless the number of rows in the co2 data (#122).
+
+* `pctr_score_companies()` and `ictr_score_companies()` now return three rows
+per company (@kalashsinghal  #111).
+
+# tiltIndicator 0.0.0.9018
+
+* Document PCTR functions (@kalashsinghal, #104).
+
+* New ICTR functions and datasets (@kalashsinghal, #90).
+
+# tiltIndicator 0.0.0.9017
+
+* Add ICTR MVP (#90).
+
 # tiltIndicator 0.0.0.9016
 
-* The unprefixed pstr datasets are now defunc (#79).
+* The un-prefixed pstr datasets are now retired (#79).
 
 # tiltIndicator 0.0.0.9014
 

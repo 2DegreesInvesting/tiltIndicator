@@ -41,4 +41,7 @@ Other PSTR functions:
 \code{\link{pstr_add_transition_risk}()},
 \code{\link{pstr_aggregate_scores}()}
 }
+\author{
+Linda Delacombaz.
+}
 \concept{PSTR functions}
