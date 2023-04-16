@@ -96,25 +96,18 @@ Singhal</h4>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="va">ictr_inputs</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 75</span></span>
-<span><span class="co">#&gt; Columns: 10</span></span>
-<span><span class="co">#&gt; $ ei_activity           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "transport, freight, lorry 7.5-16 metric ton, EU…</span></span>
-<span><span class="co">#&gt; $ activity_product_uuid <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d…</span></span>
-<span><span class="co">#&gt; $ input_number          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</span></span>
-<span><span class="co">#&gt; $ inputs                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "table ornaments", "hydraulic valve", "calves", …</span></span>
+<span><span class="co">#&gt; Columns: 5</span></span>
 <span><span class="co">#&gt; $ input_co2             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 73.58, 96.00, 39.07, 80.12, 10.72, 25.71, 16.93,…</span></span>
 <span><span class="co">#&gt; $ input_sector          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "transport", "infrastructure &amp; machinery", "elec…</span></span>
-<span><span class="co">#&gt; $ geo                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "RoW", "GLO", "RER", "GLO", "GLO", "RER", "RoW",…</span></span>
-<span><span class="co">#&gt; $ isic_class            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "4923:Freight transport by road", "3822:Treatmen…</span></span>
-<span><span class="co">#&gt; $ ref_prod              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "transport, freight, lorry 7.5-16 metric ton, EU…</span></span>
 <span><span class="co">#&gt; $ unit                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "metric ton*km", "kg", "metric ton*km", "kg", "m…</span></span>
+<span><span class="co">#&gt; $ activity_product_uuid <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d…</span></span>
+<span><span class="co">#&gt; $ ei_activity           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "transport, freight, lorry 7.5-16 metric ton, EU…</span></span>
 <span></span>
 <span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="va">ictr_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 25</span></span>
-<span><span class="co">#&gt; Columns: 6</span></span>
-<span><span class="co">#&gt; $ company_id            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "fleischerei-stiefsohn_00000005219477-001", "fle…</span></span>
-<span><span class="co">#&gt; $ company_name          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "fleischerei stiefsohn", "fleischerei stiefsohn"…</span></span>
-<span><span class="co">#&gt; $ ep_product            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "shellfish", "crustaceans", "fish", "meat", "off…</span></span>
+<span><span class="co">#&gt; Columns: 4</span></span>
 <span><span class="co">#&gt; $ activity_product_uuid <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d…</span></span>
+<span><span class="co">#&gt; $ company_id            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "fleischerei-stiefsohn_00000005219477-001", "fle…</span></span>
 <span><span class="co">#&gt; $ ei_activity           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "transport, freight, lorry 7.5-16 metric ton, EU…</span></span>
 <span><span class="co">#&gt; $ unit                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "metric ton*km", "kg", "metric ton*km", "kg", "m…</span></span></code></pre></div>
 </div>
@@ -182,22 +175,21 @@ different benchmarks.</p></li>
 <span>  <span class="fu"><a href="../reference/ictr_score_inputs.html">ictr_score_inputs</a></span><span class="op">(</span>low_threshold <span class="op">=</span> <span class="fl">0.3</span>, high_threshold <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ecoinvent_scores</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 75 × 18</span></span></span>
-<span><span class="co">#&gt;    ei_activity  activity_product_uuid input_number inputs input_co2 input_sector</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> transport, … 0a242b09-772a-5edf-8…            1 table…      73.6 transport   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> treatment o… be06d25c-73dc-55fb-9…            1 hydra…      96   infrastruct…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> market grou… 977d997e-c257-5033-b…            1 calves      39.1 electricity </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> treatment o… 5fd7fca0-0700-51fd-8…            1 custo…      80.1 infrastruct…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> market for … ebb8475e-ff57-5e4e-9…            1 carri…      10.7 agriculture…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> market for … 2f7b77a7-1556-5c1b-b…            1 equip…      25.7 infrastruct…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> transport, … edd290d2-a5b0-56ec-a…            1 funct…      16.9 infrastruct…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> market for … d2c0844e-6e5b-52a3-8…            1 elect…      55.8 fuels       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> citric acid… abdb78ee-ddb9-5552-9…            1 harbo…      29.1 infrastruct…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> sodium ethy… 16e1dc41-2793-521c-b…            1 paint…      92.7 infrastruct…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 75 × 13</span></span></span>
+<span><span class="co">#&gt;    input_co2 input_sector       unit  activity_product_uuid ei_activity perc_all</span></span>
+<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      73.6 transport          metr… 0a242b09-772a-5edf-8… transport,…    0.78 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      96   infrastructure &amp; … kg    be06d25c-73dc-55fb-9… treatment …    0.947</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      39.1 electricity        metr… 977d997e-c257-5033-b… market gro…    0.387</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      80.1 infrastructure &amp; … kg    5fd7fca0-0700-51fd-8… treatment …    0.82 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      10.7 agriculture &amp; ani… m     ebb8475e-ff57-5e4e-9… market for…    0.187</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      25.7 infrastructure &amp; … kg    2f7b77a7-1556-5c1b-b… market for…    0.293</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      16.9 infrastructure &amp; … km    edd290d2-a5b0-56ec-a… transport,…    0.247</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      55.8 fuels              kg    d2c0844e-6e5b-52a3-8… market for…    0.58 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      29.1 infrastructure &amp; … kg    abdb78ee-ddb9-5552-9… citric aci…    0.36 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      92.7 infrastructure &amp; … kg    16e1dc41-2793-521c-b… sodium eth…    0.887</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 65 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 12 more variables: geo &lt;chr&gt;, isic_class &lt;chr&gt;, ref_prod &lt;chr&gt;, unit &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   perc_all &lt;dbl&gt;, perc_unit &lt;dbl&gt;, perc_sec &lt;dbl&gt;, perc_unit_sec &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: perc_unit &lt;dbl&gt;, perc_sec &lt;dbl&gt;, perc_unit_sec &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   score_all &lt;chr&gt;, score_unit &lt;chr&gt;, score_sector &lt;chr&gt;, score_unit_sec &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">

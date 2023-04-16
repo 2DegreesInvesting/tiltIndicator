@@ -84,21 +84,20 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ictr_inputs</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 75 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ei_activity  activity_product_uuid input_number inputs input_co2 input_sector</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> transport, … 0a242b09-772a-5edf-8…            1 table…      73.6 transport   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> treatment o… be06d25c-73dc-55fb-9…            1 hydra…      96   infrastruct…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> market grou… 977d997e-c257-5033-b…            1 calves      39.1 electricity </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> treatment o… 5fd7fca0-0700-51fd-8…            1 custo…      80.1 infrastruct…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> market for … ebb8475e-ff57-5e4e-9…            1 carri…      10.7 agriculture…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> market for … 2f7b77a7-1556-5c1b-b…            1 equip…      25.7 infrastruct…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> transport, … edd290d2-a5b0-56ec-a…            1 funct…      16.9 infrastruct…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> market for … d2c0844e-6e5b-52a3-8…            1 elect…      55.8 fuels       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> citric acid… abdb78ee-ddb9-5552-9…            1 harbo…      29.1 infrastruct…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> sodium ethy… 16e1dc41-2793-521c-b…            1 paint…      92.7 infrastruct…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 75 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    input_co2 input_sector                unit  activity_product_uuid ei_activity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      73.6 transport                   metr… 0a242b09-772a-5edf-8… transport,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>      96   infrastructure &amp; machinery  kg    be06d25c-73dc-55fb-9… treatment …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>      39.1 electricity                 metr… 977d997e-c257-5033-b… market gro…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>      80.1 infrastructure &amp; machinery  kg    5fd7fca0-0700-51fd-8… treatment …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>      10.7 agriculture &amp; animal husba… m     ebb8475e-ff57-5e4e-9… market for…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>      25.7 infrastructure &amp; machinery  kg    2f7b77a7-1556-5c1b-b… market for…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>      16.9 infrastructure &amp; machinery  km    edd290d2-a5b0-56ec-a… transport,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      55.8 fuels                       kg    d2c0844e-6e5b-52a3-8… market for…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      29.1 infrastructure &amp; machinery  kg    abdb78ee-ddb9-5552-9… citric aci…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      92.7 infrastructure &amp; machinery  kg    16e1dc41-2793-521c-b… sodium eth…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 65 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4 more variables: geo &lt;chr&gt;, isic_class &lt;chr&gt;, ref_prod &lt;chr&gt;, unit &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

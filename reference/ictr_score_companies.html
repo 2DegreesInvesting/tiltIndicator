@@ -96,16 +96,16 @@ TODO</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">one_company</span> <span class="op">&lt;-</span> <span class="va">ictr_companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">company_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">first</a></span><span class="op">(</span><span class="va">company_id</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">one_company</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   company_id     company_name ep_product activity_product_uuid ei_activity unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> fleischerei-s… fleischerei… shellfish  0a242b09-772a-5edf-8… transport,… metr…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> fleischerei-s… fleischerei… crustacea… be06d25c-73dc-55fb-9… treatment … kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> fleischerei-s… fleischerei… fish       977d997e-c257-5033-b… market gro… metr…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> fleischerei-s… fleischerei… meat       5fd7fca0-0700-51fd-8… treatment … kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> fleischerei-s… fleischerei… offal      ebb8475e-ff57-5e4e-9… market for… m    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> fleischerei-s… fleischerei… meats, co… 2f7b77a7-1556-5c1b-b… market for… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> fleischerei-s… fleischerei… meats, cu… edd290d2-a5b0-56ec-a… transport,… km   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   activity_product_uuid                             company_id ei_activity unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4… fleischer… transport,… metr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-22… fleischer… treatment … kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-ec… fleischer… market gro… metr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7a… fleischer… treatment … kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b… fleischer… market for… m    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6f… fleischer… market for… kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> edd290d2-a5b0-56ec-aaf3-ad71ce5f9403_095528f2-b5… fleischer… transport,… km   </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">ictr_inputs</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="ictr_score_inputs.html">ictr_score_inputs</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
