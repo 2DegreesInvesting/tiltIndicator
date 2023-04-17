@@ -27,6 +27,7 @@ column.
 }
 }
 \description{
+#TODO : Ask what are the obsoletes reductions values
 Translates the \code{reductions} column into three categories:
 \itemize{
 \item "low" if \code{reductions} <= 30.0
