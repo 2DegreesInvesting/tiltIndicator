@@ -19,3 +19,10 @@ test_that("`with_reductions` remains the same", {
   expect_snapshot(out)
 })
 
+test_that("`with_transition_risk` remains the same", {
+  path <- mvp_path("istr.Rmd")
+  with_transition_risk <- render_to_list(path)$with_transition_risk
+  out <- format_robust_snapshot(head(with_transition_risk))
+  expect_snapshot(out)
+})
+
