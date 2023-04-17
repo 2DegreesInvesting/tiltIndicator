@@ -26,3 +26,10 @@ test_that("`with_transition_risk` remains the same", {
   expect_snapshot(out)
 })
 
+test_that("`with_score_aggregated` remains the same", {
+  path <- mvp_path("istr.Rmd")
+  with_score_aggregated <- render_to_list(path)$with_score_aggregated
+  out <- format_robust_snapshot(with_score_aggregated)
+  expect_snapshot(out)
+})
+
