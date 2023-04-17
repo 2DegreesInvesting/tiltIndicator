@@ -1,5 +1,6 @@
 ---
-title: "istr"
+title: "Input sector transition risk (ISTR)"
+author: "Lyanne Ho"
 ---
 
 ```{r, include = FALSE}

@@ -7,6 +7,7 @@ Authors@R: c(
     person("Tilman", "Trompke", , "tilman@2degrees-investing.org", role = "aut"),
     person("Linda", "Delacombaz", , "linda@2degrees-investing.org", role = "aut"),
     person("Kalash", "Singhal", , "kalash@2degrees-investing.org", role = "aut"),
+    person("Lyanne", "Ho", , "FIXME@FIXME", role = "aut"),
     person("2 Degrees Investing Initiative", , , "contact@2degrees-investing.org", role = c("cph", "fnd"))
   )
 Description: Indicators for the 'TILT' project.
