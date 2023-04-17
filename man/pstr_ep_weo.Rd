@@ -3,7 +3,7 @@
 \docType{data}
 \name{pstr_ep_weo}
 \alias{pstr_ep_weo}
-\title{A bridge between sector and subsectors in europages and in \code{weo_2022}.}
+\title{A sector mapper between Europages and \code{weo_2022}.}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 133 rows and 6 columns.
 }
@@ -14,7 +14,7 @@ Internal source.
 pstr_ep_weo
 }
 \description{
-A bridge between sector and subsectors in europages and in \code{weo_2022}.
+A sector mapper between Europages and \code{weo_2022}.
 }
 \examples{
 pstr_ep_weo

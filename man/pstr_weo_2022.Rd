@@ -8,7 +8,7 @@
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 8 rows and 10 columns.
 }
 \source{
-Data from IEA's WEO scenarios.
+Data from IEA's WEO 2022 scenario on GLO level.
 }
 \usage{
 pstr_weo_2022

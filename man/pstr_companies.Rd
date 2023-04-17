@@ -8,7 +8,7 @@
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 10 rows and 5 columns.
 }
 \source{
-Sectors, subsectors and products from Europages.
+Companies, sectors, subsectors and products from Europages.
 }
 \usage{
 pstr_companies
