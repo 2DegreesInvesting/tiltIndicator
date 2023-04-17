@@ -12,3 +12,10 @@ test_that("`istr_companies` remains the same", {
   expect_snapshot(out)
 })
 
+test_that("`with_reductions` remains the same", {
+  path <- mvp_path("istr.Rmd")
+  with_reductions <- render_to_list(path)$with_reductions
+  out <- format_robust_snapshot(head(with_reductions))
+  expect_snapshot(out)
+})
+
