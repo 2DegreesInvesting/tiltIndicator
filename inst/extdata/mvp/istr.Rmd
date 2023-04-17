@@ -1,0 +1,321 @@
+---
+title: "input_sector_tr_indicator"
+author: "Lyanne Ho"
+date: "2023-04-05"
+output: html_document
+
+---
+
+# Setup
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Installation 
+Install the development version of tiltIndicator from GitHub with:
+```{r}
+# install.packages("devtools")
+# devtools::install_github("2DegreesInvesting/tiltIndicator") #
+```
+
+Packages
+
+```{r}
+library(tidyverse, warn.conflicts = FALSE)
+library(vroom)
+library(here)
+library(tibble)
+# library(tiltIndicator) # can be used when functions are added in the repo
+```
+
+## Define functions
+
+
+### Mapping 
+
+```{r}
+#' Join the Ecoinvent's' sectors and the WEO 2022 file on the sectors by use the mapper that serves as a sector classification bridge between.
+#'
+#'
+#' @param companies A [data.frame] like [istr_companies].
+#' @param ep_weo A [data.frame] like [istr_ep_weo].
+#' @param weo_2022 A [data.frame] like [istr_weo_2022].
+#'
+#' @family ISTR functions
+#'
+#' @return A dataframe with:
+#'   * All the columns from the `companies` dataset.
+#'   * New columns:
+#'       * All the columns from the `ep_weo` dataset, but the columns
+#'       `eco_sectors` is named `ECO_sector` respectively.
+#'
+#' @export
+#'
+#' @examples
+#' istr_companies |>
+#'   istr_add_reductions(istr_ep_weo, istr_weo_2022)
+istr_mapping <- function(companies, ep_weo) {
+  companies |>
+    left_join(ep_weo, by = c("eco_sectors" = "ECO_sector")) 
+}
+```
+
+### Add reductions
+
+```{r}
+#' Add the emission reduction targets to the companies dataset
+#'
+#' Adds the emission reduction values for each company's product(s).
+#'
+#' @param companies A [data.frame] like [istr_companies].
+#' @param ep_weo A [data.frame] like [istr_ep_weo].
+#' @param weo_2022 A [data.frame] like [istr_weo_2022].
+#'
+#' @family ISTR functions
+#'
+#' @return A dataframe with:
+#'   * All the columns from the `companies` dataset.
+#'   * New columns:
+#'       * All the columns from the `ep_weo` dataset, but the columns
+#'       `eco_sectors` is named `ECO_sector` respectively.
+#'       * All the columns from the `weo_2022` dataset, but the columns
+#'       `weo_product_mapper` and `weo_flow_mapper` are named `product` and
+#'       `flow`, respectively.
+#'
+#' @export
+#'
+#' @examples
+#' istr_companies |>
+#'   istr_add_reductions(istr_ep_weo, istr_weo_2022)
+istr_add_reductions <- function(companies, weo_2022) {
+  companies |>
+    #left_join(ep_weo, by = c("eco_sectors" = "ECO_sector")) |>
+    left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
+}
+```
+
+### Add transition risk
+
+```{r}
+#' Categorize sector emission reduction targets
+#'
+#' Translates the `reductions` column into three categories:
+#' * "low" if `reductions` <= 30.0
+#' * "medium" if 30.0 < `reductions` <= 70.0
+#' * "high" if `reductions` > 70.0
+#'
+#' @param with_reductions A data frame. The output of [istr_add_reductions()].
+#'
+#' @family ISTR functions
+#'
+#' @return A data frame with:
+#'    * All the columns from the `companies` dataset.
+#'    * All the columns from the `ep_weo` dataset, but the columns
+#'    `eco_sectors` is named `ECO_sector` respectively.
+#'    * All the columns from the `weo_2022` dataset, but the columns
+#'    `weo_product_mapper` and `weo_flow_mapper` are named `product` and
+#'    `flow`, respectively.
+#'    * New column:
+#'       * `transition_risk` that holds the categorization of the `reductions`
+#'       column.
+#'
+#' @export
+#'
+#' @examples
+#' istr_companies |>
+#'   istr_add_reductions(istr_ep_weo, istr_weo_2022) |>
+#'   istr_add_transition_risk()
+istr_add_transition_risk <- function(with_reductions) {
+  with_reductions |>
+    mutate(
+      transition_risk = case_when(
+        reductions <= 30 ~ "low",
+        reductions > 30 & reductions <= 70 ~ "medium",
+        reductions >= 70 ~ "high",
+        TRUE ~ "no_sector",
+      )
+    )
+}
+```
+
+### Calculate aggregated scores 
+
+```{r}
+#' Aggregate the products' scores for each company
+#'
+#' Calculates on a company-level the percentage of products that are in low /
+#' medium / high transition risk.
+#'
+#' @param with_transition_risk A [data.frame]. The output of
+#'   [istr_add_transition_risk()].
+#' @inheritParams istr_add_reductions
+#'
+#' @family ISTR functions
+#'
+#' @return A [data.frame] with the columns:
+#'   * `company_name`
+#'   * `transition_risk`
+#'   * `scenario`
+#'   * `year`
+#'   * `score_aggregated`, which holds the aggregated scores in percentage.
+#' @export
+#'
+#' @examples
+#' with_transition_risk |> 
+#' istr_aggregate_scores(istr_companies)
+istr_aggregate_scores <- function(with_transition_risk, companies) {
+  n_products_per_companies <- companies |>
+    group_by(.data$company_name) |>
+    summarise(total_products_per_company = n())
+  
+  with_transition_risk2 <- with_transition_risk |>
+    left_join(
+      n_products_per_companies,
+      by = "company_name",
+      # TODO: ASK Linda to confirm we want this relationship
+      relationship = "many-to-many"
+    )
+  
+  useful_cols <- c(
+    "company_name",
+    "transition_risk",
+    "total_products_per_company",
+    "scenario",
+    "year"
+  )
+  with_transition_risk2 |>
+    select(all_of(all_of(useful_cols))) |>
+    group_by(.data$company_name, .data$transition_risk, .data$scenario, .data$year) |>
+    summarise(score_aggregated = (n() / .data$total_products_per_company * 100)) |>
+    # FIXME? Do we really want grouped output?
+    group_by(.data$company_name, .data$transition_risk, .data$scenario, .data$year) |>
+    # FIXME: Do we really want distinct_all()? It's superseded by
+    # distinct(across(everything() ... and also here it seems we can use just
+    # `distinct()`. See ?distinct_all(), ?distinct(), and also this reprex:
+    # https://gist.github.com/maurolepore/45c899b9429f5d48004e2e127257cc29
+    distinct_all()
+
+}
+
+```
+
+## Data 
+
+The tiltIndicator package comes with example datasets
+
+```{r}
+here <- function(...) fs::path("~/Downloads/mvp/istr", ...)
+reshaped_istr_companies <- readr::read_csv(here("data-raw", "clean-data.csv"), , show_col_types = FALSE)
+reshaped_istr_companies
+```
+
+```{r}
+istr_ep_weo <- readr::read_csv(here("data", 'istr_ep_weo.csv'), show_col_types = FALSE)
+istr_ep_weo
+```
+
+```{r}
+istr_weo_2022 <- readr::read_csv(here("data", "istr_weo_2022.csv"), show_col_types = FALSE)
+istr_weo_2022
+```
+
+# Analysis
+
+## Introduction
+
+The Input Product Sector Risk Indicator assesses the transition risk of the input products based on the sector’s emissions targets the input product belongs to. Those sector emission reduction targets vary across scenarios (e.g., net zero scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in 2030, 2040, 2050 to achieve the targets). It, therefore, is similar to the Product Sector Risk Indicator but focuses on the input products that the company needs to produce its products.The input products are, for example, resources, packaging materials, energy and enabling services (such as tractor use on farm) to produce the product.
+
+If an input product belongs to a sector in which reduction targets are over 70%, it belongs to a high-risk sector and is classified as ‘high sector transition risk’. If the input product belongs to a sector in which reduction targets are between 30-70%, the product is classified into the category ‘medium sector transition risk’ and if it is below 30% it belongs to the category of ‘low sector transition risk’. If it does not belong to a sector that has decarbonization targets, it is classified as ‘no sector transition risk’.
+
+After assessing the input products for each product, they will be aggregated at company-level to derive what percentage of the input products required by the company to produce its products have high, medium and low sector transition risk. We, therefore, derive the company-level information.
+
+Please note that carbon emissions or emissions always mean CO2e.
+
+The goal of the transition risk MVP is to create a first draft of how the sector transition risk indicator for inputs would be build in code in order to convert it into code production easily in the future.
+
+The transition risk indicator consists of 5 main steps:
+
+- Step 1: Identifying the input products for each product
+- Step 2: Matching the input products to the sectors
+- Step 3: Identifying sector-specific emission reduction targets
+- Step 4: Categorising sector emission reduction targets into high, medium, and low sector transition risk
+- Step 5: Aggregating on the company-level
+
+## Step 1: Identifying 
+Use mapper that serves as a sector classification bridge between the Ecoinvent's' sectors and the WEO 2022 file.
+
+```{r}
+istr_companies <- istr_mapping(reshaped_istr_companies, istr_ep_weo)
+istr_companies
+```
+
+## Step 2: Matching the input products to the sectors
+
+Each product of the company will be matched to a climate-relevant sector.
+
+We join this on the sectors.
+
+```{r}
+with_reductions <- istr_companies |>
+  istr_add_reductions(istr_weo_2022)
+with_reductions
+```
+
+## Step 3: Identifying sector-specific emission reduction targets
+
+Let us categorize the transition risk into low, medium and high risk,
+based on the value of the reductions.
+
+-   reductions ≤ 30% means low product sector transition risk.
+
+-   30% \< reductions ≤ 70% means medium product sector transition risk.
+
+-   reductions \> 70% means high product sector transition risk.
+
+```{r}
+with_transition_risk <- istr_add_transition_risk(with_reductions)
+with_transition_risk
+```
+
+## Step 4: Aggregating on the company-level
+
+To derive a company-level indicator for a company that has more than one
+input product in its portfolio, it is necessary to aggregate the Input product
+sector transition Risk Indicator of each product into one indicator. The
+proposed method for that is to assume the same weights for each input product.
+
+Here are the calculation rules:
+
+-   High Sector Transition Risk Input Products (in %) = ∑ of all high sector
+    transition risk input products / ∑ of all inputs
+
+-   Medium Sector Transition Risk Input Products (in %) = ∑ of all medium
+    sector transition risk products / ∑ of all inputs
+
+-   Low Sector Transition Risk Input Products (in %) = ∑ of all low sector
+    transition risk products / ∑ of all inputs
+
+-   No Sector Transition Risk Input Products (in %) = ∑ of all no sector
+    transition risk products / ∑ of all inputs
+
+Here numbers of input products per companies is calculated in a new column, and join the data frame to have the data with the numbers of products
+that a company produces.
+
+Then, the score aggregated is calculated by summing (per transition risk) the products over the total numbers of products per company.
+
+
+```{r}
+with_score_aggregated <- with_transition_risk |> 
+  istr_aggregate_scores(istr_companies)
+with_score_aggregated
+```
+
+
+## C.5. write csv into output folder
+```{r}
+write_csv(with_score_aggregated, here("output_file", "mvp_istr_output.csv"))
+```
