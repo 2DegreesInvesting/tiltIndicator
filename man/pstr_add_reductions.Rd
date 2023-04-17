@@ -22,10 +22,6 @@ A dataframe with:
 \item All the columns from the \code{ep_weo} dataset, but the columns
 \code{EP_sector} and \code{EP_subsector} are named \code{sector} and \code{subsector}
 respectively.
-#FIXME : The columns are not renamed product and flow, respectively.
-\item All the columns from the \code{weo_2022} dataset, but the columns
-\code{weo_product_mapper} and \code{weo_flow_mapper} are named \code{product} and
-\code{flow}, respectively.
 }
 }
 }

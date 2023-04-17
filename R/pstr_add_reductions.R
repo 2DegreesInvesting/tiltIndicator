@@ -16,11 +16,6 @@
 #'       * All the columns from the `ep_weo` dataset, but the columns
 #'       `EP_sector` and `EP_subsector` are named `sector` and `subsector`
 #'       respectively.
-#'       #FIXME : The columns are not renamed product and flow, respectively.
-#'       * All the columns from the `weo_2022` dataset, but the columns
-#'       `weo_product_mapper` and `weo_flow_mapper` are named `product` and
-#'       `flow`, respectively.
-#'
 #' @export
 #'
 #' @examples
