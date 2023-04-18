@@ -31,7 +31,7 @@ setNames(lapply(datasets, get), datasets)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child="../../man/fragments/intro-general.Rmd"}
+```{r child=extdata_path("child/intro-general.Rmd")}
 
 ```
 
@@ -39,7 +39,7 @@ setNames(lapply(datasets, get), datasets)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child="../../man/fragments/intro-ictr.Rmd"}
+```{r child=extdata_path("child/intro-ictr.Rmd")}
 
 ```
 
@@ -55,7 +55,7 @@ ictr_inputs |>
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child="../../man/fragments/intro-istr.Rmd"}
+```{r child=extdata_path("child/intro-istr.Rmd")}
 
 ```
 
@@ -69,7 +69,7 @@ ictr_inputs |>
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child="../../man/fragments/intro-pctr.Rmd"}
+```{r child=extdata_path("child/intro-pctr.Rmd")}
 
 ```
 
@@ -85,7 +85,7 @@ pctr_ecoinvent_co2 |>
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child="../../man/fragments/intro-pstr.Rmd"}
+```{r child=extdata_path("child/intro-pstr.Rmd")}
 
 ```
 
