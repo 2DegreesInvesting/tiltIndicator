@@ -74,3 +74,7 @@ test_that("returns 3 rows per company for any slice of inputs", {
   out <- ictr_score_companies(data, two_companies)
   expect_equal(nrow(out), 6L)
 })
+
+test_that("There are no NAs in the input_co2 column", {
+  expect_false(any(is.na(ictr_inputs$input_co2)))
+})
