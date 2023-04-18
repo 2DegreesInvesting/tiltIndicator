@@ -21,6 +21,13 @@ mvp_path <- function(path) {
   )
 }
 
+child_path <- function(path) {
+  system.file(
+    "extdata", "child", path,
+    package = "tiltIndicator", mustWork = TRUE
+  )
+}
+
 mvp_paths <- function(pattern = NULL) {
   dir <- system.file("extdata", "mvp", package = "tiltIndicator")
   list.files(dir, pattern = pattern)
