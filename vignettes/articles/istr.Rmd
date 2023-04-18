@@ -1,0 +1,15 @@
+---
+title: "Input sector transition risk (ISTR)"
+author: "Lyanne Ho"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r child=tiltIndicator:::mvp_path("istr.Rmd")}
+
+```
