@@ -22,8 +22,8 @@
 #'
 #' @author Linda Delacombaz.
 #' @source Data from the \href{https://www.iea.org/}{International Energy Agency}
-#' (IEA)'s \href{https://www.iea.org/topics/world-energy-outlook}{World Energy Outlook} (WEO)
-#' 2022 scenario on the global level.
+#' (IEA)'s \href{https://www.iea.org/topics/world-energy-outlook}{World Energy Outlook}
+#' (WEO) 2022 scenario on the global level.
 #' @family PSTR datasets
 #' @examples
 #' pstr_weo_2022

@@ -9,8 +9,8 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 }
 \source{
 Data from the \href{https://www.iea.org/}{International Energy Agency}
-(IEA)'s \href{https://www.iea.org/topics/world-energy-outlook}{World Energy Outlook} (WEO)
-2022 scenario on the global level.
+(IEA)'s \href{https://www.iea.org/topics/world-energy-outlook}{World Energy Outlook}
+(WEO) 2022 scenario on the global level.
 }
 \usage{
 pstr_weo_2022
