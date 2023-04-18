@@ -27,3 +27,7 @@ reference:
   - title: ICTR functions
     contents:
       - has_concept("ICTR functions")
+
+  - title: ISTR datasets
+    contents:
+      - has_concept("ISTR datasets")

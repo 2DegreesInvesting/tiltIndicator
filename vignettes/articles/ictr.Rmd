@@ -103,7 +103,7 @@ input products, input products with same unit, input products with same input
 sector, and input products with same unit and input sector)
 
 ```{r}
-pctr_output <- ictr_score_companies(ecoinvent_scores, companies)
+ictr_output <- ictr_score_companies(ecoinvent_scores, companies)
 
-pctr_output
+ictr_output
 ```
