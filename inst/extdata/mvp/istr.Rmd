@@ -206,7 +206,8 @@ The tiltIndicator package comes with example datasets
 
 ```{r}
 here <- function(...) fs::path("~/Downloads/mvp/istr", ...)
-reshaped_istr_companies <- readr::read_csv(here("data-raw", "clean-data.csv"), , show_col_types = FALSE)
+reshaped_istr_companies <- readr::read_csv(fs::path("data-raw", "istr", "clean-data.csv"), , show_col_types = FALSE)
+
 reshaped_istr_companies
 ```
 
