@@ -2,22 +2,46 @@
 % Please edit documentation in R/ictr_score_inputs.R
 \name{ictr_score_inputs}
 \alias{ictr_score_inputs}
-\title{TODO}
+\title{Aggregate rank and score for each input product}
 \usage{
 ictr_score_inputs(inputs, low_threshold = 0.3, high_threshold = 0.7)
 }
 \arguments{
-\item{inputs}{TODO}
+\item{inputs}{A \link{data.frame} like \link{ictr_inputs}}
 
-\item{low_threshold}{TODO}
+\item{low_threshold}{A numeric value to segment low and medium transition
+risk products.}
 
-\item{high_threshold}{TODO}
+\item{high_threshold}{A numeric value to segment medium and high transition
+risk products.}
 }
 \value{
-TODO
+A \link{data.frame} with columns:
+\itemize{
+\item All the columns from the \code{inputs} dataset.
+\item New columns:
+\itemize{
+\item \code{perc_all}
+\item \code{perc_unit}
+\item \code{perc_sec}
+\item \code{perc_unit_sec}
+\item \code{score_all}
+\item \code{score_unit}
+\item \code{score_sector}
+\item \code{score_unit_sec}
+}
+}
 }
 \description{
-TODO
+Input products will be ranked according to their footprint. Input products in
+the highest percentile (≥70\%) will be classified as high transition risk
+input products. Input products in the medium percentile (between ≥30\% and
+<70\%) will be classified as medium transition risk input products. Products
+in the lowest percentile (<30\%) will be classified as low transition risk
+input products.
+
+Therefore, each input product will receive either a score of 'high',
+'medium', or 'low' based on the above mentioned classification criteria.
 }
 \examples{
 library(dplyr, warn.conflicts = FALSE)

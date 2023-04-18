@@ -3,7 +3,7 @@
 \docType{data}
 \name{ictr_companies}
 \alias{ictr_companies}
-\title{TODO: Document}
+\title{A dataset with fake companies, activity_uuid, and unit.}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 25 rows and 4 columns.
 }
@@ -14,7 +14,7 @@ TODO
 ictr_companies
 }
 \description{
-TODO: Document
+A dataset with fake companies, activity_uuid, and unit.
 }
 \examples{
 ictr_companies
