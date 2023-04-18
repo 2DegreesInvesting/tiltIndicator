@@ -216,7 +216,7 @@ istr_ep_weo
 ```
 
 ```{r}
-istr_weo_2022 <- readr::read_csv(here("data", "istr_weo_2022.csv"), show_col_types = FALSE)
+istr_weo_2022 <- tiltIndicator::istr_weo_2022
 istr_weo_2022
 ```
 
