@@ -205,19 +205,11 @@ istr_aggregate_scores <- function(with_transition_risk, companies) {
 The tiltIndicator package comes with example datasets
 
 ```{r}
-here <- function(...) fs::path("~/Downloads/mvp/istr", ...)
-reshaped_istr_companies <- tiltIndicator::istr_companies
-reshaped_istr_companies
-```
+reshaped_istr_companies <- glimpse(tiltIndicator::istr_companies)
 
-```{r}
-istr_ep_weo <- tiltIndicator::istr_ep_weo
-istr_ep_weo
-```
+istr_ep_weo <- glimpse(tiltIndicator::istr_ep_weo)
 
-```{r}
-istr_weo_2022 <- tiltIndicator::istr_weo_2022
-istr_weo_2022
+istr_weo_2022 <- glimpse(tiltIndicator::istr_weo_2022)
 ```
 
 # Analysis
@@ -311,8 +303,3 @@ with_score_aggregated <- with_transition_risk |>
 with_score_aggregated
 ```
 
-
-## C.5. write csv into output folder
-```{r}
-write_csv(with_score_aggregated, here("output_file", "mvp_istr_output.csv"))
-```
