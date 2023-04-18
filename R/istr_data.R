@@ -9,12 +9,12 @@
 #'
 #' @family ISTR datasets
 #' @examples
-#' istr_companies
+#' istr_ep_weo
 "istr_ep_weo"
 
 #' TODO
 #'
 #' @family ISTR datasets
 #' @examples
-#' istr_companies
+#' istr_weo_2022
 "istr_weo_2022"

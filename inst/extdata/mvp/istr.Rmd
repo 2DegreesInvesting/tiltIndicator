@@ -22,11 +22,8 @@ Install the development version of tiltIndicator from GitHub with:
 Packages
 
 ```{r}
-library(tidyverse, warn.conflicts = FALSE)
-library(vroom)
-library(here)
-library(tibble)
-# library(tiltIndicator) # can be used when functions are added in the repo
+library(dplyr, warn.conflicts = FALSE)
+library(tiltIndicator)
 ```
 
 ## Define functions
@@ -205,11 +202,11 @@ istr_aggregate_scores <- function(with_transition_risk, companies) {
 The tiltIndicator package comes with example datasets
 
 ```{r}
-reshaped_istr_companies <- glimpse(tiltIndicator::istr_companies)
+reshaped_istr_companies <- glimpse(istr_companies)
 
-istr_ep_weo <- glimpse(tiltIndicator::istr_ep_weo)
+istr_ep_weo <- glimpse(istr_ep_weo)
 
-istr_weo_2022 <- glimpse(tiltIndicator::istr_weo_2022)
+istr_weo_2022 <- glimpse(istr_weo_2022)
 ```
 
 # Analysis

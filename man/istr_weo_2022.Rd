@@ -14,7 +14,7 @@ istr_weo_2022
 TODO
 }
 \examples{
-istr_companies
+istr_weo_2022
 }
 \seealso{
 Other ISTR datasets: 
