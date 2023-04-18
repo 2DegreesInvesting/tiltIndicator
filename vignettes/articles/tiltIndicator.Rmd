@@ -1,0 +1,96 @@
+---
+title: "The tilt indicators"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This article introduces the tilt indicators. First we introduce the tilt
+indicators in general, then explain each indicator's details and show the code
+you can use to calculate it.
+
+```{r setup}
+library(dplyr, warn.conflicts = FALSE)
+library(tiltIndicator)
+```
+
+The tiltIndicator package comes with a number of datasets, which we'll use in the examples below. For details see the package's [Reference](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html).
+
+```{r echo=FALSE, results='asis'}
+datasets <- data(package = "tiltIndicator")$results[, "Item"]
+writeLines(paste0("* `", datasets, "`."))
+```
+
+## Genral introduction
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child="../../man/fragments/intro-general.Rmd"}
+
+```
+
+## Input carbon transition risk (ICTR)
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child="../../man/fragments/intro-ictr.Rmd"}
+
+```
+
+### Example
+
+```{r}
+ictr_inputs |> 
+  ictr_score_inputs() |> 
+  ictr_score_companies(ictr_companies)
+```
+
+## Input sector transition risk (ISTR)
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child="../../man/fragments/intro-istr.Rmd"}
+
+```
+
+### Example
+
+```{r}
+# TODO
+```
+
+## Product carbon transition risk (PCTR)
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child="../../man/fragments/intro-pctr.Rmd"}
+
+```
+
+### Example
+
+```{r}
+pctr_ecoinvent_co2 |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(pctr_companies)
+```
+
+## Product sector transition risk (PSTR)
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child="../../man/fragments/intro-pstr.Rmd"}
+
+```
+
+### Example
+
+```{r}
+pstr_companies |> 
+  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |> 
+  pstr_add_transition_risk()
+```
