@@ -3,10 +3,9 @@
 #' @param path Character. Path to a directory in inst/extdata/.
 #' @keywords internal
 #' @export
-#' @noRd
 #' @examples
 #' extdata_path("")
-#' fs::dir_tree(extdata_path(""))
+#' list.files(extdata_path(""), recursive = TRUE)
 extdata_path <- function(path) {
   system.file("extdata", path, package = "tiltIndicator", mustWork = TRUE)
 }
