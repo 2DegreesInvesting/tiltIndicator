@@ -32,4 +32,3 @@ test_that("`with_score_aggregated` remains the same", {
   out <- format_robust_snapshot(with_score_aggregated)
   expect_snapshot(out)
 })
-
