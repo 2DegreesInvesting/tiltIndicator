@@ -13,16 +13,18 @@ This article introduces the tilt indicators. First we introduce the tilt
 indicators in general, then explain each indicator's details and show the code
 you can use to calculate it.
 
+We'll use general purpose tools from the dplyr package, and the experimental [tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html) package.
+
 ```{r setup}
 library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
-The tiltIndicator package comes with a number of datasets, which we'll use in the examples below. For details see the package's [Reference](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html).
+The tiltIndicator package comes with a number of datasets, which we'll use in the examples below.
 
-```{r echo=FALSE, results='asis'}
-datasets <- data(package = "tiltIndicator")$results[, "Item"]
-writeLines(paste0("* `", datasets, "`."))
+```{r echo=FALSE}
+datasets <- data(package = "tiltIndicator")[["results"]][, "Item"]
+setNames(lapply(datasets, get), datasets)
 ```
 
 ## Genral introduction
