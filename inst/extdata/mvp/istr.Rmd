@@ -207,12 +207,11 @@ The tiltIndicator package comes with example datasets
 ```{r}
 here <- function(...) fs::path("~/Downloads/mvp/istr", ...)
 reshaped_istr_companies <- tiltIndicator::istr_companies
-
 reshaped_istr_companies
 ```
 
 ```{r}
-istr_ep_weo <- readr::read_csv(here("data", 'istr_ep_weo.csv'), show_col_types = FALSE)
+istr_ep_weo <- tiltIndicator::istr_ep_weo
 istr_ep_weo
 ```
 
