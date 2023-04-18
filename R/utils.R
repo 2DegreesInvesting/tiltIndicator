@@ -1,30 +1,16 @@
-#' Get path to MVPs
+#' Get path to child extdata/
 #'
-#' The minimal-viable-product (MVP) of each indicator was originally developed
-#' in an .Rmd file that we gradually refactored towards production. They are
-#' stored in inst/extdata/mvp/ in their original form -- except for minimal
-#' changes such as redirection of inputs and outputs to avoid leaking private
-#' data.
-#'
-#' @param path Name of file.
-#' @param pattern A regular expression of filenames to match. If NULL all
-#'   available files are returned. listed.
-#'
-#' @examples
-#' mvp_paths()
-#' try(mvp_path("inexistent.file"))
+#' @param path Character. Path to a directory in inst/extdata/.
+#' @keywords internal
+#' @export
 #' @noRd
-mvp_path <- function(path) {
-  system.file(
-    "extdata", "mvp", path,
-    package = "tiltIndicator", mustWork = TRUE
-  )
+#' @examples
+#' extdata_path("")
+#' fs::dir_tree(extdata_path(""))
+extdata_path <- function(path) {
+  system.file("extdata", path, package = "tiltIndicator", mustWork = TRUE)
 }
 
-mvp_paths <- function(pattern = NULL) {
-  dir <- system.file("extdata", "mvp", package = "tiltIndicator")
-  list.files(dir, pattern = pattern)
-}
 #' Create a task list that you can paste on a GitHub issue and follow up
 #'
 #' @return Character. A checklist you can paste on a GitHub issue.
