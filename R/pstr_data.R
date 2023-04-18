@@ -21,7 +21,9 @@
 #' * TODO: Where does it come from and what wrangling did you do?
 #'
 #' @author Linda Delacombaz.
-#' @source Data from IEA's WEO 2022 scenario on GLO level.
+#' @source Data from the \href{https://www.iea.org/}{International Energy Agency}
+#' (IEA)'s \href{https://www.iea.org/topics/world-energy-outlook}{World Energy Outlook} (WEO)
+#' 2022 scenario on the global level.
 #' @family PSTR datasets
 #' @examples
 #' pstr_weo_2022
