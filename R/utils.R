@@ -44,11 +44,14 @@ use_refactoring_checklist <- function() {
   - [ ] `use_data()`.
   - [ ] Document data minimally to avoid R CMD issues and to show an example.
   - [ ] Reuse data in the mvp .Rmd.
+  - [ ] Update _pkgdown.yaml.
   - [ ] Polish and publish article.
+  - [ ] Bump version.
   - [ ] Announce new Article on Slack.
   - [ ] Refactor: Extract functions in place.
   - [ ] Refactor: Move functions to R/ and document @author.
   - [ ] Refactor: Address R CMD check issues.
+  - [ ] Update _pkgdown.yaml.
   - [ ] Ask authors to document data and functions, then prune the article.
   - [ ] Snapshot each feature and remove the general mvp-level snapshot.
   - [ ] Move mvp to article.
