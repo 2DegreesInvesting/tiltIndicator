@@ -23,10 +23,6 @@ After assessing the input products' transition risk based on the carbon
 footprint of each product, they are aggregated at the company-level. We derive
 what percentage of the input products are high, medium and low transition risk.
 
-The goal of the transition risk MVP is to create a first draft of how the
-transition risk indicator for inputs would be build in code in order to convert
-it into code production easily in the future.
-
 The transition risk indicator consists of 2 broad steps:
 
 1. Score input products: Identifying the input products for each product, and

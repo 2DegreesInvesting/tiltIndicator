@@ -7,7 +7,3 @@ scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in
 After assessing each product, all the products with the same category are
 aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
-
-The goal of the transition risk MVP is to create a first draft of how the
-transition risk indicator would be build in code in order to convert it into
-code production easily in the future.

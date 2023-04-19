@@ -221,9 +221,7 @@ After assessing the input products for each product, they will be aggregated at 
 
 Please note that carbon emissions or emissions always mean CO2e.
 
-The goal of the transition risk MVP is to create a first draft of how the sector transition risk indicator for inputs would be build in code in order to convert it into code production easily in the future.
-
-The transition risk indicator consists of 5 main steps:
+This indicator consists of 5 main steps:
 
 - Step 1: Identifying the input products for each product
 - Step 2: Matching the input products to the sectors

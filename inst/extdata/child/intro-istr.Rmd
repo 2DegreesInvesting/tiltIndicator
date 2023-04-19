@@ -22,7 +22,3 @@ company to produce its products have high, medium and low sector transition
 risk. We, therefore, derive the company-level information.
 
 Please note that carbon emissions or emissions always mean CO2e.
-
-The goal of the transition risk MVP is to create a first draft of how the sector
-transition risk indicator for inputs would be build in code in order to convert
-it into code production easily in the future.
