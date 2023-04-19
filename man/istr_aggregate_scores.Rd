@@ -39,4 +39,7 @@ Other ISTR functions:
 \code{\link{istr_add_transition_risk}()},
 \code{\link{istr_mapping}()}
 }
+\author{
+Lyanne Ho.
+}
 \concept{ISTR functions}

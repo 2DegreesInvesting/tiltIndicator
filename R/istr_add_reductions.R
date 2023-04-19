@@ -2,6 +2,8 @@
 #'
 #' Adds the emission reduction values for each company's product(s).
 #'
+#' @author Lyanne Ho.
+#'
 #' @param companies A [data.frame] like [istr_companies].
 #' @param weo_2022 A [data.frame] like [istr_weo_2022].
 #'

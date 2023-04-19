@@ -5,6 +5,8 @@
 #' * "medium" if 30.0 < `reductions` <= 70.0
 #' * "high" if `reductions` > 70.0
 #'
+#' @author Lyanne Ho.
+#'
 #' @param with_reductions A data frame. The output of [istr_add_reductions()].
 #'
 #' @family ISTR functions

@@ -45,4 +45,7 @@ Other ISTR functions:
 \code{\link{istr_aggregate_scores}()},
 \code{\link{istr_mapping}()}
 }
+\author{
+Lyanne Ho.
+}
 \concept{ISTR functions}

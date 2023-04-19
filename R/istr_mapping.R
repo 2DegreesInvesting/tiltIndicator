@@ -1,5 +1,6 @@
 #' Join the Ecoinvent's' sectors and the WEO 2022 file on the sectors by use the mapper that serves as a sector classification bridge between.
 #'
+#' @author Lyanne Ho.
 #'
 #' @param companies A [data.frame] like [istr_companies].
 #' @param ep_weo A [data.frame] like [istr_ep_weo].

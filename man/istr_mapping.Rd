@@ -36,4 +36,7 @@ Other ISTR functions:
 \code{\link{istr_add_transition_risk}()},
 \code{\link{istr_aggregate_scores}()}
 }
+\author{
+Lyanne Ho.
+}
 \concept{ISTR functions}
