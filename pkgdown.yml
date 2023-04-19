@@ -2,12 +2,10 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  ictr: ictr.html
   istr: istr.html
   pctr-questions: pctr-questions.html
-  pctr: pctr.html
-  pstr: pstr.html
-last_built: 2023-04-19T00:20Z
+  tiltIndicator: tiltIndicator.html
+last_built: 2023-04-19T00:47Z
 urls:
   reference: https://2degreesinvesting.github.io/tiltIndicator/reference
   article: https://2degreesinvesting.github.io/tiltIndicator/articles
