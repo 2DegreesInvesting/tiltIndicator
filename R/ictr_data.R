@@ -1,4 +1,4 @@
-#' TODO: Document
+#' A dataset with fake input Co2-footprint, input sector, and activity_uuid.
 #'
 #' @author Kalash Singhal.
 #' @source TODO
@@ -6,7 +6,8 @@
 #' @examples
 #' ictr_inputs
 "ictr_inputs"
-#' TODO: Document
+
+#' A dataset with fake companies, activity_uuid, and unit.
 #'
 #' @author Kalash Singhal.
 #' @source TODO

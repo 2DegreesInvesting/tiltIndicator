@@ -1,14 +1,29 @@
-#' TODO
+#' Aggregate the input products' scores for each company
+#'
+#' @description
+#' Calculates on a company-level the percentage of input products that are in
+#' low / medium / high transition risk due to the input products' relative
+#' carbon footprint.
+#'
+#' Activities are mapped with the companies' input products using common columns
+#' present in dataframes `ecoinvent_scores` and `companies`.
 #'
 #' @author Kalash Singhal.
 #'
-#' @param ecoinvent_scores TODO
-#' @param companies TODO
+#' @param ecoinvent_scores A [data.frame]. The output of [ictr_score_inputs].
+#' @param companies A [data.frame] like [ictr_companies].
 #'
 #' @family ICTR functions
 #'
 #' @return A [data.frame] with three rows for each company and these columns:
-#' TODO
+#'   * `company_id`
+#'   * `score`
+#'   * `share_all`
+#'   * `share_unit`
+#'   * `share_sector`
+#'   * `share_unit_sec`
+#'   where `share_all`, `share_unit`, `share_sector`, and `share_unit_sec` holds
+#'   the aggregated scores in percentage.
 #' @export
 #'
 #' @examples

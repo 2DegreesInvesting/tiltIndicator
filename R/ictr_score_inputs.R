@@ -1,14 +1,37 @@
-#' TODO
+#' Aggregate rank and score for each input product
+#'
+#' @description
+#' Input products will be ranked according to their footprint. Input products in
+#' the highest percentile (≥70%) will be classified as high transition risk
+#' input products. Input products in the medium percentile (between ≥30% and
+#' <70%) will be classified as medium transition risk input products. Products
+#' in the lowest percentile (<30%) will be classified as low transition risk
+#' input products.
+#'
+#' Therefore, each input product will receive either a score of 'high',
+#' 'medium', or 'low' based on the above mentioned classification criteria.
 #'
 #' @author Kalash Singhal.
 #'
-#' @param inputs TODO
-#' @param low_threshold TODO
-#' @param high_threshold TODO
+#' @param inputs A [data.frame] like [ictr_inputs]
+#' @param low_threshold A numeric value to segment low and medium transition
+#'   risk products.
+#' @param high_threshold A numeric value to segment medium and high transition
+#'   risk products.
 #'
 #' @family ICTR functions
 #'
-#' @return TODO
+#' @return A [data.frame] with columns:
+#'   * All the columns from the `inputs` dataset.
+#'   * New columns:
+#'        * `perc_all`
+#'        * `perc_unit`
+#'        * `perc_sec`
+#'        * `perc_unit_sec`
+#'        * `score_all`
+#'        * `score_unit`
+#'        * `score_sector`
+#'        * `score_unit_sec`
 #' @export
 #'
 #' @examples
