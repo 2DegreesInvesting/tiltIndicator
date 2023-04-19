@@ -10,8 +10,6 @@ istr_mapping(companies, ep_weo)
 \item{companies}{A \link{data.frame} like \link{istr_companies}.}
 
 \item{ep_weo}{A \link{data.frame} like \link{istr_ep_weo}.}
-
-\item{weo_2022}{A \link{data.frame} like \link{istr_weo_2022}.}
 }
 \value{
 A dataframe with:

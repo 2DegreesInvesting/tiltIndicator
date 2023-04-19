@@ -10,8 +10,6 @@ istr_add_reductions(companies, weo_2022)
 \item{companies}{A \link{data.frame} like \link{istr_companies}.}
 
 \item{weo_2022}{A \link{data.frame} like \link{istr_weo_2022}.}
-
-\item{ep_weo}{A \link{data.frame} like \link{istr_ep_weo}.}
 }
 \value{
 A dataframe with:
