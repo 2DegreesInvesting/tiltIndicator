@@ -102,181 +102,10 @@ with:</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="define-functions">Define functions<a class="anchor" aria-label="anchor" href="#define-functions"></a>
-</h3>
-<div class="section level4">
-<h4 id="mapping">Mapping<a class="anchor" aria-label="anchor" href="#mapping"></a>
-</h4>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' Join the Ecoinvent's' sectors and the WEO 2022 file on the sectors by use the mapper that serves as a sector classification bridge between.</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @param companies A [data.frame] like [istr_companies].</span></span>
-<span><span class="co">#' @param ep_weo A [data.frame] like [istr_ep_weo].</span></span>
-<span><span class="co">#' @param weo_2022 A [data.frame] like [istr_weo_2022].</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @family ISTR functions</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @return A dataframe with:</span></span>
-<span><span class="co">#'   * All the columns from the `companies` dataset.</span></span>
-<span><span class="co">#'   * New columns:</span></span>
-<span><span class="co">#'       * All the columns from the `ep_weo` dataset, but the columns</span></span>
-<span><span class="co">#'       `eco_sectors` is named `ECO_sector` respectively.</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @export</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @examples</span></span>
-<span><span class="co">#' istr_companies |&gt;</span></span>
-<span><span class="co">#'   istr_add_reductions(istr_ep_weo, istr_weo_2022)</span></span>
-<span><span class="va">istr_mapping</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">companies</span>, <span class="va">ep_weo</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">ep_weo</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"eco_sectors"</span> <span class="op">=</span> <span class="st">"ECO_sector"</span><span class="op">)</span><span class="op">)</span> </span>
-<span><span class="op">}</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="add-reductions">Add reductions<a class="anchor" aria-label="anchor" href="#add-reductions"></a>
-</h4>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' Add the emission reduction targets to the companies dataset</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' Adds the emission reduction values for each company's product(s).</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @param companies A [data.frame] like [istr_companies].</span></span>
-<span><span class="co">#' @param ep_weo A [data.frame] like [istr_ep_weo].</span></span>
-<span><span class="co">#' @param weo_2022 A [data.frame] like [istr_weo_2022].</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @family ISTR functions</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @return A dataframe with:</span></span>
-<span><span class="co">#'   * All the columns from the `companies` dataset.</span></span>
-<span><span class="co">#'   * New columns:</span></span>
-<span><span class="co">#'       * All the columns from the `ep_weo` dataset, but the columns</span></span>
-<span><span class="co">#'       `eco_sectors` is named `ECO_sector` respectively.</span></span>
-<span><span class="co">#'       * All the columns from the `weo_2022` dataset, but the columns</span></span>
-<span><span class="co">#'       `weo_product_mapper` and `weo_flow_mapper` are named `product` and</span></span>
-<span><span class="co">#'       `flow`, respectively.</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @export</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @examples</span></span>
-<span><span class="co">#' istr_companies |&gt;</span></span>
-<span><span class="co">#'   istr_add_reductions(istr_ep_weo, istr_weo_2022)</span></span>
-<span><span class="va">istr_add_reductions</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">companies</span>, <span class="va">weo_2022</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>    <span class="co">#left_join(ep_weo, by = c("eco_sectors" = "ECO_sector")) |&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">weo_2022</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"weo_product_mapper"</span> <span class="op">=</span> <span class="st">"product"</span>, <span class="st">"weo_flow_mapper"</span> <span class="op">=</span> <span class="st">"flow"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="add-transition-risk">Add transition risk<a class="anchor" aria-label="anchor" href="#add-transition-risk"></a>
-</h4>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' Categorize sector emission reduction targets</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' Translates the `reductions` column into three categories:</span></span>
-<span><span class="co">#' * "low" if `reductions` &lt;= 30.0</span></span>
-<span><span class="co">#' * "medium" if 30.0 &lt; `reductions` &lt;= 70.0</span></span>
-<span><span class="co">#' * "high" if `reductions` &gt; 70.0</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @param with_reductions A data frame. The output of [istr_add_reductions()].</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @family ISTR functions</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @return A data frame with:</span></span>
-<span><span class="co">#'    * All the columns from the `companies` dataset.</span></span>
-<span><span class="co">#'    * All the columns from the `ep_weo` dataset, but the columns</span></span>
-<span><span class="co">#'    `eco_sectors` is named `ECO_sector` respectively.</span></span>
-<span><span class="co">#'    * All the columns from the `weo_2022` dataset, but the columns</span></span>
-<span><span class="co">#'    `weo_product_mapper` and `weo_flow_mapper` are named `product` and</span></span>
-<span><span class="co">#'    `flow`, respectively.</span></span>
-<span><span class="co">#'    * New column:</span></span>
-<span><span class="co">#'       * `transition_risk` that holds the categorization of the `reductions`</span></span>
-<span><span class="co">#'       column.</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @export</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @examples</span></span>
-<span><span class="co">#' istr_companies |&gt;</span></span>
-<span><span class="co">#'   istr_add_reductions(istr_ep_weo, istr_weo_2022) |&gt;</span></span>
-<span><span class="co">#'   istr_add_transition_risk()</span></span>
-<span><span class="va">istr_add_transition_risk</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">with_reductions</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">with_reductions</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
-<span>      transition_risk <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
-<span>        <span class="va">reductions</span> <span class="op">&lt;=</span> <span class="fl">30</span> <span class="op">~</span> <span class="st">"low"</span>,</span>
-<span>        <span class="va">reductions</span> <span class="op">&gt;</span> <span class="fl">30</span> <span class="op">&amp;</span> <span class="va">reductions</span> <span class="op">&lt;=</span> <span class="fl">70</span> <span class="op">~</span> <span class="st">"medium"</span>,</span>
-<span>        <span class="va">reductions</span> <span class="op">&gt;=</span> <span class="fl">70</span> <span class="op">~</span> <span class="st">"high"</span>,</span>
-<span>        <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"no_sector"</span>,</span>
-<span>      <span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="calculate-aggregated-scores">Calculate aggregated scores<a class="anchor" aria-label="anchor" href="#calculate-aggregated-scores"></a>
-</h4>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' Aggregate the products' scores for each company</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' Calculates on a company-level the percentage of products that are in low /</span></span>
-<span><span class="co">#' medium / high transition risk.</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @param with_transition_risk A [data.frame]. The output of</span></span>
-<span><span class="co">#'   [istr_add_transition_risk()].</span></span>
-<span><span class="co">#' @inheritParams istr_add_reductions</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @family ISTR functions</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @return A [data.frame] with the columns:</span></span>
-<span><span class="co">#'   * `company_name`</span></span>
-<span><span class="co">#'   * `transition_risk`</span></span>
-<span><span class="co">#'   * `scenario`</span></span>
-<span><span class="co">#'   * `year`</span></span>
-<span><span class="co">#'   * `score_aggregated`, which holds the aggregated scores in percentage.</span></span>
-<span><span class="co">#' @export</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @examples</span></span>
-<span><span class="co">#' with_transition_risk |&gt; </span></span>
-<span><span class="co">#' istr_aggregate_scores(istr_companies)</span></span>
-<span><span class="va">istr_aggregate_scores</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">with_transition_risk</span>, <span class="va">companies</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">n_products_per_companies</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">company_name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>total_products_per_company <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="va">with_transition_risk2</span> <span class="op">&lt;-</span> <span class="va">with_transition_risk</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
-<span>      <span class="va">n_products_per_companies</span>,</span>
-<span>      by <span class="op">=</span> <span class="st">"company_name"</span>,</span>
-<span>      <span class="co"># TODO: ASK Linda to confirm we want this relationship</span></span>
-<span>      relationship <span class="op">=</span> <span class="st">"many-to-many"</span></span>
-<span>    <span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="va">useful_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>    <span class="st">"company_name"</span>,</span>
-<span>    <span class="st">"transition_risk"</span>,</span>
-<span>    <span class="st">"total_products_per_company"</span>,</span>
-<span>    <span class="st">"scenario"</span>,</span>
-<span>    <span class="st">"year"</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="va">with_transition_risk2</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html" class="external-link">all_of</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html" class="external-link">all_of</a></span><span class="op">(</span><span class="va">useful_cols</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">company_name</span>, <span class="va">.data</span><span class="op">$</span><span class="va">transition_risk</span>, <span class="va">.data</span><span class="op">$</span><span class="va">scenario</span>, <span class="va">.data</span><span class="op">$</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>score_aggregated <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">/</span> <span class="va">.data</span><span class="op">$</span><span class="va">total_products_per_company</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="co"># FIXME? Do we really want grouped output?</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">company_name</span>, <span class="va">.data</span><span class="op">$</span><span class="va">transition_risk</span>, <span class="va">.data</span><span class="op">$</span><span class="va">scenario</span>, <span class="va">.data</span><span class="op">$</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="co"># FIXME: Do we really want distinct_all()? It's superseded by</span></span>
-<span>    <span class="co"># distinct(across(everything() ... and also here it seems we can use just</span></span>
-<span>    <span class="co"># `distinct()`. See ?distinct_all(), ?distinct(), and also this reprex:</span></span>
-<span>    <span class="co"># https://gist.github.com/maurolepore/45c899b9429f5d48004e2e127257cc29</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct_all.html" class="external-link">distinct_all</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="op">}</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level3">
 <h3 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h3>
 <p>The tiltIndicator package comes with example datasets</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reshaped_istr_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">istr_companies</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 33</span></span>
 <span><span class="co">#&gt; Columns: 36</span></span>
@@ -390,13 +219,8 @@ medium, and low sector transition risk</li>
 </h3>
 <p>Use mapper that serves as a sector classification bridge between the
 Ecoinvent’s’ sectors and the WEO 2022 file.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">istr_companies</span> <span class="op">&lt;-</span> <span class="fu">istr_mapping</span><span class="op">(</span><span class="va">reshaped_istr_companies</span>, <span class="va">istr_ep_weo</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in left_join(companies, ep_weo, by = c(eco_sectors = "ECO_sector")): Detected an unexpected many-to-many relationship between `x` and `y`.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Row 1 of `x` matches multiple rows in `y`.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Row 110 of `y` matches multiple rows in `x`.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> If a many-to-many relationship is expected, set `relationship =</span></span>
-<span><span class="co">#&gt;   "many-to-many"` to silence this warning.</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">istr_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/istr_mapping.html">istr_mapping</a></span><span class="op">(</span><span class="va">reshaped_istr_companies</span>, <span class="va">istr_ep_weo</span><span class="op">)</span></span>
 <span><span class="va">istr_companies</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,174 × 41</span></span></span>
 <span><span class="co">#&gt;        X company_name        main_activity address company_city postcode country</span></span>
@@ -425,14 +249,9 @@ Ecoinvent’s’ sectors and the WEO 2022 file.</p>
 <p>Each product of the company will be matched to a climate-relevant
 sector.</p>
 <p>We join this on the sectors.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">with_reductions</span> <span class="op">&lt;-</span> <span class="va">istr_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">istr_add_reductions</span><span class="op">(</span><span class="va">istr_weo_2022</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in left_join(companies, weo_2022, by = c(weo_product_mapper = "product", : Detected an unexpected many-to-many relationship between `x` and `y`.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Row 1 of `x` matches multiple rows in `y`.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Row 5 of `y` matches multiple rows in `x`.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> If a many-to-many relationship is expected, set `relationship =</span></span>
-<span><span class="co">#&gt;   "many-to-many"` to silence this warning.</span></span>
+<span>  <span class="fu"><a href="../reference/istr_add_reductions.html">istr_add_reductions</a></span><span class="op">(</span><span class="va">istr_weo_2022</span><span class="op">)</span></span>
 <span><span class="va">with_reductions</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4,672 × 49</span></span></span>
 <span><span class="co">#&gt;        X company_name        main_activity address company_city postcode country</span></span>
@@ -468,8 +287,8 @@ risk.</p></li>
 <li><p>reductions &gt; 70% means high product sector transition
 risk.</p></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">with_transition_risk</span> <span class="op">&lt;-</span> <span class="fu">istr_add_transition_risk</span><span class="op">(</span><span class="va">with_reductions</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">with_transition_risk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/istr_add_transition_risk.html">istr_add_transition_risk</a></span><span class="op">(</span><span class="va">with_reductions</span><span class="op">)</span></span>
 <span><span class="va">with_transition_risk</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4,672 × 50</span></span></span>
 <span><span class="co">#&gt;        X company_name        main_activity address company_city postcode country</span></span>
@@ -516,18 +335,20 @@ column, and join the data frame to have the data with the numbers of
 products that a company produces.</p>
 <p>Then, the score aggregated is calculated by summing (per transition
 risk) the products over the total numbers of products per company.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">with_score_aggregated</span> <span class="op">&lt;-</span> <span class="va">with_transition_risk</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">istr_aggregate_scores</span><span class="op">(</span><span class="va">istr_companies</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/istr_aggregate_scores.html">istr_aggregate_scores</a></span><span class="op">(</span><span class="va">istr_companies</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in</span></span>
 <span><span class="co">#&gt; dplyr 1.1.0.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `reframe()` instead.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> When switching from `summarise()` to `reframe()`, remember that `reframe()`</span></span>
 <span><span class="co">#&gt;   always returns an ungrouped data frame and adjust accordingly.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">tiltIndicator</span> package.</span></span>
+<span><span class="co">#&gt;   Please report the issue at</span></span>
+<span><span class="co">#&gt;   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/2DegreesInvesting/tiltIndicator/issues&gt;</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
-<span><span class="co">#&gt; `summarise()` has grouped output by 'company_name', 'transition_risk',</span></span>
-<span><span class="co">#&gt; 'scenario', 'year'. You can override using the `.groups` argument.</span></span>
 <span><span class="va">with_score_aggregated</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 5</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   company_name, transition_risk, scenario, year [16]</span></span></span>

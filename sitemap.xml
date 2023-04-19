@@ -52,10 +52,22 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_add_reductions.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_add_transition_risk.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_aggregate_scores.html</loc>
+  </url>
+  <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_companies.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_ep_weo.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_mapping.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_weo_2022.html</loc>
