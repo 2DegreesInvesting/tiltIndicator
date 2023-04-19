@@ -5,7 +5,7 @@
 #' can replace/delete the NA values later through this function if needed. For
 #' now, it stops the workflow with an error message for user to act upon it.
 #'
-#' @param data
+#' @param data A dataframe/tibble
 #'
 #' @export
 #'

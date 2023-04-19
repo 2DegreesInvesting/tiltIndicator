@@ -7,7 +7,7 @@
 missing_co2(data)
 }
 \arguments{
-\item{data}{}
+\item{data}{A dataframe/tibble}
 }
 \description{
 Stop the workflow with an error message if data is missing in co2 column. We
