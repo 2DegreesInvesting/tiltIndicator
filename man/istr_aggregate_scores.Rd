@@ -27,8 +27,11 @@ Calculates on a company-level the percentage of products that are in low /
 medium / high transition risk.
 }
 \examples{
-with_transition_risk |>
-istr_aggregate_scores(istr_companies)
+istr_companies |>
+  istr_mapping(istr_ep_weo) |>
+  istr_add_reductions(istr_weo_2022) |>
+  istr_add_transition_risk() |>
+  istr_aggregate_scores(istr_companies)
 }
 \seealso{
 Other ISTR functions: 
