@@ -18,5 +18,5 @@ test_that("outputs a result for companies without any products", {
     pstr_add_transition_risk() |>
     pstr_aggregate_scores(companies)
 
-  expect_equal(FALSE, is.null(out$score_aggregated))
+  expect_equal(out$score_aggregated, 100)
 })
