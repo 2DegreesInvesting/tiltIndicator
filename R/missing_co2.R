@@ -12,7 +12,7 @@
 #' @examples
 #' library(tibble, warn.conflicts = FALSE)
 #'
-#' data <- tibble::tibble(input_co2 = c(1, NA))
+#' data <- tibble::tibble(input_co2 = c(1, 4))
 #' missing_co2(data)
 missing_co2 <- function(data) {
   if (anyNA(data$input_co2)) {

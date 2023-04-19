@@ -17,6 +17,6 @@ now, it stops the workflow with an error message for user to act upon it.
 \examples{
 library(tibble, warn.conflicts = FALSE)
 
-data <- tibble::tibble(input_co2 = c(1, NA))
+data <- tibble::tibble(input_co2 = c(1, 4))
 missing_co2(data)
 }
