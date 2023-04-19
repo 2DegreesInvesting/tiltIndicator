@@ -3,7 +3,7 @@
 \docType{data}
 \name{ictr_inputs}
 \alias{ictr_inputs}
-\title{TODO: Document}
+\title{A dataset with fake input Co2-footprint, input sector, and activity_uuid.}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 75 rows and 5 columns.
 }
@@ -14,7 +14,7 @@ TODO
 ictr_inputs
 }
 \description{
-TODO: Document
+A dataset with fake input Co2-footprint, input sector, and activity_uuid.
 }
 \examples{
 ictr_inputs

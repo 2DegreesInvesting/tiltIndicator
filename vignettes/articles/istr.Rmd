@@ -10,6 +10,5 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r child=tiltIndicator:::mvp_path("istr.Rmd")}
-
+```{r child=tiltIndicator::extdata_path("mvp/istr.Rmd")}
 ```
