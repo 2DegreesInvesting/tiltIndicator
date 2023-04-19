@@ -1,16 +1,16 @@
 #' A dataset with fake companies, products, sectors and subsectors
 #'
 #' @author Linda Delacombaz.
-#' @source TODO
+#' @source Companies, sectors, subsectors and products from Europages.
 #' @family PSTR datasets
 #' @examples
 #' pstr_companies
 "pstr_companies"
 
-#' A bridge between sector and subsectors in europages and in `weo_2022`.
+#' A sector mapper between Europages and `weo_2022`.
 #'
 #' @author Linda Delacombaz.
-#' @source TODO
+#' @source Internal source.
 #' @family PSTR datasets
 #' @examples
 #' pstr_ep_weo
@@ -21,7 +21,9 @@
 #' * TODO: Where does it come from and what wrangling did you do?
 #'
 #' @author Linda Delacombaz.
-#' @source TODO
+#' @source Data from the \href{https://www.iea.org/}{International Energy Agency}
+#' (IEA)'s \href{https://www.iea.org/topics/world-energy-outlook}{World Energy Outlook}
+#' (WEO) 2022 scenario on the global level.
 #' @family PSTR datasets
 #' @examples
 #' pstr_weo_2022

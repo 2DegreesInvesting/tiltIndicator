@@ -2,21 +2,35 @@
 % Please edit documentation in R/ictr_score_companies.R
 \name{ictr_score_companies}
 \alias{ictr_score_companies}
-\title{TODO}
+\title{Aggregate the input products' scores for each company}
 \usage{
 ictr_score_companies(ecoinvent_scores, companies)
 }
 \arguments{
-\item{ecoinvent_scores}{TODO}
+\item{ecoinvent_scores}{A \link{data.frame}. The output of \link{ictr_score_inputs}.}
 
-\item{companies}{TODO}
+\item{companies}{A \link{data.frame} like \link{ictr_companies}.}
 }
 \value{
 A \link{data.frame} with three rows for each company and these columns:
-TODO
+\itemize{
+\item \code{company_id}
+\item \code{score}
+\item \code{share_all}
+\item \code{share_unit}
+\item \code{share_sector}
+\item \code{share_unit_sec}
+where \code{share_all}, \code{share_unit}, \code{share_sector}, and \code{share_unit_sec} holds
+the aggregated scores in percentage.
+}
 }
 \description{
-TODO
+Calculates on a company-level the percentage of input products that are in
+low / medium / high transition risk due to the input products' relative
+carbon footprint.
+
+Activities are mapped with the companies' input products using common columns
+present in dataframes \code{ecoinvent_scores} and \code{companies}.
 }
 \examples{
 library(dplyr, warn.conflicts = FALSE)

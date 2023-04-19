@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9022
+
+* Add istr mvp ( @Lyanneho #144).
+
 # tiltIndicator 0.0.0.9021
 
 BREAKING CHANGES

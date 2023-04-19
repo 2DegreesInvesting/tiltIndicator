@@ -1,0 +1,13 @@
+The Product Sector Transition Risk Indicator measures the transition risk of
+products based on the sector's emissions targets the product belongs to. Those
+sector emission reduction targets vary across scenarios (e.g., net zero
+scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in
+2030, 2040, 2050 to achieve the targets).
+
+After assessing each product, all the products with the same category will be
+aggregated and set in relation to all products of the company. We, therefore,
+derive company-level information.
+
+The goal of the transition risk MVP is to create a first draft of how the
+transition risk indicator would be build in code in order to convert it into
+code production easily in the future.
