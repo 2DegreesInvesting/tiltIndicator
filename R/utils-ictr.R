@@ -21,3 +21,7 @@ ictr_companies_crucial <- function() {
     "unit"
   )
 }
+
+demo_ictr_data <- function(input_co2, unit = "kg", sector = "xyz", ...){
+  tibble::tibble(input_co2 = input_co2, unit = unit, sector = sector, ...)
+}

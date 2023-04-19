@@ -75,6 +75,7 @@ test_that("returns 3 rows per company for any slice of inputs", {
   expect_equal(nrow(out), 6L)
 })
 
-test_that("There are no NAs in the input_co2 column", {
-  expect_false(any(is.na(ictr_inputs$input_co2)))
+test_that("our `demo_ictr_data` has missing value in `input_co2`", {
+  data <- demo_ictr_data(input_co2 = c(1, NA))
+  expect_error(missing_co2(data), "input_co2.*missing")
 })
