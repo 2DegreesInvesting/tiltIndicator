@@ -3,7 +3,6 @@
 #'
 #' @param companies A [data.frame] like [istr_companies].
 #' @param ep_weo A [data.frame] like [istr_ep_weo].
-#' @param weo_2022 A [data.frame] like [istr_weo_2022].
 #'
 #' @family ISTR functions
 #'

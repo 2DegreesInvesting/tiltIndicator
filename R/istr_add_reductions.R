@@ -3,7 +3,6 @@
 #' Adds the emission reduction values for each company's product(s).
 #'
 #' @param companies A [data.frame] like [istr_companies].
-#' @param ep_weo A [data.frame] like [istr_ep_weo].
 #' @param weo_2022 A [data.frame] like [istr_weo_2022].
 #'
 #' @family ISTR functions
@@ -23,7 +22,7 @@
 #' istr_companies |>
 #'   istr_mapping(istr_ep_weo) |>
 #'   istr_add_reductions(istr_weo_2022)
-istr_add_reductions <- function(companies, weo_2022) {
+istr_add_ieductions <- function(companies, weo_2022) {
   companies |>
     #left_join(ep_weo, by = c("eco_sectors" = "ECO_sector")) |>
     left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
