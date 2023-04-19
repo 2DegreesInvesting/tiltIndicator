@@ -302,9 +302,6 @@ transition risk input products.</p>
 carbon footprint of each product, they are aggregated at the
 company-level. We derive what percentage of the input products are high,
 medium and low transition risk.</p>
-<p>The goal of the transition risk MVP is to create a first draft of how
-the transition risk indicator for inputs would be build in code in order
-to convert it into code production easily in the future.</p>
 <p>The transition risk indicator consists of 2 broad steps:</p>
 <ol style="list-style-type: decimal">
 <li>Score input products: Identifying the input products for each
@@ -376,9 +373,6 @@ products required by the company to produce its products have high,
 medium and low sector transition risk. We, therefore, derive the
 company-level information.</p>
 <p>Please note that carbon emissions or emissions always mean CO2e.</p>
-<p>The goal of the transition risk MVP is to create a first draft of how
-the sector transition risk indicator for inputs would be build in code
-in order to convert it into code production easily in the future.</p>
 <div class="section level3">
 <h3 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a>
 </h3>
@@ -415,13 +409,9 @@ produces. We derive the Product Carbon Transition Risks.</p>
 equivalently. Carbon footprint refers only on the emissions which occur
 at the production stage of the product and not the emissions from the
 inputs. The unit is CO2e in kg.</p>
-<p>The goal of the transition risk MVP is to create a first draft of how
-the transition risk indicator for products would be build in code in
-order to convert it into code production easily in the future. This MVP
-should provide the share of products with “low”, “medium”, or “high”
-relative production emissions per company.</p>
-<p>In this markdown file the aim is to prepare data so that they contain
-the following:</p>
+<p>This indicator provides the share of products with “low”, “medium”,
+or “high” relative production emissions per company.</p>
+<p>The output of this indicator contains the following:</p>
 <ul>
 <li>a column with production emissions</li>
 <li>a column indicating the percentile relative to (i) all products with
@@ -464,9 +454,6 @@ targets).</p>
 <p>After assessing each product, all the products with the same category
 are aggregated and set in relation to all products of the company. We,
 therefore, derive company-level information.</p>
-<p>The goal of the transition risk MVP is to create a first draft of how
-the transition risk indicator would be build in code in order to convert
-it into code production easily in the future.</p>
 <div class="section level3">
 <h3 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a>
 </h3>
