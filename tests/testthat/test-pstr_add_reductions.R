@@ -81,7 +81,7 @@ test_that("with 0-row companies outputs 0 rows", {
   expect_equal(nrow(out), 0L)
 })
 
-test_that("still adds reductions witout any products", {
+test_that("still adds reductions without any products", {
   companies <- pstr_toy_companies()
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
