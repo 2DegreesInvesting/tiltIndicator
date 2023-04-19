@@ -63,4 +63,5 @@ stop_if_any_missing_input_co2 <- function(data) {
   if (anyNA(data$input_co2)) {
     stop("Each `input_co2` must not be missing.")
   }
+  invisible(data)
 }
