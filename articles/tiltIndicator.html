@@ -322,8 +322,8 @@ have one sector per product yet)</li>
 <h3 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ictr_inputs</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="../reference/ictr_score_inputs.html">ictr_score_inputs</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">ictr_inputs</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/ictr_score_inputs.html">ictr_score_inputs</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/ictr_score_companies.html">ictr_score_companies</a></span><span class="op">(</span><span class="va">ictr_companies</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 15 × 6</span></span></span>
 <span><span class="co">#&gt;    company_id             score share_all share_unit share_sector share_unit_sec</span></span>
@@ -459,8 +459,8 @@ segment</li>
 <h3 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">pctr_companies</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 5</span></span></span>
 <span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
@@ -493,8 +493,8 @@ therefore, derive company-level information.</p>
 <h3 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pstr_companies</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="../reference/pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">pstr_ep_weo</span>, <span class="va">pstr_weo_2022</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<code class="sourceCode R"><span><span class="va">pstr_companies</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">pstr_ep_weo</span>, <span class="va">pstr_weo_2022</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pstr_add_transition_risk.html">pstr_add_transition_risk</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 18</span></span></span>
 <span><span class="co">#&gt;    company_id company_name  products  sector subsector EP_categories_id EP_group</span></span>
