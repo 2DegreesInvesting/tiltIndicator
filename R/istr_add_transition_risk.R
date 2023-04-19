@@ -24,7 +24,8 @@
 #'
 #' @examples
 #' istr_companies |>
-#'   istr_add_reductions(istr_ep_weo, istr_weo_2022) |>
+#'   istr_mapping(istr_ep_weo) |>
+#'   istr_add_reductions(istr_weo_2022) |>
 #'   istr_add_transition_risk()
 istr_add_transition_risk <- function(with_reductions) {
   with_reductions |>
