@@ -18,8 +18,11 @@
 #' @export
 #'
 #' @examples
-#' with_transition_risk |>
-#' istr_aggregate_scores(istr_companies)
+#' istr_companies |>
+#'   istr_mapping(istr_ep_weo) |>
+#'   istr_add_reductions(istr_weo_2022) |>
+#'   istr_add_transition_risk() |>
+#'   istr_aggregate_scores(istr_companies)
 istr_aggregate_scores <- function(with_transition_risk, companies) {
   n_products_per_companies <- companies |>
     group_by(.data$company_name) |>
