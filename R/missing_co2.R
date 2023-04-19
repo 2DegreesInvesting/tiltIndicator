@@ -10,7 +10,9 @@
 #' @export
 #'
 #' @examples
-#' data <- tibble(input_co2 = c(1, NA))
+#' library(tibble, warn.conflicts = FALSE)
+#'
+#' data <- tibble::tibble(input_co2 = c(1, NA))
 #' missing_co2(data)
 missing_co2 <- function(data) {
   if (anyNA(data$input_co2)) {

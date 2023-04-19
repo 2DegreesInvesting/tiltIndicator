@@ -15,6 +15,8 @@ can replace/delete the NA values later through this function if needed. For
 now, it stops the workflow with an error message for user to act upon it.
 }
 \examples{
-data <- tibble(input_co2 = c(1, NA))
+library(tibble, warn.conflicts = FALSE)
+
+data <- tibble::tibble(input_co2 = c(1, NA))
 missing_co2(data)
 }
