@@ -7,6 +7,7 @@
 
 #' TODO
 #'
+#' @author Lyanne Ho.
 #' @family ISTR datasets
 #' @examples
 #' istr_ep_weo
@@ -14,6 +15,7 @@
 
 #' TODO
 #'
+#' @author Lyanne Ho.
 #' @family ISTR datasets
 #' @examples
 #' istr_weo_2022

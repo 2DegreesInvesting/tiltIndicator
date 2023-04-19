@@ -62,7 +62,11 @@ ictr_inputs |>
 ### Example
 
 ```{r}
-# TODO
+istr_companies |>
+  istr_mapping(istr_ep_weo) |>
+  istr_add_reductions(istr_weo_2022) |>
+  istr_add_transition_risk() |>
+  istr_aggregate_scores(istr_companies)
 ```
 
 ## Product carbon transition risk (PCTR)
