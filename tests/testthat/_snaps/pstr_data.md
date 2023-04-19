@@ -32,7 +32,7 @@
       [[3]]
                       products
       1                 screws
-      2        aluminium_alloy
+      2                   <NA>
       3       ultrafilstration
       4            frozen_food
       5                   oils

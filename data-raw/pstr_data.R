@@ -3,7 +3,7 @@
 pstr_companies <- tibble::tribble(
   ~company_id,        ~company_name,               ~products,                      ~sector,                     ~subsector,
             1,      "Peasant Peter",                "screws", "steel_metal_transformation",    "bending_steels_and_metals",
-            2,      "Peasant Peter",       "aluminium_alloy",               "steel_metals",             "aluminium_alloys",
+            2,      "Peasant Peter",                      NA,               "steel_metals",             "aluminium_alloys",
             3,      "Peasant Peter",      "ultrafilstration",                       "cars", "vehicle_maintenance_products",
             4,       "Peasant Paul",           "frozen_food",                "frozen_food",                "cheese_slicer",
             5,  "Tom's Car Company",                  "oils",                       "cars",                  "automobiles",
