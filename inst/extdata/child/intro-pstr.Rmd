@@ -4,7 +4,7 @@ sector emission reduction targets vary across scenarios (e.g., net zero
 scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in
 2030, 2040, 2050 to achieve the targets).
 
-After assessing each product, all the products with the same category will be
+After assessing each product, all the products with the same category are
 aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 

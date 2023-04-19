@@ -1,10 +1,21 @@
 The Product Carbon Transition Risk measures the transition risk on the product-level of a company. The indicator is expressed in the percentage of all products that are at high risk, medium risk or low risk due to the products' relative carbon footprint. The assessment is first performed on a product-level and can then be aggregated to the company-level.
 
-The Product Carbon Transition Risk measures the relative carbon footprint per product. As a default option each product will be compared to the carbon footprint of every other product. Alternatively, users can also choose to compare those products of the same type, so e.g., comparing only raw materials with each other. Products with a higher carbon-footprint will also face a higher risk.
+The Product Carbon Transition Risk measures the relative carbon footprint per
+product. As a default option each product is compared to the carbon footprint of
+every other product. Alternatively, users can also choose to compare those
+products of the same type, so e.g., comparing only raw materials with each
+other. Products with a higher carbon-footprint face a higher risk.
 
-After identifying each carbon footprint for one product, the products will be ranked according to their carbon footprint. Products in the highest percentile (≥70%) will be classified as high transition risk products. Products in the medium percentile (between ≥30% and <70%) will be classified as medium transition risk products. Products in the lowest percentile (<30%) will be classified as low transition risk products.
+After identifying each carbon footprint for one product, the products are ranked
+according to their carbon footprint. Products in the highest percentile (≥70%)
+are classified as high transition risk products. Products in the medium
+percentile (between ≥30% and <70%) are classified as medium transition risk
+products. Products in the lowest percentile (<30%) are classified as low
+transition risk products.
 
-After categorization, we will aggregate all products from the same category and set them in relation to all products that the company produces. We derive the Product Carbon Transition Risks.
+After categorization, we aggregate all products from the same category and set
+them in relation to all products that the company produces. We derive the
+Product Carbon Transition Risks.
 
 Please note that carbon footprints, and emissions are used equivalently. Carbon footprint refers only on the emissions which occur at the production stage of the product and not the emissions from the inputs. The unit is CO2e in kg.
 
