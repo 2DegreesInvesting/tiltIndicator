@@ -217,7 +217,7 @@ The Input Product Sector Risk Indicator assesses the transition risk of the inpu
 
 If an input product belongs to a sector in which reduction targets are over 70%, it belongs to a high-risk sector and is classified as ‘high sector transition risk’. If the input product belongs to a sector in which reduction targets are between 30-70%, the product is classified into the category ‘medium sector transition risk’ and if it is below 30% it belongs to the category of ‘low sector transition risk’. If it does not belong to a sector that has decarbonization targets, it is classified as ‘no sector transition risk’.
 
-After assessing the input products for each product, they will be aggregated at company-level to derive what percentage of the input products required by the company to produce its products have high, medium and low sector transition risk. We, therefore, derive the company-level information.
+After assessing the input products for each product, they are aggregated at company-level to derive what percentage of the input products required by the company to produce its products have high, medium and low sector transition risk. We, therefore, derive the company-level information.
 
 Please note that carbon emissions or emissions always mean CO2e.
 
@@ -239,7 +239,7 @@ istr_companies
 
 ## Step 2: Matching the input products to the sectors
 
-Each product of the company will be matched to a climate-relevant sector.
+Each product of the company is matched to a climate-relevant sector.
 
 We join this on the sectors.
 
