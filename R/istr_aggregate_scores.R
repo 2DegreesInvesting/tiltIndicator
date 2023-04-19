@@ -56,5 +56,4 @@ istr_aggregate_scores <- function(with_transition_risk, companies) {
     # `distinct()`. See ?distinct_all(), ?distinct(), and also this reprex:
     # https://gist.github.com/maurolepore/45c899b9429f5d48004e2e127257cc29
     distinct_all()
-
 }
