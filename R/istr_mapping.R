@@ -17,7 +17,8 @@
 #'
 #' @examples
 #' istr_companies |>
-#'   istr_add_reductions(istr_ep_weo, istr_weo_2022)
+#'   istr_mapping(istr_ep_weo) |>
+#'   istr_add_reductions(istr_weo_2022)
 istr_mapping <- function(companies, ep_weo) {
   companies |>
     left_join(ep_weo, by = c("eco_sectors" = "ECO_sector"))
