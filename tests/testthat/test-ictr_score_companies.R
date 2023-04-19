@@ -77,5 +77,5 @@ test_that("returns 3 rows per company for any slice of inputs", {
 
 test_that("our `demo_ictr_data` has missing value in `input_co2`", {
   data <- demo_ictr_data(input_co2 = c(1, NA))
-  expect_error(missing_co2(data), "input_co2.*missing")
+  expect_error(stop_if_any_missing_input_co2(data), "input_co2.*missing")
 })
