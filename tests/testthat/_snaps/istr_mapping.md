@@ -328,16 +328,16 @@
       6  1
       
       [[37]]
-                           ï..EP_categories_id.x
+                             ï..EP_categories_id
       1 d3a7a3c40afd18a7a840942262099f23f65c19a0
-      2 d3a7a3c40afd18a7a840942262099f23f65c19a0
-      3 d3a7a3c40afd18a7a840942262099f23f65c19a0
-      4 d3a7a3c40afd18a7a840942262099f23f65c19a0
-      5 d3a7a3c40afd18a7a840942262099f23f65c19a0
-      6 d3a7a3c40afd18a7a840942262099f23f65c19a0
+      2 8d926b734410de5ba68daa17089a14c1bc1b70f7
+      3 2eed5a1fd604b1d3ec561a07257b8a1eb99f2cfd
+      4 157f4f5953d1a5bfee474217567dc2e650685d0b
+      5 2092de203e479b67bea02356318c0c8fc8e0c45c
+      6 62dea331c70a02280d5f71a27ec140305aff9296
       
       [[38]]
-                    ECO_group.x
+                      ECO_group
       1 metallurgy_metalworking
       2 metallurgy_metalworking
       3 metallurgy_metalworking
@@ -346,52 +346,7 @@
       6 metallurgy_metalworking
       
       [[39]]
-                  ECO_subsector.x
-      1 bending_steels_and_metals
-      2 bending_steels_and_metals
-      3 bending_steels_and_metals
-      4 bending_steels_and_metals
-      5 bending_steels_and_metals
-      6 bending_steels_and_metals
-      
-      [[40]]
-        weo_product_mapper.x
-      1                Total
-      2                Total
-      3                Total
-      4                Total
-      5                Total
-      6                Total
-      
-      [[41]]
-        weo_flow_mapper.x
-      1    Iron and steel
-      2    Iron and steel
-      3    Iron and steel
-      4    Iron and steel
-      5    Iron and steel
-      6    Iron and steel
-      
-      [[42]]
-                           ï..EP_categories_id.y
-      1 d3a7a3c40afd18a7a840942262099f23f65c19a0
-      2 8d926b734410de5ba68daa17089a14c1bc1b70f7
-      3 2eed5a1fd604b1d3ec561a07257b8a1eb99f2cfd
-      4 157f4f5953d1a5bfee474217567dc2e650685d0b
-      5 2092de203e479b67bea02356318c0c8fc8e0c45c
-      6 62dea331c70a02280d5f71a27ec140305aff9296
-      
-      [[43]]
-                    ECO_group.y
-      1 metallurgy_metalworking
-      2 metallurgy_metalworking
-      3 metallurgy_metalworking
-      4 metallurgy_metalworking
-      5 metallurgy_metalworking
-      6 metallurgy_metalworking
-      
-      [[44]]
-                    ECO_subsector.y
+                      ECO_subsector
       1   bending_steels_and_metals
       2     boilers_stainless_steel
       3    boring_steels_and_metals
@@ -399,22 +354,22 @@
       5 broaching_steels_and_metals
       6   bronzing_steel_and_metals
       
-      [[45]]
-        weo_product_mapper.y
-      1                Total
-      2                Total
-      3                Total
-      4                Total
-      5                Total
-      6                Total
+      [[40]]
+        weo_product_mapper
+      1              Total
+      2              Total
+      3              Total
+      4              Total
+      5              Total
+      6              Total
       
-      [[46]]
-        weo_flow_mapper.y
-      1    Iron and steel
-      2    Iron and steel
-      3    Iron and steel
-      4    Iron and steel
-      5    Iron and steel
-      6    Iron and steel
+      [[41]]
+        weo_flow_mapper
+      1  Iron and steel
+      2  Iron and steel
+      3  Iron and steel
+      4  Iron and steel
+      5  Iron and steel
+      6  Iron and steel
       
 

@@ -1,5 +1,5 @@
 test_that("hasn't changed", {
-  out <- istr_mapping(data, istr_ep_weo) |>
+  out <- istr_mapping(istr_companies, istr_ep_weo) |>
     # FIXME: This dataset is surpisingly large
     head() |>
     format_robust_snapshot() |>
