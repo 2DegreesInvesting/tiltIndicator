@@ -2,7 +2,7 @@
 % Please edit documentation in R/missing_co2.R
 \name{missing_co2}
 \alias{missing_co2}
-\title{Stop the workflow with an error message if data is missing in co2 column}
+\title{Throw error for NA values in co2 column}
 \usage{
 missing_co2(data)
 }
@@ -10,13 +10,11 @@ missing_co2(data)
 \item{data}{}
 }
 \description{
-Stop the workflow with an error message if data is missing in co2 column
-}
-\details{
-We can replace/delete the NA values later through this function if needed.
-For now, it stops the workflow with an error message for user to act upon it.
+Stop the workflow with an error message if data is missing in co2 column. We
+can replace/delete the NA values later through this function if needed. For
+now, it stops the workflow with an error message for user to act upon it.
 }
 \examples{
-data <- demo_ictr_data(input_co2 = c(1, NA))
+data <- tibble(input_co2 = c(1, NA))
 missing_co2(data)
 }
