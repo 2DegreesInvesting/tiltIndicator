@@ -32,7 +32,6 @@ setNames(lapply(datasets, get), datasets)
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-general.Rmd")}
-
 ```
 
 ## Input carbon transition risk (ICTR)
@@ -40,14 +39,13 @@ setNames(lapply(datasets, get), datasets)
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-ictr.Rmd")}
-
 ```
 
 ### Example
 
 ```{r}
-ictr_inputs |> 
-  ictr_score_inputs() |> 
+ictr_inputs |>
+  ictr_score_inputs() |>
   ictr_score_companies(ictr_companies)
 ```
 
@@ -56,7 +54,6 @@ ictr_inputs |>
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-istr.Rmd")}
-
 ```
 
 ### Example
@@ -74,14 +71,13 @@ istr_companies |>
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-pctr.Rmd")}
-
 ```
 
 ### Example
 
 ```{r}
-pctr_ecoinvent_co2 |> 
-  pctr_score_activities() |> 
+pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
   pctr_score_companies(pctr_companies)
 ```
 
@@ -90,13 +86,12 @@ pctr_ecoinvent_co2 |>
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-pstr.Rmd")}
-
 ```
 
 ### Example
 
 ```{r}
-pstr_companies |> 
-  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |> 
+pstr_companies |>
+  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk()
 ```

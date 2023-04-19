@@ -85,7 +85,7 @@ test_that("still adds reductions without any products", {
   companies <- pstr_toy_companies()
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
-  empty_products <- pstr_toy_companies('products' = NA)
+  empty_products <- pstr_toy_companies("products" = NA)
 
   out <- pstr_add_reductions(companies, ep_weo, weo)
   out_1 <- pstr_add_reductions(empty_products, ep_weo, weo)
