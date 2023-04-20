@@ -184,7 +184,7 @@ pctr
 
 ``` r
 # R/pstr_add_reductions.R
-pstr_add_reductions_new <- function(companies, scenario) {
+pstr_add_FIXME_reductions_new <- function(companies, scenario) {
   left_join(
     companies, scenario,
     by = join_by(type, sector, subsector),
@@ -195,10 +195,9 @@ pstr_add_reductions_new <- function(companies, scenario) {
 # R/pstr_prepare_scenario.R
 pstr_prepare_scenario <- function(ipr, weo) {
   bind_rows(
-    pstr_prepare_scenario_impl(ipr, "ipr"), 
+    pstr_prepare_scenario_impl(ipr, "ipr"),
     pstr_prepare_scenario_impl(weo, "weo")
   )
-
 }
 pstr_prepare_scenario_impl <- function(data, type) {
   data |>
@@ -211,7 +210,7 @@ pstr_prepare_scenario_impl <- function(data, type) {
 # R/pstr_prepare_companies.R
 pstr_prepare_companies <- function(data) {
   data |>
-    merge_scenario_columns() |> 
+    merge_scenario_columns() |>
     lowercase_characters() |>
     pivot_type_sector_subsector()
 }
@@ -252,7 +251,7 @@ scenario <- pstr_prepare_scenario(real$pstr_ipr_2022, real$pstr_weo_2022)
 
 ``` r
 companies |>
-  pstr_add_reductions_new(scenario) |>
+  pstr_add_FIXME_reductions_new(scenario) |>
   pstr_add_transition_risk() |>
   # FIXME: We lost `company_id`
   # FIXME: We lost `type`
@@ -280,7 +279,7 @@ QUESTION 1: De we expect only one type for some companies?
 ``` r
 companies |>
   slice(1) |>
-  pstr_add_reductions_new(scenario) |>
+  pstr_add_FIXME_reductions_new(scenario) |>
   pstr_add_transition_risk() |>
   count(type)
 #> # A tibble: 1 × 2
