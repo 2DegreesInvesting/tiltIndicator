@@ -85,16 +85,12 @@ glimpse(real$pstr_companies)
 
 > It actually should only be 4. 
 
-QUESTION 1. Which four columns do you want to pick: `.x` or `.y`?
+Which four columns do you want to pick: `.x` or `.y`?
+
+> Please include the values from the 4 columns .y into the 4 columns
 
 ```{r}
 remove_suffix <- function(x) gsub("[.].", "", x)
-
-pstr_companies_x <- select(real$pstr_companies, -ends_with(".y")) |>
-  relocate(ends_with(".x")) |>
-  rename_with(remove_suffix)
-pstr_companies_x
-
 pstr_companies_y <- select(real$pstr_companies, -ends_with(".x")) |>
   relocate(ends_with(".y")) |>
   rename_with(remove_suffix)
@@ -154,7 +150,7 @@ pstr_add_reductions_new <- function(ipr, weo, companies) {
   left_join(companies, reductions)
 }
 
-companies <- pstr_companies_x
+companies <- pstr_companies_y
 ipr <- real$pstr_ipr_2022
 weo <- real$pstr_weo_2022
 
@@ -190,7 +186,11 @@ companies |>
   pstr_aggregate_scores(companies)
 ```
 
-QUESTION 2: Does the result just above seem valid?
+The result seems invalid.
 
-QUESTION 3. Can we prepare prepare the data to generate datasets compatible with
-the current interface?
+> The dataset has `NA`s for all rows in `company_name`. This shouldn't be the
+case. `score_aggregated` is also `NA`.
+
+TODO: Peer-program with Tilman to develop a new version of the PSTR functions
+that takes the new data structure.
+

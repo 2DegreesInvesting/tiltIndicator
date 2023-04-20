@@ -207,38 +207,12 @@ glimpse(real$pstr_companies)
 
 > It actually should only be 4.
 
-QUESTION 1. Which four columns do you want to pick: `.x` or `.y`?
+Which four columns do you want to pick: `.x` or `.y`?
+
+> Please include the values from the 4 columns .y into the 4 columns
 
 ``` r
 remove_suffix <- function(x) gsub("[.].", "", x)
-
-pstr_companies_x <- select(real$pstr_companies, -ends_with(".y")) |>
-  relocate(ends_with(".x")) |>
-  rename_with(remove_suffix)
-pstr_companies_x
-#> # A tibble: 17 × 10
-#>    ipr_sector ipr_subsector  weo_product weo_flow       company_id  company_name
-#>    <chr>      <chr>          <chr>       <chr>          <chr>       <chr>       
-#>  1 <NA>       <NA>           <NA>        <NA>           cta-commod… cta - commo…
-#>  2 <NA>       <NA>           <NA>        <NA>           cbrit_0000… cbr-it      
-#>  3 Industry   Other Industry Total       Industry       manz-backt… manz backte…
-#>  4 Industry   Other Industry Total       Industry       manz-backt… manz backte…
-#>  5 Industry   Other Industry Total       Industry       manz-backt… manz backte…
-#>  6 Industry   Other Industry Total       Industry       manz-backt… manz backte…
-#>  7 Industry   Iron and Steel Total       Iron and steel barham-met… barham meta…
-#>  8 <NA>       <NA>           <NA>        <NA>           cta-commod… cta - commo…
-#>  9 <NA>       <NA>           <NA>        <NA>           cbrit_0000… cbr-it      
-#> 10 Industry   Other Industry Total       Industry       queso-quin… queso quint…
-#> 11 Industry   Other Industry Total       Industry       quesos-fin… quesos finc…
-#> 12 Industry   Other Industry Total       Industry       lusitania-… lusitania f…
-#> 13 Industry   Other Industry Total       Industry       lusitania-… lusitania f…
-#> 14 <NA>       <NA>           <NA>        <NA>           cbrit_0000… cbr-it      
-#> 15 <NA>       <NA>           <NA>        <NA>           cta-commod… cta - commo…
-#> 16 Industry   Chemicals      Total       Chemicals      kurt-schmi… kurt schmidt
-#> 17 Industry   Chemicals      Total       Chemicals      breuninger… breuninger …
-#> # ℹ 4 more variables: products <chr>, isic_4digit <dbl>, tilt_sector <chr>,
-#> #   tilt_subsector <chr>
-
 pstr_companies_y <- select(real$pstr_companies, -ends_with(".x")) |>
   relocate(ends_with(".y")) |>
   rename_with(remove_suffix)
@@ -368,7 +342,7 @@ pstr_add_reductions_new <- function(ipr, weo, companies) {
   left_join(companies, reductions)
 }
 
-companies <- pstr_companies_x
+companies <- pstr_companies_y
 ipr <- real$pstr_ipr_2022
 weo <- real$pstr_weo_2022
 
@@ -376,8 +350,8 @@ companies |>
   pstr_add_reductions_new(ipr, weo)
 #> Joining with `by = join_by(ipr_sector, ipr_subsector)`
 #> Warning in full_join(ipr, weo): Detected an unexpected many-to-many relationship between `x` and `y`.
-#> ℹ Row 3 of `x` matches multiple rows in `y`.
-#> ℹ Row 21 of `y` matches multiple rows in `x`.
+#> ℹ Row 1 of `x` matches multiple rows in `y`.
+#> ℹ Row 49 of `y` matches multiple rows in `x`.
 #> ℹ If a many-to-many relationship is expected, set `relationship =
 #>   "many-to-many"` to silence this warning.
 #> Joining with `by = join_by(scenario, region, weo_product, weo_flow, year,
@@ -411,8 +385,8 @@ companies |>
   pstr_add_transition_risk()
 #> Joining with `by = join_by(ipr_sector, ipr_subsector)`
 #> Warning in full_join(ipr, weo): Detected an unexpected many-to-many relationship between `x` and `y`.
-#> ℹ Row 3 of `x` matches multiple rows in `y`.
-#> ℹ Row 21 of `y` matches multiple rows in `x`.
+#> ℹ Row 1 of `x` matches multiple rows in `y`.
+#> ℹ Row 49 of `y` matches multiple rows in `x`.
 #> ℹ If a many-to-many relationship is expected, set `relationship =
 #>   "many-to-many"` to silence this warning.
 #> Joining with `by = join_by(scenario, region, weo_product, weo_flow, year,
@@ -444,8 +418,8 @@ companies |>
   pstr_aggregate_scores(companies)
 #> Joining with `by = join_by(ipr_sector, ipr_subsector)`
 #> Warning in full_join(ipr, weo): Detected an unexpected many-to-many relationship between `x` and `y`.
-#> ℹ Row 3 of `x` matches multiple rows in `y`.
-#> ℹ Row 21 of `y` matches multiple rows in `x`.
+#> ℹ Row 1 of `x` matches multiple rows in `y`.
+#> ℹ Row 49 of `y` matches multiple rows in `x`.
 #> ℹ If a many-to-many relationship is expected, set `relationship =
 #>   "many-to-many"` to silence this warning.
 #> Joining with `by = join_by(scenario, region, weo_product, weo_flow, year,
@@ -468,7 +442,10 @@ companies |>
 #> 12 <NA>         low             Stated Policies Scenario   2050               NA
 ```
 
-QUESTION 2: Does the result just above seem valid?
+The result seems invalid.
 
-QUESTION 3. Can we prepare prepare the data to generate datasets
-compatible with the current interface?
+> The dataset has `NA`s for all rows in `company_name`. This shouldn’t
+> be the case. `score_aggregated` is also `NA`.
+
+TODO: Peer-program with Tilman to develop a new version of the PSTR
+functions that takes the new data structure.
