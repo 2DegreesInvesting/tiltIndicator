@@ -156,12 +156,3 @@ companies |>
   pstr_aggregate_scores(companies)
 ```
 
-QUESTION 1: De we expect only one type for some companies?
-
-```{r}
-companies |>
-  slice(1) |>
-  pstr_add_FIXME_reductions_new(scenario) |>
-  pstr_add_transition_risk() |>
-  count(type)
-```
