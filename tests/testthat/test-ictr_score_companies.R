@@ -6,19 +6,19 @@ test_that("hasn't change", {
   expect_snapshot(out)
 })
 
-test_that("data must have activity_product_uuid and ei_activity", {
+test_that("data must have activity_uuid_product_uuid", {
   data <- slice(ictr_inputs, 1L) |>
-    select(-"activity_product_uuid", -"ei_activity") |>
+    select(-"activity_uuid_product_uuid") |>
     ictr_score_inputs()
   expect_error(
     ictr_score_companies(data, ictr_companies),
-    "activity_product_uuid.*ei_activity"
+    "activity_uuid_product_uuid"
   )
 })
 
 test_that("with invalid inputs all shares are 0 with no warning or error", {
   data <- slice(ictr_inputs, 1) |>
-    mutate(activity_product_uuid = "bad", ei_activity = "bad") |>
+    mutate(activity_uuid_product_uuid = "bad") |>
     ictr_score_inputs()
 
   out <- data |>

@@ -6,8 +6,7 @@ ictr_inputs_crucial <- function() {
   )
 
   crucial_in_ictr_score_companies <- c(
-    "activity_product_uuid",
-    "ei_activity"
+    "activity_uuid_product_uuid"
   )
 
   c(crucial_in_ictr_score_activities, crucial_in_ictr_score_companies)
@@ -15,9 +14,8 @@ ictr_inputs_crucial <- function() {
 
 ictr_companies_crucial <- function() {
   c(
-    "activity_product_uuid",
+    "activity_uuid_product_uuid",
     "company_id",
-    "ei_activity",
     "unit"
   )
 }

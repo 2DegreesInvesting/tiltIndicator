@@ -5,81 +5,81 @@
     Output
       [[1]]
          input_co2
-      1      73.58
-      2      96.00
-      3      39.07
-      4      80.12
-      5      10.72
-      6      25.71
-      7      16.93
-      8      55.82
-      9      29.13
-      10     92.74
-      11     15.34
-      12     69.08
-      13      3.66
-      14     47.99
-      15     73.58
-      16     92.14
-      17     60.71
-      18     25.74
-      19     95.44
-      20     99.69
-      21     16.93
-      22     55.48
-      23     80.12
-      24     55.82
-      25     92.74
-      26     47.26
-      27     -0.76
-      28     -3.78
-      29     57.24
-      30     42.07
-      31     49.19
-      32     43.49
-      33     66.53
-      34     26.26
-      35     27.19
-      36     29.97
-      37     14.99
-      38      2.92
-      39     17.03
-      40     47.26
-      41     24.40
-      42     -4.00
-      43     14.44
-      44     79.57
-      45     44.95
-      46     43.49
-      47      5.21
-      48     57.24
-      49     66.53
-      50     27.19
-      51     -3.90
-      52     88.16
-      53     91.29
-      54     65.75
-      55     -2.66
-      56     56.26
-      57     95.88
-      58      4.46
-      59     43.75
-      60     97.59
-      61     42.84
-      62     40.38
-      63     59.65
-      64     62.90
-      65     -3.90
-      66     96.63
-      67     71.86
-      68     55.58
-      69     -4.77
-      70     -2.05
-      71     95.88
-      72     68.96
-      73     65.75
-      74      4.46
-      75     97.59
+      1       7358
+      2         96
+      3       3907
+      4       8012
+      5       1072
+      6       2571
+      7       1693
+      8       5582
+      9       2913
+      10      9274
+      11      1534
+      12      6908
+      13       366
+      14      4799
+      15      7358
+      16      9214
+      17      6071
+      18      2574
+      19      9544
+      20      9969
+      21      1693
+      22      5548
+      23      8012
+      24      5582
+      25      9274
+      26      4726
+      27       -76
+      28      -378
+      29      5724
+      30      4207
+      31      4919
+      32      4349
+      33      6653
+      34      2626
+      35      2719
+      36      2997
+      37      1499
+      38       292
+      39      1703
+      40      4726
+      41       244
+      42        -4
+      43      1444
+      44      7957
+      45      4495
+      46      4349
+      47       521
+      48      5724
+      49      6653
+      50      2719
+      51       -39
+      52      8816
+      53      9129
+      54      6575
+      55      -266
+      56      5626
+      57      9588
+      58       446
+      59      4375
+      60      9759
+      61      4284
+      62      4038
+      63      5965
+      64       629
+      65       -39
+      66      9663
+      67      7186
+      68      5558
+      69      -477
+      70      -205
+      71      9588
+      72      6896
+      73      6575
+      74       446
+      75      9759
       
       [[2]]
                            input_sector
@@ -238,7 +238,7 @@
       75 metric ton*km
       
       [[4]]
-                                                             activity_product_uuid
+                                                        activity_uuid_product_uuid
       1  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
       2  be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
       3  977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
@@ -316,403 +316,325 @@
       75 06cbe7d7-5278-5fbc-ad20-d96261c18373_03bf1369-1eec-49d0-bc4b-8b29efa826b9
       
       [[5]]
-                                                                                          ei_activity
-      1                                            transport, freight, lorry 7.5-16 metric ton, EURO3
-      2  treatment of residues, MSWI-WWT, WW from maize starch production, residual material landfill
-      3                                                     market group for transport, freight train
-      4   treatment of waste polyvinylchloride, unsanitary landfill, moist infiltration class (300mm)
-      5                                                 market for ventilation duct, steel, 100x50 mm
-      6                              market for sodium silicate, without water, in 37% solution state
-      7                                     transport, passenger car, large size, natural gas, EURO 4
-      8                                                market for mineral supplement, for beef cattle
-      9                                                                        citric acid production
-      10                                                             sodium ethyl xanthate production
-      11                                                                        stone meal production
-      12                                                                   hydroformylation of butene
-      13                               market for energy and auxilliary inputs, metal working factory
-      14                                                         market for used lorry, 16 metric ton
-      15                                                     polysulfide production, sealing compound
-      16                               market for laser machining, metal, with CO2-laser, 3200W power
-      17                                                                 ammonium chloride production
-      18                                    market for chromium steel removed by milling, large parts
-      19                 heat production, at hot water tank, solar+gas, flat plate, multiple dwelling
-      20                                                       yarn production, cotton, ring spinning
-      21                                                           photovoltaic panel production, CIS
-      22                             market for sewage sludge, 70% water, WWT, WW from CRT production
-      23         treatment of bottom ash, MSWI-WWT, WW from maize starch production, slag compartment
-      24                                                                        television production
-      25                                          transport, freight, lorry 3.5-7.5 metric ton, EURO4
-      26                                           transport, freight, lorry 7.5-16 metric ton, EURO3
-      27 treatment of residues, MSWI-WWT, WW from maize starch production, residual material landfill
-      28                                                    market group for transport, freight train
-      29  treatment of waste polyvinylchloride, unsanitary landfill, moist infiltration class (300mm)
-      30                                                market for ventilation duct, steel, 100x50 mm
-      31                             market for sodium silicate, without water, in 37% solution state
-      32                                    transport, passenger car, large size, natural gas, EURO 4
-      33                                               market for mineral supplement, for beef cattle
-      34                                                                       citric acid production
-      35                                                             sodium ethyl xanthate production
-      36                                                                        stone meal production
-      37                                                                   hydroformylation of butene
-      38                               market for energy and auxilliary inputs, metal working factory
-      39                                                         market for used lorry, 16 metric ton
-      40                                                     polysulfide production, sealing compound
-      41                               market for laser machining, metal, with CO2-laser, 3200W power
-      42                                                                 ammonium chloride production
-      43                                    market for chromium steel removed by milling, large parts
-      44                 heat production, at hot water tank, solar+gas, flat plate, multiple dwelling
-      45                                                       yarn production, cotton, ring spinning
-      46                                                           photovoltaic panel production, CIS
-      47                             market for sewage sludge, 70% water, WWT, WW from CRT production
-      48         treatment of bottom ash, MSWI-WWT, WW from maize starch production, slag compartment
-      49                                                                        television production
-      50                                          transport, freight, lorry 3.5-7.5 metric ton, EURO4
-      51                                           transport, freight, lorry 7.5-16 metric ton, EURO3
-      52 treatment of residues, MSWI-WWT, WW from maize starch production, residual material landfill
-      53                                                    market group for transport, freight train
-      54  treatment of waste polyvinylchloride, unsanitary landfill, moist infiltration class (300mm)
-      55                                                market for ventilation duct, steel, 100x50 mm
-      56                             market for sodium silicate, without water, in 37% solution state
-      57                                    transport, passenger car, large size, natural gas, EURO 4
-      58                                               market for mineral supplement, for beef cattle
-      59                                                                       citric acid production
-      60                                                             sodium ethyl xanthate production
-      61                                                                        stone meal production
-      62                                                                   hydroformylation of butene
-      63                               market for energy and auxilliary inputs, metal working factory
-      64                                                         market for used lorry, 16 metric ton
-      65                                                     polysulfide production, sealing compound
-      66                               market for laser machining, metal, with CO2-laser, 3200W power
-      67                                                                 ammonium chloride production
-      68                                    market for chromium steel removed by milling, large parts
-      69                 heat production, at hot water tank, solar+gas, flat plate, multiple dwelling
-      70                                                       yarn production, cotton, ring spinning
-      71                                                           photovoltaic panel production, CIS
-      72                             market for sewage sludge, 70% water, WWT, WW from CRT production
-      73         treatment of bottom ash, MSWI-WWT, WW from maize starch production, slag compartment
-      74                                                                        television production
-      75                                          transport, freight, lorry 3.5-7.5 metric ton, EURO4
-      
-      [[6]]
            perc_all
-      1  0.78000000
-      2  0.94666667
-      3  0.38666667
-      4  0.82000000
-      5  0.18666667
-      6  0.29333333
-      7  0.24666667
-      8  0.58000000
-      9  0.36000000
-      10 0.88666667
-      11 0.22666667
-      12 0.74666667
-      13 0.13333333
-      14 0.52000000
-      15 0.78000000
-      16 0.86666667
-      17 0.65333333
-      18 0.30666667
-      19 0.90666667
+      1  0.79333333
+      2  0.12000000
+      3  0.41333333
+      4  0.83333333
+      5  0.22666667
+      6  0.32000000
+      7  0.28666667
+      8  0.60666667
+      9  0.38666667
+      10 0.90000000
+      11 0.26666667
+      12 0.76000000
+      13 0.16000000
+      14 0.54666667
+      15 0.79333333
+      16 0.88000000
+      17 0.68000000
+      18 0.33333333
+      19 0.92000000
       20 1.00000000
-      21 0.24666667
-      22 0.54666667
-      23 0.82000000
-      24 0.58000000
-      25 0.88666667
-      26 0.50000000
-      27 0.10666667
-      28 0.06666667
-      29 0.62000000
-      30 0.41333333
-      31 0.53333333
-      32 0.44666667
-      33 0.71333333
-      34 0.32000000
-      35 0.34000000
-      36 0.37333333
-      37 0.21333333
-      38 0.12000000
-      39 0.26666667
-      40 0.50000000
-      41 0.28000000
-      42 0.02666667
-      43 0.20000000
-      44 0.80000000
-      45 0.48000000
-      46 0.44666667
-      47 0.17333333
-      48 0.62000000
-      49 0.71333333
-      50 0.34000000
-      51 0.04666667
-      52 0.84000000
-      53 0.85333333
-      54 0.68666667
-      55 0.08000000
-      56 0.60000000
-      57 0.92666667
-      58 0.15333333
-      59 0.46666667
+      21 0.28666667
+      22 0.57333333
+      23 0.83333333
+      24 0.60666667
+      25 0.90000000
+      26 0.52666667
+      27 0.06666667
+      28 0.02666667
+      29 0.64666667
+      30 0.44000000
+      31 0.56000000
+      32 0.47333333
+      33 0.72666667
+      34 0.34666667
+      35 0.36666667
+      36 0.40000000
+      37 0.25333333
+      38 0.14666667
+      39 0.30666667
+      40 0.52666667
+      41 0.13333333
+      42 0.10666667
+      43 0.24000000
+      44 0.81333333
+      45 0.50666667
+      46 0.47333333
+      47 0.20000000
+      48 0.64666667
+      49 0.72666667
+      50 0.36666667
+      51 0.08666667
+      52 0.85333333
+      53 0.86666667
+      54 0.70000000
+      55 0.04000000
+      56 0.62666667
+      57 0.94000000
+      58 0.18000000
+      59 0.49333333
       60 0.98000000
-      61 0.42666667
-      62 0.40000000
-      63 0.64000000
-      64 0.66666667
-      65 0.04666667
+      61 0.45333333
+      62 0.42666667
+      63 0.66666667
+      64 0.21333333
+      65 0.08666667
       66 0.96000000
-      67 0.76000000
-      68 0.56000000
+      67 0.77333333
+      68 0.58666667
       69 0.01333333
-      70 0.09333333
-      71 0.92666667
-      72 0.73333333
-      73 0.68666667
-      74 0.15333333
+      70 0.05333333
+      71 0.94000000
+      72 0.74666667
+      73 0.70000000
+      74 0.18000000
       75 0.98000000
       
-      [[7]]
+      [[6]]
           perc_unit
       1  0.66666667
-      2  0.95555556
+      2  0.11111111
       3  0.44444444
-      4  0.87777778
+      4  0.90000000
       5  0.66666667
-      6  0.26666667
+      6  0.28888889
       7  0.33333333
-      8  0.57777778
-      9  0.35555556
-      10 0.93333333
-      11 0.24444444
-      12 0.80000000
-      13 0.13333333
-      14 0.50000000
-      15 0.84444444
+      8  0.60000000
+      9  0.37777778
+      10 0.95555556
+      11 0.26666667
+      12 0.82222222
+      13 0.15555556
+      14 0.66666667
+      15 0.86666667
       16 0.66666667
-      17 0.68888889
-      18 0.28888889
+      17 0.71111111
+      18 0.31111111
       19 1.00000000
       20 1.00000000
       21 0.33333333
-      22 0.53333333
-      23 0.87777778
-      24 0.66666667
+      22 0.55555556
+      23 0.90000000
+      24 0.83333333
       25 0.88888889
       26 0.55555556
-      27 0.08888889
-      28 0.22222222
-      29 0.63333333
+      27 0.04444444
+      28 0.11111111
+      29 0.65555556
       30 1.00000000
-      31 0.51111111
+      31 0.53333333
       32 0.66666667
-      33 0.75555556
-      34 0.31111111
-      35 0.33333333
-      36 0.37777778
-      37 0.22222222
-      38 0.11111111
-      39 0.33333333
-      40 0.48888889
+      33 0.77777778
+      34 0.33333333
+      35 0.35555556
+      36 0.40000000
+      37 0.24444444
+      38 0.13333333
+      39 0.50000000
+      40 0.51111111
       41 0.33333333
-      42 0.02222222
-      43 0.20000000
+      42 0.08888889
+      43 0.22222222
       44 0.66666667
-      45 0.46666667
+      45 0.48888889
       46 0.66666667
-      47 0.17777778
-      48 0.63333333
+      47 0.20000000
+      48 0.65555556
       49 1.00000000
       50 0.33333333
-      51 0.11111111
-      52 0.91111111
+      51 0.22222222
+      52 0.93333333
       53 0.77777778
-      54 0.72222222
+      54 0.74444444
       55 0.33333333
-      56 0.60000000
+      56 0.62222222
       57 1.00000000
-      58 0.15555556
-      59 0.44444444
+      58 0.17777778
+      59 0.46666667
       60 0.97777778
-      61 0.42222222
-      62 0.40000000
-      63 0.66666667
-      64 0.83333333
-      65 0.04444444
+      61 0.44444444
+      62 0.42222222
+      63 0.68888889
+      64 0.33333333
+      65 0.06666667
       66 1.00000000
-      67 0.82222222
-      68 0.55555556
+      67 0.84444444
+      68 0.57777778
       69 0.33333333
-      70 0.06666667
+      70 0.02222222
       71 1.00000000
-      72 0.77777778
-      73 0.72222222
+      72 0.80000000
+      73 0.74444444
       74 0.16666667
       75 1.00000000
       
-      [[8]]
+      [[7]]
            perc_sec
       1  0.91666667
-      2  0.98076923
+      2  0.11538462
       3  1.00000000
-      4  0.81730769
+      4  0.83653846
       5  0.40000000
-      6  0.26923077
-      7  0.20192308
+      6  0.30769231
+      7  0.25961538
       8  0.75000000
-      9  0.34615385
-      10 0.91346154
-      11 0.17307692
+      9  0.38461538
+      10 0.93269231
+      11 0.23076923
       12 1.00000000
       13 0.20000000
-      14 0.53846154
+      14 0.57692308
       15 0.91666667
-      16 0.88461538
+      16 0.90384615
       17 0.80000000
-      18 0.28846154
+      18 0.32692308
       19 1.00000000
       20 1.00000000
-      21 0.20192308
-      22 0.57692308
-      23 0.81730769
+      21 0.25961538
+      22 0.61538462
+      23 0.83653846
       24 0.75000000
-      25 0.91346154
-      26 0.50961538
+      25 0.93269231
+      26 0.54807692
       27 0.50000000
-      28 0.07692308
+      28 0.01923077
       29 0.58333333
-      30 0.40384615
-      31 0.55769231
-      32 0.45192308
-      33 0.72115385
+      30 0.44230769
+      31 0.59615385
+      32 0.49038462
+      33 0.74038462
       34 0.66666667
-      35 0.31730769
-      36 0.36538462
+      35 0.35576923
+      36 0.40384615
       37 0.60000000
-      38 0.11538462
-      39 0.23076923
-      40 0.50961538
-      41 0.25000000
-      42 0.01923077
+      38 0.15384615
+      39 0.28846154
+      40 0.54807692
+      41 0.13461538
+      42 0.09615385
       43 0.33333333
-      44 0.78846154
-      45 0.48076923
-      46 0.45192308
+      44 0.80769231
+      45 0.51923077
+      46 0.49038462
       47 0.33333333
       48 0.58333333
-      49 0.72115385
-      50 0.31730769
-      51 0.04807692
-      52 0.84615385
-      53 0.86538462
-      54 0.68269231
-      55 0.09615385
-      56 0.61538462
-      57 0.95192308
-      58 0.14423077
+      49 0.74038462
+      50 0.35576923
+      51 0.06730769
+      52 0.86538462
+      53 0.88461538
+      54 0.70192308
+      55 0.03846154
+      56 0.65384615
+      57 0.97115385
+      58 0.18269231
       59 1.00000000
       60 0.83333333
-      61 0.42307692
-      62 0.38461538
-      63 0.63461538
-      64 0.65384615
-      65 0.04807692
+      61 0.46153846
+      62 0.42307692
+      63 0.67307692
+      64 0.21153846
+      65 0.06730769
       66 1.00000000
-      67 0.76923077
-      68 0.59615385
+      67 0.78846154
+      68 0.63461538
       69 0.33333333
       70 0.16666667
-      71 0.95192308
-      72 0.75000000
-      73 0.68269231
-      74 0.14423077
+      71 0.97115385
+      72 0.76923077
+      73 0.70192308
+      74 0.18269231
       75 0.83333333
       
-      [[9]]
+      [[8]]
          perc_unit_sec
       1     1.00000000
-      2     0.96666667
+      2     0.10000000
       3     1.00000000
-      4     0.85000000
+      4     0.88333333
       5     1.00000000
-      6     0.20000000
+      6     0.23333333
       7     0.33333333
       8     1.00000000
-      9     0.30000000
-      10    0.93333333
-      11    0.16666667
+      9     0.33333333
+      10    0.96666667
+      11    0.20000000
       12    1.00000000
       13    0.33333333
-      14    0.60000000
+      14    0.80000000
       15    1.00000000
       16    1.00000000
       17    1.00000000
-      18    0.23333333
+      18    0.26666667
       19    1.00000000
       20    1.00000000
       21    0.33333333
-      22    0.53333333
-      23    0.85000000
+      22    0.56666667
+      23    0.88333333
       24    1.00000000
       25    1.00000000
       26    0.66666667
       27    0.50000000
-      28    0.33333333
+      28    0.16666667
       29    0.70000000
       30    1.00000000
-      31    0.50000000
+      31    0.53333333
       32    0.66666667
-      33    0.73333333
+      33    0.76666667
       34    0.50000000
-      35    0.26666667
-      36    0.33333333
+      35    0.30000000
+      36    0.36666667
       37    0.66666667
-      38    0.10000000
-      39    0.40000000
-      40    0.46666667
+      38    0.13333333
+      39    0.60000000
+      40    0.50000000
       41    0.50000000
-      42    0.03333333
+      42    0.06666667
       43    0.50000000
       44    1.00000000
-      45    0.43333333
+      45    0.46666667
       46    0.66666667
       47    0.40000000
       48    0.70000000
       49    1.00000000
       50    0.50000000
-      51    0.16666667
-      52    0.90000000
+      51    0.33333333
+      52    0.93333333
       53    0.83333333
-      54    0.68333333
+      54    0.71666667
       55    0.50000000
-      56    0.60000000
+      56    0.63333333
       57    1.00000000
-      58    0.13333333
+      58    0.16666667
       59    1.00000000
       60    1.00000000
-      61    0.40000000
-      62    0.36666667
-      63    0.63333333
-      64    0.80000000
-      65    0.06666667
+      61    0.43333333
+      62    0.40000000
+      63    0.66666667
+      64    0.40000000
+      65    0.03333333
       66    1.00000000
-      67    0.80000000
-      68    0.56666667
+      67    0.83333333
+      68    0.60000000
       69    1.00000000
       70    0.20000000
       71    1.00000000
-      72    0.76666667
-      73    0.68333333
+      72    0.80000000
+      73    0.71666667
       74    0.20000000
       75    1.00000000
       
-      [[10]]
+      [[9]]
          score_all
       1       high
-      2       high
+      2        low
       3     medium
       4       high
       5        low
-      6        low
+      6     medium
       7        low
       8     medium
       9     medium
@@ -745,7 +667,7 @@
       36    medium
       37       low
       38       low
-      39       low
+      39    medium
       40    medium
       41       low
       42       low
@@ -760,7 +682,7 @@
       51       low
       52      high
       53      high
-      54    medium
+      54      high
       55       low
       56    medium
       57      high
@@ -770,7 +692,7 @@
       61    medium
       62    medium
       63    medium
-      64    medium
+      64       low
       65       low
       66      high
       67      high
@@ -779,14 +701,14 @@
       70       low
       71      high
       72      high
-      73    medium
+      73      high
       74       low
       75      high
       
-      [[11]]
+      [[10]]
          score_unit
       1      medium
-      2        high
+      2         low
       3      medium
       4        high
       5      medium
@@ -801,14 +723,14 @@
       14     medium
       15       high
       16     medium
-      17     medium
-      18        low
+      17       high
+      18     medium
       19       high
       20       high
       21     medium
       22     medium
       23       high
-      24     medium
+      24       high
       25       high
       26     medium
       27        low
@@ -848,7 +770,7 @@
       61     medium
       62     medium
       63     medium
-      64       high
+      64     medium
       65        low
       66       high
       67       high
@@ -861,14 +783,14 @@
       74        low
       75       high
       
-      [[12]]
+      [[11]]
          score_sector
       1          high
-      2          high
+      2           low
       3          high
       4          high
       5        medium
-      6           low
+      6        medium
       7           low
       8          high
       9        medium
@@ -880,7 +802,7 @@
       15         high
       16         high
       17         high
-      18          low
+      18       medium
       19         high
       20         high
       21          low
@@ -916,7 +838,7 @@
       51          low
       52         high
       53         high
-      54       medium
+      54         high
       55          low
       56       medium
       57         high
@@ -926,7 +848,7 @@
       61       medium
       62       medium
       63       medium
-      64       medium
+      64          low
       65          low
       66         high
       67         high
@@ -935,14 +857,14 @@
       70          low
       71         high
       72         high
-      73       medium
+      73         high
       74          low
       75         high
       
-      [[13]]
+      [[12]]
          score_unit_sec
       1            high
-      2            high
+      2             low
       3            high
       4            high
       5            high
@@ -954,7 +876,7 @@
       11            low
       12           high
       13         medium
-      14         medium
+      14           high
       15           high
       16           high
       17           high
@@ -968,14 +890,14 @@
       25           high
       26         medium
       27         medium
-      28         medium
+      28            low
       29           high
       30           high
       31         medium
       32         medium
       33           high
       34         medium
-      35            low
+      35         medium
       36         medium
       37         medium
       38            low
@@ -991,10 +913,10 @@
       48           high
       49           high
       50         medium
-      51            low
+      51         medium
       52           high
       53           high
-      54         medium
+      54           high
       55         medium
       56         medium
       57           high
@@ -1004,7 +926,7 @@
       61         medium
       62         medium
       63         medium
-      64           high
+      64         medium
       65            low
       66           high
       67           high
@@ -1013,7 +935,7 @@
       70            low
       71           high
       72           high
-      73         medium
+      73           high
       74            low
       75           high
       
