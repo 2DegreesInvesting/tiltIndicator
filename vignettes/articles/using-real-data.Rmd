@@ -1,0 +1,199 @@
+---
+title: "Using real data"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This article uses the tiltIndicator package with real data as described in [this issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/160).
+
+```{r setup}
+library(dplyr, warn.conflicts = FALSE)
+library(readr)
+library(stringr)
+library(fs)
+library(tiltIndicator)
+
+packageVersion("tiltIndicator")
+
+options(readr.show_col_types = FALSE)
+```
+
+> All data for pstr and pctr are in the folder "pstr_pctr_data". 
+
+```{r}
+# Help access the data
+data_path <- function(...) {
+  path_home("Downloads", "data_prep_v1", "pstr_pctr_data", ...)
+}
+```
+
+> Only consider those that start with pstr_ or pctr_.
+
+```{r}
+to_consider <- "pstr_|pctr_"
+all_files <- dir_ls(data_path())
+useful_files <- all_files[str_detect(path_file(all_files), to_consider)]
+
+path_file(useful_files)
+```
+
+Read the useful file into a list of `real` data.
+
+```{r}
+real <- lapply(useful_files, read_csv) |> 
+  setNames(path_ext_remove(path_file(useful_files)))
+
+real
+```
+
+### PCTR
+
+> The datasets `pctr_companies` and `pctr_ecoinvent_co2` are in the exact same
+format as in the mvp
+
+```{r}
+glimpse(real$pctr_ecoinvent_co2)
+
+glimpse(real$pctr_companies)
+```
+
+Works smoothly.
+
+```{r}
+pctr <- real$pctr_ecoinvent_co2 |> 
+  pctr_score_activities() |> 
+  pctr_score_companies(real$pctr_companies)
+
+pctr
+```
+
+### PSTR
+
+> The datasets for the pstr vary slightly as follows:
+
+> `pstr_companies` already contains the matched scenario sectors. However, as
+you will see, there are 8 columns at the end containing scenario sectors.
+
+```{r}
+glimpse(real$pstr_companies)
+```
+
+> It actually should only be 4. 
+
+QUESTION: 
+
+Which four columns do you want to pick: `.x` or `.y`?
+
+```{r}
+remove_suffix <- function(x) gsub("[.].", "", x)
+
+pstr_companies_x <- select(real$pstr_companies, -ends_with(".y")) |> 
+  relocate(ends_with(".x")) |> 
+  rename_with(remove_suffix)
+pstr_companies_x
+
+pstr_companies_y <- select(real$pstr_companies, -ends_with(".x")) |> 
+  relocate(ends_with(".y")) |> 
+  rename_with(remove_suffix)
+pstr_companies_y
+```
+
+> I didn't know how to "merge" them. If you know how to do that, please tell me.
+
+Here is a tiny example that may help understand where the problem might come
+from. To fully understand what's going on, we may need to pick a tiny bit of
+real data and explore similarly to what I do here:
+
+```{r}
+x <- tibble(a = 1:2, b = 1, c = 1)
+x
+
+y <- tibble(a = 2:3, b = 2)
+y
+
+# Joining by all shared columns
+x |> left_join(y, by = join_by(a, b))
+# Same
+x |> left_join(y)
+
+# Joining only by some but not all of the shared columns
+x |> left_join(y, by = "a")
+
+# Excluding from `y` the shared columns I don't want to join by
+y2 <- y |> select(-b)
+x |> left_join(y2, by = join_by(a))
+```
+
+> `pstr_ipr_2022` and `pstr_weo_2022` replace `pstr_weo_2022`
+
+```{r}
+# FIXME: Then I guess I need to join them. I don't know which rows we want to
+# preserve so I'll conservatively preserve all rows but this may result in more
+# rows than we need and in confusing data. 
+# There seems to be redundant data, as both datasets share most columns!
+old_pstr_weo_2022 <- full_join(real$pstr_ipr_2022, real$pstr_weo_2022)
+old_pstr_weo_2022 |> glimpse()
+```
+
+> `pstr_ep_weo` is not required anymore, as I already mapped the data directly
+into `pstr_companies`
+
+Unfortunately this makes the data incompatible with the current interface, as
+`pstr_ep_weo` is an obligatory argument of `pstr_add_reductions()`. 
+
+In both `pstr_weo_2022` and `pstr_ipr_2022` I see a column `co2_reductions`. So we would need to adapt `pstr_add_reductions()`. Here is a draft:
+
+```{r}
+pstr_add_reductions_new <- function(ipr, weo, companies) {
+  # TODO: full_join() is conservative but likely not the best
+  # TODO: Decide how to handle multiple matches
+  reductions <- full_join(ipr, weo)
+  left_join(companies, reductions)
+}
+
+companies <- pstr_companies_x
+ipr <- real$pstr_ipr_2022
+weo <- real$pstr_weo_2022
+
+companies |> 
+  pstr_add_reductions_new(ipr, weo)
+```
+
+But the output is incompatible because `pstr_add_reductions()` knows about a
+column called `reductions` but not the new column `co2_reductions`.
+
+```{r error=TRUE}
+companies |> 
+  pstr_add_reductions_new(ipr, weo) |> 
+  pstr_add_transition_risk()
+```
+
+So we would need to adapt `pstr_add_transition_risk()`.
+
+```{r}
+pstr_add_transition_risk_new <- function(data) {
+  data |> 
+    rename(reductions = co2_reductions) |> 
+    pstr_add_transition_risk()
+}
+```
+
+With those changes the code runs without error.
+
+```{r}
+companies |> 
+  pstr_add_reductions_new(ipr, weo) |> 
+  pstr_add_transition_risk_new() |> 
+  pstr_aggregate_scores(companies)
+```
+
+QUESTIONS:
+
+1. Is the result valid?
+2. Can we prepare prepare the data to generate datasets compatible with the
+current interface?
