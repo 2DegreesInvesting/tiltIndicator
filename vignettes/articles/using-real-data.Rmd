@@ -14,7 +14,6 @@ This article uses the tiltIndicator package with real data as described in [this
 ```{r setup}
 library(dplyr, warn.conflicts = FALSE)
 library(readr)
-library(stringr)
 library(fs)
 library(tiltIndicator)
 
@@ -37,7 +36,7 @@ data_path <- function(...) {
 ```{r}
 to_consider <- "pstr_|pctr_"
 all_files <- dir_ls(data_path())
-useful_files <- all_files[str_detect(path_file(all_files), to_consider)]
+useful_files <- all_files[grepl(to_consider, path_file(all_files))]
 
 path_file(useful_files)
 ```
@@ -45,7 +44,7 @@ path_file(useful_files)
 Read the useful file into a list of `real` data.
 
 ```{r}
-real <- lapply(useful_files, read_csv) |> 
+real <- lapply(useful_files, read_csv) |>
   setNames(path_ext_remove(path_file(useful_files)))
 
 real
@@ -65,8 +64,8 @@ glimpse(real$pctr_companies)
 Works smoothly.
 
 ```{r}
-pctr <- real$pctr_ecoinvent_co2 |> 
-  pctr_score_activities() |> 
+pctr <- real$pctr_ecoinvent_co2 |>
+  pctr_score_activities() |>
   pctr_score_companies(real$pctr_companies)
 
 pctr
@@ -92,13 +91,13 @@ Which four columns do you want to pick: `.x` or `.y`?
 ```{r}
 remove_suffix <- function(x) gsub("[.].", "", x)
 
-pstr_companies_x <- select(real$pstr_companies, -ends_with(".y")) |> 
-  relocate(ends_with(".x")) |> 
+pstr_companies_x <- select(real$pstr_companies, -ends_with(".y")) |>
+  relocate(ends_with(".x")) |>
   rename_with(remove_suffix)
 pstr_companies_x
 
-pstr_companies_y <- select(real$pstr_companies, -ends_with(".x")) |> 
-  relocate(ends_with(".y")) |> 
+pstr_companies_y <- select(real$pstr_companies, -ends_with(".x")) |>
+  relocate(ends_with(".y")) |>
   rename_with(remove_suffix)
 pstr_companies_y
 ```
@@ -134,7 +133,7 @@ x |> left_join(y2, by = join_by(a))
 ```{r}
 # FIXME: Then I guess I need to join them. I don't know which rows we want to
 # preserve so I'll conservatively preserve all rows but this may result in more
-# rows than we need and in confusing data. 
+# rows than we need and in confusing data.
 # There seems to be redundant data, as both datasets share most columns!
 old_pstr_weo_2022 <- full_join(real$pstr_ipr_2022, real$pstr_weo_2022)
 old_pstr_weo_2022 |> glimpse()
@@ -160,7 +159,7 @@ companies <- pstr_companies_x
 ipr <- real$pstr_ipr_2022
 weo <- real$pstr_weo_2022
 
-companies |> 
+companies |>
   pstr_add_reductions_new(ipr, weo)
 ```
 
@@ -168,8 +167,8 @@ But the output is incompatible because `pstr_add_reductions()` knows about a
 column called `reductions` but not the new column `co2_reductions`.
 
 ```{r error=TRUE}
-companies |> 
-  pstr_add_reductions_new(ipr, weo) |> 
+companies |>
+  pstr_add_reductions_new(ipr, weo) |>
   pstr_add_transition_risk()
 ```
 
@@ -177,8 +176,8 @@ So we would need to adapt `pstr_add_transition_risk()`.
 
 ```{r}
 pstr_add_transition_risk_new <- function(data) {
-  data |> 
-    rename(reductions = co2_reductions) |> 
+  data |>
+    rename(reductions = co2_reductions) |>
     pstr_add_transition_risk()
 }
 ```
@@ -186,9 +185,9 @@ pstr_add_transition_risk_new <- function(data) {
 With those changes the code runs without error.
 
 ```{r}
-companies |> 
-  pstr_add_reductions_new(ipr, weo) |> 
-  pstr_add_transition_risk_new() |> 
+companies |>
+  pstr_add_reductions_new(ipr, weo) |>
+  pstr_add_transition_risk_new() |>
   pstr_aggregate_scores(companies)
 ```
 
