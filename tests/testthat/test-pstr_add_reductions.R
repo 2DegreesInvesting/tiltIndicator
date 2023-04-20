@@ -1,4 +1,4 @@
-test_that("with missing obligatory arguments errors gracefully", {
+test_that("(old) with missing obligatory arguments errors gracefully", {
   companies <- pstr_toy_companies()
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
@@ -8,7 +8,7 @@ test_that("with missing obligatory arguments errors gracefully", {
   expect_error(pstr_add_reductions_old(ep_weo = ep_weo, weo = weo), "companies")
 })
 
-test_that("returns a tibble", {
+test_that("(old) returns a tibble", {
   companies <- pstr_toy_companies()
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
@@ -18,7 +18,7 @@ test_that("returns a tibble", {
   expect_s3_class(out, "tbl_df")
 })
 
-test_that("with pstr_toy_* companies outputs the expected columns", {
+test_that("(old) with pstr_toy_* companies outputs the expected columns", {
   companies <- pstr_toy_companies()
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
@@ -47,7 +47,7 @@ test_that("with pstr_toy_* companies outputs the expected columns", {
   expect_named(out, expected)
 })
 
-test_that("additional columns appear in the output", {
+test_that("(old) additional columns appear in the output", {
   companies <- pstr_toy_companies(x = 1)
   ep_weo <- pstr_toy_ep_weo(y = 1)
   weo <- pstr_toy_weo_2022(z = 1)
@@ -58,7 +58,7 @@ test_that("additional columns appear in the output", {
   expect_true(hasName(out, "z"))
 })
 
-test_that("outputs columns of the same type as in `companies`", {
+test_that("(old) outputs columns of the same type as in `companies`", {
   companies <- pstr_toy_companies()
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
@@ -70,7 +70,7 @@ test_that("outputs columns of the same type as in `companies`", {
   expect_equal(x, y)
 })
 
-test_that("with 0-row companies outputs 0 rows", {
+test_that("(old) with 0-row companies outputs 0 rows", {
   companies <- pstr_toy_companies()
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
@@ -81,7 +81,7 @@ test_that("with 0-row companies outputs 0 rows", {
   expect_equal(nrow(out), 0L)
 })
 
-test_that("still adds reductions without any products", {
+test_that("(old) still adds reductions without any products", {
   companies <- pstr_toy_companies()
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
