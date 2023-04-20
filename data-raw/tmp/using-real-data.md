@@ -193,7 +193,14 @@ pstr_add_reductions_new <- function(companies, scenario) {
 }
 
 # R/pstr_prepare_scenario.R
-pstr_prepare_scenario <- function(data, type) {
+pstr_prepare_scenario <- function(ipr, weo) {
+  bind_rows(
+    pstr_prepare_scenario_impl(ipr, "ipr"), 
+    pstr_prepare_scenario_impl(weo, "weo")
+  )
+
+}
+pstr_prepare_scenario_impl <- function(data, type) {
   data |>
     lowercase_characters() |>
     rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
@@ -241,9 +248,7 @@ companies <- real$pstr_companies |>
   slice(1:2) |> 
   pstr_prepare_companies()
 
-ipr <- pstr_prepare_scenario(real$pstr_ipr_2022, "ipr")
-weo <- pstr_prepare_scenario(real$pstr_weo_2022, "weo")
-scenario <- bind_rows(ipr, weo)
+scenario <- pstr_prepare_scenario(real$pstr_ipr_2022, real$pstr_weo_2022)
 ```
 
 ### Calculate the indicator
