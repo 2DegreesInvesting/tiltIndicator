@@ -204,12 +204,12 @@ pstr_prepare_scenario <- function(data, type) {
 # R/pstr_prepare_companies.R
 pstr_prepare_companies <- function(data) {
   data |>
-    pstr_prepare_merge_scenario_columns() |> 
+    merge_scenario_columns() |> 
     lowercase_characters() |>
     pivot_type_sector_subsector()
 }
 
-pstr_prepare_merge_scenario_columns <- function(data) {
+merge_scenario_columns <- function(data) {
   data |>
     mutate(ipr_sector = if_else(is.na(ipr_sector.y), ipr_sector.x, ipr_sector.y)) |>
     mutate(ipr_subsector = if_else(is.na(ipr_subsector.y), ipr_subsector.x, ipr_subsector.y)) |>
