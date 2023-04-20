@@ -1,6 +1,8 @@
 library(vroom)
 library(here)
 library(usethis)
+library(dplyr)
+devtools::load_all()
 
 # The raw data comes from tiltIndicator#87, which includes pre-processing
 ictr_inputs <- vroom(here("data-raw", "ictr", "real_data", "ictr_inputs.csv"), show_col_types = FALSE) |>
