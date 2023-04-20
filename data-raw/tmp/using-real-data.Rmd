@@ -92,7 +92,6 @@ Which four columns do you want to pick: `.x` or `.y`?
 ```{r}
 remove_suffix <- function(x) gsub("[.].", "", x)
 pstr_companies_y <- select(real$pstr_companies, -ends_with(".x")) |>
-  relocate(ends_with(".y")) |>
   rename_with(remove_suffix)
 pstr_companies_y
 ```

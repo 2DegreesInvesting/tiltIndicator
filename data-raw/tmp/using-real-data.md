@@ -214,31 +214,30 @@ Which four columns do you want to pick: `.x` or `.y`?
 ``` r
 remove_suffix <- function(x) gsub("[.].", "", x)
 pstr_companies_y <- select(real$pstr_companies, -ends_with(".x")) |>
-  relocate(ends_with(".y")) |>
   rename_with(remove_suffix)
 pstr_companies_y
 #> # A tibble: 17 × 10
-#>    ipr_sector ipr_subsector   weo_product       weo_flow company_id company_name
-#>    <chr>      <chr>           <chr>             <chr>    <chr>      <chr>       
-#>  1 Total      Energy          Bioenergy and Wa… Total E… cta-commo… cta - commo…
-#>  2 Total      Energy          Bioenergy and Wa… Total E… cbrit_000… cbr-it      
-#>  3 <NA>       <NA>            <NA>              <NA>     manz-back… manz backte…
-#>  4 <NA>       <NA>            <NA>              <NA>     manz-back… manz backte…
-#>  5 <NA>       <NA>            <NA>              <NA>     manz-back… manz backte…
-#>  6 <NA>       <NA>            <NA>              <NA>     manz-back… manz backte…
-#>  7 <NA>       <NA>            <NA>              <NA>     barham-me… barham meta…
-#>  8 Transport  Other Transport Total             Transpo… cta-commo… cta - commo…
-#>  9 Transport  Other Transport Total             Transpo… cbrit_000… cbr-it      
-#> 10 <NA>       <NA>            <NA>              <NA>     queso-qui… queso quint…
-#> 11 <NA>       <NA>            <NA>              <NA>     quesos-fi… quesos finc…
-#> 12 <NA>       <NA>            <NA>              <NA>     lusitania… lusitania f…
-#> 13 <NA>       <NA>            <NA>              <NA>     lusitania… lusitania f…
-#> 14 Buildings  <NA>            Total             Buildin… cbrit_000… cbr-it      
-#> 15 Buildings  <NA>            Total             Buildin… cta-commo… cta - commo…
-#> 16 <NA>       <NA>            <NA>              <NA>     kurt-schm… kurt schmidt
-#> 17 <NA>       <NA>            <NA>              <NA>     breuninge… breuninger …
-#> # ℹ 4 more variables: products <chr>, isic_4digit <dbl>, tilt_sector <chr>,
-#> #   tilt_subsector <chr>
+#>    company_id       company_name products isic_4digit tilt_sector tilt_subsector
+#>    <chr>            <chr>        <chr>          <dbl> <chr>       <chr>         
+#>  1 cta-commodity-t… cta - commo… <NA>              NA Energy      Bioenergy & W…
+#>  2 cbrit_000000052… cbr-it       <NA>              NA Energy      Bioenergy & W…
+#>  3 manz-backtechni… manz backte… 063e488…        2750 <NA>        <NA>          
+#>  4 manz-backtechni… manz backte… 61d0058…        2750 <NA>        <NA>          
+#>  5 manz-backtechni… manz backte… 063e488…        2750 <NA>        <NA>          
+#>  6 manz-backtechni… manz backte… 61d0058…        2750 <NA>        <NA>          
+#>  7 barham-metall-g… barham meta… 0faa7ec…        2410 <NA>        <NA>          
+#>  8 cta-commodity-t… cta - commo… <NA>              NA Transporta… Transportation
+#>  9 cbrit_000000052… cbr-it       <NA>              NA Transporta… Transportation
+#> 10 queso-quintana_… queso quint… 6e2f5d7…        1050 <NA>        <NA>          
+#> 11 quesos-finca-la… quesos finc… 6e2f5d7…        1050 <NA>        <NA>          
+#> 12 lusitania-food_… lusitania f… a6478da…        1050 <NA>        <NA>          
+#> 13 lusitania-food_… lusitania f… a6478da…        1050 <NA>        <NA>          
+#> 14 cbrit_000000052… cbr-it       <NA>              NA Constructi… Construction …
+#> 15 cta-commodity-t… cta - commo… <NA>              NA Constructi… Construction …
+#> 16 kurt-schmidt_00… kurt schmidt 011da85…        2029 <NA>        <NA>          
+#> 17 breuninger-lede… breuninger … 03fbf98…        2029 <NA>        <NA>          
+#> # ℹ 4 more variables: ipr_sector <chr>, ipr_subsector <chr>, weo_product <chr>,
+#> #   weo_flow <chr>
 ```
 
 > I didn’t know how to “merge” them. If you know how to do that, please
@@ -370,9 +369,9 @@ companies |>
 #>  9 World Energ… Stated … World  Oil         Total e…  2020 10194.         0     
 #> 10 World Energ… Stated … World  Oil         Total e…  2030 11412.        -0.119 
 #> # ℹ 362 more rows
-#> # ℹ 8 more variables: ipr_sector <chr>, ipr_subsector <chr>, company_id <chr>,
-#> #   company_name <chr>, products <chr>, isic_4digit <dbl>, tilt_sector <chr>,
-#> #   tilt_subsector <chr>
+#> # ℹ 8 more variables: company_id <chr>, company_name <chr>, products <chr>,
+#> #   isic_4digit <dbl>, tilt_sector <chr>, tilt_subsector <chr>,
+#> #   ipr_sector <chr>, ipr_subsector <chr>
 ```
 
 But the output is incompatible because `pstr_add_reductions()` knows
