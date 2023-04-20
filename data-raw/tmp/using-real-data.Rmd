@@ -1,6 +1,8 @@
 ---
 title: "Using real data"
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
@@ -14,6 +16,7 @@ This article uses the tiltIndicator package with real data as described in [this
 
 ```{r setup}
 library(dplyr, warn.conflicts = FALSE)
+library(tidyr)
 library(readr)
 library(fs)
 library(tiltIndicator)
@@ -80,116 +83,100 @@ pctr
 you will see, there are 8 columns at the end containing scenario sectors.
 
 ```{r}
-glimpse(real$pstr_companies)
+companies_small <- real$pstr_companies |> slice(1:7)
+companies_small
 ```
 
-> It actually should only be 4. 
-
-Which four columns do you want to pick: `.x` or `.y`?
-
-> Please include the values from the 4 columns .y into the 4 columns
 
 ```{r}
-remove_suffix <- function(x) gsub("[.].", "", x)
-pstr_companies_y <- select(real$pstr_companies, -ends_with(".x")) |>
-  rename_with(remove_suffix)
+pstr_companies_y <- companies_small |>
+  mutate(ipr_sector = if_else(is.na(ipr_sector.y), ipr_sector.x, ipr_sector.y)) |>
+  mutate(ipr_subsector = if_else(is.na(ipr_subsector.y), ipr_subsector.x, ipr_subsector.y)) |>
+  mutate(weo_product = if_else(is.na(weo_product.y), weo_product.x, weo_product.y)) |>
+  mutate(weo_flow = if_else(is.na(weo_flow.y), weo_flow.x, weo_flow.y)) |>
+  select(-ends_with(".x")) |>
+  select(-ends_with(".y")) |>
+  distinct()
+
 pstr_companies_y
 ```
 
-> I didn't know how to "merge" them. If you know how to do that, please tell me.
+> We now have a new dataset we didn't have before: `pstr_ipr_2022`.
 
-Here is a tiny example that may help understand where the problem might come
-from. To fully understand what's going on, we may need to pick a tiny bit of
-real data and explore similarly to what I do here:
-
-```{r}
-x <- tibble(a = 1:2, b = 1, c = 1)
-x
-
-y <- tibble(a = 2:3, b = 2)
-y
-
-# Joining by all shared columns
-x |> left_join(y, by = join_by(a, b))
-# Same
-x |> left_join(y)
-
-# Joining only by some but not all of the shared columns
-x |> left_join(y, by = "a")
-
-# Excluding from `y` the shared columns I don't want to join by
-y2 <- y |> select(-b)
-x |> left_join(y2, by = join_by(a))
-```
-
-> `pstr_ipr_2022` and `pstr_weo_2022` replace `pstr_weo_2022`
-
-```{r}
-# FIXME: Then I guess I need to join them. I don't know which rows we want to
-# preserve so I'll conservatively preserve all rows but this may result in more
-# rows than we need and in confusing data.
-# There seems to be redundant data, as both datasets share most columns!
-old_pstr_weo_2022 <- full_join(real$pstr_ipr_2022, real$pstr_weo_2022)
-old_pstr_weo_2022 |> glimpse()
-```
-
-> `pstr_ep_weo` is not required anymore, as I already mapped the data directly
+> `pstr_ep_weo` is not required anymore, as I already mapped the data directly 
 into `pstr_companies`
 
-Unfortunately this makes the data incompatible with the current interface, as
-`pstr_ep_weo` is an obligatory argument of `pstr_add_reductions()`. 
-
-In both `pstr_weo_2022` and `pstr_ipr_2022` I see a column `co2_reductions`. So we would need to adapt `pstr_add_reductions()`. Here is a draft:
+### New functions
 
 ```{r}
-pstr_add_reductions_new <- function(ipr, weo, companies) {
-  # TODO: full_join() is conservative but likely not the best
-  # TODO: Decide how to handle multiple matches
-  reductions <- full_join(ipr, weo)
-  left_join(companies, reductions)
+# R/pstr_add_reductions.R
+pstr_add_reductions <- function(companies, scenario) {
+  left_join(
+    companies, scenario,
+    by = join_by(type, sector, subsector),
+    relationship = "many-to-many"
+  )
 }
 
-companies <- pstr_companies_y
-ipr <- real$pstr_ipr_2022
-weo <- real$pstr_weo_2022
+# R/utils.R
+lowercase_characters <- function(data) {
+  mutate(data, across(where(is.character), tolower))
+}
 
-companies |>
-  pstr_add_reductions_new(ipr, weo)
-```
+pivot_type_sector_subsector <- function(companies) {
+  companies |>
+    rename(weo_sector = weo_product, weo_subsector = weo_flow) |>
+    pivot_longer(c(ipr_sector, ipr_subsector, weo_sector, weo_subsector)) |>
+    separate(name, c("type", "tmp")) |>
+    pivot_wider(names_from = "tmp")
+}
 
-But the output is incompatible because `pstr_add_reductions()` knows about a
-column called `reductions` but not the new column `co2_reductions`.
-
-```{r error=TRUE}
-companies |>
-  pstr_add_reductions_new(ipr, weo) |>
-  pstr_add_transition_risk()
-```
-
-So we would need to adapt `pstr_add_transition_risk()`.
-
-```{r}
-pstr_add_transition_risk_new <- function(data) {
+pstr_prepare_companies <- function(data) {
   data |>
-    rename(reductions = co2_reductions) |>
-    pstr_add_transition_risk()
+    lowercase_characters() |>
+    pivot_type_sector_subsector()
+}
+
+pstr_prepare_scenario <- function(data, type) {
+  data |>
+    lowercase_characters() |>
+    rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
+    mutate(type = type) |>
+    rename(reductions = co2_reductions)
 }
 ```
 
-With those changes the code runs without error.
+### Prepare data
+
+```{r}
+companies <- pstr_companies_y |>
+  slice(1:2) |>
+  pstr_prepare_companies()
+
+ipr <- pstr_prepare_scenario(real$pstr_ipr_2022, "ipr")
+weo <- pstr_prepare_scenario(real$pstr_weo_2022, "weo")
+scenario <- bind_rows(ipr, weo)
+```
+
+### Calculate the indicator
+
 
 ```{r}
 companies |>
-  pstr_add_reductions_new(ipr, weo) |>
-  pstr_add_transition_risk_new() |>
+  pstr_add_reductions(scenario) |>
+  pstr_add_transition_risk() |>
+  # FIXME: We lost `company_id`
+  # FIXME: We lost `type`
+  # FIXME: Remove groups
   pstr_aggregate_scores(companies)
 ```
 
-The result seems invalid.
+QUESTION 1: De we expect only one type for some companies?
 
-> The dataset has `NA`s for all rows in `company_name`. This shouldn't be the
-case. `score_aggregated` is also `NA`.
-
-TODO: Peer-program with Tilman to develop a new version of the PSTR functions
-that takes the new data structure.
-
+```{r}
+companies |>
+  slice(1) |>
+  pstr_add_reductions(scenario) |>
+  pstr_add_transition_risk() |>
+  count(type)
+```
