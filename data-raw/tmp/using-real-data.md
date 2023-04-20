@@ -244,10 +244,7 @@ lowercase_characters <- function(data) {
 ### Prepare data
 
 ``` r
-companies <- real$pstr_companies |>
-  slice(1:2) |> 
-  pstr_prepare_companies()
-
+companies <- pstr_prepare_companies(real$pstr_companies)
 scenario <- pstr_prepare_scenario(real$pstr_ipr_2022, real$pstr_weo_2022)
 ```
 
@@ -261,20 +258,21 @@ companies |>
   # FIXME: We lost `type`
   # FIXME: Remove groups
   pstr_aggregate_scores(companies)
-#> # A tibble: 10 × 5
-#> # Groups:   company_name, transition_risk, scenario, year [10]
-#>    company_name                  transition_risk scenario  year score_aggregated
-#>    <chr>                         <chr>           <chr>    <dbl>            <dbl>
-#>  1 cbr-it                        low             1.5c re…  2020              100
-#>  2 cbr-it                        low             1.5c re…  2030              100
-#>  3 cbr-it                        low             1.5c re…  2040              100
-#>  4 cbr-it                        low             1.5c re…  2050              100
-#>  5 cbr-it                        no_sector       <NA>        NA               50
-#>  6 cta - commodity trading aust… low             1.5c re…  2020              100
-#>  7 cta - commodity trading aust… low             1.5c re…  2030              100
-#>  8 cta - commodity trading aust… low             1.5c re…  2040              100
-#>  9 cta - commodity trading aust… low             1.5c re…  2050              100
-#> 10 cta - commodity trading aust… no_sector       <NA>        NA               50
+#> # A tibble: 45 × 5
+#> # Groups:   company_name, transition_risk, scenario, year [45]
+#>    company_name          transition_risk scenario          year score_aggregated
+#>    <chr>                 <chr>           <chr>            <dbl>            <dbl>
+#>  1 barham metall gmbh    low             1.5c required p…  2020              100
+#>  2 barham metall gmbh    low             1.5c required p…  2030              100
+#>  3 barham metall gmbh    low             1.5c required p…  2040              100
+#>  4 barham metall gmbh    low             1.5c required p…  2050              100
+#>  5 barham metall gmbh    no_sector       <NA>                NA               50
+#>  6 breuninger leder gmbh low             1.5c required p…  2020              100
+#>  7 breuninger leder gmbh low             1.5c required p…  2030              100
+#>  8 breuninger leder gmbh low             1.5c required p…  2040              100
+#>  9 breuninger leder gmbh low             1.5c required p…  2050              100
+#> 10 breuninger leder gmbh no_sector       <NA>                NA               50
+#> # ℹ 35 more rows
 ```
 
 QUESTION 1: De we expect only one type for some companies?
