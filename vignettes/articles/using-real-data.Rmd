@@ -84,9 +84,7 @@ glimpse(real$pstr_companies)
 
 > It actually should only be 4. 
 
-QUESTION: 
-
-Which four columns do you want to pick: `.x` or `.y`?
+QUESTION 1. Which four columns do you want to pick: `.x` or `.y`?
 
 ```{r}
 remove_suffix <- function(x) gsub("[.].", "", x)
@@ -191,8 +189,7 @@ companies |>
   pstr_aggregate_scores(companies)
 ```
 
-QUESTIONS:
+QUESTION 2: Does the result just above seem valid?
 
-1. Is the result valid?
-2. Can we prepare prepare the data to generate datasets compatible with the
-current interface?
+QUESTION 3. Can we prepare prepare the data to generate datasets compatible with
+the current interface?
