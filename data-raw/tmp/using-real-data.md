@@ -184,7 +184,7 @@ pctr
 
 ``` r
 # R/pstr_add_reductions.R
-pstr_add_reductions <- function(companies, scenario) {
+pstr_add_reductions_new <- function(companies, scenario) {
   left_join(
     companies, scenario,
     by = join_by(type, sector, subsector),
@@ -250,7 +250,7 @@ scenario <- bind_rows(ipr, weo)
 
 ``` r
 companies |>
-  pstr_add_reductions(scenario) |>
+  pstr_add_reductions_new(scenario) |>
   pstr_add_transition_risk() |>
   # FIXME: We lost `company_id`
   # FIXME: We lost `type`
@@ -277,7 +277,7 @@ QUESTION 1: De we expect only one type for some companies?
 ``` r
 companies |>
   slice(1) |>
-  pstr_add_reductions(scenario) |>
+  pstr_add_reductions_new(scenario) |>
   pstr_add_transition_risk() |>
   count(type)
 #> # A tibble: 1 × 2
