@@ -7,6 +7,7 @@ issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/160).
 
 ``` r
 library(dplyr, warn.conflicts = FALSE)
+library(tidyr)
 library(readr)
 library(fs)
 library(tiltIndicator)
@@ -179,272 +180,108 @@ pctr
 
 ### PSTR
 
-> The datasets for the pstr vary slightly as follows:
-
-> `pstr_companies` already contains the matched scenario sectors.
-> However, as you will see, there are 8 columns at the end containing
-> scenario sectors.
+### New functions
 
 ``` r
-glimpse(real$pstr_companies)
-#> Rows: 17
-#> Columns: 14
-#> $ company_id      <chr> "cta-commodity-trading-austria-gmbh_00000005215384-001…
-#> $ company_name    <chr> "cta - commodity trading austria gmbh", "cbr-it", "man…
-#> $ products        <chr> NA, NA, "063e488f-803a-5d13-af19-852d6070f35c_cf47d9e8…
-#> $ isic_4digit     <dbl> NA, NA, 2750, 2750, 2750, 2750, 2410, NA, NA, 1050, 10…
-#> $ tilt_sector     <chr> "Energy", "Energy", NA, NA, NA, NA, NA, "Transportatio…
-#> $ tilt_subsector  <chr> "Bioenergy & Waste", "Bioenergy & Waste", NA, NA, NA, …
-#> $ ipr_sector.x    <chr> NA, NA, "Industry", "Industry", "Industry", "Industry"…
-#> $ ipr_subsector.x <chr> NA, NA, "Other Industry", "Other Industry", "Other Ind…
-#> $ weo_product.x   <chr> NA, NA, "Total", "Total", "Total", "Total", "Total", N…
-#> $ weo_flow.x      <chr> NA, NA, "Industry", "Industry", "Industry", "Industry"…
-#> $ ipr_sector.y    <chr> "Total", "Total", NA, NA, NA, NA, NA, "Transport", "Tr…
-#> $ ipr_subsector.y <chr> "Energy", "Energy", NA, NA, NA, NA, NA, "Other Transpo…
-#> $ weo_product.y   <chr> "Bioenergy and Waste", "Bioenergy and Waste", NA, NA, …
-#> $ weo_flow.y      <chr> "Total Energy Supply", "Total Energy Supply", NA, NA, …
-```
-
-> It actually should only be 4.
-
-Which four columns do you want to pick: `.x` or `.y`?
-
-> Please include the values from the 4 columns .y into the 4 columns
-
-``` r
-remove_suffix <- function(x) gsub("[.].", "", x)
-pstr_companies_y <- select(real$pstr_companies, -ends_with(".x")) |>
-  rename_with(remove_suffix)
-pstr_companies_y
-#> # A tibble: 17 × 10
-#>    company_id       company_name products isic_4digit tilt_sector tilt_subsector
-#>    <chr>            <chr>        <chr>          <dbl> <chr>       <chr>         
-#>  1 cta-commodity-t… cta - commo… <NA>              NA Energy      Bioenergy & W…
-#>  2 cbrit_000000052… cbr-it       <NA>              NA Energy      Bioenergy & W…
-#>  3 manz-backtechni… manz backte… 063e488…        2750 <NA>        <NA>          
-#>  4 manz-backtechni… manz backte… 61d0058…        2750 <NA>        <NA>          
-#>  5 manz-backtechni… manz backte… 063e488…        2750 <NA>        <NA>          
-#>  6 manz-backtechni… manz backte… 61d0058…        2750 <NA>        <NA>          
-#>  7 barham-metall-g… barham meta… 0faa7ec…        2410 <NA>        <NA>          
-#>  8 cta-commodity-t… cta - commo… <NA>              NA Transporta… Transportation
-#>  9 cbrit_000000052… cbr-it       <NA>              NA Transporta… Transportation
-#> 10 queso-quintana_… queso quint… 6e2f5d7…        1050 <NA>        <NA>          
-#> 11 quesos-finca-la… quesos finc… 6e2f5d7…        1050 <NA>        <NA>          
-#> 12 lusitania-food_… lusitania f… a6478da…        1050 <NA>        <NA>          
-#> 13 lusitania-food_… lusitania f… a6478da…        1050 <NA>        <NA>          
-#> 14 cbrit_000000052… cbr-it       <NA>              NA Constructi… Construction …
-#> 15 cta-commodity-t… cta - commo… <NA>              NA Constructi… Construction …
-#> 16 kurt-schmidt_00… kurt schmidt 011da85…        2029 <NA>        <NA>          
-#> 17 breuninger-lede… breuninger … 03fbf98…        2029 <NA>        <NA>          
-#> # ℹ 4 more variables: ipr_sector <chr>, ipr_subsector <chr>, weo_product <chr>,
-#> #   weo_flow <chr>
-```
-
-> I didn’t know how to “merge” them. If you know how to do that, please
-> tell me.
-
-Here is a tiny example that may help understand where the problem might
-come from. To fully understand what’s going on, we may need to pick a
-tiny bit of real data and explore similarly to what I do here:
-
-``` r
-x <- tibble(a = 1:2, b = 1, c = 1)
-x
-#> # A tibble: 2 × 3
-#>       a     b     c
-#>   <int> <dbl> <dbl>
-#> 1     1     1     1
-#> 2     2     1     1
-
-y <- tibble(a = 2:3, b = 2)
-y
-#> # A tibble: 2 × 2
-#>       a     b
-#>   <int> <dbl>
-#> 1     2     2
-#> 2     3     2
-
-# Joining by all shared columns
-x |> left_join(y, by = join_by(a, b))
-#> # A tibble: 2 × 3
-#>       a     b     c
-#>   <int> <dbl> <dbl>
-#> 1     1     1     1
-#> 2     2     1     1
-# Same
-x |> left_join(y)
-#> Joining with `by = join_by(a, b)`
-#> # A tibble: 2 × 3
-#>       a     b     c
-#>   <int> <dbl> <dbl>
-#> 1     1     1     1
-#> 2     2     1     1
-
-# Joining only by some but not all of the shared columns
-x |> left_join(y, by = "a")
-#> # A tibble: 2 × 4
-#>       a   b.x     c   b.y
-#>   <int> <dbl> <dbl> <dbl>
-#> 1     1     1     1    NA
-#> 2     2     1     1     2
-
-# Excluding from `y` the shared columns I don't want to join by
-y2 <- y |> select(-b)
-x |> left_join(y2, by = join_by(a))
-#> # A tibble: 2 × 3
-#>       a     b     c
-#>   <int> <dbl> <dbl>
-#> 1     1     1     1
-#> 2     2     1     1
-```
-
-> `pstr_ipr_2022` and `pstr_weo_2022` replace `pstr_weo_2022`
-
-``` r
-# FIXME: Then I guess I need to join them. I don't know which rows we want to
-# preserve so I'll conservatively preserve all rows but this may result in more
-# rows than we need and in confusing data.
-# There seems to be redundant data, as both datasets share most columns!
-old_pstr_weo_2022 <- full_join(real$pstr_ipr_2022, real$pstr_weo_2022)
-#> Joining with `by = join_by(scenario, region, year, value, co2_reductions)`
-old_pstr_weo_2022 |> glimpse()
-#> Rows: 484
-#> Columns: 10
-#> $ scenario       <chr> "1.5C Required Policy Scenario", "1.5C Required Policy …
-#> $ region         <chr> "Western Europe (WEU)", "Western Europe (WEU)", "Wester…
-#> $ ipr_sector     <chr> "Power", "Power", "Power", "Power", "Buildings", "Build…
-#> $ ipr_subsector  <chr> NA, NA, NA, NA, NA, NA, NA, NA, "Iron and Steel", "Iron…
-#> $ year           <dbl> 2020, 2030, 2040, 2050, 2020, 2030, 2040, 2050, 2020, 2…
-#> $ value          <dbl> 550.4698707, 47.3894183, -60.5859092, -175.4472297, 397…
-#> $ co2_reductions <dbl> 0.0000000, 0.9139110, 1.1100622, 1.3187227, 0.0000000, …
-#> $ publication    <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-#> $ weo_product    <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-#> $ weo_flow       <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-```
-
-> `pstr_ep_weo` is not required anymore, as I already mapped the data
-> directly into `pstr_companies`
-
-Unfortunately this makes the data incompatible with the current
-interface, as `pstr_ep_weo` is an obligatory argument of
-`pstr_add_reductions()`.
-
-In both `pstr_weo_2022` and `pstr_ipr_2022` I see a column
-`co2_reductions`. So we would need to adapt `pstr_add_reductions()`.
-Here is a draft:
-
-``` r
-pstr_add_reductions_new <- function(ipr, weo, companies) {
-  # TODO: full_join() is conservative but likely not the best
-  # TODO: Decide how to handle multiple matches
-  reductions <- full_join(ipr, weo)
-  left_join(companies, reductions)
+# R/pstr_add_reductions.R
+pstr_add_reductions <- function(companies, scenario) {
+  left_join(
+    companies, scenario,
+    by = join_by(type, sector, subsector),
+    relationship = "many-to-many"
+  )
 }
 
-companies <- pstr_companies_y
-ipr <- real$pstr_ipr_2022
-weo <- real$pstr_weo_2022
-
-companies |>
-  pstr_add_reductions_new(ipr, weo)
-#> Joining with `by = join_by(ipr_sector, ipr_subsector)`
-#> Warning in full_join(ipr, weo): Detected an unexpected many-to-many relationship between `x` and `y`.
-#> ℹ Row 1 of `x` matches multiple rows in `y`.
-#> ℹ Row 49 of `y` matches multiple rows in `x`.
-#> ℹ If a many-to-many relationship is expected, set `relationship =
-#>   "many-to-many"` to silence this warning.
-#> Joining with `by = join_by(scenario, region, weo_product, weo_flow, year,
-#> value, co2_reductions)`
-#> # A tibble: 372 × 16
-#>    publication  scenario region weo_product weo_flow  year  value co2_reductions
-#>    <chr>        <chr>    <chr>  <chr>       <chr>    <dbl>  <dbl>          <dbl>
-#>  1 World Energ… Stated … World  Total       Total e…  2020 31904          0     
-#>  2 World Energ… Stated … World  Total       Total e…  2030 33135.        -0.0386
-#>  3 World Energ… Stated … World  Total       Total e…  2040 30800.         0.0346
-#>  4 World Energ… Stated … World  Total       Total e…  2050 28946.         0.0927
-#>  5 World Energ… Stated … World  Coal        Total e…  2020 14335.         0     
-#>  6 World Energ… Stated … World  Coal        Total e…  2030 13695          0.0447
-#>  7 World Energ… Stated … World  Coal        Total e…  2040 11553.         0.194 
-#>  8 World Energ… Stated … World  Coal        Total e…  2050  9863.         0.312 
-#>  9 World Energ… Stated … World  Oil         Total e…  2020 10194.         0     
-#> 10 World Energ… Stated … World  Oil         Total e…  2030 11412.        -0.119 
-#> # ℹ 362 more rows
-#> # ℹ 8 more variables: company_id <chr>, company_name <chr>, products <chr>,
-#> #   isic_4digit <dbl>, tilt_sector <chr>, tilt_subsector <chr>,
-#> #   ipr_sector <chr>, ipr_subsector <chr>
-```
-
-But the output is incompatible because `pstr_add_reductions()` knows
-about a column called `reductions` but not the new column
-`co2_reductions`.
-
-``` r
-companies |>
-  pstr_add_reductions_new(ipr, weo) |>
-  pstr_add_transition_risk()
-#> Joining with `by = join_by(ipr_sector, ipr_subsector)`
-#> Warning in full_join(ipr, weo): Detected an unexpected many-to-many relationship between `x` and `y`.
-#> ℹ Row 1 of `x` matches multiple rows in `y`.
-#> ℹ Row 49 of `y` matches multiple rows in `x`.
-#> ℹ If a many-to-many relationship is expected, set `relationship =
-#>   "many-to-many"` to silence this warning.
-#> Joining with `by = join_by(scenario, region, weo_product, weo_flow, year,
-#> value, co2_reductions)`
-#> Error in `mutate()` at tiltIndicator/R/pstr_add_transition_risk.R:34:2:
-#> ℹ In argument: `transition_risk = case_when(...)`.
-#> Caused by error in `case_when()`:
-#> ! Failed to evaluate the left-hand side of formula 1.
-#> Caused by error:
-#> ! object 'reductions' not found
-```
-
-So we would need to adapt `pstr_add_transition_risk()`.
-
-``` r
-pstr_add_transition_risk_new <- function(data) {
+# R/pstr_prepare_scenario.R
+pstr_prepare_scenario <- function(data, type) {
   data |>
-    rename(reductions = co2_reductions) |>
-    pstr_add_transition_risk()
+    lowercase_characters() |>
+    rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
+    mutate(type = type) |>
+    rename(reductions = co2_reductions)
+}
+
+# R/pstr_prepare_companies.R
+pstr_prepare_companies <- function(data) {
+  data |>
+    pstr_prepare_merge_scenario_columns() |> 
+    lowercase_characters() |>
+    pivot_type_sector_subsector()
+}
+
+pstr_prepare_merge_scenario_columns <- function(data) {
+  data |>
+    mutate(ipr_sector = if_else(is.na(ipr_sector.y), ipr_sector.x, ipr_sector.y)) |>
+    mutate(ipr_subsector = if_else(is.na(ipr_subsector.y), ipr_subsector.x, ipr_subsector.y)) |>
+    mutate(weo_product = if_else(is.na(weo_product.y), weo_product.x, weo_product.y)) |>
+    mutate(weo_flow = if_else(is.na(weo_flow.y), weo_flow.x, weo_flow.y)) |>
+    select(-ends_with(".x")) |>
+    select(-ends_with(".y")) |>
+    distinct()
+}
+
+pivot_type_sector_subsector <- function(companies) {
+  companies |>
+    rename(weo_sector = weo_product, weo_subsector = weo_flow) |>
+    pivot_longer(c(ipr_sector, ipr_subsector, weo_sector, weo_subsector)) |>
+    separate(name, c("type", "tmp")) |>
+    pivot_wider(names_from = "tmp")
+}
+
+# R/utils.R
+lowercase_characters <- function(data) {
+  mutate(data, across(where(is.character), tolower))
 }
 ```
 
-With those changes the code runs without error.
+### Prepare data
+
+``` r
+companies <- real$pstr_companies |>
+  slice(1:2) |> 
+  pstr_prepare_companies()
+
+ipr <- pstr_prepare_scenario(real$pstr_ipr_2022, "ipr")
+weo <- pstr_prepare_scenario(real$pstr_weo_2022, "weo")
+scenario <- bind_rows(ipr, weo)
+```
+
+### Calculate the indicator
 
 ``` r
 companies |>
-  pstr_add_reductions_new(ipr, weo) |>
-  pstr_add_transition_risk_new() |>
+  pstr_add_reductions(scenario) |>
+  pstr_add_transition_risk() |>
+  # FIXME: We lost `company_id`
+  # FIXME: We lost `type`
+  # FIXME: Remove groups
   pstr_aggregate_scores(companies)
-#> Joining with `by = join_by(ipr_sector, ipr_subsector)`
-#> Warning in full_join(ipr, weo): Detected an unexpected many-to-many relationship between `x` and `y`.
-#> ℹ Row 1 of `x` matches multiple rows in `y`.
-#> ℹ Row 49 of `y` matches multiple rows in `x`.
-#> ℹ If a many-to-many relationship is expected, set `relationship =
-#>   "many-to-many"` to silence this warning.
-#> Joining with `by = join_by(scenario, region, weo_product, weo_flow, year,
-#> value, co2_reductions)`
-#> # A tibble: 12 × 5
-#> # Groups:   company_name, transition_risk, scenario, year [12]
-#>    company_name transition_risk scenario                   year score_aggregated
-#>    <chr>        <chr>           <chr>                     <dbl>            <dbl>
-#>  1 <NA>         low             Announced Pledges Scenar…  2020               NA
-#>  2 <NA>         low             Announced Pledges Scenar…  2030               NA
-#>  3 <NA>         low             Announced Pledges Scenar…  2040               NA
-#>  4 <NA>         low             Announced Pledges Scenar…  2050               NA
-#>  5 <NA>         low             Net Zero Emissions by 20…  2020               NA
-#>  6 <NA>         low             Net Zero Emissions by 20…  2030               NA
-#>  7 <NA>         low             Net Zero Emissions by 20…  2040               NA
-#>  8 <NA>         low             Net Zero Emissions by 20…  2050               NA
-#>  9 <NA>         low             Stated Policies Scenario   2020               NA
-#> 10 <NA>         low             Stated Policies Scenario   2030               NA
-#> 11 <NA>         low             Stated Policies Scenario   2040               NA
-#> 12 <NA>         low             Stated Policies Scenario   2050               NA
+#> # A tibble: 10 × 5
+#> # Groups:   company_name, transition_risk, scenario, year [10]
+#>    company_name                  transition_risk scenario  year score_aggregated
+#>    <chr>                         <chr>           <chr>    <dbl>            <dbl>
+#>  1 cbr-it                        low             1.5c re…  2020              100
+#>  2 cbr-it                        low             1.5c re…  2030              100
+#>  3 cbr-it                        low             1.5c re…  2040              100
+#>  4 cbr-it                        low             1.5c re…  2050              100
+#>  5 cbr-it                        no_sector       <NA>        NA               50
+#>  6 cta - commodity trading aust… low             1.5c re…  2020              100
+#>  7 cta - commodity trading aust… low             1.5c re…  2030              100
+#>  8 cta - commodity trading aust… low             1.5c re…  2040              100
+#>  9 cta - commodity trading aust… low             1.5c re…  2050              100
+#> 10 cta - commodity trading aust… no_sector       <NA>        NA               50
 ```
 
-The result seems invalid.
+QUESTION 1: De we expect only one type for some companies?
 
-> The dataset has `NA`s for all rows in `company_name`. This shouldn’t
-> be the case. `score_aggregated` is also `NA`.
-
-TODO: Peer-program with Tilman to develop a new version of the PSTR
-functions that takes the new data structure.
+``` r
+companies |>
+  slice(1) |>
+  pstr_add_reductions(scenario) |>
+  pstr_add_transition_risk() |>
+  count(type)
+#> # A tibble: 1 × 2
+#>   type      n
+#>   <chr> <int>
+#> 1 ipr       8
+```

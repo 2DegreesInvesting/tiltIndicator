@@ -77,35 +77,6 @@ pctr
 
 ### PSTR
 
-> The datasets for the pstr vary slightly as follows:
-
-> `pstr_companies` already contains the matched scenario sectors. However, as
-you will see, there are 8 columns at the end containing scenario sectors.
-
-```{r}
-companies_small <- real$pstr_companies |> slice(1:7)
-companies_small
-```
-
-
-```{r}
-pstr_companies_y <- companies_small |>
-  mutate(ipr_sector = if_else(is.na(ipr_sector.y), ipr_sector.x, ipr_sector.y)) |>
-  mutate(ipr_subsector = if_else(is.na(ipr_subsector.y), ipr_subsector.x, ipr_subsector.y)) |>
-  mutate(weo_product = if_else(is.na(weo_product.y), weo_product.x, weo_product.y)) |>
-  mutate(weo_flow = if_else(is.na(weo_flow.y), weo_flow.x, weo_flow.y)) |>
-  select(-ends_with(".x")) |>
-  select(-ends_with(".y")) |>
-  distinct()
-
-pstr_companies_y
-```
-
-> We now have a new dataset we didn't have before: `pstr_ipr_2022`.
-
-> `pstr_ep_weo` is not required anymore, as I already mapped the data directly 
-into `pstr_companies`
-
 ### New functions
 
 ```{r}
@@ -118,9 +89,32 @@ pstr_add_reductions <- function(companies, scenario) {
   )
 }
 
-# R/utils.R
-lowercase_characters <- function(data) {
-  mutate(data, across(where(is.character), tolower))
+# R/pstr_prepare_scenario.R
+pstr_prepare_scenario <- function(data, type) {
+  data |>
+    lowercase_characters() |>
+    rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
+    mutate(type = type) |>
+    rename(reductions = co2_reductions)
+}
+
+# R/pstr_prepare_companies.R
+pstr_prepare_companies <- function(data) {
+  data |>
+    pstr_prepare_merge_scenario_columns() |> 
+    lowercase_characters() |>
+    pivot_type_sector_subsector()
+}
+
+pstr_prepare_merge_scenario_columns <- function(data) {
+  data |>
+    mutate(ipr_sector = if_else(is.na(ipr_sector.y), ipr_sector.x, ipr_sector.y)) |>
+    mutate(ipr_subsector = if_else(is.na(ipr_subsector.y), ipr_subsector.x, ipr_subsector.y)) |>
+    mutate(weo_product = if_else(is.na(weo_product.y), weo_product.x, weo_product.y)) |>
+    mutate(weo_flow = if_else(is.na(weo_flow.y), weo_flow.x, weo_flow.y)) |>
+    select(-ends_with(".x")) |>
+    select(-ends_with(".y")) |>
+    distinct()
 }
 
 pivot_type_sector_subsector <- function(companies) {
@@ -131,26 +125,17 @@ pivot_type_sector_subsector <- function(companies) {
     pivot_wider(names_from = "tmp")
 }
 
-pstr_prepare_companies <- function(data) {
-  data |>
-    lowercase_characters() |>
-    pivot_type_sector_subsector()
-}
-
-pstr_prepare_scenario <- function(data, type) {
-  data |>
-    lowercase_characters() |>
-    rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
-    mutate(type = type) |>
-    rename(reductions = co2_reductions)
+# R/utils.R
+lowercase_characters <- function(data) {
+  mutate(data, across(where(is.character), tolower))
 }
 ```
 
 ### Prepare data
 
 ```{r}
-companies <- pstr_companies_y |>
-  slice(1:2) |>
+companies <- real$pstr_companies |>
+  slice(1:2) |> 
   pstr_prepare_companies()
 
 ipr <- pstr_prepare_scenario(real$pstr_ipr_2022, "ipr")
