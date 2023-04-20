@@ -250,13 +250,15 @@ scenario <- pstr_prepare_scenario(real$pstr_ipr_2022, real$pstr_weo_2022)
 ### Calculate the indicator
 
 ``` r
-companies |>
+pstr <- companies |>
   pstr_add_FIXME_reductions_new(scenario) |>
   pstr_add_transition_risk() |>
   # FIXME: We lost `company_id`
   # FIXME: We lost `type`
   # FIXME: Remove groups
   pstr_aggregate_scores(companies)
+
+pstr
 #> # A tibble: 45 × 5
 #> # Groups:   company_name, transition_risk, scenario, year [45]
 #>    company_name          transition_risk scenario          year score_aggregated
@@ -272,18 +274,6 @@ companies |>
 #>  9 breuninger leder gmbh low             1.5c required p…  2050              100
 #> 10 breuninger leder gmbh no_sector       <NA>                NA               50
 #> # ℹ 35 more rows
-```
 
-QUESTION 1: De we expect only one type for some companies?
-
-``` r
-companies |>
-  slice(1) |>
-  pstr_add_FIXME_reductions_new(scenario) |>
-  pstr_add_transition_risk() |>
-  count(type)
-#> # A tibble: 1 × 2
-#>   type      n
-#>   <chr> <int>
-#> 1 ipr       8
+pstr |> write_csv("~/Downloads/pstr.csv")
 ```

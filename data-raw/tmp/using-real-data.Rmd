@@ -147,12 +147,16 @@ scenario <- pstr_prepare_scenario(real$pstr_ipr_2022, real$pstr_weo_2022)
 ### Calculate the indicator
 
 ```{r}
-companies |>
+pstr <- companies |>
   pstr_add_FIXME_reductions_new(scenario) |>
   pstr_add_transition_risk() |>
   # FIXME: We lost `company_id`
   # FIXME: We lost `type`
   # FIXME: Remove groups
   pstr_aggregate_scores(companies)
+
+pstr
+
+pstr |> write_csv("~/Downloads/pstr.csv")
 ```
 
