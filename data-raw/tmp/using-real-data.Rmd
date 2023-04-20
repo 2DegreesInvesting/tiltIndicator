@@ -80,7 +80,7 @@ pctr
 ### New functions
 
 ```{r}
-# R/pstr_add_reductions.R
+# R/pstr_add_reductions_old.R
 pstr_add_FIXME_reductions_new <- function(companies, scenario) {
   left_join(
     companies, scenario,

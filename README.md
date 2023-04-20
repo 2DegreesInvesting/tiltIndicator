@@ -88,7 +88,7 @@ product-sector-transition-risk indicator.
 
 ``` r
 with_scores <- pstr_companies |>
-  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
+  pstr_add_reductions_old(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk() |>
   pstr_aggregate_scores(pstr_companies)
 

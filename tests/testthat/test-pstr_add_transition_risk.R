@@ -1,5 +1,5 @@
 test_that("returns a tibble data frame", {
-  out <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
+  out <- pstr_add_reductions_old(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
   expect_s3_class(
     pstr_add_transition_risk(out),
     "tbl_df"
@@ -7,7 +7,7 @@ test_that("returns a tibble data frame", {
 })
 
 test_that("adds one column: `transition_risk`", {
-  with_reductions <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
+  with_reductions <- pstr_add_reductions_old(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
   expect_false(hasName(with_reductions, "transition_risk"))
 
   out <- pstr_add_transition_risk(with_reductions)
@@ -18,7 +18,7 @@ test_that("adds one column: `transition_risk`", {
 })
 
 test_that("added column returns acceptable values", {
-  out <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
+  out <- pstr_add_reductions_old(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
   acceptable_transition_risks <- c(
     "low",
     "medium",
@@ -34,7 +34,7 @@ test_that("added column returns acceptable values", {
 })
 
 test_that("preserves typeof() input columns", {
-  with_reductions <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
+  with_reductions <- pstr_add_reductions_old(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
   out <- pstr_add_transition_risk(with_reductions)
 
   x <- unname(purrr::map_chr(with_reductions, typeof))
@@ -43,14 +43,14 @@ test_that("preserves typeof() input columns", {
 })
 
 test_that("outputs 0-rows with an empty data frame as input", {
-  with_reductions <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
+  with_reductions <- pstr_add_reductions_old(pstr_toy_companies(), pstr_toy_ep_weo(), pstr_toy_weo_2022())
   out <- pstr_add_transition_risk(with_reductions[FALSE, ])
   expect_equal(nrow(out), 0L)
 })
 
 test_that("outputs correct values for edge cases", {
   edge_cases <- pstr_toy_weo_2022(reductions = c(NA, 30, 30.1, 70, 70.1))
-  with_reductions <- pstr_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), edge_cases)
+  with_reductions <- pstr_add_reductions_old(pstr_toy_companies(), pstr_toy_ep_weo(), edge_cases)
   out <- pstr_add_transition_risk(with_reductions)
   expect_equal(c("no_sector", "low", "medium", "medium", "high"), out$transition_risk)
 })

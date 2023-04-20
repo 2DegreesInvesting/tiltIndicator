@@ -3,9 +3,9 @@ test_that("with missing obligatory arguments errors gracefully", {
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
 
-  expect_error(pstr_add_reductions(companies, ep_weo = ep_weo), "weo_2022")
-  expect_error(pstr_add_reductions(companies, weo_2022 = weo_2022), "ep_weo")
-  expect_error(pstr_add_reductions(ep_weo = ep_weo, weo = weo), "companies")
+  expect_error(pstr_add_reductions_old(companies, ep_weo = ep_weo), "weo_2022")
+  expect_error(pstr_add_reductions_old(companies, weo_2022 = weo_2022), "ep_weo")
+  expect_error(pstr_add_reductions_old(ep_weo = ep_weo, weo = weo), "companies")
 })
 
 test_that("returns a tibble", {
@@ -13,7 +13,7 @@ test_that("returns a tibble", {
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
 
-  out <- pstr_add_reductions(companies, ep_weo, weo)
+  out <- pstr_add_reductions_old(companies, ep_weo, weo)
 
   expect_s3_class(out, "tbl_df")
 })
@@ -23,7 +23,7 @@ test_that("with pstr_toy_* companies outputs the expected columns", {
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
 
-  out <- pstr_add_reductions(companies, ep_weo, weo)
+  out <- pstr_add_reductions_old(companies, ep_weo, weo)
 
   expected <- c(
     "company_id",
@@ -52,7 +52,7 @@ test_that("additional columns appear in the output", {
   ep_weo <- pstr_toy_ep_weo(y = 1)
   weo <- pstr_toy_weo_2022(z = 1)
 
-  out <- pstr_add_reductions(companies, ep_weo, weo)
+  out <- pstr_add_reductions_old(companies, ep_weo, weo)
   expect_true(hasName(out, "x"))
   expect_true(hasName(out, "y"))
   expect_true(hasName(out, "z"))
@@ -63,7 +63,7 @@ test_that("outputs columns of the same type as in `companies`", {
   ep_weo <- pstr_toy_ep_weo()
   weo <- pstr_toy_weo_2022()
 
-  out <- pstr_add_reductions(companies, ep_weo, weo)
+  out <- pstr_add_reductions_old(companies, ep_weo, weo)
 
   x <- unname(purrr::map_chr(companies, typeof))
   y <- unname(purrr::map_chr(out[names(companies)], typeof))
@@ -76,7 +76,7 @@ test_that("with 0-row companies outputs 0 rows", {
   weo <- pstr_toy_weo_2022()
   empty <- companies[0L, ]
 
-  out <- pstr_add_reductions(empty, ep_weo, weo)
+  out <- pstr_add_reductions_old(empty, ep_weo, weo)
 
   expect_equal(nrow(out), 0L)
 })
@@ -87,8 +87,8 @@ test_that("still adds reductions without any products", {
   weo <- pstr_toy_weo_2022()
   empty_products <- pstr_toy_companies("products" = NA)
 
-  out <- pstr_add_reductions(companies, ep_weo, weo)
-  out_1 <- pstr_add_reductions(empty_products, ep_weo, weo)
+  out <- pstr_add_reductions_old(companies, ep_weo, weo)
+  out_1 <- pstr_add_reductions_old(empty_products, ep_weo, weo)
 
   expect_equal(out$reductions, out_1$reductions)
 })

@@ -7,7 +7,7 @@
 #'
 #' @param with_transition_risk A [data.frame]. The output of
 #'   [pstr_add_transition_risk()].
-#' @inheritParams pstr_add_reductions
+#' @inheritParams pstr_add_reductions_old
 #'
 #' @family PSTR functions
 #'
@@ -21,7 +21,7 @@
 #'
 #' @examples
 #' pstr_companies |>
-#'   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
+#'   pstr_add_reductions_old(pstr_ep_weo, pstr_weo_2022) |>
 #'   pstr_add_transition_risk() |>
 #'   pstr_aggregate_scores(pstr_companies)
 pstr_aggregate_scores <- function(with_transition_risk, companies) {

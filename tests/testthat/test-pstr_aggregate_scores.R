@@ -1,6 +1,6 @@
 test_that("FIXME? Do we intend to return a grouped data frame?", {
   out <- pstr_companies |>
-    pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
+    pstr_add_reductions_old(pstr_ep_weo, pstr_weo_2022) |>
     pstr_add_transition_risk() |>
     pstr_aggregate_scores(pstr_companies) |>
     suppressWarnings()
@@ -14,7 +14,7 @@ test_that("outputs a result for companies without any products", {
   weo <- pstr_toy_weo_2022()
 
   out <- companies |>
-    pstr_add_reductions(ep_weo, weo) |>
+    pstr_add_reductions_old(ep_weo, weo) |>
     pstr_add_transition_risk() |>
     pstr_aggregate_scores(companies)
 
