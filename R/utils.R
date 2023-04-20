@@ -47,3 +47,21 @@ use_refactoring_checklist <- function() {
   - [ ] Update CODEOWNWERS.
   ")
 }
+
+#' Throws an error if `data` has NA values in the co2 column
+#'
+#' @param data A dataframe/tibble
+#'
+#' @examples
+#' data <- tibble::tibble(input_co2 = c(1, 4))
+#' stop_if_any_missing_input_co2(data)
+#'
+#' data <- tibble::tibble(input_co2 = c(1, NA))
+#' try(stop_if_any_missing_input_co2(data))
+#' @noRd
+stop_if_any_missing_input_co2 <- function(data) {
+  if (anyNA(data$input_co2)) {
+    stop("Each `input_co2` must not be missing.")
+  }
+  invisible(data)
+}

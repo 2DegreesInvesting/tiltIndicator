@@ -9,5 +9,5 @@ test_that("`ictr_companies` hasn't changed", {
 })
 
 test_that("`input_co2` don't have missing values", {
-  expect_no_error(missing_co2(ictr_inputs))
+  expect_false(anyNA(ictr_inputs$input_co2))
 })
