@@ -74,3 +74,10 @@ test_that("returns 3 rows per company for any slice of inputs", {
   out <- ictr_score_companies(data, two_companies)
   expect_equal(nrow(out), 6L)
 })
+
+test_that("with a missing value in inputs_co2 errors gracefully", {
+  data <- ictr_score_inputs(slice(ictr_inputs, 1))
+  data$input_co2 <- NA
+  companies <- slice(ictr_companies, 1)
+  expect_error(ictr_score_companies(data, companies), "input_co2.*missing")
+})
