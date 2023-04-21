@@ -36,9 +36,10 @@
 #'   ictr_score_inputs() |>
 #'   ictr_score_companies(one_company)
 ictr_score_companies <- function(ecoinvent_scores, companies) {
+  stop_if_any_missing_input_co2(ecoinvent_scores)
+
   ## join by activity_product_uuid and other joint columns from companies with
   ## ecoinvent_scores
-
   companies_scores <- companies |>
     left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
 

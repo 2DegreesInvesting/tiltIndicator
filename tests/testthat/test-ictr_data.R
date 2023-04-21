@@ -7,3 +7,7 @@ test_that("`ictr_companies` hasn't changed", {
   out <- ictr_companies |> format_robust_snapshot()
   expect_snapshot(out)
 })
+
+test_that("`input_co2` don't have missing values", {
+  expect_false(anyNA(ictr_inputs$input_co2))
+})
