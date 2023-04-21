@@ -1,10 +1,10 @@
 The Input Product Carbon Transition Risk Indicator assesses the transition risk
 of the input products due to their relative carbon footprint to other input
-products. As a default option, each input product will be compared to the carbon
+products. As a default option, each input product is compared to the carbon
 footprint of every other input product. Alternatively, users can also choose to
 compare those input products of the same type, so e.g., comparing only raw
-materials with each other. Input products with a higher carbon footprint will
-also face a higher risk.
+materials with each other. Input products with a higher carbon footprint face a
+higher risk.
 
 The Input Product Carbon Transition Risk Indicator is therefore similar to the
 Product Carbon Transition Risk Indicator, but it focuses on the input products
@@ -13,30 +13,26 @@ packaging materials, energy and enabling services (such as tractor use on farm)
 to produce the product.
 
 After identifying each carbon footprint for one input product, the input
-products will be ranked according to their footprint. Input products in the
-highest percentile (≥70%) will be classified as high transition risk input
-products. Input products in the medium percentile (between ≥30% and <70%) will
-be classified as medium transition risk input products. Products in the lowest
-percentile (<30%) will be classified as low transition risk input products.
+products are ranked according to their footprint. Input products in the highest
+percentile (≥70%) are classified as high transition risk input products. Input
+products in the medium percentile (between ≥30% and <70%) are classified as
+medium transition risk input products. Products in the lowest percentile (<30%)
+are classified as low transition risk input products.
 
-After assessing the input products transition risk based on its carbon footprint
-for each product, they will be aggregated at company-level. We derive what
-percentage of the input products are high, medium and low transition risk.
-
-The goal of the transition risk MVP is to create a first draft of how the
-transition risk indicator for inputs would be build in code in order to convert
-it into code production easily in the future.
+After assessing the input products' transition risk based on the carbon
+footprint of each product, they are aggregated at the company-level. We derive
+what percentage of the input products are high, medium and low transition risk.
 
 The transition risk indicator consists of 2 broad steps:
 
 1. Score input products: Identifying the input products for each product, and
-calculating the relative carbon footprint per input product.
+calculating the relative carbon footprint per input product. 
 2. Score companies: Aggregating on the company-level.
 
 
-Sample data set includes inputs and co2 footprints for each product from
-Ecoinvent and sectors from Europages. NOTE: the following columns are a complete
-random selection and do not reflect the true information:
+The sample data set includes inputs and co2 footprints for each product from
+Ecoinvent and sectors from Europages. NOTE: the following columns are a
+completely random selection and do not reflect the true information:
 
 - co2 footprints (not allowed to share licensed data right now)
 - sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)

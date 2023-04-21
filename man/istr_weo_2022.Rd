@@ -21,5 +21,8 @@ Other ISTR datasets:
 \code{\link{istr_companies}},
 \code{\link{istr_ep_weo}}
 }
+\author{
+Lyanne Ho.
+}
 \concept{ISTR datasets}
 \keyword{datasets}
