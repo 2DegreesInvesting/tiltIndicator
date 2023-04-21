@@ -41,7 +41,7 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   ## join by activity_product_uuid and other joint columns from companies with
   ## ecoinvent_scores
   companies_scores <- companies |>
-    left_join(ecoinvent_scores, by = c("activity_product_uuid", "ei_activity", "unit"))
+    left_join(ecoinvent_scores, by = c("activity_product_uuid"))
 
   ## scores in comparison to all input products
   scores_all <- companies_scores |>

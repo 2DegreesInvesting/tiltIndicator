@@ -3,6 +3,7 @@ test_that("without crucial columns in `pctr_companies` throws an error", {
     slice(1) |>
     pctr_score_activities() |>
     select(all_of(pctr_score_companies_crucial()))
+
   bad_companies <- pctr_companies |>
     slice(1) |>
     select(all_of(pctr_companies_crucial())) |>
@@ -14,34 +15,16 @@ test_that("without crucial columns in `pctr_companies` throws an error", {
     select(all_of(pctr_companies_crucial())) |>
     select(-"activity_product_uuid")
   expect_error(pctr_score_companies(data, bad_companies), "activity_product_uuid")
-
-  bad_companies <- pctr_companies |>
-    slice(1) |>
-    select(all_of(pctr_companies_crucial())) |>
-    select(-"ei_activity")
-  expect_error(pctr_score_companies(data, bad_companies), "ei_activity")
-
-  bad_companies <- pctr_companies |>
-    slice(1) |>
-    select(all_of(pctr_companies_crucial())) |>
-    select(-"unit")
-  expect_error(pctr_score_companies(data, bad_companies), "unit")
 })
 
-test_that("without crucial columns errors gracefully", {
+test_that("without crucial columns in `pctr_ecoinvent_co2` errors gracefully", {
   data <- pctr_ecoinvent_co2 |>
     slice(1) |>
     pctr_score_activities() |>
     select(all_of(pctr_score_companies_crucial()))
 
-  bad_data <- select(data, -"unit")
-  expect_error(pctr_score_companies(bad_data, pctr_companies), "unit")
-
   bad_data <- select(data, -"score_unit_sec")
   expect_error(pctr_score_companies(bad_data, pctr_companies), "score_unit_sec")
-
-  bad_data <- select(data, -"ei_activity")
-  expect_error(pctr_score_companies(bad_data, pctr_companies), "ei_activity")
 
   bad_data <- select(data, -"score_all")
   expect_error(pctr_score_companies(bad_data, pctr_companies), "score_all")
