@@ -2,6 +2,8 @@
 
 # tiltIndicator 0.0.0.9023
 
+* `ictr_score_companies()` now errors if `inputs_co2` has `NA`s (@kalashsinghal #150).
+
 * New article Get started (#152).
 
 # tiltIndicator 0.0.0.9022
