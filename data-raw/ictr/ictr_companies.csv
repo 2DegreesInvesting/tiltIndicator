@@ -1,26 +1,26 @@
-company_id,company_name,ep_product,activity_product_uuid,ei_activity,unit
-fleischerei-stiefsohn_00000005219477-001,fleischerei stiefsohn,shellfish,0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,"transport, freight, lorry 7.5-16 metric ton, EURO3",metric ton*km
-fleischerei-stiefsohn_00000005219477-001,fleischerei stiefsohn,crustaceans,be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,"treatment of residues, MSWI-WWT, WW from maize starch production, residual material landfill",kg
-fleischerei-stiefsohn_00000005219477-001,fleischerei stiefsohn,fish,977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,"market group for transport, freight train",metric ton*km
-fleischerei-stiefsohn_00000005219477-001,fleischerei stiefsohn,meat,5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7a25-4a4c-b25d-c096fdd50d47,"treatment of waste polyvinylchloride, unsanitary landfill, moist infiltration class (300mm)",kg
-fleischerei-stiefsohn_00000005219477-001,fleischerei stiefsohn,offal,ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,"market for ventilation duct, steel, 100x50 mm",m
-fleischerei-stiefsohn_00000005219477-001,fleischerei stiefsohn,"meats, cooked",2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,"market for sodium silicate, without water, in 37% solution state",kg
-fleischerei-stiefsohn_00000005219477-001,fleischerei stiefsohn,"meats, cured",edd290d2-a5b0-56ec-aaf3-ad71ce5f9403_095528f2-b554-4cfb-9dc8-764b50bcbd7b,"transport, passenger car, large size, natural gas, EURO 4",km
-pecheries-basques_fra316541-00101,pecheries basques,"foods, precooked",d2c0844e-6e5b-52a3-802c-b1a9c162b9b1_fc458a34-8eed-427a-a5e0-c8e930422250,"market for mineral supplement, for beef cattle",kg
-pecheries-basques_fra316541-00101,pecheries basques,gourmet foods,abdb78ee-ddb9-5552-9c4c-ed5b8b2ea11c_5a337107-6bdb-4280-84d4-15a4993c51c9,citric acid production,kg
-pecheries-basques_fra316541-00101,pecheries basques,gastronomic specialties,16e1dc41-2793-521c-b4c9-811cbaa6d36a_7655baa9-ac88-4f13-a1e7-77bd2059a7a6,sodium ethyl xanthate production,kg
-hoche-butter-gmbh_deu422723-693847001,hoche butter gmbh,edible fat,8496d0e1-83eb-5a8d-8290-3394bb282f7e_1c2b2eb7-cdc9-4375-9fee-feb975ba4f64,stone meal production,kg
-vicquelin-espaces-verts_fra697272-00101,vicquelin espaces verts,landscaping services,ae3ff8b8-2fca-5654-a7c6-1dcaf31d7c32_d3a29af5-314a-4659-a574-6bfd53a6bde0,hydroformylation of butene,kg
-vicquelin-espaces-verts_fra697272-00101,vicquelin espaces verts,gardening services,1636162a-eac4-59da-9430-96ad54cbdafa_6eb8dc11-5ac4-4538-a1f1-95463b640ea5,"market for energy and auxilliary inputs, metal working factory",kg
-vicquelin-espaces-verts_fra697272-00101,vicquelin espaces verts,open space amenities,1899920a-4828-5d6d-b601-6ccf625a2b15_ca8ec222-fdaa-4c97-849e-130f1256593f,"market for used lorry, 16 metric ton",unit
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"vehicles, telematics",85ba1478-38fa-5c5a-86a7-51e4a3615705_3d0a8c4e-af1f-4164-9961-40d201fa5645,"polysulfide production, sealing compound",kg
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"measurement equipment, pressure",71ae23f5-c5f7-5d2b-aec9-e417b2e6f813_8f7f787b-119e-481a-a2fa-e3ee86bcf5c8,"market for laser machining, metal, with CO2-laser, 3200W power",hour
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"measurement instruments, pressure",c8467c8e-2c09-50ca-a441-d4b5e3d29d1b_e03dc076-23ea-4705-b9f5-7bba07abd0ae,ammonium chloride production,kg
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"regulation equipment, pressure",2522595d-dee3-5326-bb66-febbebe86d1a_7dd1dea7-88cc-47fa-900b-c9eb0dbfe819,"market for chromium steel removed by milling, large parts",kg
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"regulation instruments, pressure",0dcaf497-b74d-5585-ac55-8eed868183ea_386915d8-286e-41f3-b448-a525344d873d,"heat production, at hot water tank, solar+gas, flat plate, multiple dwelling",MJ
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"measurement equipment, output flow",164ce725-4895-548e-84b4-3103aec0f8ab_6c8d3210-303e-4897-b8c0-2258cb6552f2,"yarn production, cotton, ring spinning",kg
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"measurement instruments, output flow",d8f0cc89-f688-5151-8393-c039c71f1ed5_f31d1245-8beb-4427-8693-7a68b34f96ee,"photovoltaic panel production, CIS",m2
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"regulation equipment, output flow",de0e2098-cda6-53c6-90a9-46ff6b66f900_efe650ec-2b78-4ae3-828a-1aad1d6803ec,"market for sewage sludge, 70% water, WWT, WW from CRT production",kg
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"regulation instruments, output flow",29e4dc13-8200-5800-854c-699a06dd4215_079ce451-ca92-47fd-99b3-a2b1d371abb4,"treatment of bottom ash, MSWI-WWT, WW from maize starch production, slag compartment",kg
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,"measurement equipment, temperature",44260694-ed88-563a-b7b7-4737fdfb2279_efccec02-11ea-40fb-8ca9-0d4afcff3777,television production,unit
-bst-procontrol-gmbh_00000005104947-001,bst procontrol gmbh,temperature measurement instrument,06cbe7d7-5278-5fbc-ad20-d96261c18373_03bf1369-1eec-49d0-bc4b-8b29efa826b9,"transport, freight, lorry 3.5-7.5 metric ton, EURO4",metric ton*km
+activity_uuid_product_uuid,company_id,unit
+0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,fleischerei-stiefsohn_00000005219477-001,metric ton*km
+be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,fleischerei-stiefsohn_00000005219477-001,kg
+977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,fleischerei-stiefsohn_00000005219477-001,metric ton*km
+5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7a25-4a4c-b25d-c096fdd50d47,fleischerei-stiefsohn_00000005219477-001,kg
+ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,fleischerei-stiefsohn_00000005219477-001,m
+2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,fleischerei-stiefsohn_00000005219477-001,kg
+edd290d2-a5b0-56ec-aaf3-ad71ce5f9403_095528f2-b554-4cfb-9dc8-764b50bcbd7b,fleischerei-stiefsohn_00000005219477-001,km
+d2c0844e-6e5b-52a3-802c-b1a9c162b9b1_fc458a34-8eed-427a-a5e0-c8e930422250,pecheries-basques_fra316541-00101,kg
+abdb78ee-ddb9-5552-9c4c-ed5b8b2ea11c_5a337107-6bdb-4280-84d4-15a4993c51c9,pecheries-basques_fra316541-00101,kg
+16e1dc41-2793-521c-b4c9-811cbaa6d36a_7655baa9-ac88-4f13-a1e7-77bd2059a7a6,pecheries-basques_fra316541-00101,kg
+8496d0e1-83eb-5a8d-8290-3394bb282f7e_1c2b2eb7-cdc9-4375-9fee-feb975ba4f64,hoche-butter-gmbh_deu422723-693847001,kg
+ae3ff8b8-2fca-5654-a7c6-1dcaf31d7c32_d3a29af5-314a-4659-a574-6bfd53a6bde0,vicquelin-espaces-verts_fra697272-00101,kg
+1636162a-eac4-59da-9430-96ad54cbdafa_6eb8dc11-5ac4-4538-a1f1-95463b640ea5,vicquelin-espaces-verts_fra697272-00101,kg
+1899920a-4828-5d6d-b601-6ccf625a2b15_ca8ec222-fdaa-4c97-849e-130f1256593f,vicquelin-espaces-verts_fra697272-00101,unit
+85ba1478-38fa-5c5a-86a7-51e4a3615705_3d0a8c4e-af1f-4164-9961-40d201fa5645,bst-procontrol-gmbh_00000005104947-001,kg
+71ae23f5-c5f7-5d2b-aec9-e417b2e6f813_8f7f787b-119e-481a-a2fa-e3ee86bcf5c8,bst-procontrol-gmbh_00000005104947-001,hour
+c8467c8e-2c09-50ca-a441-d4b5e3d29d1b_e03dc076-23ea-4705-b9f5-7bba07abd0ae,bst-procontrol-gmbh_00000005104947-001,kg
+2522595d-dee3-5326-bb66-febbebe86d1a_7dd1dea7-88cc-47fa-900b-c9eb0dbfe819,bst-procontrol-gmbh_00000005104947-001,kg
+0dcaf497-b74d-5585-ac55-8eed868183ea_386915d8-286e-41f3-b448-a525344d873d,bst-procontrol-gmbh_00000005104947-001,MJ
+164ce725-4895-548e-84b4-3103aec0f8ab_6c8d3210-303e-4897-b8c0-2258cb6552f2,bst-procontrol-gmbh_00000005104947-001,kg
+d8f0cc89-f688-5151-8393-c039c71f1ed5_f31d1245-8beb-4427-8693-7a68b34f96ee,bst-procontrol-gmbh_00000005104947-001,m2
+de0e2098-cda6-53c6-90a9-46ff6b66f900_efe650ec-2b78-4ae3-828a-1aad1d6803ec,bst-procontrol-gmbh_00000005104947-001,kg
+29e4dc13-8200-5800-854c-699a06dd4215_079ce451-ca92-47fd-99b3-a2b1d371abb4,bst-procontrol-gmbh_00000005104947-001,kg
+44260694-ed88-563a-b7b7-4737fdfb2279_efccec02-11ea-40fb-8ca9-0d4afcff3777,bst-procontrol-gmbh_00000005104947-001,unit
+06cbe7d7-5278-5fbc-ad20-d96261c18373_03bf1369-1eec-49d0-bc4b-8b29efa826b9,bst-procontrol-gmbh_00000005104947-001,metric ton*km

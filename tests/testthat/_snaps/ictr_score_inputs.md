@@ -238,7 +238,7 @@
       75 metric ton*km
       
       [[4]]
-                                                             activity_product_uuid
+                                                        activity_uuid_product_uuid
       1  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
       2  be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
       3  977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
@@ -316,84 +316,6 @@
       75 06cbe7d7-5278-5fbc-ad20-d96261c18373_03bf1369-1eec-49d0-bc4b-8b29efa826b9
       
       [[5]]
-                                                                                          ei_activity
-      1                                            transport, freight, lorry 7.5-16 metric ton, EURO3
-      2  treatment of residues, MSWI-WWT, WW from maize starch production, residual material landfill
-      3                                                     market group for transport, freight train
-      4   treatment of waste polyvinylchloride, unsanitary landfill, moist infiltration class (300mm)
-      5                                                 market for ventilation duct, steel, 100x50 mm
-      6                              market for sodium silicate, without water, in 37% solution state
-      7                                     transport, passenger car, large size, natural gas, EURO 4
-      8                                                market for mineral supplement, for beef cattle
-      9                                                                        citric acid production
-      10                                                             sodium ethyl xanthate production
-      11                                                                        stone meal production
-      12                                                                   hydroformylation of butene
-      13                               market for energy and auxilliary inputs, metal working factory
-      14                                                         market for used lorry, 16 metric ton
-      15                                                     polysulfide production, sealing compound
-      16                               market for laser machining, metal, with CO2-laser, 3200W power
-      17                                                                 ammonium chloride production
-      18                                    market for chromium steel removed by milling, large parts
-      19                 heat production, at hot water tank, solar+gas, flat plate, multiple dwelling
-      20                                                       yarn production, cotton, ring spinning
-      21                                                           photovoltaic panel production, CIS
-      22                             market for sewage sludge, 70% water, WWT, WW from CRT production
-      23         treatment of bottom ash, MSWI-WWT, WW from maize starch production, slag compartment
-      24                                                                        television production
-      25                                          transport, freight, lorry 3.5-7.5 metric ton, EURO4
-      26                                           transport, freight, lorry 7.5-16 metric ton, EURO3
-      27 treatment of residues, MSWI-WWT, WW from maize starch production, residual material landfill
-      28                                                    market group for transport, freight train
-      29  treatment of waste polyvinylchloride, unsanitary landfill, moist infiltration class (300mm)
-      30                                                market for ventilation duct, steel, 100x50 mm
-      31                             market for sodium silicate, without water, in 37% solution state
-      32                                    transport, passenger car, large size, natural gas, EURO 4
-      33                                               market for mineral supplement, for beef cattle
-      34                                                                       citric acid production
-      35                                                             sodium ethyl xanthate production
-      36                                                                        stone meal production
-      37                                                                   hydroformylation of butene
-      38                               market for energy and auxilliary inputs, metal working factory
-      39                                                         market for used lorry, 16 metric ton
-      40                                                     polysulfide production, sealing compound
-      41                               market for laser machining, metal, with CO2-laser, 3200W power
-      42                                                                 ammonium chloride production
-      43                                    market for chromium steel removed by milling, large parts
-      44                 heat production, at hot water tank, solar+gas, flat plate, multiple dwelling
-      45                                                       yarn production, cotton, ring spinning
-      46                                                           photovoltaic panel production, CIS
-      47                             market for sewage sludge, 70% water, WWT, WW from CRT production
-      48         treatment of bottom ash, MSWI-WWT, WW from maize starch production, slag compartment
-      49                                                                        television production
-      50                                          transport, freight, lorry 3.5-7.5 metric ton, EURO4
-      51                                           transport, freight, lorry 7.5-16 metric ton, EURO3
-      52 treatment of residues, MSWI-WWT, WW from maize starch production, residual material landfill
-      53                                                    market group for transport, freight train
-      54  treatment of waste polyvinylchloride, unsanitary landfill, moist infiltration class (300mm)
-      55                                                market for ventilation duct, steel, 100x50 mm
-      56                             market for sodium silicate, without water, in 37% solution state
-      57                                    transport, passenger car, large size, natural gas, EURO 4
-      58                                               market for mineral supplement, for beef cattle
-      59                                                                       citric acid production
-      60                                                             sodium ethyl xanthate production
-      61                                                                        stone meal production
-      62                                                                   hydroformylation of butene
-      63                               market for energy and auxilliary inputs, metal working factory
-      64                                                         market for used lorry, 16 metric ton
-      65                                                     polysulfide production, sealing compound
-      66                               market for laser machining, metal, with CO2-laser, 3200W power
-      67                                                                 ammonium chloride production
-      68                                    market for chromium steel removed by milling, large parts
-      69                 heat production, at hot water tank, solar+gas, flat plate, multiple dwelling
-      70                                                       yarn production, cotton, ring spinning
-      71                                                           photovoltaic panel production, CIS
-      72                             market for sewage sludge, 70% water, WWT, WW from CRT production
-      73         treatment of bottom ash, MSWI-WWT, WW from maize starch production, slag compartment
-      74                                                                        television production
-      75                                          transport, freight, lorry 3.5-7.5 metric ton, EURO4
-      
-      [[6]]
            perc_all
       1  0.78000000
       2  0.94666667
@@ -471,7 +393,7 @@
       74 0.15333333
       75 0.98000000
       
-      [[7]]
+      [[6]]
           perc_unit
       1  0.66666667
       2  0.95555556
@@ -549,7 +471,7 @@
       74 0.16666667
       75 1.00000000
       
-      [[8]]
+      [[7]]
            perc_sec
       1  0.91666667
       2  0.98076923
@@ -627,7 +549,7 @@
       74 0.14423077
       75 0.83333333
       
-      [[9]]
+      [[8]]
          perc_unit_sec
       1     1.00000000
       2     0.96666667
@@ -705,7 +627,7 @@
       74    0.20000000
       75    1.00000000
       
-      [[10]]
+      [[9]]
          score_all
       1       high
       2       high
@@ -783,7 +705,7 @@
       74       low
       75      high
       
-      [[11]]
+      [[10]]
          score_unit
       1      medium
       2        high
@@ -861,7 +783,7 @@
       74        low
       75       high
       
-      [[12]]
+      [[11]]
          score_sector
       1          high
       2          high
@@ -939,7 +861,7 @@
       74          low
       75         high
       
-      [[13]]
+      [[12]]
          score_unit_sec
       1            high
       2            high
