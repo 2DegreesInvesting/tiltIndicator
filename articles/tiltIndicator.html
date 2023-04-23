@@ -89,36 +89,37 @@ package.</p>
 <p>The tiltIndicator package comes with a number of datasets, which
 we’ll use in the examples below.</p>
 <pre><code><span><span class="co">#&gt; $ictr_companies</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 25 × 4</span></span></span>
-<span><span class="co">#&gt;    activity_product_uuid                            company_id ei_activity unit </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d… fleischer… transport,… metr…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2… fleischer… treatment … kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-e… fleischer… market gro… metr…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7… fleischer… treatment … kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8… fleischer… market for… m    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6… fleischer… market for… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> edd290d2-a5b0-56ec-aaf3-ad71ce5f9403_095528f2-b… fleischer… transport,… km   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> d2c0844e-6e5b-52a3-802c-b1a9c162b9b1_fc458a34-8… pecheries… market for… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> abdb78ee-ddb9-5552-9c4c-ed5b8b2ea11c_5a337107-6… pecheries… citric aci… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 16e1dc41-2793-521c-b4c9-811cbaa6d36a_7655baa9-a… pecheries… sodium eth… kg   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 25 × 3</span></span></span>
+<span><span class="co">#&gt;    activity_uuid_product_uuid                                   company_id unit </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b… fleischer… metr…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9de… fleischer… kg   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a82… fleischer… metr…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7a25-4a4c-b25… fleischer… kg   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac3… fleischer… m    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86e… fleischer… kg   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> edd290d2-a5b0-56ec-aaf3-ad71ce5f9403_095528f2-b554-4cfb-9dc… fleischer… km   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> d2c0844e-6e5b-52a3-802c-b1a9c162b9b1_fc458a34-8eed-427a-a5e… pecheries… kg   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> abdb78ee-ddb9-5552-9c4c-ed5b8b2ea11c_5a337107-6bdb-4280-84d… pecheries… kg   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 16e1dc41-2793-521c-b4c9-811cbaa6d36a_7655baa9-ac88-4f13-a1e… pecheries… kg   </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $ictr_inputs</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 75 × 5</span></span></span>
-<span><span class="co">#&gt;    input_co2 input_sector                unit  activity_product_uuid ei_activity</span></span>
-<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      73.6 transport                   metr… 0a242b09-772a-5edf-8… transport,…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      96   infrastructure &amp; machinery  kg    be06d25c-73dc-55fb-9… treatment …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      39.1 electricity                 metr… 977d997e-c257-5033-b… market gro…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      80.1 infrastructure &amp; machinery  kg    5fd7fca0-0700-51fd-8… treatment …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      10.7 agriculture &amp; animal husba… m     ebb8475e-ff57-5e4e-9… market for…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      25.7 infrastructure &amp; machinery  kg    2f7b77a7-1556-5c1b-b… market for…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      16.9 infrastructure &amp; machinery  km    edd290d2-a5b0-56ec-a… transport,…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      55.8 fuels                       kg    d2c0844e-6e5b-52a3-8… market for…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      29.1 infrastructure &amp; machinery  kg    abdb78ee-ddb9-5552-9… citric aci…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      92.7 infrastructure &amp; machinery  kg    16e1dc41-2793-521c-b… sodium eth…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 75 × 4</span></span></span>
+<span><span class="co">#&gt;    input_co2 input_sector                   unit          activity_uuid_produc…¹</span></span>
+<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      73.6 transport                      metric ton*km 0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      96   infrastructure &amp; machinery     kg            be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      39.1 electricity                    metric ton*km 977d997e-c257-5033-ba…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      80.1 infrastructure &amp; machinery     kg            5fd7fca0-0700-51fd-87…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      10.7 agriculture &amp; animal husbandry m             ebb8475e-ff57-5e4e-93…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      25.7 infrastructure &amp; machinery     kg            2f7b77a7-1556-5c1b-b0…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      16.9 infrastructure &amp; machinery     km            edd290d2-a5b0-56ec-aa…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      55.8 fuels                          kg            d2c0844e-6e5b-52a3-80…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      29.1 infrastructure &amp; machinery     kg            abdb78ee-ddb9-5552-9c…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      92.7 infrastructure &amp; machinery     kg            16e1dc41-2793-521c-b4…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 65 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $istr_companies</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 33 × 36</span></span></span>
