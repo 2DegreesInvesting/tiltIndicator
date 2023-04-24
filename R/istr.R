@@ -16,9 +16,11 @@
 #' @examples
 #' istr(istr_companies, istr_weo_2022, istr_ep_weo)
 istr <- function(companies, scenario, mapper = NULL) {
-  companies |>
+  with_reductions <- companies |>
     istr_mapping(mapper) |>
-    istr_add_reductions(scenario) |>
+    istr_add_reductions(scenario)
+
+  with_reductions |>
     istr_add_transition_risk() |>
     istr_aggregate_scores(companies) |>
     rename(id = "companies_id")
