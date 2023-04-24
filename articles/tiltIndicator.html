@@ -384,7 +384,6 @@ company-level information.</p>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 6</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id, company_name, transition_risk, scenario, year [16]</span></span></span>
 <span><span class="co">#&gt;    id               transition_risk score_aggregated company_name scenario  year</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-sti… high                       400   fleischerei… Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
@@ -485,7 +484,6 @@ therefore, derive company-level information.</p>
 <code class="sourceCode R"><span><span class="va">pstr_companies</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pstr.html">pstr</a></span><span class="op">(</span>scenario <span class="op">=</span> <span class="va">pstr_weo_2022</span>, mapper <span class="op">=</span> <span class="va">pstr_ep_weo</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 6</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id, company_name, transition_risk, scenario, year [37]</span></span></span>
 <span><span class="co">#&gt;       id transition_risk score_aggregated company_name  scenario            year</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 high                         100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>050</span></span>
