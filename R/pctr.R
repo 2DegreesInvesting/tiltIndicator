@@ -17,9 +17,9 @@
 pctr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   scored_activities <- pctr_score_activities(
     co2,
-      low_threshold = low_threshold,
-      high_threshold = high_threshold
-    )
+    low_threshold = low_threshold,
+    high_threshold = high_threshold
+  )
 
   out <- pctr_score_companies(scored_activities, companies)
 
