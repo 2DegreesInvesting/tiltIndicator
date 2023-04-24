@@ -9,3 +9,12 @@ test_that("outputs the expected columns", {
   expect_true(any(grepl("score", names(out))))
   expect_equal(names(out)[1:3], c("id", "transition_risk", "score_aggregated"))
 })
+
+test_that("outputs the expected columns", {
+  companies <- slice(pstr_companies, 1)
+  scenario <- slice(pstr_weo_2022, 1)
+  ep_weo <- slice(pstr_ep_weo, 1)
+
+  out <- pstr(companies, scenario, ep_weo)
+  expect_false(dplyr::is_grouped_df(out))
+})

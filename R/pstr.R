@@ -26,5 +26,6 @@ pstr <- function(companies, scenario, mapper) {
 
   out |>
     rename(id = "company_id") |>
-    relocate_crucial_output_columns()
+    relocate_crucial_output_columns() |>
+    ungroup()
 }

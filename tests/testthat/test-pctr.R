@@ -17,3 +17,10 @@ test_that("outputs the expected columns", {
   )
   expect_equal(names(out)[1:5], expected)
 })
+
+test_that("outputs the expected columns", {
+  companies <- slice(pctr_companies, 1)
+  ecoinvent_co2 <- slice(pctr_ecoinvent_co2, 1)
+  out <- pctr(companies, ecoinvent_co2)
+  expect_false(dplyr::is_grouped_df(out))
+})

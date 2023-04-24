@@ -16,3 +16,10 @@ test_that("outputs the expected columns", {
   )
   expect_equal(names(out)[1:6], expected)
 })
+
+test_that("outputs the expected columns", {
+  companies <- slice(ictr_companies, 1)
+  inputs <- slice(ictr_inputs, 1)
+  out <- ictr(companies, inputs)
+  expect_false(dplyr::is_grouped_df(out))
+})
