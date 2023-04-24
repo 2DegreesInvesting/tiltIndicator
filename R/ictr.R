@@ -15,13 +15,12 @@
 #' @examples
 #' ictr(ictr_companies, ictr_inputs)
 ictr <- function(companies, inputs, low_threshold = 0.3, high_threshold = 0.7) {
-  scored <- ictr_score_inputs(
-    inputs,
+  out <- inputs |>
+    ictr_score_inputs(
     low_threshold = low_threshold,
     high_threshold = high_threshold
-  )
-
-  out <- ictr_score_companies(scored, companies)
+  ) |>
+    ictr_score_companies(companies)
 
   out |>
     xctr_rename() |>
