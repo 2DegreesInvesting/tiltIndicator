@@ -11,3 +11,16 @@ test_that("hasn't changed", {
     suppressWarnings()
   expect_snapshot(out)
 })
+
+test_that("with 1 company adds one row for each row in `ep_weo`", {
+  data <- slice(istr_companies, 1)
+
+  mapper <- slice(istr_ep_weo, 1)
+  out <- istr_mapping(data, mapper)
+  expect_equal(nrow(out), 1)
+
+  mapper <- slice(istr_ep_weo, 1:3)
+  out <- istr_mapping(data, mapper)
+  expect_equal(nrow(out), 3)
+})
+
