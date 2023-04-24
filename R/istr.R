@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' istr(istr_companies, istr_weo_2022, istr_ep_weo)
-istr <- function(companies, scenario, mapper = NULL) {
+istr <- function(companies, scenario, mapper) {
   with_reductions <- companies |>
     istr_mapping(mapper) |>
     istr_add_reductions(scenario)

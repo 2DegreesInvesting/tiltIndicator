@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' pstr(pstr_companies, pstr_weo_2022, pstr_ep_weo)
-pstr <- function(companies, scenario, mapper = NULL) {
+pstr <- function(companies, scenario, mapper) {
   with_reductions <- companies |>
     pstr_add_reductions(mapper, scenario)
 
