@@ -46,7 +46,8 @@ pctr_ecoinvent_co2 |>
 }
 \seealso{
 Other PCTR functions: 
-\code{\link{pctr_score_companies}()}
+\code{\link{pctr_score_companies}()},
+\code{\link{pctr}()}
 }
 \author{
 Tilman Trompke.
