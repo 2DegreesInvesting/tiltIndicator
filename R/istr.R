@@ -27,5 +27,6 @@ istr <- function(companies, scenario, mapper) {
 
   out |>
     rename(id = "companies_id") |>
-    relocate_crucial_output_columns()
+    relocate_crucial_output_columns() |>
+    ungroup()
 }
