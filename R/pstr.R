@@ -16,8 +16,8 @@
 #' @examples
 #' pstr(pstr_companies, pstr_weo_2022, pstr_ep_weo)
 pstr <- function(companies, scenario, mapper = NULL) {
-  companies |>
-    pstr_add_reductions(mapper, scenario) |>
+  with_reductions <- pstr_add_reductions(companies, mapper, scenario)
+  with_reductions |>
     pstr_add_transition_risk() |>
     pstr_aggregate_scores(companies) |>
     rename(id = "company_id")
