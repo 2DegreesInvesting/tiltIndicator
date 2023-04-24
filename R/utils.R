@@ -65,3 +65,7 @@ stop_if_any_missing_input_co2 <- function(data) {
   }
   invisible(data)
 }
+
+common_output_columns <- function() {
+  c("companies_id", "transition_risk")
+}

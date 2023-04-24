@@ -44,7 +44,8 @@ ictr_inputs |>
 }
 \seealso{
 Other ICTR functions: 
-\code{\link{ictr_score_inputs}()}
+\code{\link{ictr_score_inputs}()},
+\code{\link{ictr}()}
 }
 \author{
 Kalash Singhal.
