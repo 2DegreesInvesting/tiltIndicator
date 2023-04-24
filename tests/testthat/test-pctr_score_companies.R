@@ -82,3 +82,13 @@ test_that("returns 3 rows for each company", {
   out <- pctr_score_companies(data, slice(companies, 1:3))
   expect_equal(nrow(out), 9L)
 })
+
+test_that("outputs an id for each company and a score", {
+  companies <- slice(pctr_companies, 1)
+  co2 <- slice(pctr_ecoinvent_co2, 1)
+  data <- pctr_score_activities(co2)
+
+  out <- pctr_score_companies(data, companies)
+  expect_true(hasName(out, "company_id"))
+  expect_true(hasName(out, "score"))
+})
