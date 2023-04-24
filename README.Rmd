@@ -38,26 +38,8 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 
 ```{r}
 library(tiltIndicator)
-```
 
-We'll use datasets that come with the tiltIndicator package.
+ictr(ictr_companies, ictr_inputs)
 
-```{r}
-pstr_companies
-
-pstr_ep_weo
-
-pstr_weo_2022
-```
-
-The `pstr_*()` functions help you work with the product-sector-transition-risk
-indicator.
-
-```{r}
-with_scores <- pstr_companies |>
-  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
-  pstr_add_transition_risk() |>
-  pstr_aggregate_scores(pstr_companies)
-
-with_scores
+pctr(pctr_companies, pctr_ecoinvent_co2)
 ```

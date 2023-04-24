@@ -32,7 +32,9 @@
 #'        * `score_unit`
 #'        * `score_sector`
 #'        * `score_unit_sec`
+#'
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' library(dplyr, warn.conflicts = FALSE)

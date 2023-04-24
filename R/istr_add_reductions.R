@@ -19,6 +19,7 @@
 #'       `flow`, respectively.
 #'
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' istr_companies |>

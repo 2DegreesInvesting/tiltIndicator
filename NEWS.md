@@ -2,7 +2,11 @@
 
 # tiltIndicator 0.0.0.9024
 
-* All indicators now output an id for each company and a score (#190)
+* All indicators now export a single and similar top-level interface (#189).  The old functions are still available but are are now considered developer-oriented and therefore not visible on the website. The output is
+also more similar: The first column is always `id`, the second column is always
+`transition_risk`, and the following column(s) provide score(s).
+
+* All indicators now output an id for each company and a score (#190).
 
 * In ICTR the example data now reflects real data more closely (@kalashsinghal #170).
 

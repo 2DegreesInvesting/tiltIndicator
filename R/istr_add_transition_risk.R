@@ -23,6 +23,7 @@
 #'       column.
 #'
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' istr_companies |>

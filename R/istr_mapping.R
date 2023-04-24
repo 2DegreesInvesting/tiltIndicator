@@ -14,6 +14,7 @@
 #'       `eco_sectors` is named `ECO_sector` respectively.
 #'
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' istr_companies |>

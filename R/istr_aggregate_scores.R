@@ -17,7 +17,9 @@
 #'   * `scenario`
 #'   * `year`
 #'   * `score_aggregated`, which holds the aggregated scores in percentage.
+#'
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' istr_companies |>

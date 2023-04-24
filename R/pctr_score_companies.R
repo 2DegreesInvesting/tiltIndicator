@@ -23,7 +23,9 @@
 #'   * `share_unit_sec`
 #'   where `share_all`, `share_unit`, and `share_unit_sec` holds the
 #'   aggregated scores in percentage.
+#'
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' library(dplyr, warn.conflicts = FALSE)

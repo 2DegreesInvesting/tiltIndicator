@@ -33,9 +33,11 @@ istr_companies |>
 Other ISTR functions: 
 \code{\link{istr_add_reductions}()},
 \code{\link{istr_add_transition_risk}()},
-\code{\link{istr_aggregate_scores}()}
+\code{\link{istr_aggregate_scores}()},
+\code{\link{istr}()}
 }
 \author{
 Lyanne Ho.
 }
 \concept{ISTR functions}
+\keyword{internal}

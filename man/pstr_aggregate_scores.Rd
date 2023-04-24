@@ -35,9 +35,11 @@ pstr_companies |>
 \seealso{
 Other PSTR functions: 
 \code{\link{pstr_add_reductions}()},
-\code{\link{pstr_add_transition_risk}()}
+\code{\link{pstr_add_transition_risk}()},
+\code{\link{pstr}()}
 }
 \author{
 Linda Delacombaz.
 }
 \concept{PSTR functions}
+\keyword{internal}
