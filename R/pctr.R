@@ -15,11 +15,14 @@
 #' @examples
 #' pctr(pctr_companies, pctr_ecoinvent_co2)
 pctr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
-  co2 |>
+  out <- co2 |>
     pctr_score_activities(
       low_threshold = low_threshold,
       high_threshold = high_threshold
     ) |>
-    pctr_score_companies(companies) |>
-    xctr_rename()
+    pctr_score_companies(companies)
+
+  out |>
+    xctr_rename() |>
+    relocate_crucial_output_columns()
 }
