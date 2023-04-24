@@ -22,5 +22,6 @@ pstr <- function(companies, scenario, mapper) {
   with_reductions |>
     pstr_add_transition_risk() |>
     pstr_aggregate_scores(companies) |>
-    rename(id = "company_id")
+    rename(id = "company_id") |>
+    relocate_crucial_output_columns()
 }

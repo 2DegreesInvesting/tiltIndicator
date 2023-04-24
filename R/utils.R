@@ -70,6 +70,11 @@ common_output_columns <- function() {
   c("id", "transition_risk")
 }
 
+relocate_crucial_output_columns <- function(data) {
+    relocate(data, all_of(common_output_columns()), starts_with("score"))
+}
+
 document_value <- function() {
   "A dataframe with columns `id`, `transition_risk`, and scores."
 }
+
