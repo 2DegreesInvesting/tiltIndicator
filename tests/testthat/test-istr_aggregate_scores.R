@@ -14,3 +14,12 @@ test_that("hasn't changed", {
 
   expect_snapshot(out)
 })
+
+test_that("hasn't changed", {
+  istr_companies |>
+    slice(1) |>
+    istr_mapping(istr_ep_weo |> slice(1)) |>
+    istr_add_reductions(istr_weo_2022) |>
+    istr_add_transition_risk() |>
+    istr_aggregate_scores(istr_companies)
+})
