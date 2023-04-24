@@ -50,3 +50,4 @@ Other PCTR functions:
 Tilman Trompke.
 }
 \concept{PCTR functions}
+\keyword{internal}

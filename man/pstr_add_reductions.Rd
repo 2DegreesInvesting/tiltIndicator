@@ -42,3 +42,4 @@ Other PSTR functions:
 Linda Delacombaz.
 }
 \concept{PSTR functions}
+\keyword{internal}

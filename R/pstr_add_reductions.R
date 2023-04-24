@@ -16,7 +16,9 @@
 #'       * All the columns from the `ep_weo` dataset, but the columns
 #'       `EP_sector` and `EP_subsector` are named `sector` and `subsector`
 #'       respectively.
+#'
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' pstr_companies |>

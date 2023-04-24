@@ -29,7 +29,9 @@
 #'        * `score_all`
 #'        * `score_unit`
 #'        * `score_unit_sec`
+#'
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' pctr_ecoinvent_co2 |>

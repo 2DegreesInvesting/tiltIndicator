@@ -25,6 +25,7 @@
 #'       column.
 #'
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' pstr_companies |>

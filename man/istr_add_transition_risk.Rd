@@ -50,3 +50,4 @@ Other ISTR functions:
 Lyanne Ho.
 }
 \concept{ISTR functions}
+\keyword{internal}
