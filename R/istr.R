@@ -5,6 +5,7 @@
 #'
 #' @inheritParams istr_add_reductions
 #' @inheritParams istr_aggregate_score
+#' @param scenario A dataframe with scenario data.
 #'
 #' @family ISTR functions
 #'
@@ -13,11 +14,11 @@
 #' @export
 #'
 #' @examples
-#' istr(istr_companies, istr_ep_weo, istr_weo_2022)
-istr <- function(companies, ep_weo, weo) {
+#' istr(istr_companies, istr_weo_2022, istr_ep_weo)
+istr <- function(companies, scenario, ep_weo) {
   companies |>
     istr_mapping(ep_weo) |>
-    istr_add_reductions(weo) |>
+    istr_add_reductions(scenario) |>
     istr_add_transition_risk() |>
     istr_aggregate_scores(companies) |>
     rename(id = "companies_id")

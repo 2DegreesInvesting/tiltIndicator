@@ -4,10 +4,12 @@
 \alias{istr}
 \title{Calculate the ISTR indicator}
 \usage{
-istr(companies, ep_weo, weo)
+istr(companies, scenario, ep_weo)
 }
 \arguments{
 \item{companies}{A \link{data.frame}. The output of \code{\link[=istr_mapping]{istr_mapping()}}.}
+
+\item{scenario}{A dataframe with scenario data, e.g. WEO.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.
