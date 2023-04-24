@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9024
+
+* All indicators now output an id for each company and a score (#190)
+
+* In ICTR the example data now reflects real data more closely (@kalashsinghal #170).
+
 # tiltIndicator 0.0.0.9023
 
 * `ictr_score_companies()` now errors if `inputs_co2` has `NA`s (@kalashsinghal #150).
