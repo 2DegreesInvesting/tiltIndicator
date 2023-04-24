@@ -10,7 +10,7 @@ istr_aggregate_scores(with_transition_risk, companies)
 \item{with_transition_risk}{A \link{data.frame}. The output of
 \code{\link[=istr_add_transition_risk]{istr_add_transition_risk()}}.}
 
-\item{companies}{A \link{data.frame} like \link{istr_companies}.}
+\item{companies}{A \link{data.frame}. The output of \code{\link[=istr_mapping]{istr_mapping()}}.}
 }
 \value{
 A \link{data.frame} with the columns:

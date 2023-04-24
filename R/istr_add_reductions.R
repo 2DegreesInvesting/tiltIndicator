@@ -4,7 +4,7 @@
 #'
 #' @author Lyanne Ho.
 #'
-#' @param companies A [data.frame] like [istr_companies].
+#' @param companies A [data.frame]. The output of [istr_mapping()].
 #' @param weo_2022 A [data.frame] like [istr_weo_2022].
 #'
 #' @family ISTR functions

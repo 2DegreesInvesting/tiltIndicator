@@ -7,7 +7,7 @@
 istr_add_reductions(companies, weo_2022)
 }
 \arguments{
-\item{companies}{A \link{data.frame} like \link{istr_companies}.}
+\item{companies}{A \link{data.frame}. The output of \code{\link[=istr_mapping]{istr_mapping()}}.}
 
 \item{weo_2022}{A \link{data.frame} like \link{istr_weo_2022}.}
 }
