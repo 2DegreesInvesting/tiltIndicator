@@ -10,6 +10,8 @@ istr(companies, scenario, mapper)
 \item{companies}{A \link{data.frame}. The output of \code{\link[=istr_mapping]{istr_mapping()}}.}
 
 \item{scenario}{A dataframe with scenario data.}
+
+\item{mapper}{A dataframe mapping companies data to the scenario.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.

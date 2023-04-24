@@ -6,6 +6,7 @@
 #' @inheritParams pstr_add_reductions
 #' @inheritParams pstr_aggregate_score
 #' @param scenario A dataframe with scenario data, e.g. WEO.
+#' @param mapper A dataframe mapping `companies` to `scenario`.
 #'
 #' @family PSTR functions
 #'

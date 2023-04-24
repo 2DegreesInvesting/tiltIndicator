@@ -6,6 +6,7 @@
 #' @inheritParams istr_add_reductions
 #' @inheritParams istr_aggregate_score
 #' @param scenario A dataframe with scenario data.
+#' @param mapper A dataframe mapping `companies` to `scenario`.
 #'
 #' @family ISTR functions
 #'

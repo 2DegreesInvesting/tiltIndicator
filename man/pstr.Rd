@@ -10,6 +10,8 @@ pstr(companies, scenario, mapper)
 \item{companies}{A \link{data.frame} like \link{pstr_companies}.}
 
 \item{scenario}{A dataframe with scenario data, e.g. WEO.}
+
+\item{mapper}{A dataframe mapping companies data to the scenario.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.
