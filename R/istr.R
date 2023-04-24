@@ -22,5 +22,3 @@ istr <- function(companies, ep_weo, weo) {
     istr_aggregate_scores(companies) |>
     rename(id = "companies_id")
 }
-
-
