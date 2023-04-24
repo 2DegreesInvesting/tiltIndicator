@@ -4,7 +4,7 @@
 \alias{istr}
 \title{Calculate the ISTR indicator}
 \usage{
-istr(companies, scenario, ep_weo)
+istr(companies, scenario, mapper)
 }
 \arguments{
 \item{companies}{A \link{data.frame}. The output of \code{\link[=istr_mapping]{istr_mapping()}}.}

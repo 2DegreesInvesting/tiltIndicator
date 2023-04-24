@@ -4,14 +4,12 @@
 \alias{pstr}
 \title{Calculate the PSTR indicator}
 \usage{
-pstr(companies, scenario, ep_weo)
+pstr(companies, scenario, mapper)
 }
 \arguments{
 \item{companies}{A \link{data.frame} like \link{pstr_companies}.}
 
 \item{scenario}{A dataframe with scenario data, e.g. WEO.}
-
-\item{ep_weo}{A \link{data.frame} like \link{pstr_ep_weo}.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.
