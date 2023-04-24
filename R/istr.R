@@ -20,7 +20,7 @@ istr <- function(companies, ep_weo, weo) {
     istr_add_reductions(weo) |>
     istr_add_transition_risk() |>
     istr_aggregate_scores(companies) |>
-    rename(id = companies_id)
+    rename(id = "companies_id")
 }
 
 

@@ -19,5 +19,5 @@ pstr <- function(companies, ep_weo, weo_2022) {
     pstr_add_reductions(ep_weo, weo_2022) |>
     pstr_add_transition_risk() |>
     pstr_aggregate_scores(companies) |>
-    rename(id = company_id)
+    rename(id = "company_id")
 }
