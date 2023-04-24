@@ -1,36 +1,3 @@
 url: https://2degreesinvesting.github.io/tiltIndicator/
 template:
   bootstrap: 5
-
-reference:
-
-  - title: ICTR datasets
-    contents:
-      - has_concept("ICTR datasets")
-
-  - title: ICTR functions
-    contents:
-      - has_concept("ICTR functions")
-
-  - title: ISTR datasets
-    contents:
-      - has_concept("ISTR datasets")
-
-  - title: ISTR functions
-    contents:
-      - has_concept("ISTR functions")
-  - title: PCTR datasets
-    contents:
-      - has_concept("PCTR datasets")
-
-  - title: PCTR functions
-    contents:
-      - has_concept("PCTR functions")
-
-  - title: PSTR datasets
-    contents:
-      - has_concept("PSTR datasets")
-
-  - title: PSTR functions
-    contents:
-      - has_concept("PSTR functions")
