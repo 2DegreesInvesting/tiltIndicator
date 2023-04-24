@@ -1,7 +1,8 @@
 istr_toy_companies <- function() {
   tibble(
     company_name = "abc",
-    eco_sectors = "steel_metal_transformation")
+    eco_sectors = "steel_metal_transformation"
+  )
 }
 
 istr_toy_ep_weo <- function() {

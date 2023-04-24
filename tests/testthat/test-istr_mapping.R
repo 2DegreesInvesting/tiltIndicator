@@ -23,4 +23,3 @@ test_that("with 1 company adds one row for each row in `ep_weo`", {
   out <- istr_mapping(data, mapper)
   expect_equal(nrow(out), 3)
 })
-
