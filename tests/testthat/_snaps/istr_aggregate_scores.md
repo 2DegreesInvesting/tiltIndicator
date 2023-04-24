@@ -4,6 +4,25 @@
       out
     Output
       [[1]]
+                                     companies_id
+      1  fleischerei-stiefsohn_00000005219477-001
+      2  fleischerei-stiefsohn_00000005219477-001
+      3  fleischerei-stiefsohn_00000005219477-001
+      4  fleischerei-stiefsohn_00000005219477-001
+      5  fleischerei-stiefsohn_00000005219477-001
+      6  fleischerei-stiefsohn_00000005219477-001
+      7     hoche-butter-gmbh_deu422723-693847001
+      8     hoche-butter-gmbh_deu422723-693847001
+      9     hoche-butter-gmbh_deu422723-693847001
+      10    hoche-butter-gmbh_deu422723-693847001
+      11    hoche-butter-gmbh_deu422723-693847001
+      12        pecheries-basques_fra316541-00101
+      13        pecheries-basques_fra316541-00101
+      14        pecheries-basques_fra316541-00101
+      15        pecheries-basques_fra316541-00101
+      16        pecheries-basques_fra316541-00101
+      
+      [[2]]
                   company_name
       1  fleischerei stiefsohn
       2  fleischerei stiefsohn
@@ -22,7 +41,7 @@
       15     pecheries basques
       16     pecheries basques
       
-      [[2]]
+      [[3]]
          transition_risk
       1             high
       2             high
@@ -41,7 +60,7 @@
       15          medium
       16       no_sector
       
-      [[3]]
+      [[4]]
                                     scenario
       1  Net Zero Emissions by 2050 Scenario
       2  Net Zero Emissions by 2050 Scenario
@@ -60,7 +79,7 @@
       15 Net Zero Emissions by 2050 Scenario
       16                                <NA>
       
-      [[4]]
+      [[5]]
          year
       1  2040
       2  2050
@@ -79,7 +98,7 @@
       15 2040
       16   NA
       
-      [[5]]
+      [[6]]
          score_aggregated
       1         400.00000
       2        2466.66667

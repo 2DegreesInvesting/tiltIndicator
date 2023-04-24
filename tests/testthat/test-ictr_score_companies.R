@@ -81,3 +81,14 @@ test_that("with a missing value in inputs_co2 errors gracefully", {
   companies <- slice(ictr_companies, 1)
   expect_error(ictr_score_companies(data, companies), "input_co2.*missing")
 })
+
+test_that("outputs an id for each company and a score", {
+  inputs <- ictr_score_inputs(slice(ictr_inputs, 1))
+  data <- ictr_score_inputs(inputs)
+
+  companies <- slice(ictr_companies, 1)
+  out <- ictr_score_companies(data, companies)
+
+  expect_true(hasName(out, "company_id"))
+  expect_true(hasName(out, "score"))
+})

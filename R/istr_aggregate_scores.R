@@ -27,18 +27,20 @@
 #'   istr_aggregate_scores(istr_companies)
 istr_aggregate_scores <- function(with_transition_risk, companies) {
   n_products_per_companies <- companies |>
-    group_by(.data$company_name) |>
+    group_by(.data$companies_id, .data$company_name) |>
     summarise(total_products_per_company = n())
 
   with_transition_risk2 <- with_transition_risk |>
     left_join(
+      # FIXME Join by company_id
       n_products_per_companies,
-      by = "company_name",
+      by = c("companies_id", "company_name"),
       # TODO: ASK Linda to confirm we want this relationship
       relationship = "many-to-many"
     )
 
   useful_cols <- c(
+    "companies_id",
     "company_name",
     "transition_risk",
     "total_products_per_company",
@@ -47,10 +49,10 @@ istr_aggregate_scores <- function(with_transition_risk, companies) {
   )
   with_transition_risk2 |>
     select(all_of(all_of(useful_cols))) |>
-    group_by(.data$company_name, .data$transition_risk, .data$scenario, .data$year) |>
+    group_by(.data$companies_id, .data$company_name, .data$transition_risk, .data$scenario, .data$year) |>
     summarise(score_aggregated = (n() / .data$total_products_per_company * 100)) |>
     # FIXME? Do we really want grouped output?
-    group_by(.data$company_name, .data$transition_risk, .data$scenario, .data$year) |>
+    group_by(.data$companies_id, .data$company_name, .data$transition_risk, .data$scenario, .data$year) |>
     # FIXME: Do we really want distinct_all()? It's superseded by
     # distinct(across(everything() ... and also here it seems we can use just
     # `distinct()`. See ?distinct_all(), ?distinct(), and also this reprex:
