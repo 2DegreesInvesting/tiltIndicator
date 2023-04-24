@@ -16,8 +16,7 @@ risk products.}
 risk products.}
 }
 \value{
-A dataframe with columns \code{id}, \code{transition_risk}, and
-scores.
+A dataframe with columns \code{id}, \code{transition_risk}, and scores.
 }
 \description{
 The Product Carbon Transition Risk measures the transition risk on the

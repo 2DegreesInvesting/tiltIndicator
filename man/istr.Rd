@@ -10,8 +10,7 @@ istr(companies, ep_weo, weo)
 \item{companies}{A \link{data.frame}. The output of \code{\link[=istr_mapping]{istr_mapping()}}.}
 }
 \value{
-A dataframe with columns \code{id}, \code{transition_risk}, and
-scores.
+A dataframe with columns \code{id}, \code{transition_risk}, and scores.
 }
 \description{
 The Input Product Sector Risk Indicator assesses the transition risk of the

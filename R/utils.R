@@ -69,3 +69,7 @@ stop_if_any_missing_input_co2 <- function(data) {
 common_output_columns <- function() {
   c("id", "transition_risk")
 }
+
+document_value <- function() {
+  "A dataframe with columns `id`, `transition_risk`, and scores."
+}

@@ -12,8 +12,7 @@ ictr(companies, inputs)
 \item{inputs}{A \link{data.frame} like \link{ictr_inputs}}
 }
 \value{
-A dataframe with columns \code{id}, \code{transition_risk}, and
-scores.
+A dataframe with columns \code{id}, \code{transition_risk}, and scores.
 }
 \description{
 The Input Product Carbon Transition Risk Indicator assesses the transition risk

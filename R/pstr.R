@@ -8,7 +8,7 @@
 #'
 #' @family PSTR functions
 #'
-#' @return A dataframe with columns `id`, `transition_risk`, and scores.
+#' @return `r document_value()`
 #'
 #' @export
 #'

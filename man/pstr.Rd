@@ -14,8 +14,7 @@ pstr(companies, ep_weo, weo_2022)
 \item{weo_2022}{A \link{data.frame} like \link{pstr_weo_2022}.}
 }
 \value{
-A dataframe with columns \code{id}, \code{transition_risk}, and
-scores.
+A dataframe with columns \code{id}, \code{transition_risk}, and scores.
 }
 \description{
 The Product Sector Transition Risk Indicator measures the transition risk of
