@@ -1,21 +1,26 @@
-#' Wrap the ISTR API
+#' Calculate the ISTR indicator
+#'
+#' ```{r child=extdata_path("child/intro-istr.Rmd")}
+#' ```
 #'
 #' @inheritParams istr_add_reductions
-#' @inheritParams istr_mapping
+#' @inheritParams istr_aggregate_score
 #'
-#' @return A dataframe
+#' @family ISTR functions
+#'
+#' @return A dataframe with columns `id`, `transition_risk`, and scores.
+#'
+#' @export
 #'
 #' @examples
-#' companies <- istr_toy_companies()
-#' ep_weo <- istr_toy_ep_weo()
-#' weo <- istr_toy_weo()
-#'
-#' istr(companies, ep_weo, weo)
-#' @noRd
+#' istr(istr_companies, istr_ep_weo, istr_weo_2022)
 istr <- function(companies, ep_weo, weo) {
   companies |>
     istr_mapping(ep_weo) |>
     istr_add_reductions(weo) |>
     istr_add_transition_risk() |>
-    istr_aggregate_scores(companies)
+    istr_aggregate_scores(companies) |>
+    rename(id = companies_id)
 }
+
+

@@ -37,7 +37,8 @@ istr_companies |>
 Other ISTR functions: 
 \code{\link{istr_add_transition_risk}()},
 \code{\link{istr_aggregate_scores}()},
-\code{\link{istr_mapping}()}
+\code{\link{istr_mapping}()},
+\code{\link{istr}()}
 }
 \author{
 Lyanne Ho.
