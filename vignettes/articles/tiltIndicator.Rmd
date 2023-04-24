@@ -44,9 +44,8 @@ setNames(lapply(datasets, get), datasets)
 ### Example
 
 ```{r}
-ictr_inputs |>
-  ictr_score_inputs() |>
-  ictr_score_companies(ictr_companies)
+ictr_companies |> 
+  ictr(inputs = ictr_inputs)
 ```
 
 ## Input sector transition risk (ISTR)
@@ -59,11 +58,8 @@ ictr_inputs |>
 ### Example
 
 ```{r}
-istr_companies |>
-  istr_mapping(istr_ep_weo) |>
-  istr_add_reductions(istr_weo_2022) |>
-  istr_add_transition_risk() |>
-  istr_aggregate_scores(istr_companies)
+istr_companies |> 
+  istr(scenario = istr_weo_2022, mapper = istr_ep_weo)
 ```
 
 ## Product carbon transition risk (PCTR)
@@ -76,9 +72,8 @@ istr_companies |>
 ### Example
 
 ```{r}
-pctr_ecoinvent_co2 |>
-  pctr_score_activities() |>
-  pctr_score_companies(pctr_companies)
+pctr_companies |> 
+  pctr(co2 = pctr_ecoinvent_co2)
 ```
 
 ## Product sector transition risk (PSTR)
@@ -91,7 +86,6 @@ pctr_ecoinvent_co2 |>
 ### Example
 
 ```{r}
-pstr_companies |>
-  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
-  pstr_add_transition_risk()
+pstr_companies |> 
+  pstr(scenario = pstr_weo_2022, mapper = pstr_ep_weo)
 ```
