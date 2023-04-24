@@ -12,7 +12,7 @@ ictr(companies, inputs)
 \item{inputs}{A \link{data.frame} like \link{ictr_inputs}}
 }
 \value{
-A dataframe with columns \code{companies_id}, \code{transition_risk}, and
+A dataframe with columns \code{id}, \code{transition_risk}, and
 scores.
 }
 \description{

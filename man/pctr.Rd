@@ -16,7 +16,7 @@ risk products.}
 risk products.}
 }
 \value{
-A dataframe with columns \code{companies_id}, \code{transition_risk}, and
+A dataframe with columns \code{id}, \code{transition_risk}, and
 scores.
 }
 \description{

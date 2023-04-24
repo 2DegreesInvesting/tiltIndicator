@@ -8,7 +8,7 @@
 #'
 #' @family PCTR functions
 #'
-#' @return A dataframe with columns `companies_id`, `transition_risk`, and
+#' @return A dataframe with columns `id`, `transition_risk`, and
 #'   scores.
 #'
 #' @export
