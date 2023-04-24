@@ -316,27 +316,26 @@ have one sector per product yet)</li>
 <h3 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ictr_inputs</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/ictr_score_inputs.html">ictr_score_inputs</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/ictr_score_companies.html">ictr_score_companies</a></span><span class="op">(</span><span class="va">ictr_companies</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">ictr_companies</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/ictr.html">ictr</a></span><span class="op">(</span>inputs <span class="op">=</span> <span class="va">ictr_inputs</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 15 × 6</span></span></span>
-<span><span class="co">#&gt;    company_id             score share_all share_unit share_sector share_unit_sec</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn… high      0.286      0.333        0.333         0.476 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn… medi…     0.381      0.476        0.429         0.429 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn… low       0.333      0.190        0.238         0.095<span style="text-decoration: underline;">2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> pecheries-basques_fra… high      0.333      0.333        0.556         0.556 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> pecheries-basques_fra… medi…     0.556      0.556        0.333         0.222 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> pecheries-basques_fra… low       0.111      0.111        0.111         0.222 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> hoche-butter-gmbh_deu… high      0          0            0             0     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> hoche-butter-gmbh_deu… medi…     0.667      0.667        0.667         0.667 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> hoche-butter-gmbh_deu… low       0.333      0.333        0.333         0.333 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> vicquelin-espaces-ver… high      0.111      0.222        0.111         0.222 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> vicquelin-espaces-ver… medi…     0.444      0.444        0.556         0.667 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> vicquelin-espaces-ver… low       0.444      0.333        0.333         0.111 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> bst-procontrol-gmbh_0… high      0.394      0.364        0.455         0.515 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> bst-procontrol-gmbh_0… medi…     0.333      0.424        0.333         0.333 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> bst-procontrol-gmbh_0… low       0.273      0.212        0.212         0.152</span></span></code></pre></div>
+<span><span class="co">#&gt;    id           transition_risk score_all score_unit score_sector score_unit_sec</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei… high                0.286      0.333        0.333         0.476 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei… medium              0.381      0.476        0.429         0.429 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei… low                 0.333      0.190        0.238         0.095<span style="text-decoration: underline;">2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> pecheries-b… high                0.333      0.333        0.556         0.556 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> pecheries-b… medium              0.556      0.556        0.333         0.222 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> pecheries-b… low                 0.111      0.111        0.111         0.222 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> hoche-butte… high                0          0            0             0     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> hoche-butte… medium              0.667      0.667        0.667         0.667 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> hoche-butte… low                 0.333      0.333        0.333         0.333 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> vicquelin-e… high                0.111      0.222        0.111         0.222 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> vicquelin-e… medium              0.444      0.444        0.556         0.667 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> vicquelin-e… low                 0.444      0.333        0.333         0.111 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> bst-procont… high                0.394      0.364        0.455         0.515 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> bst-procont… medium              0.333      0.424        0.333         0.333 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> bst-procont… low                 0.273      0.212        0.212         0.152</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -372,10 +371,7 @@ company-level information.</p>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">istr_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/istr_mapping.html">istr_mapping</a></span><span class="op">(</span><span class="va">istr_ep_weo</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/istr_add_reductions.html">istr_add_reductions</a></span><span class="op">(</span><span class="va">istr_weo_2022</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/istr_add_transition_risk.html">istr_add_transition_risk</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/istr_aggregate_scores.html">istr_aggregate_scores</a></span><span class="op">(</span><span class="va">istr_companies</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/istr.html">istr</a></span><span class="op">(</span>scenario <span class="op">=</span> <span class="va">istr_weo_2022</span>, mapper <span class="op">=</span> <span class="va">istr_ep_weo</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in</span></span>
 <span><span class="co">#&gt; dplyr 1.1.0.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `reframe()` instead.</span></span>
@@ -388,25 +384,25 @@ company-level information.</p>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 6</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   companies_id, company_name, transition_risk, scenario, year [16]</span></span></span>
-<span><span class="co">#&gt;    companies_id     company_name transition_risk scenario  year score_aggregated</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-sti… fleischerei… high            Net Zer…  <span style="text-decoration: underline;">2</span>040            400  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-sti… fleischerei… high            Net Zer…  <span style="text-decoration: underline;">2</span>050           <span style="text-decoration: underline;">2</span>467. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-sti… fleischerei… low             Stated …  <span style="text-decoration: underline;">2</span>020           <span style="text-decoration: underline;">2</span>467. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-sti… fleischerei… medium          Net Zer…  <span style="text-decoration: underline;">2</span>030           <span style="text-decoration: underline;">2</span>467. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-sti… fleischerei… medium          Net Zer…  <span style="text-decoration: underline;">2</span>040           <span style="text-decoration: underline;">2</span>067. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-sti… fleischerei… no_sector       <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             28.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> hoche-butter-gm… hoche butte… high            Net Zer…  <span style="text-decoration: underline;">2</span>040            467. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> hoche-butter-gm… hoche butte… high            Net Zer…  <span style="text-decoration: underline;">2</span>050           <span style="text-decoration: underline;">3</span>867. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> hoche-butter-gm… hoche butte… low             Stated …  <span style="text-decoration: underline;">2</span>020           <span style="text-decoration: underline;">3</span>867. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> hoche-butter-gm… hoche butte… medium          Net Zer…  <span style="text-decoration: underline;">2</span>030           <span style="text-decoration: underline;">3</span>867. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> hoche-butter-gm… hoche butte… medium          Net Zer…  <span style="text-decoration: underline;">2</span>040           <span style="text-decoration: underline;">3</span>400  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> pecheries-basqu… pecheries b… high            Net Zer…  <span style="text-decoration: underline;">2</span>050           <span style="text-decoration: underline;">5</span>911. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> pecheries-basqu… pecheries b… low             Stated …  <span style="text-decoration: underline;">2</span>020           <span style="text-decoration: underline;">5</span>911. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> pecheries-basqu… pecheries b… medium          Net Zer…  <span style="text-decoration: underline;">2</span>030           <span style="text-decoration: underline;">5</span>911. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> pecheries-basqu… pecheries b… medium          Net Zer…  <span style="text-decoration: underline;">2</span>040           <span style="text-decoration: underline;">5</span>911. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> pecheries-basqu… pecheries b… no_sector       <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             22.2</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id, company_name, transition_risk, scenario, year [16]</span></span></span>
+<span><span class="co">#&gt;    id               transition_risk score_aggregated company_name scenario  year</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-sti… high                       400   fleischerei… Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-sti… high                      <span style="text-decoration: underline;">2</span>467.  fleischerei… Net Zer…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-sti… low                       <span style="text-decoration: underline;">2</span>467.  fleischerei… Stated …  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-sti… medium                    <span style="text-decoration: underline;">2</span>467.  fleischerei… Net Zer…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-sti… medium                    <span style="text-decoration: underline;">2</span>067.  fleischerei… Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-sti… no_sector                   28.6 fleischerei… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> hoche-butter-gm… high                       467.  hoche butte… Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> hoche-butter-gm… high                      <span style="text-decoration: underline;">3</span>867.  hoche butte… Net Zer…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> hoche-butter-gm… low                       <span style="text-decoration: underline;">3</span>867.  hoche butte… Stated …  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> hoche-butter-gm… medium                    <span style="text-decoration: underline;">3</span>867.  hoche butte… Net Zer…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> hoche-butter-gm… medium                    <span style="text-decoration: underline;">3</span>400   hoche butte… Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> pecheries-basqu… high                      <span style="text-decoration: underline;">5</span>911.  pecheries b… Net Zer…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> pecheries-basqu… low                       <span style="text-decoration: underline;">5</span>911.  pecheries b… Stated …  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> pecheries-basqu… medium                    <span style="text-decoration: underline;">5</span>911.  pecheries b… Net Zer…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> pecheries-basqu… medium                    <span style="text-decoration: underline;">5</span>911.  pecheries b… Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> pecheries-basqu… no_sector                   22.2 pecheries b… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -453,21 +449,20 @@ segment</li>
 <h3 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pctr_ecoinvent_co2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_activities.html">pctr_score_activities</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr_score_companies.html">pctr_score_companies</a></span><span class="op">(</span><span class="va">pctr_companies</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">pctr_companies</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/pctr.html">pctr</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">pctr_ecoinvent_co2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 5</span></span></span>
-<span><span class="co">#&gt;   company_id                           score share_all share_unit share_unit_sec</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggmbh_0000000… high       0.25      0.5           0.5   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggmbh_0000000… medi…      0.25      0.25          0.25  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggmbh_0000000… low        0.5       0.25          0.25  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> ebtor_00000005324899621837001        high       0.6       0.6           0.8   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> ebtor_00000005324899621837001        medi…      0.2       0.4           0.2   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ebtor_00000005324899621837001        low        0.2       0             0     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> mbdgmbh_00000004773428001            high       0.25      0.438         0.688 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> mbdgmbh_00000004773428001            medi…      0.5       0.375         0.25  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> mbdgmbh_00000004773428001            low        0.25      0.188         0.062<span style="text-decoration: underline;">5</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   id                         transition_risk score_all score_unit score_unit_sec</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> powerstartmanufacturinggm… high                 0.25      0.5           0.5   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> powerstartmanufacturinggm… medium               0.25      0.25          0.25  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> powerstartmanufacturinggm… low                  0.5       0.25          0.25  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> ebtor_0000000532489962183… high                 0.6       0.6           0.8   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> ebtor_0000000532489962183… medium               0.2       0.4           0.2   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ebtor_0000000532489962183… low                  0.2       0             0     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> mbdgmbh_00000004773428001  high                 0.25      0.438         0.688 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> mbdgmbh_00000004773428001  medium               0.5       0.375         0.25  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> mbdgmbh_00000004773428001  low                  0.25      0.188         0.062<span style="text-decoration: underline;">5</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -488,26 +483,22 @@ therefore, derive company-level information.</p>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pstr_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">pstr_ep_weo</span>, <span class="va">pstr_weo_2022</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pstr_add_transition_risk.html">pstr_add_transition_risk</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 18</span></span></span>
-<span><span class="co">#&gt;    company_id company_name  products  sector subsector EP_categories_id EP_group</span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          1 Peasant Peter screws    steel… bending_… d3a7a3c40afd18a… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          2 Peasant Peter <span style="color: #BB0000;">NA</span>        steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          2 Peasant Peter <span style="color: #BB0000;">NA</span>        steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          2 Peasant Peter <span style="color: #BB0000;">NA</span>        steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          2 Peasant Peter <span style="color: #BB0000;">NA</span>        steel… aluminiu… cff53720714f146… metallu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>          3 Peasant Peter ultrafil… cars   vehicle_… 9518ae57fc6be29… vehicle…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more variables: weo_product_mapper &lt;chr&gt;, weo_flow_mapper &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   publication &lt;chr&gt;, scenario &lt;chr&gt;, region &lt;chr&gt;, category &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   unit &lt;chr&gt;, year &lt;dbl&gt;, value &lt;dbl&gt;, reductions &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   transition_risk &lt;chr&gt;</span></span></span></code></pre></div>
+<span>  <span class="fu"><a href="../reference/pstr.html">pstr</a></span><span class="op">(</span>scenario <span class="op">=</span> <span class="va">pstr_weo_2022</span>, mapper <span class="op">=</span> <span class="va">pstr_ep_weo</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id, company_name, transition_risk, scenario, year [37]</span></span></span>
+<span><span class="co">#&gt;       id transition_risk score_aggregated company_name  scenario            year</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 high                         100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     1 low                          100 Peasant Peter Stated Policies S…  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     1 medium                       100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     1 medium                       100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     2 high                         100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     2 low                          100 Peasant Peter Stated Policies S…  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     2 medium                       100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     2 medium                       100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     3 high                         100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     3 high                         100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more rows</span></span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

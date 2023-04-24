@@ -82,87 +82,41 @@
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span></code></pre></div>
-<p>We’ll use datasets that come with the tiltIndicator package.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pstr_companies</span></span>
-<span><span class="co">#&gt; # A tibble: 10 × 5</span></span>
-<span><span class="co">#&gt;    company_id company_name       products              sector            subse…¹</span></span>
-<span><span class="co">#&gt;         &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;                 &lt;chr&gt;             &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt;  1          1 Peasant Peter      screws                steel_metal_tran… bendin…</span></span>
-<span><span class="co">#&gt;  2          2 Peasant Peter      aluminium_alloy       steel_metals      alumin…</span></span>
-<span><span class="co">#&gt;  3          3 Peasant Peter      ultrafilstration      cars              vehicl…</span></span>
-<span><span class="co">#&gt;  4          4 Peasant Paul       frozen_food           frozen_food       cheese…</span></span>
-<span><span class="co">#&gt;  5          5 Tom's Car Company  oils                  cars              automo…</span></span>
-<span><span class="co">#&gt;  6          6 Tom's Car Company  bolts                 steel_metal_tran… bendin…</span></span>
-<span><span class="co">#&gt;  7          7 Screwdriver Expert chucks                steel_metal_tran… boring…</span></span>
-<span><span class="co">#&gt;  8          8 Screwdriver Expert adaptator_plate       steel_metal_tran… boring…</span></span>
-<span><span class="co">#&gt;  9          9 John Meier's Cars  disinfection_products cars              vehicl…</span></span>
-<span><span class="co">#&gt; 10         10 John Meier's Cars  ultrafilstration      cars              vehicl…</span></span>
-<span><span class="co">#&gt; # … with abbreviated variable name ¹​subsector</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">pstr_ep_weo</span></span>
-<span><span class="co">#&gt; # A tibble: 133 × 6</span></span>
-<span><span class="co">#&gt;    EP_categories_id                      EP_gr…¹ EP_se…² EP_su…³ weo_p…⁴ weo_f…⁵</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;                                 &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt;  1 d3a7a3c40afd18a7a840942262099f23f65c… metall… steel_… bendin… Total   Iron a…</span></span>
-<span><span class="co">#&gt;  2 8d926b734410de5ba68daa17089a14c1bc1b… metall… steel_… boiler… Total   Iron a…</span></span>
-<span><span class="co">#&gt;  3 2eed5a1fd604b1d3ec561a07257b8a1eb99f… metall… steel_… boring… Total   Iron a…</span></span>
-<span><span class="co">#&gt;  4 157f4f5953d1a5bfee474217567dc2e65068… metall… steel_… brazin… Total   Iron a…</span></span>
-<span><span class="co">#&gt;  5 2092de203e479b67bea02356318c0c8fc8e0… metall… steel_… broach… Total   Iron a…</span></span>
-<span><span class="co">#&gt;  6 62dea331c70a02280d5f71a27ec140305aff… metall… steel_… bronzi… Total   Iron a…</span></span>
-<span><span class="co">#&gt;  7 8c02cdfddde68d166c1352fa745df959f4ff… metall… steel_… canopi… Total   Iron a…</span></span>
-<span><span class="co">#&gt;  8 e593b1156ce341881d18b82747a3c0bb490c… metall… steel_… chrome… Total   Iron a…</span></span>
-<span><span class="co">#&gt;  9 b044eec1205c7ef2fde9e38db6b9b308a1bd… metall… steel_… cleani… Total   Iron a…</span></span>
-<span><span class="co">#&gt; 10 0880f49af456479b3e4f99c1ed0d14217e26… metall… steel_… cuttin… Total   Iron a…</span></span>
-<span><span class="co">#&gt; # … with 123 more rows, and abbreviated variable names ¹​EP_group, ²​EP_sector,</span></span>
-<span><span class="co">#&gt; #   ³​EP_subsector, ⁴​weo_product_mapper, ⁵​weo_flow_mapper</span></span>
+<span><span class="fu"><a href="reference/ictr.html">ictr</a></span><span class="op">(</span><span class="va">ictr_companies</span>, <span class="va">ictr_inputs</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 15 × 6</span></span>
+<span><span class="co">#&gt;    id           transition_risk score_all score_unit score_sector score_unit_sec</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 fleischerei… high                0.286      0.333        0.333         0.476 </span></span>
+<span><span class="co">#&gt;  2 fleischerei… medium              0.381      0.476        0.429         0.429 </span></span>
+<span><span class="co">#&gt;  3 fleischerei… low                 0.333      0.190        0.238         0.0952</span></span>
+<span><span class="co">#&gt;  4 pecheries-b… high                0.333      0.333        0.556         0.556 </span></span>
+<span><span class="co">#&gt;  5 pecheries-b… medium              0.556      0.556        0.333         0.222 </span></span>
+<span><span class="co">#&gt;  6 pecheries-b… low                 0.111      0.111        0.111         0.222 </span></span>
+<span><span class="co">#&gt;  7 hoche-butte… high                0          0            0             0     </span></span>
+<span><span class="co">#&gt;  8 hoche-butte… medium              0.667      0.667        0.667         0.667 </span></span>
+<span><span class="co">#&gt;  9 hoche-butte… low                 0.333      0.333        0.333         0.333 </span></span>
+<span><span class="co">#&gt; 10 vicquelin-e… high                0.111      0.222        0.111         0.222 </span></span>
+<span><span class="co">#&gt; 11 vicquelin-e… medium              0.444      0.444        0.556         0.667 </span></span>
+<span><span class="co">#&gt; 12 vicquelin-e… low                 0.444      0.333        0.333         0.111 </span></span>
+<span><span class="co">#&gt; 13 bst-procont… high                0.394      0.364        0.455         0.515 </span></span>
+<span><span class="co">#&gt; 14 bst-procont… medium              0.333      0.424        0.333         0.333 </span></span>
+<span><span class="co">#&gt; 15 bst-procont… low                 0.273      0.212        0.212         0.152</span></span>
 <span></span>
-<span><span class="va">pstr_weo_2022</span></span>
-<span><span class="co">#&gt; # A tibble: 8 × 10</span></span>
-<span><span class="co">#&gt;   publication    scena…¹ region categ…² product flow  unit   year  value reduc…³</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 World Energy … Stated… world  co2 co… Total   Road… mt c…  2020 2.79e3     0  </span></span>
-<span><span class="co">#&gt; 2 World Energy … Net Ze… world  co2 co… Total   Road… mt c…  2030 1.63e3    41.7</span></span>
-<span><span class="co">#&gt; 3 World Energy … Net Ze… world  co2 co… Total   Road… mt c…  2040 5.47e2    80.4</span></span>
-<span><span class="co">#&gt; 4 World Energy … Net Ze… world  co2 co… Total   Road… mt c…  2050 8.46e1    97.0</span></span>
-<span><span class="co">#&gt; 5 World Energy … Stated… world  co2 co… Total   Iron… mt c…  2020 2.59e3     0  </span></span>
-<span><span class="co">#&gt; 6 World Energy … Net Ze… world  co2 co… Total   Iron… mt c…  2030 1.95e2    31.4</span></span>
-<span><span class="co">#&gt; 7 World Energy … Net Ze… world  co2 co… Total   Iron… mt c…  2040 1.01e4    66.9</span></span>
-<span><span class="co">#&gt; 8 World Energy … Net Ze… world  co2 co… Total   Iron… mt c…  2050 7.43e3    91.5</span></span>
-<span><span class="co">#&gt; # … with abbreviated variable names ¹​scenario, ²​category, ³​reductions</span></span></code></pre></div>
-<p>The <code>pstr_*()</code> functions help you work with the product-sector-transition-risk indicator.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">with_scores</span> <span class="op">&lt;-</span> <span class="va">pstr_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/pstr_add_reductions.html">pstr_add_reductions</a></span><span class="op">(</span><span class="va">pstr_ep_weo</span>, <span class="va">pstr_weo_2022</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/pstr_add_transition_risk.html">pstr_add_transition_risk</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/pstr_aggregate_scores.html">pstr_aggregate_scores</a></span><span class="op">(</span><span class="va">pstr_companies</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">with_scores</span></span>
-<span><span class="co">#&gt; # A tibble: 19 × 5</span></span>
-<span><span class="co">#&gt; # Groups:   company_name, transition_risk, scenario, year [19]</span></span>
-<span><span class="co">#&gt;    company_name       transition_risk scenario                      year score…¹</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                        &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 John Meier's Cars  high            Net Zero Emissions by 2050 …  2040   100  </span></span>
-<span><span class="co">#&gt;  2 John Meier's Cars  high            Net Zero Emissions by 2050 …  2050   100  </span></span>
-<span><span class="co">#&gt;  3 John Meier's Cars  low             Stated Policies Scenario      2020   100  </span></span>
-<span><span class="co">#&gt;  4 John Meier's Cars  medium          Net Zero Emissions by 2050 …  2030   100  </span></span>
-<span><span class="co">#&gt;  5 Peasant Paul       no_sector       &lt;NA&gt;                            NA   100  </span></span>
-<span><span class="co">#&gt;  6 Peasant Peter      high            Net Zero Emissions by 2050 …  2040    33.3</span></span>
-<span><span class="co">#&gt;  7 Peasant Peter      high            Net Zero Emissions by 2050 …  2050   100  </span></span>
-<span><span class="co">#&gt;  8 Peasant Peter      low             Stated Policies Scenario      2020   100  </span></span>
-<span><span class="co">#&gt;  9 Peasant Peter      medium          Net Zero Emissions by 2050 …  2030   100  </span></span>
-<span><span class="co">#&gt; 10 Peasant Peter      medium          Net Zero Emissions by 2050 …  2040    66.7</span></span>
-<span><span class="co">#&gt; 11 Screwdriver Expert high            Net Zero Emissions by 2050 …  2050   100  </span></span>
-<span><span class="co">#&gt; 12 Screwdriver Expert low             Stated Policies Scenario      2020   100  </span></span>
-<span><span class="co">#&gt; 13 Screwdriver Expert medium          Net Zero Emissions by 2050 …  2030   100  </span></span>
-<span><span class="co">#&gt; 14 Screwdriver Expert medium          Net Zero Emissions by 2050 …  2040   100  </span></span>
-<span><span class="co">#&gt; 15 Tom's Car Company  high            Net Zero Emissions by 2050 …  2040    50  </span></span>
-<span><span class="co">#&gt; 16 Tom's Car Company  high            Net Zero Emissions by 2050 …  2050   100  </span></span>
-<span><span class="co">#&gt; 17 Tom's Car Company  low             Stated Policies Scenario      2020   100  </span></span>
-<span><span class="co">#&gt; 18 Tom's Car Company  medium          Net Zero Emissions by 2050 …  2030   100  </span></span>
-<span><span class="co">#&gt; 19 Tom's Car Company  medium          Net Zero Emissions by 2050 …  2040    50  </span></span>
-<span><span class="co">#&gt; # … with abbreviated variable name ¹​score_aggregated</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/pctr.html">pctr</a></span><span class="op">(</span><span class="va">pctr_companies</span>, <span class="va">pctr_ecoinvent_co2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 9 × 5</span></span>
+<span><span class="co">#&gt;   id                         transition_risk score_all score_unit score_unit_sec</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                      &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 powerstartmanufacturinggm… high                 0.25      0.5           0.5   </span></span>
+<span><span class="co">#&gt; 2 powerstartmanufacturinggm… medium               0.25      0.25          0.25  </span></span>
+<span><span class="co">#&gt; 3 powerstartmanufacturinggm… low                  0.5       0.25          0.25  </span></span>
+<span><span class="co">#&gt; 4 ebtor_0000000532489962183… high                 0.6       0.6           0.8   </span></span>
+<span><span class="co">#&gt; 5 ebtor_0000000532489962183… medium               0.2       0.4           0.2   </span></span>
+<span><span class="co">#&gt; 6 ebtor_0000000532489962183… low                  0.2       0             0     </span></span>
+<span><span class="co">#&gt; 7 mbdgmbh_00000004773428001  high                 0.25      0.438         0.688 </span></span>
+<span><span class="co">#&gt; 8 mbdgmbh_00000004773428001  medium               0.5       0.375         0.25  </span></span>
+<span><span class="co">#&gt; 9 mbdgmbh_00000004773428001  low                  0.25      0.188         0.0625</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
