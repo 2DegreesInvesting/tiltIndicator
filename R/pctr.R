@@ -17,9 +17,9 @@
 pctr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   out <- co2 |>
     pctr_score_activities(
-    low_threshold = low_threshold,
-    high_threshold = high_threshold
-  ) |>
+      low_threshold = low_threshold,
+      high_threshold = high_threshold
+    ) |>
     pctr_score_companies(companies)
 
   out |>
