@@ -11,7 +11,7 @@ istr(companies, scenario, mapper)
 
 \item{scenario}{A dataframe with scenario data.}
 
-\item{mapper}{A dataframe mapping companies data to the scenario.}
+\item{mapper}{A dataframe mapping \code{companies} to \code{scenario}.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.

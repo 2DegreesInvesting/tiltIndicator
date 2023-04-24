@@ -21,9 +21,11 @@ istr <- function(companies, scenario, mapper) {
     istr_mapping(mapper) |>
     istr_add_reductions(scenario)
 
-  with_reductions |>
+  out <- with_reductions |>
     istr_add_transition_risk() |>
-    istr_aggregate_scores(companies) |>
+    istr_aggregate_scores(companies)
+
+  out |>
     rename(id = "companies_id") |>
     relocate_crucial_output_columns()
 }
