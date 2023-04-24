@@ -9,7 +9,7 @@ istr(companies, scenario, ep_weo)
 \arguments{
 \item{companies}{A \link{data.frame}. The output of \code{\link[=istr_mapping]{istr_mapping()}}.}
 
-\item{scenario}{A dataframe with scenario data, e.g. WEO.}
+\item{scenario}{A dataframe with scenario data.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.
@@ -41,7 +41,7 @@ risk. We, therefore, derive the company-level information.
 Please note that carbon emissions or emissions always mean CO2e.
 }
 \examples{
-istr(istr_companies, istr_ep_weo, istr_weo_2022)
+istr(istr_companies, istr_weo_2022, istr_ep_weo)
 }
 \seealso{
 Other ISTR functions: 

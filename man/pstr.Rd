@@ -28,7 +28,7 @@ aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 }
 \examples{
-pstr(pstr_companies, pstr_ep_weo, pstr_weo_2022)
+pstr(pstr_companies, pstr_weo_2022, pstr_ep_weo)
 }
 \seealso{
 Other PSTR functions: 
