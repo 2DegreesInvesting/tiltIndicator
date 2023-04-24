@@ -22,5 +22,5 @@ pctr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
       high_threshold = high_threshold
     ) |>
     pctr_score_companies(companies) |>
-    rename_xctr()
+    xctr_rename()
 }

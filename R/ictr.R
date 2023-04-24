@@ -17,5 +17,5 @@
 #' ictr(ictr_companies, ictr_inputs)
 ictr <- function(companies, inputs) {
   out <- ictr_score_companies(ictr_score_inputs(inputs), companies)
-  rename_xctr(out)
+  xctr_rename(out)
 }

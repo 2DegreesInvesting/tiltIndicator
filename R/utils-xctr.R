@@ -1,4 +1,4 @@
-rename_xctr <- function(data) {
+xctr_rename <- function(data) {
   data |>
     dplyr::rename(
       companies_id = company_id,
