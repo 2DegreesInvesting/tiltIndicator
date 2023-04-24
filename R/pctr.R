@@ -5,6 +5,7 @@
 #'
 #' @inheritParams pctr_score_activities
 #' @inheritParams pctr_score_companies
+#' @param co2 A dataframe with co2 data.
 #'
 #' @family PCTR functions
 #'
