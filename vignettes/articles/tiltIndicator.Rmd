@@ -44,7 +44,7 @@ setNames(lapply(datasets, get), datasets)
 ### Example
 
 ```{r}
-ictr_companies |> 
+ictr_companies |>
   ictr(inputs = ictr_inputs)
 ```
 
@@ -58,7 +58,7 @@ ictr_companies |>
 ### Example
 
 ```{r}
-istr_companies |> 
+istr_companies |>
   istr(scenario = istr_weo_2022, mapper = istr_ep_weo)
 ```
 
@@ -72,7 +72,7 @@ istr_companies |>
 ### Example
 
 ```{r}
-pctr_companies |> 
+pctr_companies |>
   pctr(co2 = pctr_ecoinvent_co2)
 ```
 
@@ -86,6 +86,6 @@ pctr_companies |>
 ### Example
 
 ```{r}
-pstr_companies |> 
+pstr_companies |>
   pstr(scenario = pstr_weo_2022, mapper = pstr_ep_weo)
 ```
