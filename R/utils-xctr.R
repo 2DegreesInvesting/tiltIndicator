@@ -4,5 +4,5 @@ xctr_rename <- function(data) {
       id = company_id,
       transition_risk = score
     ) |>
-    dplyr::rename_with(~gsub("share_", "score_", .x), dplyr::starts_with("share_"))
+    dplyr::rename_with(~ gsub("share_", "score_", .x), dplyr::starts_with("share_"))
 }
