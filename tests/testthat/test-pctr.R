@@ -7,14 +7,13 @@ test_that("outputs the expected columns", {
   expect_true(any(grepl("score", names(out))))
 
   expected <- c(
-      "id",
-      "transition_risk",
-      "score_all",
-      "score_unit",
-      # 191
-      # "score_sector",
-      "score_unit_sec"
+    "id",
+    "transition_risk",
+    "score_all",
+    "score_unit",
+    # 191
+    # "score_sector",
+    "score_unit_sec"
   )
   expect_equal(names(out)[1:5], expected)
 })
-
