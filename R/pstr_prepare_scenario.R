@@ -5,8 +5,7 @@
 #'
 #' @return A dataframe with:
 #'   * All the columns from the `ipr` dataset.
-#'   * New columns:
-#'       * All the columns from the `weo` dataset.
+#'   * All the columns from the `weo` dataset.
 #' @export
 #'
 #' @examples
