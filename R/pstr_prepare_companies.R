@@ -18,7 +18,7 @@ pstr_prepare_companies <- function(data) {
 #' @param data
 #'
 #' @return
-#' @export
+#' @noRd
 #'
 #' @examples
 merge_scenario_columns <- function(data) {
@@ -37,7 +37,7 @@ merge_scenario_columns <- function(data) {
 #' @param companies
 #'
 #' @return
-#' @export
+#' @noRd
 #'
 #' @examples
 pivot_type_sector_subsector <- function(companies) {

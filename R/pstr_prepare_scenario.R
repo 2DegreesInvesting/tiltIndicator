@@ -16,16 +16,15 @@ pstr_prepare_scenario <- function(ipr, weo) {
     pstr_prepare_scenario_impl(weo, "weo")
   )
 }
-#' Prepare the scenario
+#' Title
 #'
-#' TODO : document the function
-#'
+#' TODO
 #' @param data
 #' @param type
 #'
 #' @return
 #'
-#' @export
+#' @noRd
 #'
 #' @examples
 pstr_prepare_scenario_impl <- function(data, type) {
