@@ -48,6 +48,7 @@ pctr_score_companies <- function(scored_activities, companies) {
   # scores in comparison to all products
   scores_all <- companies_scores |>
     group_by(.data$company_id, .data$score_all) |>
+    filter(!is.na(.data$score_all)) |>
     summarise(n_all = n()) |>
     mutate(share_all = .data$n_all / sum(.data$n_all)) |>
     select(-"n_all") |>
@@ -56,6 +57,7 @@ pctr_score_companies <- function(scored_activities, companies) {
   # scores in comparison to products with same unit
   scores_unit <- companies_scores |>
     group_by(.data$company_id, .data$score_unit) |>
+    filter(!is.na(.data$score_unit)) |>
     summarise(n_unit = n()) |>
     mutate(share_unit = .data$n_unit / sum(.data$n_unit)) |>
     select(-"n_unit") |>
@@ -64,6 +66,7 @@ pctr_score_companies <- function(scored_activities, companies) {
   # scores in comparison to products with same unit and sector
   scores_unit_sec <- companies_scores |>
     group_by(.data$company_id, .data$score_unit_sec) |>
+    filter(!is.na(.data$score_unit_sec)) |>
     summarise(n_unit_sec = n()) |>
     mutate(share_unit_sec = .data$n_unit_sec / sum(.data$n_unit_sec)) |>
     select(-"n_unit_sec") |>
