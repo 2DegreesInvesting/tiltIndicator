@@ -19,12 +19,3 @@ ictr_companies_crucial <- function() {
     "unit"
   )
 }
-
-column_sum_checker <- function(sum_all = 1, sum_unit = 1, sum_sector = 1, sum_unit_sec = 1) {
-  tibble::tibble(
-    sum_all = sum_all,
-    sum_unit = sum_unit,
-    sum_sector = sum_sector,
-    sum_unit_sec = sum_unit_sec
-  )
-}

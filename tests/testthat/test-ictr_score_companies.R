@@ -93,21 +93,23 @@ test_that("outputs an id for each company and a score", {
   expect_true(hasName(out, "score"))
 })
 
-test_that("Data in `share` columns for all three risk categories sums up to 1", {
-  company <- ictr_companies |> filter(company_id == company_id[1])
-  inputs <- ictr_inputs |> slice(1)
+test_that("with uuid in companies absent in co2, all shares sum 1 (#175)", {
+  company <- tibble(
+    company_id = "id",
+    activity_uuid_product_uuid = c("v", "x")
+  )
+  inputs <- tibble(
+    activity_uuid_product_uuid = c("v"),
+    input_co2 = 1,
+    input_sector = "transport",
+    unit = "metric ton*km",
+  )
 
-  sample_output <- inputs |>
+  out <- inputs |>
     ictr_score_inputs() |>
     ictr_score_companies(company)
 
-  new_output <- column_sum_checker(
-    sum_all = sum(sample_output$share_all),
-    sum_unit = sum(sample_output$share_unit),
-    sum_sector = sum(sample_output$share_sector),
-    sum_unit_sec = sum(sample_output$share_unit_sec)
-  )
-
-  correct_output <- column_sum_checker()
-  testthat::expect_true(identical(new_output, correct_output))
+  summed <- summarize(out, across(starts_with("share_"), sum))
+  all_sahre_sum_1 <- all(unlist(summed) == 1)
+  expect_true(all_sahre_sum_1)
 })

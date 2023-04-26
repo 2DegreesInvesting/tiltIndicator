@@ -92,3 +92,25 @@ test_that("outputs an id for each company and a score", {
   expect_true(hasName(out, "company_id"))
   expect_true(hasName(out, "score"))
 })
+
+test_that("with uuid in companies absent in inputs, all shares sum 1 (#173)", {
+  companies <- tibble(
+    company_id = "id",
+    activity_product_uuid = c("v", "x")
+  )
+  co2 <- tibble(
+    activity_product_uuid = c("v"),
+    co2_footprint = 1,
+    sec = "Transport",
+    unit = "metric ton*km",
+    ei_activity = "transport, freight, lorry 7.5-16 metric ton, EURO3"
+  )
+
+  out <- co2 |>
+    pctr_score_activities() |>
+    pctr_score_companies(companies)
+
+  summed <- summarize(out, across(starts_with("share_"), sum))
+  all_sahre_sum_1 <- all(unlist(summed) == 1)
+  expect_true(all_sahre_sum_1)
+})
