@@ -94,7 +94,7 @@ test_that("outputs an id for each company and a score", {
 })
 
 test_that("Data in `share` columns for all three risk categories sums up to 1", {
-  company <- ictr_companies |> filter(company_id %in% first(company_id))
+  company <- ictr_companies |> filter(activity_uuid_product_uuid %in% first(activity_uuid_product_uuid))
   inputs <- ictr_inputs |> slice(1)
 
   sample_output <- inputs |>
