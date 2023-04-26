@@ -2,11 +2,8 @@
 #'
 #' Adds the emission reduction values for each company's product(s).
 #'
-#' TODO : rename pstr_new_companies into pstr_companies once done with
-#' the new data set. Should scenario be named pstr_scenario ?
-#'
-#' @param companies A [data.frame] like [pstr_new_companies].
-#' @param scenario A [data.frame] like [pstr_scenario].
+#' @param companies TODO
+#' @param scenario TODO
 #'
 #' @family PSTR functions
 #'
@@ -17,12 +14,14 @@
 #'       * All the columns from the `scenario` dataset.
 #' @export
 #'
-#' @examples
-#' TODO
+#' @keywords internal
+#'
+#' @examples #TODO
+#' @importFrom rlang .data
 pstr_new_add_reductions <- function(companies, scenario) {
   left_join(
     companies, scenario,
-    by = join_by(type, sector, subsector),
+    by = join_by(.data$type, .data$sector, .data$subsector),
     relationship = "many-to-many"
   )
 }

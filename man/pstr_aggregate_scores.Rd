@@ -36,6 +36,9 @@ pstr_companies |>
 Other PSTR functions: 
 \code{\link{pstr_add_reductions}()},
 \code{\link{pstr_add_transition_risk}()},
+\code{\link{pstr_new_add_reductions}()},
+\code{\link{pstr_prepare_companies}()},
+\code{\link{pstr_prepare_scenario}()},
 \code{\link{pstr}()}
 }
 \author{
