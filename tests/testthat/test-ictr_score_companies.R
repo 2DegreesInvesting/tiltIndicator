@@ -92,3 +92,22 @@ test_that("outputs an id for each company and a score", {
   expect_true(hasName(out, "company_id"))
   expect_true(hasName(out, "score"))
 })
+
+test_that("Data in `share` columns for all three risk categories sums up to 1", {
+  company <- ictr_companies |> filter(company_id %in% first(company_id))
+  inputs <- ictr_inputs |> slice(1)
+
+  sample_output <- inputs |>
+    ictr_score_inputs() |>
+    ictr_score_companies(company)
+
+  new_output <- column_sum_checker(
+    sum_all = sum(sample_output$share_all),
+    sum_unit = sum(sample_output$share_unit),
+    sum_sector = sum(sample_output$share_sector),
+    sum_unit_sec = sum(sample_output$share_unit_sec)
+  )
+
+  correct_output <- column_sum_checker()
+  testthat::expect_true(identical(new_output, correct_output))
+})
