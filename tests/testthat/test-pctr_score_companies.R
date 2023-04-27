@@ -34,13 +34,13 @@ test_that("without crucial columns in `pctr_ecoinvent_co2` errors gracefully", {
     select(all_of(pctr_score_companies_crucial()))
 
   bad_data <- select(data, -"score_unit_sec")
-  expect_error(pctr_score_companies(bad_data, pctr_companies), "score_unit_sec")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "hasName.*not")
 
   bad_data <- select(data, -"score_all")
   expect_error(pctr_score_companies(bad_data, pctr_companies), "hasName.*not")
 
   bad_data <- select(data, -"score_unit")
-  expect_error(pctr_score_companies(bad_data, pctr_companies), "score_unit")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "hasName.*not")
 
   bad_data <- select(data, -"activity_product_uuid")
   expect_error(
