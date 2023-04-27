@@ -1,7 +1,6 @@
 # Source: Tilman via slack
 # https://2investinginitiative.slack.com/archives/C050VAQACC9/p1682460412787529?thread_ts=1682460115.359559&cid=C050VAQACC9
 
-library(here)
 library(readr)
 library(usethis)
 devtools::load_all()
