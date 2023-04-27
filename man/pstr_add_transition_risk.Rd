@@ -36,7 +36,7 @@ Translates the \code{reductions} column into three categories:
 }
 }
 \examples{
-pstr_companies |>
+pstr_old_companies |>
   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk()
 }

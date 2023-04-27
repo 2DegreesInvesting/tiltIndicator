@@ -7,15 +7,6 @@
 #' pstr_old_companies
 "pstr_old_companies"
 
-#' A sector mapper between Europages and `weo_2022`.
-#'
-#' @author Linda Delacombaz.
-#' @source Internal source.
-#' @family PSTR datasets
-#' @examples
-#' pstr_ep_weo
-"pstr_ep_weo"
-
 #' A dataset with scenario, year, product and reductions information
 #'
 #' * TODO: Where does it come from and what wrangling did you do?
@@ -26,5 +17,5 @@
 #' (WEO) 2022 scenario on the global level.
 #' @family PSTR datasets
 #' @examples
-#' pstr_weo_2022
-"pstr_weo_2022"
+#' @noRd
+NULL

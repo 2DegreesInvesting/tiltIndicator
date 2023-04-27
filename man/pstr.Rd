@@ -7,7 +7,7 @@
 pstr(companies, scenarios)
 }
 \arguments{
-\item{companies}{A \link{data.frame} like \link{pstr_companies}.}
+\item{companies}{A \link{data.frame} like \link{pstr_old_companies}.}
 
 \item{scenarios}{A dataframe with scenario data, e.g. WEO.}
 }

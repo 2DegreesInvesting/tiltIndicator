@@ -7,7 +7,7 @@
 pstr_add_reductions(companies, ep_weo, weo_2022)
 }
 \arguments{
-\item{companies}{A \link{data.frame} like \link{pstr_companies}.}
+\item{companies}{A \link{data.frame} like \link{pstr_old_companies}.}
 
 \item{ep_weo}{A \link{data.frame} like \link{pstr_ep_weo}.}
 
@@ -29,7 +29,7 @@ respectively.
 Adds the emission reduction values for each company's product(s).
 }
 \examples{
-pstr_companies |>
+pstr_old_companies |>
   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022)
 }
 \seealso{
