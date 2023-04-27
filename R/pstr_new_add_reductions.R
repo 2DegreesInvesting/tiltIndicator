@@ -16,7 +16,7 @@
 #'
 #' @keywords internal
 #'
-#' @examples #TODO
+#' @examples # TODO
 #' @importFrom rlang .data
 pstr_new_add_reductions <- function(companies, scenario) {
   left_join(

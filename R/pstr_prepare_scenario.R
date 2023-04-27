@@ -12,7 +12,7 @@
 #'
 #' @keywords internal
 #'
-#' @examples #TODO
+#' @examples # TODO
 pstr_prepare_scenario <- function(ipr, weo) {
   bind_rows(
     pstr_prepare_scenario_impl(ipr, "ipr"),

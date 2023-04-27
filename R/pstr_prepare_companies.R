@@ -9,7 +9,7 @@
 #'
 #' @keywords internal
 #'
-#' @examples #TODO
+#' @examples # TODO
 pstr_prepare_companies <- function(data) {
   data |>
     merge_scenario_columns() |>

@@ -87,7 +87,7 @@ pstr_toy_weo_2022 <- function(publication = "A", scenario = "B", region = "C",
 #'
 #' @return A [data.frame] with the values of its character content lower cased.
 #'
-#' @examples #TODO
+#' @examples # TODO
 #' @noRd
 lowercase_characters <- function(data) {
   mutate(data, across(where(is.character), tolower))
