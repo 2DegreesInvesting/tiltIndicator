@@ -1,3 +1,13 @@
+test_that("the head hasn't changed", {
+  companies <- distinct(pctr_companies, company_id, .keep_all = TRUE) |>
+    slice(1)
+  co2 <- pctr_ecoinvent_co2
+
+  data <- pctr_score_activities(co2)
+  out <- pctr_score_companies(data, slice(companies, 1))
+  expect_snapshot(out)
+})
+
 test_that("without crucial columns in `pctr_companies` throws an error", {
   data <- pctr_ecoinvent_co2 |>
     slice(1) |>
