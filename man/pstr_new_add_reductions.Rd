@@ -24,9 +24,6 @@ A dataframe with:
 \description{
 Adds the emission reduction values for each company's product(s).
 }
-\examples{
-# TODO
-}
 \seealso{
 Other PSTR functions: 
 \code{\link{pstr_add_reductions}()},
