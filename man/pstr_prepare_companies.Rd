@@ -26,12 +26,7 @@ A \code{copmanies} dataset as required by PSTR functions.
 Given a messy PSTR \code{companies} dataframe returns a cleaner one
 }
 \examples{
-library(dplyr, warn.conflicts = FALSE)
-
-companies <- pstr_new_companies |>
-  slice(1) |>
-  glimpse()
-
+companies <- pstr_new_companies # TODO: Read it as a .csv
 pstr_prepare_companies(companies)
 }
 \seealso{

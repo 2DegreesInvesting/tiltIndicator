@@ -13,11 +13,8 @@
 #' @export
 #'
 #' @examples
-#' weo <- slice(pstr_new_weo_2022, 1)
-#' ipr <- slice(pstr_new_ipr_2022, 1)
-#' scenarios <- pstr_prepare_scenario(list(weo = weo, ipr = ipr))
-#' companies <- pstr_prepare_companies(slice(pstr_new_companies, 1))
-#'
+#' scenarios <- pstr_new_dataset_scenarios()
+#' companies <- pstr_new_dataset_companies()
 #' pstr(companies, scenarios)
 pstr <- function(companies, scenarios) {
   by_item <- companies |>
