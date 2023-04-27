@@ -17,8 +17,8 @@
 #' (WEO) 2022 scenario on the global level.
 #' @family PSTR datasets
 #' @examples
-#' pstr_new_weo_2022
-"pstr_new_weo_2022"
+#' pstr_raw_weo_2022
+"pstr_raw_weo_2022"
 
 #' A dataset with scenario, year, product and reductions information
 #'
@@ -28,5 +28,5 @@
 #' @source TODO
 #' @family PSTR datasets
 #' @examples
-#' pstr_new_ipr_2022
-"pstr_new_ipr_2022"
+#' pstr_raw_ipr_2022
+"pstr_raw_ipr_2022"

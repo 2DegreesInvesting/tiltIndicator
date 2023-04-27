@@ -284,7 +284,7 @@
       17                <NA>
       
 
-# `pstr_new_weo_2022` hasn't changed
+# `pstr_raw_weo_2022` hasn't changed
 
     Code
       format_robust_snapshot(weo)
@@ -3290,7 +3290,7 @@
       372  -1.572103e+03
       
 
-# `pstr_new_ipr_2022` hasn't changed
+# `pstr_raw_ipr_2022` hasn't changed
 
     Code
       format_robust_snapshot(ipr)

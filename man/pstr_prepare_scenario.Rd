@@ -19,8 +19,8 @@ Given a named list of scenarios returns a cleaner \code{scenarios} dataframe
 \examples{
 library(dplyr, warn.conflicts = FALSE)
 
-weo <- slice(pstr_new_weo_2022, 1:2)
-ipr <- slice(pstr_new_weo_2022, 1:2)
+weo <- slice(pstr_raw_weo_2022, 1:2)
+ipr <- slice(pstr_raw_weo_2022, 1:2)
 
 scenarios <- list(weo = weo, ipr = ipr)
 pstr_prepare_scenario(scenarios)

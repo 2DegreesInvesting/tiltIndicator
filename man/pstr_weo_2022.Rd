@@ -27,9 +27,9 @@ pstr_weo_2022
 Other PSTR datasets: 
 \code{\link{pstr_companies}},
 \code{\link{pstr_ep_weo}},
-\code{\link{pstr_new_companies}},
-\code{\link{pstr_new_ipr_2022}},
-\code{\link{pstr_new_weo_2022}}
+\code{\link{pstr_raw_companies}},
+\code{\link{pstr_raw_ipr_2022}},
+\code{\link{pstr_raw_weo_2022}}
 }
 \author{
 Linda Delacombaz.
