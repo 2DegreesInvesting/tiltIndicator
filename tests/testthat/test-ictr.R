@@ -23,3 +23,21 @@ test_that("outputs the expected columns", {
   out <- ictr(companies, inputs)
   expect_false(dplyr::is_grouped_df(out))
 })
+
+test_that("if a company matches no inputs, all shares are `NA` (#176)", {
+  companies <- tibble(
+    company_id = "a",
+    activity_uuid_product_uuid = "a"
+  )
+  inputs <- tibble(
+    activity_uuid_product_uuid = "b",
+    input_co2 = 1,
+    input_sector = "transport",
+    unit = "metric ton*km",
+  )
+
+  out <- ictr(companies, inputs)
+
+  all_is_na <- all(is.na(unlist(select(out, starts_with("score")))))
+  expect_true(all_is_na)
+})
