@@ -4,8 +4,8 @@
 #' @source Companies, sectors, subsectors and products from Europages.
 #' @family PSTR datasets
 #' @examples
-#' pstr_companies
-"pstr_companies"
+#' pstr_old_companies
+"pstr_old_companies"
 
 #' A sector mapper between Europages and `weo_2022`.
 #'

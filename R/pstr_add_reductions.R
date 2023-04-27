@@ -4,7 +4,7 @@
 #'
 #' @author Linda Delacombaz.
 #'
-#' @param companies A [data.frame] like [pstr_companies].
+#' @param companies A [data.frame] like [pstr_old_companies].
 #' @param ep_weo A [data.frame] like [pstr_ep_weo].
 #' @param weo_2022 A [data.frame] like [pstr_weo_2022].
 #'
@@ -21,7 +21,7 @@
 #' @keywords internal
 #'
 #' @examples
-#' pstr_companies |>
+#' pstr_old_companies |>
 #'   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022)
 pstr_add_reductions <- function(companies, ep_weo, weo_2022) {
   companies |>
