@@ -18,7 +18,7 @@
 #' pstr(companies, scenarios)
 pstr <- function(companies, scenarios) {
   product_level <- pstr_at_product_level(companies, scenarios)
-  company_level <- pstr_aggregate_scores(product_level, companies)
+  company_level <- pstr_at_company_level(product_level, companies)
 
   company_level |>
     rename(id = "company_id") |>

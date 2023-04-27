@@ -34,7 +34,7 @@ pstr(companies, scenarios)
 Other PSTR functions: 
 \code{\link{pstr_add_reductions}()},
 \code{\link{pstr_add_transition_risk}()},
-\code{\link{pstr_aggregate_scores}()},
+\code{\link{pstr_at_company_level}()},
 \code{\link{pstr_old_add_reductions}()}
 }
 \concept{PSTR functions}

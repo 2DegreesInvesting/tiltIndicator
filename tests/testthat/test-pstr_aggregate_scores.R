@@ -6,7 +6,7 @@ test_that("outputs a result for companies without any products", {
   out <- companies |>
     pstr_old_add_reductions(ep_weo, weo) |>
     pstr_add_transition_risk() |>
-    pstr_aggregate_scores(companies)
+    pstr_at_company_level(companies)
 
   expect_equal(out$score_aggregated, 100)
 })
@@ -19,7 +19,7 @@ test_that("outputs an id for each company and a score", {
   out <- companies |>
     pstr_old_add_reductions(ep_weo, weo) |>
     pstr_add_transition_risk() |>
-    pstr_aggregate_scores(companies)
+    pstr_at_company_level(companies)
 
 
   expect_true(hasName(out, "company_id"))

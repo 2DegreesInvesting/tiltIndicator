@@ -25,8 +25,8 @@
 #' pstr_old_companies |>
 #'   pstr_old_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
 #'   pstr_add_transition_risk() |>
-#'   pstr_aggregate_scores(pstr_old_companies)
-pstr_aggregate_scores <- function(with_transition_risk, companies) {
+#'   pstr_at_company_level(pstr_old_companies)
+pstr_at_company_level <- function(with_transition_risk, companies) {
   n_products_per_companies <- companies |>
     group_by(.data$company_id, .data$company_name) |>
     summarise(total_products_per_company = n())
