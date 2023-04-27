@@ -4,14 +4,14 @@
 library(here)
 library(readr)
 library(usethis)
+devtools::load_all()
 
-extdata_path("")
+pstr_companies <- read_csv(extdata_path("pstr_raw_companies.csv")) |>
+  pstr_prepare_companies()
+use_data(pstr_companies, overwrite = TRUE)
 
-pstr_raw_companies <- read_csv(here("data-raw/pstr_new/pstr_raw_companies.csv"))
-use_data(pstr_raw_companies, overwrite = TRUE)
-
-pstr_raw_ipr_2022 <- read_csv(here("data-raw/pstr_new/pstr_raw_ipr_2022.csv"))
-use_data(pstr_raw_ipr_2022, overwrite = TRUE)
-
-pstr_raw_weo_2022 <- read_csv(here("data-raw/pstr_new/pstr_raw_weo_2022.csv"))
-use_data(pstr_raw_weo_2022, overwrite = TRUE)
+pstr_scenarios <- pstr_prepare_scenario(list(
+  pstr_raw_ipr_2022 = read_csv(extdata_path("pstr_raw_ipr_2022.csv")),
+  pstr_raw_weo_2022 = read_csv(extdata_path("pstr_raw_weo_2022.csv"))
+))
+use_data(pstr_scenarios, overwrite = TRUE)
