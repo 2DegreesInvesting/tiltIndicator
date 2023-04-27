@@ -33,6 +33,7 @@
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 scale_fill_gradient2
 #' @importFrom ggplot2 scale_x_discrete
+#' @importFrom purrr imap_dfr
 #' @importFrom rlang .env
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
