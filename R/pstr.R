@@ -18,7 +18,7 @@
 #' pstr(companies, scenarios)
 pstr <- function(companies, scenarios) {
   by_item <- companies |>
-    pstr_new_add_reductions(scenarios) |>
+    pstr_add_reductions(scenarios) |>
     pstr_add_transition_risk()
 
   by_company <- pstr_aggregate_scores(by_item, companies)

@@ -17,8 +17,8 @@
 #' @examples
 #' scenarios <- pstr_scenarios
 #' companies <- pstr_companies
-#' pstr_new_add_reductions(companies, scenarios)
-pstr_new_add_reductions <- function(companies, scenarios) {
+#' pstr_add_reductions(companies, scenarios)
+pstr_add_reductions <- function(companies, scenarios) {
   left_join(
     companies, scenarios,
     by = join_by(type, sector, subsector),
