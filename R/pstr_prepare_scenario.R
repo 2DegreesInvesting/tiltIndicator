@@ -13,11 +13,8 @@
 #' @keywords internal
 #'
 #' @examples # TODO
-pstr_prepare_scenario <- function(ipr, weo) {
-  bind_rows(
-    pstr_prepare_scenario_impl(ipr, "ipr"),
-    pstr_prepare_scenario_impl(weo, "weo")
-  )
+pstr_prepare_scenario <- function(scenarios) {
+  purrr::imap_dfr(rev(scenarios), ~pstr_prepare_scenario_impl(.x, .y))
 }
 
 pstr_prepare_scenario_impl <- function(data, type) {
