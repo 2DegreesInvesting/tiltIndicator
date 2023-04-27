@@ -7,7 +7,6 @@ xctr_rename <- function(data) {
 #' Count `score_{suffix}` into `share_{suffix}`
 count_share <- function(data, suffix) {
   score_col <- paste0("score_", suffix)
-  stopifnot(hasName(data, score_col))
   share_col <- paste0("share_", suffix)
 
   data |>

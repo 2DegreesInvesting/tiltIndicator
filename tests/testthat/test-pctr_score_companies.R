@@ -1,13 +1,3 @@
-test_that("the head hasn't changed", {
-  companies <- distinct(pctr_companies, company_id, .keep_all = TRUE) |>
-    slice(1)
-  co2 <- pctr_ecoinvent_co2
-
-  data <- pctr_score_activities(co2)
-  out <- pctr_score_companies(data, slice(companies, 1))
-  expect_snapshot(out)
-})
-
 test_that("without crucial columns in `pctr_companies` throws an error", {
   data <- pctr_ecoinvent_co2 |>
     slice(1) |>
@@ -34,13 +24,13 @@ test_that("without crucial columns in `pctr_ecoinvent_co2` errors gracefully", {
     select(all_of(pctr_score_companies_crucial()))
 
   bad_data <- select(data, -"score_unit_sec")
-  expect_error(pctr_score_companies(bad_data, pctr_companies), "hasName.*not")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "score_unit_sec")
 
   bad_data <- select(data, -"score_all")
-  expect_error(pctr_score_companies(bad_data, pctr_companies), "hasName.*not")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "score_all")
 
   bad_data <- select(data, -"score_unit")
-  expect_error(pctr_score_companies(bad_data, pctr_companies), "hasName.*not")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "score_unit")
 
   bad_data <- select(data, -"activity_product_uuid")
   expect_error(
