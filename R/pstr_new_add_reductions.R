@@ -14,12 +14,16 @@
 #'       * All the columns from the `scenario` dataset.
 #' @export
 #'
-#' @keywords internal
-#'
 #' @examples
-pstr_new_add_reductions <- function(companies, scenario) {
+#' library(dplyr, warn.conflicts = FALSE)
+#' weo <- slice(pstr_new_weo_2022, 1)
+#' ipr <- slice(pstr_new_ipr_2022, 1)
+#' scenarios <- pstr_prepare_scenario(list(weo = weo, ipr = ipr))
+#' companies <- pstr_prepare_companies(slice(pstr_new_companies, 1))
+#' pstr_new_add_reductions(companies, scenarios)
+pstr_new_add_reductions <- function(companies, scenarios) {
   left_join(
-    companies, scenario,
+    companies, scenarios,
     by = join_by(type, sector, subsector),
     relationship = "many-to-many"
   )
