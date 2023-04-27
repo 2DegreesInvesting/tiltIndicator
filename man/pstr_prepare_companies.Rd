@@ -26,8 +26,14 @@ A \code{copmanies} dataset as required by PSTR functions.
 Given a messy PSTR \code{companies} dataframe returns a cleaner one
 }
 \examples{
-companies <- pstr_raw_companies # TODO: Read it as a .csv
-pstr_prepare_companies(companies)
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+
+raw_companies <- read_csv(extdata_path("pstr_raw_companies.csv"))
+glimpse(raw_companies)
+
+companies <- pstr_prepare_companies(raw_companies)
+companies
 }
 \seealso{
 Other pre-processing helpers: 

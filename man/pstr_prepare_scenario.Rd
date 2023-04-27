@@ -18,17 +18,13 @@ Given a named list of scenarios returns a cleaner \code{scenarios} dataframe
 }
 \examples{
 library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
 
-weo <- slice(pstr_raw_weo_2022, 1:2)
-ipr <- slice(pstr_raw_weo_2022, 1:2)
+raw_weo <- read_csv(extdata_path("pstr_raw_weo_2022.csv"))
+raw_ipr <- read_csv(extdata_path("pstr_raw_ipr_2022.csv"))
+raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
 
-scenarios <- list(weo = weo, ipr = ipr)
-pstr_prepare_scenario(scenarios)
-
-# You prepare other scenarios
-scenarios <- list(scen1 = weo, scen2 = weo)
-pstr_prepare_scenario(scenarios) |>
-  relocate(type)
+pstr_prepare_scenario(raw_scenarios)
 }
 \seealso{
 Other pre-processing helpers: 
