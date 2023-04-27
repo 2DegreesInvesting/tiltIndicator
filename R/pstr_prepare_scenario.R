@@ -1,12 +1,9 @@
-#' Prepare the scenario data set
+#' Given a named list of scenarios returns a single, cleaner dataframe
 #'
-#' @param ipr TODO
-#' @param weo TODO
+#' @param scenarios A named list of identically structured scenarios.
 #'
-#' @family PSTR functions
-#'
-#' @return A dataframe with a cleaner, row-bind version of all scenarios with an
-#'   additinal column identifying which rows come from which scenario.
+#' @return A single, cleaner dataframe with an additinal column identifying
+#'   which rows come from which scenario.
 #' @noRd
 pstr_prepare_scenario <- function(scenarios) {
   imap_dfr(scenarios, ~ pstr_prepare_scenario_impl(.x, .y))
