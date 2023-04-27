@@ -1,4 +1,4 @@
-#' Help prepare the PSTR `companies` data
+#' Given a messy PSTR `companies` dataframe returns a cleaner one
 #'
 #' @param data A dataframe with these columns:
 #' * ipr_sector.x

@@ -5,6 +5,10 @@ template:
 reference:
 
   - title: Pre-processing helpers
+    desc: >
+      "WARNING: These functions don't compute indicators so don't
+      belong here. They will be removed as soon as we arrive to a stable input
+      for all indicators."
     contents:
       - has_concept("pre-processing helpers")
 

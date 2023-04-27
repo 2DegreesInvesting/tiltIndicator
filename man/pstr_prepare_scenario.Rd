@@ -2,7 +2,7 @@
 % Please edit documentation in R/pstr_prepare_scenario.R
 \name{pstr_prepare_scenario}
 \alias{pstr_prepare_scenario}
-\title{Given a named list of scenarios returns a single, cleaner dataframe}
+\title{Given a named list of scenarios returns a cleaner \code{scenarios} dataframe}
 \usage{
 pstr_prepare_scenario(scenarios)
 }
@@ -14,7 +14,7 @@ A single, cleaner dataframe with an additional column to identify
 which rows come from which scenario.
 }
 \description{
-Given a named list of scenarios returns a single, cleaner dataframe
+Given a named list of scenarios returns a cleaner \code{scenarios} dataframe
 }
 \examples{
 library(dplyr, warn.conflicts = FALSE)

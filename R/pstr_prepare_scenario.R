@@ -1,4 +1,4 @@
-#' Given a named list of scenarios returns a single, cleaner dataframe
+#' Given a named list of scenarios returns a cleaner `scenarios` dataframe
 #'
 #' @param scenarios A named list of identically structured scenarios.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/pstr_prepare_companies.R
 \name{pstr_prepare_companies}
 \alias{pstr_prepare_companies}
-\title{Help prepare the PSTR \code{companies} data}
+\title{Given a messy PSTR \code{companies} dataframe returns a cleaner one}
 \usage{
 pstr_prepare_companies(data)
 }
@@ -23,7 +23,7 @@ pstr_prepare_companies(data)
 A \code{copmanies} dataset as required by PSTR functions.
 }
 \description{
-Help prepare the PSTR \code{companies} data
+Given a messy PSTR \code{companies} dataframe returns a cleaner one
 }
 \examples{
 library(dplyr, warn.conflicts = FALSE)
