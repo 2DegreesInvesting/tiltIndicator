@@ -16,12 +16,11 @@
 #'
 #' @keywords internal
 #'
-#' @examples # TODO
-#' @importFrom rlang .data
+#' @examples
 pstr_new_add_reductions <- function(companies, scenario) {
   left_join(
     companies, scenario,
-    by = join_by(.data$type, .data$sector, .data$subsector),
+    by = join_by(type, sector, subsector),
     relationship = "many-to-many"
   )
 }
