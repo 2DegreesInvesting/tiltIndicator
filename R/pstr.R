@@ -25,9 +25,3 @@ pstr <- function(companies, scenarios) {
     relocate_crucial_output_columns() |>
     ungroup()
 }
-
-pstr_at_product_level <- function(companies, scenarios) {
-  companies |>
-    pstr_add_reductions(scenarios) |>
-    pstr_add_transition_risk()
-}
