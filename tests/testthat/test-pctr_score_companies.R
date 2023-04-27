@@ -37,7 +37,7 @@ test_that("without crucial columns in `pctr_ecoinvent_co2` errors gracefully", {
   expect_error(pctr_score_companies(bad_data, pctr_companies), "score_unit_sec")
 
   bad_data <- select(data, -"score_all")
-  expect_error(pctr_score_companies(bad_data, pctr_companies), "score_all")
+  expect_error(pctr_score_companies(bad_data, pctr_companies), "hasName.*not TRUE")
 
   bad_data <- select(data, -"score_unit")
   expect_error(pctr_score_companies(bad_data, pctr_companies), "score_unit")

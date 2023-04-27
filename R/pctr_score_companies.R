@@ -46,6 +46,7 @@ pctr_score_companies <- function(scored_activities, companies) {
     left_join(scored_activities, by = c("activity_product_uuid"))
 
   # scores in comparison to all products
+  scores_all <- count_share(companies_scores, "all")
   scores_all <- companies_scores |>
     group_by(.data$company_id, .data$score_all) |>
     filter(!is.na(.data$score_all)) |>
