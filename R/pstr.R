@@ -19,7 +19,7 @@
 #' companies <- pstr_prepare_companies(slice(pstr_new_companies, 1))
 #'
 #' pstr(companies, scenarios)
-pstr_new <- function(companies, scenarios) {
+pstr <- function(companies, scenarios) {
   by_item <- companies |>
     pstr_new_add_reductions(scenarios) |>
     pstr_add_transition_risk()
