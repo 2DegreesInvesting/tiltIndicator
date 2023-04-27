@@ -4,8 +4,8 @@
 #' @source Companies, sectors, subsectors and products from Europages.
 #' @family PSTR datasets
 #' @examples
-#' pstr_old_companies
-"pstr_old_companies"
+#' @noRd
+NULL
 
 #' A dataset with scenario, year, product and reductions information
 #'

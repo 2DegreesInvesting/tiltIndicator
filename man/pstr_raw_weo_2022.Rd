@@ -25,7 +25,6 @@ pstr_raw_weo_2022
 }
 \seealso{
 Other PSTR datasets: 
-\code{\link{pstr_old_companies}},
 \code{\link{pstr_raw_companies}},
 \code{\link{pstr_raw_ipr_2022}}
 }
