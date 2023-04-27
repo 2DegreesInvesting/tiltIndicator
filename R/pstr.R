@@ -17,13 +17,13 @@
 #' scenarios <- pstr_scenarios
 #' pstr(companies, scenarios)
 pstr <- function(companies, scenarios) {
-  by_item <- companies |>
+  product_level <- companies |>
     pstr_add_reductions(scenarios) |>
     pstr_add_transition_risk()
 
-  by_company <- pstr_aggregate_scores(by_item, companies)
+  company_level <- pstr_aggregate_scores(product_level, companies)
 
-  by_company |>
+  company_level |>
     rename(id = "company_id") |>
     relocate_crucial_output_columns() |>
     ungroup()
