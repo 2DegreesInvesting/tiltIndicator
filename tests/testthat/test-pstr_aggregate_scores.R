@@ -4,7 +4,7 @@ test_that("outputs a result for companies without any products", {
   weo <- pstr_toy_weo_2022()
 
   out <- companies |>
-    pstr_add_reductions(ep_weo, weo) |>
+    pstr_old_add_reductions(ep_weo, weo) |>
     pstr_add_transition_risk() |>
     pstr_aggregate_scores(companies)
 
@@ -17,7 +17,7 @@ test_that("outputs an id for each company and a score", {
   weo <- pstr_toy_weo_2022()
 
   out <- companies |>
-    pstr_add_reductions(ep_weo, weo) |>
+    pstr_old_add_reductions(ep_weo, weo) |>
     pstr_add_transition_risk() |>
     pstr_aggregate_scores(companies)
 

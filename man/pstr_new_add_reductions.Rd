@@ -31,9 +31,9 @@ pstr_new_add_reductions(companies, scenarios)
 }
 \seealso{
 Other PSTR functions: 
-\code{\link{pstr_add_reductions}()},
 \code{\link{pstr_add_transition_risk}()},
 \code{\link{pstr_aggregate_scores}()},
+\code{\link{pstr_old_add_reductions}()},
 \code{\link{pstr}()}
 }
 \concept{PSTR functions}

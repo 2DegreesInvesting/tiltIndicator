@@ -7,7 +7,7 @@
 pstr_add_transition_risk(with_reductions)
 }
 \arguments{
-\item{with_reductions}{A data frame. The output of \code{\link[=pstr_add_reductions]{pstr_add_reductions()}}.}
+\item{with_reductions}{A data frame. The output of \code{\link[=pstr_old_add_reductions]{pstr_old_add_reductions()}}.}
 }
 \value{
 A data frame with:
@@ -37,14 +37,14 @@ Translates the \code{reductions} column into three categories:
 }
 \examples{
 pstr_old_companies |>
-  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
+  pstr_old_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk()
 }
 \seealso{
 Other PSTR functions: 
-\code{\link{pstr_add_reductions}()},
 \code{\link{pstr_aggregate_scores}()},
 \code{\link{pstr_new_add_reductions}()},
+\code{\link{pstr_old_add_reductions}()},
 \code{\link{pstr}()}
 }
 \author{

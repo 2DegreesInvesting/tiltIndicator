@@ -28,15 +28,15 @@ medium / high transition risk.
 }
 \examples{
 pstr_old_companies |>
-  pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
+  pstr_old_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
   pstr_add_transition_risk() |>
   pstr_aggregate_scores(pstr_old_companies)
 }
 \seealso{
 Other PSTR functions: 
-\code{\link{pstr_add_reductions}()},
 \code{\link{pstr_add_transition_risk}()},
 \code{\link{pstr_new_add_reductions}()},
+\code{\link{pstr_old_add_reductions}()},
 \code{\link{pstr}()}
 }
 \author{

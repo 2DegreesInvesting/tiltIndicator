@@ -8,7 +8,7 @@
 #'
 #' @author Linda Delacombaz.
 #'
-#' @param with_reductions A data frame. The output of [pstr_add_reductions()].
+#' @param with_reductions A data frame. The output of [pstr_old_add_reductions()].
 #'
 #' @family PSTR functions
 #'
@@ -29,7 +29,7 @@
 #'
 #' @examples
 #' pstr_old_companies |>
-#'   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
+#'   pstr_old_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
 #'   pstr_add_transition_risk()
 pstr_add_transition_risk <- function(with_reductions) {
   with_reductions |>
