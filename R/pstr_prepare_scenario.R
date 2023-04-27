@@ -7,6 +7,8 @@
 #' @return A single, cleaner dataframe with an additional column to identify
 #'   which rows come from which scenario.
 #'
+#' @export
+#'
 #' @examples
 #' library(dplyr, warn.conflicts = FALSE)
 #'

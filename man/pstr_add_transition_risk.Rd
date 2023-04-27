@@ -45,7 +45,7 @@ Other PSTR functions:
 \code{\link{pstr_add_reductions}()},
 \code{\link{pstr_aggregate_scores}()},
 \code{\link{pstr_new_add_reductions}()},
-\code{\link{pstr_new}()}
+\code{\link{pstr}()}
 }
 \author{
 Linda Delacombaz.
