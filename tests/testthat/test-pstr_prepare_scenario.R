@@ -8,7 +8,6 @@ test_that("outputs the expected snapshot", {
 })
 
 test_that("with weo twice type is only weo", {
-  skip("TODO")
   weo <- slice(pstr_new_weo_2022, 1:3)
   scenarios <- list(weo = weo, weo = weo)
   out <- pstr_prepare_scenario(scenarios)
