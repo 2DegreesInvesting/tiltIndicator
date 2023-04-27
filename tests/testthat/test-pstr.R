@@ -1,6 +1,6 @@
 test_that("snapshot", {
-  scenarios <- pstr_new_dataset_scenarios()
-  companies <- pstr_new_dataset_companies() |> slice(1)
+  scenarios <- pstr_scenarios
+  companies <- pstr_companies |> slice(1)
   out <- pstr(companies, scenarios)
   expect_snapshot(format_robust_snapshot(out))
 })
