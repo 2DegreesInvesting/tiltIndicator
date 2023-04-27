@@ -1,3 +1,13 @@
 url: https://2degreesinvesting.github.io/tiltIndicator/
 template:
   bootstrap: 5
+
+reference:
+
+  - title: Pre-processing helpers
+    contents:
+      - has_concept("pre-processing helpers")
+
+  - title: Indicator-specific functions and datasets
+    contents:
+      - -has_concept("pre-processing helpers")

@@ -2,29 +2,36 @@
 % Please edit documentation in R/pstr_prepare_companies.R
 \name{pstr_prepare_companies}
 \alias{pstr_prepare_companies}
-\title{Title}
+\title{Help prepare the PSTR \code{companies} data}
 \usage{
 pstr_prepare_companies(data)
 }
 \arguments{
-\item{data}{TODO}
+\item{data}{A dataframe with these columns:
+\itemize{
+\item ipr_sector.x
+\item ipr_sector.y
+\item ipr_subsector.x
+\item ipr_subsector.y
+\item weo_product.x
+\item weo_product.y
+\item weo_flow.x
+\item weo_flow.y
+}}
 }
 \value{
-TODO
+A \code{copmanies} dataset as required by PSTR functions.
 }
 \description{
-Title
+Help prepare the PSTR \code{companies} data
 }
 \examples{
-# TODO
+library(dplyr, warn.conflicts = FALSE)
+
+companies <- pstr_new_companies |>
+  slice(1) |>
+  glimpse()
+
+pstr_prepare_companies(companies)
 }
-\seealso{
-Other PSTR functions: 
-\code{\link{pstr_add_reductions}()},
-\code{\link{pstr_add_transition_risk}()},
-\code{\link{pstr_aggregate_scores}()},
-\code{\link{pstr_new_add_reductions}()},
-\code{\link{pstr}()}
-}
-\concept{PSTR functions}
-\keyword{internal}
+\concept{pre-processing helpers}

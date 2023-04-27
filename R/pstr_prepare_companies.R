@@ -1,15 +1,28 @@
-#' Title
+#' Help prepare the PSTR `companies` data
 #'
-#' @param data TODO
+#' @param data A dataframe with these columns:
+#' * ipr_sector.x
+#' * ipr_sector.y
+#' * ipr_subsector.x
+#' * ipr_subsector.y
+#' * weo_product.x
+#' * weo_product.y
+#' * weo_flow.x
+#' * weo_flow.y
 #'
-#' @family PSTR functions
+#' @family pre-processing helpers
 #'
-#' @return TODO
+#' @return A `copmanies` dataset as required by PSTR functions.
 #' @export
 #'
-#' @keywords internal
+#' @examples
+#' library(dplyr, warn.conflicts = FALSE)
 #'
-#' @examples # TODO
+#' companies <- pstr_new_companies |>
+#'   slice(1) |>
+#'   glimpse()
+#'
+#' pstr_prepare_companies(companies)
 pstr_prepare_companies <- function(data) {
   data |>
     merge_scenario_columns() |>
