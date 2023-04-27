@@ -1,11 +1,14 @@
 test_that("`pstr_new_companies` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(pstr_new_companies))
+  companies <- pstr_new_companies
+  expect_snapshot(format_robust_snapshot(companies))
 })
 
 test_that("`pstr_new_weo_2022` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(pstr_new_weo_2022))
+  weo <- pstr_new_weo_2022
+  expect_snapshot(format_robust_snapshot(weo))
 })
 
 test_that("`pstr_new_ipr_2022` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(pstr_new_weo_2022))
+  ipr <- pstr_new_ipr_2022
+  expect_snapshot(format_robust_snapshot(ipr))
 })
