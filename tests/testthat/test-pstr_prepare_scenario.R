@@ -7,9 +7,9 @@ test_that("outputs the expected snapshot", {
   expect_snapshot(out)
 })
 
-test_that("with weo twice type is only weo", {
+test_that("takes any number of scenarios", {
   weo <- slice(pstr_new_weo_2022, 1:3)
-  scenarios <- list(weo = weo, weo = weo)
+  scenarios <- list(s1 = weo, s2 = weo, s3 = weo)
   out <- pstr_prepare_scenario(scenarios)
-  expect_equal(unique(out$type), "weo")
+  expect_equal(unique(out$type), c("s1", "s2", "s3"))
 })

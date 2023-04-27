@@ -14,7 +14,7 @@
 #'
 #' @examples # TODO
 pstr_prepare_scenario <- function(scenarios) {
-  purrr::imap_dfr(rev(scenarios), ~pstr_prepare_scenario_impl(.x, .y))
+  purrr::imap_dfr(scenarios, ~pstr_prepare_scenario_impl(.x, .y))
 }
 
 pstr_prepare_scenario_impl <- function(data, type) {
