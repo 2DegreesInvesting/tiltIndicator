@@ -26,8 +26,8 @@ aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 }
 \examples{
-scenarios <- pstr_new_dataset_scenarios()
-companies <- pstr_new_dataset_companies()
+companies <- pstr_companies
+scenarios <- pstr_scenarios
 pstr(companies, scenarios)
 }
 \seealso{

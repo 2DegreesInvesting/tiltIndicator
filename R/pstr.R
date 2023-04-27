@@ -13,8 +13,8 @@
 #' @export
 #'
 #' @examples
-#' scenarios <- pstr_new_dataset_scenarios()
-#' companies <- pstr_new_dataset_companies()
+#' companies <- pstr_companies
+#' scenarios <- pstr_scenarios
 #' pstr(companies, scenarios)
 pstr <- function(companies, scenarios) {
   by_item <- companies |>
