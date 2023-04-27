@@ -47,13 +47,13 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
 
   # Scores in comparison to:
   # * all input products
-  scores_all <- count_share(companies_scores, "all")
+  scores_all <- add_share(companies_scores, "all")
   ## * input products with same unit
-  scores_unit <- count_share(companies_scores, "unit")
+  scores_unit <- add_share(companies_scores, "unit")
   # * input products with same input sector
-  scores_sector <- count_share(companies_scores, "sector")
+  scores_sector <- add_share(companies_scores, "sector")
   # * input products with same unit and input sector
-  scores_unit_sec <- count_share(companies_scores, "unit_sec")
+  scores_unit_sec <- add_share(companies_scores, "unit_sec")
 
   ## create dataset sceleton
   dt_sceleton <- tibble(

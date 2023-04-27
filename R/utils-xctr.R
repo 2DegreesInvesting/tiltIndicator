@@ -4,7 +4,7 @@ xctr_rename <- function(data) {
     rename_with(~ gsub("share_", "score_", .x), starts_with("share_"))
 }
 
-count_share <- function(data, suffix) {
+add_share <- function(data, suffix) {
   score_col <- paste0("score_", suffix)
   share_col <- paste0("share_", suffix)
 

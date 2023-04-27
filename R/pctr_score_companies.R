@@ -47,11 +47,11 @@ pctr_score_companies <- function(scored_activities, companies) {
 
   # scores in comparison to:
   # * all products
-  scores_all <- count_share(companies_scores, "all")
+  scores_all <- add_share(companies_scores, "all")
   # * products with same unit
-  scores_unit <- count_share(companies_scores, "unit")
+  scores_unit <- add_share(companies_scores, "unit")
   # * products with same unit and sector
-  scores_unit_sec <- count_share(companies_scores, "unit_sec")
+  scores_unit_sec <- add_share(companies_scores, "unit_sec")
 
   # create dataset sceleton
   dt_sceleton <- tibble(
