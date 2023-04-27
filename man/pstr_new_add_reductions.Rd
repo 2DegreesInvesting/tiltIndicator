@@ -25,7 +25,7 @@ A dataframe with:
 Adds the emission reduction values for each company's product(s).
 }
 \examples{
-#TODO
+# TODO
 }
 \seealso{
 Other PSTR functions: 
@@ -33,7 +33,6 @@ Other PSTR functions:
 \code{\link{pstr_add_transition_risk}()},
 \code{\link{pstr_aggregate_scores}()},
 \code{\link{pstr_prepare_companies}()},
-\code{\link{pstr_prepare_scenario}()},
 \code{\link{pstr}()}
 }
 \concept{PSTR functions}

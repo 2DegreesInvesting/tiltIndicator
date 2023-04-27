@@ -46,7 +46,6 @@ Other PSTR functions:
 \code{\link{pstr_aggregate_scores}()},
 \code{\link{pstr_new_add_reductions}()},
 \code{\link{pstr_prepare_companies}()},
-\code{\link{pstr_prepare_scenario}()},
 \code{\link{pstr}()}
 }
 \author{

@@ -5,16 +5,11 @@
 #'
 #' @family PSTR functions
 #'
-#' @return A dataframe with:
-#'   * All the columns from the `ipr` dataset.
-#'   * All the columns from the `weo` dataset.
-#' @export
-#'
-#' @keywords internal
-#'
-#' @examples # TODO
+#' @return A dataframe with a cleaner, row-bind version of all scenarios with an
+#'   additinal column identifying which rows come from which scenario.
+#' @noRd
 pstr_prepare_scenario <- function(scenarios) {
-  imap_dfr(scenarios, ~pstr_prepare_scenario_impl(.x, .y))
+  imap_dfr(scenarios, ~ pstr_prepare_scenario_impl(.x, .y))
 }
 
 pstr_prepare_scenario_impl <- function(data, type) {
