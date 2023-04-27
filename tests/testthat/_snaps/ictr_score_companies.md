@@ -1,15 +1,3 @@
-# with the head the output hasn't change
-
-    Code
-      out
-    Output
-      # A tibble: 3 x 6
-        company_id              score share_all share_unit share_sector share_unit_sec
-        <chr>                   <chr>     <dbl>      <dbl>        <dbl>          <dbl>
-      1 fleischerei-stiefsohn_~ high      0.333      0            0.333          0.333
-      2 fleischerei-stiefsohn_~ medi~     0.333      0.667        0.333          0.333
-      3 fleischerei-stiefsohn_~ low       0.333      0.333        0.333          0.333
-
 # hasn't change
 
     Code

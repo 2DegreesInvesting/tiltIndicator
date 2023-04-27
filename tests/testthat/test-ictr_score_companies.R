@@ -1,10 +1,3 @@
-test_that("with the head the output hasn't change", {
-  out <- ictr_inputs |>
-    ictr_score_inputs() |>
-    ictr_score_companies(ictr_companies |> slice(1))
-  expect_snapshot(out)
-})
-
 test_that("hasn't change", {
   out <- ictr_inputs |>
     ictr_score_inputs() |>
