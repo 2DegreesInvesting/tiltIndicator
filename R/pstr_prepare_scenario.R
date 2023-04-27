@@ -25,5 +25,5 @@ pstr_prepare_scenario_impl <- function(data, type) {
     lowercase_characters() |>
     rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
     mutate(type = type) |>
-    rename(reductions = .data$co2_reductions)
+    rename(reductions = "co2_reductions")
 }
