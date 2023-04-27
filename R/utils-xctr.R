@@ -13,7 +13,7 @@ count_share <- function(data, suffix) {
     group_by(.data$company_id, .data[[score_col]]) |>
     filter(!is.na(.data[[score_col]])) |>
     summarise(.n = n()) |>
-    mutate({{share_col}} := .data$.n / sum(.data$.n)) |>
+    mutate({{ share_col }} := .data$.n / sum(.data$.n)) |>
     rename("score" = all_of(score_col)) |>
     select(-all_of(".n"))
 }
