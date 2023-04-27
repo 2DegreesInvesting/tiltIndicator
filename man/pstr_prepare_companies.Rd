@@ -34,4 +34,8 @@ companies <- pstr_new_companies |>
 
 pstr_prepare_companies(companies)
 }
+\seealso{
+Other pre-processing helpers: 
+\code{\link{pstr_prepare_scenario}()}
+}
 \concept{pre-processing helpers}

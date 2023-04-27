@@ -2,9 +2,24 @@
 #'
 #' @param scenarios A named list of identically structured scenarios.
 #'
-#' @return A single, cleaner dataframe with an additinal column identifying
+#' @family pre-processing helpers
+#'
+#' @return A single, cleaner dataframe with an additional column to identify
 #'   which rows come from which scenario.
-#' @noRd
+#'
+#' @examples
+#' library(dplyr, warn.conflicts = FALSE)
+#'
+#' weo <- slice(pstr_new_weo_2022, 1:2)
+#' ipr <- slice(pstr_new_weo_2022, 1:2)
+#'
+#' scenarios <- list(weo = weo, ipr = ipr)
+#' pstr_prepare_scenario(scenarios)
+#'
+#' # You prepare other scenarios
+#' scenarios <- list(scen1 = weo, scen2 = weo)
+#' pstr_prepare_scenario(scenarios) |>
+#'   relocate(type)
 pstr_prepare_scenario <- function(scenarios) {
   imap_dfr(scenarios, ~ pstr_prepare_scenario_impl(.x, .y))
 }
