@@ -37,8 +37,7 @@ Other PSTR functions:
 \code{\link{pstr_add_reductions}()},
 \code{\link{pstr_add_transition_risk}()},
 \code{\link{pstr_new_add_reductions}()},
-\code{\link{pstr_new}()},
-\code{\link{pstr}()}
+\code{\link{pstr_new}()}
 }
 \author{
 Linda Delacombaz.
