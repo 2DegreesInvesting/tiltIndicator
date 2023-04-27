@@ -5,6 +5,8 @@ library(here)
 library(readr)
 library(usethis)
 
+extdata_path("")
+
 pstr_raw_companies <- read_csv(here("data-raw/pstr_new/pstr_raw_companies.csv"))
 use_data(pstr_raw_companies, overwrite = TRUE)
 
