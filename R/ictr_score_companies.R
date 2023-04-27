@@ -45,37 +45,15 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   companies_scores <- companies |>
     left_join(ecoinvent_scores, by = c("activity_uuid_product_uuid"))
 
-  ## scores in comparison to all input products
-  scores_all <- companies_scores |>
-    group_by(.data$company_id, .data$score_all) |>
-    summarise(n_all = n()) |>
-    mutate(share_all = .data$n_all / sum(.data$n_all)) |>
-    select(-"n_all") |>
-    rename("score" = "score_all")
-
-  ## scores in comparison to input products with same unit
-  scores_unit <- companies_scores |>
-    group_by(.data$company_id, .data$score_unit) |>
-    summarise(n_unit = n()) |>
-    mutate(share_unit = .data$n_unit / sum(.data$n_unit)) |>
-    select(-"n_unit") |>
-    rename("score" = "score_unit")
-
-  ## scores in comparison to input products with same input sector
-  scores_sector <- companies_scores |>
-    group_by(.data$company_id, .data$score_sector) |>
-    summarise(n_sector = n()) |>
-    mutate(share_sector = .data$n_sector / sum(.data$n_sector)) |>
-    select(-"n_sector") |>
-    rename("score" = "score_sector")
-
-  ## scores in comparison to input products with same unit and input sector
-  scores_unit_sec <- companies_scores |>
-    group_by(.data$company_id, .data$score_unit_sec) |>
-    summarise(n_unit_sec = n()) |>
-    mutate(share_unit_sec = .data$n_unit_sec / sum(.data$n_unit_sec)) |>
-    select(-"n_unit_sec") |>
-    rename("score" = "score_unit_sec")
+  # Scores in comparison to:
+  # * all input products
+  scores_all <- add_share(companies_scores, "all")
+  # * input products with same unit
+  scores_unit <- add_share(companies_scores, "unit")
+  # * input products with same input sector
+  scores_sector <- add_share(companies_scores, "sector")
+  # * input products with same unit and input sector
+  scores_unit_sec <- add_share(companies_scores, "unit_sec")
 
   ## create dataset sceleton
   dt_sceleton <- tibble(

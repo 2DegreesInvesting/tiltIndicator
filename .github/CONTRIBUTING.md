@@ -1,38 +1,18 @@
 # Contributing to tiltIndicator
 
-This article if for the developer who transforms the MVP code of each indicator
-into production code. Here you'll find guides and tools to ensure each indicator
-is developed and documented consistently with other indicators, and according to
-the requirements of the indicator's author.
+This project follows a number of guides, principles, and books. The more familiar you are with them, the faster your contribution will be approved.
 
-Building the infrastructure of this package:
+Guides and principles:
 
-* Enable developer workflow: `create_package()`.
-* Use a license: `use_mit_license()`.
-* Enable tests: `use_testthat()`
-* Enable CI: `use_github_action_check_standard()`.
-* Create a directory for each mvp.Rmd at: inst/extdata/mvp/.
-* Avoid leaking private data: In inst/extdata/mvp/.gitignore add:
-
-    ```
-    *.*
-    !*.Rmd
-    ```
-
-* Create a website: `use_pkgdown_github_pages()`
-
-Documentation:
-
-* [Guide to documenting each indicator](https://2degreesinvesting.github.io/tiltIndicator/articles/indicator-docs.html).
-
-Tools:
-
-* [Developer-oriented
-functions](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#developer-oriented-functions).
-
-More general guides, tools and principles.
-
-* [Tidyverse style guide](https://style.tidyverse.org/): `use_tidy_style()`.
-* Tidyverse spelling: `use_spell_check()`.
+* [tiltIndicator mvp guide](bit.ly/tilt-mvp-guide).
+* [Tidyverse style guide](https://style.tidyverse.org/).
 * [Tidyverse design guide](https://design.tidyverse.org/).
-* [Tidyverse code review principles](https://davisvaughan.github.io/code-review/).
+* [Tidyverse code review principles](https://tidyverse.github.io/code-review/).
+
+Books:
+
+* [Happy Git with R](https://happygitwithr.com/).
+* [What they forgot to teach you about R](https://rstats.wtf/).
+* [R for data science](https://r4ds.hadley.nz/).
+* [Advanced R](https://adv-r.hadley.nz/).
+* [R packages](https://r-pkgs.org/).
