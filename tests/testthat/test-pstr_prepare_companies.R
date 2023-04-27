@@ -1,3 +1,5 @@
 test_that("snapshot", {
-  expect_equal(2 * 2, 4)
+  companies <- slice(pstr_new_companies, 1)
+  out <- pstr_prepare_companies(companies)
+  expect_snapshot(format_robust_snapshot(out))
 })
