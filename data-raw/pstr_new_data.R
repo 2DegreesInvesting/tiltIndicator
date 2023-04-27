@@ -5,11 +5,11 @@ library(here)
 library(readr)
 library(usethis)
 
-pstr_new_companies <- read_csv(here("data-raw/pstr_new/pstr_new_companies.csv"))
-use_data(pstr_new_companies, overwrite = TRUE)
+pstr_raw_companies <- read_csv(here("data-raw/pstr_raw/pstr_raw_companies.csv"))
+use_data(pstr_raw_companies, overwrite = TRUE)
 
-pstr_new_ipr_2022 <- read_csv(here("data-raw/pstr_new/pstr_new_ipr_2022.csv"))
-use_data(pstr_new_ipr_2022, overwrite = TRUE)
+pstr_raw_ipr_2022 <- read_csv(here("data-raw/pstr_raw/pstr_raw_ipr_2022.csv"))
+use_data(pstr_raw_ipr_2022, overwrite = TRUE)
 
-pstr_new_weo_2022 <- read_csv(here("data-raw/pstr_new/pstr_new_weo_2022.csv"))
-use_data(pstr_new_weo_2022, overwrite = TRUE)
+pstr_raw_weo_2022 <- read_csv(here("data-raw/pstr_raw/pstr_raw_weo_2022.csv"))
+use_data(pstr_raw_weo_2022, overwrite = TRUE)

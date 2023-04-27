@@ -1,5 +1,5 @@
 pstr_new_dataset_companies <- function() {
-  pstr_prepare_companies(pstr_new_companies)
+  pstr_prepare_companies(pstr_raw_companies)
 }
 
 pstr_new_dataset_scenarios <- function() {

@@ -16,7 +16,7 @@
 #' @export
 #'
 #' @examples
-#' companies <- pstr_new_companies # TODO: Read it as a .csv
+#' companies <- pstr_raw_companies # TODO: Read it as a .csv
 #' pstr_prepare_companies(companies)
 pstr_prepare_companies <- function(data) {
   data |>

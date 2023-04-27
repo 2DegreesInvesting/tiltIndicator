@@ -1,4 +1,4 @@
-# `pstr_new_companies` hasn't changed
+# `pstr_raw_companies` hasn't changed
 
     Code
       format_robust_snapshot(companies)

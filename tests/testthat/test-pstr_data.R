@@ -1,5 +1,5 @@
-test_that("`pstr_new_companies` hasn't changed", {
-  companies <- pstr_new_companies
+test_that("`pstr_raw_companies` hasn't changed", {
+  companies <- pstr_raw_companies
   expect_snapshot(format_robust_snapshot(companies))
 })
 
