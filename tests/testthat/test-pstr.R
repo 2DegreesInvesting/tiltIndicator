@@ -4,7 +4,7 @@ test_that("the output is not grouped", {
   scenarios <- pstr_prepare_scenario(list(weo = weo, ipr = ipr))
   companies <- pstr_prepare_companies(slice(pstr_new_companies, 1))
 
-  out <- pstr_new(companies, scenarios)
+  out <- pstr(companies, scenarios)
   expect_snapshot(format_robust_snapshot(out))
 })
 
@@ -14,7 +14,7 @@ test_that("outputs the expected columns", {
   scenarios <- pstr_prepare_scenario(list(weo = weo, ipr = ipr))
   companies <- pstr_prepare_companies(slice(pstr_new_companies, 1))
 
-  out <- pstr_new(companies, scenarios)
+  out <- pstr(companies, scenarios)
 
   expect_true(all(common_output_columns() %in% names(out)))
   expect_true(any(grepl("score", names(out))))
@@ -27,6 +27,6 @@ test_that("the output is not grouped", {
   scenarios <- pstr_prepare_scenario(list(weo = weo, ipr = ipr))
   companies <- pstr_prepare_companies(slice(pstr_new_companies, 1))
 
-  out <- pstr_new(companies, scenarios)
+  out <- pstr(companies, scenarios)
   expect_false(dplyr::is_grouped_df(out))
 })

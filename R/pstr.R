@@ -18,7 +18,7 @@
 #' scenarios <- pstr_prepare_scenario(list(weo = weo, ipr = ipr))
 #' companies <- pstr_prepare_companies(slice(pstr_new_companies, 1))
 #'
-#' pstr_new(companies, scenarios)
+#' pstr(companies, scenarios)
 pstr_new <- function(companies, scenarios) {
   by_item <- companies |>
     pstr_new_add_reductions(scenarios) |>
