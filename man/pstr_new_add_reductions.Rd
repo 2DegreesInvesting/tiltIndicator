@@ -25,8 +25,8 @@ A dataframe with:
 Adds the emission reduction values for each company's product(s).
 }
 \examples{
-scenarios <- pstr_new_dataset_scenarios()
-companies <- pstr_new_dataset_companies()
+scenarios <- pstr_scenarios
+companies <- pstr_companies
 pstr_new_add_reductions(companies, scenarios)
 }
 \seealso{
