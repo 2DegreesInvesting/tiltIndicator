@@ -3,10 +3,8 @@
 #' ```{r child=extdata_path("child/intro-pstr.Rmd")}
 #' ```
 #'
-#' @inheritParams pstr_add_reductions
-#' @inheritParams pstr_aggregate_score
-#' @param scenario A dataframe with scenario data, e.g. WEO.
-#' @param mapper A dataframe mapping `companies` to `scenario`.
+#' @param companies A dataframe like [pstr_companies].
+#' @param scenarios A dataframe like [pstr_scenarios].
 #'
 #' @family PSTR functions
 #'
@@ -15,16 +13,14 @@
 #' @export
 #'
 #' @examples
-#' pstr(pstr_companies, pstr_weo_2022, pstr_ep_weo)
-pstr <- function(companies, scenario, mapper) {
-  with_reductions <- companies |>
-    pstr_add_reductions(mapper, scenario)
+#' companies <- pstr_companies
+#' scenarios <- pstr_scenarios
+#' pstr(companies, scenarios)
+pstr <- function(companies, scenarios) {
+  product_level <- pstr_at_product_level(companies, scenarios)
+  company_level <- pstr_at_company_level(product_level, companies)
 
-  out <- with_reductions |>
-    pstr_add_transition_risk() |>
-    pstr_aggregate_scores(companies)
-
-  out |>
+  company_level |>
     rename(id = "company_id") |>
     relocate_crucial_output_columns() |>
     ungroup()

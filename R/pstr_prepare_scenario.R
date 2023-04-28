@@ -1,23 +1,25 @@
-#' Prepare the scenario data set
+#' Given a named list of scenarios returns a cleaner `scenarios` dataframe
 #'
-#' @param ipr TODO
-#' @param weo TODO
+#' @param scenarios A named list of identically structured scenarios.
 #'
-#' @family PSTR functions
+#' @family pre-processing helpers
 #'
-#' @return A dataframe with:
-#'   * All the columns from the `ipr` dataset.
-#'   * All the columns from the `weo` dataset.
+#' @return A single, cleaner dataframe with an additional column to identify
+#'   which rows come from which scenario.
+#'
 #' @export
 #'
-#' @keywords internal
+#' @examples
+#' library(dplyr, warn.conflicts = FALSE)
+#' library(readr, warn.conflicts = FALSE)
 #'
-#' @examples #TODO
-pstr_prepare_scenario <- function(ipr, weo) {
-  bind_rows(
-    pstr_prepare_scenario_impl(ipr, "ipr"),
-    pstr_prepare_scenario_impl(weo, "weo")
-  )
+#' raw_weo <- read_csv(extdata_path("pstr_raw_weo_2022.csv"))
+#' raw_ipr <- read_csv(extdata_path("pstr_raw_ipr_2022.csv"))
+#' raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
+#'
+#' pstr_prepare_scenario(raw_scenarios)
+pstr_prepare_scenario <- function(scenarios) {
+  imap_dfr(scenarios, ~ pstr_prepare_scenario_impl(.x, .y))
 }
 
 pstr_prepare_scenario_impl <- function(data, type) {
@@ -25,5 +27,5 @@ pstr_prepare_scenario_impl <- function(data, type) {
     lowercase_characters() |>
     rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
     mutate(type = type) |>
-    rename(reductions = .data$co2_reductions)
+    rename(reductions = "co2_reductions")
 }

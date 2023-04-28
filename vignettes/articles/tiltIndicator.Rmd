@@ -87,5 +87,5 @@ pctr_companies |>
 
 ```{r}
 pstr_companies |>
-  pstr(scenario = pstr_weo_2022, mapper = pstr_ep_weo)
+  pstr(scenarios = pstr_scenarios)
 ```

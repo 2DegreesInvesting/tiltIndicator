@@ -2,30 +2,41 @@
 % Please edit documentation in R/pstr_prepare_companies.R
 \name{pstr_prepare_companies}
 \alias{pstr_prepare_companies}
-\title{Title}
+\title{Given a messy PSTR \code{companies} dataframe returns a cleaner one}
 \usage{
 pstr_prepare_companies(data)
 }
 \arguments{
-\item{data}{TODO}
+\item{data}{A dataframe with these columns:
+\itemize{
+\item ipr_sector.x
+\item ipr_sector.y
+\item ipr_subsector.x
+\item ipr_subsector.y
+\item weo_product.x
+\item weo_product.y
+\item weo_flow.x
+\item weo_flow.y
+}}
 }
 \value{
-TODO
+A \code{copmanies} dataset as required by PSTR functions.
 }
 \description{
-Title
+Given a messy PSTR \code{companies} dataframe returns a cleaner one
 }
 \examples{
-#TODO
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+
+raw_companies <- read_csv(extdata_path("pstr_raw_companies.csv"))
+glimpse(raw_companies)
+
+companies <- pstr_prepare_companies(raw_companies)
+companies
 }
 \seealso{
-Other PSTR functions: 
-\code{\link{pstr_add_reductions}()},
-\code{\link{pstr_add_transition_risk}()},
-\code{\link{pstr_aggregate_scores}()},
-\code{\link{pstr_new_add_reductions}()},
-\code{\link{pstr_prepare_scenario}()},
-\code{\link{pstr}()}
+Other pre-processing helpers: 
+\code{\link{pstr_prepare_scenario}()}
 }
-\concept{PSTR functions}
-\keyword{internal}
+\concept{pre-processing helpers}

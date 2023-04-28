@@ -2,36 +2,32 @@
 % Please edit documentation in R/pstr_prepare_scenario.R
 \name{pstr_prepare_scenario}
 \alias{pstr_prepare_scenario}
-\title{Prepare the scenario data set}
+\title{Given a named list of scenarios returns a cleaner \code{scenarios} dataframe}
 \usage{
-pstr_prepare_scenario(ipr, weo)
+pstr_prepare_scenario(scenarios)
 }
 \arguments{
-\item{ipr}{TODO}
-
-\item{weo}{TODO}
+\item{scenarios}{A named list of identically structured scenarios.}
 }
 \value{
-A dataframe with:
-\itemize{
-\item All the columns from the \code{ipr} dataset.
-\item All the columns from the \code{weo} dataset.
-}
+A single, cleaner dataframe with an additional column to identify
+which rows come from which scenario.
 }
 \description{
-Prepare the scenario data set
+Given a named list of scenarios returns a cleaner \code{scenarios} dataframe
 }
 \examples{
-#TODO
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+
+raw_weo <- read_csv(extdata_path("pstr_raw_weo_2022.csv"))
+raw_ipr <- read_csv(extdata_path("pstr_raw_ipr_2022.csv"))
+raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
+
+pstr_prepare_scenario(raw_scenarios)
 }
 \seealso{
-Other PSTR functions: 
-\code{\link{pstr_add_reductions}()},
-\code{\link{pstr_add_transition_risk}()},
-\code{\link{pstr_aggregate_scores}()},
-\code{\link{pstr_new_add_reductions}()},
-\code{\link{pstr_prepare_companies}()},
-\code{\link{pstr}()}
+Other pre-processing helpers: 
+\code{\link{pstr_prepare_companies}()}
 }
-\concept{PSTR functions}
-\keyword{internal}
+\concept{pre-processing helpers}

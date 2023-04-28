@@ -1,15 +1,29 @@
-#' Title
+#' Given a messy PSTR `companies` dataframe returns a cleaner one
 #'
-#' @param data TODO
+#' @param data A dataframe with these columns:
+#' * ipr_sector.x
+#' * ipr_sector.y
+#' * ipr_subsector.x
+#' * ipr_subsector.y
+#' * weo_product.x
+#' * weo_product.y
+#' * weo_flow.x
+#' * weo_flow.y
 #'
-#' @family PSTR functions
+#' @family pre-processing helpers
 #'
-#' @return TODO
+#' @return A `copmanies` dataset as required by PSTR functions.
 #' @export
 #'
-#' @keywords internal
+#' @examples
+#' library(dplyr, warn.conflicts = FALSE)
+#' library(readr, warn.conflicts = FALSE)
 #'
-#' @examples #TODO
+#' raw_companies <- read_csv(extdata_path("pstr_raw_companies.csv"))
+#' glimpse(raw_companies)
+#'
+#' companies <- pstr_prepare_companies(raw_companies)
+#' companies
 pstr_prepare_companies <- function(data) {
   data |>
     merge_scenario_columns() |>
@@ -30,8 +44,10 @@ merge_scenario_columns <- function(data) {
 
 pivot_type_sector_subsector <- function(companies) {
   companies |>
-    rename(weo_sector = .data$weo_product, weo_subsector = .data$weo_flow) |>
-    pivot_longer(c(.data$ipr_sector, .data$ipr_subsector, .data$weo_sector, .data$weo_subsector)) |>
-    separate(name, c("type", "tmp")) |>
+    rename(weo_sector = "weo_product", weo_subsector = "weo_flow") |>
+    pivot_longer(c("ipr_sector", "ipr_subsector", "weo_sector", "weo_subsector")) |>
+    # FIXME: ?separate() has been superseded in favour of
+    # separate_wider_position() and separate_wider_delim()
+    separate(.data$name, c("type", "tmp")) |>
     pivot_wider(names_from = "tmp")
 }

@@ -1,0 +1,373 @@
+publication,scenario,region,weo_product,weo_flow,year,value,co2_reductions
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total energy supply,2020,31904,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total energy supply,2030,33134.7,-0.0385751003009027
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total energy supply,2040,30799.9,0.0346069458375124
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total energy supply,2050,28946.4,0.0927031093279839
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Total energy supply,2020,14335.2,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Total energy supply,2030,13695,0.0446593001841621
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Total energy supply,2040,11553.4,0.194053797644958
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Total energy supply,2050,9863.04,0.311970534069982
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Total energy supply,2020,10193.7,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Total energy supply,2030,11411.5,-0.119465944652089
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Total energy supply,2040,11247.9,-0.103416816268872
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Total energy supply,2050,11094.2,-0.0883388759724144
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Total energy supply,2020,7161.51,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Total energy supply,2030,7773.69,-0.0854819723773337
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Total energy supply,2040,7674.74,-0.0716650538783021
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Total energy supply,2050,7628.53,-0.0652125040668796
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Total energy supply,2020,213.41,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Total energy supply,2030,254.37,-0.191931024787967
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Total energy supply,2040,323.65,-0.516564359683239
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Total energy supply,2050,360.38,-0.688674382643737
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Biofuels production and direct air capture,2020,0.81,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Biofuels production and direct air capture,2030,8.74,-9.79012345679012
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Biofuels production and direct air capture,2040,27.79,-33.3086419753086
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Biofuels production and direct air capture,2050,59.28,-72.1851851851852
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Power sector inputs,2020,13502,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Power sector inputs,2030,12758.6,0.0550585098503925
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Power sector inputs,2040,10676.3,0.209280106650867
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Power sector inputs,2050,9307.74,0.31063990519923
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Power sector inputs,2020,9750.4,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Power sector inputs,2030,9127.98,0.0638353298326223
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Power sector inputs,2040,7281.79,0.253180382343288
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Power sector inputs,2050,5938.44,0.390954217262881
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Power sector inputs,2020,557.3,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Power sector inputs,2030,371.56,0.333285483581554
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Power sector inputs,2040,308.52,0.446402296788085
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Power sector inputs,2050,260.29,0.532944554100126
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Power sector inputs,2020,3095.24,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Power sector inputs,2030,3104.66,-0.0030433827425338
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Power sector inputs,2040,2863.26,0.0749473384939454
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Power sector inputs,2050,2842.1,0.0817836419792972
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Power sector inputs,2020,99.1,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Power sector inputs,2030,154.44,-0.558425832492432
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Power sector inputs,2040,222.77,-1.24793138244198
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Power sector inputs,2050,266.91,-1.6933400605449
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Other energy sector,2020,1487.18,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Other energy sector,2030,1698.37,-0.142007019997579
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Other energy sector,2040,1695.49,-0.140070468941218
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Other energy sector,2050,1659.1,-0.115601339447814
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total final consumption,2020,19521.6,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total final consumption,2030,21627,-0.107849766412589
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total final consumption,2040,21501.3,-0.1014107450209
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total final consumption,2050,21056.1,-0.0786052372756332
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Total final consumption,2020,4474.28,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Total final consumption,2030,4458.24,0.00358493433580376
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Total final consumption,2040,4170.37,0.0679237776804312
+World Energy Outlook 2022,Stated Policies Scenario,World,Coal,Total final consumption,2050,3829.98,0.1440008224787
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Total final consumption,2020,9080.06,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Total final consumption,2030,10455.5,-0.151479175247741
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Total final consumption,2040,10388.4,-0.144089356237734
+World Energy Outlook 2022,Stated Policies Scenario,World,Oil,Total final consumption,2050,10331.1,-0.137778825250054
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Total final consumption,2020,3320.85,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Total final consumption,2030,3800.01,-0.144288359907855
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Total final consumption,2040,3929.05,-0.183145881325564
+World Energy Outlook 2022,Stated Policies Scenario,World,Natural gas,Total final consumption,2050,3904.12,-0.175638767183101
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Total final consumption,2020,113.5,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Total final consumption,2030,100.04,0.118590308370044
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Total final consumption,2040,101,0.110132158590308
+World Energy Outlook 2022,Stated Policies Scenario,World,Bioenergy and waste,Total final consumption,2050,93.65,0.17488986784141
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Industry,2020,9132.22,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Industry,2030,10036.5,-0.0990208295463755
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Industry,2040,10060.7,-0.101670787606957
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Industry,2050,9669.44,-0.0588268788969168
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Iron and steel,2020,2724.26,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Iron and steel,2030,2929,-0.0751543538428783
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Iron and steel,2040,2797.7,-0.0269577793602664
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Iron and steel,2050,2652.97,0.02616857421832
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Chemicals,2020,1286.79,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Chemicals,2030,1492.19,-0.159622005144585
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Chemicals,2040,1492,-0.159474350904188
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Chemicals,2050,1429.13,-0.110616339884519
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Non-metallic minerals: cement,2020,2458.33,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Non-metallic minerals: cement,2030,2648.17,-0.0772231555568212
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Non-metallic minerals: cement,2040,2699.14,-0.0979567429921939
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Non-metallic minerals: cement,2050,2585.3,-0.0516488835917066
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Transport,2020,7112.95,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Transport,2030,8471.76,-0.191033256243893
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Transport,2040,8570.57,-0.204924820222271
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Transport,2050,8699.66,-0.223073408360807
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road,2020,5484.78,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road,2030,6064.52,-0.105699772825893
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road,2040,5925.1,-0.0802803394119729
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road,2050,5666.9,-0.0332046134940691
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road passenger light duty vehicle,2020,2803.05,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road passenger light duty vehicle,2030,2961.6,-0.0565633863113393
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road passenger light duty vehicle,2040,2760.55,0.0151620556179876
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road passenger light duty vehicle,2050,2470.34,0.118695706462603
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road heavy-duty trucks,2020,1688.1,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road heavy-duty trucks,2030,2069.79,-0.22610627332504
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road heavy-duty trucks,2040,2274.16,-0.347171376103312
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Road heavy-duty trucks,2050,2435.04,-0.442473787097921
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total aviation (domestic and bunkers),2020,586.31,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total aviation (domestic and bunkers),2030,1259.49,-1.14816394057751
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total aviation (domestic and bunkers),2040,1439.57,-1.45530521396531
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total aviation (domestic and bunkers),2050,1675.45,-1.85761798366052
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total navigation (domestic and bunkers),2020,795.85,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total navigation (domestic and bunkers),2030,904.98,-0.137123829867437
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total navigation (domestic and bunkers),2040,978.64,-0.22967895960294
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total navigation (domestic and bunkers),2050,1144.94,-0.438637934284099
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Buildings,2020,2850.65,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Buildings,2030,2680.33,0.0597477768228299
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Buildings,2040,2446.36,0.141823794573168
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Buildings,2050,2293.41,0.195478224264641
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Residential,2020,1982.94,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Residential,2030,1746.6,0.119186662228812
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Residential,2040,1527.82,0.229517786720728
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Residential,2050,1415.08,0.286372759639727
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Services,2020,867.71,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Services,2030,933.73,-0.076085328047389
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Services,2040,918.54,-0.0585794793191272
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Services,2050,878.33,-0.012239112145763
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total energy supply,2020,0.97,0
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total energy supply,2030,11.27,-10.6185567010309
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total energy supply,2040,35.15,-35.2371134020619
+World Energy Outlook 2022,Stated Policies Scenario,World,Total,Total energy supply,2050,69.59,-70.7422680412371
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total energy supply,2020,31904,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total energy supply,2030,28803,0.0971978435305918
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total energy supply,2040,18554.4,0.418430290872618
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total energy supply,2050,11346.5,0.644354939819458
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Total energy supply,2020,14335.2,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Total energy supply,2030,11881.3,0.171180032367878
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Total energy supply,2040,6594.46,0.53998130476031
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Total energy supply,2050,2973.15,0.7925979407333
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Total energy supply,2020,10193.7,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Total energy supply,2030,10092.6,0.00991789046175584
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Total energy supply,2040,7169.41,0.296682264535939
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Total energy supply,2050,5077.77,0.501871744312664
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Total energy supply,2020,7161.51,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Total energy supply,2030,6679.86,0.0672553693285355
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Total energy supply,2040,4966.95,0.306438167369731
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Total energy supply,2050,3758.47,0.475184702667454
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Total energy supply,2020,213.41,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Total energy supply,2030,149.19,0.300923105758868
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Total energy supply,2040,-176.46,1.82685909751183
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Total energy supply,2050,-462.91,3.16911110069819
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Biofuels production and direct air capture,2020,0.81,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Biofuels production and direct air capture,2030,49.97,-60.6913580246914
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Biofuels production and direct air capture,2040,163.53,-200.888888888889
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Biofuels production and direct air capture,2050,405.96,-500.185185185185
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Power sector inputs,2020,13502,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Power sector inputs,2030,11329.9,0.160872463338765
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Power sector inputs,2040,6389.13,0.526801214634869
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Power sector inputs,2050,3137.67,0.767614427492223
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Power sector inputs,2020,9750.4,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Power sector inputs,2030,8163.43,0.162759476534296
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Power sector inputs,2040,4291.95,0.559818058746308
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Power sector inputs,2050,1712.59,0.824356949458484
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Power sector inputs,2020,557.3,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Power sector inputs,2030,322.08,0.422070698008254
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Power sector inputs,2040,230.35,0.586667862910461
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Power sector inputs,2050,155.86,0.720330163287278
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Power sector inputs,2020,3095.24,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Power sector inputs,2030,2759.41,0.108498856308396
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Power sector inputs,2040,2021.73,0.346826094260865
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Power sector inputs,2050,1597.93,0.483746010002455
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Power sector inputs,2020,99.1,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Power sector inputs,2030,84.93,0.142986881937437
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Power sector inputs,2040,-154.91,2.56316851664985
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Power sector inputs,2050,-328.71,4.31695257315843
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Other energy sector,2020,1487.18,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Other energy sector,2030,1334.09,0.102939792089727
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Other energy sector,2040,730.29,0.508943100364448
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Other energy sector,2050,191.2,0.871434527091542
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total final consumption,2020,19521.6,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total final consumption,2030,18784.8,0.03774280796656
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total final consumption,2040,13438.2,0.311624047209245
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total final consumption,2050,9123.89,0.532625911810507
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Total final consumption,2020,4474.28,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Total final consumption,2030,3621.14,0.190676488731148
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Total final consumption,2040,2239.15,0.49955076570979
+World Energy Outlook 2022,Announced Pledges Scenario,World,Coal,Total final consumption,2050,1238.78,0.72313310744969
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Total final consumption,2020,9080.06,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Total final consumption,2030,9302.23,-0.0244678999918502
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Total final consumption,2040,6669.63,0.265464104862743
+World Energy Outlook 2022,Announced Pledges Scenario,World,Oil,Total final consumption,2050,4754.88,0.476338262081969
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Total final consumption,2020,3320.85,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Total final consumption,2030,3225.17,0.0288119005676257
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Total final consumption,2040,2464.88,0.257756297333514
+World Energy Outlook 2022,Announced Pledges Scenario,World,Natural gas,Total final consumption,2050,1803.36,0.456958308866706
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Total final consumption,2020,113.5,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Total final consumption,2030,64.43,0.432334801762114
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Total final consumption,2040,-21.03,1.18528634361233
+World Energy Outlook 2022,Announced Pledges Scenario,World,Bioenergy and waste,Total final consumption,2050,-124.93,2.10070484581498
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Industry,2020,9132.22,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Industry,2030,8569.29,0.0616421855802859
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Industry,2040,6233.7,0.31739489412213
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Industry,2050,3946.03,0.567900247694427
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Iron and steel,2020,2724.26,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Iron and steel,2030,2511.52,0.0780909311152387
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Iron and steel,2040,1807.75,0.336425304486356
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Iron and steel,2050,1119.84,0.588937913415019
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Chemicals,2020,1286.79,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Chemicals,2030,1314.62,-0.0216274605802034
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Chemicals,2040,925.04,0.281125902439403
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Chemicals,2050,547.97,0.574157399420263
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Non-metallic minerals: cement,2020,2458.33,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Non-metallic minerals: cement,2030,2328.63,0.0527593935720591
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Non-metallic minerals: cement,2040,1758.41,0.284713606391331
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Non-metallic minerals: cement,2050,1084.1,0.559009571538402
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Transport,2020,7112.95,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Transport,2030,7616.07,-0.0707329588989096
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Transport,2040,5556.61,0.218803731222629
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Transport,2050,4024.76,0.434164446537653
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road,2020,5484.78,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road,2030,5458.55,0.0047823249063772
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road,2040,3772.68,0.312154726351832
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road,2050,2508.61,0.54262340513202
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road passenger light duty vehicle,2020,2803.05,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road passenger light duty vehicle,2030,2588.6,0.076505948877116
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road passenger light duty vehicle,2040,1597.82,0.429970924528638
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road passenger light duty vehicle,2050,996.87,0.644362390966982
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road heavy-duty trucks,2020,1688.1,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road heavy-duty trucks,2030,1909.47,-0.131135596232451
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road heavy-duty trucks,2040,1548.75,0.0825484272258752
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Road heavy-duty trucks,2050,1137.45,0.326195130620224
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total aviation (domestic and bunkers),2020,586.31,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total aviation (domestic and bunkers),2030,1196.89,-1.04139448414661
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total aviation (domestic and bunkers),2040,1135.75,-0.937115177977521
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total aviation (domestic and bunkers),2050,1073.76,-0.831386126792994
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total navigation (domestic and bunkers),2020,795.85,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total navigation (domestic and bunkers),2030,778.33,0.0220141986555256
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total navigation (domestic and bunkers),2040,524.75,0.34064208079412
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total navigation (domestic and bunkers),2050,361.89,0.545278632908211
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Buildings,2020,2850.65,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Buildings,2030,2266.82,0.20480592145651
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Buildings,2040,1434.38,0.496823531475278
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Buildings,2050,1029.49,0.638857804360409
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Residential,2020,1982.94,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Residential,2030,1558.57,0.214010509647291
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Residential,2040,1002.23,0.494573713778531
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Residential,2050,747.73,0.622918494760305
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Services,2020,867.71,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Services,2030,708.25,0.183771075589771
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Services,2040,432.15,0.501964942204193
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Services,2050,281.77,0.675271692155213
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total energy supply,2020,0.97,0
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total energy supply,2030,86.47,-88.1443298969072
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total energy supply,2040,430.85,-443.175257731959
+World Energy Outlook 2022,Announced Pledges Scenario,World,Total,Total energy supply,2050,917.82,-945.20618556701
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total energy supply,2020,31904,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total energy supply,2030,20590.4,0.354613841524574
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total energy supply,2040,5103.27,0.840042941323972
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total energy supply,2050,509.63,0.984026140922768
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Total energy supply,2020,14335.2,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Total energy supply,2030,7578.32,0.471348847591942
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Total energy supply,2040,1140.44,0.920444779284558
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Total energy supply,2050,114.27,0.992028712539762
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Total energy supply,2020,10193.7,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Total energy supply,2030,7710.44,0.243607326093568
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Total energy supply,2040,3029.61,0.702795844492186
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Total energy supply,2050,722.15,0.929157224560268
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Total energy supply,2020,7161.51,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Total energy supply,2030,5282.33,0.26239996872168
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Total energy supply,2040,1390.91,0.805779786665103
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Total energy supply,2050,404.67,0.943493760394107
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Total energy supply,2020,213.41,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Total energy supply,2030,19.34,0.90937631788576
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Total energy supply,2040,-457.68,3.14460428283586
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Total energy supply,2050,-731.46,4.4274869968605
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Biofuels production and direct air capture,2020,0.81,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Biofuels production and direct air capture,2030,155.87,-191.432098765432
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Biofuels production and direct air capture,2040,530.3,-653.691358024691
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Biofuels production and direct air capture,2050,786.85,-970.41975308642
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Power sector inputs,2020,13502,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Power sector inputs,2030,7076.47,0.475894682269293
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Power sector inputs,2040,-188.61,1.01396904162346
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Power sector inputs,2050,-350.78,1.02597985483632
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Power sector inputs,2020,9750.4,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Power sector inputs,2030,4653.48,0.52273957991467
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Power sector inputs,2040,48.73,0.99500225631769
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Power sector inputs,2050,26.65,0.997266778798819
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Power sector inputs,2020,557.3,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Power sector inputs,2030,167.39,0.699641126861654
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Power sector inputs,2040,17.8,0.968060290687242
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Power sector inputs,2050,2.34,0.995801184281357
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Power sector inputs,2020,3095.24,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Power sector inputs,2030,2264.18,0.268496142463912
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Power sector inputs,2040,79.99,0.974157092826404
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Power sector inputs,2050,41.69,0.986530931365581
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Power sector inputs,2020,99.1,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Power sector inputs,2030,-8.58,1.08657921291625
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Power sector inputs,2040,-335.13,4.38173562058527
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Power sector inputs,2050,-421.46,5.25287588294652
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Other energy sector,2020,1487.18,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Other energy sector,2030,965.62,0.350704016998615
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Other energy sector,2040,112.33,0.924467784666281
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Other energy sector,2050,-266.45,1.17916459339152
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total final consumption,2020,19521.6,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total final consumption,2030,14765,0.243658306696172
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total final consumption,2040,6092.07,0.687931829358249
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total final consumption,2050,1004.68,0.948534956151135
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Total final consumption,2020,4474.28,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Total final consumption,2030,2835.23,0.366327096203188
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Total final consumption,2040,1043.45,0.766789293472916
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Coal,Total final consumption,2050,72.92,0.983702405750199
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Total final consumption,2020,9080.06,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Total final consumption,2030,7162.05,0.211233185683795
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Total final consumption,2040,2864.5,0.68452851633139
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Oil,Total final consumption,2050,650.79,0.928327566117405
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Total final consumption,2020,3320.85,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Total final consumption,2030,2490.73,0.249972145685593
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Total final consumption,2040,1094.3,0.670475932366713
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Natural gas,Total final consumption,2050,213.23,0.93579053555565594
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Total final consumption,2020,113.5,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Total final consumption,2030,28.89,0.745462555066079
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Total final consumption,2040,-96.18,1.84740088105727
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Bioenergy and waste,Total final consumption,2050,-204.82,2.80458149779736
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Industry,2020,9132.22,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Industry,2030,7167.71,0.215118558247611
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Industry,2040,3246.05,0.64454973708474
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Industry,2050,395.78,0.956661140445587
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Iron and steel,2020,2724.26,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Iron and steel,2030,2090.54,0.232620968630013
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Iron and steel,2040,965.05,0.645757012913599
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Iron and steel,2050,176.88,0.935072276508116
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Chemicals,2020,1286.79,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Chemicals,2030,1137.24,0.116219429743781
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Chemicals,2040,545.83,0.575820452443678
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Chemicals,2050,38.48,0.970096130681774
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Non-metallic minerals: cement,2020,2458.33,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Non-metallic minerals: cement,2030,1910.46,0.222862675068034
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Non-metallic minerals: cement,2040,869.02,0.646499859660827
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Non-metallic minerals: cement,2050,75.5,0.969288093949958
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Transport,2020,7112.95,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Transport,2030,5687.01,0.200470971959595
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Transport,2040,2258.2,0.682522722639692
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Transport,2050,535.16,0.924762580926339
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road,2020,5484.78,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road,2030,3987.84,0.272926170238369
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road,2040,1369.97,0.750223345330168
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road,2050,195.03,0.964441600210036
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road passenger light duty vehicle,2020,2803.05,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road passenger light duty vehicle,2030,1690.99,0.396732131071511
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road passenger light duty vehicle,2040,421.66,0.849571003014573
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road passenger light duty vehicle,2050,45.34,0.983824762312481
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road heavy-duty trucks,2020,1688.1,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road heavy-duty trucks,2030,1574.26,0.0674367632249274
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road heavy-duty trucks,2040,745.58,0.558331852378414
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Road heavy-duty trucks,2050,136.12,0.919364966530419
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total aviation (domestic and bunkers),2020,586.31,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total aviation (domestic and bunkers),2030,884.21,-0.508092988350873
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total aviation (domestic and bunkers),2040,511.02,0.128413296720165
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total aviation (domestic and bunkers),2050,199.44,0.659838651907694
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total navigation (domestic and bunkers),2020,795.85,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total navigation (domestic and bunkers),2030,673.37,0.153898347678583
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total navigation (domestic and bunkers),2040,303.78,0.618294904818747
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total navigation (domestic and bunkers),2050,107.1,0.865426902054407
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Buildings,2020,2850.65,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Buildings,2030,1631.91,0.427530563204883
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Buildings,2040,474.58,0.833518671180257
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Buildings,2050,55.36,0.980579867749461
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Residential,2020,1982.94,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Residential,2030,1197.4,0.396149152268853
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Residential,2040,368.88,0.813973191321976
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Residential,2050,54.61,0.972460084520964
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Services,2020,867.71,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Services,2030,434.51,0.499245139505134
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Services,2040,105.7,0.878185107927764
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Services,2050,0.75,0.999135655921909
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total energy supply,2020,0.97,0
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total energy supply,2030,234.11,-240.350515463918
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total energy supply,2040,1008.24,-1038.42268041237
+World Energy Outlook 2022,Net Zero Emissions by 2050 Scenario,World,Total,Total energy supply,2050,1525.91,-1572.10309278351

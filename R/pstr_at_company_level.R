@@ -6,8 +6,7 @@
 #' @author Linda Delacombaz.
 #'
 #' @param with_transition_risk A [data.frame]. The output of
-#'   [pstr_add_transition_risk()].
-#' @inheritParams pstr_add_reductions
+#'   [pstr_at_product_level()].
 #'
 #' @family PSTR functions
 #'
@@ -22,11 +21,13 @@
 #' @keywords internal
 #'
 #' @examples
-#' pstr_companies |>
-#'   pstr_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
-#'   pstr_add_transition_risk() |>
-#'   pstr_aggregate_scores(pstr_companies)
-pstr_aggregate_scores <- function(with_transition_risk, companies) {
+#' companies <- pstr_companies[1, ]
+#' scenarios <- pstr_scenarios
+#'
+#' companies |>
+#'   pstr_at_product_level(scenarios) |>
+#'   pstr_at_company_level(companies)
+pstr_at_company_level <- function(with_transition_risk, companies) {
   n_products_per_companies <- companies |>
     group_by(.data$company_id, .data$company_name) |>
     summarise(total_products_per_company = n())

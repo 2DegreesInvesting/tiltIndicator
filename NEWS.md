@@ -1,9 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9027
+
+* Even if companies has a *uuid absent in inputs/co2, all shares now sum 1  (@kalashsinghal #197).
+
 # tiltIndicator 0.0.0.9026
 
 * All indicators now output ungrouped data (#193)
-
 
 # tiltIndicator 0.0.0.9025
 
@@ -101,7 +104,7 @@ ownership (#41).
 
 # tiltIndicator 0.0.0.9007
 
-* In `pstr_aggregate_scores()` fix missing argument `companies` (#38).
+* In `pstr_at_company_level()` fix missing argument `companies` (#38).
 
 * dev: Address R CMD Check about undefined global variables (#37).
 

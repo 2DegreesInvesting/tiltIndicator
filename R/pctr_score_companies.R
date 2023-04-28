@@ -45,29 +45,13 @@ pctr_score_companies <- function(scored_activities, companies) {
   companies_scores <- companies |>
     left_join(scored_activities, by = c("activity_product_uuid"))
 
-  # scores in comparison to all products
-  scores_all <- companies_scores |>
-    group_by(.data$company_id, .data$score_all) |>
-    summarise(n_all = n()) |>
-    mutate(share_all = .data$n_all / sum(.data$n_all)) |>
-    select(-"n_all") |>
-    rename("score" = "score_all")
-
-  # scores in comparison to products with same unit
-  scores_unit <- companies_scores |>
-    group_by(.data$company_id, .data$score_unit) |>
-    summarise(n_unit = n()) |>
-    mutate(share_unit = .data$n_unit / sum(.data$n_unit)) |>
-    select(-"n_unit") |>
-    rename("score" = "score_unit")
-
-  # scores in comparison to products with same unit and sector
-  scores_unit_sec <- companies_scores |>
-    group_by(.data$company_id, .data$score_unit_sec) |>
-    summarise(n_unit_sec = n()) |>
-    mutate(share_unit_sec = .data$n_unit_sec / sum(.data$n_unit_sec)) |>
-    select(-"n_unit_sec") |>
-    rename("score" = "score_unit_sec")
+  # scores in comparison to:
+  # * all products
+  scores_all <- add_share(companies_scores, "all")
+  # * products with same unit
+  scores_unit <- add_share(companies_scores, "unit")
+  # * products with same unit and sector
+  scores_unit_sec <- add_share(companies_scores, "unit_sec")
 
   # create dataset sceleton
   dt_sceleton <- tibble(
