@@ -22,10 +22,15 @@
 #' @keywords internal
 #'
 #' @examples
-#' pstr_old_companies |>
-#'   pstr_old_add_reductions(pstr_ep_weo, pstr_weo_2022) |>
+#' library(dplyr, warn.conflicts = FALSE)
+#'
+#' companies <- slice(pstr_companies, 1)
+#' scenarios <- pstr_scenarios
+#'
+#' companies |>
+#'   pstr_add_reductions(scenarios) |>
 #'   pstr_add_transition_risk() |>
-#'   pstr_at_company_level(pstr_old_companies)
+#'   pstr_at_company_level(companies)
 pstr_at_company_level <- function(with_transition_risk, companies) {
   n_products_per_companies <- companies |>
     group_by(.data$company_id, .data$company_name) |>
