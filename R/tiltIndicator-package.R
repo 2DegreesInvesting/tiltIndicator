@@ -2,6 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom dplyr across
 #' @importFrom dplyr case_when
 #' @importFrom dplyr distinct
 #' @importFrom dplyr distinct_all
@@ -34,5 +35,6 @@
 #' @importFrom tibble tribble
 #' @importFrom tidyr replace_na
 #' @importFrom tidyselect all_of
+#' @importFrom utils hasName
 ## usethis namespace: end
 NULL
