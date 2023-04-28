@@ -20,3 +20,4 @@ Calculate the PCTR at product level
 \examples{
 pstr_at_product_level(pstr_companies, pstr_scenarios)
 }
+\keyword{internal}

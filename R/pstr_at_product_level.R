@@ -5,6 +5,7 @@
 #'
 #' @return A dataframe.
 #' @export
+#' @keywords internal
 #'
 #' @examples
 #' pstr_at_product_level(pstr_companies, pstr_scenarios)
