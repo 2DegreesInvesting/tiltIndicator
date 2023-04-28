@@ -7,8 +7,6 @@
 pstr(companies, scenarios)
 }
 \arguments{
-\item{companies}{A \link{data.frame} like \link{pstr_old_companies}.}
-
 \item{scenarios}{A dataframe with scenario data, e.g. WEO.}
 }
 \value{
@@ -32,7 +30,6 @@ pstr(companies, scenarios)
 }
 \seealso{
 Other PSTR functions: 
-\code{\link{pstr_at_company_level}()},
-\code{\link{pstr_old_add_reductions}()}
+\code{\link{pstr_at_company_level}()}
 }
 \concept{PSTR functions}

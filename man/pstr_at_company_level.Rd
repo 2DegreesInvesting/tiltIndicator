@@ -9,8 +9,6 @@ pstr_at_company_level(with_transition_risk, companies)
 \arguments{
 \item{with_transition_risk}{A \link{data.frame}. The output of
 \code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
-
-\item{companies}{A \link{data.frame} like \link{pstr_old_companies}.}
 }
 \value{
 A \link{data.frame} with the columns:
@@ -39,7 +37,6 @@ companies |>
 }
 \seealso{
 Other PSTR functions: 
-\code{\link{pstr_old_add_reductions}()},
 \code{\link{pstr}()}
 }
 \author{
