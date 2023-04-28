@@ -18,9 +18,22 @@ test_that("outputs the expected columns", {
   expect_equal(names(out)[1:5], expected)
 })
 
-test_that("outputs the expected columns", {
-  companies <- slice(pctr_companies, 1)
-  ecoinvent_co2 <- slice(pctr_ecoinvent_co2, 1)
+test_that("if a company matches no inputs, all shares are `NA` (#176)", {
+  companies <- tibble(
+      ei_activity = "transport, freight, lorry 7.5-16 metric ton, EURO3",
+      unit = "metric ton*km",
+      company_id = "a",
+      activity_product_uuid = "a",
+  )
+  ecoinvent_co2 <- tibble(
+      activity_product_uuid = "b",
+      co2_footprint = 2,
+      sec = "Transport",
+      unit = "metric ton*km",
+      ei_activity = "transport, freight, lorry 7.5-16 metric ton, EURO3"
+    )
   out <- pctr(companies, ecoinvent_co2)
-  expect_false(dplyr::is_grouped_df(out))
+
+  share_is_na <- is.na(unlist(select(out, starts_with("score"))))
+  expect_true(all(share_is_na))
 })
