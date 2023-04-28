@@ -20,3 +20,13 @@ test_that("the output is not grouped", {
   out <- pstr(companies, scenarios)
   expect_false(dplyr::is_grouped_df(out))
 })
+
+test_that("if a company has no products, shares are NA (#176)", {
+  skip("FIXE: Bug #176?")
+  companies <- mutate(slice(pstr_companies, 1), products = NA)
+  scenarios <- pstr_scenarios
+  out <- pstr(companies, scenarios)
+  expect_equal(unique(out$score_aggregated), NA)
+})
+
+
