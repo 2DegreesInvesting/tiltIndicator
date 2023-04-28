@@ -41,13 +41,13 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
   summed <- out |>
     group_by(id) |>
     summarize(across(starts_with("score_"), sum))
-  ids_for_na <- summed$id[is.na(summed$score_all)
-                          & is.na(summed$score_unit)
-                          & is.na(summed$score_sector)
-                          & is.na(summed$score_unit_sec)]
+  ids_for_na <- summed$id[is.na(summed$score_all) &
+    is.na(summed$score_unit) &
+    is.na(summed$score_sector) &
+    is.na(summed$score_unit_sec)]
 
   all_is_na <- all(is.na(unlist(out |>
-                                  filter(id %in% ids_for_na) |>
-                                  select(starts_with("score")))))
+    filter(id %in% ids_for_na) |>
+    select(starts_with("score")))))
   expect_true(all_is_na)
 })
