@@ -27,6 +27,7 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
+    utils,
     withr
 Suggests: 
     covr,

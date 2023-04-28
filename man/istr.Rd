@@ -18,7 +18,7 @@ A dataframe with columns \code{id}, \code{transition_risk}, and scores.
 }
 \description{
 The Input Product Sector Risk Indicator assesses the transition risk of the
-input products based on the sector’s emissions targets the input product belongs
+input products based on the sector's emissions targets the input product belongs
 to. Those sector emission reduction targets vary across scenarios (e.g., net
 zero scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in
 2030, 2040, 2050 to achieve the targets). It, therefore, is similar to the
@@ -28,12 +28,12 @@ packaging materials, energy and enabling services (such as tractor use on farm)
 to produce the product.
 
 If an input product belongs to a sector in which reduction targets are over 70\%,
-it belongs to a high-risk sector and is classified as ‘high sector transition
-risk’. If the input product belongs to a sector in which reduction targets are
-between 30-70\%, the product is classified into the category ‘medium sector
-transition risk’ and if it is below 30\% it belongs to the category of ‘low
-sector transition risk’. If it does not belong to a sector that has
-decarbonization targets, it is classified as ‘no sector transition risk’.
+it belongs to a high-risk sector and is classified as 'high sector transition
+risk'. If the input product belongs to a sector in which reduction targets are
+between 30-70\%, the product is classified into the category 'medium sector
+transition risk' and if it is below 30\% it belongs to the category of 'low
+sector transition risk'. If it does not belong to a sector that has
+decarbonization targets, it is classified as 'no sector transition risk'.
 
 After assessing the input products for each product, they are aggregated at
 company-level to derive what percentage of the input products required by the

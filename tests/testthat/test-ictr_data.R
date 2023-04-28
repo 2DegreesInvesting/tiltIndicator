@@ -8,6 +8,6 @@ test_that("`ictr_companies` hasn't changed", {
   expect_snapshot(out)
 })
 
-test_that("`input_co2` don't have missing values", {
+test_that("`ictr_inputs$input_co2` has no missing values", {
   expect_false(anyNA(ictr_inputs$input_co2))
 })
