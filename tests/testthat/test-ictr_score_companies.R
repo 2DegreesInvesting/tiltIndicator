@@ -16,7 +16,7 @@ test_that("data must have activity_uuid_product_uuid", {
   )
 })
 
-test_that("with invalid inputs all shares are 0 with no warning or error", {
+test_that("with invalid inputs all shares are NA with no warning or error", {
   data <- slice(ictr_inputs, 1) |>
     mutate(activity_uuid_product_uuid = "bad") |>
     ictr_score_inputs()
@@ -30,7 +30,7 @@ test_that("with invalid inputs all shares are 0 with no warning or error", {
     select(starts_with("share_")) |>
     sapply(unique) |>
     unique()
-  expect_true(identical(share, 0))
+  expect_true(identical(share, NA_real_))
 })
 
 test_that("with valid inputs not all shares are 0", {

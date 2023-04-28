@@ -22,6 +22,7 @@ Imports:
     ggplot2,
     glue,
     magrittr,
+    purrr,
     rlang (>= 0.4.11),
     tibble,
     tidyr,
@@ -30,7 +31,6 @@ Imports:
 Suggests: 
     covr,
     here,
-    purrr,
     readr,
     rmarkdown,
     roxygen2,
