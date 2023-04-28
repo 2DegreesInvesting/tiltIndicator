@@ -8,7 +8,7 @@ pstr_at_company_level(with_transition_risk, companies)
 }
 \arguments{
 \item{with_transition_risk}{A \link{data.frame}. The output of
-\code{\link[=pstr_add_transition_risk]{pstr_add_transition_risk()}}.}
+\code{\link[=pstr_at_product_level]{pstr_at_product_level()}}.}
 }
 \value{
 A \link{data.frame} with the columns:
@@ -25,14 +25,11 @@ Calculates on a company-level the percentage of products that are in low /
 medium / high transition risk.
 }
 \examples{
-library(dplyr, warn.conflicts = FALSE)
-
-companies <- slice(pstr_companies, 1)
+companies <- pstr_companies[1, ]
 scenarios <- pstr_scenarios
 
 companies |>
-  pstr_add_reductions(scenarios) |>
-  pstr_add_transition_risk() |>
+  pstr_at_product_level(scenarios) |>
   pstr_at_company_level(companies)
 }
 \seealso{

@@ -3,7 +3,7 @@
 #' ```{r child=extdata_path("child/intro-pstr.Rmd")}
 #' ```
 #'
-#' @inheritParams pstr_old_add_reductions
+#' @inheritParams pstr_at_company_level
 #' @param scenarios A dataframe with scenario data, e.g. WEO.
 #'
 #' @family PSTR functions
