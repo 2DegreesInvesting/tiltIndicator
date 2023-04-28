@@ -27,7 +27,7 @@ datasets <- data(package = "tiltIndicator")[["results"]][, "Item"]
 setNames(lapply(datasets, get), datasets)
 ```
 
-## Genral introduction
+## General introduction
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
