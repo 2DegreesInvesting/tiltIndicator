@@ -20,8 +20,6 @@ test_that("outputs the expected columns", {
 
 test_that("if a company matches no inputs, all shares are `NA` (#176)", {
   companies <- tibble(
-      ei_activity = "transport, freight, lorry 7.5-16 metric ton, EURO3",
-      unit = "metric ton*km",
       company_id = "a",
       activity_product_uuid = "a",
   )
@@ -30,8 +28,8 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
       co2_footprint = 2,
       sec = "Transport",
       unit = "metric ton*km",
-      ei_activity = "transport, freight, lorry 7.5-16 metric ton, EURO3"
-    )
+  )
+
   out <- pctr(companies, ecoinvent_co2)
 
   share_is_na <- is.na(unlist(select(out, starts_with("score"))))
