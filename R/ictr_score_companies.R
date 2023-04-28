@@ -73,5 +73,25 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   ictr_output <- ictr_output |>
     replace(is.na(ictr_output), 0)
 
+  ## replace 0s with NAs in share columns if there is no product or input for
+  ## any company.
+  summed <- ictr_output |>
+    group_by(company_id) |>
+    summarize(across(starts_with("share_"), sum))
+
+  ids_for_na <- summed$company_id[(summed$share_all == 0)
+                                  & (summed$share_unit == 0)
+                                  & (summed$share_sector == 0)
+                                  & (summed$share_unit_sec == 0)]
+
+  ictr_output <- ictr_output %>%
+  mutate(across(
+    .cols = c(starts_with("share_")),
+    .fns = ~ case_when(
+      company_id %in% ids_for_na ~ as.numeric(NA),
+      TRUE ~ as.numeric(.x)
+    )
+  ))
+
   ictr_output
 }
