@@ -7,7 +7,9 @@
 pstr(companies, scenarios)
 }
 \arguments{
-\item{scenarios}{A dataframe with scenario data, e.g. WEO.}
+\item{companies}{A dataframe like \link{pstr_companies}.}
+
+\item{scenarios}{A dataframe like \link{pstr_scenarios}.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.
