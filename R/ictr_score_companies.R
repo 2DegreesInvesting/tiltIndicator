@@ -40,40 +40,30 @@
 ictr_score_companies <- function(ecoinvent_scores, companies) {
   stop_if_any_missing_input_co2(ecoinvent_scores)
 
-  ## join by activity_product_uuid and other joint columns from companies with
-  ## ecoinvent_scores
   companies_scores <- companies |>
     left_join(ecoinvent_scores, by = c("activity_uuid_product_uuid"))
 
-  # Scores in comparison to:
-  # * all input products
-  scores_all <- add_share(companies_scores, "all")
-  # * input products with same unit
-  scores_unit <- add_share(companies_scores, "unit")
-  # * input products with same input sector
-  scores_sector <- add_share(companies_scores, "sector")
-  # * input products with same unit and input sector
-  scores_unit_sec <- add_share(companies_scores, "unit_sec")
-
-  ## create dataset sceleton
+  # For each company show all risk levels even if the share is 0.
   dt_sceleton <- tibble(
     company_id = rep(unique(companies_scores$company_id), each = 3),
     score = rep(c("high", "medium", "low"), length(unique(companies_scores$company_id))),
   )
 
-  ## join scores with dt_sceleton so that each company is shown with 3 rows for
-  ## low, medium, and high, even if the share is 0.
-  ictr_output <- dt_sceleton |>
-    left_join(scores_all, by = c("company_id", "score")) |>
-    left_join(scores_unit, by = c("company_id", "score")) |>
-    left_join(scores_sector, by = c("company_id", "score")) |>
-    left_join(scores_unit_sec, by = c("company_id", "score"))
+  # Share in comparison to all inputs and those with same unit, sector, ...
+  benchmarks <- c("all", "unit", "sector", "unit_sec") |>
+    map(~add_share(companies_scores, .x))
+
+  ictr_output <- append(list(dt_sceleton), benchmarks) |>
+    reduce(left_join, by = c("company_id", "score"))
 
   ictr_output |>
-    mutate(across(starts_with("share_"), na_to_0), .by = "company_id")
+    mutate(
+      across(starts_with("share_"), na_to_0_if_not_all_is_na),
+      .by = "company_id"
+    )
 }
 
-na_to_0 <- function(x) {
+na_to_0_if_not_all_is_na <- function(x) {
   if (all(is.na(x))) return(x)
   replace_na(x, 0)
 }
