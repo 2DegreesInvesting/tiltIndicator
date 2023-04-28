@@ -44,7 +44,7 @@ merge_scenario_columns <- function(data) {
 
 pivot_type_sector_subsector <- function(companies) {
   companies |>
-    rename(weo_sector = weo_product, weo_subsector = weo_flow) |>
+    rename(weo_sector = "weo_product", weo_subsector = "weo_flow") |>
     pivot_longer(c("ipr_sector", "ipr_subsector", "weo_sector", "weo_subsector")) |>
     # FIXME: ?separate() has been superseded in favour of
     # separate_wider_position() and separate_wider_delim()

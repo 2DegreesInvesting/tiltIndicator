@@ -17,7 +17,7 @@ pstr_at_product_level <- function(companies, scenarios) {
 pstr_add_reductions <- function(companies, scenarios) {
   left_join(
     companies, scenarios,
-    by = join_by(type, sector, subsector),
+    by = join_by("type", "sector", "subsector"),
     relationship = "many-to-many"
   )
 }
