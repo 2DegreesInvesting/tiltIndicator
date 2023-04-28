@@ -86,6 +86,6 @@ pctr_companies |>
 ### Example
 
 ```{r}
-pstr_old_companies |>
-  pstr(scenario = pstr_weo_2022, mapper = pstr_ep_weo)
+pstr_companies |>
+  pstr(scenarios = pstr_scenarios)
 ```
