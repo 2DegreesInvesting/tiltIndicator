@@ -8,9 +8,7 @@ ictr_add_ranks <- function(data) {
     mutate(perc_all = rank_proportion(.data$input_co2)) |>
     mutate(perc_unit = rank_proportion(.data$input_co2), .by = "unit") |>
     mutate(perc_sec = rank_proportion(.data$input_co2), .by = "input_sector") %>%
-    group_by(.data$unit, .data$input_sector) |>
-    mutate(perc_unit_sec = rank(.data$input_co2) / length(.data$input_co2)) %>%
-    ungroup()
+    mutate(perc_unit_sec = rank_proportion(.data$input_co2), .by = c("unit", "input_sector"))
 }
 
 pctr_add_ranks <- function(data) {
