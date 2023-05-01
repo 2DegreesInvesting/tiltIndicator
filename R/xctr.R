@@ -1,5 +1,5 @@
-xctr_score_companies <- function(co2,
-                                 companies,
+xctr_score_companies <- function(companies,
+                                 co2,
                                  uuid = "activity_uuid_product_uuid",
                                  benchmarks = c("all", "unit", "sector", "unit_sec")) {
   stopifnot(hasName(companies, "company_id"))

@@ -38,8 +38,8 @@
 #'   pctr_score_companies(one_company)
 pctr_score_companies <- function(scored_activities, companies) {
   xctr_score_companies(
-    scored_activities,
     companies,
+    scored_activities,
     uuid = "activity_product_uuid",
     benchmarks = c(
       "all",
