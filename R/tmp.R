@@ -1,11 +1,10 @@
 add_rank <- function(data, x, .by) {
-
-  if (!identical(.by, "all")) {
-    suffix <- paste(.by, collapse = "_")
-    ..by <- .by
-  } else {
+  if (identical(.by, "all")) {
     suffix <- "all"
     ..by <- NULL
+  } else {
+    suffix <- paste(.by, collapse = "_")
+    ..by <- .by
   }
 
   nm <- as.symbol(paste0("perc_", suffix))
