@@ -38,24 +38,6 @@ ictr_at_product_level <- function(co2,
     )
 }
 
-ictr_add_ranks <- function(data) {
-  data %>%
-    ## rank in comparison to all input products
-    mutate(perc_all = rank(.data$input_co2) / length(.data$input_co2)) |>
-    ## rank in comparison to all input products with same unit
-    group_by(.data$unit) |>
-    mutate(perc_unit = rank(.data$input_co2) / length(.data$input_co2)) %>%
-    ungroup() |>
-    ## rank in comparison to all input products with same input sector
-    group_by(.data$input_sector) |>
-    mutate(perc_sec = rank(.data$input_co2) / length(.data$input_co2)) %>%
-    ungroup() |>
-    ## rank in comparison to all input products with same unit and input sector
-    group_by(.data$unit, .data$input_sector) |>
-    mutate(perc_unit_sec = rank(.data$input_co2) / length(.data$input_co2)) %>%
-    ungroup()
-}
-
 ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
   ## assign scores to position within percentile distribution
   ecoinvent_input %>%
