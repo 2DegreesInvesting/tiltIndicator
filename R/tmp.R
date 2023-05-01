@@ -32,14 +32,3 @@ ictr_add_ranks <- function(data) {
   )
   xctr_add_ranks(data, x = "input_co2", .by)
 }
-
-pctr_add_ranks <- function(data) {
-  .by <- list(
-    "all",
-    "unit",
-    # FIXME: Missing "sec" (#191)
-    # "sec",
-    c("unit", "sec")
-  )
-  xctr_add_ranks(data, x = "co2_footprint", .by)
-}
