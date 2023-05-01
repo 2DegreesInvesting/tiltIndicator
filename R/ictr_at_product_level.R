@@ -38,8 +38,8 @@ ictr_at_product_level <- function(co2,
     )
 }
 
-ictr_add_ranks <- function(inputs) {
-  inputs %>%
+ictr_add_ranks <- function(data) {
+  data %>%
     ## rank in comparison to all input products
     mutate(perc_all = rank(.data$input_co2) / length(.data$input_co2)) |>
     ## rank in comparison to all input products with same unit

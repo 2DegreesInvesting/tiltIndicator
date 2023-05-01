@@ -36,12 +36,12 @@ pctr_at_product_level <- function(co2,
 # with same unit, products with same unit and sector)
 #
 # rank in comparison to all products
-pctr_add_ranks <- function(ecoinvent_co2) {
+pctr_add_ranks <- function(data) {
   # FIXME: "perc" suggests "percent" but "proportion" seems more accurate. Also
   # if the main goal is to rank, then maybe the columns should use the prefix
   # `rank_*` instead. Or maybe the goal is not to calculate the ranks, in which
   # case we need a different title?
-  ecoinvent_co2 |>
+  data |>
     mutate(perc_all = rank(.data$co2_footprint) / length(.data$co2_footprint)) |>
     # rank in comparison to all products with same unit
     group_by(.data$unit) |>
