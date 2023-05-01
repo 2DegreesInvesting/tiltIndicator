@@ -20,7 +20,7 @@ ictr_add_ranks <- function(data) {
   tmp <- rename(data, sec = "input_sector")
 
   out <- tmp %>%
-    mutate(perc_all = rank_proportion(.data$input_co2)) |>
+    add_rank("input_co2", .by = NULL) |>
     add_rank("input_co2", .by = "unit") |>
     add_rank("input_co2", .by = "sec") |>
     add_rank("input_co2", .by = c("unit", "sec"))
