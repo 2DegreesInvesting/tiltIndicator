@@ -7,7 +7,7 @@
 ictr_at_company_level(ecoinvent_scores, companies)
 }
 \arguments{
-\item{ecoinvent_scores}{A \link{data.frame}. The output of \link{ictr_score_inputs}.}
+\item{ecoinvent_scores}{A \link{data.frame}. The output of \link{ictr_at_product_level}.}
 
 \item{companies}{A \link{data.frame} like \link{ictr_companies}.}
 }
@@ -39,12 +39,12 @@ one_company <- ictr_companies |> filter(company_id \%in\% first(company_id))
 one_company
 
 ictr_inputs |>
-  ictr_score_inputs() |>
+  ictr_at_product_level() |>
   ictr_at_company_level(one_company)
 }
 \seealso{
 Other ICTR functions: 
-\code{\link{ictr_score_inputs}()},
+\code{\link{ictr_at_product_level}()},
 \code{\link{ictr}()}
 }
 \author{

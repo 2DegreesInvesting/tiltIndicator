@@ -10,7 +10,7 @@
 #'
 #' @author Kalash Singhal.
 #'
-#' @param ecoinvent_scores A [data.frame]. The output of [ictr_score_inputs].
+#' @param ecoinvent_scores A [data.frame]. The output of [ictr_at_product_level].
 #' @param companies A [data.frame] like [ictr_companies].
 #'
 #' @family ICTR functions
@@ -35,7 +35,7 @@
 #' one_company
 #'
 #' ictr_inputs |>
-#'   ictr_score_inputs() |>
+#'   ictr_at_product_level() |>
 #'   ictr_at_company_level(one_company)
 ictr_at_company_level <- function(ecoinvent_scores, companies) {
   stop_if_any_missing_input_co2(ecoinvent_scores)

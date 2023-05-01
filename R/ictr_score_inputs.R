@@ -46,15 +46,15 @@
 #'   select(all_of(crucial))
 #' data
 #'
-#' ictr_score_inputs(data) |> glimpse()
+#' ictr_at_product_level(data) |> glimpse()
 #'
 #' # With fewer columns returns an error
 #' data2 <- data |> select(-unit)
-#' try(ictr_score_inputs(data2))
+#' try(ictr_at_product_level(data2))
 #'
 #' # Additional columns are added to the output
 #' data3 <- data |> mutate(new = 1)
-#' ictr_score_inputs(data3) |> relocate(new)
+#' ictr_at_product_level(data3) |> relocate(new)
 #'
 #' # You may customize thresholds
 #' data4 <- ictr_inputs |>
@@ -62,13 +62,13 @@
 #'   select(all_of(crucial))
 #'
 #' # Default
-#' ictr_score_inputs(data4) |>
+#' ictr_at_product_level(data4) |>
 #'   relocate(starts_with("score_"))
 #'
 #' # Custom
-#' ictr_score_inputs(data4, low_threshold = 1, high_threshold = 2) |>
+#' ictr_at_product_level(data4, low_threshold = 1, high_threshold = 2) |>
 #'   relocate(starts_with("score_"))
-ictr_score_inputs <- function(inputs,
+ictr_at_product_level <- function(inputs,
                               low_threshold = 0.3,
                               high_threshold = 0.7) {
   inputs |>

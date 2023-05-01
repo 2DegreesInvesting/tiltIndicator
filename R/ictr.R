@@ -3,7 +3,7 @@
 #' ```{r child=extdata_path("child/intro-ictr.Rmd")}
 #' ```
 #'
-#' @inheritParams ictr_score_inputs
+#' @inheritParams ictr_at_product_level
 #' @inheritParams ictr_at_company_level
 #'
 #' @family ICTR functions
@@ -16,7 +16,7 @@
 #' ictr(ictr_companies, ictr_inputs)
 ictr <- function(companies, inputs, low_threshold = 0.3, high_threshold = 0.7) {
   out <- inputs |>
-    ictr_score_inputs(
+    ictr_at_product_level(
       low_threshold = low_threshold,
       high_threshold = high_threshold
     ) |>
