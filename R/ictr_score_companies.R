@@ -49,9 +49,9 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
 }
 
 xctr_score_companies <- function(ecoinvent_scores,
-                                      companies,
-                                      uuid = "activity_uuid_product_uuid",
-                                      benchmarks = c("all", "unit", "sector", "unit_sec")) {
+                                 companies,
+                                 uuid = "activity_uuid_product_uuid",
+                                 benchmarks = c("all", "unit", "sector", "unit_sec")) {
   stopifnot(hasName(companies, "company_id"))
 
   companies_scores <- left_join(companies, ecoinvent_scores, by = c(uuid))
