@@ -4,7 +4,7 @@
       out
     Output
       [[1]]
-                                       company_id
+                                               id
       1  fleischerei-stiefsohn_00000005219477-001
       2  fleischerei-stiefsohn_00000005219477-001
       3  fleischerei-stiefsohn_00000005219477-001
@@ -22,25 +22,25 @@
       15   bst-procontrol-gmbh_00000005104947-001
       
       [[2]]
-          score
-      1    high
-      2  medium
-      3     low
-      4    high
-      5  medium
-      6     low
-      7    high
-      8  medium
-      9     low
-      10   high
-      11 medium
-      12    low
-      13   high
-      14 medium
-      15    low
+         transition_risk
+      1             high
+      2           medium
+      3              low
+      4             high
+      5           medium
+      6              low
+      7             high
+      8           medium
+      9              low
+      10            high
+      11          medium
+      12             low
+      13            high
+      14          medium
+      15             low
       
       [[3]]
-         share_all
+         score_all
       1  0.2857143
       2  0.3809524
       3  0.3333333
@@ -58,7 +58,7 @@
       15 0.2727273
       
       [[4]]
-         share_unit
+         score_unit
       1   0.3333333
       2   0.4761905
       3   0.1904762
@@ -76,7 +76,7 @@
       15  0.2121212
       
       [[5]]
-         share_sector
+         score_sector
       1     0.3333333
       2     0.4285714
       3     0.2380952
@@ -94,7 +94,7 @@
       15    0.2121212
       
       [[6]]
-         share_unit_sec
+         score_unit_sec
       1       0.4761905
       2       0.4285714
       3       0.0952381

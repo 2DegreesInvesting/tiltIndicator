@@ -12,6 +12,13 @@ reference:
     contents:
       - has_concept("pre-processing helpers")
 
-  - title: Indicator-specific functions and datasets
+  - title: Main functions and datasets
     contents:
       - -has_concept("pre-processing helpers")
+      - -has_concept("internal-ish functions")
+
+  - title: Internal-ish functions
+    desc: >
+      "WARNING: This functions may change any time"
+    contents:
+      - has_concept("internal-ish functions")

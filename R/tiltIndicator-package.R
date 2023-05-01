@@ -35,6 +35,8 @@
 #' @importFrom ggplot2 scale_x_discrete
 #' @importFrom purrr imap_dfr
 #' @importFrom readr read_csv
+#' @importFrom purrr map
+#' @importFrom purrr reduce
 #' @importFrom rlang .env
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
@@ -43,5 +45,6 @@
 #' @importFrom tidyr replace_na
 #' @importFrom tidyr separate
 #' @importFrom tidyselect all_of
+#' @importFrom utils hasName
 ## usethis namespace: end
 NULL

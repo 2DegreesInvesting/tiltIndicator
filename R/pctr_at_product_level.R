@@ -12,58 +12,34 @@
 #'
 #' @author Tilman Trompke.
 #'
-#' @param ecoinvent_co2 A [data.frame] like [pctr_ecoinvent_co2].
-#' @param low_threshold A numeric value to segment low and medium transition
-#'   risk products.
-#' @param high_threshold A numeric value to segment medium and high transition
-#'   risk products.
+#' @param co2 A [data.frame] like [pctr_ecoinvent_co2].
+#' @inheritParams ictr_at_product_level
 #'
-#' @family PCTR functions
+#' @family internal-ish functions
 #'
-#' @return A [data.frame] with columns:
-#'   * All the columns from the `ecoinvent_co2` dataset.
-#'   * New columns:
-#'        * `perc_all`
-#'        * `perc_unit`
-#'        * `perc_unit_sec`
-#'        * `score_all`
-#'        * `score_unit`
-#'        * `score_unit_sec`
+#' @return A [data.frame].
 #'
 #' @export
-#' @keywords internal
 #'
 #' @examples
-#' pctr_ecoinvent_co2 |>
-#'   pctr_score_activities()
-pctr_score_activities <- function(ecoinvent_co2,
+#' pctr_at_product_level(pctr_ecoinvent_co2)
+pctr_at_product_level <- function(co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
-  ecoinvent_co2 |>
-    pctr_add_ranks() |>
-    pctr_add_scores(low_threshold, high_threshold)
-}
+  .by <- list(
+    "all",
+    "unit",
+    # FIXME: Missing "sec" (#191)
+    # "sec",
+    c("unit", "sec")
+  )
+  ranked <- xctr_add_ranks(co2, x = "co2_footprint", .by)
 
-# Calculate the rank of each activity: This is done based on the activities'
-# carbon footprint compared to 3 different benchmarks (all products, products
-# with same unit, products with same unit and sector)
-#
-# rank in comparison to all products
-pctr_add_ranks <- function(ecoinvent_co2) {
-  # FIXME: "perc" suggests "percent" but "proportion" seems more accurate. Also
-  # if the main goal is to rank, then maybe the columns should use the prefix
-  # `rank_*` instead. Or maybe the goal is not to calculate the ranks, in which
-  # case we need a different title?
-  ecoinvent_co2 |>
-    mutate(perc_all = rank(.data$co2_footprint) / length(.data$co2_footprint)) |>
-    # rank in comparison to all products with same unit
-    group_by(.data$unit) |>
-    mutate(perc_unit = rank(.data$co2_footprint) / length(.data$co2_footprint)) %>%
-    ungroup() |>
-    # rank in comparison to all products with same unit and sector
-    group_by(.data$unit, .data$sec) |>
-    mutate(perc_unit_sec = rank(.data$co2_footprint) / length(.data$co2_footprint)) %>%
-    ungroup()
+  ranked |>
+    pctr_add_scores(
+      low_threshold = low_threshold,
+      high_threshold = high_threshold
+    )
 }
 
 # Assign scores to the activities: This is done based on their position within

@@ -1,6 +1,6 @@
 Package: tiltIndicator
 Title: Indicators for the 'TILT' Project
-Version: 0.0.0.9027
+Version: 0.0.0.9029
 Authors@R: c(
     person("Mauro", "Lepore", , "maurolepore@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0002-1986-7988")),
@@ -23,15 +23,23 @@ Imports:
     glue,
     magrittr,
     purrr,
+<<<<<<< HEAD
     readr,
+=======
+>>>>>>> main
     rlang (>= 0.4.11),
     tibble,
     tidyr,
     tidyselect,
+    utils,
     withr
 Suggests: 
     covr,
     here,
+<<<<<<< HEAD
+=======
+    readr,
+>>>>>>> main
     rmarkdown,
     roxygen2,
     testthat (>= 3.0.0),

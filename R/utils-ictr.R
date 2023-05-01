@@ -5,11 +5,11 @@ ictr_inputs_crucial <- function() {
     "unit"
   )
 
-  crucial_in_ictr_score_companies <- c(
+  crucial_in_ictr_at_company_level <- c(
     "activity_uuid_product_uuid"
   )
 
-  c(crucial_in_ictr_score_activities, crucial_in_ictr_score_companies)
+  c(crucial_in_ictr_score_activities, crucial_in_ictr_at_company_level)
 }
 
 ictr_companies_crucial <- function() {
