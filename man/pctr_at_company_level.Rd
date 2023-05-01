@@ -13,16 +13,7 @@ pctr_at_company_level(scored_activities, companies)
 \item{companies}{A \link{data.frame} like \link{pctr_companies}.}
 }
 \value{
-A \link{data.frame} with three rows for each company and these columns:
-\itemize{
-\item \code{company_id}
-\item \code{score}
-\item \code{share_all}
-\item \code{share_unit}
-\item \code{share_unit_sec}
-where \code{share_all}, \code{share_unit}, and \code{share_unit_sec} holds the
-aggregated scores in percentage.
-}
+A \link{data.frame}.
 }
 \description{
 Calculates on a company-level the percentage of products that are in low /
@@ -42,12 +33,12 @@ pctr_ecoinvent_co2 |>
   pctr_at_company_level(one_company)
 }
 \seealso{
-Other PCTR functions: 
-\code{\link{pctr_at_product_level}()},
-\code{\link{pctr}()}
+Other internal-ish functions: 
+\code{\link{ictr_at_company_level}()},
+\code{\link{ictr_at_product_level}()},
+\code{\link{pctr_at_product_level}()}
 }
 \author{
 Tilman Trompke.
 }
-\concept{PCTR functions}
-\keyword{internal}
+\concept{internal-ish functions}

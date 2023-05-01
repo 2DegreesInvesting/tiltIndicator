@@ -18,24 +18,14 @@
 #' @param high_threshold A numeric value to segment medium and high transition
 #'   risk products.
 #'
-#' @family PCTR functions
+#' @family internal-ish functions
 #'
-#' @return A [data.frame] with columns:
-#'   * All the columns from the `ecoinvent_co2` dataset.
-#'   * New columns:
-#'        * `perc_all`
-#'        * `perc_unit`
-#'        * `perc_unit_sec`
-#'        * `score_all`
-#'        * `score_unit`
-#'        * `score_unit_sec`
+#' @return A [data.frame].
 #'
 #' @export
-#' @keywords internal
 #'
 #' @examples
-#' pctr_ecoinvent_co2 |>
-#'   pctr_at_product_level()
+#' pctr_at_product_level(pctr_ecoinvent_co2)
 pctr_at_product_level <- function(ecoinvent_co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {

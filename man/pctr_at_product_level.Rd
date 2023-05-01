@@ -16,19 +16,7 @@ risk products.}
 risk products.}
 }
 \value{
-A \link{data.frame} with columns:
-\itemize{
-\item All the columns from the \code{ecoinvent_co2} dataset.
-\item New columns:
-\itemize{
-\item \code{perc_all}
-\item \code{perc_unit}
-\item \code{perc_unit_sec}
-\item \code{score_all}
-\item \code{score_unit}
-\item \code{score_unit_sec}
-}
-}
+A \link{data.frame}.
 }
 \description{
 Activities will be ranked according to their carbon footprint. Activities in
@@ -41,16 +29,15 @@ Therefore, each activity will receive either a score of 'high', 'medium', or
 'low' based on the above mentioned classification criteria.
 }
 \examples{
-pctr_ecoinvent_co2 |>
-  pctr_at_product_level()
+pctr_at_product_level(pctr_ecoinvent_co2)
 }
 \seealso{
-Other PCTR functions: 
-\code{\link{pctr_at_company_level}()},
-\code{\link{pctr}()}
+Other internal-ish functions: 
+\code{\link{ictr_at_company_level}()},
+\code{\link{ictr_at_product_level}()},
+\code{\link{pctr_at_company_level}()}
 }
 \author{
 Tilman Trompke.
 }
-\concept{PCTR functions}
-\keyword{internal}
+\concept{internal-ish functions}

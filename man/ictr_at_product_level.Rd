@@ -34,7 +34,9 @@ ictr_at_product_level(ictr_inputs)
 }
 \seealso{
 Other internal-ish functions: 
-\code{\link{ictr_at_company_level}()}
+\code{\link{ictr_at_company_level}()},
+\code{\link{pctr_at_company_level}()},
+\code{\link{pctr_at_product_level}()}
 }
 \author{
 Kalash Singhal.

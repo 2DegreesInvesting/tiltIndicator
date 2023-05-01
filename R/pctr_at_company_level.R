@@ -13,19 +13,11 @@
 #'   [pctr_at_product_level].
 #' @param companies A [data.frame] like [pctr_companies].
 #'
-#' @family PCTR functions
+#' @family internal-ish functions
 #'
-#' @return A [data.frame] with three rows for each company and these columns:
-#'   * `company_id`
-#'   * `score`
-#'   * `share_all`
-#'   * `share_unit`
-#'   * `share_unit_sec`
-#'   where `share_all`, `share_unit`, and `share_unit_sec` holds the
-#'   aggregated scores in percentage.
+#' @return A [data.frame].
 #'
 #' @export
-#' @keywords internal
 #'
 #' @examples
 #' library(dplyr, warn.conflicts = FALSE)
