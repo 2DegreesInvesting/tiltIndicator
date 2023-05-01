@@ -10,12 +10,9 @@ rank_proportion <- function(x) {
 ictr_add_ranks <- function(data) {
   browser()
 
-  .by <- list("unit", "input_sector", c("unit", "input_sector"))
-
-
   out <- data %>%
     mutate(perc_all = rank_proportion(.data$input_co2)) |>
-    add_rank(x = "input_co2", .by = "unit") |>
+    add_rank("input_co2", .by = "unit") |>
     mutate(perc_sec = rank_proportion(.data$input_co2), .by = "input_sector") %>%
     mutate(perc_unit_sec = rank_proportion(.data$input_co2), .by = c("unit", "input_sector"))
 
