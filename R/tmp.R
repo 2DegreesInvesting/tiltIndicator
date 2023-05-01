@@ -1,5 +1,5 @@
 add_rank <- function(data, x, .by) {
-  nm <- as.symbol(paste0("perc_", .by))
+  nm <- as.symbol(paste0("perc_", paste(.by, collapse = "_")))
   mutate(data, "{{ nm }}" := rank_proportion(.data[[x]]), .by = all_of(.by))
 }
 
@@ -16,7 +16,7 @@ ictr_add_ranks <- function(data) {
     mutate(perc_all = rank_proportion(.data$input_co2)) |>
     add_rank("input_co2", .by = "unit") |>
     add_rank("input_co2", .by = "sec") |>
-    mutate(perc_unit_sec = rank_proportion(.data$input_co2), .by = c("unit", "sec"))
+    add_rank("input_co2", .by = c("unit", "sec"))
 
   out |> rename(input_sector = "sec")
 }
