@@ -1,5 +1,5 @@
 pctr_ecoinvent_co2_crucial <- function() {
-  crucial_in_pctr_score_activities <- c(
+  crucial_in_pctr_at_product_level <- c(
     "co2_footprint",
     "sec",
     "unit"
@@ -10,7 +10,7 @@ pctr_ecoinvent_co2_crucial <- function() {
     "ei_activity"
   )
 
-  c(crucial_in_pctr_score_activities, crucial_in_pctr_at_company_level)
+  c(crucial_in_pctr_at_product_level, crucial_in_pctr_at_company_level)
 }
 
 pctr_companies_crucial <- function() {

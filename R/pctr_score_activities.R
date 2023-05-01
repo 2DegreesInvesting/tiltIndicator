@@ -35,8 +35,8 @@
 #'
 #' @examples
 #' pctr_ecoinvent_co2 |>
-#'   pctr_score_activities()
-pctr_score_activities <- function(ecoinvent_co2,
+#'   pctr_at_product_level()
+pctr_at_product_level <- function(ecoinvent_co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
   ecoinvent_co2 |>

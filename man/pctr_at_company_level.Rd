@@ -8,7 +8,7 @@ pctr_at_company_level(scored_activities, companies)
 }
 \arguments{
 \item{scored_activities}{A \link{data.frame}. The output of
-\link{pctr_score_activities}.}
+\link{pctr_at_product_level}.}
 
 \item{companies}{A \link{data.frame} like \link{pctr_companies}.}
 }
@@ -38,12 +38,12 @@ one_company <- pctr_companies |> filter(company_id \%in\% first(company_id))
 one_company
 
 pctr_ecoinvent_co2 |>
-  pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7) |>
+  pctr_at_product_level(low_threshold = 0.3, high_threshold = 0.7) |>
   pctr_at_company_level(one_company)
 }
 \seealso{
 Other PCTR functions: 
-\code{\link{pctr_score_activities}()},
+\code{\link{pctr_at_product_level}()},
 \code{\link{pctr}()}
 }
 \author{
