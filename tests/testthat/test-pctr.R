@@ -189,3 +189,54 @@ test_that("if `co2` has 0-rows, the output is normal", {
   expect_equal(names(out0), names(out1))
   expect_equal(nrow(out0), nrow(out1))
 })
+
+
+
+
+test_that("with uuid in companies absent in inputs, all shares sum 1 (#173)", {
+  companies <- tibble(
+    company_id = "id",
+    activity_product_uuid = c("v", "x")
+  )
+  co2 <- tibble(
+    activity_product_uuid = c("v"),
+    co2_footprint = 1,
+    sec = "Transport",
+    unit = "metric ton*km",
+    ei_activity = "transport, freight, lorry 7.5-16 metric ton, EURO3"
+  )
+
+  out <- co2 |>
+    pctr_score_activities() |>
+    pctr_at_company_level(companies)
+
+  summed <- summarize(out, across(starts_with("share_"), sum))
+  all_sahre_sum_1 <- all(unlist(summed) == 1)
+  expect_true(all_sahre_sum_1)
+})
+
+test_that("no longer drops companies depending on co2 data (#122)", {
+  companies <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 2)])
+  co2 <- slice(pctr_ecoinvent_co2, 1:5)
+  out <- pctr(companies, co2)
+  expect_equal(length(unique(out$id)), 2L)
+
+  companies <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 2)])
+  co2 <- slice(pctr_ecoinvent_co2, 1:4)
+  out <- pctr(companies, co2)
+  expect_equal(length(unique(out$id)), 2L)
+
+  companies <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 3)])
+  co2 <- slice(pctr_ecoinvent_co2, 1:10)
+  out <- pctr(companies, co2)
+  expect_equal(length(unique(out$id)), 2L)
+
+  companies <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 3)])
+  co2 <- slice(pctr_ecoinvent_co2, 1:9)
+  out <- pctr(companies, co2)
+  expect_equal(length(unique(out$id)), 2L)
+})
