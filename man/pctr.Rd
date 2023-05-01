@@ -61,9 +61,4 @@ The output of this indicator contains the following:
 \examples{
 pctr(pctr_companies, pctr_ecoinvent_co2)
 }
-\seealso{
-Other PCTR functions: 
-\code{\link{pctr_score_activities}()},
-\code{\link{pctr_score_companies}()}
-}
 \concept{PCTR functions}

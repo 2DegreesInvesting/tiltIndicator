@@ -3,8 +3,8 @@
 #' ```{r child=extdata_path("child/intro-pctr.Rmd")}
 #' ```
 #'
-#' @inheritParams pctr_score_activities
-#' @inheritParams pctr_score_companies
+#' @inheritParams pctr_at_product_level
+#' @inheritParams pctr_at_company_level
 #' @param co2 A dataframe with co2 data.
 #'
 #' @family PCTR functions
@@ -17,11 +17,11 @@
 #' pctr(pctr_companies, pctr_ecoinvent_co2)
 pctr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   out <- co2 |>
-    pctr_score_activities(
+    pctr_at_product_level(
       low_threshold = low_threshold,
       high_threshold = high_threshold
     ) |>
-    pctr_score_companies(companies)
+    pctr_at_company_level(companies)
 
   out |>
     xctr_rename() |>

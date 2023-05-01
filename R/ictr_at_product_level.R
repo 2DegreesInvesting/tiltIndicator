@@ -13,88 +13,44 @@
 #'
 #' @author Kalash Singhal.
 #'
-#' @param inputs A [data.frame] like [ictr_inputs]
+#' @param co2 A [data.frame] like [ictr_inputs].
 #' @param low_threshold A numeric value to segment low and medium transition
 #'   risk products.
 #' @param high_threshold A numeric value to segment medium and high transition
 #'   risk products.
 #'
-#' @family ICTR functions
+#' @family internal-ish functions
 #'
-#' @return A [data.frame] with columns:
-#'   * All the columns from the `inputs` dataset.
-#'   * New columns:
-#'        * `perc_all`
-#'        * `perc_unit`
-#'        * `perc_sec`
-#'        * `perc_unit_sec`
-#'        * `score_all`
-#'        * `score_unit`
-#'        * `score_sector`
-#'        * `score_unit_sec`
+#' @return A [data.frame].
 #'
 #' @export
-#' @keywords internal
 #'
 #' @examples
-#' library(dplyr, warn.conflicts = FALSE)
-#'
-#' # Minimum dataset
-#' crucial <- c("input_co2", "input_sector", "unit")
-#' data <- ictr_inputs |>
-#'   slice(1L) |>
-#'   select(all_of(crucial))
-#' data
-#'
-#' ictr_score_inputs(data) |> glimpse()
-#'
-#' # With fewer columns returns an error
-#' data2 <- data |> select(-unit)
-#' try(ictr_score_inputs(data2))
-#'
-#' # Additional columns are added to the output
-#' data3 <- data |> mutate(new = 1)
-#' ictr_score_inputs(data3) |> relocate(new)
-#'
-#' # You may customize thresholds
-#' data4 <- ictr_inputs |>
-#'   slice(1:3) |>
-#'   select(all_of(crucial))
-#'
-#' # Default
-#' ictr_score_inputs(data4) |>
-#'   relocate(starts_with("score_"))
-#'
-#' # Custom
-#' ictr_score_inputs(data4, low_threshold = 1, high_threshold = 2) |>
-#'   relocate(starts_with("score_"))
-ictr_score_inputs <- function(inputs,
-                              low_threshold = 0.3,
-                              high_threshold = 0.7) {
-  inputs |>
-    ictr_add_ranks() |>
+#' ictr_at_product_level(ictr_inputs)
+ictr_at_product_level <- function(co2,
+                                  low_threshold = 0.3,
+                                  high_threshold = 0.7) {
+  .by <- list(
+    "all",
+    "unit",
+    "sec",
+    c("unit", "sec")
+  )
+  ranked <- co2 |>
+    # FIXME: All other columns use the form
+    #     `mutate(data, x = f(x))`
+    # But this column uses the form
+    #     `mutate(data, x = f(y))`
+    # So here I rename y to x so I can use the same form for all columns
+    rename(sec = "input_sector") |>
+    xctr_add_ranks(x = "input_co2", .by) |>
+    rename(input_sector = sec)
+
+  ranked |>
     ictr_add_scores(
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
-}
-
-ictr_add_ranks <- function(inputs) {
-  inputs %>%
-    ## rank in comparison to all input products
-    mutate(perc_all = rank(.data$input_co2) / length(.data$input_co2)) |>
-    ## rank in comparison to all input products with same unit
-    group_by(.data$unit) |>
-    mutate(perc_unit = rank(.data$input_co2) / length(.data$input_co2)) %>%
-    ungroup() |>
-    ## rank in comparison to all input products with same input sector
-    group_by(.data$input_sector) |>
-    mutate(perc_sec = rank(.data$input_co2) / length(.data$input_co2)) %>%
-    ungroup() |>
-    ## rank in comparison to all input products with same unit and input sector
-    group_by(.data$unit, .data$input_sector) |>
-    mutate(perc_unit_sec = rank(.data$input_co2) / length(.data$input_co2)) %>%
-    ungroup()
 }
 
 ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {

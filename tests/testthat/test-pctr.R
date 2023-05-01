@@ -189,3 +189,29 @@ test_that("if `co2` has 0-rows, the output is normal", {
   expect_equal(names(out0), names(out1))
   expect_equal(nrow(out0), nrow(out1))
 })
+
+test_that("no longer drops companies depending on co2 data (#122)", {
+  companies <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 2)])
+  co2 <- slice(pctr_ecoinvent_co2, 1:5)
+  out <- pctr(companies, co2)
+  expect_equal(length(unique(out$id)), 2L)
+
+  companies <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 2)])
+  co2 <- slice(pctr_ecoinvent_co2, 1:4)
+  out <- pctr(companies, co2)
+  expect_equal(length(unique(out$id)), 2L)
+
+  companies <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 3)])
+  co2 <- slice(pctr_ecoinvent_co2, 1:10)
+  out <- pctr(companies, co2)
+  expect_equal(length(unique(out$id)), 2L)
+
+  companies <- pctr_companies |>
+    filter(company_id %in% unique(company_id)[c(1, 3)])
+  co2 <- slice(pctr_ecoinvent_co2, 1:9)
+  out <- pctr(companies, co2)
+  expect_equal(length(unique(out$id)), 2L)
+})
