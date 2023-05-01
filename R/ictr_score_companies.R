@@ -38,11 +38,23 @@
 #'   ictr_score_inputs() |>
 #'   ictr_score_companies(one_company)
 ictr_score_companies <- function(ecoinvent_scores, companies) {
+  xctr_score_companies_impl(
+    ecoinvent_scores,
+    companies,
+    uuid = "activity_uuid_product_uuid",
+    benchmarks = c("all", "unit", "sector", "unit_sec")
+  )
+}
+
+xctr_score_companies_impl <- function(ecoinvent_scores,
+                                      companies,
+                                      uuid = "activity_uuid_product_uuid",
+                                      benchmarks = c("all", "unit", "sector", "unit_sec")) {
   stopifnot(hasName(companies, "company_id"))
   stop_if_any_missing_input_co2(ecoinvent_scores)
 
   companies_scores <- companies |>
-    left_join(ecoinvent_scores, by = c("activity_uuid_product_uuid"))
+    left_join(ecoinvent_scores, by = c(uuid))
 
   # For each company show all risk levels even if the share is 0.
   dt_sceleton <- tibble(
@@ -51,10 +63,9 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   )
 
   # Share in comparison to all inputs and those with same unit, sector, ...
-  benchmarks <- c("all", "unit", "sector", "unit_sec") |>
-    map(~ add_share(companies_scores, .x))
+  benchmarks_list <- map(benchmarks, ~ add_share(companies_scores, .x))
 
-  ictr_output <- append(list(dt_sceleton), benchmarks) |>
+  ictr_output <- append(list(dt_sceleton), benchmarks_list) |>
     reduce(left_join, by = c("company_id", "score"))
 
   ictr_output |>
