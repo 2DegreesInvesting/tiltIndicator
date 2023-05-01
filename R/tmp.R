@@ -16,11 +16,18 @@ rank_proportion <- function(x) {
 }
 
 ictr_add_ranks <- function(data) {
-  data %>%
-    add_rank("input_co2", .by = "all") |>
-    add_rank("input_co2", .by = "unit") |>
-    add_rank("input_co2", .by = "sec") |>
-    add_rank("input_co2", .by = c("unit", "sec"))
+  .by <- list(
+    "all",
+    "unit",
+    "sec",
+    c("unit", "sec")
+  )
+
+  out <- data
+  for (i in seq_along(.by)) {
+    out <- add_rank(out, "input_co2", .by = .by[[i]])
+  }
+  out
 }
 
 pctr_add_ranks <- function(data) {
