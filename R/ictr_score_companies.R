@@ -54,8 +54,7 @@ xctr_score_companies_impl <- function(ecoinvent_scores,
                                       benchmarks = c("all", "unit", "sector", "unit_sec")) {
   stopifnot(hasName(companies, "company_id"))
 
-  companies_scores <- companies |>
-    left_join(ecoinvent_scores, by = c(uuid))
+  companies_scores <- left_join(companies, ecoinvent_scores, by = c(uuid))
 
   # For each company show all risk levels even if the share is 0.
   dt_sceleton <- tibble(
