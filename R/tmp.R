@@ -22,13 +22,3 @@ xctr_add_ranks <- function(data, x, .by) {
   }
   out
 }
-
-ictr_add_ranks <- function(data) {
-  .by <- list(
-    "all",
-    "unit",
-    "sec",
-    c("unit", "sec")
-  )
-  xctr_add_ranks(data, x = "input_co2", .by)
-}
