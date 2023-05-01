@@ -37,6 +37,19 @@
 #'   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7) |>
 #'   pctr_score_companies(one_company)
 pctr_score_companies <- function(scored_activities, companies) {
+  xctr_score_companies(
+    scored_activities,
+    companies,
+    uuid = "activity_product_uuid",
+    benchmarks = c(
+      "all",
+      "unit",
+      # FIXME: Missing "sector" (#191)
+      "unit_sec"
+    )
+  )
+}
+pctr_score_companies_old <- function(scored_activities, companies) {
   # Intermediate steps:
   # * Combine company-level information with LCA info from ecoinvent.
   # * Calculate the share of products with each score.

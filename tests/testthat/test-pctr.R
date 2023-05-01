@@ -64,16 +64,15 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
 })
 
 test_that("if a company matches no co2, all shares are `NA` (#176)", {
-  skip("FIXME")
+  companies <- tibble(
+    activity_product_uuid = c("x"),
+    company_id = c("a"),
+  )
   co2 <- tibble(
     co2_footprint = 1,
     sec = "Transport",
     unit = "metric ton*km",
-    activity_product_uuid = c("x"),
-  )
-  companies <- tibble(
     activity_product_uuid = c("y"),
-    company_id = c("a"),
   )
 
   out <- pctr(companies, co2)
