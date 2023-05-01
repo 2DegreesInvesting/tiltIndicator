@@ -31,6 +31,7 @@ ictr_at_product_level <- function(co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
   ranked <- co2 |>
+    # FIXME: Homogenize columns. ictr uses input_sector, and pctr uses sec
     rename(sec = "input_sector") |>
     ictr_add_ranks() |>
     rename(input_sector = sec)
