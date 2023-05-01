@@ -4,10 +4,10 @@
 \alias{pctr_at_product_level}
 \title{Aggregate rank and score for each activity}
 \usage{
-pctr_at_product_level(ecoinvent_co2, low_threshold = 0.3, high_threshold = 0.7)
+pctr_at_product_level(co2, low_threshold = 0.3, high_threshold = 0.7)
 }
 \arguments{
-\item{ecoinvent_co2}{A \link{data.frame} like \link{pctr_ecoinvent_co2}.}
+\item{co2}{A \link{data.frame} like \link{pctr_ecoinvent_co2}.}
 
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}

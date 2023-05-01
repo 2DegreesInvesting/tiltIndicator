@@ -4,11 +4,10 @@
 \alias{pctr_at_company_level}
 \title{Aggregate the products' scores for each company}
 \usage{
-pctr_at_company_level(scored_activities, companies)
+pctr_at_company_level(co2, companies)
 }
 \arguments{
-\item{scored_activities}{A \link{data.frame}. The output of
-\link{pctr_at_product_level}.}
+\item{co2}{A \link{data.frame}. The output of \link{pctr_at_product_level}.}
 
 \item{companies}{A \link{data.frame} like \link{pctr_companies}.}
 }
@@ -19,8 +18,7 @@ A \link{data.frame}.
 Calculates on a company-level the percentage of products that are in low /
 medium / high transition risk due to the products' relative carbon footprint.
 
-Activities are mapped with the companies' products using common columns
-present in dataframes \code{scored_activities} and \code{companies}
+Activities are mapped with the companies' products using common columns.
 }
 \examples{
 pctr_ecoinvent_co2 |>

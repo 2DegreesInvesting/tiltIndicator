@@ -4,13 +4,11 @@
 #' Calculates on a company-level the percentage of products that are in low /
 #' medium / high transition risk due to the products' relative carbon footprint.
 #'
-#' Activities are mapped with the companies' products using common columns
-#' present in dataframes `scored_activities` and `companies`
+#' Activities are mapped with the companies' products using common columns.
 #'
 #' @author Tilman Trompke.
 #'
-#' @param scored_activities A [data.frame]. The output of
-#'   [pctr_at_product_level].
+#' @param co2 A [data.frame]. The output of [pctr_at_product_level].
 #' @param companies A [data.frame] like [pctr_companies].
 #'
 #' @family internal-ish functions
@@ -23,10 +21,10 @@
 #' pctr_ecoinvent_co2 |>
 #'   pctr_at_product_level() |>
 #'   pctr_at_company_level(pctr_companies)
-pctr_at_company_level <- function(scored_activities, companies) {
+pctr_at_company_level <- function(co2, companies) {
   xctr_score_companies(
     companies,
-    scored_activities,
+    co2,
     uuid = "activity_product_uuid",
     benchmarks = c(
       "all",

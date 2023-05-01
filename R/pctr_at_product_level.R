@@ -12,11 +12,8 @@
 #'
 #' @author Tilman Trompke.
 #'
-#' @param ecoinvent_co2 A [data.frame] like [pctr_ecoinvent_co2].
-#' @param low_threshold A numeric value to segment low and medium transition
-#'   risk products.
-#' @param high_threshold A numeric value to segment medium and high transition
-#'   risk products.
+#' @param co2 A [data.frame] like [pctr_ecoinvent_co2].
+#' @inheritParams ictr_at_product_level
 #'
 #' @family internal-ish functions
 #'
@@ -26,10 +23,10 @@
 #'
 #' @examples
 #' pctr_at_product_level(pctr_ecoinvent_co2)
-pctr_at_product_level <- function(ecoinvent_co2,
+pctr_at_product_level <- function(co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
-  ecoinvent_co2 |>
+  co2 |>
     pctr_add_ranks() |>
     pctr_add_scores(low_threshold, high_threshold)
 }
