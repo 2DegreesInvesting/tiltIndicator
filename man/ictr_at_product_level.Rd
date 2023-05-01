@@ -4,10 +4,10 @@
 \alias{ictr_at_product_level}
 \title{Aggregate rank and score for each input product}
 \usage{
-ictr_at_product_level(inputs, low_threshold = 0.3, high_threshold = 0.7)
+ictr_at_product_level(co2, low_threshold = 0.3, high_threshold = 0.7)
 }
 \arguments{
-\item{inputs}{A \link{data.frame} like \link{ictr_inputs}}
+\item{co2}{A \link{data.frame} like \link{ictr_inputs}.}
 
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}

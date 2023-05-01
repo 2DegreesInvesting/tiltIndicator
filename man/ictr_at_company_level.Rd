@@ -4,10 +4,10 @@
 \alias{ictr_at_company_level}
 \title{Aggregate the input products' scores for each company}
 \usage{
-ictr_at_company_level(ecoinvent_scores, companies)
+ictr_at_company_level(co2, companies)
 }
 \arguments{
-\item{ecoinvent_scores}{A \link{data.frame}. The output of \link{ictr_at_product_level}.}
+\item{co2}{A \link{data.frame}. The output of \link{ictr_at_product_level}.}
 
 \item{companies}{A \link{data.frame} like \link{ictr_companies}.}
 }
@@ -19,8 +19,8 @@ Calculates on a company-level the percentage of input products that are in
 low / medium / high transition risk due to the input products' relative
 carbon footprint.
 
-Activities are mapped with the companies' input products using common columns
-present in dataframes \code{ecoinvent_scores} and \code{companies}.
+Activities are mapped with the companies' input products using common
+columns.
 }
 \examples{
 ictr_inputs |>

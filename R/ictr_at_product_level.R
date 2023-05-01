@@ -13,7 +13,7 @@
 #'
 #' @author Kalash Singhal.
 #'
-#' @param inputs A [data.frame] like [ictr_inputs]
+#' @param co2 A [data.frame] like [ictr_inputs].
 #' @param low_threshold A numeric value to segment low and medium transition
 #'   risk products.
 #' @param high_threshold A numeric value to segment medium and high transition
@@ -27,10 +27,10 @@
 #'
 #' @examples
 #' ictr_at_product_level(ictr_inputs)
-ictr_at_product_level <- function(inputs,
-                              low_threshold = 0.3,
-                              high_threshold = 0.7) {
-  inputs |>
+ictr_at_product_level <- function(co2,
+                                  low_threshold = 0.3,
+                                  high_threshold = 0.7) {
+  co2 |>
     ictr_add_ranks() |>
     ictr_add_scores(
       low_threshold = low_threshold,

@@ -9,8 +9,6 @@ ictr(companies, inputs, low_threshold = 0.3, high_threshold = 0.7)
 \arguments{
 \item{companies}{A \link{data.frame} like \link{ictr_companies}.}
 
-\item{inputs}{A \link{data.frame} like \link{ictr_inputs}}
-
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}
 

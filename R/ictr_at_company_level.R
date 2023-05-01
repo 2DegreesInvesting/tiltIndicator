@@ -5,12 +5,12 @@
 #' low / medium / high transition risk due to the input products' relative
 #' carbon footprint.
 #'
-#' Activities are mapped with the companies' input products using common columns
-#' present in dataframes `ecoinvent_scores` and `companies`.
+#' Activities are mapped with the companies' input products using common
+#' columns.
 #'
 #' @author Kalash Singhal.
 #'
-#' @param ecoinvent_scores A [data.frame]. The output of [ictr_at_product_level].
+#' @param co2 A [data.frame]. The output of [ictr_at_product_level].
 #' @param companies A [data.frame] like [ictr_companies].
 #'
 #' @family internal-ish functions
@@ -23,12 +23,12 @@
 #' ictr_inputs |>
 #'   ictr_at_product_level() |>
 #'   ictr_at_company_level(ictr_companies)
-ictr_at_company_level <- function(ecoinvent_scores, companies) {
-  stop_if_any_missing_input_co2(ecoinvent_scores)
+ictr_at_company_level <- function(co2, companies) {
+  stop_if_any_missing_input_co2(co2)
 
   xctr_score_companies(
     companies,
-    ecoinvent_scores,
+    co2,
     uuid = "activity_uuid_product_uuid",
     benchmarks = c("all", "unit", "sector", "unit_sec")
   )
