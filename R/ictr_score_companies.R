@@ -40,7 +40,7 @@
 ictr_score_companies <- function(ecoinvent_scores, companies) {
   stop_if_any_missing_input_co2(ecoinvent_scores)
 
-  xctr_score_companies_impl(
+  xctr_score_companies(
     ecoinvent_scores,
     companies,
     uuid = "activity_uuid_product_uuid",
@@ -48,7 +48,7 @@ ictr_score_companies <- function(ecoinvent_scores, companies) {
   )
 }
 
-xctr_score_companies_impl <- function(ecoinvent_scores,
+xctr_score_companies <- function(ecoinvent_scores,
                                       companies,
                                       uuid = "activity_uuid_product_uuid",
                                       benchmarks = c("all", "unit", "sector", "unit_sec")) {
