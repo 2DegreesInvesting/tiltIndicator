@@ -15,6 +15,14 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
+xctr_add_ranks <- function(data, x, .by) {
+  out <- data
+  for (i in seq_along(.by)) {
+    out <- add_rank(out, x, .by = .by[[i]])
+  }
+  out
+}
+
 ictr_add_ranks <- function(data) {
   .by <- list(
     "all",
@@ -31,6 +39,7 @@ ictr_add_ranks <- function(data) {
 }
 
 pctr_add_ranks <- function(data) {
+
   data |>
     mutate(perc_all = rank(.data$co2_footprint) / length(.data$co2_footprint)) |>
     # rank in comparison to all products with same unit
