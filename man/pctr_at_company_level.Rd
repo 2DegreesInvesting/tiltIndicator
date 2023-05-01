@@ -23,14 +23,9 @@ Activities are mapped with the companies' products using common columns
 present in dataframes \code{scored_activities} and \code{companies}
 }
 \examples{
-library(dplyr, warn.conflicts = FALSE)
-
-one_company <- pctr_companies |> filter(company_id \%in\% first(company_id))
-one_company
-
 pctr_ecoinvent_co2 |>
-  pctr_at_product_level(low_threshold = 0.3, high_threshold = 0.7) |>
-  pctr_at_company_level(one_company)
+  pctr_at_product_level() |>
+  pctr_at_company_level(pctr_companies)
 }
 \seealso{
 Other internal-ish functions: 
