@@ -1,13 +1,13 @@
 add_rank <- function(data, x, .by) {
   suffix <- "all"
-  .group_by <- NULL
+  ..by <- NULL
   if (!is.null(.by)) {
     suffix <- paste(.by, collapse = "_")
-    .group_by <- .by
+    ..by <- .by
   }
 
   nm <- as.symbol(paste0("perc_", suffix))
-  mutate(data, "{{ nm }}" := rank_proportion(.data[[x]]), .by = all_of(.group_by))
+  mutate(data, "{{ nm }}" := rank_proportion(.data[[x]]), .by = all_of(..by))
 }
 
 rank_proportion <- function(x) {
