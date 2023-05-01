@@ -12,17 +12,7 @@ ictr_at_company_level(ecoinvent_scores, companies)
 \item{companies}{A \link{data.frame} like \link{ictr_companies}.}
 }
 \value{
-A \link{data.frame} with three rows for each company and these columns:
-\itemize{
-\item \code{company_id}
-\item \code{score}
-\item \code{share_all}
-\item \code{share_unit}
-\item \code{share_sector}
-\item \code{share_unit_sec}
-where \code{share_all}, \code{share_unit}, \code{share_sector}, and \code{share_unit_sec} holds
-the aggregated scores in percentage.
-}
+A \link{data.frame}.
 }
 \description{
 Calculates on a company-level the percentage of input products that are in
@@ -33,22 +23,15 @@ Activities are mapped with the companies' input products using common columns
 present in dataframes \code{ecoinvent_scores} and \code{companies}.
 }
 \examples{
-library(dplyr, warn.conflicts = FALSE)
-
-one_company <- ictr_companies |> filter(company_id \%in\% first(company_id))
-one_company
-
 ictr_inputs |>
   ictr_at_product_level() |>
-  ictr_at_company_level(one_company)
+  ictr_at_company_level(ictr_companies)
 }
 \seealso{
-Other ICTR functions: 
-\code{\link{ictr_at_product_level}()},
-\code{\link{ictr}()}
+Other internal-ish functions: 
+\code{\link{ictr_at_product_level}()}
 }
 \author{
 Kalash Singhal.
 }
-\concept{ICTR functions}
-\keyword{internal}
+\concept{internal-ish functions}

@@ -13,30 +13,16 @@
 #' @param ecoinvent_scores A [data.frame]. The output of [ictr_at_product_level].
 #' @param companies A [data.frame] like [ictr_companies].
 #'
-#' @family ICTR functions
+#' @family internal-ish functions
 #'
-#' @return A [data.frame] with three rows for each company and these columns:
-#'   * `company_id`
-#'   * `score`
-#'   * `share_all`
-#'   * `share_unit`
-#'   * `share_sector`
-#'   * `share_unit_sec`
-#'   where `share_all`, `share_unit`, `share_sector`, and `share_unit_sec` holds
-#'   the aggregated scores in percentage.
+#' @return A [data.frame].
 #'
 #' @export
-#' @keywords internal
 #'
 #' @examples
-#' library(dplyr, warn.conflicts = FALSE)
-#'
-#' one_company <- ictr_companies |> filter(company_id %in% first(company_id))
-#' one_company
-#'
 #' ictr_inputs |>
 #'   ictr_at_product_level() |>
-#'   ictr_at_company_level(one_company)
+#'   ictr_at_company_level(ictr_companies)
 ictr_at_company_level <- function(ecoinvent_scores, companies) {
   stop_if_any_missing_input_co2(ecoinvent_scores)
 

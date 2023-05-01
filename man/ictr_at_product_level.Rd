@@ -16,21 +16,7 @@ risk products.}
 risk products.}
 }
 \value{
-A \link{data.frame} with columns:
-\itemize{
-\item All the columns from the \code{inputs} dataset.
-\item New columns:
-\itemize{
-\item \code{perc_all}
-\item \code{perc_unit}
-\item \code{perc_sec}
-\item \code{perc_unit_sec}
-\item \code{score_all}
-\item \code{score_unit}
-\item \code{score_sector}
-\item \code{score_unit_sec}
-}
-}
+A \link{data.frame}.
 }
 \description{
 Input products will be ranked according to their footprint. Input products in
@@ -44,45 +30,13 @@ Therefore, each input product will receive either a score of 'high',
 'medium', or 'low' based on the above mentioned classification criteria.
 }
 \examples{
-library(dplyr, warn.conflicts = FALSE)
-
-# Minimum dataset
-crucial <- c("input_co2", "input_sector", "unit")
-data <- ictr_inputs |>
-  slice(1L) |>
-  select(all_of(crucial))
-data
-
-ictr_at_product_level(data) |> glimpse()
-
-# With fewer columns returns an error
-data2 <- data |> select(-unit)
-try(ictr_at_product_level(data2))
-
-# Additional columns are added to the output
-data3 <- data |> mutate(new = 1)
-ictr_at_product_level(data3) |> relocate(new)
-
-# You may customize thresholds
-data4 <- ictr_inputs |>
-  slice(1:3) |>
-  select(all_of(crucial))
-
-# Default
-ictr_at_product_level(data4) |>
-  relocate(starts_with("score_"))
-
-# Custom
-ictr_at_product_level(data4, low_threshold = 1, high_threshold = 2) |>
-  relocate(starts_with("score_"))
+ictr_at_product_level(ictr_inputs)
 }
 \seealso{
-Other ICTR functions: 
-\code{\link{ictr_at_company_level}()},
-\code{\link{ictr}()}
+Other internal-ish functions: 
+\code{\link{ictr_at_company_level}()}
 }
 \author{
 Kalash Singhal.
 }
-\concept{ICTR functions}
-\keyword{internal}
+\concept{internal-ish functions}

@@ -64,9 +64,4 @@ completely random selection and do not reflect the true information:
 \examples{
 ictr(ictr_companies, ictr_inputs)
 }
-\seealso{
-Other ICTR functions: 
-\code{\link{ictr_at_company_level}()},
-\code{\link{ictr_at_product_level}()}
-}
 \concept{ICTR functions}
