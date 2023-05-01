@@ -46,7 +46,7 @@ pctr_ecoinvent_co2 |>
 }
 \seealso{
 Other PCTR functions: 
-\code{\link{pctr_score_companies}()},
+\code{\link{pctr_at_company_level}()},
 \code{\link{pctr}()}
 }
 \author{

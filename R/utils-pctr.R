@@ -5,12 +5,12 @@ pctr_ecoinvent_co2_crucial <- function() {
     "unit"
   )
 
-  crucial_in_pctr_score_companies <- c(
+  crucial_in_pctr_at_company_level <- c(
     "activity_product_uuid",
     "ei_activity"
   )
 
-  c(crucial_in_pctr_score_activities, crucial_in_pctr_score_companies)
+  c(crucial_in_pctr_score_activities, crucial_in_pctr_at_company_level)
 }
 
 pctr_companies_crucial <- function() {
@@ -22,7 +22,7 @@ pctr_companies_crucial <- function() {
   )
 }
 
-pctr_score_companies_crucial <- function() {
+pctr_at_company_level_crucial <- function() {
   c(
     "activity_product_uuid",
     "ei_activity",

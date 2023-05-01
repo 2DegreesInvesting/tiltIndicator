@@ -35,8 +35,8 @@
 #'
 #' pctr_ecoinvent_co2 |>
 #'   pctr_score_activities(low_threshold = 0.3, high_threshold = 0.7) |>
-#'   pctr_score_companies(one_company)
-pctr_score_companies <- function(scored_activities, companies) {
+#'   pctr_at_company_level(one_company)
+pctr_at_company_level <- function(scored_activities, companies) {
   xctr_score_companies(
     companies,
     scored_activities,
