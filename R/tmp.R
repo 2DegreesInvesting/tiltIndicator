@@ -43,19 +43,3 @@ pctr_add_ranks <- function(data) {
   )
   xctr_add_ranks(data, x = "co2_footprint", .by)
 }
-#
-# pctr_add_ranks <- function(data) {
-#
-#   data |>
-#     mutate(perc_all = rank(.data$co2_footprint) / length(.data$co2_footprint)) |>
-#     # rank in comparison to all products with same unit
-#     group_by(.data$unit) |>
-#     mutate(perc_unit = rank(.data$co2_footprint) / length(.data$co2_footprint)) %>%
-#     ungroup() |>
-#     # rank in comparison to all products with same unit and sector
-#     group_by(.data$unit, .data$sec) |>
-#     mutate(perc_unit_sec = rank(.data$co2_footprint) / length(.data$co2_footprint)) %>%
-#     ungroup()
-# }
-#
-#

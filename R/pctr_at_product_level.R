@@ -26,9 +26,16 @@
 pctr_at_product_level <- function(co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
-  co2 |>
-    pctr_add_ranks() |>
-    pctr_add_scores(low_threshold, high_threshold)
+  .by <- list(
+    "all",
+    "unit",
+    # FIXME: Missing "sec" (#191)
+    # "sec",
+    c("unit", "sec")
+  )
+  ranked <- xctr_add_ranks(co2, x = "co2_footprint", .by)
+
+  ranked |> pctr_add_scores(low_threshold, high_threshold)
 }
 
 # Assign scores to the activities: This is done based on their position within
