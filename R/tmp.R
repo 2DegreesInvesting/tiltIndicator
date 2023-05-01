@@ -1,7 +1,7 @@
 add_rank <- function(data, x, .by) {
   suffix <- "all"
   ..by <- NULL
-  if (!is.null(.by)) {
+  if (!identical(.by, "all")) {
     suffix <- paste(.by, collapse = "_")
     ..by <- .by
   }
@@ -20,7 +20,7 @@ ictr_add_ranks <- function(data) {
   tmp <- rename(data, sec = "input_sector")
 
   out <- tmp %>%
-    add_rank("input_co2", .by = NULL) |>
+    add_rank("input_co2", .by = "all") |>
     add_rank("input_co2", .by = "unit") |>
     add_rank("input_co2", .by = "sec") |>
     add_rank("input_co2", .by = c("unit", "sec"))
