@@ -64,4 +64,3 @@ test_that("outputs an id for each company and a score", {
   expect_true(hasName(out, "company_id"))
   expect_true(hasName(out, "score"))
 })
-
