@@ -3,7 +3,6 @@
 #' ```{r child=extdata_path("child/intro-pctr.Rmd")}
 #' ```
 #'
-#' @inheritParams pctr_at_product_level
 #' @inheritParams pctr_at_company_level
 #' @param co2 A dataframe with co2 data.
 #'
