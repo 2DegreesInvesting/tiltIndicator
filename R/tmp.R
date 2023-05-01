@@ -4,11 +4,23 @@ rank_proportion <- function(x) {
 }
 
 ictr_add_ranks <- function(data) {
-  data %>%
+  browser()
+
+  .by <- list("unit", "input_sector", c("unit", "input_sector"))
+
+  add_rank <- function(data, values, .by) {
+    nm <- as.symbol(paste0("perc_", .by))
+    data |>
+      mutate("{{ nm }}" := rank_proportion(.data[[values]]), .by = all_of(.by))
+  }
+
+  out <- data %>%
     mutate(perc_all = rank_proportion(.data$input_co2)) |>
-    mutate(perc_unit = rank_proportion(.data$input_co2), .by = "unit") |>
+    add_rank(values = "input_co2", .by = "unit") |>
     mutate(perc_sec = rank_proportion(.data$input_co2), .by = "input_sector") %>%
     mutate(perc_unit_sec = rank_proportion(.data$input_co2), .by = c("unit", "input_sector"))
+
+  out
 }
 
 pctr_add_ranks <- function(data) {
