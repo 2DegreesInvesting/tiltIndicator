@@ -30,8 +30,12 @@
 ictr_at_product_level <- function(co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
-  co2 |>
+  ranked <- co2 |>
+    rename(sec = "input_sector") |>
     ictr_add_ranks() |>
+    rename(input_sector = sec)
+
+  ranked |>
     ictr_add_scores(
       low_threshold = low_threshold,
       high_threshold = high_threshold
