@@ -30,12 +30,7 @@ ictr_add_ranks <- function(data) {
     "sec",
     c("unit", "sec")
   )
-
-  out <- data
-  for (i in seq_along(.by)) {
-    out <- add_rank(out, "input_co2", .by = .by[[i]])
-  }
-  out
+  xctr_add_ranks(data, x = "input_co2", .by)
 }
 
 pctr_add_ranks <- function(data) {
