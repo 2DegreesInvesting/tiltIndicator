@@ -4,7 +4,7 @@
 #' ```
 #'
 #' @inheritParams ictr_score_inputs
-#' @inheritParams ictr_score_companies
+#' @inheritParams ictr_at_company_level
 #'
 #' @family ICTR functions
 #'
@@ -20,7 +20,7 @@ ictr <- function(companies, inputs, low_threshold = 0.3, high_threshold = 0.7) {
       low_threshold = low_threshold,
       high_threshold = high_threshold
     ) |>
-    ictr_score_companies(companies)
+    ictr_at_company_level(companies)
 
   out |>
     xctr_rename() |>

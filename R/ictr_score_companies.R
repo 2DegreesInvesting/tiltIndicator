@@ -36,8 +36,8 @@
 #'
 #' ictr_inputs |>
 #'   ictr_score_inputs() |>
-#'   ictr_score_companies(one_company)
-ictr_score_companies <- function(ecoinvent_scores, companies) {
+#'   ictr_at_company_level(one_company)
+ictr_at_company_level <- function(ecoinvent_scores, companies) {
   stop_if_any_missing_input_co2(ecoinvent_scores)
 
   xctr_score_companies(

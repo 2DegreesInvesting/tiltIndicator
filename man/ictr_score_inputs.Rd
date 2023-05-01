@@ -78,7 +78,7 @@ ictr_score_inputs(data4, low_threshold = 1, high_threshold = 2) |>
 }
 \seealso{
 Other ICTR functions: 
-\code{\link{ictr_score_companies}()},
+\code{\link{ictr_at_company_level}()},
 \code{\link{ictr}()}
 }
 \author{
