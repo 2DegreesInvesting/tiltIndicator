@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9029
+
+* In PCTR, if a copmany matches no input, all shares are now `NA` (#205).
+
 # tiltIndicator 0.0.0.9028
 
 * In ICTR, if a company matches no input, all shares are now `NA` (@kalashsinghal #202).
