@@ -37,7 +37,11 @@ ictr_at_product_level <- function(co2,
     c("unit", "sec")
   )
   ranked <- co2 |>
-    # FIXME: Homogenize columns. ictr uses input_sector, and pctr uses sec
+    # FIXME: All other columns use the form
+    #     `mutate(data, x = f(x))`
+    # But this column uses the form
+    #     `mutate(data, x = f(y))`
+    # So here I rename y to x so I can use the same form for all columns
     rename(sec = "input_sector") |>
     xctr_add_ranks(x = "input_co2", .by) |>
     rename(input_sector = sec)
