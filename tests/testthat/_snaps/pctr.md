@@ -4,7 +4,7 @@
       out
     Output
       [[1]]
-                                                         id
+                                               companies_id
       1 powerstartmanufacturinggmbh_00000005460100827307001
       2 powerstartmanufacturinggmbh_00000005460100827307001
       3 powerstartmanufacturinggmbh_00000005460100827307001

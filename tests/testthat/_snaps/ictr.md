@@ -4,7 +4,7 @@
       out
     Output
       [[1]]
-                                               id
+                                     companies_id
       1  fleischerei-stiefsohn_00000005219477-001
       2  fleischerei-stiefsohn_00000005219477-001
       3  fleischerei-stiefsohn_00000005219477-001

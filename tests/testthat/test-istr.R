@@ -7,7 +7,8 @@ test_that("outputs the expected columns", {
 
   expect_true(all(common_output_columns() %in% names(out)))
   expect_true(any(grepl("score", names(out))))
-  expect_equal(names(out)[1:3], c("id", "transition_risk", "score_aggregated"))
+  expected <- c("companies_id", "transition_risk", "score_aggregated")
+  expect_equal(names(out)[1:3], expected)
 })
 
 test_that("outputs the expected columns", {

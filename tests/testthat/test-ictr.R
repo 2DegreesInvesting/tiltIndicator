@@ -9,7 +9,7 @@ test_that("outputs columns for ids, risk categories, and shares", {
   out <- ictr(companies, inputs)
 
   expected <- c(
-    "id",
+    "companies_id",
     "transition_risk",
     "score_all",
     "score_unit",

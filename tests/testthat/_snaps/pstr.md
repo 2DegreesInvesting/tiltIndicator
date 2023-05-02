@@ -4,7 +4,7 @@
       format_robust_snapshot(out)
     Output
       [[1]]
-                                                           id
+                                                 companies_id
       1 cta-commodity-trading-austria-gmbh_00000005215384-001
       2 cta-commodity-trading-austria-gmbh_00000005215384-001
       3 cta-commodity-trading-austria-gmbh_00000005215384-001

@@ -26,7 +26,7 @@ istr <- function(companies, scenario, mapper) {
     istr_aggregate_scores(companies)
 
   out |>
-    rename(id = "companies_id") |>
+    rename(companies_id = "companies_id") |>
     relocate_crucial_output_columns() |>
     ungroup()
 }
