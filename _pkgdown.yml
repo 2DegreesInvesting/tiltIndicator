@@ -4,11 +4,21 @@ template:
 
 reference:
 
+  - title: Pre-processing helpers
+    desc: >
+      "WARNING: These functions don't compute indicators so don't
+      belong here. They will be removed as soon as we arrive to a stable input
+      for all indicators."
+    contents:
+      - has_concept("pre-processing helpers")
+
   - title: Main functions and datasets
     contents:
+      - -has_concept("pre-processing helpers")
       - -has_concept("internal-ish functions")
 
   - title: Internal-ish functions
-    desc: "WARNING: This functions may change any time"
+    desc: >
+      "WARNING: This functions may change any time"
     contents:
       - has_concept("internal-ish functions")

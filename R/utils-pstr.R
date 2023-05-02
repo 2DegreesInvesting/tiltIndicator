@@ -1,4 +1,4 @@
-#' Create a toy data set for the pstr_companies data set.
+#' Create a toy data set for the pstr_old_companies data set.
 #'
 #' @param company_id An integer.
 #' @param company_name A string.
@@ -7,7 +7,7 @@
 #' @param subsector A string.
 #'
 #' @return A toy data set that have the same columns as
-#' `pstr_companies`.
+#' `pstr_old_companies`.
 #' @noRd
 pstr_toy_companies <- function(company_id = 1, company_name = "a",
                                products = "b", sector = "c",
@@ -79,4 +79,16 @@ pstr_toy_weo_2022 <- function(publication = "A", scenario = "B", region = "C",
     reductions = reductions,
     ...
   )
+}
+
+#' Lowercase characters in data
+#'
+#' @param data A data frame.
+#'
+#' @return A [data.frame] with the values of its character content lower cased.
+#'
+#' @examples # TODO
+#' @noRd
+lowercase_characters <- function(data) {
+  mutate(data, across(where(is.character), tolower))
 }

@@ -23,6 +23,7 @@ Imports:
     glue,
     magrittr,
     purrr,
+    readr,
     rlang (>= 0.4.11),
     tibble,
     tidyr,
@@ -32,7 +33,6 @@ Imports:
 Suggests: 
     covr,
     here,
-    readr,
     rmarkdown,
     roxygen2,
     testthat (>= 3.0.0),

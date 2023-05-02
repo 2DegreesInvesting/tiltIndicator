@@ -4,14 +4,12 @@
 \alias{pstr}
 \title{Calculate the PSTR indicator}
 \usage{
-pstr(companies, scenario, mapper)
+pstr(companies, scenarios)
 }
 \arguments{
-\item{companies}{A \link{data.frame} like \link{pstr_companies}.}
+\item{companies}{A dataframe like \link{pstr_companies}.}
 
-\item{scenario}{A dataframe with scenario data, e.g. WEO.}
-
-\item{mapper}{A dataframe mapping \code{companies} to \code{scenario}.}
+\item{scenarios}{A dataframe like \link{pstr_scenarios}.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.
@@ -28,12 +26,12 @@ aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 }
 \examples{
-pstr(pstr_companies, pstr_weo_2022, pstr_ep_weo)
+companies <- pstr_companies
+scenarios <- pstr_scenarios
+pstr(companies, scenarios)
 }
 \seealso{
 Other PSTR functions: 
-\code{\link{pstr_add_reductions}()},
-\code{\link{pstr_add_transition_risk}()},
-\code{\link{pstr_aggregate_scores}()}
+\code{\link{pstr_at_company_level}()}
 }
 \concept{PSTR functions}

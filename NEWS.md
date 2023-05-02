@@ -118,7 +118,7 @@ ownership (#41).
 
 # tiltIndicator 0.0.0.9007
 
-* In `pstr_aggregate_scores()` fix missing argument `companies` (#38).
+* In `pstr_at_company_level()` fix missing argument `companies` (#38).
 
 * dev: Address R CMD Check about undefined global variables (#37).
 

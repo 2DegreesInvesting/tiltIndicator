@@ -5,7 +5,7 @@
 \alias{pstr_companies}
 \title{A dataset with fake companies, products, sectors and subsectors}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 10 rows and 5 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 28 rows and 9 columns.
 }
 \source{
 Companies, sectors, subsectors and products from Europages.
@@ -21,11 +21,10 @@ pstr_companies
 }
 \seealso{
 Other PSTR datasets: 
-\code{\link{pstr_ep_weo}},
-\code{\link{pstr_weo_2022}}
+\code{\link{pstr_scenarios}}
 }
 \author{
-Linda Delacombaz.
+Tilman Trompke.
 }
 \concept{PSTR datasets}
 \keyword{datasets}
