@@ -27,10 +27,7 @@ export(pstr_prepare_scenario)
 export(render_to_list)
 export(use_refactoring_checklist)
 importFrom(dplyr,across)
-<<<<<<< HEAD
 importFrom(dplyr,bind_rows)
-=======
->>>>>>> main
 importFrom(dplyr,case_when)
 importFrom(dplyr,distinct)
 importFrom(dplyr,distinct_all)
@@ -61,13 +58,10 @@ importFrom(ggplot2,ggplot)
 importFrom(ggplot2,scale_fill_gradient2)
 importFrom(ggplot2,scale_x_discrete)
 importFrom(magrittr,"%>%")
-<<<<<<< HEAD
 importFrom(purrr,imap_dfr)
-importFrom(readr,read_csv)
-=======
 importFrom(purrr,map)
 importFrom(purrr,reduce)
->>>>>>> main
+importFrom(readr,read_csv)
 importFrom(rlang,":=")
 importFrom(rlang,.data)
 importFrom(rlang,.env)
