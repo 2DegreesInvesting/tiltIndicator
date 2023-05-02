@@ -134,7 +134,7 @@ test_that("outputs correct values for edge cases", {
   out <- pstr(companies, scenarios)
   expect_equal("high", out$transition_risk)
 
-  edge <- -10
+  edge <- -1
   scenarios$reductions <- edge
   out <- pstr(companies, scenarios)
   expect_equal("low", out$transition_risk)
