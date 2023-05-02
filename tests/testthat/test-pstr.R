@@ -29,7 +29,7 @@ test_that("if a company has no products, shares are NA (#176)", {
   expect_equal(unique(out$score_aggregated), NA)
 })
 
-test_that("with a 0-row `copmanies` outputs a well structured 0-row tibble", {
+test_that("with a 0-row `companies` outputs a well structured 0-row tibble", {
   out0 <- pstr(pstr_companies[0L, ], pstr_scenarios)
   expect_s3_class(out0, "tbl")
   expect_equal(nrow(out0), 0L)
