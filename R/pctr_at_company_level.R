@@ -26,7 +26,7 @@ pctr_at_company_level <- function(co2, companies) {
     companies,
     co2,
     uuid = "activity_product_uuid",
-    benchmarks = c(
+    .by = c(
       "all",
       "unit",
       # FIXME: Missing "sector" (#191)
