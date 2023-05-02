@@ -3,9 +3,9 @@
 #' ```{r child=extdata_path("child/intro-pctr.Rmd")}
 #' ```
 #'
-#' @inheritParams pctr_at_product_level
-#' @inheritParams pctr_at_company_level
-#' @param co2 A dataframe with co2 data.
+#' @param companies A dataframe like [pctr_companies].
+#' @param co2 A dataframe like [pctr_ecoinvent_co2].
+#' @inheritParams ictr
 #'
 #' @family PCTR functions
 #'
@@ -14,16 +14,80 @@
 #' @export
 #'
 #' @examples
-#' pctr(pctr_companies, pctr_ecoinvent_co2)
+#' companies <- pctr_companies
+#' co2 <- pctr_ecoinvent_co2
+#'
+#' # Product level
+#' companies |>
+#'   pctr_at_product_level(co2)
+#'
+#' # Company level
+#' companies |>
+#'   pctr_at_product_level(co2) |>
+#'   pctr_at_company_level()
+#'
+#' # Similar
+#' pctr(companies, co2)
 pctr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
-  out <- co2 |>
-    pctr_at_product_level(
-      low_threshold = low_threshold,
-      high_threshold = high_threshold
-    ) |>
-    pctr_at_company_level(companies)
+  pctr_check(companies)
 
-  out |>
+  product_level <- companies |>
+    pctr_at_product_level(co2, low_threshold, high_threshold)
+
+  company_level <- pctr_at_company_level(product_level)
+
+  company_level |>
     xctr_rename() |>
     relocate_crucial_output_columns()
+}
+
+#' @rdname pctr
+#' @export
+pctr_at_product_level <- function(companies,
+                                  co2,
+                                  low_threshold = 0.3,
+                                  high_threshold = 0.7) {
+  benchmarks <- list("all", "unit", c("unit", "sec"))
+  scored <- co2 |>
+    xctr_add_ranks(x = "co2_footprint", .by = benchmarks) |>
+    pctr_add_scores(low_threshold, high_threshold)
+
+  left_join(companies, scored, by = "activity_product_uuid")
+}
+
+#' @rdname pctr
+#' @export
+pctr_at_company_level <- function(data) {
+  xctr_at_company_level(data, c("all", "unit", "unit_sec"))
+}
+
+pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
+  ecoinvent_ranks %>%
+    mutate(
+      score_all = case_when(
+        perc_all < low_threshold ~ "low",
+        perc_all >= low_threshold & perc_all < high_threshold ~ "medium",
+        perc_all >= high_threshold ~ "high"
+      )
+    ) |>
+    # for products with same unit
+    mutate(
+      score_unit = case_when(
+        perc_unit < low_threshold ~ "low",
+        perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
+        perc_unit >= low_threshold ~ "high"
+      )
+    ) |>
+    # for products with same unit and sector
+    mutate(
+      score_unit_sec = case_when(
+        perc_unit_sec < low_threshold ~ "low",
+        perc_unit_sec >= low_threshold & perc_unit_sec < high_threshold ~ "medium",
+        perc_unit_sec >= high_threshold ~ "high",
+      )
+    )
+}
+
+pctr_check <- function(companies) {
+  stopifnot(hasName(companies, "company_id"))
 }
