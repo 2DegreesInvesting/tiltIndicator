@@ -101,42 +101,38 @@ test_that("with a missing value in `scenarios$reductions` errors gracefully", {
 })
 
 test_that("outputs correct values for edge cases", {
+  companies <- tibble(
+    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
+    company_name = "cta - commodity trading austria gmbh",
+    type = "ipr",
+    sector = "total",
+    subsector = "energy",
+  )
+  scenarios <- tibble(
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    year = 2020,
+    value = 99,
+    reductions = 0,
+    type = "ipr",
+  )
 
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(pstr_scenarios, 1)
-  #TODO : create updated toy data set for scenarios and companies
-  scenarios$type <- "ipr"
-  scenarios$sector <- "total"
-  scenarios$subsector <- "energy"
-
-  edge <- NA
-  scenarios$reductions <- edge
-  out <- pstr(companies, scenarios)
+  out <- pstr(companies, mutate(scenarios, reductions = NA))
   expect_equal("no_sector", out$transition_risk)
 
-  edge <- 30
-  scenarios$reductions <- edge
-  out <- pstr(companies, scenarios)
+  out <- pstr(companies, mutate(scenarios, reductions = 30))
   expect_equal("low", out$transition_risk)
 
-  edge <- 30.1
-  scenarios$reductions <- edge
-  out <- pstr(companies, scenarios)
+  out <- pstr(companies, mutate(scenarios, reductions = 30.1))
   expect_equal("medium", out$transition_risk)
 
-  edge <- 70
-  scenarios$reductions <- edge
-  out <- pstr(companies, scenarios)
+  out <- pstr(companies, mutate(scenarios, reductions = 70))
   expect_equal("medium", out$transition_risk)
 
-  edge <- 70.1
-  scenarios$reductions <- edge
-  out <- pstr(companies, scenarios)
+  out <- pstr(companies, mutate(scenarios, reductions = 70.1))
   expect_equal("high", out$transition_risk)
 
-  edge <- -1
-  scenarios$reductions <- edge
-  out <- pstr(companies, scenarios)
+  out <- pstr(companies, mutate(scenarios, reductions = -1))
   expect_equal("low", out$transition_risk)
-
 })
