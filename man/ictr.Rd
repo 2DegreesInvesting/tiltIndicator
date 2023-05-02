@@ -2,20 +2,33 @@
 % Please edit documentation in R/ictr.R
 \name{ictr}
 \alias{ictr}
+\alias{ictr_at_product_level}
+\alias{ictr_at_company_level}
 \title{Calculate the ICTR indicator}
 \usage{
 ictr(companies, co2, low_threshold = 0.3, high_threshold = 0.7)
+
+ictr_at_product_level(
+  companies,
+  co2,
+  low_threshold = 0.3,
+  high_threshold = 0.7
+)
+
+ictr_at_company_level(data)
 }
 \arguments{
-\item{companies}{A \link{data.frame} like \link{ictr_companies}.}
+\item{companies}{A dataframe like \link{ictr_companies}.}
 
-\item{co2}{A \link{data.frame} like \link{ictr_inputs}.}
+\item{co2}{A dataframe like \link{ictr_inputs}.}
 
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}
 
 \item{high_threshold}{A numeric value to segment medium and high transition
 risk products.}
+
+\item{data}{A dataframe. The ouput of \code{\link[=ictr_at_product_level]{ictr_at_product_level()}}.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.
@@ -62,6 +75,19 @@ completely random selection and do not reflect the true information:
 }
 }
 \examples{
-ictr(ictr_companies, ictr_inputs)
+companies <- ictr_companies
+co2 <- ictr_inputs
+
+# Product level
+companies |>
+  ictr_at_product_level(co2)
+
+# Company level
+companies |>
+  ictr_at_product_level(co2) |>
+  ictr_at_company_level()
+
+# Similar
+ictr(companies, co2)
 }
 \concept{ICTR functions}
