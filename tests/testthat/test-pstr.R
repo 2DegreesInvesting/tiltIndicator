@@ -92,10 +92,51 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 
 })
 
+test_that("with a missing value in `scenarios$reductions` errors gracefully", {
+  skip("TODO : Ask Tilman if this should throw an error.")
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(pstr_scenarios, 1)
+  scenarios$reductions <- NA
+  expect_error(pstr(companies, scenarios))
+})
+
 test_that("outputs correct values for edge cases", {
-  skip("FIXME: Adapt to new API")
-  edge_cases <- pstr_toy_weo_2022(reductions = c(NA, 30, 30.1, 70, 70.1))
-  with_reductions <- pstr_old_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), edge_cases)
-  out <- pstr_add_transition_risk(with_reductions)
-  expect_equal(c("no_sector", "low", "medium", "medium", "high"), out$transition_risk)
+
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(pstr_scenarios, 1)
+  #TODO : create updated toy data set for scenarios and companies
+  scenarios$type <- "ipr"
+  scenarios$sector <- "total"
+  scenarios$subsector <- "energy"
+
+  edge <- NA
+  scenarios$reductions <- edge
+  out <- pstr(companies, scenarios)
+  expect_equal("no_sector", out$transition_risk)
+
+  edge <- 30
+  scenarios$reductions <- edge
+  out <- pstr(companies, scenarios)
+  expect_equal("low", out$transition_risk)
+
+  edge <- 30.1
+  scenarios$reductions <- edge
+  out <- pstr(companies, scenarios)
+  expect_equal("medium", out$transition_risk)
+
+  edge <- 70
+  scenarios$reductions <- edge
+  out <- pstr(companies, scenarios)
+  expect_equal("medium", out$transition_risk)
+
+  edge <- 70.1
+  scenarios$reductions <- edge
+  out <- pstr(companies, scenarios)
+  expect_equal("high", out$transition_risk)
+
+  edge <- -10
+  scenarios$reductions <- edge
+  out <- pstr(companies, scenarios)
+  expect_equal("low", out$transition_risk)
+
 })
