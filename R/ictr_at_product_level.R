@@ -44,7 +44,7 @@ ictr_at_product_level <- function(co2,
     # So here I rename y to x so I can use the same form for all columns
     rename(sec = "input_sector") |>
     xctr_add_ranks(x = "input_co2", .by) |>
-    rename(input_sector = sec)
+    rename(input_sector = "sec")
 
   ranked |>
     ictr_add_scores(
