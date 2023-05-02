@@ -40,6 +40,58 @@ test_that("with a 0-row `companies` outputs a well structured 0-row tibble", {
   expect_equal(names(out0), names(out1))
 })
 
+test_that("if `companies` lacks crucial columns, errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(pstr_scenarios, 1)
+
+  crucial <- "company_id"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+
+  crucial <- "company_name"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+
+  crucial <- "type"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+
+  crucial <- "sector"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+
+  crucial <- "subsector"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+
+})
+
+test_that("if `scenarios` lacks crucial columns, errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(pstr_scenarios, 1)
+
+  crucial <- "type"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "sector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "subsector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "year"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "scenario"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+})
+
 test_that("outputs correct values for edge cases", {
   skip("FIXME: Adapt to new API")
   edge_cases <- pstr_toy_weo_2022(reductions = c(NA, 30, 30.1, 70, 70.1))
