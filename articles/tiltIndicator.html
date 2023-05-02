@@ -207,50 +207,38 @@ we’ll use in the examples below.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $pstr_companies</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 5</span></span></span>
-<span><span class="co">#&gt;    company_id company_name       products              sector          subsector</span></span>
-<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter      screws                steel_metal_tr… bending_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>          2 Peasant Peter      <span style="color: #BB0000;">NA</span>                    steel_metals    aluminiu…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>          3 Peasant Peter      ultrafilstration      cars            vehicle_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>          4 Peasant Paul       frozen_food           frozen_food     cheese_s…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>          5 Tom's Car Company  oils                  cars            automobi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>          6 Tom's Car Company  bolts                 steel_metal_tr… bending_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>          7 Screwdriver Expert chucks                steel_metal_tr… boring_s…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>          8 Screwdriver Expert adaptator_plate       steel_metal_tr… boring_s…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>          9 John Meier's Cars  disinfection_products cars            vehicle_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>         10 John Meier's Cars  ultrafilstration      cars            vehicle_…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 28 × 9</span></span></span>
+<span><span class="co">#&gt;    company_id company_name products isic_4digit tilt_sector tilt_subsector type </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> cta-commo… cta - commo… <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span> energy      bioenergy &amp; w… ipr  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> cta-commo… cta - commo… <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span> energy      bioenergy &amp; w… weo  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> cbrit_000… cbr-it       <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span> energy      bioenergy &amp; w… ipr  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> cbrit_000… cbr-it       <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span> energy      bioenergy &amp; w… weo  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> manz-back… manz backte… 063e488…        <span style="text-decoration: underline;">2</span>750 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             ipr  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> manz-back… manz backte… 063e488…        <span style="text-decoration: underline;">2</span>750 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             weo  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> manz-back… manz backte… 61d0058…        <span style="text-decoration: underline;">2</span>750 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             ipr  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> manz-back… manz backte… 61d0058…        <span style="text-decoration: underline;">2</span>750 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             weo  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> barham-me… barham meta… 0faa7ec…        <span style="text-decoration: underline;">2</span>410 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             ipr  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> barham-me… barham meta… 0faa7ec…        <span style="text-decoration: underline;">2</span>410 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             weo  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 18 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: sector &lt;chr&gt;, subsector &lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $pstr_ep_weo</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 133 × 6</span></span></span>
-<span><span class="co">#&gt;    EP_categories_id           EP_group EP_sector EP_subsector weo_product_mapper</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> d3a7a3c40afd18a7a84094226… metallu… steel_me… bending_ste… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 8d926b734410de5ba68daa170… metallu… steel_me… boilers_sta… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2eed5a1fd604b1d3ec561a072… metallu… steel_me… boring_stee… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 157f4f5953d1a5bfee4742175… metallu… steel_me… brazing_ste… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2092de203e479b67bea023563… metallu… steel_me… broaching_s… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 62dea331c70a02280d5f71a27… metallu… steel_me… bronzing_st… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 8c02cdfddde68d166c1352fa7… metallu… steel_me… canopies_me… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> e593b1156ce341881d18b8274… metallu… steel_me… chrome_plat… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> b044eec1205c7ef2fde9e38db… metallu… steel_me… cleaning_st… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 0880f49af456479b3e4f99c1e… metallu… steel_me… cutting_ste… Total             </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 123 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: weo_flow_mapper &lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $pstr_weo_2022</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 10</span></span></span>
-<span><span class="co">#&gt;   publication          scenario region category product flow  unit   year  value</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> World Energy Outloo… Stated … world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>020 2.79<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> World Energy Outloo… Net Zer… world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>030 1.63<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> World Energy Outloo… Net Zer… world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>040 5.47<span style="color: #949494;">e</span>2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> World Energy Outloo… Net Zer… world  co2 com… Total   Road… mt c…  <span style="text-decoration: underline;">2</span>050 8.46<span style="color: #949494;">e</span>1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> World Energy Outloo… Stated … world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>020 2.59<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> World Energy Outloo… Net Zer… world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>030 1.95<span style="color: #949494;">e</span>2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> World Energy Outloo… Net Zer… world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>040 1.01<span style="color: #949494;">e</span>4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> World Energy Outloo… Net Zer… world  co2 com… Total   Iron… mt c…  <span style="text-decoration: underline;">2</span>050 7.43<span style="color: #949494;">e</span>3</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: reductions &lt;dbl&gt;</span></span></span></code></pre>
+<span><span class="co">#&gt; $pstr_scenarios</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 484 × 11</span></span></span>
+<span><span class="co">#&gt;    scenario    region sector subsector  year  value reductions type  publication</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1.5c requi… weste… power  <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>020  550.       0     ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1.5c requi… weste… power  <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>030   47.4      0.914 ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1.5c requi… weste… power  <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>040  -<span style="color: #BB0000;">60.6</span>      1.11  ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1.5c requi… weste… power  <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>050 -<span style="color: #BB0000;">175.</span>       1.32  ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1.5c requi… weste… build… <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>020  397.       0     ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1.5c requi… weste… build… <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>030  189.       0.525 ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1.5c requi… weste… build… <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>040   13.1      0.967 ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1.5c requi… weste… build… <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>050    0        1     ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1.5c requi… weste… indus… iron and…  <span style="text-decoration: underline;">2</span>020   70.2      0     ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1.5c requi… weste… indus… iron and…  <span style="text-decoration: underline;">2</span>030   30.5      0.565 ipr   <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 474 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: product &lt;chr&gt;, flow &lt;chr&gt;</span></span></span></code></pre>
 <div class="section level2">
 <h2 id="general-introduction">General introduction<a class="anchor" aria-label="anchor" href="#general-introduction"></a>
 </h2>
@@ -482,21 +470,21 @@ therefore, derive company-level information.</p>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pstr_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pstr.html">pstr</a></span><span class="op">(</span>scenario <span class="op">=</span> <span class="va">pstr_weo_2022</span>, mapper <span class="op">=</span> <span class="va">pstr_ep_weo</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 37 × 6</span></span></span>
-<span><span class="co">#&gt;       id transition_risk score_aggregated company_name  scenario            year</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 high                         100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>050</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     1 low                          100 Peasant Peter Stated Policies S…  <span style="text-decoration: underline;">2</span>020</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     1 medium                       100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>030</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     1 medium                       100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     2 high                         100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>050</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     2 low                          100 Peasant Peter Stated Policies S…  <span style="text-decoration: underline;">2</span>020</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     2 medium                       100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>030</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     2 medium                       100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     3 high                         100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     3 high                         100 Peasant Peter Net Zero Emission…  <span style="text-decoration: underline;">2</span>050</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more rows</span></span></span></code></pre></div>
+<span>  <span class="fu"><a href="../reference/pstr.html">pstr</a></span><span class="op">(</span>scenarios <span class="op">=</span> <span class="va">pstr_scenarios</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 45 × 6</span></span></span>
+<span><span class="co">#&gt;    id               transition_risk score_aggregated company_name scenario  year</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> barham-metall-g… low                          100 barham meta… 1.5c re…  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> barham-metall-g… low                          100 barham meta… 1.5c re…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> barham-metall-g… low                          100 barham meta… 1.5c re…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> barham-metall-g… low                          100 barham meta… 1.5c re…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> barham-metall-g… no_sector                     50 barham meta… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> breuninger-lede… low                          100 breuninger … 1.5c re…  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> breuninger-lede… low                          100 breuninger … 1.5c re…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> breuninger-lede… low                          100 breuninger … 1.5c re…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> breuninger-lede… low                          100 breuninger … 1.5c re…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> breuninger-lede… no_sector                     50 breuninger … <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more rows</span></span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

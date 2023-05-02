@@ -94,22 +94,22 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_add_reductions.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_at_company_level.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_add_transition_risk.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_aggregate_scores.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_at_product_level.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_companies.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_ep_weo.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_prepare_companies.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_weo_2022.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_prepare_scenario.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_scenarios.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/render_to_list.html</loc>

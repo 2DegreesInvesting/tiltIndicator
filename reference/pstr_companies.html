@@ -59,7 +59,7 @@
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 10 rows and 5 columns.</p>
+    <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 28 rows and 9 columns.</p>
     </div>
     <div class="section level2">
     <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
@@ -68,30 +68,31 @@
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other PSTR datasets: 
-<code><a href="pstr_ep_weo.html">pstr_ep_weo</a></code>,
-<code><a href="pstr_weo_2022.html">pstr_weo_2022</a></code></p></div>
+<code><a href="pstr_scenarios.html">pstr_scenarios</a></code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p>Linda Delacombaz.</p>
+    <p>Tilman Trompke.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">pstr_companies</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    company_id company_name       products              sector          subsector</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>          1 Peasant Peter      screws                steel_metal_tr… bending_…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>          2 Peasant Peter      <span style="color: #BB0000;">NA</span>                    steel_metals    aluminiu…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>          3 Peasant Peter      ultrafilstration      cars            vehicle_…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>          4 Peasant Paul       frozen_food           frozen_food     cheese_s…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>          5 Tom's Car Company  oils                  cars            automobi…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>          6 Tom's Car Company  bolts                 steel_metal_tr… bending_…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>          7 Screwdriver Expert chucks                steel_metal_tr… boring_s…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>          8 Screwdriver Expert adaptator_plate       steel_metal_tr… boring_s…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>          9 John Meier's Cars  disinfection_products cars            vehicle_…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>         10 John Meier's Cars  ultrafilstration      cars            vehicle_…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 28 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    company_id company_name products isic_4digit tilt_sector tilt_subsector type </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> cta-commo… cta - commo… <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span> energy      bioenergy &amp; w… ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> cta-commo… cta - commo… <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span> energy      bioenergy &amp; w… weo  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> cbrit_000… cbr-it       <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span> energy      bioenergy &amp; w… ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> cbrit_000… cbr-it       <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span> energy      bioenergy &amp; w… weo  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> manz-back… manz backte… 063e488…        <span style="text-decoration: underline;">2</span>750 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> manz-back… manz backte… 063e488…        <span style="text-decoration: underline;">2</span>750 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             weo  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> manz-back… manz backte… 61d0058…        <span style="text-decoration: underline;">2</span>750 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> manz-back… manz backte… 61d0058…        <span style="text-decoration: underline;">2</span>750 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             weo  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> barham-me… barham meta… 0faa7ec…        <span style="text-decoration: underline;">2</span>410 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> barham-me… barham meta… 0faa7ec…        <span style="text-decoration: underline;">2</span>410 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>             weo  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 18 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: sector &lt;chr&gt;, subsector &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
