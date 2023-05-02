@@ -30,6 +30,6 @@ ictr_at_company_level <- function(co2, companies) {
     companies,
     co2,
     uuid = "activity_uuid_product_uuid",
-    benchmarks = c("all", "unit", "sector", "unit_sec")
+    .by = c("all", "unit", "sector", "unit_sec")
   )
 }

@@ -1,7 +1,7 @@
 xctr_score_companies <- function(companies,
                                  co2,
                                  uuid = "activity_uuid_product_uuid",
-                                 benchmarks = c("all", "unit", "sector", "unit_sec")) {
+                                 .by = c("all", "unit", "sector", "unit_sec")) {
   stopifnot(hasName(companies, "company_id"))
 
   companies_scores <- left_join(companies, co2, by = c(uuid))
@@ -13,7 +13,7 @@ xctr_score_companies <- function(companies,
   )
 
   # Share in comparison to all inputs and those with same unit, sector, ...
-  benchmarks_list <- map(benchmarks, ~ add_share(companies_scores, .x))
+  benchmarks_list <- map(.by, ~ add_share(companies_scores, .x))
 
   ictr_output <- append(list(dt_sceleton), benchmarks_list) |>
     reduce(left_join, by = c("company_id", "score"))
