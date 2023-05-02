@@ -147,17 +147,26 @@ completely random selection and do not reflect the true information:</p><ul><li>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ictr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">co2</span>, low_threshold <span class="op">=</span> <span class="fl">0.3</span>, high_threshold <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ictr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">co2</span>, low_threshold <span class="op">=</span> <span class="fl">0.3</span>, high_threshold <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ictr_at_product_level</span><span class="op">(</span></span>
+<span>  <span class="va">companies</span>,</span>
+<span>  <span class="va">co2</span>,</span>
+<span>  low_threshold <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>  high_threshold <span class="op">=</span> <span class="fl">0.7</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ictr_at_company_level</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>companies</dt>
-<dd><p>A <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> like <a href="ictr_companies.html">ictr_companies</a>.</p></dd>
+<dd><p>A dataframe like <a href="ictr_companies.html">ictr_companies</a>.</p></dd>
 
 
 <dt>co2</dt>
-<dd><p>A <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> like <a href="ictr_inputs.html">ictr_inputs</a>.</p></dd>
+<dd><p>A dataframe like <a href="ictr_inputs.html">ictr_inputs</a>.</p></dd>
 
 
 <dt>low_threshold</dt>
@@ -169,6 +178,10 @@ risk products.</p></dd>
 <dd><p>A numeric value to segment medium and high transition
 risk products.</p></dd>
 
+
+<dt>data</dt>
+<dd><p>A dataframe. The ouput of <code>ictr_at_product_level()</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -179,7 +192,55 @@ risk products.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">ictr</span><span class="op">(</span><span class="va">ictr_companies</span>, <span class="va">ictr_inputs</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="va">ictr_companies</span></span></span>
+<span class="r-in"><span><span class="va">co2</span> <span class="op">&lt;-</span> <span class="va">ictr_inputs</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Product level</span></span></span>
+<span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">ictr_at_product_level</span><span class="op">(</span><span class="va">co2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 75 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    activity_uuid_product_uuid    company_id unit.x input_co2 input_sector unit.y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0a242b09-772a-5edf-8e82-9cb4… fleischer… metri…     73.6  transport    metri…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0a242b09-772a-5edf-8e82-9cb4… fleischer… metri…     47.3  infrastruct… metri…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0a242b09-772a-5edf-8e82-9cb4… fleischer… metri…     -<span style="color: #BB0000;">3.9</span>  infrastruct… metri…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> be06d25c-73dc-55fb-965b-0f30… fleischer… kg         96    infrastruct… kg    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> be06d25c-73dc-55fb-965b-0f30… fleischer… kg         -<span style="color: #BB0000;">0.76</span> metals       kg    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> be06d25c-73dc-55fb-965b-0f30… fleischer… kg         88.2  infrastruct… kg    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 977d997e-c257-5033-ba39-d0ed… fleischer… metri…     39.1  electricity  metri…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 977d997e-c257-5033-ba39-d0ed… fleischer… metri…     -<span style="color: #BB0000;">3.78</span> infrastruct… metri…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 977d997e-c257-5033-ba39-d0ed… fleischer… metri…     91.3  infrastruct… metri…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 5fd7fca0-0700-51fd-877a-72b5… fleischer… kg         80.1  infrastruct… kg    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 65 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: perc_all &lt;dbl&gt;, perc_unit &lt;dbl&gt;, perc_sec &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_unit_sec &lt;dbl&gt;, score_all &lt;chr&gt;, score_unit &lt;chr&gt;, score_sector &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   score_unit_sec &lt;chr&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Company level</span></span></span>
+<span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">ictr_at_product_level</span><span class="op">(</span><span class="va">co2</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">ictr_at_company_level</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    company_id             score share_all share_unit share_sector share_unit_sec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn… high      0.286      0.333        0.333         0.476 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn… medi…     0.381      0.476        0.429         0.429 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn… low       0.333      0.190        0.238         0.095<span style="text-decoration: underline;">2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> pecheries-basques_fra… high      0.333      0.333        0.556         0.556 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> pecheries-basques_fra… medi…     0.556      0.556        0.333         0.222 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> pecheries-basques_fra… low       0.111      0.111        0.111         0.222 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> hoche-butter-gmbh_deu… high      0          0            0             0     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> hoche-butter-gmbh_deu… medi…     0.667      0.667        0.667         0.667 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> hoche-butter-gmbh_deu… low       0.333      0.333        0.333         0.333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> vicquelin-espaces-ver… high      0.111      0.222        0.111         0.222 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> vicquelin-espaces-ver… medi…     0.444      0.444        0.556         0.667 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> vicquelin-espaces-ver… low       0.444      0.333        0.333         0.111 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> bst-procontrol-gmbh_0… high      0.394      0.364        0.455         0.515 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> bst-procontrol-gmbh_0… medi…     0.333      0.424        0.333         0.333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> bst-procontrol-gmbh_0… low       0.273      0.212        0.212         0.152 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Similar</span></span></span>
+<span class="r-in"><span><span class="fu">ictr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">co2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    id           transition_risk score_all score_unit score_sector score_unit_sec</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
