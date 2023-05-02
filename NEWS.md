@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9030
+
+* In both `ictr()` and `pctr()` the first argument is now named `co2`.
+
+* New internal-ish functions in the xctr family (#207).
+
 # tiltIndicator 0.0.0.9029
 
 * In PCTR, if a company matches no input, all shares are now `NA` (#205).
