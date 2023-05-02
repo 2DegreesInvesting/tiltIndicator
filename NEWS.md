@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9031
+
+* In PSTR use new data  (@lindadelacombaz #196).
+
 # tiltIndicator 0.0.0.9030
 
 * In both `ictr()` and `pctr()` the first argument is now named `co2`.
