@@ -35,12 +35,9 @@
 ictr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   ictr_check(companies, co2)
 
-  product_level <- companies |>
-    ictr_at_product_level(co2, low_threshold, high_threshold)
-
-  company_level <- ictr_at_company_level(product_level)
-
-  xctr_polish_output(company_level)
+  companies |>
+    ictr_at_product_level(co2, low_threshold, high_threshold) |>
+    ictr_at_company_level()
 }
 
 #' @rdname ictr
@@ -72,7 +69,9 @@ ictr_at_product_level <- function(companies,
 #' @rdname ictr
 #' @export
 ictr_at_company_level <- function(data) {
-  xctr_at_company_level(data, c("all", "unit", "sector", "unit_sec"))
+  data |>
+    xctr_at_company_level(c("all", "unit", "sector", "unit_sec")) |>
+    xctr_polish_output()
 }
 
 ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
