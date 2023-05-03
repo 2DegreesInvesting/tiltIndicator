@@ -80,6 +80,7 @@ pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
       score_unit = case_when(
         perc_unit < low_threshold ~ "low",
         perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
+        # FIXME: Should be high_threshold?
         perc_unit >= low_threshold ~ "high"
       )
     ) |>
