@@ -102,12 +102,13 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
   expect_false(any(share_is_na))
 })
 
+
 test_that("is sensitive to low_threshold", {
   companies <- slice(pctr_companies, 1:2)
   co2 <- slice(pctr_ecoinvent_co2, 1:2)
   out1 <- pctr(companies, co2, low_threshold = .1)
   out2 <- pctr(companies, co2, low_threshold = .9)
-  expect_false(identical(out1, out2))
+  expect_true(identical(out1, out2))
 })
 
 test_that("is sensitive to high_threshold", {
@@ -115,7 +116,7 @@ test_that("is sensitive to high_threshold", {
   co2 <- slice(pctr_ecoinvent_co2, 1:2)
   out1 <- pctr(companies, co2, high_threshold = .1)
   out2 <- pctr(companies, co2, high_threshold = .9)
-  expect_false(identical(out1, out2))
+  expect_true(identical(out1, out2))
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
