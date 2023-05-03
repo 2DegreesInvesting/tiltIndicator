@@ -188,7 +188,7 @@ test_that("with a missing value in `inputs$inputs_co2` errors gracefully", {
   companies <- slice(ictr_companies, 2)
   inputs <- slice(ictr_inputs, 1)
   inputs$input_co2_footprint <- NA
-  expect_error(ictr(companies, inputs), "input_co2.*missing")
+  expect_error(ictr(companies, inputs), "input_co2_footprint.*missing")
 })
 
 test_that("if `companies` has 0-rows, returns a well structured 0-row output", {

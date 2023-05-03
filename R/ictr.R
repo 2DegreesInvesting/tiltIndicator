@@ -56,9 +56,9 @@ ictr_at_product_level <- function(companies,
     # But this column uses the form
     #     `mutate(data, x = f(y))`
     # So here I rename y to x so I can use the same form for all columns
-    rename(sec = "input_sector") |>
-    xctr_add_ranks(x = "input_co2", benchmarks) |>
-    rename(input_sector = "sec") |>
+    rename(sec = "input_tilt_sector", unit = "input_unit") |>
+    xctr_add_ranks(x = "input_co2_footprint", benchmarks) |>
+    rename(input_tilt_sector = "sec", input_unit = "unit") |>
     ictr_add_scores(low_threshold, high_threshold)
 
   left_join(companies, scored, by = "activity_uuid_product_uuid")
@@ -109,6 +109,6 @@ ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
 
 ictr_check <- function(companies, co2) {
   stopifnot(hasName(companies, "company_id"))
-  stopifnot(hasName(co2, "input_co2"))
-  stop_if_any_missing_input_co2(co2)
+  stopifnot(hasName(co2, "input_co2_footprint"))
+  stop_if_any_missing_input_co2_footprint(co2)
 }

@@ -53,15 +53,15 @@ use_refactoring_checklist <- function() {
 #' @param data A dataframe/tibble
 #'
 #' @examples
-#' data <- tibble::tibble(input_co2 = c(1, 4))
-#' stop_if_any_missing_input_co2(data)
+#' data <- tibble::tibble(input_co2_footprint = c(1, 4))
+#' stop_if_any_missing_input_co2_footprint(data)
 #'
-#' data <- tibble::tibble(input_co2 = c(1, NA))
-#' try(stop_if_any_missing_input_co2(data))
+#' data <- tibble::tibble(input_co2_footprint = c(1, NA))
+#' try(stop_if_any_missing_input_co2_footprint(data))
 #' @noRd
-stop_if_any_missing_input_co2 <- function(data) {
-  if (anyNA(data$input_co2)) {
-    stop("Each `input_co2` must not be missing.")
+stop_if_any_missing_input_co2_footprint <- function(data) {
+  if (anyNA(data$input_co2_footprint)) {
+    stop("Each `input_co2_footprint` must not be missing.")
   }
   invisible(data)
 }
