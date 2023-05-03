@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9036
+
+* Datasets from the same family are now documented together (#224).
+
 # tiltIndicator 0.0.0.9035
 
 * All company-level functions now output the same four columns:
