@@ -17,13 +17,10 @@
 #' @examples
 #' istr(istr_companies, istr_weo_2022, istr_ep_weo)
 istr <- function(companies, scenario, mapper) {
-  with_reductions <- companies |>
+  companies |>
     istr_mapping(mapper) |>
-    istr_add_reductions(scenario)
-
-  out <- with_reductions |>
+    istr_add_reductions(scenario) |>
     istr_add_transition_risk() |>
-    istr_aggregate_scores(companies)
-
-  xstr_polish_output(out)
+    istr_aggregate_scores(companies) |>
+    xstr_polish_output()
 }
