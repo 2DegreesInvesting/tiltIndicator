@@ -3,16 +3,21 @@
 \name{pstr}
 \alias{pstr}
 \alias{pstr_at_product_level}
+\alias{pstr_at_company_level}
 \title{Calculate the PSTR indicator}
 \usage{
 pstr(companies, scenarios)
 
 pstr_at_product_level(companies, scenarios)
+
+pstr_at_company_level(data, companies)
 }
 \arguments{
 \item{companies}{A dataframe like \link{pstr_companies}.}
 
 \item{scenarios}{A dataframe like \link{pstr_scenarios}.}
+
+\item{data}{A dataframe. The output at product level.}
 }
 \value{
 At company level, a dataframe with columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
@@ -43,9 +48,5 @@ companies |>
 
 # Same
 pstr(companies, scenarios)
-}
-\seealso{
-Other PSTR functions: 
-\code{\link{pstr_at_company_level}()}
 }
 \concept{PSTR functions}
