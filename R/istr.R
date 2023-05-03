@@ -6,6 +6,7 @@
 #' @param companies A dataframe like [istr_companies].
 #' @param scenario A dataframe like [istr_weo_2022].
 #' @param mapper A dataframe like [istr_ep_weo].
+#' @param data A dataframe. The output at product level.
 #'
 #' @family ISTR functions
 #'
@@ -20,12 +21,12 @@
 #'
 #' # Product level
 #' companies |>
-#' istr_at_product_level(scenario, mapper)
+#'   istr_at_product_level(scenario, mapper)
 #'
 #' # Company level
 #' companies |>
-#' istr_at_product_level(scenario, mapper)
-#' istr_at_company_level()
+#'   istr_at_product_level(scenario, mapper) |>
+#'   istr_at_company_level(companies)
 #'
 #' # Same
 #' istr(companies, scenario, mapper)
@@ -46,12 +47,12 @@ istr_at_product_level <- function(companies, scenario, mapper) {
 
 #' @rdname istr
 #' @export
-istr_at_company_level <- function(with_transition_risk, companies) {
+istr_at_company_level <- function(data, companies) {
   n_products_per_companies <- companies |>
     group_by(.data$companies_id, .data$company_name) |>
     summarise(total_products_per_company = n())
 
-  with_transition_risk2 <- with_transition_risk |>
+  with_transition_risk2 <- data |>
     left_join(
       # FIXME Join by company_id
       n_products_per_companies,

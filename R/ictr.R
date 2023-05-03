@@ -9,7 +9,7 @@
 #'   risk products.
 #' @param high_threshold A numeric value to segment medium and high transition
 #'   risk products.
-#' @param data A dataframe. The ouput of [ictr_at_product_level()].
+#' @param data A dataframe. The output at product level.
 #'
 #' @family ICTR functions
 #'
@@ -30,7 +30,7 @@
 #'   ictr_at_product_level(co2) |>
 #'   ictr_at_company_level()
 #'
-#' # Similar
+#' # Same
 #' ictr(companies, co2)
 ictr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   ictr_check(companies, co2)

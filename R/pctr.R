@@ -26,7 +26,7 @@
 #'   pctr_at_product_level(co2) |>
 #'   pctr_at_company_level()
 #'
-#' # Similar
+#' # Same
 #' pctr(companies, co2)
 pctr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   pctr_check(companies)

@@ -10,7 +10,7 @@ istr(companies, scenario, mapper)
 
 istr_at_product_level(companies, scenario, mapper)
 
-istr_at_company_level(with_transition_risk, companies)
+istr_at_company_level(data, companies)
 }
 \arguments{
 \item{companies}{A dataframe like \link{istr_companies}.}
@@ -18,6 +18,8 @@ istr_at_company_level(with_transition_risk, companies)
 \item{scenario}{A dataframe like \link{istr_weo_2022}.}
 
 \item{mapper}{A dataframe like \link{istr_ep_weo}.}
+
+\item{data}{A dataframe. The output at product level.}
 }
 \value{
 At company level, a dataframe with columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
@@ -55,12 +57,12 @@ mapper <- istr_ep_weo
 
 # Product level
 companies |>
-istr_at_product_level(scenario, mapper)
+  istr_at_product_level(scenario, mapper)
 
 # Company level
 companies |>
-istr_at_product_level(scenario, mapper)
-istr_at_company_level()
+  istr_at_product_level(scenario, mapper) |>
+  istr_at_company_level(companies)
 
 # Same
 istr(companies, scenario, mapper)

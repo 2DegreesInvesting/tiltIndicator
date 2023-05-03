@@ -28,7 +28,7 @@ risk products.}
 \item{high_threshold}{A numeric value to segment medium and high transition
 risk products.}
 
-\item{data}{A dataframe. The ouput of \code{\link[=ictr_at_product_level]{ictr_at_product_level()}}.}
+\item{data}{A dataframe. The output at product level.}
 }
 \value{
 At company level, a dataframe with columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
@@ -87,7 +87,7 @@ companies |>
   ictr_at_product_level(co2) |>
   ictr_at_company_level()
 
-# Similar
+# Same
 ictr(companies, co2)
 }
 \concept{ICTR functions}
