@@ -1,7 +1,2595 @@
+# `ictr_inputs` hasn't changed
+
+    Code
+      out
+    Output
+      [[1]]
+         input_co2_footprint
+      1         7.072358e+00
+      2         3.991892e+01
+      3         5.118673e-01
+      4         1.235611e+00
+      5         2.124534e+01
+      6         1.240000e-09
+      7         7.000000e-09
+      8         1.036423e+00
+      9         1.120764e+00
+      10        3.514822e+00
+      11        5.690000e-04
+      12        1.155505e-01
+      13        5.391936e-02
+      14        4.427605e+00
+      15        6.001636e-01
+      16        4.304207e+00
+      17        9.830356e-03
+      18        1.024621e-03
+      19        3.076822e-02
+      20        3.123531e-03
+      21       -3.350000e-06
+      22       -1.136353e-03
+      23        2.601609e-01
+      24        2.843441e-01
+      25        1.099965e+01
+      26        1.006155e-03
+      27        3.243020e-02
+      28        1.199468e-01
+      29        1.868036e+00
+      30        4.545829e-03
+      31        2.200131e-02
+      32        5.292432e-02
+      33        4.894748e-03
+      
+      [[2]]
+         input_tilt_sector
+      1           Inudstry
+      2           Inudstry
+      3           Inudstry
+      4           Inudstry
+      5           Inudstry
+      6           Inudstry
+      7           Inudstry
+      8           Inudstry
+      9           Inudstry
+      10          Inudstry
+      11          Inudstry
+      12          Inudstry
+      13          Inudstry
+      14          Inudstry
+      15    Steel & Metals
+      16    Steel & Metals
+      17    Steel & Metals
+      18    Steel & Metals
+      19    Steel & Metals
+      20    Steel & Metals
+      21 Bioenergy & Waste
+      22 Bioenergy & Waste
+      23 Bioenergy & Waste
+      24 Bioenergy & Waste
+      25 Bioenergy & Waste
+      26 Bioenergy & Waste
+      27 Bioenergy & Waste
+      28          Inudstry
+      29          Inudstry
+      30          Inudstry
+      31          Inudstry
+      32          Inudstry
+      33          Inudstry
+      
+      [[3]]
+            input_unit
+      1             kg
+      2            kwh
+      3             kg
+      4             kg
+      5            kwh
+      6             kg
+      7             kg
+      8             kg
+      9             kg
+      10            kg
+      11            kg
+      12           kwh
+      13            kg
+      14            kg
+      15           kwh
+      16            kg
+      17 metric ton*km
+      18 metric ton*km
+      19 metric ton*km
+      20 metric ton*km
+      21            kg
+      22            kg
+      23           kwh
+      24            kg
+      25            kg
+      26            kg
+      27            m3
+      28            kg
+      29            kg
+      30 metric ton*km
+      31 metric ton*km
+      32 metric ton*km
+      33 metric ton*km
+      
+      [[4]]
+         input_isic_4digit_sector
+      1                      2560
+      2                      2560
+      3                      2560
+      4                      2560
+      5                      2560
+      6                      2560
+      7                      2560
+      8                      2560
+      9                      2560
+      10                     2560
+      11                     2560
+      12                     2560
+      13                     2560
+      14                     2560
+      15                     2870
+      16                     2870
+      17                     2870
+      18                     2870
+      19                     2870
+      20                     2870
+      21                     1780
+      22                     1780
+      23                     1780
+      24                     1780
+      25                     1780
+      26                     1780
+      27                     1780
+      28                     2679
+      29                     2679
+      30                     2679
+      31                     2679
+      32                     2679
+      33                     2679
+      
+      [[5]]
+                                                        activity_uuid_product_uuid
+      1  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      2  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      3  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      4  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      5  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      6  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      7  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      8  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      9  be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
+      10 be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
+      11 be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
+      12 be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
+      13 be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
+      14 be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
+      15 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
+      16 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
+      17 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
+      18 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
+      19 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
+      20 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
+      21 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      22 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      23 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      24 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      25 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      26 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      27 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      28 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      29 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      30 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      31 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      32 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      33 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      
+
+# `ictr_companies` hasn't changed
+
+    Code
+      out
+    Output
+      [[1]]
+                                                       activity_uuid_product_uuid
+      1 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      2 be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
+      3 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
+      4 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      5 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      6 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      7 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      8 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      9                                                                      <NA>
+      
+      [[2]]
+                                      company_id
+      1 fleischerei-stiefsohn_00000005219477-001
+      2 fleischerei-stiefsohn_00000005219477-001
+      3        pecheries-basques_fra316541-00101
+      4    hoche-butter-gmbh_deu422723-693847001
+      5  vicquelin-espaces-verts_fra697272-00101
+      6   bst-procontrol-gmbh_00000005104947-001
+      7           leider-gmbh_00000005064318-001
+      8             cheries-baqu_neu316541-00101
+      9       ca-coity-trg-aua-gmbh_00000384-001
+      
+      [[3]]
+        unit
+      1 unit
+      2 unit
+      3   kg
+      4   kg
+      5   kg
+      6   kg
+      7   kg
+      8   kg
+      9 <NA>
+      
+
+# `istr_ep_weo` hasn't changed
+
+    Code
+      format_robust_snapshot(istr_ep_weo)
+    Output
+      [[1]]
+                               ï..EP_categories_id
+      1   d3a7a3c40afd18a7a840942262099f23f65c19a0
+      2   8d926b734410de5ba68daa17089a14c1bc1b70f7
+      3   2eed5a1fd604b1d3ec561a07257b8a1eb99f2cfd
+      4   157f4f5953d1a5bfee474217567dc2e650685d0b
+      5   2092de203e479b67bea02356318c0c8fc8e0c45c
+      6   62dea331c70a02280d5f71a27ec140305aff9296
+      7   8c02cdfddde68d166c1352fa745df959f4ff3630
+      8   e593b1156ce341881d18b82747a3c0bb490c160a
+      9   b044eec1205c7ef2fde9e38db6b9b308a1bd791a
+      10  0880f49af456479b3e4f99c1ed0d14217e26782a
+      11  51512f8bd1f629f1762410788940c2203c0e8297
+      12  eebf85a8d5df53e4c2c7d5fc84267fd39ac889a6
+      13  5f39bc8b1f90c93730e9ae08adaee5603c0dc424
+      14  1882050056f2756ba9f1605111b9ff1209de1c91
+      15  ee1aabf520b1afaf4b4fe23f38b25f764cdd9eb9
+      16  befedf822ed85e77ff61f7cfcde0c5b16d02a3d4
+      17  7061a8e2d4589b1a14da500de50bbc15d66e068f
+      18  13c18ddb551037d65f6d2eb278df106e11c29714
+      19  ef0cd8c3d9c1fa09d83a4bc0802fbef407b52f64
+      20  d88ec58a80ddf7be9e371d964d3eaf19355ad808
+      21  81e6b6d19026c3d47a9960a18e4b879b668d0924
+      22  50f1f56ee38dc55bcf3dfd6653a82367ac289eed
+      23  bf581fc05bf88adb3f445acb8c4eb9e57f5332eb
+      24  3010bc9509b08fb94c29995c7b8ff723baeb62ca
+      25  c4f1e7c54b903f016850a53ba4ecdee7cf233a54
+      26  038d2d8209f754402f0a0fa1b9816da02c868bf1
+      27  6b504bbead6baab51cdfd68dcd1b793889983be9
+      28  0cce2f90db7664f1a4e8032dcc85203f7c9debcb
+      29  749d1d7110e8994fa6e8202d5b602bec951160b5
+      30  bf28c021c592e1e90b08e459e58cb68f1f7079b8
+      31  1f6fe694bbd6a46f955ea624e482c337dc57f4de
+      32  ac147a36a9871ef49ddfc49a4363c4b71bafe0b4
+      33  131bc12bf75fbbbab1accea41dbdae34a51d7832
+      34  35985ca7251f4380632f7c62815bfb3b5ef3bf40
+      35  ba9194288909a736614a88abe1ab3d97c3ee8d5d
+      36  a2e8149c59385387fef3c6aab3e2a49340f204bd
+      37  ea96b165ad2cc40c96d3ce75a4a01669c0798e4b
+      38  4652bcd9d24240974c60764b48b573b2d323dc6f
+      39  a1fe73a7a184cd62feee404a53aafbb70b20433f
+      40  80ccf9b1dcdf7c1720c3c54478dfd3b978d7d6b2
+      41  7807023f6054508fc1bf6ca865af83cbb86f2d29
+      42  a14c3b1b84d9860b987da64cee1c73d5a5498a31
+      43  b8143d4b3ccf6438828f3caec72742740509454a
+      44  42b00a5db4e6786f34491f1bc78f4e3916b4d4eb
+      45  987bd39c0d5b656795dc05c3ce5de1dc9bf0289a
+      46  91d28c2d923b2f71cc729c2192dd83324333acb2
+      47  709152bdf8c858750aba80267cfcd8073bab4d4d
+      48  c7b54f91f36561942f092f90503339575ab2d0bf
+      49  0b78efbbea08d1f75a6dbb63514b87276719f022
+      50  f6ee34d321503d33010e7c68bc4210698110feaa
+      51  db1c930271536c72571546c6e4779f8e21cd0501
+      52  cff53720714f146c73243624dcb589651a2f6885
+      53  2ed05a63862ba62001d872c3b74b838e40f27ae0
+      54  6e06824e10005f53e6c19bc27c520a4572783a5f
+      55  d79dfb72e5e4eefa531f1e1097abefb0b74f51b7
+      56  01d3d885af8c22da6bba3e4bd937641a5377421a
+      57  df2ab5efe3374cfbd3b0626989daf18d32f99087
+      58  46679235f97caeb29cbb5130556f2b4ec697adc2
+      59  7752efb417de1af73631dd2f4a81c6e319ef686f
+      60  1fc45edd40faec6b6297c73366e3487583805e9b
+      61  eb8f062c5277db8b1ced33b1dde12c03ad3ade5a
+      62  71824c5d49b186ec9c3ba96803ec9bd79d459124
+      63  c16f7000100402e9cead2bcaa7c019d90e99499b
+      64  3d271b20129be273ec5f16bf8d3510e25df4f178
+      65  19d6a4ee08e6d4641a4f3b987c125a697c4a60d4
+      66  3216903c709c1cfc92ea8a82a21e080ed8f68a31
+      67  7701332d12eaeb44569505581da37a642a251c10
+      68  b19c8484d87b018853db222408cebaabc9b29a52
+      69  4e0e48cd81e1ec9714b20418f219f4fb69549bbc
+      70  0fda57031ba0c3f1607ece687614b6bcfbdc8f56
+      71  9d99a098f005bb766c4b3cd3dc5525252759da3b
+      72  5d8e92020da15a365b1974845fd10095a3b2faec
+      73  6c36c4c60eb2a042f261bbc66c3cd319c8c4d515
+      74  cc9f598a5c0bb0139d0c2768d008732a6981132e
+      75  bbe92ddb0ad37f603981a49bea41be83173396d4
+      76  f0788c52686dc7efee1637d202d4c2d7e3b729c9
+      77  098fb9b881bd87dc62ae7e7fcb78aee066ab4566
+      78  26f650bed9f9236fb483691972a1eab6324d67a4
+      79  914c6b15dd35e3291663c4d80085ff4bd63aa79c
+      80  cf85a76e5f5fe38992d16d24ba66efb2b369cd40
+      81  7cac2dbd28886af019ab09202f1b5fb4383e8515
+      82  0006c6d1f0b3041ba68fde6366a9d144cf416db1
+      83  e8a949ce30fead86dd311aaf05c2632275653c8c
+      84  d86edc3879285e9bcb8be9950e823244f5504611
+      85  9f3a0c6e55328be26e7443dc980526ede1bb0225
+      86  9ba9baab0ffabf4dcad838a4d5bc446f2e211842
+      87  6de873b90a6f2a3e01f9ae923dd0d487ca54615b
+      88  ae504467cb71fbaa86fa42da49b6914abaff9669
+      89  cd5d89dbeffa2da2c37cdb0872dddbe6d18ab5e3
+      90  61b2f9918269c837f3ceeffdf9a317bdaecdf9d7
+      91  ca5f07b685424309cdfd99c0e6b3a818c9a0a686
+      92  faa8c53025925fec4fac067dc286db3438eef007
+      93  ebd644554fc6d9a078db63d7d04c98a0ba4c73e0
+      94  c1290e1a41d265c94d48a7bdbe18613fa54af1d3
+      95  b77a2a4621f4e73a72db6a3b286c87d38932cd30
+      96  35db228e9c0888e20c42f289e549523a5cfb2d1f
+      97  4dee56cb7a1fa79cde860d79899c9d089cfeb514
+      98  81f69dbd4c48cc8ed3fb8f04b81097b82bb6003e
+      99  e7501d8a505bf6a4d7438f8d58f7634af0bf211e
+      100 4a6cf87f41d939a604cbc5ac2df92e6f8cdcc541
+      101 7a08098aa9633a3bde534e02eb79a0492f0cc979
+      102 cb22d738918ce3d91c9923290bdd97b76c8ff96d
+      103 90ef859c1e4298b2d0ad4745efd3e2493351134d
+      104 145ab42940540728ad2575fec83c91f143f659e6
+      105 5e0d206b5a598b8161ff268a22801e29dbfc6de7
+      106 7437d2722d5ae54d539e4d8856d0e3e1936aa37c
+      107 ce779609cc8404d3455f24e3d5f00b963222efff
+      108 9a8738dad20686cb8b7e965c2de15f2a6c279bc6
+      109 1e4bfa0449b351bdbd7bc5f9f70ff774d5b59928
+      110 91e4051953602b866f1f4d499935c431c93662ff
+      111 0d63a8380d924ebb8b6dc4d15c1d8988bb50779a
+      112 6f8debd872e3f814dea49ee8f6b18d9d5ef2b701
+      113 8a180b016e6a7a92ac5948340d9fe2bd79b8f02e
+      114 979cba7a78eeee236e5b272d0f04d601e78f3c60
+      115 e823aefe656ed9802c5cb2dc1398e64150caff16
+      116 9518ae57fc6be293a4e78cbd1dd67e56ea4f7bbb
+      117 3e2714af696d8c0e9d9f2d3b68dc31fe637fdbad
+      118 fa60b5b73180c5fe1822a960e4fe1a3a72c1df57
+      119 9ed8d1cfe0fc39991ba5cbe0a810c347a7aebd04
+      120 e4e26b5c970255c4161205480d3626be1836675f
+      121 9c7fede9c4297e809390efe8838bc366d944b425
+      122 028596c8c9e14a67891916716531ca97b8691881
+      123 f2a403d92d504704bd863ef9fb1611fe779fe84b
+      124 1af9ac63e960ff69fba5fa7345e23629e82d8c43
+      125 791869581ab34395971b365e8a0716473cb38893
+      126 b54272c989a090efc7e82436011404df98db9ac5
+      127 938acbc377e887f02a1f252f49e34b97789296f3
+      128 5b42f78185b410d766de33897476c3e987e91f0e
+      129 61c5a763543557874c4a2875854eca7b3d80f17d
+      130 a58342401950ca69a503d7285d082de071d88697
+      131 c5ee0815bfcd48a9b56d75ae4fdc73ab4de8e267
+      132 3ece514a177c102ce25115ee74bb0a32c6407516
+      133 27fe3fb56e078e3faca6bb2157fc770289049068
+      
+      [[2]]
+                             ECO_group
+      1        metallurgy_metalworking
+      2        metallurgy_metalworking
+      3        metallurgy_metalworking
+      4        metallurgy_metalworking
+      5        metallurgy_metalworking
+      6        metallurgy_metalworking
+      7        metallurgy_metalworking
+      8        metallurgy_metalworking
+      9        metallurgy_metalworking
+      10       metallurgy_metalworking
+      11       metallurgy_metalworking
+      12       metallurgy_metalworking
+      13       metallurgy_metalworking
+      14       metallurgy_metalworking
+      15       metallurgy_metalworking
+      16       metallurgy_metalworking
+      17       metallurgy_metalworking
+      18       metallurgy_metalworking
+      19       metallurgy_metalworking
+      20       metallurgy_metalworking
+      21       metallurgy_metalworking
+      22       metallurgy_metalworking
+      23       metallurgy_metalworking
+      24       metallurgy_metalworking
+      25       metallurgy_metalworking
+      26       metallurgy_metalworking
+      27       metallurgy_metalworking
+      28       metallurgy_metalworking
+      29       metallurgy_metalworking
+      30       metallurgy_metalworking
+      31       metallurgy_metalworking
+      32       metallurgy_metalworking
+      33       metallurgy_metalworking
+      34       metallurgy_metalworking
+      35       metallurgy_metalworking
+      36       metallurgy_metalworking
+      37       metallurgy_metalworking
+      38       metallurgy_metalworking
+      39       metallurgy_metalworking
+      40       metallurgy_metalworking
+      41       metallurgy_metalworking
+      42       metallurgy_metalworking
+      43       metallurgy_metalworking
+      44       metallurgy_metalworking
+      45       metallurgy_metalworking
+      46       metallurgy_metalworking
+      47       metallurgy_metalworking
+      48       metallurgy_metalworking
+      49       metallurgy_metalworking
+      50       metallurgy_metalworking
+      51       metallurgy_metalworking
+      52       metallurgy_metalworking
+      53       metallurgy_metalworking
+      54       metallurgy_metalworking
+      55       metallurgy_metalworking
+      56       metallurgy_metalworking
+      57       metallurgy_metalworking
+      58       metallurgy_metalworking
+      59       metallurgy_metalworking
+      60       metallurgy_metalworking
+      61       metallurgy_metalworking
+      62       metallurgy_metalworking
+      63       metallurgy_metalworking
+      64       metallurgy_metalworking
+      65       metallurgy_metalworking
+      66       metallurgy_metalworking
+      67       metallurgy_metalworking
+      68       metallurgy_metalworking
+      69       metallurgy_metalworking
+      70       metallurgy_metalworking
+      71       metallurgy_metalworking
+      72       metallurgy_metalworking
+      73       metallurgy_metalworking
+      74       metallurgy_metalworking
+      75       metallurgy_metalworking
+      76       metallurgy_metalworking
+      77       metallurgy_metalworking
+      78       metallurgy_metalworking
+      79       metallurgy_metalworking
+      80       metallurgy_metalworking
+      81       metallurgy_metalworking
+      82       metallurgy_metalworking
+      83       metallurgy_metalworking
+      84       metallurgy_metalworking
+      85       metallurgy_metalworking
+      86       metallurgy_metalworking
+      87       metallurgy_metalworking
+      88       metallurgy_metalworking
+      89       metallurgy_metalworking
+      90       metallurgy_metalworking
+      91       metallurgy_metalworking
+      92       metallurgy_metalworking
+      93       metallurgy_metalworking
+      94       metallurgy_metalworking
+      95       metallurgy_metalworking
+      96       metallurgy_metalworking
+      97       metallurgy_metalworking
+      98       metallurgy_metalworking
+      99       metallurgy_metalworking
+      100      metallurgy_metalworking
+      101         energy_raw_materials
+      102      metallurgy_metalworking
+      103      metallurgy_metalworking
+      104      metallurgy_metalworking
+      105      metallurgy_metalworking
+      106      metallurgy_metalworking
+      107      metallurgy_metalworking
+      108      metallurgy_metalworking
+      109 vehicles_transport_equipment
+      110 vehicles_transport_equipment
+      111 vehicles_transport_equipment
+      112 vehicles_transport_equipment
+      113 vehicles_transport_equipment
+      114 vehicles_transport_equipment
+      115 vehicles_transport_equipment
+      116 vehicles_transport_equipment
+      117 vehicles_transport_equipment
+      118 vehicles_transport_equipment
+      119 vehicles_transport_equipment
+      120 vehicles_transport_equipment
+      121 vehicles_transport_equipment
+      122 vehicles_transport_equipment
+      123 vehicles_transport_equipment
+      124 vehicles_transport_equipment
+      125 vehicles_transport_equipment
+      126 vehicles_transport_equipment
+      127 vehicles_transport_equipment
+      128 vehicles_transport_equipment
+      129 vehicles_transport_equipment
+      130 vehicles_transport_equipment
+      131 vehicles_transport_equipment
+      132 vehicles_transport_equipment
+      133      metallurgy_metalworking
+      
+      [[3]]
+                                                       ECO_sector
+      1                                steel_metal_transformation
+      2                                steel_metal_transformation
+      3                                steel_metal_transformation
+      4                                steel_metal_transformation
+      5                                steel_metal_transformation
+      6                                steel_metal_transformation
+      7                                steel_metal_transformation
+      8                                steel_metal_transformation
+      9                                steel_metal_transformation
+      10                               steel_metal_transformation
+      11                               steel_metal_transformation
+      12                               steel_metal_transformation
+      13                               steel_metal_transformation
+      14                               steel_metal_transformation
+      15                               steel_metal_transformation
+      16                               steel_metal_transformation
+      17                               steel_metal_transformation
+      18                               steel_metal_transformation
+      19                               steel_metal_transformation
+      20                               steel_metal_transformation
+      21                               steel_metal_transformation
+      22                               steel_metal_transformation
+      23                               steel_metal_transformation
+      24                               steel_metal_transformation
+      25                               steel_metal_transformation
+      26                               steel_metal_transformation
+      27                               steel_metal_transformation
+      28                               steel_metal_transformation
+      29                               steel_metal_transformation
+      30                               steel_metal_transformation
+      31                               steel_metal_transformation
+      32                               steel_metal_transformation
+      33                               steel_metal_transformation
+      34                               steel_metal_transformation
+      35                               steel_metal_transformation
+      36                               steel_metal_transformation
+      37                               steel_metal_transformation
+      38                               steel_metal_transformation
+      39                               steel_metal_transformation
+      40                               steel_metal_transformation
+      41                               steel_metal_transformation
+      42                               steel_metal_transformation
+      43                               steel_metal_transformation
+      44                               steel_metal_transformation
+      45                               steel_metal_transformation
+      46                               steel_metal_transformation
+      47                               steel_metal_transformation
+      48                               steel_metal_transformation
+      49                               steel_metal_transformation
+      50                               steel_metal_transformation
+      51                               steel_metal_transformation
+      52                                             steel_metals
+      53                                             steel_metals
+      54                                             steel_metals
+      55                                             steel_metals
+      56                                             steel_metals
+      57                                             steel_metals
+      58                                             steel_metals
+      59                                             steel_metals
+      60                                             steel_metals
+      61                                             steel_metals
+      62                                             steel_metals
+      63                                             steel_metals
+      64                                             steel_metals
+      65                                             steel_metals
+      66                                             steel_metals
+      67                                             steel_metals
+      68                                             steel_metals
+      69                                             steel_metals
+      70                                             steel_metals
+      71                               steel_metal_transformation
+      72                               steel_metal_transformation
+      73                               steel_metal_transformation
+      74                               steel_metal_transformation
+      75                               steel_metal_transformation
+      76                               steel_metal_transformation
+      77                               steel_metal_transformation
+      78                               steel_metal_transformation
+      79                               steel_metal_transformation
+      80                               steel_metal_transformation
+      81                               steel_metal_transformation
+      82                               steel_metal_transformation
+      83                               steel_metal_transformation
+      84                               steel_metal_transformation
+      85                               steel_metal_transformation
+      86                               steel_metal_transformation
+      87                               steel_metal_transformation
+      88                                             steel_metals
+      89                                             steel_metals
+      90                                             steel_metals
+      91                                             steel_metals
+      92                                             steel_metals
+      93                                             steel_metals
+      94                                             steel_metals
+      95                                            steel_special
+      96                                                    steel
+      97                    steels_and_metals_forming_and_cutting
+      98                              steels_and_metals_machining
+      99          steels_and_metals_surface_treatment_and_coating
+      100                   steels_and_metals_welding_and_brazing
+      101                                gas_and_oil_exploitation
+      102                              steel_metal_transformation
+      103                              steel_metal_transformation
+      104                              steel_metal_transformation
+      105                              steel_metal_transformation
+      106                              steel_metal_transformation
+      107                              steel_metal_transformation
+      108                              steel_metal_transformation
+      109     camping_and_caravans_vehicles_parts_and_accessories
+      110                                                    cars
+      111                                                    cars
+      112                                                    cars
+      113                                                    cars
+      114                                                    cars
+      115                                                    cars
+      116                                                    cars
+      117                                                    cars
+      118                                                    cars
+      119                                                    cars
+      120                                                    cars
+      121                                                    cars
+      122                                       electric_vehicles
+      123          import_export_vehicles_and_transport_equipment
+      124                    lorries_vans_and_commercial_vehicles
+      125                      vehicles_accessories_and_equipment
+      126 vehicles_electrical_and_electronic_components_and_parts
+      127                vehicles_mechanical_components_and_parts
+      128             vehicles_special_construction_and_equipment
+      129                                     vehicles_telematics
+      130                                           vehicles_used
+      131                                                    cars
+      132                                                    cars
+      133                              steel_metal_transformation
+      
+      [[4]]
+                                          ECO_subsector
+      1                       bending_steels_and_metals
+      2                         boilers_stainless_steel
+      3                        boring_steels_and_metals
+      4                       brazing_steels_and_metals
+      5                     broaching_steels_and_metals
+      6                       bronzing_steel_and_metals
+      7                                  canopies_metal
+      8                                  chrome_plating
+      9                       cleaning_steel_and_metals
+      10                      cutting_steels_and_metals
+      11                       drawing_steel_and_metals
+      12                 electrolysis_surface_treatment
+      13                    emerising_steels_and_metals
+      14  erection_and_dismantling_of_industrial_plants
+      15                     extrusion_steel_and_metals
+      16                                      flagpoles
+      17                     flocking_steels_and_metals
+      18                      folding_steels_and_metals
+      19                      forming_steels_and_metals
+      20                galvanization_steels_and_metals
+      21                     grinding_steels_and_metals
+      22                                    halls_metal
+      23            heat_treatment_of_steels_and_metals
+      24                            industrial_furnaces
+      25                    industrial_sheet_metal_work
+      26                   lacquering_steels_and_metals
+      27                                  metallization
+      28                      milling_steels_and_metals
+      29               perforation_of_steels_and_metals
+      30                                      pipelines
+      31              plastic_coating_steels_and_metals
+      32                    polishing_steels_and_metals
+      33                                  porches_metal
+      34                            precision_mechanics
+      35                     scouring_steels_and_metals
+      36                      shaping_steels_and_metals
+      37                     shearing_steels_and_metals
+      38                           sheds_iron_and_steel
+      39                    sintering_steels_and_metals
+      40                     slotting_steels_and_metals
+      41                     stamping_steels_and_metals
+      42                straightening_steels_and_metals
+      43                           structures_aluminium
+      44                                    tanks_metal
+      45                      tapping_steels_and_metals
+      46                      turning_steels_and_metals
+      47                   varnishing_steels_and_metals
+      48                  welding_work_steels_and_metal
+      49                        boilermaking_aeronautic
+      50                             boilermaking_heavy
+      51                         boilermaking_precision
+      52                               aluminium_alloys
+      53                             aluminium_coatings
+      54                                  bells_casting
+      55                                          brass
+      56                                         bronze
+      57                        cast_iron_special_grade
+      58       casting_of_special_and_high_grade_steels
+      59                                  casting_steel
+      60                            foundries_aluminium
+      61                                           gold
+      62                                       iron_pig
+      63                         precious_metals_powder
+      64                               stainless_steels
+      65                               steel_structural
+      66                                     steel_tool
+      67                                     tin_alloys
+      68                                      zirconium
+      69                                    steel_crude
+      70                                           <NA>
+      71                             boilermaking_naval
+      72                                 boilers_copper
+      73                            boilers_light_alloy
+      74                                  bridges_metal
+      75                                 cisterns_metal
+      76         engraving_industrial_steels_and_metals
+      77                   frameworks_lightweight_metal
+      78      gold_and_silver_plating_steels_and_metals
+      79        iron_steel_and_metallurgy_import_export
+      80                                 nickel_plating
+      81                sand_blasting_steels_and_metals
+      82                screw_cutting_steels_and_metals
+      83                   sharpening_steels_and_metals
+      84                shot_blasting_steels_and_metals
+      85                                    silos_metal
+      86                             tubular_structures
+      87                                     vats_metal
+      88              foundries_copper_bronze_and_brass
+      89                                      palladium
+      90                                       platinum
+      91                                   steel_carbon
+      92                                   steel_chrome
+      93                                  steels_nickel
+      94                      white_malleable_cast_iron
+      95                                           <NA>
+      96                                           <NA>
+      97                                           <NA>
+      98                                           <NA>
+      99                                           <NA>
+      100                                          <NA>
+      101                                          <NA>
+      102                 iron_and_steel_products_trade
+      103                              oxidation_metals
+      104                                   poles_metal
+      105                                  pylons_metal
+      106                 scouring_steels_and_materials
+      107                                  towers_metal
+      108                           zinc_electroplating
+      109                                          <NA>
+      110                                          <NA>
+      111                                   automobiles
+      112                                       bumpers
+      113                                     car_parks
+      114                                     cars_used
+      115                                 electric_cars
+      116                  vehicle_maintenance_products
+      117                             automobile_dealer
+      118                           automobile_junkyard
+      119                             off_road_vehicles
+      120                               vehicle_chassis
+      121                             windscreen_wipers
+      122                                          <NA>
+      123                                          <NA>
+      124                                          <NA>
+      125                                          <NA>
+      126                                          <NA>
+      127                                          <NA>
+      128                                          <NA>
+      129                                          <NA>
+      130                                          <NA>
+      131                                     microcars
+      132                   steering_wheels_and_columns
+      133                                          <NA>
+      
+      [[5]]
+          weo_product_mapper
+      1                Total
+      2                Total
+      3                Total
+      4                Total
+      5                Total
+      6                Total
+      7                Total
+      8                Total
+      9                Total
+      10               Total
+      11               Total
+      12               Total
+      13               Total
+      14               Total
+      15               Total
+      16               Total
+      17               Total
+      18               Total
+      19               Total
+      20               Total
+      21               Total
+      22               Total
+      23               Total
+      24               Total
+      25               Total
+      26               Total
+      27               Total
+      28               Total
+      29               Total
+      30               Total
+      31               Total
+      32               Total
+      33               Total
+      34               Total
+      35               Total
+      36               Total
+      37               Total
+      38               Total
+      39               Total
+      40               Total
+      41               Total
+      42               Total
+      43               Total
+      44               Total
+      45               Total
+      46               Total
+      47               Total
+      48               Total
+      49               Total
+      50               Total
+      51               Total
+      52               Total
+      53               Total
+      54               Total
+      55               Total
+      56               Total
+      57               Total
+      58               Total
+      59               Total
+      60               Total
+      61               Total
+      62               Total
+      63               Total
+      64               Total
+      65               Total
+      66               Total
+      67               Total
+      68               Total
+      69               Total
+      70               Total
+      71               Total
+      72               Total
+      73               Total
+      74               Total
+      75               Total
+      76               Total
+      77               Total
+      78               Total
+      79               Total
+      80               Total
+      81               Total
+      82               Total
+      83               Total
+      84               Total
+      85               Total
+      86               Total
+      87               Total
+      88               Total
+      89               Total
+      90               Total
+      91               Total
+      92               Total
+      93               Total
+      94               Total
+      95               Total
+      96               Total
+      97               Total
+      98               Total
+      99               Total
+      100              Total
+      101              Total
+      102              Total
+      103              Total
+      104              Total
+      105              Total
+      106              Total
+      107              Total
+      108              Total
+      109              Total
+      110              Total
+      111              Total
+      112              Total
+      113              Total
+      114              Total
+      115              Total
+      116              Total
+      117              Total
+      118              Total
+      119              Total
+      120              Total
+      121              Total
+      122              Total
+      123              Total
+      124              Total
+      125              Total
+      126              Total
+      127              Total
+      128              Total
+      129              Total
+      130              Total
+      131              Total
+      132              Total
+      133              Total
+      
+      [[6]]
+                            weo_flow_mapper
+      1                      Iron and steel
+      2                      Iron and steel
+      3                      Iron and steel
+      4                      Iron and steel
+      5                      Iron and steel
+      6                      Iron and steel
+      7                      Iron and steel
+      8                      Iron and steel
+      9                      Iron and steel
+      10                     Iron and steel
+      11                     Iron and steel
+      12                     Iron and steel
+      13                     Iron and steel
+      14                     Iron and steel
+      15                     Iron and steel
+      16                     Iron and steel
+      17                     Iron and steel
+      18                     Iron and steel
+      19                     Iron and steel
+      20                     Iron and steel
+      21                     Iron and steel
+      22                     Iron and steel
+      23                     Iron and steel
+      24                     Iron and steel
+      25                     Iron and steel
+      26                     Iron and steel
+      27                     Iron and steel
+      28                     Iron and steel
+      29                     Iron and steel
+      30                     Iron and steel
+      31                     Iron and steel
+      32                     Iron and steel
+      33                     Iron and steel
+      34                     Iron and steel
+      35                     Iron and steel
+      36                     Iron and steel
+      37                     Iron and steel
+      38                     Iron and steel
+      39                     Iron and steel
+      40                     Iron and steel
+      41                     Iron and steel
+      42                     Iron and steel
+      43                     Iron and steel
+      44                     Iron and steel
+      45                     Iron and steel
+      46                     Iron and steel
+      47                     Iron and steel
+      48                     Iron and steel
+      49                     Iron and steel
+      50                     Iron and steel
+      51                     Iron and steel
+      52                     Iron and steel
+      53                     Iron and steel
+      54                     Iron and steel
+      55                     Iron and steel
+      56                     Iron and steel
+      57                     Iron and steel
+      58                     Iron and steel
+      59                     Iron and steel
+      60                     Iron and steel
+      61                     Iron and steel
+      62                     Iron and steel
+      63                     Iron and steel
+      64                     Iron and steel
+      65                     Iron and steel
+      66                     Iron and steel
+      67                     Iron and steel
+      68                     Iron and steel
+      69                     Iron and steel
+      70                     Iron and steel
+      71                     Iron and steel
+      72                     Iron and steel
+      73                     Iron and steel
+      74                     Iron and steel
+      75                     Iron and steel
+      76                     Iron and steel
+      77                     Iron and steel
+      78                     Iron and steel
+      79                     Iron and steel
+      80                     Iron and steel
+      81                     Iron and steel
+      82                     Iron and steel
+      83                     Iron and steel
+      84                     Iron and steel
+      85                     Iron and steel
+      86                     Iron and steel
+      87                     Iron and steel
+      88                     Iron and steel
+      89                     Iron and steel
+      90                     Iron and steel
+      91                     Iron and steel
+      92                     Iron and steel
+      93                     Iron and steel
+      94                     Iron and steel
+      95                     Iron and steel
+      96                     Iron and steel
+      97                     Iron and steel
+      98                     Iron and steel
+      99                     Iron and steel
+      100                    Iron and steel
+      101                    Iron and steel
+      102                    Iron and steel
+      103                    Iron and steel
+      104                    Iron and steel
+      105                    Iron and steel
+      106                    Iron and steel
+      107                    Iron and steel
+      108                    Iron and steel
+      109 Road passenger light duty vehicle
+      110 Road passenger light duty vehicle
+      111 Road passenger light duty vehicle
+      112 Road passenger light duty vehicle
+      113 Road passenger light duty vehicle
+      114 Road passenger light duty vehicle
+      115 Road passenger light duty vehicle
+      116 Road passenger light duty vehicle
+      117 Road passenger light duty vehicle
+      118 Road passenger light duty vehicle
+      119 Road passenger light duty vehicle
+      120 Road passenger light duty vehicle
+      121 Road passenger light duty vehicle
+      122 Road passenger light duty vehicle
+      123 Road passenger light duty vehicle
+      124 Road passenger light duty vehicle
+      125 Road passenger light duty vehicle
+      126 Road passenger light duty vehicle
+      127 Road passenger light duty vehicle
+      128 Road passenger light duty vehicle
+      129 Road passenger light duty vehicle
+      130 Road passenger light duty vehicle
+      131 Road passenger light duty vehicle
+      132 Road passenger light duty vehicle
+      133                    Iron and steel
+      
+
+# `istr_weo_2022` hasn't changed
+
+    Code
+      format_robust_snapshot(istr_weo_2022)
+    Output
+      [[1]]
+                      publication
+      1 World Energy Outlook 2021
+      2 World Energy Outlook 2021
+      3 World Energy Outlook 2021
+      4 World Energy Outlook 2021
+      5 World Energy Outlook 2021
+      6 World Energy Outlook 2021
+      7 World Energy Outlook 2021
+      8 World Energy Outlook 2021
+      
+      [[2]]
+                                   scenario
+      1            Stated Policies Scenario
+      2 Net Zero Emissions by 2050 Scenario
+      3 Net Zero Emissions by 2050 Scenario
+      4 Net Zero Emissions by 2050 Scenario
+      5            Stated Policies Scenario
+      6 Net Zero Emissions by 2050 Scenario
+      7 Net Zero Emissions by 2050 Scenario
+      8 Net Zero Emissions by 2050 Scenario
+      
+      [[3]]
+        region
+      1  world
+      2  world
+      3  world
+      4  world
+      5  world
+      6  world
+      7  world
+      8  world
+      
+      [[4]]
+              category
+      1 co2 combustion
+      2 co2 combustion
+      3 co2 combustion
+      4 co2 combustion
+      5 co2 combustion
+      6 co2 combustion
+      7 co2 combustion
+      8 co2 combustion
+      
+      [[5]]
+        product
+      1   Total
+      2   Total
+      3   Total
+      4   Total
+      5   Total
+      6   Total
+      7   Total
+      8   Total
+      
+      [[6]]
+                                     flow
+      1 Road passenger light duty vehicle
+      2 Road passenger light duty vehicle
+      3 Road passenger light duty vehicle
+      4 Road passenger light duty vehicle
+      5                    Iron and steel
+      6                    Iron and steel
+      7                    Iron and steel
+      8                    Iron and steel
+      
+      [[7]]
+          unit
+      1 mt co2
+      2 mt co2
+      3 mt co2
+      4 mt co2
+      5 mt co2
+      6 mt co2
+      7 mt co2
+      8 mt co2
+      
+      [[8]]
+        year
+      1 2020
+      2 2030
+      3 2040
+      4 2050
+      5 2020
+      6 2030
+      7 2040
+      8 2050
+      
+      [[9]]
+           value
+      1  2787.63
+      2  1626.32
+      3   546.54
+      4    84.56
+      5  2590.57
+      6   194.53
+      7 10122.90
+      8  7426.46
+      
+      [[10]]
+        reductions
+      1       0.00
+      2      41.66
+      3      80.39
+      4      96.97
+      5       0.00
+      6      31.35
+      7      66.86
+      8      91.49
+      
+
+# `pctr_companies` hasn't changed
+
+    Code
+      format_robust_snapshot(pctr_companies)
+    Output
+      [[1]]
+                                                       activity_uuid_product_uuid
+      1 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      2 be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
+      3 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
+      4 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      5 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      6 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      7 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      8 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      9                                                                      <NA>
+      
+      [[2]]
+                                      company_id
+      1 fleischerei-stiefsohn_00000005219477-001
+      2 fleischerei-stiefsohn_00000005219477-001
+      3        pecheries-basques_fra316541-00101
+      4    hoche-butter-gmbh_deu422723-693847001
+      5  vicquelin-espaces-verts_fra697272-00101
+      6   bst-procontrol-gmbh_00000005104947-001
+      7           leider-gmbh_00000005064318-001
+      8             cheries-baqu_neu316541-00101
+      9       ca-coity-trg-aua-gmbh_00000384-001
+      
+      [[3]]
+                              ei_activity_name
+      1       cookstove production or electric
+      2              microwave oven production
+      3       market for steel, chromium steel
+      4 cheese production, soft, from cow milk
+      5 cheese production, soft, from cow milk
+      6    market for cheese, fresh, unripened
+      7  market for seal, natural rubber based
+      8  seal production, natural rubber based
+      9                                   <NA>
+      
+      [[4]]
+        unit
+      1 unit
+      2 unit
+      3   kg
+      4   kg
+      5   kg
+      6   kg
+      7   kg
+      8   kg
+      9 <NA>
+      
+
+# `istr_companies` hasn't changed
+
+    Code
+      format_robust_snapshot(istr_companies)
+    Output
+      [[1]]
+          X
+      1   1
+      2   2
+      3   3
+      4   4
+      5   5
+      6   6
+      7   7
+      8   8
+      9   9
+      10 10
+      11 11
+      12  1
+      13  2
+      14  3
+      15  4
+      16  5
+      17  6
+      18  7
+      19  8
+      20  9
+      21 10
+      22 11
+      23  1
+      24  2
+      25  3
+      26  4
+      27  5
+      28  6
+      29  7
+      30  8
+      31  9
+      32 10
+      33 11
+      
+      [[2]]
+                  company_name
+      1  fleischerei stiefsohn
+      2  fleischerei stiefsohn
+      3  fleischerei stiefsohn
+      4  fleischerei stiefsohn
+      5  fleischerei stiefsohn
+      6  fleischerei stiefsohn
+      7  fleischerei stiefsohn
+      8      pecheries basques
+      9      pecheries basques
+      10     pecheries basques
+      11     hoche butter gmbh
+      12 fleischerei stiefsohn
+      13 fleischerei stiefsohn
+      14 fleischerei stiefsohn
+      15 fleischerei stiefsohn
+      16 fleischerei stiefsohn
+      17 fleischerei stiefsohn
+      18 fleischerei stiefsohn
+      19     pecheries basques
+      20     pecheries basques
+      21     pecheries basques
+      22     hoche butter gmbh
+      23 fleischerei stiefsohn
+      24 fleischerei stiefsohn
+      25 fleischerei stiefsohn
+      26 fleischerei stiefsohn
+      27 fleischerei stiefsohn
+      28 fleischerei stiefsohn
+      29 fleischerei stiefsohn
+      30     pecheries basques
+      31     pecheries basques
+      32     pecheries basques
+      33     hoche butter gmbh
+      
+      [[3]]
+                  main_activity
+      1  manufacturer/ producer
+      2  manufacturer/ producer
+      3  manufacturer/ producer
+      4  manufacturer/ producer
+      5  manufacturer/ producer
+      6  manufacturer/ producer
+      7  manufacturer/ producer
+      8  manufacturer/ producer
+      9  manufacturer/ producer
+      10 manufacturer/ producer
+      11             wholesaler
+      12 manufacturer/ producer
+      13 manufacturer/ producer
+      14 manufacturer/ producer
+      15 manufacturer/ producer
+      16 manufacturer/ producer
+      17 manufacturer/ producer
+      18 manufacturer/ producer
+      19 manufacturer/ producer
+      20 manufacturer/ producer
+      21 manufacturer/ producer
+      22             wholesaler
+      23 manufacturer/ producer
+      24 manufacturer/ producer
+      25 manufacturer/ producer
+      26 manufacturer/ producer
+      27 manufacturer/ producer
+      28 manufacturer/ producer
+      29 manufacturer/ producer
+      30 manufacturer/ producer
+      31 manufacturer/ producer
+      32 manufacturer/ producer
+      33             wholesaler
+      
+      [[4]]
+                                      address
+      1  linzerstrasse 15 | 3385 prinzersdorf
+      2  linzerstrasse 15 | 3385 prinzersdorf
+      3  linzerstrasse 15 | 3385 prinzersdorf
+      4  linzerstrasse 15 | 3385 prinzersdorf
+      5  linzerstrasse 15 | 3385 prinzersdorf
+      6  linzerstrasse 15 | 3385 prinzersdorf
+      7  linzerstrasse 15 | 3385 prinzersdorf
+      8   lizardia | 64310 st pee sur nivelle
+      9   lizardia | 64310 st pee sur nivelle
+      10  lizardia | 64310 st pee sur nivelle
+      11     im neuen felde 87 | 29525 uelzen
+      12 linzerstrasse 15 | 3385 prinzersdorf
+      13 linzerstrasse 15 | 3385 prinzersdorf
+      14 linzerstrasse 15 | 3385 prinzersdorf
+      15 linzerstrasse 15 | 3385 prinzersdorf
+      16 linzerstrasse 15 | 3385 prinzersdorf
+      17 linzerstrasse 15 | 3385 prinzersdorf
+      18 linzerstrasse 15 | 3385 prinzersdorf
+      19  lizardia | 64310 st pee sur nivelle
+      20  lizardia | 64310 st pee sur nivelle
+      21  lizardia | 64310 st pee sur nivelle
+      22     im neuen felde 87 | 29525 uelzen
+      23 linzerstrasse 15 | 3385 prinzersdorf
+      24 linzerstrasse 15 | 3385 prinzersdorf
+      25 linzerstrasse 15 | 3385 prinzersdorf
+      26 linzerstrasse 15 | 3385 prinzersdorf
+      27 linzerstrasse 15 | 3385 prinzersdorf
+      28 linzerstrasse 15 | 3385 prinzersdorf
+      29 linzerstrasse 15 | 3385 prinzersdorf
+      30  lizardia | 64310 st pee sur nivelle
+      31  lizardia | 64310 st pee sur nivelle
+      32  lizardia | 64310 st pee sur nivelle
+      33     im neuen felde 87 | 29525 uelzen
+      
+      [[5]]
+               company_city
+      1        prinzersdorf
+      2        prinzersdorf
+      3        prinzersdorf
+      4        prinzersdorf
+      5        prinzersdorf
+      6        prinzersdorf
+      7        prinzersdorf
+      8  st pee sur nivelle
+      9  st pee sur nivelle
+      10 st pee sur nivelle
+      11             uelzen
+      12       prinzersdorf
+      13       prinzersdorf
+      14       prinzersdorf
+      15       prinzersdorf
+      16       prinzersdorf
+      17       prinzersdorf
+      18       prinzersdorf
+      19 st pee sur nivelle
+      20 st pee sur nivelle
+      21 st pee sur nivelle
+      22             uelzen
+      23       prinzersdorf
+      24       prinzersdorf
+      25       prinzersdorf
+      26       prinzersdorf
+      27       prinzersdorf
+      28       prinzersdorf
+      29       prinzersdorf
+      30 st pee sur nivelle
+      31 st pee sur nivelle
+      32 st pee sur nivelle
+      33             uelzen
+      
+      [[6]]
+         postcode
+      1      3385
+      2      3385
+      3      3385
+      4      3385
+      5      3385
+      6      3385
+      7      3385
+      8     64310
+      9     64310
+      10    64310
+      11    29525
+      12     3385
+      13     3385
+      14     3385
+      15     3385
+      16     3385
+      17     3385
+      18     3385
+      19    64310
+      20    64310
+      21    64310
+      22    29525
+      23     3385
+      24     3385
+      25     3385
+      26     3385
+      27     3385
+      28     3385
+      29     3385
+      30    64310
+      31    64310
+      32    64310
+      33    29525
+      
+      [[7]]
+         country
+      1  austria
+      2  austria
+      3  austria
+      4  austria
+      5  austria
+      6  austria
+      7  austria
+      8   france
+      9   france
+      10  france
+      11 germany
+      12 austria
+      13 austria
+      14 austria
+      15 austria
+      16 austria
+      17 austria
+      18 austria
+      19  france
+      20  france
+      21  france
+      22 germany
+      23 austria
+      24 austria
+      25 austria
+      26 austria
+      27 austria
+      28 austria
+      29 austria
+      30  france
+      31  france
+      32  france
+      33 germany
+      
+      [[8]]
+                       clustered
+      1                shellfish
+      2              crustaceans
+      3                     fish
+      4                     meat
+      5                    offal
+      6            meats, cooked
+      7             meats, cured
+      8         foods, precooked
+      9            gourmet foods
+      10 gastronomic specialties
+      11              edible fat
+      12               shellfish
+      13             crustaceans
+      14                    fish
+      15                    meat
+      16                   offal
+      17           meats, cooked
+      18            meats, cured
+      19        foods, precooked
+      20           gourmet foods
+      21 gastronomic specialties
+      22              edible fat
+      23               shellfish
+      24             crustaceans
+      25                    fish
+      26                    meat
+      27                   offal
+      28           meats, cooked
+      29            meats, cured
+      30        foods, precooked
+      31           gourmet foods
+      32 gastronomic specialties
+      33              edible fat
+      
+      [[9]]
+         clustered_unit_ecoinvent
+      1                        kg
+      2                        kg
+      3                        m3
+      4                        kg
+      5                        kg
+      6                        m3
+      7                        kg
+      8                        kg
+      9                        m3
+      10                       kg
+      11                       kg
+      12                       kg
+      13                       kg
+      14                       m3
+      15                       kg
+      16                       kg
+      17                       m3
+      18                       kg
+      19                       kg
+      20                       m3
+      21                       kg
+      22                       kg
+      23                       kg
+      24                       kg
+      25                       m3
+      26                       kg
+      27                       kg
+      28                       m3
+      29                       kg
+      30                       kg
+      31                       m3
+      32                       kg
+      33                       kg
+      
+      [[10]]
+                              ecoinvent
+      1  ordinary transforming activity
+      2  ordinary transforming activity
+      3  ordinary transforming activity
+      4  ordinary transforming activity
+      5  ordinary transforming activity
+      6  ordinary transforming activity
+      7  ordinary transforming activity
+      8  ordinary transforming activity
+      9  ordinary transforming activity
+      10 ordinary transforming activity
+      11                market activity
+      12 ordinary transforming activity
+      13 ordinary transforming activity
+      14 ordinary transforming activity
+      15 ordinary transforming activity
+      16 ordinary transforming activity
+      17 ordinary transforming activity
+      18 ordinary transforming activity
+      19 ordinary transforming activity
+      20 ordinary transforming activity
+      21 ordinary transforming activity
+      22                market activity
+      23 ordinary transforming activity
+      24 ordinary transforming activity
+      25 ordinary transforming activity
+      26 ordinary transforming activity
+      27 ordinary transforming activity
+      28 ordinary transforming activity
+      29 ordinary transforming activity
+      30 ordinary transforming activity
+      31 ordinary transforming activity
+      32 ordinary transforming activity
+      33                market activity
+      
+      [[11]]
+                                             group
+      1                      agriculture_livestock
+      2                    metallurgy_metalworking
+      3                  construction_public_works
+      4  mechanical_engineering_industry_equipment
+      5                  construction_public_works
+      6                      agriculture_livestock
+      7                      agriculture_livestock
+      8               vehicles_transport_equipment
+      9                      agriculture_livestock
+      10                           paper_cardboard
+      11                 construction_public_works
+      12                     agriculture_livestock
+      13                   metallurgy_metalworking
+      14                 construction_public_works
+      15 mechanical_engineering_industry_equipment
+      16                 construction_public_works
+      17                     agriculture_livestock
+      18                     agriculture_livestock
+      19              vehicles_transport_equipment
+      20                     agriculture_livestock
+      21                           paper_cardboard
+      22                 construction_public_works
+      23                     agriculture_livestock
+      24                   metallurgy_metalworking
+      25                 construction_public_works
+      26 mechanical_engineering_industry_equipment
+      27                 construction_public_works
+      28                     agriculture_livestock
+      29                     agriculture_livestock
+      30              vehicles_transport_equipment
+      31                     agriculture_livestock
+      32                           paper_cardboard
+      33                 construction_public_works
+      
+      [[12]]
+                                                                        sector
+      1                                                      animals_livestock
+      2                                  steels_and_metals_welding_and_brazing
+      3                                                              equipment
+      4                                       food_industry_machines_equipment
+      5                                                              equipment
+      6                                                  horticulture_forestry
+      7                                         bedding_plants_bulbs_and_seeds
+      8                                                    industrial_vehicles
+      9                                                      animals_livestock
+      10 disposable_tableware_and_articles_made_of_paper_cardboard_and_plastic
+      11                                          construction_structural_work
+      12                                                     animals_livestock
+      13                                 steels_and_metals_welding_and_brazing
+      14                                                             equipment
+      15                                      food_industry_machines_equipment
+      16                                                             equipment
+      17                                                 horticulture_forestry
+      18                                        bedding_plants_bulbs_and_seeds
+      19                                                   industrial_vehicles
+      20                                                     animals_livestock
+      21 disposable_tableware_and_articles_made_of_paper_cardboard_and_plastic
+      22                                          construction_structural_work
+      23                                                     animals_livestock
+      24                                 steels_and_metals_welding_and_brazing
+      25                                                             equipment
+      26                                      food_industry_machines_equipment
+      27                                                             equipment
+      28                                                 horticulture_forestry
+      29                                        bedding_plants_bulbs_and_seeds
+      30                                                   industrial_vehicles
+      31                                                     animals_livestock
+      32 disposable_tableware_and_articles_made_of_paper_cardboard_and_plastic
+      33                                          construction_structural_work
+      
+      [[13]]
+                                     subsector
+      1    fish_meal_for_livestock_and_poultry
+      2                                   <NA>
+      3                   glass_fibre_and_wool
+      4  freeze_drying_machinery_and_equipment
+      5                anti_vibration_supports
+      6                                flowers
+      7                                   <NA>
+      8                    industrial_vehicles
+      9                            rodents_pet
+      10                                  <NA>
+      11                demolition_contractors
+      12   fish_meal_for_livestock_and_poultry
+      13                                  <NA>
+      14                  glass_fibre_and_wool
+      15 freeze_drying_machinery_and_equipment
+      16               anti_vibration_supports
+      17                               flowers
+      18                                  <NA>
+      19                   industrial_vehicles
+      20                           rodents_pet
+      21                                  <NA>
+      22                demolition_contractors
+      23   fish_meal_for_livestock_and_poultry
+      24                                  <NA>
+      25                  glass_fibre_and_wool
+      26 freeze_drying_machinery_and_equipment
+      27               anti_vibration_supports
+      28                               flowers
+      29                                  <NA>
+      30                   industrial_vehicles
+      31                           rodents_pet
+      32                                  <NA>
+      33                demolition_contractors
+      
+      [[14]]
+             sector_ecoinvent_delimited
+      1      infrastructure & machinery
+      2                          metals
+      3      infrastructure & machinery
+      4      infrastructure & machinery
+      5      infrastructure & machinery
+      6      infrastructure & machinery
+      7      infrastructure & machinery
+      8      infrastructure & machinery
+      9  agriculture & animal husbandry
+      10                   pulp & paper
+      11     infrastructure & machinery
+      12     infrastructure & machinery
+      13                         metals
+      14     infrastructure & machinery
+      15     infrastructure & machinery
+      16     infrastructure & machinery
+      17     infrastructure & machinery
+      18     infrastructure & machinery
+      19     infrastructure & machinery
+      20 agriculture & animal husbandry
+      21                   pulp & paper
+      22     infrastructure & machinery
+      23     infrastructure & machinery
+      24                         metals
+      25     infrastructure & machinery
+      26     infrastructure & machinery
+      27     infrastructure & machinery
+      28     infrastructure & machinery
+      29     infrastructure & machinery
+      30     infrastructure & machinery
+      31 agriculture & animal husbandry
+      32                   pulp & paper
+      33     infrastructure & machinery
+      
+      [[15]]
+                                                            sector_ecoinvent
+      1  infrastructure & machinery waste treatment & recycling pulp & paper
+      2                                    infrastructure & machinery metals
+      3                                 infrastructure & machinery transport
+      4                                           infrastructure & machinery
+      5              infrastructure & machinery resource extraction minerals
+      6                         infrastructure & machinery cement & concrete
+      7                          infrastructure & machinery heat electricity
+      8               infrastructure & machinery waste treatment & recycling
+      9                          water supply agriculture & animal husbandry
+      10                                                        pulp & paper
+      11                                infrastructure & machinery chemicals
+      12 infrastructure & machinery waste treatment & recycling pulp & paper
+      13                                   infrastructure & machinery metals
+      14                                infrastructure & machinery transport
+      15                                          infrastructure & machinery
+      16             infrastructure & machinery resource extraction minerals
+      17                        infrastructure & machinery cement & concrete
+      18                         infrastructure & machinery heat electricity
+      19              infrastructure & machinery waste treatment & recycling
+      20                         water supply agriculture & animal husbandry
+      21                                                        pulp & paper
+      22                                infrastructure & machinery chemicals
+      23 infrastructure & machinery waste treatment & recycling pulp & paper
+      24                                   infrastructure & machinery metals
+      25                                infrastructure & machinery transport
+      26                                          infrastructure & machinery
+      27             infrastructure & machinery resource extraction minerals
+      28                        infrastructure & machinery cement & concrete
+      29                         infrastructure & machinery heat electricity
+      30              infrastructure & machinery waste treatment & recycling
+      31                         water supply agriculture & animal husbandry
+      32                                                        pulp & paper
+      33                                infrastructure & machinery chemicals
+      
+      [[16]]
+         co2_products
+      1         33.25
+      2         98.25
+      3         -2.98
+      4         57.82
+      5         47.55
+      6         28.43
+      7         24.69
+      8         43.72
+      9         71.81
+      10         0.97
+      11        99.31
+      12        33.25
+      13        98.25
+      14        -2.98
+      15        57.82
+      16        47.55
+      17        28.43
+      18        24.69
+      19        43.72
+      20        71.81
+      21         0.97
+      22        99.31
+      23        33.25
+      24        98.25
+      25        -2.98
+      26        57.82
+      27        47.55
+      28        28.43
+      29        24.69
+      30        43.72
+      31        71.81
+      32         0.97
+      33        99.31
+      
+      [[17]]
+         co2_input_1
+      1        25.74
+      2        43.58
+      3        86.02
+      4        24.08
+      5        32.61
+      6        55.82
+      7        86.06
+      8        31.24
+      9        40.56
+      10       18.12
+      11       53.04
+      12       25.74
+      13       43.58
+      14       86.02
+      15       24.08
+      16       32.61
+      17       55.82
+      18       86.06
+      19       31.24
+      20       40.56
+      21       18.12
+      22       53.04
+      23       25.74
+      24       43.58
+      25       86.02
+      26       24.08
+      27       32.61
+      28       55.82
+      29       86.06
+      30       31.24
+      31       40.56
+      32       18.12
+      33       53.04
+      
+      [[18]]
+         co2_input_2
+      1        14.44
+      2        -2.30
+      3        43.04
+      4        65.91
+      5        82.06
+      6        66.53
+      7        33.03
+      8        74.38
+      9        63.54
+      10       74.89
+      11       11.94
+      12       14.44
+      13       -2.30
+      14       43.04
+      15       65.91
+      16       82.06
+      17       66.53
+      18       33.03
+      19       74.38
+      20       63.54
+      21       74.89
+      22       11.94
+      23       14.44
+      24       -2.30
+      25       43.04
+      26       65.91
+      27       82.06
+      28       66.53
+      29       33.03
+      30       74.38
+      31       63.54
+      32       74.89
+      33       11.94
+      
+      [[19]]
+         co2_input_3
+      1        55.58
+      2        31.84
+      3        44.22
+      4        -3.44
+      5        90.79
+      6         4.46
+      7         0.99
+      8        18.78
+      9        62.79
+      10       12.41
+      11       52.50
+      12       55.58
+      13       31.84
+      14       44.22
+      15       -3.44
+      16       90.79
+      17        4.46
+      18        0.99
+      19       18.78
+      20       62.79
+      21       12.41
+      22       52.50
+      23       55.58
+      24       31.84
+      25       44.22
+      26       -3.44
+      27       90.79
+      28        4.46
+      29        0.99
+      30       18.78
+      31       62.79
+      32       12.41
+      33       52.50
+      
+      [[20]]
+                                     companies_id
+      1  fleischerei-stiefsohn_00000005219477-001
+      2  fleischerei-stiefsohn_00000005219477-001
+      3  fleischerei-stiefsohn_00000005219477-001
+      4  fleischerei-stiefsohn_00000005219477-001
+      5  fleischerei-stiefsohn_00000005219477-001
+      6  fleischerei-stiefsohn_00000005219477-001
+      7  fleischerei-stiefsohn_00000005219477-001
+      8         pecheries-basques_fra316541-00101
+      9         pecheries-basques_fra316541-00101
+      10        pecheries-basques_fra316541-00101
+      11    hoche-butter-gmbh_deu422723-693847001
+      12 fleischerei-stiefsohn_00000005219477-001
+      13 fleischerei-stiefsohn_00000005219477-001
+      14 fleischerei-stiefsohn_00000005219477-001
+      15 fleischerei-stiefsohn_00000005219477-001
+      16 fleischerei-stiefsohn_00000005219477-001
+      17 fleischerei-stiefsohn_00000005219477-001
+      18 fleischerei-stiefsohn_00000005219477-001
+      19        pecheries-basques_fra316541-00101
+      20        pecheries-basques_fra316541-00101
+      21        pecheries-basques_fra316541-00101
+      22    hoche-butter-gmbh_deu422723-693847001
+      23 fleischerei-stiefsohn_00000005219477-001
+      24 fleischerei-stiefsohn_00000005219477-001
+      25 fleischerei-stiefsohn_00000005219477-001
+      26 fleischerei-stiefsohn_00000005219477-001
+      27 fleischerei-stiefsohn_00000005219477-001
+      28 fleischerei-stiefsohn_00000005219477-001
+      29 fleischerei-stiefsohn_00000005219477-001
+      30        pecheries-basques_fra316541-00101
+      31        pecheries-basques_fra316541-00101
+      32        pecheries-basques_fra316541-00101
+      33    hoche-butter-gmbh_deu422723-693847001
+      
+      [[21]]
+                            products_companies_id
+      1  228f0255ed9bc6160f97e3cc2e07425ec3958cd5
+      2  228f0255ed9bc6160f97e3cc2e07425ec3958cd5
+      3  8a205dc958444fb12bff2b7d72584042434acbbd
+      4  b61c0d25889574f096093b36d1803ec04e909c7e
+      5  f416c7f92dc7e5919a6a550c901acbb9b5fa9073
+      6  f63efc18bc60e52081b543feb07d473555a075ec
+      7  f63efc18bc60e52081b543feb07d473555a075ec
+      8  957a0931c71bcb1e2b7bb668e7eb00381a948f55
+      9  957a0931c71bcb1e2b7bb668e7eb00381a948f55
+      10 09a80a1c37151681f66b4860f45851ac633b674b
+      11 6d99ec4ec8b0632e3b592b1d1f0db2573225c518
+      12 228f0255ed9bc6160f97e3cc2e07425ec3958cd5
+      13 228f0255ed9bc6160f97e3cc2e07425ec3958cd5
+      14 8a205dc958444fb12bff2b7d72584042434acbbd
+      15 b61c0d25889574f096093b36d1803ec04e909c7e
+      16 f416c7f92dc7e5919a6a550c901acbb9b5fa9073
+      17 f63efc18bc60e52081b543feb07d473555a075ec
+      18 f63efc18bc60e52081b543feb07d473555a075ec
+      19 957a0931c71bcb1e2b7bb668e7eb00381a948f55
+      20 957a0931c71bcb1e2b7bb668e7eb00381a948f55
+      21 09a80a1c37151681f66b4860f45851ac633b674b
+      22 6d99ec4ec8b0632e3b592b1d1f0db2573225c518
+      23 228f0255ed9bc6160f97e3cc2e07425ec3958cd5
+      24 228f0255ed9bc6160f97e3cc2e07425ec3958cd5
+      25 8a205dc958444fb12bff2b7d72584042434acbbd
+      26 b61c0d25889574f096093b36d1803ec04e909c7e
+      27 f416c7f92dc7e5919a6a550c901acbb9b5fa9073
+      28 f63efc18bc60e52081b543feb07d473555a075ec
+      29 f63efc18bc60e52081b543feb07d473555a075ec
+      30 957a0931c71bcb1e2b7bb668e7eb00381a948f55
+      31 957a0931c71bcb1e2b7bb668e7eb00381a948f55
+      32 09a80a1c37151681f66b4860f45851ac633b674b
+      33 6d99ec4ec8b0632e3b592b1d1f0db2573225c518
+      
+      [[22]]
+                                      products_id
+      1  cf914aa7a0739404346fb15d684263cb71479efb
+      2  cf914aa7a0739404346fb15d684263cb71479efb
+      3  64875fcccaac069fcb3e0e201e7d5b9166641608
+      4  bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      5  cf164fb58974a63875bf9afbc5e167f68ec251c3
+      6  f8ce7b98b9d2c878ed4f4f9605d1100249c8a2bf
+      7  f8ce7b98b9d2c878ed4f4f9605d1100249c8a2bf
+      8  f16b09dbc75e683642115f2cb4d3432368510e9f
+      9  f16b09dbc75e683642115f2cb4d3432368510e9f
+      10 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      11 51fd115e98fc4ed5a5bafea0cb024a28df5f648b
+      12 cf914aa7a0739404346fb15d684263cb71479efb
+      13 cf914aa7a0739404346fb15d684263cb71479efb
+      14 64875fcccaac069fcb3e0e201e7d5b9166641608
+      15 bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      16 cf164fb58974a63875bf9afbc5e167f68ec251c3
+      17 f8ce7b98b9d2c878ed4f4f9605d1100249c8a2bf
+      18 f8ce7b98b9d2c878ed4f4f9605d1100249c8a2bf
+      19 f16b09dbc75e683642115f2cb4d3432368510e9f
+      20 f16b09dbc75e683642115f2cb4d3432368510e9f
+      21 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      22 51fd115e98fc4ed5a5bafea0cb024a28df5f648b
+      23 cf914aa7a0739404346fb15d684263cb71479efb
+      24 cf914aa7a0739404346fb15d684263cb71479efb
+      25 64875fcccaac069fcb3e0e201e7d5b9166641608
+      26 bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      27 cf164fb58974a63875bf9afbc5e167f68ec251c3
+      28 f8ce7b98b9d2c878ed4f4f9605d1100249c8a2bf
+      29 f8ce7b98b9d2c878ed4f4f9605d1100249c8a2bf
+      30 f16b09dbc75e683642115f2cb4d3432368510e9f
+      31 f16b09dbc75e683642115f2cb4d3432368510e9f
+      32 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      33 51fd115e98fc4ed5a5bafea0cb024a28df5f648b
+      
+      [[23]]
+                            delimited_products_id
+      1  1465c218911e5dbfa9f6a65f62c9084737c8b481
+      2  d7ecb12a798203ddebabe614ec1c1deebf99fd85
+      3  64875fcccaac069fcb3e0e201e7d5b9166641608
+      4  bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      5  cf164fb58974a63875bf9afbc5e167f68ec251c3
+      6  fd45be8d84c0fc9f26d643b74d6760a044c080c1
+      7  cc0cc00179f90bf74ad9cb0388ae2e87ea4cd25e
+      8  915ec7671f1399173ba43d54ca2b9cfb664c8c96
+      9  0cc6b3f60791137033245293b33faffad53c9cf3
+      10 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      11 51fd115e98fc4ed5a5bafea0cb024a28df5f648b
+      12 1465c218911e5dbfa9f6a65f62c9084737c8b481
+      13 d7ecb12a798203ddebabe614ec1c1deebf99fd85
+      14 64875fcccaac069fcb3e0e201e7d5b9166641608
+      15 bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      16 cf164fb58974a63875bf9afbc5e167f68ec251c3
+      17 fd45be8d84c0fc9f26d643b74d6760a044c080c1
+      18 cc0cc00179f90bf74ad9cb0388ae2e87ea4cd25e
+      19 915ec7671f1399173ba43d54ca2b9cfb664c8c96
+      20 0cc6b3f60791137033245293b33faffad53c9cf3
+      21 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      22 51fd115e98fc4ed5a5bafea0cb024a28df5f648b
+      23 1465c218911e5dbfa9f6a65f62c9084737c8b481
+      24 d7ecb12a798203ddebabe614ec1c1deebf99fd85
+      25 64875fcccaac069fcb3e0e201e7d5b9166641608
+      26 bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      27 cf164fb58974a63875bf9afbc5e167f68ec251c3
+      28 fd45be8d84c0fc9f26d643b74d6760a044c080c1
+      29 cc0cc00179f90bf74ad9cb0388ae2e87ea4cd25e
+      30 915ec7671f1399173ba43d54ca2b9cfb664c8c96
+      31 0cc6b3f60791137033245293b33faffad53c9cf3
+      32 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      33 51fd115e98fc4ed5a5bafea0cb024a28df5f648b
+      
+      [[24]]
+                                     delimited_id
+      1  7fe3519695c56b1307f26725b8efd72d28bada72
+      2  140ae6d7fbd60682bf67a2bfc46607cada04d58f
+      3  64875fcccaac069fcb3e0e201e7d5b9166641608
+      4  bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      5  cf164fb58974a63875bf9afbc5e167f68ec251c3
+      6  4c35956058edeee4ed7a89830cf762b8e1d7d319
+      7  690b720300ccfbaa90e353198dfedd659c02dab2
+      8  b3a633fcc2d19d9d224525a30baebe1e89190c42
+      9  d62b457f5ca2b4261159472cd3e7a6017d9ec5c2
+      10 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      11 51fd115e98fc4ed5a5bafea0cb024a28df5f648b
+      12 7fe3519695c56b1307f26725b8efd72d28bada72
+      13 140ae6d7fbd60682bf67a2bfc46607cada04d58f
+      14 64875fcccaac069fcb3e0e201e7d5b9166641608
+      15 bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      16 cf164fb58974a63875bf9afbc5e167f68ec251c3
+      17 4c35956058edeee4ed7a89830cf762b8e1d7d319
+      18 690b720300ccfbaa90e353198dfedd659c02dab2
+      19 b3a633fcc2d19d9d224525a30baebe1e89190c42
+      20 d62b457f5ca2b4261159472cd3e7a6017d9ec5c2
+      21 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      22 51fd115e98fc4ed5a5bafea0cb024a28df5f648b
+      23 7fe3519695c56b1307f26725b8efd72d28bada72
+      24 140ae6d7fbd60682bf67a2bfc46607cada04d58f
+      25 64875fcccaac069fcb3e0e201e7d5b9166641608
+      26 bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      27 cf164fb58974a63875bf9afbc5e167f68ec251c3
+      28 4c35956058edeee4ed7a89830cf762b8e1d7d319
+      29 690b720300ccfbaa90e353198dfedd659c02dab2
+      30 b3a633fcc2d19d9d224525a30baebe1e89190c42
+      31 d62b457f5ca2b4261159472cd3e7a6017d9ec5c2
+      32 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      33 51fd115e98fc4ed5a5bafea0cb024a28df5f648b
+      
+      [[25]]
+                           clustered_delimited_id
+      1  a61140d857877bad8aec2c38d8bbb976d41584a9
+      2  2fbe64774a5d2dde201a138f8067334794da9244
+      3  d2f9023b9ee96c6d2516e062619730e3d07ac122
+      4  467f7320c836facc061d24e042aad2d43d97df27
+      5  3fe660df39e5ccd62cd8085e9830b1b17bdbec23
+      6  f711d94c2237e6994af8999cf2eeaa0a190a3c16
+      7  c5579fc7c3b8bb53b4f5d96816ea1991c7ba2f36
+      8  fbcea36b00275c1ac30496090da5507d804c33ce
+      9  551e9e8ccc2b308275f940b42468e08b217bb089
+      10 ba1c09cc6c71f460a8a31f3c5e361e560e8bca0d
+      11 6ab4a78298a10d3e9b7b0f1d48deb43969f0cd03
+      12 a61140d857877bad8aec2c38d8bbb976d41584a9
+      13 2fbe64774a5d2dde201a138f8067334794da9244
+      14 d2f9023b9ee96c6d2516e062619730e3d07ac122
+      15 467f7320c836facc061d24e042aad2d43d97df27
+      16 3fe660df39e5ccd62cd8085e9830b1b17bdbec23
+      17 f711d94c2237e6994af8999cf2eeaa0a190a3c16
+      18 c5579fc7c3b8bb53b4f5d96816ea1991c7ba2f36
+      19 fbcea36b00275c1ac30496090da5507d804c33ce
+      20 551e9e8ccc2b308275f940b42468e08b217bb089
+      21 ba1c09cc6c71f460a8a31f3c5e361e560e8bca0d
+      22 6ab4a78298a10d3e9b7b0f1d48deb43969f0cd03
+      23 a61140d857877bad8aec2c38d8bbb976d41584a9
+      24 2fbe64774a5d2dde201a138f8067334794da9244
+      25 d2f9023b9ee96c6d2516e062619730e3d07ac122
+      26 467f7320c836facc061d24e042aad2d43d97df27
+      27 3fe660df39e5ccd62cd8085e9830b1b17bdbec23
+      28 f711d94c2237e6994af8999cf2eeaa0a190a3c16
+      29 c5579fc7c3b8bb53b4f5d96816ea1991c7ba2f36
+      30 fbcea36b00275c1ac30496090da5507d804c33ce
+      31 551e9e8ccc2b308275f940b42468e08b217bb089
+      32 ba1c09cc6c71f460a8a31f3c5e361e560e8bca0d
+      33 6ab4a78298a10d3e9b7b0f1d48deb43969f0cd03
+      
+      [[26]]
+                                     clustered_id
+      1  7fe3519695c56b1307f26725b8efd72d28bada72
+      2  140ae6d7fbd60682bf67a2bfc46607cada04d58f
+      3  64875fcccaac069fcb3e0e201e7d5b9166641608
+      4  bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      5  cf164fb58974a63875bf9afbc5e167f68ec251c3
+      6  4c35956058edeee4ed7a89830cf762b8e1d7d319
+      7  690b720300ccfbaa90e353198dfedd659c02dab2
+      8  b3a633fcc2d19d9d224525a30baebe1e89190c42
+      9  be474700eb7b7805f7267d19c7318aca0a24dd75
+      10 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      11 f807f0137263c45179258c3d8c979690f2930a48
+      12 7fe3519695c56b1307f26725b8efd72d28bada72
+      13 140ae6d7fbd60682bf67a2bfc46607cada04d58f
+      14 64875fcccaac069fcb3e0e201e7d5b9166641608
+      15 bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      16 cf164fb58974a63875bf9afbc5e167f68ec251c3
+      17 4c35956058edeee4ed7a89830cf762b8e1d7d319
+      18 690b720300ccfbaa90e353198dfedd659c02dab2
+      19 b3a633fcc2d19d9d224525a30baebe1e89190c42
+      20 be474700eb7b7805f7267d19c7318aca0a24dd75
+      21 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      22 f807f0137263c45179258c3d8c979690f2930a48
+      23 7fe3519695c56b1307f26725b8efd72d28bada72
+      24 140ae6d7fbd60682bf67a2bfc46607cada04d58f
+      25 64875fcccaac069fcb3e0e201e7d5b9166641608
+      26 bb40f75a9c6038e0da200fc5c3a6f371c1592c66
+      27 cf164fb58974a63875bf9afbc5e167f68ec251c3
+      28 4c35956058edeee4ed7a89830cf762b8e1d7d319
+      29 690b720300ccfbaa90e353198dfedd659c02dab2
+      30 b3a633fcc2d19d9d224525a30baebe1e89190c42
+      31 be474700eb7b7805f7267d19c7318aca0a24dd75
+      32 ea3eea389f0b32aba06ecd01f4edd9c7bda686d7
+      33 f807f0137263c45179258c3d8c979690f2930a48
+      
+      [[27]]
+                                 main_activity_id
+      1  fd62c01c0168c1f02250969af71e56bf0ea681f5
+      2  fd62c01c0168c1f02250969af71e56bf0ea681f5
+      3  fd62c01c0168c1f02250969af71e56bf0ea681f5
+      4  fd62c01c0168c1f02250969af71e56bf0ea681f5
+      5  fd62c01c0168c1f02250969af71e56bf0ea681f5
+      6  fd62c01c0168c1f02250969af71e56bf0ea681f5
+      7  fd62c01c0168c1f02250969af71e56bf0ea681f5
+      8  fd62c01c0168c1f02250969af71e56bf0ea681f5
+      9  fd62c01c0168c1f02250969af71e56bf0ea681f5
+      10 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      11 8ca6b68c2345d945b795d58a4adbbddd934ce349
+      12 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      13 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      14 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      15 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      16 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      17 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      18 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      19 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      20 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      21 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      22 8ca6b68c2345d945b795d58a4adbbddd934ce349
+      23 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      24 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      25 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      26 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      27 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      28 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      29 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      30 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      31 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      32 fd62c01c0168c1f02250969af71e56bf0ea681f5
+      33 8ca6b68c2345d945b795d58a4adbbddd934ce349
+      
+      [[28]]
+                                    categories_id
+      1  b45f981bba43e76756e7e8e836728a75d5bb95ec
+      2  4a6cf87f41d939a604cbc5ac2df92e6f8cdcc541
+      3  43de36b4983ff999e16ca6ca4165325135ea924b
+      4  8d4c1b92d32b2284f2c9603fa1065b3fb7d74034
+      5  58667692eed2f5dbb80e7300e5f27bf85fd825bb
+      6  648a34e9724814ab2e10ee8ae0cf1a235c798074
+      7  ab2c6aeae1f4235736af780e270db14f97cc1afe
+      8  fd8feba8d326e8ff6f801abcf98c05ed2453b67c
+      9  3e46a0bb2bda1a3eaa5c2c5831b16bc701e870d5
+      10 1b69ac05a7c354a14d5e1c0cfa8cefeaf2220eb2
+      11 731a6075f2fd589bc5ccfb6ed4bebcb0986553f9
+      12 b45f981bba43e76756e7e8e836728a75d5bb95ec
+      13 4a6cf87f41d939a604cbc5ac2df92e6f8cdcc541
+      14 43de36b4983ff999e16ca6ca4165325135ea924b
+      15 8d4c1b92d32b2284f2c9603fa1065b3fb7d74034
+      16 58667692eed2f5dbb80e7300e5f27bf85fd825bb
+      17 648a34e9724814ab2e10ee8ae0cf1a235c798074
+      18 ab2c6aeae1f4235736af780e270db14f97cc1afe
+      19 fd8feba8d326e8ff6f801abcf98c05ed2453b67c
+      20 3e46a0bb2bda1a3eaa5c2c5831b16bc701e870d5
+      21 1b69ac05a7c354a14d5e1c0cfa8cefeaf2220eb2
+      22 731a6075f2fd589bc5ccfb6ed4bebcb0986553f9
+      23 b45f981bba43e76756e7e8e836728a75d5bb95ec
+      24 4a6cf87f41d939a604cbc5ac2df92e6f8cdcc541
+      25 43de36b4983ff999e16ca6ca4165325135ea924b
+      26 8d4c1b92d32b2284f2c9603fa1065b3fb7d74034
+      27 58667692eed2f5dbb80e7300e5f27bf85fd825bb
+      28 648a34e9724814ab2e10ee8ae0cf1a235c798074
+      29 ab2c6aeae1f4235736af780e270db14f97cc1afe
+      30 fd8feba8d326e8ff6f801abcf98c05ed2453b67c
+      31 3e46a0bb2bda1a3eaa5c2c5831b16bc701e870d5
+      32 1b69ac05a7c354a14d5e1c0cfa8cefeaf2220eb2
+      33 731a6075f2fd589bc5ccfb6ed4bebcb0986553f9
+      
+      [[29]]
+         categories_sector_ecoinvent_delimited_id
+      1  52728ae24adcce08ff3a45945187c0eb6b3268f8
+      2  996991abb72789c033cc48c86e1de859582afa9e
+      3  073c79ec223e8b21c6522af1f645f3b7564ae451
+      4  35a91897f1463ccc4817a96bdb3c965e8091d664
+      5  722bac9253af46d83c9eb0e5e2983d0fa861ff97
+      6  a3d71b37dc97c903bdc57d0520a9cce07e65b991
+      7  97b88d13c9e707d86210bf9c9c5964314d411be7
+      8  0a69b6be83a9c54b5f05343f7a603093fcc81c73
+      9  9b17005d9d5aa1633ee14f55211eadde1e560f45
+      10 ab0565ddda6fbafcb2c0f6b5cd1dd2e83497a981
+      11 8f18023110c9454b9de693fb0f23c30a11fea611
+      12 52728ae24adcce08ff3a45945187c0eb6b3268f8
+      13 996991abb72789c033cc48c86e1de859582afa9e
+      14 073c79ec223e8b21c6522af1f645f3b7564ae451
+      15 35a91897f1463ccc4817a96bdb3c965e8091d664
+      16 722bac9253af46d83c9eb0e5e2983d0fa861ff97
+      17 a3d71b37dc97c903bdc57d0520a9cce07e65b991
+      18 97b88d13c9e707d86210bf9c9c5964314d411be7
+      19 0a69b6be83a9c54b5f05343f7a603093fcc81c73
+      20 9b17005d9d5aa1633ee14f55211eadde1e560f45
+      21 ab0565ddda6fbafcb2c0f6b5cd1dd2e83497a981
+      22 8f18023110c9454b9de693fb0f23c30a11fea611
+      23 52728ae24adcce08ff3a45945187c0eb6b3268f8
+      24 996991abb72789c033cc48c86e1de859582afa9e
+      25 073c79ec223e8b21c6522af1f645f3b7564ae451
+      26 35a91897f1463ccc4817a96bdb3c965e8091d664
+      27 722bac9253af46d83c9eb0e5e2983d0fa861ff97
+      28 a3d71b37dc97c903bdc57d0520a9cce07e65b991
+      29 97b88d13c9e707d86210bf9c9c5964314d411be7
+      30 0a69b6be83a9c54b5f05343f7a603093fcc81c73
+      31 9b17005d9d5aa1633ee14f55211eadde1e560f45
+      32 ab0565ddda6fbafcb2c0f6b5cd1dd2e83497a981
+      33 8f18023110c9454b9de693fb0f23c30a11fea611
+      
+      [[30]]
+                    sector_ecoinvent_delimited_id
+      1  fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      2  059cd1abf26b7bc46af1550003fa691c12a200a1
+      3  fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      4  fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      5  fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      6  fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      7  fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      8  fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      9  6cab14408b4e9298a6255076bc425621d67ffbb6
+      10 2c7a7517a489ffebd92ae6802fa14a00fe4943f1
+      11 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      12 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      13 059cd1abf26b7bc46af1550003fa691c12a200a1
+      14 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      15 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      16 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      17 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      18 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      19 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      20 6cab14408b4e9298a6255076bc425621d67ffbb6
+      21 2c7a7517a489ffebd92ae6802fa14a00fe4943f1
+      22 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      23 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      24 059cd1abf26b7bc46af1550003fa691c12a200a1
+      25 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      26 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      27 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      28 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      29 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      30 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      31 6cab14408b4e9298a6255076bc425621d67ffbb6
+      32 2c7a7517a489ffebd92ae6802fa14a00fe4943f1
+      33 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      
+      [[31]]
+         sector_ecoinvent_delimited_sector_ecoinvent_id
+      1        e34650745979a9397ec7f6e6ef5145c8416789cd
+      2        21f8baa039f768a477cd6b51379eaccabd0e2c15
+      3        2ac3ff73ef549bf80f2356c288f6f7170e5fc628
+      4        633de3793703c5fa04516d45a6cf0387d44dfa7d
+      5        a92ee9477900481f8c19e6bf0e4ea153b6d63c4a
+      6        eb67478ae1b72436ea3c12e066450d6dce359d3e
+      7        ba9358165288d95c0a7a5ccb984fab71a341c78a
+      8        cab406f0a14fc8f574ab526ad1e5d672b6a8ac6a
+      9        1496cf3a541107b1d28763b8227eb58cb319d14f
+      10       51798c59ff90db2251b8abd0e6e34c43ad28a3b2
+      11       aef4b84b18f1af79d65b6bd407d9483f8b80adc2
+      12       e34650745979a9397ec7f6e6ef5145c8416789cd
+      13       21f8baa039f768a477cd6b51379eaccabd0e2c15
+      14       2ac3ff73ef549bf80f2356c288f6f7170e5fc628
+      15       633de3793703c5fa04516d45a6cf0387d44dfa7d
+      16       a92ee9477900481f8c19e6bf0e4ea153b6d63c4a
+      17       eb67478ae1b72436ea3c12e066450d6dce359d3e
+      18       ba9358165288d95c0a7a5ccb984fab71a341c78a
+      19       cab406f0a14fc8f574ab526ad1e5d672b6a8ac6a
+      20       1496cf3a541107b1d28763b8227eb58cb319d14f
+      21       51798c59ff90db2251b8abd0e6e34c43ad28a3b2
+      22       aef4b84b18f1af79d65b6bd407d9483f8b80adc2
+      23       e34650745979a9397ec7f6e6ef5145c8416789cd
+      24       21f8baa039f768a477cd6b51379eaccabd0e2c15
+      25       2ac3ff73ef549bf80f2356c288f6f7170e5fc628
+      26       633de3793703c5fa04516d45a6cf0387d44dfa7d
+      27       a92ee9477900481f8c19e6bf0e4ea153b6d63c4a
+      28       eb67478ae1b72436ea3c12e066450d6dce359d3e
+      29       ba9358165288d95c0a7a5ccb984fab71a341c78a
+      30       cab406f0a14fc8f574ab526ad1e5d672b6a8ac6a
+      31       1496cf3a541107b1d28763b8227eb58cb319d14f
+      32       51798c59ff90db2251b8abd0e6e34c43ad28a3b2
+      33       aef4b84b18f1af79d65b6bd407d9483f8b80adc2
+      
+      [[32]]
+                              sector_ecoinvent_id
+      1  42f0f7713747d5487dd8331937eed2690fa6e1a7
+      2  593b2f27e907d525405c45261b7f659c6f7dc5ab
+      3  7ed0855a906be706ebf375a90c47f080611dee83
+      4  fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      5  a8de728c461c127b98ea2fe4c4fc19c3977966e0
+      6  9c1c9321bdbcf839f433f35990df76789e0f7f53
+      7  e98d3f6b91d15499f60f7dbebb72efc632675c8d
+      8  de60bb4bf7f4c07489af068e0ee566826afb3a5c
+      9  80aeba8902fdfb28a2898a3b8184fb3b9ade6af9
+      10 2c7a7517a489ffebd92ae6802fa14a00fe4943f1
+      11 980e30db0bf334829bbe233302fcea35b2b89da7
+      12 42f0f7713747d5487dd8331937eed2690fa6e1a7
+      13 593b2f27e907d525405c45261b7f659c6f7dc5ab
+      14 7ed0855a906be706ebf375a90c47f080611dee83
+      15 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      16 a8de728c461c127b98ea2fe4c4fc19c3977966e0
+      17 9c1c9321bdbcf839f433f35990df76789e0f7f53
+      18 e98d3f6b91d15499f60f7dbebb72efc632675c8d
+      19 de60bb4bf7f4c07489af068e0ee566826afb3a5c
+      20 80aeba8902fdfb28a2898a3b8184fb3b9ade6af9
+      21 2c7a7517a489ffebd92ae6802fa14a00fe4943f1
+      22 980e30db0bf334829bbe233302fcea35b2b89da7
+      23 42f0f7713747d5487dd8331937eed2690fa6e1a7
+      24 593b2f27e907d525405c45261b7f659c6f7dc5ab
+      25 7ed0855a906be706ebf375a90c47f080611dee83
+      26 fff49bd7f46c38c28dc6cbdcddf38daa3688823a
+      27 a8de728c461c127b98ea2fe4c4fc19c3977966e0
+      28 9c1c9321bdbcf839f433f35990df76789e0f7f53
+      29 e98d3f6b91d15499f60f7dbebb72efc632675c8d
+      30 de60bb4bf7f4c07489af068e0ee566826afb3a5c
+      31 80aeba8902fdfb28a2898a3b8184fb3b9ade6af9
+      32 2c7a7517a489ffebd92ae6802fa14a00fe4943f1
+      33 980e30db0bf334829bbe233302fcea35b2b89da7
+      
+      [[33]]
+         time
+      1     1
+      2     1
+      3     1
+      4     1
+      5     1
+      6     1
+      7     1
+      8     1
+      9     1
+      10    1
+      11    1
+      12    2
+      13    2
+      14    2
+      15    2
+      16    2
+      17    2
+      18    2
+      19    2
+      20    2
+      21    2
+      22    2
+      23    3
+      24    3
+      25    3
+      26    3
+      27    3
+      28    3
+      29    3
+      30    3
+      31    3
+      32    3
+      33    3
+      
+      [[34]]
+                               inputs
+      1    drone for crop inspections
+      2  service for testing machines
+      3                     gold bars
+      4      tobacco cutting machines
+      5             cosmetic of argan
+      6             electric car hire
+      7       cords made of polyamide
+      8               transport sleds
+      9        conveyor manufacturers
+      10           mercedes benz part
+      11   design of customised parts
+      12    lubricant for motorcycles
+      13               pipe profiling
+      14   freeze-dried food products
+      15      windsurfing accessories
+      16           childcare articles
+      17      systems for waste dumps
+      18                       pianos
+      19          waste wood disposal
+      20             insurance advice
+      21       in-plant freight lifts
+      22             assorted fabrics
+      23             fluid containers
+      24          checking pipe seals
+      25    temporary site protection
+      26            photocopier paper
+      27  proximity detector switches
+      28                   for events
+      29             sales department
+      30                  chewing gum
+      31                        slabs
+      32                  piston pins
+      33           polypropylene film
+      
+      [[35]]
+                        eco_sectors
+      1  steel_metal_transformation
+      2                steel_metals
+      3                        cars
+      4                 frozen_food
+      5                        cars
+      6  steel_metal_transformation
+      7  steel_metal_transformation
+      8  steel_metal_transformation
+      9  steel_metal_transformation
+      10                frozen_food
+      11               steel_metals
+      12                frozen_food
+      13                frozen_food
+      14                       cars
+      15               steel_metals
+      16               steel_metals
+      17 steel_metal_transformation
+      18               steel_metals
+      19 steel_metal_transformation
+      20                frozen_food
+      21 steel_metal_transformation
+      22 steel_metal_transformation
+      23                       cars
+      24                       cars
+      25                       cars
+      26               steel_metals
+      27                frozen_food
+      28                frozen_food
+      29                frozen_food
+      30 steel_metal_transformation
+      31 steel_metal_transformation
+      32 steel_metal_transformation
+      33                       cars
+      
+      [[36]]
+         id
+      1   1
+      2   2
+      3   3
+      4   4
+      5   5
+      6   6
+      7   7
+      8   8
+      9   9
+      10 10
+      11 11
+      12  1
+      13  2
+      14  3
+      15  4
+      16  5
+      17  6
+      18  7
+      19  8
+      20  9
+      21 10
+      22 11
+      23  1
+      24  2
+      25  3
+      26  4
+      27  5
+      28  6
+      29  7
+      30  8
+      31  9
+      32 10
+      33 11
+      
+
+# `pctr_ecoinvent_co2` hasn't changed
+
+    Code
+      format_robust_snapshot(pctr_ecoinvent_co2)
+    Output
+      [[1]]
+        co2_footprint
+      1    175.615478
+      2     58.120002
+      3      4.949118
+      4     12.468865
+      5     12.485806
+      6      2.072349
+      7      1.982112
+      
+      [[2]]
+           tilt_sector
+      1       Industry
+      2       Industry
+      3 Steel & Metals
+      4    Agriculture
+      5    Agriculture
+      6       Industry
+      7       Industry
+      
+      [[3]]
+        unit
+      1 unit
+      2 unit
+      3   kg
+      4   kg
+      5   kg
+      6   kg
+      7   kg
+      
+      [[4]]
+        isic_4digit_sector
+      1               2560
+      2               2560
+      3               2870
+      4               1780
+      5               1780
+      6               2679
+      7               2679
+      
+      [[5]]
+                                                       activity_uuid_product_uuid
+      1 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
+      2 be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
+      3 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
+      4 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      5 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
+      6 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      7 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
+      
+      [[6]]
+                              ei_activity_name
+      1       cookstove production or electric
+      2              microwave oven production
+      3       market for steel, chromium steel
+      4 cheese production, soft, from cow milk
+      5    market for cheese, fresh, unripened
+      6  market for seal, natural rubber based
+      7  seal production, natural rubber based
+      
+
 # `pstr_companies` hasn't changed
 
     Code
-      format_robust_snapshot(companies)
+      format_robust_snapshot(pstr_companies)
     Output
       [[1]]
                                                     company_id
@@ -286,7 +2874,7 @@
 # `pstr_scenarios` hasn't changed
 
     Code
-      format_robust_snapshot(scenarios)
+      format_robust_snapshot(pstr_scenarios)
     Output
       [[1]]
                                      scenario
