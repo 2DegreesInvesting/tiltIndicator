@@ -23,8 +23,8 @@
 #'
 #' # Company level
 #' companies |>
-#'   pstr_at_product_level(scenarios)
-#'   pstr_at_company_level()
+#'   pstr_at_product_level(scenarios) |>
+#'   pstr_at_company_level(companies)
 #'
 #' # Same
 #' pstr(companies, scenarios)
