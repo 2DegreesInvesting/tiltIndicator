@@ -6,7 +6,7 @@ test_that("outputs common output columns", {
   out <- istr(companies, scenario, ep_weo)
 
   expected <- common_output_columns()
-  expect_equal(names(out)[1:3], expected)
+  expect_equal(names(out)[1:4], expected)
 })
 
 test_that("outputs the expected columns", {

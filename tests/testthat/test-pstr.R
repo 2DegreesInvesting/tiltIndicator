@@ -1,4 +1,4 @@
-test_that("snapshot", {
+test_that("hasn't changed", {
   scenarios <- pstr_scenarios
   companies <- pstr_companies |> slice(1)
   out <- pstr(companies, scenarios)
@@ -12,7 +12,7 @@ test_that("outputs common output columns", {
   out <- pstr(companies, scenarios)
 
   expected <- common_output_columns()
-  expect_equal(names(out)[1:3], expected)
+  expect_equal(names(out)[1:4], expected)
 })
 
 test_that("the output is not grouped", {

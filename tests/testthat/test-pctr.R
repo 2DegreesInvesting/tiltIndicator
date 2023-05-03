@@ -10,7 +10,7 @@ test_that("outputs common output columns", {
   out <- pctr(companies, co2)
 
   expected <- common_output_columns()
-  expect_equal(names(out)[1:3], expected)
+  expect_equal(names(out)[1:4], expected)
 })
 
 test_that("returns n rows equal to companies x risk_category x grouped_by", {

@@ -1,4 +1,4 @@
-# snapshot
+# hasn't changed
 
     Code
       format_robust_snapshot(out)
@@ -25,17 +25,10 @@
       4           low
       
       [[4]]
-                                company_name
-      1 cta - commodity trading austria gmbh
-      2 cta - commodity trading austria gmbh
-      3 cta - commodity trading austria gmbh
-      4 cta - commodity trading austria gmbh
-      
-      [[5]]
-        score_aggregated
-      1              200
-      2              200
-      3              200
-      4              200
+        value
+      1   200
+      2   200
+      3   200
+      4   200
       
 
