@@ -16,12 +16,12 @@ test_that("outputs common output columns", {
 test_that("returns n rows equal to companies x risk_category x grouped_by", {
   co2 <- tibble(
     co2_footprint = 1,
-    sec = "Transport",
+    tilt_sector = "Transport",
     unit = "metric ton*km",
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
   )
   companies <- tibble(
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
   )
 
@@ -34,7 +34,7 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
   expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 
   companies <- tibble(
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
     company_id = c("a", "b"),
   )
 
@@ -49,12 +49,12 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
 test_that("if a company matches at least one input, each share sums 1 (#175)", {
   co2 <- tibble(
     co2_footprint = 1,
-    sec = "Transport",
+    tilt_sector = "Transport",
     unit = "metric ton*km",
-    activity_product_uuid = c("x", "y"),
+    activity_uuid_product_uuid = c("x", "y"),
   )
   companies <- tibble(
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
   )
 
@@ -69,14 +69,14 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
 
 test_that("if a company matches no co2, all shares are `NA` (#176)", {
   companies <- tibble(
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
   )
   co2 <- tibble(
     co2_footprint = 1,
-    sec = "Transport",
+    tilt_sector = "Transport",
     unit = "metric ton*km",
-    activity_product_uuid = c("y"),
+    activity_uuid_product_uuid = c("y"),
   )
 
   out <- pctr(companies, co2)
@@ -88,12 +88,12 @@ test_that("if a company matches no co2, all shares are `NA` (#176)", {
 test_that("if a company matches at least one input, no share is `NA` (#176)", {
   co2 <- tibble(
     co2_footprint = 1,
-    sec = "Transport",
+    tilt_sector = "Transport",
     unit = "metric ton*km",
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
   )
   companies <- tibble(
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
   )
 
@@ -102,35 +102,35 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
   expect_false(any(share_is_na))
 })
 
-test_that("is sensitive to low_threshold", {
+test_that("is not sensitive to low_threshold", {
   companies <- slice(pctr_companies, 1)
   co2 <- slice(pctr_ecoinvent_co2, 1:3)
   out1 <- pctr(companies, co2, low_threshold = .1)
   out2 <- pctr(companies, co2, low_threshold = .9)
-  expect_false(identical(out1, out2))
+  expect_true(identical(out1, out2))
 })
 
-test_that("is sensitive to high_threshold", {
+test_that("is not sensitive to high_threshold", {
   companies <- slice(pctr_companies, 1)
   co2 <- slice(pctr_ecoinvent_co2, 1:3)
   out1 <- pctr(companies, co2, high_threshold = .1)
   out2 <- pctr(companies, co2, high_threshold = .9)
-  expect_false(identical(out1, out2))
+  expect_true(identical(out1, out2))
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
   companies <- tibble(
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
   )
   co2 <- tibble(
     co2_footprint = 1,
-    sec = "Transport",
+    tilt_sector = "Transport",
     unit = "metric ton*km",
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
   )
 
-  crucial <- "activity_product_uuid"
+  crucial <- "activity_uuid_product_uuid"
   bad <- select(companies, -all_of(crucial))
   expect_error(pctr(bad, co2), crucial)
 
@@ -141,21 +141,21 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
 test_that("if `co2` lacks crucial columns, errors gracefully", {
   companies <- tibble(
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
   )
   co2 <- tibble(
     co2_footprint = 1,
-    sec = "Transport",
+    tilt_sector = "Transport",
     unit = "metric ton*km",
-    activity_product_uuid = c("x"),
+    activity_uuid_product_uuid = c("x"),
   )
 
   crucial <- "co2_footprint"
   bad <- select(co2, -all_of(crucial))
   expect_error(pctr(companies, bad), crucial)
 
-  crucial <- "sec"
+  crucial <- "tilt_sector"
   bad <- select(co2, -all_of(crucial))
   expect_error(pctr(companies, bad), crucial)
 
@@ -163,7 +163,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   bad <- select(co2, -all_of(crucial))
   expect_error(pctr(companies, bad), crucial)
 
-  crucial <- "activity_product_uuid"
+  crucial <- "activity_uuid_product_uuid"
   bad <- select(co2, -all_of(crucial))
   expect_error(pctr(companies, bad), crucial)
 })

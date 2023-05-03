@@ -1,76 +1,34 @@
-input_co2,input_sector,unit,activity_uuid_product_uuid
-73.58,transport,metric ton*km,0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
-96,infrastructure & machinery,kg,be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
-39.07,electricity,metric ton*km,977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
-80.12,infrastructure & machinery,kg,5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7a25-4a4c-b25d-c096fdd50d47
-10.72,agriculture & animal husbandry,m,ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
-25.71,infrastructure & machinery,kg,2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
-16.93,infrastructure & machinery,km,edd290d2-a5b0-56ec-aaf3-ad71ce5f9403_095528f2-b554-4cfb-9dc8-764b50bcbd7b
-55.82,fuels,kg,d2c0844e-6e5b-52a3-802c-b1a9c162b9b1_fc458a34-8eed-427a-a5e0-c8e930422250
-29.13,infrastructure & machinery,kg,abdb78ee-ddb9-5552-9c4c-ed5b8b2ea11c_5a337107-6bdb-4280-84d4-15a4993c51c9
-92.74,infrastructure & machinery,kg,16e1dc41-2793-521c-b4c9-811cbaa6d36a_7655baa9-ac88-4f13-a1e7-77bd2059a7a6
-15.34,infrastructure & machinery,kg,8496d0e1-83eb-5a8d-8290-3394bb282f7e_1c2b2eb7-cdc9-4375-9fee-feb975ba4f64
-69.08,waste treatment & recycling,kg,ae3ff8b8-2fca-5654-a7c6-1dcaf31d7c32_d3a29af5-314a-4659-a574-6bfd53a6bde0
-3.66,agriculture & animal husbandry,kg,1636162a-eac4-59da-9430-96ad54cbdafa_6eb8dc11-5ac4-4538-a1f1-95463b640ea5
-47.99,infrastructure & machinery,unit,1899920a-4828-5d6d-b601-6ccf625a2b15_ca8ec222-fdaa-4c97-849e-130f1256593f
-73.58,transport,kg,85ba1478-38fa-5c5a-86a7-51e4a3615705_3d0a8c4e-af1f-4164-9961-40d201fa5645
-92.14,infrastructure & machinery,hour,71ae23f5-c5f7-5d2b-aec9-e417b2e6f813_8f7f787b-119e-481a-a2fa-e3ee86bcf5c8
-60.71,agriculture & animal husbandry,kg,c8467c8e-2c09-50ca-a441-d4b5e3d29d1b_e03dc076-23ea-4705-b9f5-7bba07abd0ae
-25.74,infrastructure & machinery,kg,2522595d-dee3-5326-bb66-febbebe86d1a_7dd1dea7-88cc-47fa-900b-c9eb0dbfe819
-95.44,agriculture & animal husbandry,MJ,0dcaf497-b74d-5585-ac55-8eed868183ea_386915d8-286e-41f3-b448-a525344d873d
-99.69,infrastructure & machinery,kg,164ce725-4895-548e-84b4-3103aec0f8ab_6c8d3210-303e-4897-b8c0-2258cb6552f2
-16.93,infrastructure & machinery,m2,d8f0cc89-f688-5151-8393-c039c71f1ed5_f31d1245-8beb-4427-8693-7a68b34f96ee
-55.48,infrastructure & machinery,kg,de0e2098-cda6-53c6-90a9-46ff6b66f900_efe650ec-2b78-4ae3-828a-1aad1d6803ec
-80.12,infrastructure & machinery,kg,29e4dc13-8200-5800-854c-699a06dd4215_079ce451-ca92-47fd-99b3-a2b1d371abb4
-55.82,fuels,unit,44260694-ed88-563a-b7b7-4737fdfb2279_efccec02-11ea-40fb-8ca9-0d4afcff3777
-92.74,infrastructure & machinery,metric ton*km,06cbe7d7-5278-5fbc-ad20-d96261c18373_03bf1369-1eec-49d0-bc4b-8b29efa826b9
-47.26,infrastructure & machinery,metric ton*km,0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
--0.76,metals,kg,be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
--3.78,infrastructure & machinery,metric ton*km,977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
-57.24,transport,kg,5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7a25-4a4c-b25d-c096fdd50d47
-42.07,infrastructure & machinery,m,ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
-49.19,infrastructure & machinery,kg,2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
-43.49,infrastructure & machinery,km,edd290d2-a5b0-56ec-aaf3-ad71ce5f9403_095528f2-b554-4cfb-9dc8-764b50bcbd7b
-66.53,infrastructure & machinery,kg,d2c0844e-6e5b-52a3-802c-b1a9c162b9b1_fc458a34-8eed-427a-a5e0-c8e930422250
-26.26,waste treatment & recycling,kg,abdb78ee-ddb9-5552-9c4c-ed5b8b2ea11c_5a337107-6bdb-4280-84d4-15a4993c51c9
-27.19,infrastructure & machinery,kg,16e1dc41-2793-521c-b4c9-811cbaa6d36a_7655baa9-ac88-4f13-a1e7-77bd2059a7a6
-29.97,infrastructure & machinery,kg,8496d0e1-83eb-5a8d-8290-3394bb282f7e_1c2b2eb7-cdc9-4375-9fee-feb975ba4f64
-14.99,agriculture & animal husbandry,kg,ae3ff8b8-2fca-5654-a7c6-1dcaf31d7c32_d3a29af5-314a-4659-a574-6bfd53a6bde0
-2.92,infrastructure & machinery,kg,1636162a-eac4-59da-9430-96ad54cbdafa_6eb8dc11-5ac4-4538-a1f1-95463b640ea5
-17.03,infrastructure & machinery,unit,1899920a-4828-5d6d-b601-6ccf625a2b15_ca8ec222-fdaa-4c97-849e-130f1256593f
-47.26,infrastructure & machinery,kg,85ba1478-38fa-5c5a-86a7-51e4a3615705_3d0a8c4e-af1f-4164-9961-40d201fa5645
-24.4,infrastructure & machinery,hour,71ae23f5-c5f7-5d2b-aec9-e417b2e6f813_8f7f787b-119e-481a-a2fa-e3ee86bcf5c8
--4,infrastructure & machinery,kg,c8467c8e-2c09-50ca-a441-d4b5e3d29d1b_e03dc076-23ea-4705-b9f5-7bba07abd0ae
-14.44,minerals,kg,2522595d-dee3-5326-bb66-febbebe86d1a_7dd1dea7-88cc-47fa-900b-c9eb0dbfe819
-79.57,infrastructure & machinery,MJ,0dcaf497-b74d-5585-ac55-8eed868183ea_386915d8-286e-41f3-b448-a525344d873d
-44.95,infrastructure & machinery,kg,164ce725-4895-548e-84b4-3103aec0f8ab_6c8d3210-303e-4897-b8c0-2258cb6552f2
-43.49,infrastructure & machinery,m2,d8f0cc89-f688-5151-8393-c039c71f1ed5_f31d1245-8beb-4427-8693-7a68b34f96ee
-5.21,transport,kg,de0e2098-cda6-53c6-90a9-46ff6b66f900_efe650ec-2b78-4ae3-828a-1aad1d6803ec
-57.24,transport,kg,29e4dc13-8200-5800-854c-699a06dd4215_079ce451-ca92-47fd-99b3-a2b1d371abb4
-66.53,infrastructure & machinery,unit,44260694-ed88-563a-b7b7-4737fdfb2279_efccec02-11ea-40fb-8ca9-0d4afcff3777
-27.19,infrastructure & machinery,metric ton*km,06cbe7d7-5278-5fbc-ad20-d96261c18373_03bf1369-1eec-49d0-bc4b-8b29efa826b9
--3.9,infrastructure & machinery,metric ton*km,0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
-88.16,infrastructure & machinery,kg,be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc
-91.29,infrastructure & machinery,metric ton*km,977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4
-65.75,infrastructure & machinery,kg,5fd7fca0-0700-51fd-877a-72b5b6ff8868_9219c94a-7a25-4a4c-b25d-c096fdd50d47
--2.66,infrastructure & machinery,m,ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa
-56.26,infrastructure & machinery,kg,2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d
-95.88,infrastructure & machinery,km,edd290d2-a5b0-56ec-aaf3-ad71ce5f9403_095528f2-b554-4cfb-9dc8-764b50bcbd7b
-4.46,infrastructure & machinery,kg,d2c0844e-6e5b-52a3-802c-b1a9c162b9b1_fc458a34-8eed-427a-a5e0-c8e930422250
-43.75,metals,kg,abdb78ee-ddb9-5552-9c4c-ed5b8b2ea11c_5a337107-6bdb-4280-84d4-15a4993c51c9
-97.59,minerals,kg,16e1dc41-2793-521c-b4c9-811cbaa6d36a_7655baa9-ac88-4f13-a1e7-77bd2059a7a6
-42.84,infrastructure & machinery,kg,8496d0e1-83eb-5a8d-8290-3394bb282f7e_1c2b2eb7-cdc9-4375-9fee-feb975ba4f64
-40.38,infrastructure & machinery,kg,ae3ff8b8-2fca-5654-a7c6-1dcaf31d7c32_d3a29af5-314a-4659-a574-6bfd53a6bde0
-59.65,infrastructure & machinery,kg,1636162a-eac4-59da-9430-96ad54cbdafa_6eb8dc11-5ac4-4538-a1f1-95463b640ea5
-62.9,infrastructure & machinery,unit,1899920a-4828-5d6d-b601-6ccf625a2b15_ca8ec222-fdaa-4c97-849e-130f1256593f
--3.9,infrastructure & machinery,kg,85ba1478-38fa-5c5a-86a7-51e4a3615705_3d0a8c4e-af1f-4164-9961-40d201fa5645
-96.63,cement & concrete,hour,71ae23f5-c5f7-5d2b-aec9-e417b2e6f813_8f7f787b-119e-481a-a2fa-e3ee86bcf5c8
-71.86,infrastructure & machinery,kg,c8467c8e-2c09-50ca-a441-d4b5e3d29d1b_e03dc076-23ea-4705-b9f5-7bba07abd0ae
-55.58,infrastructure & machinery,kg,2522595d-dee3-5326-bb66-febbebe86d1a_7dd1dea7-88cc-47fa-900b-c9eb0dbfe819
--4.77,waste treatment & recycling,MJ,0dcaf497-b74d-5585-ac55-8eed868183ea_386915d8-286e-41f3-b448-a525344d873d
--2.05,transport,kg,164ce725-4895-548e-84b4-3103aec0f8ab_6c8d3210-303e-4897-b8c0-2258cb6552f2
-95.88,infrastructure & machinery,m2,d8f0cc89-f688-5151-8393-c039c71f1ed5_f31d1245-8beb-4427-8693-7a68b34f96ee
-68.96,infrastructure & machinery,kg,de0e2098-cda6-53c6-90a9-46ff6b66f900_efe650ec-2b78-4ae3-828a-1aad1d6803ec
-65.75,infrastructure & machinery,kg,29e4dc13-8200-5800-854c-699a06dd4215_079ce451-ca92-47fd-99b3-a2b1d371abb4
-4.46,infrastructure & machinery,unit,44260694-ed88-563a-b7b7-4737fdfb2279_efccec02-11ea-40fb-8ca9-0d4afcff3777
-97.59,minerals,metric ton*km,06cbe7d7-5278-5fbc-ad20-d96261c18373_03bf1369-1eec-49d0-bc4b-8b29efa826b9
+activity_uuid_product_uuid,input_activity_uuid_product_uuid,input_reference_product_name,input_unit,input_co2_footprint,input_tilt_sector,input_tilt_subsector,input_isic_4digit_sector
+0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,5de8c337-dea9-5c1f-9d90-002de27188be_8911bd8c-a96f-4440-9f8e-a7dacf5,"alkyd paint, white, without solvent, in 60% solution state",kg,7.072358402,Inudstry,Other,2560
+0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,1aeb18b9-8355-560f-82aa-543c771c4d61_a0e53510-b90b-43ba-80cc-7600f5d,"alkyd paint, white, without solvent, in 60% solution state",kwh,39.91891764,Inudstry,Other,2560
+0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,22704506-7707-5ae7-990d-ebf01ac04fb5_50c41012-3b00-429d-ace3-40d0,"aluminium, cast alloy",kg,0.511867275,Inudstry,Other,2560
+0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,92078219-1ed3-5215-9f70-931cdefad520_5c21b18e-e32d-4c76-8d16-2238632,"copper, cathode",kg,1.23561056,Inudstry,Other,2560
+0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,9d483329-b09a-5513-b1bc-722cb211e928_bd4dca-497e-bdd9-fcd343012087,biowaste,kwh,21.24534293,Inudstry,Other,2560
+0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,8709b463-732e-592e-9b88-999ed17af48f_6b6b3a15-e0-baea-cda98afc61c2,biowaste,kg,1.24e-9,Inudstry,Other,2560
+0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,d44e7db1-4dda-51ed2929a8f1a2_32e60fbc-4778-470c-9653-feb859a3418f,"chemical, inorganic",kg,7e-9,Inudstry,Other,2560
+0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,7c7718bb-2372-5d04-a7ac-1ae5b12b05e3_61396bcb-bf35-411a-a6a6-85e8,"chemical, organic",kg,1.036422826,Inudstry,Other,2560
+be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,f08f52c5-559-92f7-ed216a32eed2_1b30b018-ac39-41f4-a9e0-92057ee,cow milk,kg,1.120764382,Inudstry,Other,2560
+be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,c5f28517-0c26-5746-9afe-3f3a48bfc71c_85a9dda1a-105ab3269262,"cream, from cow milk",kg,3.514821958,Inudstry,Other,2560
+be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,6737f21a-545-d3e724540ab7_66c93e71-f32b-4591-901c-55395db5c132,brass,kg,5.69e-4,Inudstry,Other,2560
+be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,582707f4-f961-5779-b1d9-507bdf5624ef_a9007f10-7e39-4d50-8f4a-d6d0,brass,kwh,0.11555049,Inudstry,Other,2560
+be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,04bc1d7b-4aeb-57ea-b217-9d70048-5f1b-461d-a223-f08025ec51d6,ceramic tile,kg,0.053919365,Inudstry,Other,2560
+be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,2532d5f6-7cec-5b3d-8b4f-9d19d5fce0c2_d47a4435-308911eed2698c,"copper, cathode",kg,4.427604506,Inudstry,Other,2560
+977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,1a092e74-9095-5393-89f6-6954fb3ed34b_a97e39-4d50-8f4a-d6d03ce3d673,"steel, chromium steel 18/8",kwh,0.600163591,Steel & Metals,Steel,2870
+977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,e9afeb6-e0ac327258e0_18eadf40-089b-441a-b868-5d07e9449992,"steel, chromium steel 18/8",kg,4.304207334,Steel & Metals,Steel,2870
+977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,f3aeaa91-d091-57d6-8e88-632e7735b471_a99b6ce9-9c21427d045,"transport, freight train",metric ton*km,0.009830356,Steel & Metals,Steel,2870
+977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,088c0a08-55f2-529d-8077-309d5228c5e1_1c5d51e7-9762-5fbb-b707-03,"transport, freight, inland waterways, barge",metric ton*km,0.001024621,Steel & Metals,Steel,2870
+977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,aaacb824-d084b1a7ed0aee_1d32b849-121f-4d23-853c-fa2bf55c42,"transport, freight, lorry, unspecified",metric ton*km,0.03076822,Steel & Metals,Steel,2870
+977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,3d83e6ad-da6e-52cd-b5d5-764749b27b0d-f0ec-42d1-9ec1-f85,"transport, freight, sea, bulk carrier for dry goods",metric ton*km,0.003123531,Steel & Metals,Steel,2870
+ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,dd836037-c3-8791-29cfb2d98c17_2bf7e6c9-e68a9724d81,"electricity, medium voltage",kg,-3.35e-6,Bioenergy & Waste,Other,1780
+ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,b43e277b-fbbc-59ef-b69c-566cc02d3ee4_a9007f6d03ce3d673,"energy and auxilliary inputs, metal working factory",kg,-0.001136353,Bioenergy & Waste,Other,1780
+ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,f1b81a2c-26ad-56f4-8120-d7affa5ab053_7933f397-3db0ae03,"energy and auxilliary inputs, metal working factory",kwh,0.260160853,Bioenergy & Waste,Other,1780
+ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,d1747a2e--0bb44d158a0b_dae141a8-7daa-4f03-a64,"flat glass, uncoated",kg,0.284344087,Bioenergy & Waste,Other,1780
+ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,c0e9d55b-7a17-5a0a-b67e-517f813c446ed-a120-cc7d35ddac10,acrylonitrile-butadiene-styrene copolymer,kg,10.99964547,Bioenergy & Waste,Other,1780
+ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,f0d2c218-2b61-55e4-991f-cccc7c168e37_a235b2ff-,"aluminium, cast alloy",kg,0.001006155,Bioenergy & Waste,Other,1780
+ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,86f30e6d-d629-52ed-aeda-68a82ba-485c-a800-b89efdcb0491,dairy,m3,0.032430197,Bioenergy & Waste,Other,1780
+2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,e7efa084-9c9c-519c-9c88-a0e43926ef95_61627325--1a9f1d19521f,"seal, natural rubber based",kg,0.119946765,Inudstry,Other,2679
+2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,d9b1a425-7453-562f-802f-e78677f5bd00_a9007f10-7a-d6d03ce3d673,"seal, natural rubber based",kg,1.86803558,Inudstry,Other,2679
+2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,4283166a-347b-5eef-9ab1-fcea0c339bc-f0f3-410e-8bbb-b5cb3e994313,"transport, freight train",metric ton*km,0.004545829,Inudstry,Other,2679
+2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,4550d429-b28d-b26c51_66c93e71-f32b-4591-901c-55395db5c132,"transport, freight, light commercial vehicle",metric ton*km,0.022001309,Inudstry,Other,2679
+2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,6501c38f-4c03-5bda-bf8c-ffe4-4915-a896-9996a014c410,"transport, freight, lorry, unspecified",metric ton*km,0.052924319,Inudstry,Other,2679
+2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,4ba8cd24-2ebb-5c20-86ec-74e10029f21f_f5707bdf-f7e2-479b,"transport, freight, sea, container ship",metric ton*km,0.004894748,Inudstry,Other,2679

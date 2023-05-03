@@ -1,8 +1,9 @@
 ictr_inputs_crucial <- function() {
   crucial_in_ictr_score_activities <- c(
-    "input_co2",
-    "input_sector",
-    "unit"
+    "input_co2_footprint",
+    "input_tilt_sector",
+    "input_unit",
+    "input_isic_4digit_sector"
   )
 
   crucial_in_ictr_at_company_level <- c(
