@@ -22,22 +22,22 @@
       15   bst-procontrol-gmbh_00000005104947-001
       
       [[2]]
-         transition_risk
-      1             high
-      2           medium
-      3              low
-      4             high
-      5           medium
-      6              low
-      7             high
-      8           medium
-      9              low
-      10            high
-      11          medium
-      12             low
-      13            high
-      14          medium
-      15             low
+         risk_category
+      1           high
+      2         medium
+      3            low
+      4           high
+      5         medium
+      6            low
+      7           high
+      8         medium
+      9            low
+      10          high
+      11        medium
+      12           low
+      13          high
+      14        medium
+      15           low
       
       [[3]]
          score_all

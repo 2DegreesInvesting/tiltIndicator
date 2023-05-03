@@ -10,7 +10,7 @@ test_that("outputs columns for ids, risk categories, and shares", {
 
   expected <- c(
     "companies_id",
-    "transition_risk",
+    "risk_category",
     "score_all",
     "score_unit",
     # FIXME: "score_sector" is missing (#191)
@@ -34,7 +34,7 @@ test_that("returns 3 rows per company, for risk 'low', 'medium', and 'high'", {
   out <- pctr(companies, co2)
 
   expect_equal(nrow(out), 3L)
-  expect_equal(sort(unique(out$transition_risk)), c("high", "low", "medium"))
+  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 
   companies <- tibble(
     activity_product_uuid = c("x"),
@@ -43,7 +43,7 @@ test_that("returns 3 rows per company, for risk 'low', 'medium', and 'high'", {
 
   out <- pctr(companies, co2)
   expect_equal(nrow(out), 6L)
-  expect_equal(sort(unique(out$transition_risk)), c("high", "low", "medium"))
+  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 })
 
 test_that("if a company matches at least one input, each share sums 1 (#175)", {

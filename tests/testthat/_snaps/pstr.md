@@ -11,11 +11,11 @@
       4 cta-commodity-trading-austria-gmbh_00000005215384-001
       
       [[2]]
-        transition_risk
-      1             low
-      2             low
-      3             low
-      4             low
+        risk_category
+      1           low
+      2           low
+      3           low
+      4           low
       
       [[3]]
         score_aggregated

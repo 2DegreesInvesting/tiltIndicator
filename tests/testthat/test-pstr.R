@@ -11,7 +11,7 @@ test_that("outputs the expected columns", {
   out <- pstr(companies, scenarios)
   expect_true(all(common_output_columns() %in% names(out)))
   expect_true(any(grepl("score", names(out))))
-  expected <- c("companies_id", "transition_risk", "score_aggregated")
+  expected <- c("companies_id", "risk_category", "score_aggregated")
   expect_equal(names(out)[1:3], expected)
 })
 
@@ -120,20 +120,20 @@ test_that("outputs correct values for edge cases", {
   )
 
   out <- pstr(companies, mutate(scenarios, reductions = NA))
-  expect_equal("no_sector", out$transition_risk)
+  expect_equal("no_sector", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = 30))
-  expect_equal("low", out$transition_risk)
+  expect_equal("low", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = 30.1))
-  expect_equal("medium", out$transition_risk)
+  expect_equal("medium", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = 70))
-  expect_equal("medium", out$transition_risk)
+  expect_equal("medium", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = 70.1))
-  expect_equal("high", out$transition_risk)
+  expect_equal("high", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = -1))
-  expect_equal("low", out$transition_risk)
+  expect_equal("low", out$risk_category)
 })

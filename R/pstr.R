@@ -22,6 +22,7 @@ pstr <- function(companies, scenarios) {
 
   company_level |>
     rename(companies_id = "company_id") |>
+    rename(risk_category = "transition_risk") |>
     relocate_crucial_output_columns() |>
     ungroup()
 }

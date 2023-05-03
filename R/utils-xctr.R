@@ -1,6 +1,6 @@
 xctr_rename <- function(data) {
   data |>
-    rename(companies_id = "company_id", transition_risk = "score") |>
+    rename(companies_id = "company_id", risk_category = "score") |>
     rename_with(~ gsub("share_", "score_", .x), starts_with("share_"))
 }
 

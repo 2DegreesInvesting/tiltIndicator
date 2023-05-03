@@ -16,16 +16,16 @@
       9                           mbdgmbh_00000004773428001
       
       [[2]]
-        transition_risk
-      1            high
-      2          medium
-      3             low
-      4            high
-      5          medium
-      6             low
-      7            high
-      8          medium
-      9             low
+        risk_category
+      1          high
+      2        medium
+      3           low
+      4          high
+      5        medium
+      6           low
+      7          high
+      8        medium
+      9           low
       
       [[3]]
         score_all
