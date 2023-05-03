@@ -52,7 +52,12 @@ pctr_at_product_level <- function(companies,
     rename(tilt_sector = "sec") |>
     pctr_add_scores(low_threshold, high_threshold)
 
-  left_join(companies, scored, by = "activity_uuid_product_uuid")
+  left_join(
+    companies,
+    scored,
+    by = "activity_uuid_product_uuid",
+    relationship = "many-to-many"
+  )
 }
 
 #' @rdname pctr
