@@ -83,14 +83,6 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   expect_error(pstr(companies, bad), crucial)
 })
 
-test_that("with a missing value in `scenarios$reductions` errors gracefully", {
-  skip("TODO : Ask Tilman if this should throw an error.")
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(pstr_scenarios, 1)
-  scenarios$reductions <- NA
-  expect_error(pstr(companies, scenarios))
-})
-
 test_that("outputs correct values for edge cases", {
   companies <- tibble(
     company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
