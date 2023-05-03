@@ -1,8 +1,7 @@
 library(here)
 library(readr)
 library(usethis)
-
-load_all()
+devtools::load_all()
 
 # Source:
 # https://github.com/2DegreesInvesting/tiltIndicator/issues/167#issuecomment-1527223646
