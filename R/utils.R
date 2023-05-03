@@ -67,11 +67,11 @@ stop_if_any_missing_input_co2 <- function(data) {
 }
 
 common_output_columns <- function() {
-  c("companies_id", "risk_category")
+  c("companies_id", "grouped_by", "risk_category")
 }
 
 relocate_crucial_output_columns <- function(data) {
-  relocate(data, all_of(common_output_columns()), starts_with("score"))
+  relocate(data, all_of(common_output_columns()))
 }
 
 document_value <- function() {

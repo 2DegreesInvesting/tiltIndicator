@@ -5,13 +5,13 @@ test_that("snapshot", {
   expect_snapshot(format_robust_snapshot(out))
 })
 
-test_that("outputs the expected columns", {
+test_that("outputs common output columns", {
   scenarios <- pstr_scenarios
   companies <- pstr_companies |> slice(1)
+
   out <- pstr(companies, scenarios)
-  expect_true(all(common_output_columns() %in% names(out)))
-  expect_true(any(grepl("score", names(out))))
-  expected <- c("companies_id", "risk_category", "score_aggregated")
+
+  expected <- common_output_columns()
   expect_equal(names(out)[1:3], expected)
 })
 
@@ -64,7 +64,6 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   crucial <- "subsector"
   bad <- select(companies, -all_of(crucial))
   expect_error(pstr(bad, scenarios), crucial)
-
 })
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
@@ -90,7 +89,6 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   crucial <- "scenario"
   bad <- select(scenarios, -all_of(crucial))
   expect_error(pstr(companies, bad), crucial)
-
 })
 
 test_that("with a missing value in `scenarios$reductions` errors gracefully", {

@@ -36,9 +36,7 @@ pctr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
 
   company_level <- pctr_at_company_level(product_level)
 
-  company_level |>
-    xctr_rename() |>
-    relocate_crucial_output_columns()
+  xctr_polish_output(company_level)
 }
 
 #' @rdname pctr
