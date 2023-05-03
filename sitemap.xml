@@ -34,10 +34,7 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr_companies.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr_inputs.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr_datasets.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/index.html</loc>
@@ -46,22 +43,13 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_companies.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_ep_weo.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_weo_2022.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_datasets.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr_companies.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr_ecoinvent_co2.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr_datasets.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pipe.html</loc>
@@ -70,16 +58,13 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_companies.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_datasets.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_prepare_companies.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_prepare_scenario.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_scenarios.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/render_to_list.html</loc>
