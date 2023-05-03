@@ -3,7 +3,7 @@ library(readr)
 library(here)
 library(usethis)
 
-devtools::load_all()
+load_all()
 
 # Source: Tilman via tilt.indicator.product.carbon.tr-main_v2.zip at:
 # https://github.com/2DegreesInvesting/tiltData/issues/200#issue-1623506353
