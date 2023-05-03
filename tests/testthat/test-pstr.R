@@ -1,17 +1,18 @@
-test_that("snapshot", {
+test_that("hasn't changed", {
   scenarios <- pstr_scenarios
   companies <- pstr_companies |> slice(1)
   out <- pstr(companies, scenarios)
   expect_snapshot(format_robust_snapshot(out))
 })
 
-test_that("outputs the expected columns", {
+test_that("outputs common output columns", {
   scenarios <- pstr_scenarios
   companies <- pstr_companies |> slice(1)
+
   out <- pstr(companies, scenarios)
-  expect_true(all(common_output_columns() %in% names(out)))
-  expect_true(any(grepl("score", names(out))))
-  expect_equal(names(out)[1:3], c("id", "transition_risk", "score_aggregated"))
+
+  expected <- common_output_columns()
+  expect_equal(names(out)[1:4], expected)
 })
 
 test_that("the output is not grouped", {
@@ -29,7 +30,7 @@ test_that("if a company has no products, shares are NA (#176)", {
   expect_equal(unique(out$score_aggregated), NA)
 })
 
-test_that("with a 0-row `copmanies` outputs a well structured 0-row tibble", {
+test_that("with a 0-row `companies` outputs a well structured 0-row tibble", {
   out0 <- pstr(pstr_companies[0L, ], pstr_scenarios)
   expect_s3_class(out0, "tbl")
   expect_equal(nrow(out0), 0L)
@@ -40,10 +41,97 @@ test_that("with a 0-row `copmanies` outputs a well structured 0-row tibble", {
   expect_equal(names(out0), names(out1))
 })
 
+test_that("if `companies` lacks crucial columns, errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(pstr_scenarios, 1)
+
+  crucial <- "company_id"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+
+  crucial <- "company_name"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+
+  crucial <- "type"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+
+  crucial <- "sector"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+
+  crucial <- "subsector"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr(bad, scenarios), crucial)
+})
+
+test_that("if `scenarios` lacks crucial columns, errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(pstr_scenarios, 1)
+
+  crucial <- "type"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "sector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "subsector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "year"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "scenario"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+})
+
+test_that("with a missing value in `scenarios$reductions` errors gracefully", {
+  skip("TODO : Ask Tilman if this should throw an error.")
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(pstr_scenarios, 1)
+  scenarios$reductions <- NA
+  expect_error(pstr(companies, scenarios))
+})
+
 test_that("outputs correct values for edge cases", {
-  skip("FIXME: Adapt to new API")
-  edge_cases <- pstr_toy_weo_2022(reductions = c(NA, 30, 30.1, 70, 70.1))
-  with_reductions <- pstr_old_add_reductions(pstr_toy_companies(), pstr_toy_ep_weo(), edge_cases)
-  out <- pstr_add_transition_risk(with_reductions)
-  expect_equal(c("no_sector", "low", "medium", "medium", "high"), out$transition_risk)
+  companies <- tibble(
+    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
+    company_name = "cta - commodity trading austria gmbh",
+    type = "ipr",
+    sector = "total",
+    subsector = "energy",
+  )
+  scenarios <- tibble(
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    year = 2020,
+    value = 99,
+    reductions = 0,
+    type = "ipr",
+  )
+
+  out <- pstr(companies, mutate(scenarios, reductions = NA))
+  expect_equal("no_sector", out$risk_category)
+
+  out <- pstr(companies, mutate(scenarios, reductions = 30))
+  expect_equal("low", out$risk_category)
+
+  out <- pstr(companies, mutate(scenarios, reductions = 30.1))
+  expect_equal("medium", out$risk_category)
+
+  out <- pstr(companies, mutate(scenarios, reductions = 70))
+  expect_equal("medium", out$risk_category)
+
+  out <- pstr(companies, mutate(scenarios, reductions = 70.1))
+  expect_equal("high", out$risk_category)
+
+  out <- pstr(companies, mutate(scenarios, reductions = -1))
+  expect_equal("low", out$risk_category)
 })

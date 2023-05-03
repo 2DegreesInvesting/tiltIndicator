@@ -25,8 +25,5 @@ istr <- function(companies, scenario, mapper) {
     istr_add_transition_risk() |>
     istr_aggregate_scores(companies)
 
-  out |>
-    rename(id = "companies_id") |>
-    relocate_crucial_output_columns() |>
-    ungroup()
+  xstr_polish_output(out)
 }

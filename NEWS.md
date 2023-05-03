@@ -1,5 +1,19 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9033
+
+* All top level functions now output the same first four columns (#214):
+
+    * `companies_id`
+    * `grouped_by`
+    * `risk_category`
+    * `value`
+
+# tiltIndicator 0.0.0.9032
+
+* `ictr_at_product_level()` and `pctr_at_product_level()` now output company
+data (#213).
+
 # tiltIndicator 0.0.0.9031
 
 * In PSTR use new data  (@lindadelacombaz #196).

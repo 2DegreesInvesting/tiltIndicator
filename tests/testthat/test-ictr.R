@@ -3,23 +3,26 @@ test_that("hasn't change", {
   expect_snapshot(out)
 })
 
-test_that("outputs columns for ids, risk categories, and shares", {
+test_that("outputs common output columns", {
   companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1)
+
   out <- ictr(companies, inputs)
 
-  expected <- c(
-    "id",
-    "transition_risk",
-    "score_all",
-    "score_unit",
-    "score_sector",
-    "score_unit_sec"
-  )
-  expect_equal(names(out)[1:6], expected)
+  expected <- common_output_columns()
+  expect_equal(names(out)[1:4], expected)
 })
 
-test_that("returns 3 rows per company, for risk 'low', 'medium', and 'high'", {
+test_that("it's arranged by `companies_id` and `grouped_by`", {
+  companies <- slice(ictr_companies, 1)
+  inputs <- slice(ictr_inputs, 1)
+
+  out <- ictr(companies, inputs)
+
+  expect_equal(out, arrange(out, companies_id, grouped_by))
+})
+
+test_that("returns n rows equal to companies x risk_category x grouped_by", {
   inputs <- tibble(
     activity_uuid_product_uuid = "x",
     input_activity_uuid_product_uuid = "y",
@@ -34,16 +37,23 @@ test_that("returns 3 rows per company, for risk 'low', 'medium', and 'high'", {
     activity_uuid_product_uuid = c("x", "y")
   )
   out <- ictr(companies, inputs)
-  expect_equal(nrow(out), 3L)
-  expect_equal(sort(unique(out$transition_risk)), c("high", "low", "medium"))
+
+  n <- length(unique(out$companies_id)) *
+    length(unique(out$risk_category)) *
+    length(unique(out$grouped_by))
+  expect_equal(nrow(out), n)
+  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 
   companies <- tibble(
     company_id = c("a", "b"),
     activity_uuid_product_uuid = c("x", "y")
   )
   out <- ictr(companies, inputs)
-  expect_equal(nrow(out), 6L)
-  expect_equal(sort(unique(out$transition_risk)), c("high", "low", "medium"))
+  n <- length(unique(out$companies_id)) *
+    length(unique(out$risk_category)) *
+    length(unique(out$grouped_by))
+  expect_equal(nrow(out), n)
+  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 })
 
 test_that("if a company matches at least one input, each share sums 1 (#175)", {
@@ -61,7 +71,11 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
   )
 
   out <- ictr(companies, inputs)
-  sum_of_each_share <- unique(sapply(select(out, starts_with("score")), sum))
+  sum_of_each_share <- out |>
+    group_by(grouped_by) |>
+    summarize(sum = sum(value)) |>
+    distinct(sum) |>
+    pull()
   expect_equal(sum_of_each_share, 1)
 })
 

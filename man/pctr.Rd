@@ -2,20 +2,33 @@
 % Please edit documentation in R/pctr.R
 \name{pctr}
 \alias{pctr}
+\alias{pctr_at_product_level}
+\alias{pctr_at_company_level}
 \title{Calculate the PCTR indicator}
 \usage{
 pctr(companies, co2, low_threshold = 0.3, high_threshold = 0.7)
+
+pctr_at_product_level(
+  companies,
+  co2,
+  low_threshold = 0.3,
+  high_threshold = 0.7
+)
+
+pctr_at_company_level(data)
 }
 \arguments{
-\item{companies}{A \link{data.frame} like \link{pctr_companies}.}
+\item{companies}{A dataframe like \link{pctr_companies}.}
 
-\item{co2}{A dataframe with co2 data.}
+\item{co2}{A dataframe like \link{pctr_ecoinvent_co2}.}
 
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}
 
 \item{high_threshold}{A numeric value to segment medium and high transition
 risk products.}
+
+\item{data}{A dataframe. The ouput of \code{\link[=ictr_at_product_level]{ictr_at_product_level()}}.}
 }
 \value{
 A dataframe with columns \code{id}, \code{transition_risk}, and scores.
@@ -59,6 +72,19 @@ The output of this indicator contains the following:
 }
 }
 \examples{
-pctr(pctr_companies, pctr_ecoinvent_co2)
+companies <- pctr_companies
+co2 <- pctr_ecoinvent_co2
+
+# Product level
+companies |>
+  pctr_at_product_level(co2)
+
+# Company level
+companies |>
+  pctr_at_product_level(co2) |>
+  pctr_at_company_level()
+
+# Similar
+pctr(companies, co2)
 }
 \concept{PCTR functions}
