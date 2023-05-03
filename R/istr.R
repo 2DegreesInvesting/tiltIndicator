@@ -84,6 +84,11 @@ istr_at_company_level <- function(data, companies) {
   xstr_polish_output(out)
 }
 
+istr_mapping <- function(companies, ep_weo) {
+  companies |>
+    left_join(ep_weo, by = c("eco_sectors" = "ECO_sector"))
+}
+
 istr_add_reductions <- function(companies, weo_2022) {
   companies |>
     # left_join(ep_weo, by = c("eco_sectors" = "ECO_sector")) |>
