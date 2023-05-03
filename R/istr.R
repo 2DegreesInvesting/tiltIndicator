@@ -83,4 +83,3 @@ istr_at_company_level <- function(data, companies) {
 
   xstr_polish_output(out)
 }
-
