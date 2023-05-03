@@ -15,22 +15,6 @@ NULL
 #' @rdname ictr_datasets
 "ictr_inputs"
 
-#' PCTR datasets
-#'
-#' @author Tilman Trompke.
-#' @family PCTR datasets
-#'
-#' @examples
-#' pctr_companies
-#'
-#' pctr_ecoinvent_co2
-#' @name pctr_datasets
-NULL
-#' @rdname pctr_datasets
-"pctr_companies"
-#' @rdname pctr_datasets
-"pctr_ecoinvent_co2"
-
 #' ISTR datasets
 #'
 #' @author Lyanne Ho.
@@ -51,6 +35,22 @@ NULL
 "istr_ep_weo"
 #' @rdname istr_datasets
 "istr_weo_2022"
+
+#' PCTR datasets
+#'
+#' @author Tilman Trompke.
+#' @family PCTR datasets
+#'
+#' @examples
+#' pctr_companies
+#'
+#' pctr_ecoinvent_co2
+#' @name pctr_datasets
+NULL
+#' @rdname pctr_datasets
+"pctr_companies"
+#' @rdname pctr_datasets
+"pctr_ecoinvent_co2"
 
 #' PSTR datasets
 #'
