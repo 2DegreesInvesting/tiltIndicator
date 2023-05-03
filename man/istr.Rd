@@ -2,19 +2,27 @@
 % Please edit documentation in R/istr.R
 \name{istr}
 \alias{istr}
+\alias{istr_at_product_level}
+\alias{istr_at_company_level}
 \title{Calculate the ISTR indicator}
 \usage{
 istr(companies, scenario, mapper)
+
+istr_at_product_level(companies, scenario, mapper)
+
+istr_at_company_level(data, companies)
 }
 \arguments{
-\item{companies}{A \link{data.frame}. The output of \code{\link[=istr_mapping]{istr_mapping()}}.}
+\item{companies}{A dataframe like \link{istr_companies}.}
 
-\item{scenario}{A dataframe with scenario data.}
+\item{scenario}{A dataframe like \link{istr_weo_2022}.}
 
-\item{mapper}{A dataframe mapping \code{companies} to \code{scenario}.}
+\item{mapper}{A dataframe like \link{istr_ep_weo}.}
+
+\item{data}{A dataframe. The output at product level.}
 }
 \value{
-A dataframe with columns \code{id}, \code{transition_risk}, and scores.
+At company level, a dataframe with columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
 }
 \description{
 The Input Product Sector Risk Indicator assesses the transition risk of the
@@ -43,13 +51,20 @@ risk. We, therefore, derive the company-level information.
 Please note that carbon emissions or emissions always mean CO2e.
 }
 \examples{
-istr(istr_companies, istr_weo_2022, istr_ep_weo)
-}
-\seealso{
-Other ISTR functions: 
-\code{\link{istr_add_reductions}()},
-\code{\link{istr_add_transition_risk}()},
-\code{\link{istr_aggregate_scores}()},
-\code{\link{istr_mapping}()}
+companies <- istr_companies
+scenario <- istr_weo_2022
+mapper <- istr_ep_weo
+
+# Product level
+companies |>
+  istr_at_product_level(scenario, mapper)
+
+# Company level
+companies |>
+  istr_at_product_level(scenario, mapper) |>
+  istr_at_company_level(companies)
+
+# Same
+istr(companies, scenario, mapper)
 }
 \concept{ISTR functions}

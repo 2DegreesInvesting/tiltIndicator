@@ -2,17 +2,25 @@
 % Please edit documentation in R/pstr.R
 \name{pstr}
 \alias{pstr}
+\alias{pstr_at_product_level}
+\alias{pstr_at_company_level}
 \title{Calculate the PSTR indicator}
 \usage{
 pstr(companies, scenarios)
+
+pstr_at_product_level(companies, scenarios)
+
+pstr_at_company_level(data, companies)
 }
 \arguments{
 \item{companies}{A dataframe like \link{pstr_companies}.}
 
 \item{scenarios}{A dataframe like \link{pstr_scenarios}.}
+
+\item{data}{A dataframe. The output at product level.}
 }
 \value{
-A dataframe with columns \code{id}, \code{transition_risk}, and scores.
+At company level, a dataframe with columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
 }
 \description{
 The Product Sector Transition Risk Indicator measures the transition risk of
@@ -25,8 +33,20 @@ After assessing each product, all the products with the same category are
 aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 }
-\seealso{
-Other PSTR functions: 
-\code{\link{pstr_at_company_level}()}
+\examples{
+companies <- pstr_companies
+scenarios <- pstr_scenarios
+
+# Product level
+companies |>
+  pstr_at_product_level(scenarios)
+
+# Company level
+companies |>
+  pstr_at_product_level(scenarios) |>
+  pstr_at_company_level(companies)
+
+# Same
+pstr(companies, scenarios)
 }
 \concept{PSTR functions}

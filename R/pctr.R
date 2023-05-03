@@ -26,17 +26,14 @@
 #'   pctr_at_product_level(co2) |>
 #'   pctr_at_company_level()
 #'
-#' # Similar
+#' # Same
 #' pctr(companies, co2)
 pctr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   pctr_check(companies)
 
-  product_level <- companies |>
-    pctr_at_product_level(co2, low_threshold, high_threshold)
-
-  company_level <- pctr_at_company_level(product_level)
-
-  xctr_polish_output(company_level)
+  companies |>
+    pctr_at_product_level(co2, low_threshold, high_threshold) |>
+    pctr_at_company_level()
 }
 
 #' @rdname pctr
@@ -63,7 +60,9 @@ pctr_at_product_level <- function(companies,
 #' @rdname pctr
 #' @export
 pctr_at_company_level <- function(data) {
-  xctr_at_company_level(data, c("all", "unit", "unit_sec"))
+  data |>
+    xctr_at_company_level(c("all", "unit", "unit_sec")) |>
+    xctr_polish_output()
 }
 
 pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
