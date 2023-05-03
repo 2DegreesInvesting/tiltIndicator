@@ -139,7 +139,7 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
 })
 
 test_that("is sensitive to low_threshold", {
-  companies <- slice(ictr_companies, 2)
+  companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1:2)
   out1 <- ictr(companies, inputs, low_threshold = .1)
   out2 <- ictr(companies, inputs, low_threshold = .9)
@@ -147,7 +147,7 @@ test_that("is sensitive to low_threshold", {
 })
 
 test_that("is sensitive to high_threshold", {
-  companies <- slice(ictr_companies, 2)
+  companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1:2)
   out1 <- ictr(companies, inputs, high_threshold = .1)
   out2 <- ictr(companies, inputs, high_threshold = .9)
@@ -155,7 +155,7 @@ test_that("is sensitive to high_threshold", {
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- slice(ictr_companies, 2)
+  companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1)
 
   crucial <- "activity_uuid_product_uuid"
@@ -168,7 +168,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 })
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
-  companies <- slice(ictr_companies, 2)
+  companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1)
 
   crucial <- "activity_uuid_product_uuid"
@@ -185,7 +185,7 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
 })
 
 test_that("with a missing value in `inputs$inputs_co2` errors gracefully", {
-  companies <- slice(ictr_companies, 2)
+  companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1)
   inputs$input_co2_footprint <- NA
   expect_error(ictr(companies, inputs), "input_co2_footprint.*missing")
@@ -205,7 +205,7 @@ test_that("if `companies` has 0-rows, returns a well structured 0-row output", {
 })
 
 test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
-  companies <- slice(ictr_companies, 2)
+  companies <- slice(ictr_companies, 1)
 
   inputs0 <- ictr_inputs[0, ]
   inputs1 <- ictr_inputs[1, ]

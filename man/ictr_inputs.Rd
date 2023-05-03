@@ -5,7 +5,7 @@
 \alias{ictr_inputs}
 \title{A dataset with fake input Co2-footprint, input sector, and activity_uuid.}
 \format{
-An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 33 rows and 8 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 33 rows and 5 columns.
 }
 \source{
 TODO

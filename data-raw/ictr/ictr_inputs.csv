@@ -1,4 +1,4 @@
-activity_uuid_product_uuid,input_activity_uuid_product_uuid,input_reference_product_name,input_unit,input_co2_footprint,input_tilt_sector,input_tilt_subsector,input_isic_4digit
+activity_uuid_product_uuid,input_activity_uuid_product_uuid,input_reference_product_name,input_unit,input_co2_footprint,input_tilt_sector,input_tilt_subsector,input_isic_4digit_sector
 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,5de8c337-dea9-5c1f-9d90-002de27188be_8911bd8c-a96f-4440-9f8e-a7dacf5,"alkyd paint, white, without solvent, in 60% solution state",kg,7.072358402,Inudstry,Other,2560
 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,1aeb18b9-8355-560f-82aa-543c771c4d61_a0e53510-b90b-43ba-80cc-7600f5d,"alkyd paint, white, without solvent, in 60% solution state",kwh,39.91891764,Inudstry,Other,2560
 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,22704506-7707-5ae7-990d-ebf01ac04fb5_50c41012-3b00-429d-ace3-40d0,"aluminium, cast alloy",kg,0.511867275,Inudstry,Other,2560

@@ -47,10 +47,12 @@ pctr_at_product_level <- function(companies,
                                   high_threshold = 0.7) {
   benchmarks <- list("all", "unit", c("unit", "sec"))
   scored <- co2 |>
+    rename(sec = "tilt_sector") |>
     xctr_add_ranks(x = "co2_footprint", .by = benchmarks) |>
+    rename(tilt_sector = "sec") |>
     pctr_add_scores(low_threshold, high_threshold)
 
-  left_join(companies, scored, by = "activity_product_uuid")
+  left_join(companies, scored, by = "activity_uuid_product_uuid")
 }
 
 #' @rdname pctr
