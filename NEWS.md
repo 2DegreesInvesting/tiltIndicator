@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9034
+
+* In ICTR and PCTR the example datasets are now updated (@kalashsinghal #217).
+
 # tiltIndicator 0.0.0.9033
 
 * All top level functions now output the same first four columns (#214):
