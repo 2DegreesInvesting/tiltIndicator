@@ -4,6 +4,10 @@ template:
 
 reference:
 
+  - title: Main functions and datasets
+    contents:
+      - -has_concept("pre-processing helpers")
+
   - title: Pre-processing helpers
     desc: >
       "WARNING: These functions don't compute indicators so don't
@@ -11,7 +15,3 @@ reference:
       for all indicators."
     contents:
       - has_concept("pre-processing helpers")
-
-  - title: Main functions and datasets
-    contents:
-      - -has_concept("pre-processing helpers")
