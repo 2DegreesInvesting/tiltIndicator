@@ -16,6 +16,16 @@
 #' companies <- pstr_companies
 #' scenarios <- pstr_scenarios
 #'
+#' # Product level
+#' companies |>
+#'   pstr_at_product_level(scenarios)
+#'
+#' # Company level
+#' companies |>
+#'   pstr_at_product_level(scenarios)
+#'   pstr_at_company_level()
+#'
+#' # Same
 #' pstr(companies, scenarios)
 pstr <- function(companies, scenarios) {
   companies |>

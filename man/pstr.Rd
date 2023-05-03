@@ -2,9 +2,12 @@
 % Please edit documentation in R/pstr.R
 \name{pstr}
 \alias{pstr}
+\alias{pstr_at_product_level}
 \title{Calculate the PSTR indicator}
 \usage{
 pstr(companies, scenarios)
+
+pstr_at_product_level(companies, scenarios)
 }
 \arguments{
 \item{companies}{A dataframe like \link{pstr_companies}.}
@@ -29,6 +32,16 @@ derive company-level information.
 companies <- pstr_companies
 scenarios <- pstr_scenarios
 
+# Product level
+companies |>
+  pstr_at_product_level(scenarios)
+
+# Company level
+companies |>
+  pstr_at_product_level(scenarios)
+  pstr_at_company_level()
+
+# Same
 pstr(companies, scenarios)
 }
 \seealso{
