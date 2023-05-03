@@ -25,6 +25,12 @@ After assessing each product, all the products with the same category are
 aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 }
+\examples{
+companies <- pstr_companies
+scenarios <- pstr_scenarios
+
+pstr(companies, scenarios)
+}
 \seealso{
 Other PSTR functions: 
 \code{\link{pstr_at_company_level}()}

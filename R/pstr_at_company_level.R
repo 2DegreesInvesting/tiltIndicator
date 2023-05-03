@@ -48,7 +48,7 @@ pstr_at_company_level <- function(with_transition_risk, companies) {
     "scenario",
     "year"
   )
-  with_transition_risk2 |>
+  out <- with_transition_risk2 |>
     select(all_of(all_of(useful_cols))) |>
     group_by(.data$company_id, .data$company_name, .data$transition_risk, .data$scenario, .data$year) |>
     reframe(score_aggregated = (n() / .data$total_products_per_company * 100)) |>
@@ -59,4 +59,8 @@ pstr_at_company_level <- function(with_transition_risk, companies) {
     # `distinct()`. See ?distinct_all(), ?distinct(), and also this reprex:
     # https://gist.github.com/maurolepore/45c899b9429f5d48004e2e127257cc29
     distinct_all()
+
+  out |>
+    rename(companies_id = "company_id") |>
+    xstr_polish_output()
 }

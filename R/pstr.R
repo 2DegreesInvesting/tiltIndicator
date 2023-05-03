@@ -12,15 +12,13 @@
 #'
 #' @export
 #'
-#' @example
+#' @examples
 #' companies <- pstr_companies
 #' scenarios <- pstr_scenarios
+#'
 #' pstr(companies, scenarios)
 pstr <- function(companies, scenarios) {
-  product_level <- pstr_at_product_level(companies, scenarios)
-  company_level <- pstr_at_company_level(product_level, companies)
-
-  company_level |>
-    rename(companies_id = "company_id") |>
-    xstr_polish_output()
+  companies |>
+    pstr_at_product_level(scenarios) |>
+    pstr_at_company_level(companies)
 }
