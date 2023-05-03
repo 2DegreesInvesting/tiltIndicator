@@ -22,9 +22,11 @@ test_that("outputs columns for ids, risk categories, and shares", {
 test_that("returns 3 rows per company, for risk 'low', 'medium', and 'high'", {
   inputs <- tibble(
     activity_uuid_product_uuid = "x",
-    input_co2 = 1,
-    input_sector = "transport",
-    unit = "metric ton*km",
+    input_activity_uuid_product_uuid = "y",
+    input_co2_footprint = 1,
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit = 4575
   )
 
   companies <- tibble(
@@ -51,9 +53,11 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
   )
   inputs <- tibble(
     activity_uuid_product_uuid = c("a"),
-    input_co2 = 1,
-    input_sector = "transport",
-    unit = "metric ton*km",
+    input_activity_uuid_product_uuid = c("y"),
+    input_co2_footprint = 1,
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit = 4575
   )
 
   out <- ictr(companies, inputs)
@@ -68,9 +72,11 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
   )
   inputs <- tibble(
     activity_uuid_product_uuid = "b",
-    input_co2 = 1,
-    input_sector = "transport",
-    unit = "metric ton*km",
+    input_activity_uuid_product_uuid = "y",
+    input_co2_footprint = 1,
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit = 4575
   )
 
   out <- ictr(companies, inputs)
@@ -86,9 +92,11 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
   )
   inputs <- tibble(
     activity_uuid_product_uuid = "b",
-    input_co2 = 1,
-    input_sector = "transport",
-    unit = "metric ton*km",
+    input_activity_uuid_product_uuid = "y",
+    input_co2_footprint = 1,
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit = 4575
   )
 
   out <- ictr(companies, inputs)
@@ -103,10 +111,12 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
     activity_uuid_product_uuid = c("a", "b")
   )
   inputs <- tibble(
-    activity_uuid_product_uuid = c("a"),
-    input_co2 = 1,
-    input_sector = "transport",
-    unit = "metric ton*km",
+    activity_uuid_product_uuid = "a",
+    input_activity_uuid_product_uuid = "y",
+    input_co2_footprint = 1,
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit = 4575
   )
 
   out <- ictr(companies, inputs)
@@ -115,7 +125,7 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
 })
 
 test_that("is sensitive to low_threshold", {
-  companies <- slice(ictr_companies, 1)
+  companies <- slice(ictr_companies, 2)
   inputs <- slice(ictr_inputs, 1:2)
   out1 <- ictr(companies, inputs, low_threshold = .1)
   out2 <- ictr(companies, inputs, low_threshold = .9)
@@ -123,7 +133,7 @@ test_that("is sensitive to low_threshold", {
 })
 
 test_that("is sensitive to high_threshold", {
-  companies <- slice(ictr_companies, 1)
+  companies <- slice(ictr_companies, 2)
   inputs <- slice(ictr_inputs, 1:2)
   out1 <- ictr(companies, inputs, high_threshold = .1)
   out2 <- ictr(companies, inputs, high_threshold = .9)
@@ -131,7 +141,7 @@ test_that("is sensitive to high_threshold", {
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- slice(ictr_companies, 1)
+  companies <- slice(ictr_companies, 2)
   inputs <- slice(ictr_inputs, 1)
 
   crucial <- "activity_uuid_product_uuid"
@@ -144,26 +154,26 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 })
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
-  companies <- slice(ictr_companies, 1)
+  companies <- slice(ictr_companies, 2)
   inputs <- slice(ictr_inputs, 1)
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(inputs, -all_of(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_co2"
+  crucial <- "input_co2_footprint"
   bad <- select(inputs, -all_of(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "unit"
+  crucial <- "input_unit"
   bad <- select(inputs, -all_of(crucial))
   expect_error(ictr(companies, bad), crucial)
 })
 
 test_that("with a missing value in `inputs$inputs_co2` errors gracefully", {
-  companies <- slice(ictr_companies, 1)
+  companies <- slice(ictr_companies, 2)
   inputs <- slice(ictr_inputs, 1)
-  inputs$input_co2 <- NA
+  inputs$input_co2_footprint <- NA
   expect_error(ictr(companies, inputs), "input_co2.*missing")
 })
 
@@ -181,7 +191,7 @@ test_that("if `companies` has 0-rows, returns a well structured 0-row output", {
 })
 
 test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
-  companies <- slice(ictr_companies, 1)
+  companies <- slice(ictr_companies, 2)
 
   inputs0 <- ictr_inputs[0, ]
   inputs1 <- ictr_inputs[1, ]

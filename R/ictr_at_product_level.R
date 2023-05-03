@@ -37,14 +37,14 @@ ictr_at_product_level <- function(co2,
     c("unit", "sec")
   )
   ranked <- co2 |>
-    # FIXME: All other columns use the form
-    #     `mutate(data, x = f(x))`
-    # But this column uses the form
-    #     `mutate(data, x = f(y))`
-    # So here I rename y to x so I can use the same form for all columns
-    rename(sec = "input_sector") |>
-    xctr_add_ranks(x = "input_co2", .by) |>
-    rename(input_sector = "sec")
+  # FIXME: All other columns use the form
+  #     `mutate(data, x = f(x))`
+  # But this column uses the form
+  #     `mutate(data, x = f(y))`
+  # So here I rename y to x so I can use the same form for all columns
+  rename(sec = "input_tilt_sector", input_co2 = "input_co2_footprint", unit = "input_unit") |>
+  xctr_add_ranks(x = "input_co2", .by) |>
+  rename(input_tilt_sector = "sec", input_unit = "unit")
 
   ranked |>
     ictr_add_scores(
@@ -72,7 +72,7 @@ ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
         perc_unit >= low_threshold ~ "high"
       )
     ) |>
-    ## for products with same sector
+    ## for products with same tilt sector
     mutate(
       score_sector = case_when(
         perc_sec < low_threshold ~ "low",
@@ -80,7 +80,7 @@ ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
         perc_sec >= low_threshold ~ "high"
       )
     ) |>
-    ## for products with same unit and sector
+    ## for products with same unit and tilt sector
     mutate(
       score_unit_sec = case_when(
         perc_unit_sec < low_threshold ~ "low",
