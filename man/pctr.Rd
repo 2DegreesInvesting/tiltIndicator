@@ -31,7 +31,7 @@ risk products.}
 \item{data}{A dataframe. The ouput of \code{\link[=ictr_at_product_level]{ictr_at_product_level()}}.}
 }
 \value{
-A dataframe with columns \code{id}, \code{transition_risk}, and scores.
+At company level, a dataframe with columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
 }
 \description{
 The Product Carbon Transition Risk measures the transition risk on the

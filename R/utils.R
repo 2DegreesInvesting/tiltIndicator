@@ -75,5 +75,6 @@ relocate_crucial_output_columns <- function(data) {
 }
 
 document_value <- function() {
-  "A dataframe with columns `id`, `transition_risk`, and scores."
+  company <- paste0("`", common_output_columns(), "`", collapse = ", ")
+  paste0("At company level, a dataframe with columns ", company, ".")
 }

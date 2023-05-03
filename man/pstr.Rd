@@ -12,7 +12,7 @@ pstr(companies, scenarios)
 \item{scenarios}{A dataframe like \link{pstr_scenarios}.}
 }
 \value{
-A dataframe with columns \code{id}, \code{transition_risk}, and scores.
+At company level, a dataframe with columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
 }
 \description{
 The Product Sector Transition Risk Indicator measures the transition risk of

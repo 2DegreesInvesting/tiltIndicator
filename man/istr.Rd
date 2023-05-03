@@ -20,7 +20,7 @@ istr_at_company_level(with_transition_risk, companies)
 \item{mapper}{A dataframe like \link{istr_ep_weo}.}
 }
 \value{
-A dataframe with columns \code{id}, \code{transition_risk}, and scores.
+At company level, a dataframe with columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
 }
 \description{
 The Input Product Sector Risk Indicator assesses the transition risk of the
@@ -64,11 +64,5 @@ istr_at_company_level()
 
 # Same
 istr(companies, scenario, mapper)
-}
-\seealso{
-Other ISTR functions: 
-\code{\link{istr_add_reductions}()},
-\code{\link{istr_add_transition_risk}()},
-\code{\link{istr_mapping}()}
 }
 \concept{ISTR functions}
