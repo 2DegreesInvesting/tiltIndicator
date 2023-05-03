@@ -3,23 +3,17 @@ test_that("hasn't change", {
   expect_snapshot(out)
 })
 
-test_that("outputs columns for ids, risk categories, and shares", {
+test_that("outputs common output columns", {
   companies <- slice(pctr_companies, 1)
   co2 <- slice(pctr_ecoinvent_co2, 1)
+
   out <- pctr(companies, co2)
 
-  expected <- c(
-    "id",
-    "transition_risk",
-    "score_all",
-    "score_unit",
-    # FIXME: "score_sector" is missing (#191)
-    "score_unit_sec"
-  )
-  expect_equal(names(out)[1:5], expected)
+  expected <- common_output_columns()
+  expect_equal(names(out)[1:4], expected)
 })
 
-test_that("returns 3 rows per company, for risk 'low', 'medium', and 'high'", {
+test_that("returns n rows equal to companies x risk_category x grouped_by", {
   co2 <- tibble(
     co2_footprint = 1,
     sec = "Transport",
@@ -33,8 +27,11 @@ test_that("returns 3 rows per company, for risk 'low', 'medium', and 'high'", {
 
   out <- pctr(companies, co2)
 
-  expect_equal(nrow(out), 3L)
-  expect_equal(sort(unique(out$transition_risk)), c("high", "low", "medium"))
+  n <- length(unique(out$companies_id)) *
+    length(unique(out$risk_category)) *
+    length(unique(out$grouped_by))
+  expect_equal(nrow(out), n)
+  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 
   companies <- tibble(
     activity_product_uuid = c("x"),
@@ -42,8 +39,11 @@ test_that("returns 3 rows per company, for risk 'low', 'medium', and 'high'", {
   )
 
   out <- pctr(companies, co2)
-  expect_equal(nrow(out), 6L)
-  expect_equal(sort(unique(out$transition_risk)), c("high", "low", "medium"))
+  n <- length(unique(out$companies_id)) *
+    length(unique(out$risk_category)) *
+    length(unique(out$grouped_by))
+  expect_equal(nrow(out), n)
+  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 })
 
 test_that("if a company matches at least one input, each share sums 1 (#175)", {
@@ -59,7 +59,11 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
   )
 
   out <- pctr(companies, co2)
-  sum_of_each_share <- unique(sapply(select(out, starts_with("score")), sum))
+  sum_of_each_share <- out |>
+    group_by(grouped_by) |>
+    summarize(sum = sum(value)) |>
+    distinct(sum) |>
+    pull()
   expect_equal(sum_of_each_share, 1)
 })
 
@@ -195,23 +199,23 @@ test_that("no longer drops companies depending on co2 data (#122)", {
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(pctr_ecoinvent_co2, 1:5)
   out <- pctr(companies, co2)
-  expect_equal(length(unique(out$id)), 2L)
+  expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(pctr_ecoinvent_co2, 1:4)
   out <- pctr(companies, co2)
-  expect_equal(length(unique(out$id)), 2L)
+  expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(pctr_ecoinvent_co2, 1:10)
   out <- pctr(companies, co2)
-  expect_equal(length(unique(out$id)), 2L)
+  expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- pctr_companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(pctr_ecoinvent_co2, 1:9)
   out <- pctr(companies, co2)
-  expect_equal(length(unique(out$id)), 2L)
+  expect_equal(length(unique(out$companies_id)), 2L)
 })

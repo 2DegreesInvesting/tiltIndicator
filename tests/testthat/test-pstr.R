@@ -1,17 +1,18 @@
-test_that("snapshot", {
+test_that("hasn't changed", {
   scenarios <- pstr_scenarios
   companies <- pstr_companies |> slice(1)
   out <- pstr(companies, scenarios)
   expect_snapshot(format_robust_snapshot(out))
 })
 
-test_that("outputs the expected columns", {
+test_that("outputs common output columns", {
   scenarios <- pstr_scenarios
   companies <- pstr_companies |> slice(1)
+
   out <- pstr(companies, scenarios)
-  expect_true(all(common_output_columns() %in% names(out)))
-  expect_true(any(grepl("score", names(out))))
-  expect_equal(names(out)[1:3], c("id", "transition_risk", "score_aggregated"))
+
+  expected <- common_output_columns()
+  expect_equal(names(out)[1:4], expected)
 })
 
 test_that("the output is not grouped", {
@@ -63,7 +64,6 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   crucial <- "subsector"
   bad <- select(companies, -all_of(crucial))
   expect_error(pstr(bad, scenarios), crucial)
-
 })
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
@@ -89,7 +89,6 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   crucial <- "scenario"
   bad <- select(scenarios, -all_of(crucial))
   expect_error(pstr(companies, bad), crucial)
-
 })
 
 test_that("with a missing value in `scenarios$reductions` errors gracefully", {
@@ -119,20 +118,20 @@ test_that("outputs correct values for edge cases", {
   )
 
   out <- pstr(companies, mutate(scenarios, reductions = NA))
-  expect_equal("no_sector", out$transition_risk)
+  expect_equal("no_sector", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = 30))
-  expect_equal("low", out$transition_risk)
+  expect_equal("low", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = 30.1))
-  expect_equal("medium", out$transition_risk)
+  expect_equal("medium", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = 70))
-  expect_equal("medium", out$transition_risk)
+  expect_equal("medium", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = 70.1))
-  expect_equal("high", out$transition_risk)
+  expect_equal("high", out$risk_category)
 
   out <- pstr(companies, mutate(scenarios, reductions = -1))
-  expect_equal("low", out$transition_risk)
+  expect_equal("low", out$risk_category)
 })
