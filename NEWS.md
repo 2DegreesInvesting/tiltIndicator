@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9035
+
+* All company-level functions now output the same four columns:
+
+    * `companies_id`
+    * `grouped_by`
+    * `risk_category`
+    * `value`
+
 # tiltIndicator 0.0.0.9034
 
 * In ICTR and PCTR the example datasets are now updated (@kalashsinghal #217).
