@@ -61,7 +61,12 @@ ictr_at_product_level <- function(companies,
     rename(input_tilt_sector = "sec", input_unit = "unit") |>
     ictr_add_scores(low_threshold, high_threshold)
 
-  left_join(companies, scored, by = "activity_uuid_product_uuid")
+  left_join(
+    companies,
+    scored,
+    by = "activity_uuid_product_uuid",
+    relationship = "many-to-many"
+  )
 }
 
 #' @rdname ictr
@@ -86,6 +91,7 @@ ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
       score_unit = case_when(
         perc_unit < low_threshold ~ "low",
         perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
+        # FIXME: Should be high_threshold
         perc_unit >= low_threshold ~ "high"
       )
     ) |>
