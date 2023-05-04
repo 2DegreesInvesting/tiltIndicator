@@ -187,7 +187,7 @@ risk products.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>At company level, a dataframe with columns <code>companies_id</code>, <code>grouped_by</code>, <code>risk_category</code>, <code>value</code>.</p>
+<p>At product level, a dataframe with at least columns companies_id, grouped_by, risk_category. At company level, a dataframe with at least columns companies_id, grouped_by, risk_category, value.</p>
     </div>
 
     <div class="section level2">
@@ -198,24 +198,24 @@ risk products.</p></dd>
 <span class="r-in"><span><span class="co"># Product level</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">ictr_at_product_level</span><span class="op">(</span><span class="va">co2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 54 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    activity_uuid_produc…¹ company_id unit  input_co2_footprint input_tilt_sector</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0a242b09-772a-5edf-8e… fleischer… unit              7.07<span style="color: #949494;">e</span>+0 Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0a242b09-772a-5edf-8e… fleischer… unit              3.99<span style="color: #949494;">e</span>+1 Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0a242b09-772a-5edf-8e… fleischer… unit              5.12<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span> Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0a242b09-772a-5edf-8e… fleischer… unit              1.24<span style="color: #949494;">e</span>+0 Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 0a242b09-772a-5edf-8e… fleischer… unit              2.12<span style="color: #949494;">e</span>+1 Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0a242b09-772a-5edf-8e… fleischer… unit              1.24<span style="color: #949494;">e</span><span style="color: #BB0000;">-9</span> Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0a242b09-772a-5edf-8e… fleischer… unit              7   <span style="color: #949494;">e</span><span style="color: #BB0000;">-9</span> Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0a242b09-772a-5edf-8e… fleischer… unit              1.04<span style="color: #949494;">e</span>+0 Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> be06d25c-73dc-55fb-96… fleischer… unit              1.12<span style="color: #949494;">e</span>+0 Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> be06d25c-73dc-55fb-96… fleischer… unit              3.51<span style="color: #949494;">e</span>+0 Inudstry         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 44 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 216 × 13</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id            grouped_by risk_category activity_uuid_produc…¹ unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_… all        high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_… unit       high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_… sector     high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_… unit_sec   high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_… all        high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_… unit       high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_… sector     high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_… unit_sec   high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_… all        medium        0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_… unit       medium        0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 206 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 10 more variables: input_unit &lt;chr&gt;, input_isic_4digit_sector &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_all &lt;dbl&gt;, perc_unit &lt;dbl&gt;, perc_sec &lt;dbl&gt;, perc_unit_sec &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   score_all &lt;chr&gt;, score_unit &lt;chr&gt;, score_sector &lt;chr&gt;, score_unit_sec &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: input_co2_footprint &lt;dbl&gt;, input_tilt_sector &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   input_unit &lt;chr&gt;, input_isic_4digit_sector &lt;dbl&gt;, perc_all &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_unit &lt;dbl&gt;, perc_sec &lt;dbl&gt;, perc_unit_sec &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Company level</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>

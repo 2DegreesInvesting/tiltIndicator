@@ -178,7 +178,7 @@ risk products.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>At company level, a dataframe with columns <code>companies_id</code>, <code>grouped_by</code>, <code>risk_category</code>, <code>value</code>.</p>
+<p>At product level, a dataframe with at least columns companies_id, grouped_by, risk_category. At company level, a dataframe with at least columns companies_id, grouped_by, risk_category, value.</p>
     </div>
 
     <div class="section level2">
@@ -189,27 +189,25 @@ risk products.</p></dd>
 <span class="r-in"><span><span class="co"># Product level</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">pctr_at_product_level</span><span class="op">(</span><span class="va">co2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    activity_uuid_product_uuid company_id ei_activity_name.x unit.x co2_footprint</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0a242b09-772a-5edf-8e82-9… fleischer… cookstove product… unit          176.  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> be06d25c-73dc-55fb-965b-0… fleischer… microwave oven pr… unit           58.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 977d997e-c257-5033-ba39-d… pecheries… market for steel,… kg              4.95</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ebb8475e-ff57-5e4e-937b-b… hoche-but… cheese production… kg             12.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> ebb8475e-ff57-5e4e-937b-b… hoche-but… cheese production… kg             12.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ebb8475e-ff57-5e4e-937b-b… vicquelin… cheese production… kg             12.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ebb8475e-ff57-5e4e-937b-b… vicquelin… cheese production… kg             12.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ebb8475e-ff57-5e4e-937b-b… bst-proco… market for cheese… kg             12.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ebb8475e-ff57-5e4e-937b-b… bst-proco… market for cheese… kg             12.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2f7b77a7-1556-5c1b-b0aa-c… leider-gm… market for seal, … kg              2.07</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2f7b77a7-1556-5c1b-b0aa-c… leider-gm… market for seal, … kg              1.98</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2f7b77a7-1556-5c1b-b0aa-c… cheries-b… seal production, … kg              2.07</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2f7b77a7-1556-5c1b-b0aa-c… cheries-b… seal production, … kg              1.98</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> <span style="color: #BB0000;">NA</span>                         ca-coity-… <span style="color: #BB0000;">NA</span>                 <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 10 more variables: tilt_sector &lt;chr&gt;, unit.y &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 42 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                  grouped_by risk_category activity_uuid_produc…¹</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_000000… all        high          0a242b09-772a-5edf-8e…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_000000… unit       high          0a242b09-772a-5edf-8e…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_000000… unit_sec   high          0a242b09-772a-5edf-8e…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_000000… all        high          be06d25c-73dc-55fb-96…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_000000… unit       medium        be06d25c-73dc-55fb-96…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_000000… unit_sec   medium        be06d25c-73dc-55fb-96…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> pecheries-basques_fra316541-… all        medium        977d997e-c257-5033-ba…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> pecheries-basques_fra316541-… unit       medium        977d997e-c257-5033-ba…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> pecheries-basques_fra316541-… unit_sec   high          977d997e-c257-5033-ba…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> hoche-butter-gmbh_deu422723-… all        medium        ebb8475e-ff57-5e4e-93…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 32 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 10 more variables: ei_activity_name.x &lt;chr&gt;, unit.x &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   co2_footprint &lt;dbl&gt;, tilt_sector &lt;chr&gt;, unit.y &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   isic_4digit_sector &lt;dbl&gt;, ei_activity_name.y &lt;chr&gt;, perc_all &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_unit &lt;dbl&gt;, perc_unit_sec &lt;dbl&gt;, score_all &lt;chr&gt;, score_unit &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   score_unit_sec &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_unit &lt;dbl&gt;, perc_unit_sec &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Company level</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
