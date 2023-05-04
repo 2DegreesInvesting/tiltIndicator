@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9037
+
+* All product-level functions now output the same three columns (#228, #227):
+
+    * `companies_id`
+    * `grouped_by`
+    * `risk_category`
+
 # tiltIndicator 0.0.0.9036
 
 * Datasets from the same family are now documented together (#224).
