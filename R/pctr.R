@@ -61,9 +61,8 @@ pctr_at_product_level <- function(companies,
 
 #' @rdname pctr
 #' @export
-pctr_at_company_level <- function(data,
-                                  benchmarks = c("all", "unit", "unit_sec")) {
-  xctr_at_company_level(data, benchmarks)
+pctr_at_company_level <- function(data) {
+  xctr_at_company_level(data, c("all", "unit", "unit_sec"))
 }
 
 pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {
