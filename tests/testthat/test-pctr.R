@@ -216,3 +216,19 @@ test_that("no longer drops companies depending on co2 data (#122)", {
   out <- pctr(companies, co2)
   expect_equal(length(unique(out$companies_id)), 2L)
 })
+
+test_that("handles duplicated companies data (#230)", {
+  co2 <- tibble(
+    co2_footprint = 1,
+    tilt_sector = "Transport",
+    unit = "metric ton*km",
+    activity_uuid_product_uuid = c("x"),
+    isic_4digit_sector = 4575
+  )
+
+  companies <- tibble(
+    activity_uuid_product_uuid = c("x", "x"),
+    company_id = c("a", "a"),
+  )
+  expect_no_error(pctr(companies, co2))
+})

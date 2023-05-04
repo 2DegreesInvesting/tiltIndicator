@@ -46,16 +46,9 @@ pctr_at_product_level <- function(companies,
     rename(tilt_sec = "tilt_sector", isic_sec = "isic_4digit_sector") |>
     xctr_add_ranks(x = "co2_footprint") |>
     rename(tilt_sector = "tilt_sec", isic_4digit_sector = "isic_sec") |>
-    xctr_add_scores(low_threshold, high_threshold)
-
-  out <- left_join(
-    companies,
-    scored,
-    by = "activity_uuid_product_uuid",
-    relationship = "many-to-many"
-  )
-
-  xctr_polish_output_at_product_level(out)
+    xctr_add_scores(low_threshold, high_threshold) |>
+    xctr_join_companies(companies) |>
+    xctr_polish_output_at_product_level()
 }
 
 pctr_check <- function(companies) {

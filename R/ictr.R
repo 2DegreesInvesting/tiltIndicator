@@ -46,7 +46,7 @@ ictr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
-  scored <- co2 |>
+  co2 |>
     # FIXME: All other columns use the form
     #     `mutate(data, x = f(x))`
     # But this column uses the form
@@ -55,16 +55,9 @@ ictr_at_product_level <- function(companies,
     rename(tilt_sec = "input_tilt_sector", unit = "input_unit", isic_sec = "input_isic_4digit_sector") |>
     xctr_add_ranks(x = "input_co2_footprint") |>
     rename(input_tilt_sector = "tilt_sec", input_unit = "unit", input_isic_4digit_sector = "isic_sec") |>
-    xctr_add_scores(low_threshold, high_threshold)
-
-  out <- left_join(
-    companies,
-    scored,
-    by = "activity_uuid_product_uuid",
-    relationship = "many-to-many"
-  )
-
-  xctr_polish_output_at_product_level(out)
+    xctr_add_scores(low_threshold, high_threshold) |>
+    xctr_join_companies(companies) |>
+    xctr_polish_output_at_product_level()
 }
 
 ictr_check <- function(companies, co2) {

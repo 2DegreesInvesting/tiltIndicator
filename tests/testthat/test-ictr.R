@@ -211,3 +211,19 @@ test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
   expect_equal(names(out0), names(out1))
   expect_equal(nrow(out0), nrow(out1))
 })
+
+test_that("handles duplicated companies data (#230)", {
+  companies <- tibble(
+    company_id = c("a", "a"),
+    activity_uuid_product_uuid = c("x", "x")
+  )
+  inputs <- tibble(
+    activity_uuid_product_uuid = "b",
+    input_activity_uuid_product_uuid = "x",
+    input_co2_footprint = 1,
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit_sector = 4575
+  )
+  expect_no_error(ictr(companies, inputs))
+})
