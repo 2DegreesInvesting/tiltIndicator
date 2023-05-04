@@ -212,7 +212,7 @@ test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
   expect_equal(nrow(out0), nrow(out1))
 })
 
-test_that("handles duplicated companies data", {
+test_that("handles duplicated companies data (#230)", {
   companies <- tibble(
     company_id = c("a", "a"),
     activity_uuid_product_uuid = c("x", "x")

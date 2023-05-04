@@ -217,7 +217,7 @@ test_that("no longer drops companies depending on co2 data (#122)", {
   expect_equal(length(unique(out$companies_id)), 2L)
 })
 
-test_that("handles duplicated companies data", {
+test_that("handles duplicated companies data (#230)", {
   co2 <- tibble(
     co2_footprint = 1,
     tilt_sector = "Transport",
