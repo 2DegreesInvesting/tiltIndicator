@@ -350,36 +350,25 @@ company-level information.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">istr_companies</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/istr.html">istr</a></span><span class="op">(</span>scenario <span class="op">=</span> <span class="va">istr_weo_2022</span>, mapper <span class="op">=</span> <span class="va">istr_ep_weo</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in</span></span>
-<span><span class="co">#&gt; dplyr 1.1.0.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `reframe()` instead.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> When switching from `summarise()` to `reframe()`, remember that `reframe()`</span></span>
-<span><span class="co">#&gt;   always returns an ungrouped data frame and adjust accordingly.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">tiltIndicator</span> package.</span></span>
-<span><span class="co">#&gt;   Please report the issue at</span></span>
-<span><span class="co">#&gt;   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/2DegreesInvesting/tiltIndicator/issues&gt;</span>.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 4</span></span></span>
-<span><span class="co">#&gt;    companies_id                             grouped_by      risk_category  value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           400  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high          <span style="text-decoration: underline;">2</span>467. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 Stated Policie… low           <span style="text-decoration: underline;">2</span>467. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium        <span style="text-decoration: underline;">2</span>467. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium        <span style="text-decoration: underline;">2</span>067. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           no_sector       28.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> hoche-butter-gmbh_deu422723-693847001    Net Zero Emiss… high           467. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> hoche-butter-gmbh_deu422723-693847001    Net Zero Emiss… high          <span style="text-decoration: underline;">3</span>867. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> hoche-butter-gmbh_deu422723-693847001    Stated Policie… low           <span style="text-decoration: underline;">3</span>867. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> hoche-butter-gmbh_deu422723-693847001    Net Zero Emiss… medium        <span style="text-decoration: underline;">3</span>867. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> hoche-butter-gmbh_deu422723-693847001    Net Zero Emiss… medium        <span style="text-decoration: underline;">3</span>400  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> pecheries-basques_fra316541-00101        Net Zero Emiss… high          <span style="text-decoration: underline;">5</span>911. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> pecheries-basques_fra316541-00101        Stated Policie… low           <span style="text-decoration: underline;">5</span>911. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> pecheries-basques_fra316541-00101        Net Zero Emiss… medium        <span style="text-decoration: underline;">5</span>911. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> pecheries-basques_fra316541-00101        Net Zero Emiss… medium        <span style="text-decoration: underline;">5</span>911. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> pecheries-basques_fra316541-00101        NA_NA           no_sector       22.2</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 6</span></span></span>
+<span><span class="co">#&gt;    companies_id                   grouped_by risk_category  value scenario  year</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_0000000… Net Zero … high           400   Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_0000000… Net Zero … high          <span style="text-decoration: underline;">2</span>467.  Net Zer…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_0000000… Stated Po… low           <span style="text-decoration: underline;">2</span>467.  Stated …  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_0000000… Net Zero … medium        <span style="text-decoration: underline;">2</span>467.  Net Zer…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_0000000… Net Zero … medium        <span style="text-decoration: underline;">2</span>067.  Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_0000000… NA_NA      no_sector       28.6 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> hoche-butter-gmbh_deu422723-6… Net Zero … high           467.  Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> hoche-butter-gmbh_deu422723-6… Net Zero … high          <span style="text-decoration: underline;">3</span>867.  Net Zer…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> hoche-butter-gmbh_deu422723-6… Stated Po… low           <span style="text-decoration: underline;">3</span>867.  Stated …  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> hoche-butter-gmbh_deu422723-6… Net Zero … medium        <span style="text-decoration: underline;">3</span>867.  Net Zer…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> hoche-butter-gmbh_deu422723-6… Net Zero … medium        <span style="text-decoration: underline;">3</span>400   Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> pecheries-basques_fra316541-0… Net Zero … high          <span style="text-decoration: underline;">5</span>911.  Net Zer…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> pecheries-basques_fra316541-0… Stated Po… low           <span style="text-decoration: underline;">5</span>911.  Stated …  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> pecheries-basques_fra316541-0… Net Zero … medium        <span style="text-decoration: underline;">5</span>911.  Net Zer…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> pecheries-basques_fra316541-0… Net Zero … medium        <span style="text-decoration: underline;">5</span>911.  Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> pecheries-basques_fra316541-0… NA_NA      no_sector       22.2 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -463,19 +452,19 @@ therefore, derive company-level information.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pstr_companies</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pstr.html">pstr</a></span><span class="op">(</span>scenarios <span class="op">=</span> <span class="va">pstr_scenarios</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 45 × 4</span></span></span>
-<span><span class="co">#&gt;    companies_id                                grouped_by    risk_category value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> barham-metall-gmbh_00000005371632-683574001 1.5c require… low             100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> barham-metall-gmbh_00000005371632-683574001 1.5c require… low             100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> barham-metall-gmbh_00000005371632-683574001 1.5c require… low             100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> barham-metall-gmbh_00000005371632-683574001 1.5c require… low             100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> barham-metall-gmbh_00000005371632-683574001 NA_NA         no_sector        50</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> breuninger-leder-gmbh_00000005064318-001    1.5c require… low             100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> breuninger-leder-gmbh_00000005064318-001    1.5c require… low             100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> breuninger-leder-gmbh_00000005064318-001    1.5c require… low             100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> breuninger-leder-gmbh_00000005064318-001    1.5c require… low             100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> breuninger-leder-gmbh_00000005064318-001    NA_NA         no_sector        50</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 45 × 6</span></span></span>
+<span><span class="co">#&gt;    companies_id                    grouped_by risk_category value scenario  year</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> barham-metall-gmbh_00000005371… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> barham-metall-gmbh_00000005371… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> barham-metall-gmbh_00000005371… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> barham-metall-gmbh_00000005371… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> barham-metall-gmbh_00000005371… NA_NA      no_sector        50 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> breuninger-leder-gmbh_00000005… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> breuninger-leder-gmbh_00000005… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>030</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> breuninger-leder-gmbh_00000005… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>040</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> breuninger-leder-gmbh_00000005… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>050</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> breuninger-leder-gmbh_00000005… NA_NA      no_sector        50 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more rows</span></span></span></code></pre></div>
 </div>
 </div>
