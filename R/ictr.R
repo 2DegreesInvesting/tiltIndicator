@@ -46,16 +46,16 @@ ictr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
-  benchmarks <- list("all", "unit", "sec", c("unit", "sec"))
+  benchmarks <- list("all", "unit", "tilt_sec", "isic_sec", c("unit", "tilt_sec"), c("unit", "isic_sec"))
   scored <- co2 |>
     # FIXME: All other columns use the form
     #     `mutate(data, x = f(x))`
     # But this column uses the form
     #     `mutate(data, x = f(y))`
     # So here I rename y to x so I can use the same form for all columns
-    rename(sec = "input_tilt_sector", unit = "input_unit") |>
+    rename(tilt_sec = "input_tilt_sector", unit = "input_unit", isic_sec = "input_isic_4digit_sector") |>
     xctr_add_ranks(x = "input_co2_footprint", benchmarks) |>
-    rename(input_tilt_sector = "sec", input_unit = "unit") |>
+    rename(input_tilt_sector = "tilt_sec", input_unit = "unit", input_isic_4digit_sector = "isic_sec") |>
     ictr_add_scores(low_threshold, high_threshold)
 
   out <- left_join(
@@ -71,7 +71,7 @@ ictr_at_product_level <- function(companies,
 #' @rdname ictr
 #' @export
 ictr_at_company_level <- function(data) {
-  xctr_at_company_level(data, c("all", "unit", "sector", "unit_sec"))
+  xctr_at_company_level(data, c("all", "unit", "tilt_sector", "unit_tilt_sec", "isic_sector", "unit_isic_sec"))
 }
 
 ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
@@ -85,29 +85,44 @@ ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
         perc_all >= high_threshold ~ "high"
       )
     ) |>
-    ## for products with same unit
+    ## for input products with same unit
     mutate(
       score_unit = case_when(
         perc_unit < low_threshold ~ "low",
         perc_unit >= low_threshold & perc_unit < high_threshold ~ "medium",
-        # FIXME: Should be high_threshold
-        perc_unit >= low_threshold ~ "high"
+        perc_unit >= high_threshold ~ "high"
       )
     ) |>
-    ## for products with same sector
+    ## for input products with same tilt sector
     mutate(
-      score_sector = case_when(
-        perc_sec < low_threshold ~ "low",
-        perc_sec >= low_threshold & perc_sec < high_threshold ~ "medium",
-        perc_sec >= low_threshold ~ "high"
+      score_tilt_sector = case_when(
+        perc_tilt_sec < low_threshold ~ "low",
+        perc_tilt_sec >= low_threshold & perc_tilt_sec < high_threshold ~ "medium",
+        perc_tilt_sec >= high_threshold ~ "high"
       )
     ) |>
-    ## for products with same unit and sector
+    ## for input products with same unit and tilt sector
     mutate(
-      score_unit_sec = case_when(
-        perc_unit_sec < low_threshold ~ "low",
-        perc_unit_sec >= low_threshold & perc_unit_sec < high_threshold ~ "medium",
-        perc_unit_sec >= high_threshold ~ "high",
+      score_unit_tilt_sec = case_when(
+        perc_unit_tilt_sec < low_threshold ~ "low",
+        perc_unit_tilt_sec >= low_threshold & perc_unit_tilt_sec < high_threshold ~ "medium",
+        perc_unit_tilt_sec >= high_threshold ~ "high",
+      )
+    ) |>
+    ## for input products with same isic sector
+    mutate(
+      score_isic_sector = case_when(
+        perc_isic_sec < low_threshold ~ "low",
+        perc_isic_sec >= low_threshold & perc_isic_sec < high_threshold ~ "medium",
+        perc_isic_sec >= high_threshold ~ "high"
+      )
+    ) |>
+    ## for input products with same unit and isic sector
+    mutate(
+      score_unit_isic_sec = case_when(
+        perc_unit_isic_sec < low_threshold ~ "low",
+        perc_unit_isic_sec >= low_threshold & perc_unit_isic_sec < high_threshold ~ "medium",
+        perc_unit_isic_sec >= high_threshold ~ "high",
       )
     )
 }
