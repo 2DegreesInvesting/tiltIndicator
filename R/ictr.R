@@ -40,12 +40,6 @@ ictr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   product_level <- companies |>
     ictr_at_product_level(co2, low_threshold, high_threshold)
 
-  xctr_rename_at_product_level <- function(data) {
-    data |>
-      rename(companies_id = company_id) |>
-      rename(risk_category = value)
-  }
-
   product_level |>
     xctr_pivot_score() |>
     xctr_rename_at_product_level() |>

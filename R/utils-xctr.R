@@ -15,6 +15,12 @@ xctr_pivot_score <- function(data) {
     )
 }
 
+xctr_rename_at_product_level <- function(data) {
+  data |>
+    rename(companies_id = company_id) |>
+    rename(risk_category = value)
+}
+
 xctr_rename_at_company_level <- function(data) {
   data |>
     rename(
