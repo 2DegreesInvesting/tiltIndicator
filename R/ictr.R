@@ -35,8 +35,23 @@
 ictr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   ictr_check(companies, co2)
 
-  companies |>
-    ictr_at_product_level(co2, low_threshold, high_threshold) |>
+  # browser()
+
+  product_level <- companies |>
+    ictr_at_product_level(co2, low_threshold, high_threshold)
+
+  xctr_rename_at_product_level <- function(data) {
+    data |>
+      rename(companies_id = company_id) |>
+      rename(risk_category = value)
+  }
+
+  product_level |>
+    xctr_pivot_score() |>
+    xctr_rename_at_product_level() |>
+    relocate(all_of(cols_at_all_levels()))
+
+  product_level |>
     ictr_at_company_level()
 }
 
