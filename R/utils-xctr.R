@@ -1,16 +1,43 @@
-xctr_polish_output <- function(data) {
+xctr_polish_output_at_product_level <- function(data) {
   data |>
-    xctr_rename() |>
-    pivot_longer(
-      starts_with("score_"),
-      names_prefix = "score_",
-      names_to = "grouped_by"
-    ) |>
+    xctr_pivot_score_to_grouped_by() |>
+    xctr_rename_at_product_level() |>
+    relocate(all_of(cols_at_all_levels()))
+}
+
+xctr_polish_output_at_company_level <- function(data) {
+  data |>
+    xctr_rename_at_company_level() |>
+    xctr_pivot_score_to_grouped_by() |>
     relocate(all_of(cols_at_company_level())) |>
     arrange(.data$companies_id, .data$grouped_by)
 }
 
-xctr_rename <- function(data) {
+xctr_pivot_score_to_grouped_by <- function(data) {
+  data |>
+    pivot_longer(
+      starts_with("score_"),
+      names_prefix = "score_",
+      names_to = "grouped_by"
+    )
+}
+
+xctr_pivot_grouped_by_to_score <- function(data) {
+  data |>
+    pivot_wider(
+      names_from = "grouped_by",
+      values_from = "risk_category",
+      names_prefix = "score_"
+    )
+}
+
+xctr_rename_at_product_level <- function(data) {
+  data |>
+    rename(companies_id = "company_id") |>
+    rename(risk_category = "value")
+}
+
+xctr_rename_at_company_level <- function(data) {
   data |>
     rename(
       companies_id = "company_id",

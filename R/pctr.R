@@ -49,20 +49,20 @@ pctr_at_product_level <- function(companies,
     rename(tilt_sector = "sec") |>
     pctr_add_scores(low_threshold, high_threshold)
 
-  left_join(
+  out <- left_join(
     companies,
     scored,
     by = "activity_uuid_product_uuid",
     relationship = "many-to-many"
   )
+
+  xctr_polish_output_at_product_level(out)
 }
 
 #' @rdname pctr
 #' @export
 pctr_at_company_level <- function(data) {
-  data |>
-    xctr_at_company_level(c("all", "unit", "unit_sec")) |>
-    xctr_polish_output()
+  xctr_at_company_level(data, c("all", "unit", "unit_sec"))
 }
 
 pctr_add_scores <- function(ecoinvent_ranks, low_threshold, high_threshold) {

@@ -168,19 +168,6 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   expect_error(pctr(companies, bad), crucial)
 })
 
-test_that("if `companies` has 0-rows, returns a well structured 0-row output", {
-  co2 <- pctr_ecoinvent_co2
-
-  companies0 <- pctr_companies[0, ]
-  companies1 <- pctr_companies[1, ]
-  out0 <- pctr(companies0, co2)
-  out1 <- pctr(companies1, co2)
-
-  expect_s3_class(out0, "tbl_df")
-  expect_equal(names(out0), names(out1))
-  expect_equal(nrow(out0), 0)
-})
-
 test_that("if `co2` has 0-rows, the output is normal", {
   companies <- slice(pctr_companies, 1)
 

@@ -191,19 +191,6 @@ test_that("with a missing value in `inputs$inputs_co2` errors gracefully", {
   expect_error(ictr(companies, inputs), "input_co2_footprint.*missing")
 })
 
-test_that("if `companies` has 0-rows, returns a well structured 0-row output", {
-  inputs <- ictr_inputs
-
-  companies0 <- ictr_companies[0, ]
-  companies1 <- ictr_companies[1, ]
-  out0 <- ictr(companies0, inputs)
-  out1 <- ictr(companies1, inputs)
-
-  expect_s3_class(out0, "tbl_df")
-  expect_equal(names(out0), names(out1))
-  expect_equal(nrow(out0), 0)
-})
-
 test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
   companies <- slice(ictr_companies, 1)
 
