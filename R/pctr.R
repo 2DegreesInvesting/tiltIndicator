@@ -61,7 +61,7 @@ pctr_at_product_level <- function(companies,
 #' @export
 pctr_at_company_level <- function(data) {
   data |>
-    xctr_at_company_level(c("all", "unit", "unit_sec")) |>
+    xctr_at_company_level_impl(c("all", "unit", "unit_sec")) |>
     xctr_polish_output_at_company_level()
 }
 

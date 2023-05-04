@@ -1,4 +1,4 @@
-xctr_at_company_level <- function(data,
+xctr_at_company_level_impl <- function(data,
                                   benchmarks = c("all", "unit", "sector", "unit_sec")) {
   # For each company show all risk levels even if the share is 0.
   dt_sceleton <- tibble(

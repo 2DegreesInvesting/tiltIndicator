@@ -67,10 +67,7 @@ ictr_at_product_level <- function(companies,
     relationship = "many-to-many"
   )
 
-  out |>
-    xctr_pivot_score_to_grouped_by() |>
-    xctr_rename_at_product_level() |>
-    relocate(all_of(cols_at_all_levels()))
+  xctr_polish_output_at_product_level(out)
 }
 
 #' @rdname ictr
@@ -81,7 +78,7 @@ ictr_at_company_level <- function(data) {
     rename(company_id = "companies_id") |>
     # FIXME: Instead handle data in long format
     xctr_pivot_grouped_by_to_score() |>
-    xctr_at_company_level(c("all", "unit", "sector", "unit_sec")) |>
+    xctr_at_company_level_impl(c("all", "unit", "sector", "unit_sec")) |>
     xctr_polish_output_at_company_level()
 }
 
