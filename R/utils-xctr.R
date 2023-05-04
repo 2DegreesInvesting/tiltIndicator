@@ -1,12 +1,12 @@
 xctr_polish_output_at_company_level <- function(data) {
   data |>
     xctr_rename_at_company_level() |>
-    xctr_pivot_score_into_grouped_by() |>
+    xctr_pivot_score_to_grouped_by() |>
     relocate(all_of(cols_at_company_level())) |>
     arrange(.data$companies_id, .data$grouped_by)
 }
 
-xctr_pivot_score_into_grouped_by <- function(data) {
+xctr_pivot_score_to_grouped_by <- function(data) {
   data |>
     pivot_longer(
       starts_with("score_"),

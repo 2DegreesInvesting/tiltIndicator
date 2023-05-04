@@ -39,7 +39,7 @@ ictr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
     ictr_at_product_level(co2, low_threshold, high_threshold)
 
   product_level2 <- product_level1 |>
-    xctr_pivot_score_into_grouped_by() |>
+    xctr_pivot_score_to_grouped_by() |>
     xctr_rename_at_product_level() |>
     relocate(all_of(cols_at_all_levels()))
 
