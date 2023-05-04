@@ -182,6 +182,14 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
   crucial <- "input_unit"
   bad <- select(inputs, -all_of(crucial))
   expect_error(ictr(companies, bad), crucial)
+
+  crucial <- "input_tilt_sector"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(ictr(companies, bad), crucial)
+
+  crucial <- "input_isic_4digit_sector"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(ictr(companies, bad), crucial)
 })
 
 test_that("with a missing value in `inputs$inputs_co2` errors gracefully", {

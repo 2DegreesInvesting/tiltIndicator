@@ -172,6 +172,10 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   crucial <- "activity_uuid_product_uuid"
   bad <- select(co2, -all_of(crucial))
   expect_error(pctr(companies, bad), crucial)
+
+  crucial <- "isic_4digit_sector"
+  bad <- select(co2, -all_of(crucial))
+  expect_error(pctr(companies, bad), crucial)
 })
 
 test_that("if `co2` has 0-rows, the output is normal", {
