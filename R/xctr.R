@@ -1,6 +1,6 @@
 xctr_join_companies <- function(product_level, companies) {
   left_join(
-    companies,
+    distinct(companies),
     product_level,
     by = "activity_uuid_product_uuid",
     relationship = "many-to-many"
