@@ -6,7 +6,7 @@ xctr_polish_output <- function(data) {
       names_prefix = "score_",
       names_to = "grouped_by"
     ) |>
-    relocate_crucial_output_columns() |>
+    relocate(all_of(cols_at_company_level())) |>
     arrange(.data$companies_id, .data$grouped_by)
 }
 

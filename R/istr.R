@@ -42,46 +42,14 @@ istr_at_product_level <- function(companies, scenario, mapper) {
   companies |>
     istr_mapping(mapper) |>
     istr_add_reductions(scenario) |>
-    istr_add_transition_risk()
+    istr_add_transition_risk() |>
+    xstr_polish_output_at_product_level()
 }
 
 #' @rdname istr
 #' @export
 istr_at_company_level <- function(data, companies) {
-  n_products_per_companies <- companies |>
-    group_by(.data$companies_id, .data$company_name) |>
-    summarise(total_products_per_company = n())
-
-  with_transition_risk2 <- data |>
-    left_join(
-      # FIXME Join by company_id
-      n_products_per_companies,
-      by = c("companies_id", "company_name"),
-      # TODO: ASK Linda to confirm we want this relationship
-      relationship = "many-to-many"
-    )
-
-  useful_cols <- c(
-    "companies_id",
-    "company_name",
-    "transition_risk",
-    "total_products_per_company",
-    "scenario",
-    "year"
-  )
-  out <- with_transition_risk2 |>
-    select(all_of(all_of(useful_cols))) |>
-    group_by(.data$companies_id, .data$company_name, .data$transition_risk, .data$scenario, .data$year) |>
-    summarise(score_aggregated = (n() / .data$total_products_per_company * 100)) |>
-    # FIXME? Do we really want grouped output?
-    group_by(.data$companies_id, .data$company_name, .data$transition_risk, .data$scenario, .data$year) |>
-    # FIXME: Do we really want distinct_all()? It's superseded by
-    # distinct(across(everything() ... and also here it seems we can use just
-    # `distinct()`. See ?distinct_all(), ?distinct(), and also this reprex:
-    # https://gist.github.com/maurolepore/45c899b9429f5d48004e2e127257cc29
-    distinct_all()
-
-  xstr_polish_output(out)
+  xstr_at_company_level(data, companies)
 }
 
 istr_mapping <- function(companies, ep_weo) {
@@ -91,7 +59,6 @@ istr_mapping <- function(companies, ep_weo) {
 
 istr_add_reductions <- function(companies, weo_2022) {
   companies |>
-    # left_join(ep_weo, by = c("eco_sectors" = "ECO_sector")) |>
     left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
 }
 

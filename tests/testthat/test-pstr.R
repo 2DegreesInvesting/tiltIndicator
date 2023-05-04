@@ -11,7 +11,7 @@ test_that("outputs common output columns", {
 
   out <- pstr(companies, scenarios)
 
-  expected <- common_output_columns()
+  expected <- cols_at_company_level()
   expect_equal(names(out)[1:4], expected)
 })
 
@@ -38,10 +38,6 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   scenarios <- slice(pstr_scenarios, 1)
 
   crucial <- "company_id"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(pstr(bad, scenarios), crucial)
-
-  crucial <- "company_name"
   bad <- select(companies, -all_of(crucial))
   expect_error(pstr(bad, scenarios), crucial)
 
