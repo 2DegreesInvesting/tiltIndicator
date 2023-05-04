@@ -38,11 +38,7 @@ ictr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   product_level1 <- companies |>
     ictr_at_product_level(co2, low_threshold, high_threshold)
 
-  product_level3 <- product_level1 |>
-    rename(company_id = companies_id) |>
-    xctr_pivot_grouped_by_to_score()
-
-  product_level3 |>
+  product_level1 |>
     ictr_at_company_level()
 }
 
@@ -81,6 +77,10 @@ ictr_at_product_level <- function(companies,
 #' @export
 ictr_at_company_level <- function(data) {
   data |>
+    # FIXME: Instead rename downstream
+    rename(company_id = "companies_id") |>
+    # FIXME: Instead handle data in long format
+    xctr_pivot_grouped_by_to_score() |>
     xctr_at_company_level(c("all", "unit", "sector", "unit_sec")) |>
     xctr_polish_output_at_company_level()
 }
