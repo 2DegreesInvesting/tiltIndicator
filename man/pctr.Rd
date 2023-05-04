@@ -15,7 +15,7 @@ pctr_at_product_level(
   high_threshold = 0.7
 )
 
-pctr_at_company_level(data)
+pctr_at_company_level(data, benchmarks = c("all", "unit", "unit_sec"))
 }
 \arguments{
 \item{companies}{A dataframe like \link{pctr_companies}.}

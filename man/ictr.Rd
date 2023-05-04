@@ -15,7 +15,10 @@ ictr_at_product_level(
   high_threshold = 0.7
 )
 
-ictr_at_company_level(data)
+ictr_at_company_level(
+  data,
+  benchmarks = c("all", "unit", "sector", "unit_sec")
+)
 }
 \arguments{
 \item{companies}{A dataframe like \link{ictr_companies}.}

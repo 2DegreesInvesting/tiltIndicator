@@ -61,7 +61,8 @@ pctr_at_product_level <- function(companies,
 
 #' @rdname pctr
 #' @export
-pctr_at_company_level <- function(data, benchmarks = c("all", "unit", "unit_sec")) {
+pctr_at_company_level <- function(data,
+                                  benchmarks = c("all", "unit", "unit_sec")) {
   xctr_at_company_level(data, benchmarks)
 }
 
