@@ -38,21 +38,7 @@ ictr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
   product_level1 <- companies |>
     ictr_at_product_level(co2, low_threshold, high_threshold)
 
-  product_level2 <- product_level1 |>
-    xctr_pivot_score_to_grouped_by() |>
-    xctr_rename_at_product_level() |>
-    relocate(all_of(cols_at_all_levels()))
-
-  xctr_pivot_grouped_by_to_score <- function(data) {
-    data |>
-      pivot_wider(
-        names_from = "grouped_by",
-        values_from = "risk_category",
-        names_prefix = "score_"
-      )
-  }
-
-  product_level3 <- product_level2 |>
+  product_level3 <- product_level1 |>
     rename(company_id = companies_id) |>
     xctr_pivot_grouped_by_to_score()
 
@@ -78,12 +64,17 @@ ictr_at_product_level <- function(companies,
     rename(input_tilt_sector = "sec", input_unit = "unit") |>
     ictr_add_scores(low_threshold, high_threshold)
 
-  left_join(
+  out <- left_join(
     companies,
     scored,
     by = "activity_uuid_product_uuid",
     relationship = "many-to-many"
   )
+
+  out |>
+    xctr_pivot_score_to_grouped_by() |>
+    xctr_rename_at_product_level() |>
+    relocate(all_of(cols_at_all_levels()))
 }
 
 #' @rdname ictr

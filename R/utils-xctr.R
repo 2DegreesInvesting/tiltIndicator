@@ -15,6 +15,15 @@ xctr_pivot_score_to_grouped_by <- function(data) {
     )
 }
 
+xctr_pivot_grouped_by_to_score <- function(data) {
+  data |>
+    pivot_wider(
+      names_from = "grouped_by",
+      values_from = "risk_category",
+      names_prefix = "score_"
+    )
+}
+
 xctr_rename_at_product_level <- function(data) {
   data |>
     rename(companies_id = company_id) |>
