@@ -43,13 +43,18 @@ ictr <- function(companies, co2, low_threshold = 0.3, high_threshold = 0.7) {
     xctr_rename_at_product_level() |>
     relocate(all_of(cols_at_all_levels()))
 
+  xctr_pivot_grouped_by_to_score <- function(data) {
+    data |>
+      pivot_wider(
+        names_from = "grouped_by",
+        values_from = "risk_category",
+        names_prefix = "score_"
+      )
+  }
+
   product_level3 <- product_level2 |>
     rename(company_id = companies_id) |>
-    tidyr::pivot_wider(
-      names_from = "grouped_by",
-      values_from = "risk_category",
-      names_prefix = "score_"
-    )
+    xctr_pivot_grouped_by_to_score()
 
   product_level3 |>
     ictr_at_company_level()
