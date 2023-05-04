@@ -42,10 +42,9 @@ pctr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
-  benchmarks <- list("all", "unit", "tilt_sec", "isic_sec", c("unit", "tilt_sec"), c("unit", "isic_sec"))
   scored <- co2 |>
     rename(tilt_sec = "tilt_sector", isic_sec = "isic_4digit_sector") |>
-    xctr_add_ranks(x = "co2_footprint", .by = benchmarks) |>
+    xctr_add_ranks(x = "co2_footprint") |>
     rename(tilt_sector = "tilt_sec", isic_4digit_sector = "isic_sec") |>
     xctr_add_scores(low_threshold, high_threshold)
 
@@ -57,12 +56,6 @@ pctr_at_product_level <- function(companies,
   )
 
   xctr_polish_output_at_product_level(out)
-}
-
-#' @rdname pctr
-#' @export
-pctr_at_company_level <- function(data) {
-  xctr_at_company_level(data, c("all", "unit", "tilt_sec", "unit_tilt_sec", "isic_sec", "unit_isic_sec"))
 }
 
 pctr_check <- function(companies) {
