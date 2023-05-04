@@ -48,12 +48,15 @@ pctr_at_product_level <- function(companies,
     rename(tilt_sector = "tilt_sec", isic_4digit_sector = "isic_sec") |>
     xctr_add_scores(low_threshold, high_threshold)
 
-  out <- left_join(
-    companies,
-    scored,
-    by = "activity_uuid_product_uuid",
-    relationship = "many-to-many"
-  )
+  xctr_join_companies <- function(product_level, companies) {
+    out <- left_join(
+      companies,
+      product_level,
+      by = "activity_uuid_product_uuid",
+      relationship = "many-to-many"
+    )
+  }
+  out <- xctr_join_companies(scored, companies)
 
   xctr_polish_output_at_product_level(out)
 }
