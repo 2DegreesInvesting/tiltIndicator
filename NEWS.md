@@ -1,6 +1,8 @@
-# tiltIndicator (development version)
-
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# tiltIndicator 0.0.0.9037
+
+* ICTR and PCTR now handle duplicated companies (#230).
 
 # tiltIndicator 0.0.0.9037
 
