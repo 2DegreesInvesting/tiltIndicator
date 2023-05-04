@@ -70,8 +70,8 @@ ictr_at_product_level <- function(companies,
 
 #' @rdname ictr
 #' @export
-ictr_at_company_level <- function(data) {
-  xctr_at_company_level(data)
+ictr_at_company_level <- function(data, benchmarks = c("all", "unit", "sector", "unit_sec")) {
+  xctr_at_company_level(data, benchmarks)
 }
 
 ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
