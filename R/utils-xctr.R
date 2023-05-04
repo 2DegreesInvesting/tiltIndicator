@@ -27,8 +27,7 @@ xctr_pivot_grouped_by_to_score <- function(data) {
     pivot_wider(
       names_from = "grouped_by",
       values_from = "risk_category",
-      names_prefix = "score_",
-      values_fn = unique
+      names_prefix = "score_"
     )
 }
 
