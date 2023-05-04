@@ -1,3 +1,13 @@
+xctr_at_company_level <- function(data) {
+  data |>
+    # FIXME: Instead rename downstream
+    rename(company_id = "companies_id") |>
+    # FIXME: Instead handle data in long format
+    xctr_pivot_grouped_by_to_score() |>
+    xctr_at_company_level_impl(c("all", "unit", "sector", "unit_sec")) |>
+    xctr_polish_output_at_company_level()
+}
+
 xctr_at_company_level_impl <- function(data,
                                   benchmarks = c("all", "unit", "sector", "unit_sec")) {
   # For each company show all risk levels even if the share is 0.

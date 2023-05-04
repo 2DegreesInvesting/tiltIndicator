@@ -73,13 +73,7 @@ ictr_at_product_level <- function(companies,
 #' @rdname ictr
 #' @export
 ictr_at_company_level <- function(data) {
-  data |>
-    # FIXME: Instead rename downstream
-    rename(company_id = "companies_id") |>
-    # FIXME: Instead handle data in long format
-    xctr_pivot_grouped_by_to_score() |>
-    xctr_at_company_level_impl(c("all", "unit", "sector", "unit_sec")) |>
-    xctr_polish_output_at_company_level()
+  xctr_at_company_level(data)
 }
 
 ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
