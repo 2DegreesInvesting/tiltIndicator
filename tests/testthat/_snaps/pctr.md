@@ -155,12 +155,12 @@
       1             all
       2             all
       3             all
-      4     isic_sector
-      5     isic_sector
-      6     isic_sector
-      7     tilt_sector
-      8     tilt_sector
-      9     tilt_sector
+      4        isic_sec
+      5        isic_sec
+      6        isic_sec
+      7        tilt_sec
+      8        tilt_sec
+      9        tilt_sec
       10           unit
       11           unit
       12           unit
@@ -173,12 +173,12 @@
       19            all
       20            all
       21            all
-      22    isic_sector
-      23    isic_sector
-      24    isic_sector
-      25    tilt_sector
-      26    tilt_sector
-      27    tilt_sector
+      22       isic_sec
+      23       isic_sec
+      24       isic_sec
+      25       tilt_sec
+      26       tilt_sec
+      27       tilt_sec
       28           unit
       29           unit
       30           unit
@@ -191,12 +191,12 @@
       37            all
       38            all
       39            all
-      40    isic_sector
-      41    isic_sector
-      42    isic_sector
-      43    tilt_sector
-      44    tilt_sector
-      45    tilt_sector
+      40       isic_sec
+      41       isic_sec
+      42       isic_sec
+      43       tilt_sec
+      44       tilt_sec
+      45       tilt_sec
       46           unit
       47           unit
       48           unit
@@ -209,12 +209,12 @@
       55            all
       56            all
       57            all
-      58    isic_sector
-      59    isic_sector
-      60    isic_sector
-      61    tilt_sector
-      62    tilt_sector
-      63    tilt_sector
+      58       isic_sec
+      59       isic_sec
+      60       isic_sec
+      61       tilt_sec
+      62       tilt_sec
+      63       tilt_sec
       64           unit
       65           unit
       66           unit
@@ -227,12 +227,12 @@
       73            all
       74            all
       75            all
-      76    isic_sector
-      77    isic_sector
-      78    isic_sector
-      79    tilt_sector
-      80    tilt_sector
-      81    tilt_sector
+      76       isic_sec
+      77       isic_sec
+      78       isic_sec
+      79       tilt_sec
+      80       tilt_sec
+      81       tilt_sec
       82           unit
       83           unit
       84           unit
@@ -245,12 +245,12 @@
       91            all
       92            all
       93            all
-      94    isic_sector
-      95    isic_sector
-      96    isic_sector
-      97    tilt_sector
-      98    tilt_sector
-      99    tilt_sector
+      94       isic_sec
+      95       isic_sec
+      96       isic_sec
+      97       tilt_sec
+      98       tilt_sec
+      99       tilt_sec
       100          unit
       101          unit
       102          unit
@@ -263,12 +263,12 @@
       109           all
       110           all
       111           all
-      112   isic_sector
-      113   isic_sector
-      114   isic_sector
-      115   tilt_sector
-      116   tilt_sector
-      117   tilt_sector
+      112      isic_sec
+      113      isic_sec
+      114      isic_sec
+      115      tilt_sec
+      116      tilt_sec
+      117      tilt_sec
       118          unit
       119          unit
       120          unit
@@ -281,12 +281,12 @@
       127           all
       128           all
       129           all
-      130   isic_sector
-      131   isic_sector
-      132   isic_sector
-      133   tilt_sector
-      134   tilt_sector
-      135   tilt_sector
+      130      isic_sec
+      131      isic_sec
+      132      isic_sec
+      133      tilt_sec
+      134      tilt_sec
+      135      tilt_sec
       136          unit
       137          unit
       138          unit

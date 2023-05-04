@@ -56,3 +56,17 @@ add_rank <- function(data, x, .by) {
 rank_proportion <- function(x) {
   rank(x) / length(x)
 }
+
+xctr_add_scores <- function(data, low_threshold = 0.3, high_threshold = 0.7){
+  for (col in colnames(select(data, starts_with("perc_")))) {
+    suffix <- substring(col, 6)
+    score_col <- paste0("score_", suffix)
+    # assign scores to each "perc_" column
+    data <- data |> mutate({{ score_col }} := case_when(
+      .data[[col]] < low_threshold ~ "low",
+      .data[[col]] >= low_threshold & .data[[col]] < high_threshold ~ "medium",
+      .data[[col]] >= high_threshold ~ "high"
+    ))
+  }
+  data
+}
