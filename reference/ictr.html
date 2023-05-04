@@ -110,7 +110,7 @@ sectors (as the matching with ecoinvent is not done yet, we do not have one sect
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Calculate the ICTR indicator</h1>
-      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/ictr.R" class="external-link"><code>R/ictr.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/ictr.R" class="external-link"><code>R/ictr.R</code></a>, <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/xctr.R" class="external-link"><code>R/xctr.R</code></a></small>
       <div class="d-none name"><code>ictr.Rd</code></div>
     </div>
 
@@ -202,21 +202,21 @@ risk products.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id            grouped_by risk_category activity_uuid_produc…¹ unit </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_… all        high          0a242b09-772a-5edf-8e… unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_… unit       high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_… isic_sec   high          0a242b09-772a-5edf-8e… unit </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_… tilt_sec   high          0a242b09-772a-5edf-8e… unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_… isic_sec   high          0a242b09-772a-5edf-8e… unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_… unit_tilt… high          0a242b09-772a-5edf-8e… unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_… unit_isic… high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_… unit       high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_… unit_isic… high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_… unit_tilt… high          0a242b09-772a-5edf-8e… unit </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_… all        high          0a242b09-772a-5edf-8e… unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_… unit       high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_… isic_sec   high          0a242b09-772a-5edf-8e… unit </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_… tilt_sec   high          0a242b09-772a-5edf-8e… unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_… isic_sec   high          0a242b09-772a-5edf-8e… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_… unit       high          0a242b09-772a-5edf-8e… unit </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 314 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 10 more variables: input_co2_footprint &lt;dbl&gt;, input_tilt_sector &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   input_unit &lt;chr&gt;, input_isic_4digit_sector &lt;dbl&gt;, perc_all &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_unit &lt;dbl&gt;, perc_tilt_sec &lt;dbl&gt;, perc_isic_sec &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_unit_tilt_sec &lt;dbl&gt;, perc_unit_isic_sec &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_isic_sec &lt;dbl&gt;, perc_tilt_sec &lt;dbl&gt;, perc_unit &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   perc_unit_isic_sec &lt;dbl&gt;, perc_unit_tilt_sec &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Company level</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
