@@ -1,6 +1,6 @@
-xctr_polish_output <- function(data) {
+xctr_polish_output_at_company_level <- function(data) {
   data |>
-    xctr_rename() |>
+    xctr_rename_at_company_level() |>
     pivot_longer(
       starts_with("score_"),
       names_prefix = "score_",
@@ -10,7 +10,7 @@ xctr_polish_output <- function(data) {
     arrange(.data$companies_id, .data$grouped_by)
 }
 
-xctr_rename <- function(data) {
+xctr_rename_at_company_level <- function(data) {
   data |>
     rename(
       companies_id = "company_id",

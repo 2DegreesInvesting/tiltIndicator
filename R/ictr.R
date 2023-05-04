@@ -71,7 +71,7 @@ ictr_at_product_level <- function(companies,
 ictr_at_company_level <- function(data) {
   data |>
     xctr_at_company_level(c("all", "unit", "sector", "unit_sec")) |>
-    xctr_polish_output()
+    xctr_polish_output_at_company_level()
 }
 
 ictr_add_scores <- function(ecoinvent_input, low_threshold, high_threshold) {
