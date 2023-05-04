@@ -1,3 +1,12 @@
+xctr_join_companies <- function(product_level, companies) {
+  out <- left_join(
+    companies,
+    product_level,
+    by = "activity_uuid_product_uuid",
+    relationship = "many-to-many"
+  )
+}
+
 xctr_benchmarks <- function() {
   list(
     "all",
