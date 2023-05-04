@@ -66,15 +66,15 @@ stop_if_any_missing_input_co2_footprint <- function(data) {
   invisible(data)
 }
 
-common_output_columns <- function() {
-  c("companies_id", "grouped_by", "risk_category", "value")
+cols_at_all_levels <- function() {
+  c("companies_id", "grouped_by", "risk_category")
 }
 
-relocate_crucial_output_columns <- function(data) {
-  relocate(data, all_of(common_output_columns()))
+cols_at_company_level <- function() {
+  c(cols_at_all_levels(), "value")
 }
 
 document_value <- function() {
-  company <- paste0("`", common_output_columns(), "`", collapse = ", ")
+  company <- paste0("`", cols_at_company_level(), "`", collapse = ", ")
   paste0("At company level, a dataframe with columns ", company, ".")
 }
