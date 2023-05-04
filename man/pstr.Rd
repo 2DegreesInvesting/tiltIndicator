@@ -20,7 +20,7 @@ pstr_at_company_level(data, companies)
 \item{data}{A dataframe. The output at product level.}
 }
 \value{
-At company level, a dataframe with columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
+At product level, a dataframe with at least columns companies_id, grouped_by, risk_category. At company level, a dataframe with at least columns companies_id, grouped_by, risk_category, value.
 }
 \description{
 The Product Sector Transition Risk Indicator measures the transition risk of

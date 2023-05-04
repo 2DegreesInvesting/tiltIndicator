@@ -75,6 +75,10 @@ cols_at_company_level <- function() {
 }
 
 document_value <- function() {
-  company <- paste0("`", cols_at_company_level(), "`", collapse = ", ")
-  paste0("At company level, a dataframe with columns ", company, ".")
+  paste0(
+    "At product level, a dataframe with at least columns ",
+    toString(cols_at_all_levels()), ". ",
+    "At company level, a dataframe with at least columns ",
+    toString(cols_at_company_level()), "."
+  )
 }
