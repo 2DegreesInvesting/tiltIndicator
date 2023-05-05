@@ -2,7 +2,7 @@ xctr_polish_output_at_product_level <- function(data) {
   data |>
     xctr_pivot_score_to_grouped_by() |>
     xctr_rename_at_product_level() |>
-    relocate(all_of(cols_at_all_levels()))
+    relocate(all_of(cols_at_product_level()))
 }
 
 xctr_polish_output_at_company_level <- function(data) {

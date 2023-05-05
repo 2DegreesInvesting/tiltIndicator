@@ -5,14 +5,14 @@ test_that("hasn't changed", {
   expect_snapshot(format_robust_snapshot(out))
 })
 
-test_that("outputs common output columns", {
+test_that("outputs expected columns at company level", {
   scenarios <- pstr_scenarios
   companies <- pstr_companies |> slice(1)
 
   out <- pstr(companies, scenarios)
 
   expected <- cols_at_company_level()
-  expect_equal(names(out)[1:4], expected)
+  expect_equal(names(out)[seq_along(expected)], expected)
 })
 
 test_that("the output is not grouped", {
