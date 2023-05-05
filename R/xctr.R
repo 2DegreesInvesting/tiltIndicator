@@ -98,7 +98,8 @@ xctr_score_companies <- function(companies,
 
 xctr_add_ranks <- function(data, x) {
   .by <- xctr_benchmarks()
-  out <- data
+  # Deduplicating here because it's the first xctr_* that uses `co2` (#230)
+  out <- distinct(data)
   for (i in seq_along(.by)) {
     out <- add_rank(out, x, .by = .by[[i]])
   }
