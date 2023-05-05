@@ -24,6 +24,7 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
+    clustered = c("xyz")
   )
 
   out <- pctr(companies, co2)
@@ -37,6 +38,7 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
     company_id = c("a", "b"),
+    clustered = c("xyz", "abc")
   )
 
   out <- pctr(companies, co2)
@@ -58,6 +60,7 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
+    clustered = c("xyz")
   )
 
   out <- pctr(companies, co2)
@@ -73,6 +76,7 @@ test_that("if a company matches no co2, all shares are `NA` (#176)", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
+    clustered = c("xyz")
   )
   co2 <- tibble(
     co2_footprint = 1,
@@ -99,6 +103,7 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
+    clustered = c("xyz")
   )
 
   out <- pctr(companies, co2)
@@ -126,6 +131,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
+    clustered = c("xyz")
   )
   co2 <- tibble(
     co2_footprint = 1,
@@ -148,6 +154,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
     company_id = c("a"),
+    clustered = c("xyz")
   )
   co2 <- tibble(
     co2_footprint = 1,
@@ -229,6 +236,7 @@ test_that("handles duplicated companies data (#230)", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x", "x"),
     company_id = c("a", "a"),
+    clustered = c("abc", "abc")
   )
   expect_no_error(pctr(companies, co2))
 })

@@ -34,7 +34,8 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
 
   companies <- tibble(
     company_id = "a",
-    activity_uuid_product_uuid = c("x", "y")
+    activity_uuid_product_uuid = c("x", "y"),
+    clustered = c("xyz", "abc")
   )
   out <- ictr(companies, inputs)
 
@@ -46,7 +47,8 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
 
   companies <- tibble(
     company_id = c("a", "b"),
-    activity_uuid_product_uuid = c("x", "y")
+    activity_uuid_product_uuid = c("x", "y"),
+    clustered = c("xyz", "abc")
   )
   out <- ictr(companies, inputs)
   n <- length(unique(out$companies_id)) *
@@ -59,7 +61,8 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
 test_that("if a company matches at least one input, each share sums 1 (#175)", {
   companies <- tibble(
     company_id = "a",
-    activity_uuid_product_uuid = c("a", "b")
+    activity_uuid_product_uuid = c("a", "b"),
+    clustered = c("xyz", "abc")
   )
   inputs <- tibble(
     activity_uuid_product_uuid = c("a"),
@@ -82,7 +85,8 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
 test_that("if a company matches no inputs, all shares are `NA` (#176)", {
   companies <- tibble(
     company_id = "a",
-    activity_uuid_product_uuid = "a"
+    activity_uuid_product_uuid = "a",
+    clustered = "xyz"
   )
   inputs <- tibble(
     activity_uuid_product_uuid = "b",
@@ -102,7 +106,8 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
 test_that("if a company matches no inputs, all shares are `NA` (#176)", {
   companies <- tibble(
     company_id = c("a"),
-    activity_uuid_product_uuid = c("a")
+    activity_uuid_product_uuid = c("a"),
+    clustered = c("xyz")
   )
   inputs <- tibble(
     activity_uuid_product_uuid = "b",
@@ -122,7 +127,8 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
 test_that("if a company matches at least one input, no share is `NA` (#176)", {
   companies <- tibble(
     company_id = "a",
-    activity_uuid_product_uuid = c("a", "b")
+    activity_uuid_product_uuid = c("a", "b"),
+    clustered = c("xyz", "abc")
   )
   inputs <- tibble(
     activity_uuid_product_uuid = "a",
@@ -215,7 +221,8 @@ test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
 test_that("handles duplicated companies data (#230)", {
   companies <- tibble(
     company_id = c("a", "a"),
-    activity_uuid_product_uuid = c("x", "x")
+    activity_uuid_product_uuid = c("x", "x"),
+    clustered = c("abc", "abc")
   )
   inputs <- tibble(
     activity_uuid_product_uuid = "b",

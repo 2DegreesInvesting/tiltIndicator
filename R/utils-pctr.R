@@ -18,6 +18,7 @@ pctr_companies_crucial <- function() {
   c(
     "activity_uuid_product_uuid",
     "company_id",
+    "clustered",
     "ei_activity_name",
     "unit"
   )
