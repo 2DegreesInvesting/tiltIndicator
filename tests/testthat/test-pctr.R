@@ -232,3 +232,9 @@ test_that("handles duplicated companies data (#230)", {
   )
   expect_no_error(pctr(companies, co2))
 })
+
+test_that("at product level returns visibly", {
+  companies <- slice(pctr_companies, 1)
+  co2 <- slice(pctr_ecoinvent_co2, 1)
+  expect_visible(pctr_at_product_level(companies, co2))
+})
