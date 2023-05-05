@@ -202,6 +202,18 @@
       9                                                                      <NA>
       
       [[2]]
+          clustered
+      1       stove
+      2        oven
+      3       steel
+      4 aged cheese
+      5 aged cheese
+      6      cheese
+      7       cream
+      8      rubber
+      9       apple
+      
+      [[3]]
                                       company_id
       1 fleischerei-stiefsohn_00000005219477-001
       2 fleischerei-stiefsohn_00000005219477-001
@@ -213,7 +225,7 @@
       8             cheries-baqu_neu316541-00101
       9       ca-coity-trg-aua-gmbh_00000384-001
       
-      [[3]]
+      [[4]]
         unit
       1 unit
       2 unit
@@ -1194,6 +1206,18 @@
       9       ca-coity-trg-aua-gmbh_00000384-001
       
       [[3]]
+          clustered
+      1       stove
+      2        oven
+      3       steel
+      4 aged cheese
+      5 aged cheese
+      6      cheese
+      7       cream
+      8      rubber
+      9       apple
+      
+      [[4]]
                               ei_activity_name
       1       cookstove production or electric
       2              microwave oven production
@@ -1205,7 +1229,7 @@
       8  seal production, natural rubber based
       9                                   <NA>
       
-      [[4]]
+      [[5]]
         unit
       1 unit
       2 unit
