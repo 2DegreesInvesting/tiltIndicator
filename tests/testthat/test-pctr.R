@@ -19,7 +19,7 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit_sector = 4575
+    isic_4digit = 4575
   )
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
@@ -55,7 +55,7 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x", "y"),
-    isic_4digit_sector = 4575
+    isic_4digit = 4575
   )
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
@@ -83,7 +83,7 @@ test_that("if a company matches no co2, all shares are `NA` (#176)", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("y"),
-    isic_4digit_sector = 4575
+    isic_4digit = 4575
   )
 
   out <- pctr(companies, co2)
@@ -98,7 +98,7 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit_sector = 4575
+    isic_4digit = 4575
   )
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
@@ -138,7 +138,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit_sector = 4575
+    isic_4digit = 4575
   )
 
   crucial <- "activity_uuid_product_uuid"
@@ -161,7 +161,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit_sector = 4575
+    isic_4digit = 4575
   )
 
   crucial <- "co2_footprint"
@@ -180,7 +180,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   bad <- select(co2, -all_of(crucial))
   expect_error(pctr(companies, bad), crucial)
 
-  crucial <- "isic_4digit_sector"
+  crucial <- "isic_4digit"
   bad <- select(co2, -all_of(crucial))
   expect_error(pctr(companies, bad), crucial)
 })
@@ -230,7 +230,7 @@ test_that("handles duplicated companies data (#230)", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit_sector = 4575
+    isic_4digit = 4575
   )
 
   companies <- tibble(

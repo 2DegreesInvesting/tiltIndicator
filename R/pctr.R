@@ -43,9 +43,9 @@ pctr_at_product_level <- function(companies,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
   scored <- co2 |>
-    rename(tilt_sec = "tilt_sector", isic_sec = "isic_4digit_sector") |>
+    rename(tilt_sec = "tilt_sector", isic_sec = "isic_4digit") |>
     xctr_add_ranks(x = "co2_footprint") |>
-    rename(tilt_sector = "tilt_sec", isic_4digit_sector = "isic_sec") |>
+    rename(tilt_sector = "tilt_sec", isic_4digit = "isic_sec") |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
     xctr_polish_output_at_product_level()

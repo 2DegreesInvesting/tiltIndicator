@@ -1,4 +1,4 @@
-co2_footprint,tilt_sector,tilt_subsector,isic_4digit_sector,unit,activity_uuid_product_uuid,ei_activity_name
+co2_footprint,tilt_sector,tilt_subsector,isic_4digit,unit,activity_uuid_product_uuid,ei_activity_name
 175.6154785,Industry,Other,2560,unit,0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,cookstove production or electric
 58.12000177,Industry,Other,2560,unit,be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,microwave oven production
 4.949117653,Steel & Metals,Steel,2870,kg,977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,"market for steel, chromium steel"

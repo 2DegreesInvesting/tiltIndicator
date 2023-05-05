@@ -3,7 +3,7 @@ ictr_inputs_crucial <- function() {
     "input_co2_footprint",
     "input_tilt_sector",
     "input_unit",
-    "input_isic_4digit_sector",
+    "input_isic_4digit",
     "input_activity_uuid_product_uuid"
   )
 

@@ -29,7 +29,7 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit_sector = 4575
+    input_isic_4digit = 4575
   )
 
   companies <- tibble(
@@ -70,7 +70,7 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit_sector = 4575
+    input_isic_4digit = 4575
   )
 
   out <- ictr(companies, inputs)
@@ -94,7 +94,7 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit_sector = 4575
+    input_isic_4digit = 4575
   )
 
   out <- ictr(companies, inputs)
@@ -115,7 +115,7 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit_sector = 4575
+    input_isic_4digit = 4575
   )
 
   out <- ictr(companies, inputs)
@@ -136,7 +136,7 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit_sector = 4575
+    input_isic_4digit = 4575
   )
 
   out <- ictr(companies, inputs)
@@ -193,7 +193,7 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
   bad <- select(inputs, -all_of(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_isic_4digit_sector"
+  crucial <- "input_isic_4digit"
   bad <- select(inputs, -all_of(crucial))
   expect_error(ictr(companies, bad), crucial)
 })
@@ -230,7 +230,7 @@ test_that("handles duplicated companies data (#230)", {
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit_sector = 4575
+    input_isic_4digit = 4575
   )
   expect_no_error(ictr(companies, inputs))
 })

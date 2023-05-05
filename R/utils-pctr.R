@@ -3,7 +3,7 @@ pctr_ecoinvent_co2_crucial <- function() {
     "co2_footprint",
     "tilt_sector",
     "unit",
-    "isic_4digit_sector"
+    "isic_4digit"
   )
 
   crucial_in_pctr_at_company_level <- c(
