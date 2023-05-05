@@ -234,3 +234,17 @@ test_that("handles duplicated companies data (#230)", {
   )
   expect_no_error(ictr(companies, inputs))
 })
+
+test_that("handles duplicated co2 data (#230)", {
+  companies <- tibble(company_id = "a", activity_uuid_product_uuid = "x")
+  co2 <- tibble (
+    activity_uuid_product_uuid = c("x", "x"),
+    clustered = c("x", "x"),
+    input_unit = c("kg", "kg"),
+    input_tilt_sector = c(NA, NA),
+    input_isic_4digit = c("0710", "0710"),
+    input_co2_footprint = c(1, 1)
+  )
+  expect_no_error(ictr(companies, co2))
+})
+
