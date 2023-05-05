@@ -148,6 +148,42 @@
       33                     2679
       
       [[5]]
+                                             input_activity_uuid_product_uuid
+      1  5de8c337-dea9-5c1f-9d90-002de27188be_8911bd8c-a96f-4440-9f8e-a7dacf5
+      2  1aeb18b9-8355-560f-82aa-543c771c4d61_a0e53510-b90b-43ba-80cc-7600f5d
+      3     22704506-7707-5ae7-990d-ebf01ac04fb5_50c41012-3b00-429d-ace3-40d0
+      4  92078219-1ed3-5215-9f70-931cdefad520_5c21b18e-e32d-4c76-8d16-2238632
+      5    9d483329-b09a-5513-b1bc-722cb211e928_bd4dca-497e-bdd9-fcd343012087
+      6    8709b463-732e-592e-9b88-999ed17af48f_6b6b3a15-e0-baea-cda98afc61c2
+      7     d44e7db1-4dda-51ed2929a8f1a2_32e60fbc-4778-470c-9653-feb859a3418f
+      8     7c7718bb-2372-5d04-a7ac-1ae5b12b05e3_61396bcb-bf35-411a-a6a6-85e8
+      9        f08f52c5-559-92f7-ed216a32eed2_1b30b018-ac39-41f4-a9e0-92057ee
+      10          c5f28517-0c26-5746-9afe-3f3a48bfc71c_85a9dda1a-105ab3269262
+      11       6737f21a-545-d3e724540ab7_66c93e71-f32b-4591-901c-55395db5c132
+      12    582707f4-f961-5779-b1d9-507bdf5624ef_a9007f10-7e39-4d50-8f4a-d6d0
+      13          04bc1d7b-4aeb-57ea-b217-9d70048-5f1b-461d-a223-f08025ec51d6
+      14         2532d5f6-7cec-5b3d-8b4f-9d19d5fce0c2_d47a4435-308911eed2698c
+      15   1a092e74-9095-5393-89f6-6954fb3ed34b_a97e39-4d50-8f4a-d6d03ce3d673
+      16            e9afeb6-e0ac327258e0_18eadf40-089b-441a-b868-5d07e9449992
+      17            f3aeaa91-d091-57d6-8e88-632e7735b471_a99b6ce9-9c21427d045
+      18      088c0a08-55f2-529d-8077-309d5228c5e1_1c5d51e7-9762-5fbb-b707-03
+      19           aaacb824-d084b1a7ed0aee_1d32b849-121f-4d23-853c-fa2bf55c42
+      20              3d83e6ad-da6e-52cd-b5d5-764749b27b0d-f0ec-42d1-9ec1-f85
+      21                   dd836037-c3-8791-29cfb2d98c17_2bf7e6c9-e68a9724d81
+      22               b43e277b-fbbc-59ef-b69c-566cc02d3ee4_a9007f6d03ce3d673
+      23               f1b81a2c-26ad-56f4-8120-d7affa5ab053_7933f397-3db0ae03
+      24                        d1747a2e--0bb44d158a0b_dae141a8-7daa-4f03-a64
+      25              c0e9d55b-7a17-5a0a-b67e-517f813c446ed-a120-cc7d35ddac10
+      26                       f0d2c218-2b61-55e4-991f-cccc7c168e37_a235b2ff-
+      27               86f30e6d-d629-52ed-aeda-68a82ba-485c-a800-b89efdcb0491
+      28          e7efa084-9c9c-519c-9c88-a0e43926ef95_61627325--1a9f1d19521f
+      29        d9b1a425-7453-562f-802f-e78677f5bd00_a9007f10-7a-d6d03ce3d673
+      30      4283166a-347b-5eef-9ab1-fcea0c339bc-f0f3-410e-8bbb-b5cb3e994313
+      31            4550d429-b28d-b26c51_66c93e71-f32b-4591-901c-55395db5c132
+      32                  6501c38f-4c03-5bda-bf8c-ffe4-4915-a896-9996a014c410
+      33              4ba8cd24-2ebb-5c20-86ec-74e10029f21f_f5707bdf-f7e2-479b
+      
+      [[6]]
                                                         activity_uuid_product_uuid
       1  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
       2  0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa
