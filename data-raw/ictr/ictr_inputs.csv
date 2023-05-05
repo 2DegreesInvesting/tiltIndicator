@@ -1,4 +1,4 @@
-activity_uuid_product_uuid,input_activity_uuid_product_uuid,input_reference_product_name,input_unit,input_co2_footprint,input_tilt_sector,input_tilt_subsector,input_isic_4digit_sector
+activity_uuid_product_uuid,input_activity_uuid_product_uuid,input_reference_product_name,input_unit,input_co2_footprint,input_tilt_sector,input_tilt_subsector,input_isic_4digit
 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,5de8c337-dea9-5c1f-9d90-002de27188be_8911bd8c-a96f-4440-9f8e-a7dacf5,"alkyd paint, white, without solvent, in 60% solution state",kg,7.072358402,Inudstry,Other,2560
 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,1aeb18b9-8355-560f-82aa-543c771c4d61_a0e53510-b90b-43ba-80cc-7600f5d,"alkyd paint, white, without solvent, in 60% solution state",kwh,39.91891764,Inudstry,Other,2560
 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,22704506-7707-5ae7-990d-ebf01ac04fb5_50c41012-3b00-429d-ace3-40d0,"aluminium, cast alloy",kg,0.511867275,Inudstry,Other,2560
@@ -26,7 +26,7 @@ ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,d1747a
 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,c0e9d55b-7a17-5a0a-b67e-517f813c446ed-a120-cc7d35ddac10,acrylonitrile-butadiene-styrene copolymer,kg,10.99964547,Bioenergy & Waste,Other,1780
 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,f0d2c218-2b61-55e4-991f-cccc7c168e37_a235b2ff-,"aluminium, cast alloy",kg,0.001006155,Bioenergy & Waste,Other,1780
 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,86f30e6d-d629-52ed-aeda-68a82ba-485c-a800-b89efdcb0491,dairy,m3,0.032430197,Bioenergy & Waste,Other,1780
-2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,e7efa084-9c9c-519c-9c88-a0e43926ef95_61627325--1a9f1d19521f,"seal, natural rubber based",kg,0.119946765,Inudstry,Other,2679
+2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,e7efa084-9c9c-519c-9c88-a0e43926ef95_61627325--1a9f1d19521f,"seal, natural rubber based",kg,0.119946765,Inudstry,Other,679
 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,d9b1a425-7453-562f-802f-e78677f5bd00_a9007f10-7a-d6d03ce3d673,"seal, natural rubber based",kg,1.86803558,Inudstry,Other,2679
 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,4283166a-347b-5eef-9ab1-fcea0c339bc-f0f3-410e-8bbb-b5cb3e994313,"transport, freight train",metric ton*km,0.004545829,Inudstry,Other,2679
 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,4550d429-b28d-b26c51_66c93e71-f32b-4591-901c-55395db5c132,"transport, freight, light commercial vehicle",metric ton*km,0.022001309,Inudstry,Other,2679
