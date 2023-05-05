@@ -10,10 +10,6 @@
 
 # tiltIndicator 0.0.0.9037
 
-* ICTR and PCTR now handle duplicated companies (#230).
-
-# tiltIndicator 0.0.0.9037
-
 * All product-level functions now output the same three columns (#228, #227):
 
     * `companies_id`
