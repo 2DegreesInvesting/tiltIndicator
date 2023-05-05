@@ -228,7 +228,7 @@ test_that("handles duplicated companies data (#230)", {
   expect_no_error(ictr(companies, inputs))
 })
 
-test_that("at product level returns visibly", {
+test_that("at product level returns visibly (#238)", {
   companies <- slice(ictr_companies, 1)
   co2 <- slice(ictr_inputs, 1)
   expect_visible(ictr_at_product_level(companies, co2))
