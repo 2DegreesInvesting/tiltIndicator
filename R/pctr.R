@@ -43,7 +43,7 @@ pctr_at_product_level <- function(companies,
                                   low_threshold = 0.3,
                                   high_threshold = 0.7) {
   # #230
-  # co2 <- distinct(co2)
+  co2 <- distinct(co2)
   companies <- distinct(companies)
 
   co2 |>
