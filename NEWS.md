@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9040
+
+* `*ctr_at_product_level()` now outputs `clustered` and `*_uuid` (#242).
+
 # tiltIndicator 0.0.0.9039
 
 * In ICTR and PCTR example datasets are now updated (@kalashsinghal #237).
