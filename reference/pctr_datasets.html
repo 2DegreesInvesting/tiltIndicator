@@ -72,31 +72,30 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">pctr_companies</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   activity_uuid_product_uuid                   company_id ei_activity_name unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee… fleischer… cookstove produ… unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> be06d25c-73dc-55fb-965b-0f300453e380_98b48f… fleischer… microwave oven … unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02… pecheries… market for stee… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee03… hoche-but… cheese producti… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee03… vicquelin… cheese producti… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee03… bst-proco… market for chee… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493… leider-gm… market for seal… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493… cheries-b… seal production… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> <span style="color: #BB0000;">NA</span>                                           ca-coity-… <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   activity_uuid_product_uuid         company_id clustered ei_activity_name unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 0a242b09-772a-5edf-8e82-9cb4ba52a… fleischer… stove     cookstove produ… unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> be06d25c-73dc-55fb-965b-0f300453e… fleischer… oven      microwave oven … unit </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 977d997e-c257-5033-ba39-d0edeeef4… pecheries… steel     market for stee… kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> ebb8475e-ff57-5e4e-937b-b5788186a… hoche-but… aged che… cheese producti… kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> ebb8475e-ff57-5e4e-937b-b5788186a… vicquelin… aged che… cheese producti… kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> ebb8475e-ff57-5e4e-937b-b5788186a… bst-proco… cheese    market for chee… kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> 2f7b77a7-1556-5c1b-b0aa-c4534ddc8… leider-gm… cream     market for seal… kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> 2f7b77a7-1556-5c1b-b0aa-c4534ddc8… cheries-b… rubber    seal production… kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> <span style="color: #BB0000;">NA</span>                                 ca-coity-… apple     <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>   </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">pctr_ecoinvent_co2</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   co2_footprint tilt_sector    unit  isic_4digit_sector activity_uuid_product_…¹</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        176.   Industry       unit                <span style="text-decoration: underline;">2</span>560 0a242b09-772a-5edf-8e82…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>         58.1  Industry       unit                <span style="text-decoration: underline;">2</span>560 be06d25c-73dc-55fb-965b…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>          4.95 Steel &amp; Metals kg                  <span style="text-decoration: underline;">2</span>870 977d997e-c257-5033-ba39…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>         12.5  Agriculture    kg                  <span style="text-decoration: underline;">1</span>780 ebb8475e-ff57-5e4e-937b…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>         12.5  Agriculture    kg                  <span style="text-decoration: underline;">1</span>780 ebb8475e-ff57-5e4e-937b…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>          2.07 Industry       kg                  <span style="text-decoration: underline;">2</span>679 2f7b77a7-1556-5c1b-b0aa…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>          1.98 Industry       kg                  <span style="text-decoration: underline;">2</span>679 2f7b77a7-1556-5c1b-b0aa…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   co2_footprint tilt_sector    unit  isic_4digit activity_uuid_product_uuid     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        176.   Industry       unit         <span style="text-decoration: underline;">2</span>560 0a242b09-772a-5edf-8e82-9cb4ba…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>         58.1  Industry       unit         <span style="text-decoration: underline;">2</span>560 be06d25c-73dc-55fb-965b-0f3004…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>          4.95 Steel &amp; Metals kg           <span style="text-decoration: underline;">2</span>870 977d997e-c257-5033-ba39-d0edee…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>         12.5  Agriculture    kg           <span style="text-decoration: underline;">1</span>780 ebb8475e-ff57-5e4e-937b-b57881…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>         12.5  Agriculture    kg           <span style="text-decoration: underline;">1</span>780 ebb8475e-ff57-5e4e-937b-b57881…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>          2.07 Industry       kg           <span style="text-decoration: underline;">2</span>679 2f7b77a7-1556-5c1b-b0aa-c4534d…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>          1.98 Industry       kg           <span style="text-decoration: underline;">2</span>679 2f7b77a7-1556-5c1b-b0aa-c4534d…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: ei_activity_name &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
