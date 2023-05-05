@@ -10,6 +10,6 @@ test_that("outputs expected columns at product level", {
 
   out <- ictr_at_product_level(companies, co2)
 
-  expected <- cols_at_product_level()
+  expected <- c(cols_at_product_level(), "input_activity_uuid_product_uuid")
   expect_equal(names(out)[seq_along(expected)], expected)
 })
