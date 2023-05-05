@@ -1,7 +1,6 @@
 xctr_join_companies <- function(product_level, companies) {
   left_join(
-    # Deduplicating here as it's the first xctr_* that uses `companies` (#230)
-    distinct(companies),
+    companies,
     product_level,
     by = "activity_uuid_product_uuid",
     relationship = "many-to-many"
@@ -99,7 +98,6 @@ xctr_score_companies <- function(companies,
 
 xctr_add_ranks <- function(data, x) {
   .by <- xctr_benchmarks()
-  # Deduplicating here as it's the first xctr_* that uses `co2` (#230)
   out <- distinct(data)
   for (i in seq_along(.by)) {
     out <- add_rank(out, x, .by = .by[[i]])
