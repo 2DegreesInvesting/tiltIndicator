@@ -218,19 +218,36 @@ test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
   expect_equal(nrow(out0), nrow(out1))
 })
 
-test_that("handles duplicated companies data (#230)", {
+test_that("handles duplicated `companies` data (#230)", {
   companies <- tibble(
-    company_id = c("a", "a"),
-    activity_uuid_product_uuid = c("x", "x"),
-    clustered = c("abc", "abc")
+    company_id = rep("a", 2),
+    clustered = c("b"),
+    activity_uuid_product_uuid = c("c"),
   )
-  inputs <- tibble(
-    activity_uuid_product_uuid = "b",
-    input_activity_uuid_product_uuid = "x",
+  co2 <- tibble(
+    activity_uuid_product_uuid = c("c"),
+    input_activity_uuid_product_uuid = "d",
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit = 4575
+    input_isic_4digit = "4575"
   )
-  expect_no_error(ictr(companies, inputs))
+  expect_no_error(ictr(companies, co2))
+})
+
+test_that("handles duplicated `co2` data (#230)", {
+  companies <- tibble(
+    company_id = c("a"),
+    clustered = c("b"),
+    activity_uuid_product_uuid = c("c"),
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = rep("c", 2),
+    input_activity_uuid_product_uuid = "d",
+    input_co2_footprint = 1,
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit = "4575"
+  )
+  expect_no_error(ictr(companies, co2))
 })
