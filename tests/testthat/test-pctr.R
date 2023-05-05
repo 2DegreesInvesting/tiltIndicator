@@ -3,14 +3,14 @@ test_that("hasn't change", {
   expect_snapshot(out)
 })
 
-test_that("outputs common output columns", {
+test_that("outputs expected columns at company level", {
   companies <- slice(pctr_companies, 1)
   co2 <- slice(pctr_ecoinvent_co2, 1)
 
   out <- pctr(companies, co2)
 
   expected <- cols_at_company_level()
-  expect_equal(names(out)[1:4], expected)
+  expect_equal(names(out)[seq_along(expected)], expected)
 })
 
 test_that("returns n rows equal to companies x risk_category x grouped_by", {

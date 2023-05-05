@@ -70,6 +70,18 @@ cols_at_all_levels <- function() {
   c("companies_id", "grouped_by", "risk_category")
 }
 
+cols_at_product_level <- function() {
+  c(cols_at_all_levels(), "clustered", "activity_uuid_product_uuid")
+}
+
+relocate_cols_at_product_level <- function(data) {
+  data |>
+    relocate(
+      all_of(cols_at_product_level()),
+      ends_with("activity_uuid_product_uuid")
+    )
+}
+
 cols_at_company_level <- function() {
   c(cols_at_all_levels(), "value")
 }

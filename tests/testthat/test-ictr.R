@@ -3,14 +3,14 @@ test_that("hasn't change", {
   expect_snapshot(out)
 })
 
-test_that("outputs common output columns", {
+test_that("outputs expected columns at company level", {
   companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1)
 
   out <- ictr(companies, inputs)
 
   expected <- cols_at_company_level()
-  expect_equal(names(out)[1:4], expected)
+  expect_equal(names(out)[seq_along(expected)], expected)
 })
 
 test_that("it's arranged by `companies_id` and `grouped_by`", {
