@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9039
+
+* In ICTR and PCTR example datasets are now updated (@kalashsinghal #237).
+* `pctr_at_product_level()` now returns visibly (#239). 
+* ICTR and PCTR now handle duplicated `companies` (#236).
+* In ICTR & PCTR ranking benchmarks are now updated (@kalashsinghal #229).
+* In ICTR & PCTR `high_threshold` is now computed correctly (@kalashsinghal #229).
+
 # tiltIndicator 0.0.0.9037
 
 * ICTR and PCTR now handle duplicated companies (#230).
