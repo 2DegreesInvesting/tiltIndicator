@@ -122,7 +122,7 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
-xctr_add_scores <- function(data, low_threshold = 0.3, high_threshold = 0.7) {
+xctr_add_scores <- function(data, low_threshold = 1/3, high_threshold = 2/3) {
   for (col in colnames(select(data, starts_with("perc_")))) {
     new_col <- gsub("perc_", "score_", col)
     data <- data |> mutate({{ new_col }} := case_when(
