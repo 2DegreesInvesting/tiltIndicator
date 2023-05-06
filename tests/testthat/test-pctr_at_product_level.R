@@ -10,6 +10,6 @@ test_that("outputs expected columns at product level", {
 
   out <- pctr_at_product_level(companies, co2)
 
-  expected <- cols_at_product_level()
-  expect_equal(names(out)[seq_along(expected)], expected)
+  expected <- c(cols_at_product_level(), "co2_footprint")
+  expect_named(out, expected)
 })
