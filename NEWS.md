@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9042
+
+* A company with 3 different products and varying footprints now getes correct value (@Tilmon #248).
+
 # tiltIndicator 0.0.0.9041
 
 * ICTR and PCTR now handle duplicated `co2` data (#230).
