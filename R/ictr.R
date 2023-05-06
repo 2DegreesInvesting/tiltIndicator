@@ -44,8 +44,8 @@ ictr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 #' @export
 ictr_at_product_level <- function(companies,
                                   co2,
-                                  low_threshold = 0.3,
-                                  high_threshold = 0.7) {
+                                  low_threshold = 1/3,
+                                  high_threshold = 2/3) {
   # #230
   co2 <- distinct(co2)
   companies <- distinct(companies)
