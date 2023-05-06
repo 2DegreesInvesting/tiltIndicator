@@ -47,13 +47,13 @@ pctr_at_product_level <- function(companies,
   companies <- distinct(companies)
 
   co2 |>
+    xctr_set_indicator_attribute() |>
     rename(tilt_sec = "tilt_sector", isic_sec = "isic_4digit") |>
     xctr_add_ranks(x = "co2_footprint") |>
     rename(tilt_sector = "tilt_sec", isic_4digit = "isic_sec") |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
-    xctr_polish_output_at_product_level() |>
-    xctr_add_indicator_attribute(co2)
+    xctr_polish_output_at_product_level()
 }
 
 pctr_check <- function(companies) {
