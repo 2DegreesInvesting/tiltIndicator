@@ -74,9 +74,9 @@ cols_at_product_level <- function() {
   c(cols_at_all_levels(), "clustered", "activity_uuid_product_uuid")
 }
 
-relocate_cols_at_product_level <- function(data) {
+select_cols_at_product_level <- function(data) {
   data |>
-    relocate(
+    select(
       all_of(cols_at_product_level()),
       ends_with("activity_uuid_product_uuid")
     )
