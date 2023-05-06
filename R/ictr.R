@@ -50,8 +50,7 @@ ictr_at_product_level <- function(companies,
   co2 <- distinct(co2)
   companies <- distinct(companies)
 
-  co2 |>
-    xctr_set_indicator_attribute() |>
+  out <- co2 |>
     # FIXME: All other columns use the form
     #     `mutate(data, x = f(x))`
     # But this column uses the form
@@ -63,6 +62,8 @@ ictr_at_product_level <- function(companies,
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
     xctr_polish_output_at_product_level()
+
+  copy_indicator_attribute(co2, out)
 }
 
 ictr_check <- function(companies, co2) {

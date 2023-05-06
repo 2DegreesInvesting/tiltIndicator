@@ -134,10 +134,10 @@ xctr_add_scores <- function(data, low_threshold = 1/3, high_threshold = 2/3) {
   data
 }
 
-xctr_set_indicator_attribute <- function(data) {
-  indicator <- get_indicator_attribute(data)
-  attributes(data) <- append(attributes(data), list(indicator = indicator))
-  data
+copy_indicator_attribute <- function(from, to) {
+  indicator <- get_indicator_attribute(from)
+  attributes(to) <- append(attributes(to), list(indicator = indicator))
+  to
 }
 
 get_indicator_attribute <- function(co2) {
