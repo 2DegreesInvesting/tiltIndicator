@@ -45,7 +45,8 @@ ictr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 ictr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 1/3,
-                                  high_threshold = 2/3) {
+                                  high_threshold = 2/3,
+                                  col_to_rank = find_col(co2, "co2_footprint")) {
   # #230
   co2 <- distinct(co2)
   companies <- distinct(companies)
@@ -57,7 +58,7 @@ ictr_at_product_level <- function(companies,
     #     `mutate(data, x = f(y))`
     # So here I rename y to x so I can use the same form for all columns
     rename(tilt_sec = "input_tilt_sector", unit = "input_unit", isic_sec = "input_isic_4digit") |>
-    xctr_add_ranks(find_col(co2, "co2_footprint")) |>
+    xctr_add_ranks(col_to_rank) |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
     xctr_polish_output_at_product_level()
