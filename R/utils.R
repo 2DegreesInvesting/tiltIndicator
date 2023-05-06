@@ -78,7 +78,9 @@ select_cols_at_product_level <- function(data) {
   data |>
     select(
       all_of(cols_at_product_level()),
-      ends_with("activity_uuid_product_uuid")
+      ends_with("activity_uuid_product_uuid"),
+      # Required to uniquely identify rows when using pivot
+      ends_with("co2_footprint")
     )
 }
 
