@@ -13,3 +13,13 @@ test_that("outputs expected columns at product level", {
   expected <- c(cols_at_product_level(), "input_activity_uuid_product_uuid")
   expect_equal(names(out)[seq_along(expected)], expected)
 })
+
+test_that("outputs any addicional column in the input", {
+  companies <- slice(ictr_companies, 1) |> mutate(other1 = 1)
+  co2 <- slice(ictr_inputs, 1) |> mutate(other2 = 1)
+
+  out <- ictr_at_product_level(companies, co2)
+
+  expect_true(hasName(out, "other1"))
+  expect_true(hasName(out, "other2"))
+})
