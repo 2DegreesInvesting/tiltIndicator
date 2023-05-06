@@ -11,8 +11,8 @@ ictr(companies, co2, low_threshold = 1/3, high_threshold = 2/3)
 ictr_at_product_level(
   companies,
   co2,
-  low_threshold = 0.3,
-  high_threshold = 0.7
+  low_threshold = 1/3,
+  high_threshold = 2/3
 )
 
 ictr_at_company_level(data)
