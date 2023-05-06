@@ -126,9 +126,9 @@ xctr_add_scores <- function(data, low_threshold = 0.3, high_threshold = 0.7) {
   for (col in colnames(select(data, starts_with("perc_")))) {
     new_col <- gsub("perc_", "score_", col)
     data <- data |> mutate({{ new_col }} := case_when(
-      .data[[col]] < low_threshold ~ "low",
-      .data[[col]] >= low_threshold & .data[[col]] < high_threshold ~ "medium",
-      .data[[col]] >= high_threshold ~ "high"
+      .data[[col]] <= low_threshold ~ "low",
+      .data[[col]] > low_threshold & .data[[col]] <= high_threshold ~ "medium",
+      .data[[col]] > high_threshold ~ "high"
     ))
   }
   data
