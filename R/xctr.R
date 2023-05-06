@@ -135,11 +135,15 @@ xctr_add_scores <- function(data, low_threshold = 1/3, high_threshold = 2/3) {
 }
 
 xctr_add_indicator_attribute <- function(data, co2) {
-  if (hasName(co2, "input_activity_uuid_product_uuid")) {
-    indicator <- "ictr"
-  } else {
-    indicator <- "pctr"
-  }
+  indicator <- get_indicator_attribute(co2)
   attributes(data) <- append(attributes(data), list(indicator = indicator))
   data
+}
+
+get_indicator_attribute <- function(co2) {
+  indicator <- "pctr"
+  if (hasName(co2, "input_activity_uuid_product_uuid")) {
+    indicator <- "ictr"
+  }
+  indicator
 }
