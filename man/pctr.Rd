@@ -6,7 +6,7 @@
 \alias{pctr_at_company_level}
 \title{Calculate the PCTR indicator}
 \usage{
-pctr(companies, co2, low_threshold = 0.3, high_threshold = 0.7)
+pctr(companies, co2, low_threshold = 1/3, high_threshold = 2/3)
 
 pctr_at_product_level(
   companies,
