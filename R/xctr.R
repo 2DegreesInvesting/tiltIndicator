@@ -96,14 +96,17 @@ xctr_score_companies <- function(companies,
     )
 }
 
-xctr_add_ranks <- function(data) {
-  x <- grep("co2_footprint", names(data), value = TRUE)
+xctr_add_ranks <- function(data, x = find_col(data, "co2_footprint")) {
   .by <- xctr_benchmarks()
   out <- distinct(data)
   for (i in seq_along(.by)) {
     out <- add_rank(out, x, .by = .by[[i]])
   }
   out
+}
+
+find_col <- function(data, pattern) {
+  grep(pattern, names(data), value = TRUE)
 }
 
 add_rank <- function(data, x, .by) {
