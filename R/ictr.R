@@ -61,7 +61,8 @@ ictr_at_product_level <- function(companies,
     rename(input_tilt_sector = "tilt_sec", input_unit = "unit", input_isic_4digit = "isic_sec") |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
-    xctr_polish_output_at_product_level()
+    xctr_polish_output_at_product_level() |>
+    xctr_add_indicator_attribute(co2)
 }
 
 ictr_check <- function(companies, co2) {

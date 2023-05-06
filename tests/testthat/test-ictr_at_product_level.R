@@ -17,3 +17,10 @@ test_that("outputs expected columns at product level", {
   )
   expect_named(out, expected)
 })
+
+test_that("outputs an object of class ictr", {
+  companies <- slice(ictr_companies, 1)
+  co2 <- slice(ictr_inputs, 1)
+  out <- ictr_at_product_level(companies, co2)
+  expect_equal(attributes(out)$indicator, "ictr")
+})
