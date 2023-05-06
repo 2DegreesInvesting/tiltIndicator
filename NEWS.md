@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9043
+
+* Change more thresholds
+* Redocument
+* xctr_at_product_level() now default to low/high_threshold 1/3 & 2/3 (#249)
+
+
 # tiltIndicator 0.0.0.9042
 
 * A company with 3 different products and varying footprints now getes correct value (@Tilmon #248).
