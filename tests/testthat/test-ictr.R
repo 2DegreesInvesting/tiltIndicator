@@ -251,3 +251,31 @@ test_that("handles duplicated `co2` data (#230)", {
   )
   expect_no_error(ictr(companies, co2))
 })
+
+test_that("for a company with 3 products of varying footprints, value is 1/3 (#243)", {
+  # > Adjusting the risk thresholds to 1/3 and 2/3
+  low_threshold <- 1 / 3
+  high_threshold <- 2 / 3
+  # > If we have a company with 3 products varying in their co2_footprint
+  three_products <- c("x", "y", "z")
+  varying_co2_footprint <- 1:3
+  # > Then the company should have values of 1/3 per risk category
+  expected_value <- 1 / 3
+
+  companies <- tibble(
+    company_id = c("a"),
+    clustered = c("b"),
+    activity_uuid_product_uuid = three_products,
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = three_products,
+    input_co2_footprint = varying_co2_footprint,
+    input_activity_uuid_product_uuid = "c",
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit = "4575",
+  )
+
+  out <- ictr(companies, co2, low_threshold, high_threshold)
+  expect_true(identical(unique(out$value), expected_value))
+})
