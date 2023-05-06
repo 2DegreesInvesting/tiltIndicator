@@ -96,7 +96,8 @@ xctr_score_companies <- function(companies,
     )
 }
 
-xctr_add_ranks <- function(data, x) {
+xctr_add_ranks <- function(data) {
+  x <- grep("co2_footprint", names(data), value = TRUE)
   .by <- xctr_benchmarks()
   out <- distinct(data)
   for (i in seq_along(.by)) {
