@@ -2,10 +2,7 @@
 
 # tiltIndicator 0.0.0.9043
 
-* Change more thresholds
-* Redocument
-* xctr_at_product_level() now default to low/high_threshold 1/3 & 2/3 (#249)
-
+* In ICTR and PCTR the argument `low_threshold` now default to 1/3 and `high_threshold` to 2/3 (#249).
 
 # tiltIndicator 0.0.0.9042
 
