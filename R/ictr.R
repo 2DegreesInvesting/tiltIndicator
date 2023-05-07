@@ -60,6 +60,8 @@ xctr_at_product_level <- function(companies,
 #' @rdname ictr
 #' @export
 ictr_at_product_level <- xctr_at_product_level
+#' @rdname pctr
+#' @export
 pctr_at_product_level <- xctr_at_product_level
 
 stop_if_col_to_rank_has_missing_values <- function(co2) {
