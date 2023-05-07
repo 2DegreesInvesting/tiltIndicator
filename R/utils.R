@@ -48,24 +48,6 @@ use_refactoring_checklist <- function() {
   ")
 }
 
-#' Throws an error if `data` has NA values in the co2 column
-#'
-#' @param data A dataframe/tibble
-#'
-#' @examples
-#' data <- tibble::tibble(input_co2_footprint = c(1, 4))
-#' stop_if_any_missing_input_co2_footprint(data)
-#'
-#' data <- tibble::tibble(input_co2_footprint = c(1, NA))
-#' try(stop_if_any_missing_input_co2_footprint(data))
-#' @noRd
-stop_if_any_missing_input_co2_footprint <- function(data) {
-  if (anyNA(data$input_co2_footprint)) {
-    stop("Each `input_co2_footprint` must not be missing.")
-  }
-  invisible(data)
-}
-
 cols_at_all_levels <- function() {
   c("companies_id", "grouped_by", "risk_category")
 }

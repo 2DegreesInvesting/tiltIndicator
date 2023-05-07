@@ -32,40 +32,5 @@
 #'
 #' # Same
 #' ictr(companies, co2)
-ictr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
-  ictr_check(companies, co2)
-
-  companies |>
-    ictr_at_product_level(co2, low_threshold, high_threshold) |>
-    ictr_at_company_level()
-}
-
-#' @rdname ictr
-#' @export
-ictr_at_product_level <- function(companies,
-                                  co2,
-                                  low_threshold = 1/3,
-                                  high_threshold = 2/3) {
-  # #230
-  co2 <- distinct(co2)
-  companies <- distinct(companies)
-
-  co2 |>
-    # FIXME: All other columns use the form
-    #     `mutate(data, x = f(x))`
-    # But this column uses the form
-    #     `mutate(data, x = f(y))`
-    # So here I rename y to x so I can use the same form for all columns
-    rename(tilt_sec = "input_tilt_sector", unit = "input_unit", isic_sec = "input_isic_4digit") |>
-    xctr_add_ranks(x = "input_co2_footprint") |>
-    rename(input_tilt_sector = "tilt_sec", input_unit = "unit", input_isic_4digit = "isic_sec") |>
-    xctr_add_scores(low_threshold, high_threshold) |>
-    xctr_join_companies(companies) |>
-    xctr_polish_output_at_product_level()
-}
-
-ictr_check <- function(companies, co2) {
-  stopifnot(hasName(companies, "company_id"))
-  stopifnot(hasName(co2, "input_co2_footprint"))
-  stop_if_any_missing_input_co2_footprint(co2)
-}
+#' @name ictr
+NULL

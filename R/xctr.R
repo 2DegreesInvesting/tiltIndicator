@@ -1,29 +1,34 @@
-xctr_join_companies <- function(product_level, companies) {
-  left_join(
-    companies,
-    product_level,
-    by = "activity_uuid_product_uuid",
-    relationship = "many-to-many"
-  )
+xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+  companies |>
+    xctr_at_product_level(co2, low_threshold, high_threshold) |>
+    xctr_at_company_level()
 }
+ictr <- xctr
+pctr <- xctr
 
-xctr_benchmarks <- function() {
-  list(
-    "all",
-    "isic_sec",
-    "tilt_sec",
-    "unit",
-    c("unit", "isic_sec"),
-    c("unit", "tilt_sec")
-  )
-}
+xctr_at_product_level <- function(companies,
+                                  co2,
+                                  low_threshold = 1 / 3,
+                                  high_threshold = 2 / 3) {
+  xctr_check(companies, co2)
 
-xctr_combined_benchmarks <- function() {
-  xctr_benchmarks() |>
-    lapply(paste, collapse = "_") |>
-    unlist() |>
-    unique()
+  # #230
+  co2 <- distinct(co2)
+  companies <- distinct(companies)
+
+  co2 |>
+    xctr_rename() |>
+    xctr_add_ranks(col_to_rank(co2)) |>
+    xctr_add_scores(low_threshold, high_threshold) |>
+    xctr_join_companies(companies) |>
+    xctr_polish_output_at_product_level()
 }
+#' @rdname ictr
+#' @export
+ictr_at_product_level <- xctr_at_product_level
+#' @rdname pctr
+#' @export
+pctr_at_product_level <- xctr_at_product_level
 
 xctr_at_company_level <- function(data) {
   benchmarks <- xctr_combined_benchmarks()
@@ -105,6 +110,10 @@ xctr_add_ranks <- function(data, x) {
   out
 }
 
+find_col <- function(data, pattern) {
+  grep(pattern, names(data), value = TRUE)
+}
+
 add_rank <- function(data, x, .by) {
   if (identical(.by, "all")) {
     benchmark <- "all"
@@ -122,7 +131,7 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
-xctr_add_scores <- function(data, low_threshold = 1/3, high_threshold = 2/3) {
+xctr_add_scores <- function(data, low_threshold = 1 / 3, high_threshold = 2 / 3) {
   for (col in colnames(select(data, starts_with("perc_")))) {
     new_col <- gsub("perc_", "score_", col)
     data <- data |> mutate({{ new_col }} := case_when(
@@ -132,4 +141,58 @@ xctr_add_scores <- function(data, low_threshold = 1/3, high_threshold = 2/3) {
     ))
   }
   data
+}
+
+xctr_check <- function(companies, co2) {
+  stopifnot(hasName(companies, "company_id"))
+  stopifnot(any(grepl("co2_footprint", names(co2))))
+  stopifnot(any(grepl("tilt_sector", names(co2))))
+  stopifnot(any(grepl("isic_4digit", names(co2))))
+  stop_if_col_to_rank_has_missing_values(co2)
+}
+
+xctr_rename <- function(data) {
+  data |>
+    rename(
+      tilt_sec = ends_with("tilt_sector"),
+      unit = ends_with("unit"),
+      isic_sec = ends_with("isic_4digit")
+    )
+}
+
+xctr_join_companies <- function(product_level, companies) {
+  left_join(
+    companies,
+    product_level,
+    by = "activity_uuid_product_uuid",
+    relationship = "many-to-many"
+  )
+}
+
+xctr_benchmarks <- function() {
+  list(
+    "all",
+    "isic_sec",
+    "tilt_sec",
+    "unit",
+    c("unit", "isic_sec"),
+    c("unit", "tilt_sec")
+  )
+}
+
+xctr_combined_benchmarks <- function() {
+  xctr_benchmarks() |>
+    lapply(paste, collapse = "_") |>
+    unlist() |>
+    unique()
+}
+
+stop_if_col_to_rank_has_missing_values <- function(co2) {
+  if (anyNA(co2[[col_to_rank(co2)]])) {
+    stop(col_to_rank(co2), " can't have missing values.")
+  }
+}
+
+col_to_rank <- function(co2, pattern = "co2_footprint") {
+  find_col(co2, pattern)
 }

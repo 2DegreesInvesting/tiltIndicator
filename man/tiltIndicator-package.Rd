@@ -24,7 +24,7 @@ Authors:
   \item Tilman Trompke \email{tilman@2degrees-investing.org}
   \item Linda Delacombaz \email{linda@2degrees-investing.org}
   \item Kalash Singhal \email{kalash@2degrees-investing.org}
-  \item Lyanne Ho \email{FIXME@FIXME}
+  \item Lyanne Ho \email{lyho@deloitte.nl}
 }
 
 Other contributors:

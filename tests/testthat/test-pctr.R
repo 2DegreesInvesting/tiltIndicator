@@ -165,15 +165,15 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   )
 
   crucial <- "co2_footprint"
-  bad <- select(co2, -all_of(crucial))
+  bad <- select(co2, -ends_with(crucial))
   expect_error(pctr(companies, bad), crucial)
 
   crucial <- "tilt_sector"
-  bad <- select(co2, -all_of(crucial))
+  bad <- select(co2, -ends_with(crucial))
   expect_error(pctr(companies, bad), crucial)
 
   crucial <- "unit"
-  bad <- select(co2, -all_of(crucial))
+  bad <- select(co2, -ends_with(crucial))
   expect_error(pctr(companies, bad), crucial)
 
   crucial <- "activity_uuid_product_uuid"
@@ -181,7 +181,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   expect_error(pctr(companies, bad), crucial)
 
   crucial <- "isic_4digit"
-  bad <- select(co2, -all_of(crucial))
+  bad <- select(co2, -ends_with(crucial))
   expect_error(pctr(companies, bad), crucial)
 })
 

@@ -28,33 +28,5 @@
 #'
 #' # Same
 #' pctr(companies, co2)
-pctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
-  pctr_check(companies)
-
-  companies |>
-    pctr_at_product_level(co2, low_threshold, high_threshold) |>
-    pctr_at_company_level()
-}
-
-#' @rdname pctr
-#' @export
-pctr_at_product_level <- function(companies,
-                                  co2,
-                                  low_threshold = 1/3,
-                                  high_threshold = 2/3) {
-  # #230
-  co2 <- distinct(co2)
-  companies <- distinct(companies)
-
-  co2 |>
-    rename(tilt_sec = "tilt_sector", isic_sec = "isic_4digit") |>
-    xctr_add_ranks(x = "co2_footprint") |>
-    rename(tilt_sector = "tilt_sec", isic_4digit = "isic_sec") |>
-    xctr_add_scores(low_threshold, high_threshold) |>
-    xctr_join_companies(companies) |>
-    xctr_polish_output_at_product_level()
-}
-
-pctr_check <- function(companies) {
-  stopifnot(hasName(companies, "company_id"))
-}
+#' @name pctr
+NULL

@@ -181,28 +181,28 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
   bad <- select(inputs, -all_of(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_co2_footprint"
-  bad <- select(inputs, -all_of(crucial))
+  crucial <- "co2_footprint"
+  bad <- select(inputs, -ends_with(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_unit"
-  bad <- select(inputs, -all_of(crucial))
+  crucial <- "unit"
+  bad <- select(inputs, -ends_with(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_tilt_sector"
-  bad <- select(inputs, -all_of(crucial))
+  crucial <- "tilt_sector"
+  bad <- select(inputs, -ends_with(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_isic_4digit"
-  bad <- select(inputs, -all_of(crucial))
+  crucial <- "isic_4digit"
+  bad <- select(inputs, -ends_with(crucial))
   expect_error(ictr(companies, bad), crucial)
 })
 
-test_that("with a missing value in `inputs$inputs_co2` errors gracefully", {
+test_that("with a missing value in co2_footprint errors gracefully", {
   companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1)
   inputs$input_co2_footprint <- NA
-  expect_error(ictr(companies, inputs), "input_co2_footprint.*missing")
+  expect_error(ictr(companies, inputs), "co2_footprint")
 })
 
 test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
