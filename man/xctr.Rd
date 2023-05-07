@@ -2,12 +2,6 @@
 % Please edit documentation in R/xctr.R
 \name{xctr}
 \alias{xctr}
-\alias{ictr}
-\alias{ictr_at_product_level}
-\alias{ictr_at_company_level}
-\alias{pctr}
-\alias{pctr_at_product_level}
-\alias{pctr_at_company_level}
 \alias{xctr_at_product_level}
 \alias{xctr_at_company_level}
 \title{Calculate input (or product) carbon transition risk}

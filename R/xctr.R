@@ -32,9 +32,6 @@
 #'
 #' @export
 #'
-#' @aliases ictr ictr_at_product_level ictr_at_company_level
-#' @aliases pctr pctr_at_product_level pctr_at_company_level
-#'
 #' @examples
 #' companies <- ictr_companies
 #'
