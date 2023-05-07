@@ -33,7 +33,7 @@
 #' # Same
 #' ictr(companies, co2)
 ictr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
-  ictr_check(companies, co2)
+  xctr_check(companies, co2)
 
   companies |>
     ictr_at_product_level(co2, low_threshold, high_threshold) |>
@@ -63,14 +63,6 @@ ictr_at_product_level <- function(companies,
     xctr_polish_output_at_product_level()
 
   copy_indicator_attribute(co2, out)
-}
-
-ictr_check <- function(companies, co2) {
-  stopifnot(hasName(companies, "company_id"))
-  stopifnot(any(grepl("co2_footprint", names(co2))))
-  stopifnot(any(grepl("tilt_sector", names(co2))))
-  stopifnot(any(grepl("isic_4digit", names(co2))))
-  stop_if_col_to_rank_has_missing_values(co2)
 }
 
 stop_if_col_to_rank_has_missing_values <- function(co2) {
