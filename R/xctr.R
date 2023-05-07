@@ -1,11 +1,82 @@
+#' Calculate input (or product) carbon transition risk
+#'
+#' These functions calculate the input (or product) carbon transition risk. The
+#' process is the same. What varies is the `co2` dataset.
+#'
+#' ### Depracated
+#'
+#' The `ictr*()` and `pctr*()` functions are now deprecated. Use the `xctr*()`
+#' functions instead.
+#'
+#' ### Input carbon transition risk (ICTR)
+#'
+#' ```{r child=extdata_path("child/intro-ictr.Rmd")}
+#' ```
+#'
+#' ### Product carbon transition risk (PCTR)
+#'
+#' ```{r child=extdata_path("child/intro-pctr.Rmd")}
+#' ```
+#'
+#' @param companies A dataframe like [ictr_companies].
+#' @param co2 A dataframe like [ictr_inputs].
+#' @param low_threshold A numeric value to segment low and medium transition
+#'   risk products.
+#' @param high_threshold A numeric value to segment medium and high transition
+#'   risk products.
+#' @param data A dataframe. The output at product level.
+#'
+#' @family XCTR functions
+#'
+#' @return `r document_value()`
+#'
+#' @export
+#'
+#' @examples
+#' companies <- ictr_companies
+#'
+#' # ICTR
+#' inputs <- ictr_inputs
+#'
+#' companies |>
+#'   xctr_at_product_level(co2 = inputs)
+#'
+#' companies |>
+#'   xctr_at_product_level(co2 = inputs) |>
+#'   xctr_at_company_level()
+#'
+#' # Same
+#' companies |> xctr(co2 = inputs)
+#'
+#' # PCTR
+#' products <- pctr_ecoinvent_co2
+#'
+#' companies |>
+#'   xctr_at_product_level(co2 = products)
+#'
+#' companies |>
+#'   xctr_at_product_level(co2 = products) |>
+#'   xctr_at_company_level()
+#'
+#' # Same
+#' companies |> xctr(co2 = products)
 xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
   companies |>
     xctr_at_product_level(co2, low_threshold, high_threshold) |>
     xctr_at_company_level()
 }
+
+#' Deprecated
+#' @export
+#' @keywords internal
 ictr <- xctr
+#' Deprecated
+#' @export
+#' @keywords internal
 pctr <- xctr
 
+#' @export
+#' @rdname xctr
 xctr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 1 / 3,
@@ -23,13 +94,17 @@ xctr_at_product_level <- function(companies,
     xctr_join_companies(companies) |>
     xctr_polish_output_at_product_level()
 }
-#' @rdname ictr
+#' Deprecated
 #' @export
+#' @keywords internal
 ictr_at_product_level <- xctr_at_product_level
-#' @rdname pctr
+#' Deprecated
 #' @export
+#' @keywords internal
 pctr_at_product_level <- xctr_at_product_level
 
+#' @export
+#' @rdname xctr
 xctr_at_company_level <- function(data) {
   benchmarks <- xctr_combined_benchmarks()
 
@@ -41,11 +116,13 @@ xctr_at_company_level <- function(data) {
     xctr_at_company_level_impl(benchmarks) |>
     xctr_polish_output_at_company_level()
 }
-#' @rdname ictr
+#' Deprecated
 #' @export
+#' @keywords internal
 ictr_at_company_level <- xctr_at_company_level
-#' @rdname pctr
+#' Deprecated
 #' @export
+#' @keywords internal
 pctr_at_company_level <- xctr_at_company_level
 
 xctr_at_company_level_impl <- function(data, benchmarks) {

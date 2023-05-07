@@ -6,7 +6,16 @@ reference:
 
   - title: Main functions and datasets
     contents:
-      - -has_concept("pre-processing helpers")
+      - has_concept("XCTR functions")
+      - has_concept("ICTR datasets")
+      - has_concept("PCTR datasets")
+
+  - title: Experimental functions and datasets
+    contents:
+      - has_concept("ISTR functions")
+      - has_concept("PSTR functions")
+      - has_concept("ISTR datasets")
+      - has_concept("PSTR datasets")
 
   - title: Pre-processing helpers
     desc: >
@@ -15,3 +24,4 @@ reference:
       for all indicators."
     contents:
       - has_concept("pre-processing helpers")
+
