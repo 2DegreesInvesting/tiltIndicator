@@ -182,19 +182,19 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
   expect_error(ictr(companies, bad), crucial)
 
   crucial <- "co2_footprint"
-  bad <- select(inputs, -matches(crucial))
+  bad <- select(inputs, -ends_with(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_unit"
-  bad <- select(inputs, -all_of(crucial))
+  crucial <- "unit"
+  bad <- select(inputs, -ends_with(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_tilt_sector"
-  bad <- select(inputs, -all_of(crucial))
+  crucial <- "tilt_sector"
+  bad <- select(inputs, -ends_with(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_isic_4digit"
-  bad <- select(inputs, -all_of(crucial))
+  crucial <- "isic_4digit"
+  bad <- select(inputs, -ends_with(crucial))
   expect_error(ictr(companies, bad), crucial)
 })
 
