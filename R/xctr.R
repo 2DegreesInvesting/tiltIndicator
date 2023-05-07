@@ -66,9 +66,11 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
     xctr_at_company_level()
 }
 
+#' Deprecated
 #' @export
 #' @keywords internal
 ictr <- xctr
+#' Deprecated
 #' @export
 #' @keywords internal
 pctr <- xctr
@@ -92,7 +94,13 @@ xctr_at_product_level <- function(companies,
     xctr_join_companies(companies) |>
     xctr_polish_output_at_product_level()
 }
+#' Deprecated
+#' @export
+#' @keywords internal
 ictr_at_product_level <- xctr_at_product_level
+#' Deprecated
+#' @export
+#' @keywords internal
 pctr_at_product_level <- xctr_at_product_level
 
 #' @export
@@ -108,9 +116,11 @@ xctr_at_company_level <- function(data) {
     xctr_at_company_level_impl(benchmarks) |>
     xctr_polish_output_at_company_level()
 }
+#' Deprecated
 #' @export
 #' @keywords internal
 ictr_at_company_level <- xctr_at_company_level
+#' Deprecated
 #' @export
 #' @keywords internal
 pctr_at_company_level <- xctr_at_company_level
