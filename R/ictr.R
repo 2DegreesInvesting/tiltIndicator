@@ -70,9 +70,14 @@ ictr_check <- function(companies, co2) {
   stopifnot(any(grepl("co2_footprint", names(co2))))
   stopifnot(any(grepl("tilt_sector", names(co2))))
   stopifnot(any(grepl("isic_4digit", names(co2))))
-  stopifnot(!anyNA(co2[["input_co2_footprint"]]))
+  stop_if_col_to_rank_has_missing_values(co2)
 }
 
+stop_if_col_to_rank_has_missing_values <- function(co2) {
+  if (anyNA(co2[[col_to_rank(co2)]])) {
+    stop(col_to_rank(co2), " can't have missing values.")
+  }
+}
 col_to_rank <- function(co2, pattern = "co2_footprint") {
   find_col(co2, pattern)
 }
