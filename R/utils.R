@@ -48,10 +48,6 @@ use_refactoring_checklist <- function() {
   ")
 }
 
-stop_if_any_missing_input_co2_footprint <- function(data) {
-  stopifnot(!anyNA(data$input_co2_footprint))
-}
-
 cols_at_all_levels <- function() {
   c("companies_id", "grouped_by", "risk_category")
 }

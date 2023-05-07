@@ -70,7 +70,7 @@ ictr_check <- function(companies, co2) {
   stopifnot(any(grepl("co2_footprint", names(co2))))
   stopifnot(any(grepl("tilt_sector", names(co2))))
   stopifnot(any(grepl("isic_4digit", names(co2))))
-  stop_if_any_missing_input_co2_footprint(co2)
+  stopifnot(!anyNA(co2[["input_co2_footprint"]]))
 }
 
 col_to_rank <- function(co2, pattern = "co2_footprint") {
