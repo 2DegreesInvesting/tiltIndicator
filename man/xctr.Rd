@@ -134,11 +134,12 @@ companies <- ictr_companies
 
 # ICTR
 inputs <- ictr_inputs
+
 companies |>
   xctr_at_product_level(co2 = inputs)
 
 companies |>
-  xctr_at_product_level(co2 = inputs)
+  xctr_at_product_level(co2 = inputs) |>
   xctr_at_company_level()
 
 # Same
@@ -146,11 +147,12 @@ companies |> xctr(co2 = inputs)
 
 # PCTR
 products <- pctr_ecoinvent_co2
+
 companies |>
   xctr_at_product_level(co2 = products)
 
 companies |>
-  xctr_at_product_level(co2 = products)
+  xctr_at_product_level(co2 = products) |>
   xctr_at_company_level()
 
 # Same
