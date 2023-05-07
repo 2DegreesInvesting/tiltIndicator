@@ -3,6 +3,7 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
     xctr_at_product_level(co2, low_threshold, high_threshold) |>
     xctr_at_company_level()
 }
+ictr <- xctr
 pctr <- xctr
 
 xctr_at_product_level <- function(companies,
@@ -184,4 +185,14 @@ xctr_combined_benchmarks <- function() {
     lapply(paste, collapse = "_") |>
     unlist() |>
     unique()
+}
+
+stop_if_col_to_rank_has_missing_values <- function(co2) {
+  if (anyNA(co2[[col_to_rank(co2)]])) {
+    stop(col_to_rank(co2), " can't have missing values.")
+  }
+}
+
+col_to_rank <- function(co2, pattern = "co2_footprint") {
+  find_col(co2, pattern)
 }
