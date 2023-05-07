@@ -40,9 +40,7 @@ ictr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
     ictr_at_company_level()
 }
 
-#' @rdname ictr
-#' @export
-ictr_at_product_level <- function(companies,
+xctr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 1/3,
                                   high_threshold = 2/3) {
@@ -59,6 +57,10 @@ ictr_at_product_level <- function(companies,
 
   copy_indicator_attribute(co2, out)
 }
+#' @rdname ictr
+#' @export
+ictr_at_product_level <- xctr_at_product_level
+pctr_at_product_level <- xctr_at_product_level
 
 stop_if_col_to_rank_has_missing_values <- function(co2) {
   if (anyNA(co2[[col_to_rank(co2)]])) {

@@ -35,23 +35,3 @@ pctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
     pctr_at_product_level(co2, low_threshold, high_threshold) |>
     pctr_at_company_level()
 }
-
-#' @rdname pctr
-#' @export
-pctr_at_product_level <- function(companies,
-                                  co2,
-                                  low_threshold = 1/3,
-                                  high_threshold = 2/3) {
-  # #230
-  co2 <- distinct(co2)
-  companies <- distinct(companies)
-
-  out <- co2 |>
-    xctr_rename() |>
-    xctr_add_ranks(col_to_rank(co2)) |>
-    xctr_add_scores(low_threshold, high_threshold) |>
-    xctr_join_companies(companies) |>
-    xctr_polish_output_at_product_level()
-
-  copy_indicator_attribute(co2, out)
-}
