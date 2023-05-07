@@ -1,3 +1,10 @@
+xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+  companies |>
+    xctr_at_product_level(co2, low_threshold, high_threshold) |>
+    xctr_at_company_level()
+}
+pctr <- xctr
+
 xctr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 1/3,
