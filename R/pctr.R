@@ -47,7 +47,7 @@ pctr_at_product_level <- function(companies,
   companies <- distinct(companies)
 
   out <- co2 |>
-    rename(tilt_sec = ends_with("tilt_sector"), unit = ends_with("unit"), isic_sec = ends_with("isic_4digit")) |>
+    xctr_rename() |>
     xctr_add_ranks(col_to_rank(co2)) |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>

@@ -160,3 +160,11 @@ xctr_check <- function(companies, co2) {
   stop_if_col_to_rank_has_missing_values(co2)
 }
 
+xctr_rename <- function(data) {
+  data |>
+    rename(
+      tilt_sec = ends_with("tilt_sector"),
+      unit = ends_with("unit"),
+      isic_sec = ends_with("isic_4digit")
+    )
+}
