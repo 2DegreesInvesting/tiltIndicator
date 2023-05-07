@@ -34,6 +34,12 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr.html</loc>
   </url>
   <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr_at_company_level.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr_at_product_level.html</loc>
+  </url>
+  <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr_datasets.html</loc>
   </url>
   <url>
@@ -47,6 +53,12 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr_at_company_level.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr_at_product_level.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr_datasets.html</loc>
@@ -77,5 +89,8 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/use_refactoring_checklist.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/xctr.html</loc>
   </url>
 </urlset>
