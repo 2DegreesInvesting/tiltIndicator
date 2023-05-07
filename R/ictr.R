@@ -56,7 +56,7 @@ ictr_at_product_level <- function(companies,
     # But this column uses the form
     #     `mutate(data, x = f(y))`
     # So here I rename y to x so I can use the same form for all columns
-    rename(tilt_sec = "input_tilt_sector", unit = "input_unit", isic_sec = "input_isic_4digit") |>
+    rename(tilt_sec = ends_with("tilt_sector"), unit = ends_with("unit"), isic_sec = ends_with("isic_4digit")) |>
     xctr_add_ranks(col_to_rank(co2)) |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
@@ -68,6 +68,8 @@ ictr_at_product_level <- function(companies,
 ictr_check <- function(companies, co2) {
   stopifnot(hasName(companies, "company_id"))
   stopifnot(any(grepl("co2_footprint", names(co2))))
+  stopifnot(any(grepl("tilt_sector", names(co2))))
+  stopifnot(any(grepl("isic_4digit", names(co2))))
   stop_if_any_missing_input_co2_footprint(co2)
 }
 
