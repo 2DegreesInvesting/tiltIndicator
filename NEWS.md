@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9045
+
+* New `xctr*()` replace `ictr*()` and `pctr*()` (#256). The functions `ictr*()` and `pctr*()` are internal for backward compatibility but will be
+retired soon.
+
 # tiltIndicator 0.0.0.9044
 
 * ICTR and PCTR at product level no longer output needless columns (#251).
