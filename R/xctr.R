@@ -6,14 +6,12 @@ xctr_at_product_level <- function(companies,
   co2 <- distinct(co2)
   companies <- distinct(companies)
 
-  out <- co2 |>
+  co2 |>
     xctr_rename() |>
     xctr_add_ranks(col_to_rank(co2)) |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
     xctr_polish_output_at_product_level()
-
-  copy_indicator_attribute(co2, out)
 }
 #' @rdname ictr
 #' @export
@@ -133,20 +131,6 @@ xctr_add_scores <- function(data, low_threshold = 1/3, high_threshold = 2/3) {
     ))
   }
   data
-}
-
-copy_indicator_attribute <- function(from, to) {
-  indicator <- get_indicator_attribute(from)
-  attributes(to) <- append(attributes(to), list(indicator = indicator))
-  to
-}
-
-get_indicator_attribute <- function(co2) {
-  indicator <- "pctr"
-  if (hasName(co2, "input_activity_uuid_product_uuid")) {
-    indicator <- "ictr"
-  }
-  indicator
 }
 
 xctr_check <- function(companies, co2) {
