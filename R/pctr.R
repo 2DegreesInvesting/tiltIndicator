@@ -55,10 +55,3 @@ pctr_at_product_level <- function(companies,
 
   copy_indicator_attribute(co2, out)
 }
-
-pctr_check <- function(companies, co2) {
-  stopifnot(hasName(companies, "company_id"))
-  stopifnot(any(grepl("co2_footprint", names(co2))))
-  stopifnot(any(grepl("tilt_sector", names(co2))))
-  stopifnot(any(grepl("isic_4digit", names(co2))))
-}
