@@ -33,11 +33,9 @@
 #' # Same
 #' ictr(companies, co2)
 ictr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
-  xctr_check(companies, co2)
-
   companies |>
-    ictr_at_product_level(co2, low_threshold, high_threshold) |>
-    ictr_at_company_level()
+    xctr_at_product_level(co2, low_threshold, high_threshold) |>
+    xctr_at_company_level()
 }
 
 stop_if_col_to_rank_has_missing_values <- function(co2) {
