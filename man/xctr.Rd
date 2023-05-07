@@ -44,6 +44,12 @@ These functions calculate the input (or product) carbon transition risk. The
 process is the same. What varies is the \code{co2} dataset.
 }
 \details{
+\subsection{Depracated}{
+
+The \verb{ictr*()} and \verb{pctr*()} functions are now deprecated. Use the \verb{xctr*()}
+functions instead.
+}
+
 \subsection{Input carbon transition risk (ICTR)}{
 
 The Input Product Carbon Transition Risk Indicator assesses the transition risk

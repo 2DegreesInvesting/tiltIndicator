@@ -3,6 +3,11 @@
 #' These functions calculate the input (or product) carbon transition risk. The
 #' process is the same. What varies is the `co2` dataset.
 #'
+#' ### Depracated
+#'
+#' The `ictr*()` and `pctr*()` functions are now deprecated. Use the `xctr*()`
+#' functions instead.
+#'
 #' ### Input carbon transition risk (ICTR)
 #'
 #' ```{r child=extdata_path("child/intro-ictr.Rmd")}
