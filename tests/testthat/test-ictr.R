@@ -181,8 +181,8 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
   bad <- select(inputs, -all_of(crucial))
   expect_error(ictr(companies, bad), crucial)
 
-  crucial <- "input_co2_footprint"
-  bad <- select(inputs, -all_of(crucial))
+  crucial <- "co2_footprint"
+  bad <- select(inputs, -matches(crucial))
   expect_error(ictr(companies, bad), crucial)
 
   crucial <- "input_unit"
