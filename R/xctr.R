@@ -1,29 +1,26 @@
-xctr_join_companies <- function(product_level, companies) {
-  left_join(
-    companies,
-    product_level,
-    by = "activity_uuid_product_uuid",
-    relationship = "many-to-many"
-  )
-}
+xctr_at_product_level <- function(companies,
+                                  co2,
+                                  low_threshold = 1/3,
+                                  high_threshold = 2/3) {
+  # #230
+  co2 <- distinct(co2)
+  companies <- distinct(companies)
 
-xctr_benchmarks <- function() {
-  list(
-    "all",
-    "isic_sec",
-    "tilt_sec",
-    "unit",
-    c("unit", "isic_sec"),
-    c("unit", "tilt_sec")
-  )
-}
+  out <- co2 |>
+    xctr_rename() |>
+    xctr_add_ranks(col_to_rank(co2)) |>
+    xctr_add_scores(low_threshold, high_threshold) |>
+    xctr_join_companies(companies) |>
+    xctr_polish_output_at_product_level()
 
-xctr_combined_benchmarks <- function() {
-  xctr_benchmarks() |>
-    lapply(paste, collapse = "_") |>
-    unlist() |>
-    unique()
+  copy_indicator_attribute(co2, out)
 }
+#' @rdname ictr
+#' @export
+ictr_at_product_level <- xctr_at_product_level
+#' @rdname pctr
+#' @export
+pctr_at_product_level <- xctr_at_product_level
 
 xctr_at_company_level <- function(data) {
   benchmarks <- xctr_combined_benchmarks()
@@ -167,4 +164,31 @@ xctr_rename <- function(data) {
       unit = ends_with("unit"),
       isic_sec = ends_with("isic_4digit")
     )
+}
+
+xctr_join_companies <- function(product_level, companies) {
+  left_join(
+    companies,
+    product_level,
+    by = "activity_uuid_product_uuid",
+    relationship = "many-to-many"
+  )
+}
+
+xctr_benchmarks <- function() {
+  list(
+    "all",
+    "isic_sec",
+    "tilt_sec",
+    "unit",
+    c("unit", "isic_sec"),
+    c("unit", "tilt_sec")
+  )
+}
+
+xctr_combined_benchmarks <- function() {
+  xctr_benchmarks() |>
+    lapply(paste, collapse = "_") |>
+    unlist() |>
+    unique()
 }
