@@ -47,7 +47,7 @@ pctr_at_product_level <- function(companies,
   companies <- distinct(companies)
 
   out <- co2 |>
-    rename(tilt_sec = "tilt_sector", isic_sec = "isic_4digit") |>
+    rename(tilt_sec = ends_with("tilt_sector"), unit = ends_with("unit"), isic_sec = ends_with("isic_4digit")) |>
     xctr_add_ranks(col_to_rank(co2)) |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
@@ -58,7 +58,7 @@ pctr_at_product_level <- function(companies,
 
 pctr_check <- function(companies, co2) {
   stopifnot(hasName(companies, "company_id"))
-
-  has_column_co2_footprint <- any(grepl("co2_footprint", names(co2)))
-  stopifnot(has_column_co2_footprint)
+  stopifnot(any(grepl("co2_footprint", names(co2))))
+  stopifnot(any(grepl("tilt_sector", names(co2))))
+  stopifnot(any(grepl("isic_4digit", names(co2))))
 }
