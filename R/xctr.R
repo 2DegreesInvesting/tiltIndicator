@@ -8,8 +8,8 @@ pctr <- xctr
 
 xctr_at_product_level <- function(companies,
                                   co2,
-                                  low_threshold = 1/3,
-                                  high_threshold = 2/3) {
+                                  low_threshold = 1 / 3,
+                                  high_threshold = 2 / 3) {
   xctr_check(companies, co2)
 
   # #230
@@ -131,7 +131,7 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
-xctr_add_scores <- function(data, low_threshold = 1/3, high_threshold = 2/3) {
+xctr_add_scores <- function(data, low_threshold = 1 / 3, high_threshold = 2 / 3) {
   for (col in colnames(select(data, starts_with("perc_")))) {
     new_col <- gsub("perc_", "score_", col)
     data <- data |> mutate({{ new_col }} := case_when(
