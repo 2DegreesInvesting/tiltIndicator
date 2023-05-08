@@ -1,19 +1,24 @@
-#' ICTR datasets
-#'
+#' Companies data for all indicators
 #' @author Kalash Singhal.
-#'
-#' @family ICTR datasets
+#' @family general datasets
 #'
 #' @examples
-#' ictr_companies
-#'
-#' ictr_inputs
-#' @name ictr_datasets
-NULL
-#' @rdname ictr_datasets
-"ictr_companies"
-#' @rdname ictr_datasets
-"ictr_inputs"
+#' companies
+"companies"
+
+#' ICTR datasets
+#' @author Kalash Singhal.
+#' @family ICTR datasets
+#' @examples
+#' inputs
+"inputs"
+
+#' PCTR datasets
+#' @author Tilman Trompke.
+#' @family PCTR datasets
+#' @examples
+#' products
+"products"
 
 #' ISTR datasets
 #'
@@ -35,22 +40,6 @@ NULL
 "istr_ep_weo"
 #' @rdname istr_datasets
 "istr_weo_2022"
-
-#' PCTR datasets
-#'
-#' @author Tilman Trompke.
-#' @family PCTR datasets
-#'
-#' @examples
-#' pctr_companies
-#'
-#' pctr_ecoinvent_co2
-#' @name pctr_datasets
-NULL
-#' @rdname pctr_datasets
-"pctr_companies"
-#' @rdname pctr_datasets
-"pctr_ecoinvent_co2"
 
 #' PSTR datasets
 #'

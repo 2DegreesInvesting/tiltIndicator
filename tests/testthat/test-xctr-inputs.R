@@ -1,11 +1,11 @@
 test_that("hasn't change", {
-  out <- format_robust_snapshot(xctr(ictr_companies, ictr_inputs))
+  out <- format_robust_snapshot(xctr(companies, inputs))
   expect_snapshot(out)
 })
 
 test_that("outputs expected columns at company level", {
-  companies <- slice(ictr_companies, 1)
-  inputs <- slice(ictr_inputs, 1)
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1)
 
   out <- xctr(companies, inputs)
 
@@ -14,8 +14,8 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("it's arranged by `companies_id` and `grouped_by`", {
-  companies <- slice(ictr_companies, 1)
-  inputs <- slice(ictr_inputs, 1)
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1)
 
   out <- xctr(companies, inputs)
 
@@ -145,24 +145,24 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
 })
 
 test_that("is sensitive to low_threshold", {
-  companies <- slice(ictr_companies, 1)
-  inputs <- slice(ictr_inputs, 1:2)
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1:2)
   out1 <- xctr(companies, inputs, low_threshold = .1)
   out2 <- xctr(companies, inputs, low_threshold = .9)
   expect_false(identical(out1, out2))
 })
 
 test_that("is sensitive to high_threshold", {
-  companies <- slice(ictr_companies, 1)
-  inputs <- slice(ictr_inputs, 1:2)
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1:2)
   out1 <- xctr(companies, inputs, high_threshold = .1)
   out2 <- xctr(companies, inputs, high_threshold = .9)
   expect_false(identical(out1, out2))
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- slice(ictr_companies, 1)
-  inputs <- slice(ictr_inputs, 1)
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1)
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(companies, -all_of(crucial))
@@ -174,8 +174,8 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 })
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
-  companies <- slice(ictr_companies, 1)
-  inputs <- slice(ictr_inputs, 1)
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1)
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(inputs, -all_of(crucial))
@@ -199,17 +199,17 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
 })
 
 test_that("with a missing value in co2_footprint errors gracefully", {
-  companies <- slice(ictr_companies, 1)
-  inputs <- slice(ictr_inputs, 1)
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1)
   inputs$input_co2_footprint <- NA
   expect_error(xctr(companies, inputs), "co2_footprint")
 })
 
 test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
-  companies <- slice(ictr_companies, 1)
+  companies <- slice(companies, 1)
 
-  inputs0 <- ictr_inputs[0, ]
-  inputs1 <- ictr_inputs[1, ]
+  inputs0 <- inputs[0, ]
+  inputs1 <- inputs[1, ]
   out0 <- xctr(companies, inputs0)
   out1 <- xctr(companies, inputs1)
 

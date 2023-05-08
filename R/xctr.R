@@ -18,8 +18,8 @@
 #' ```{r child=extdata_path("child/intro-pctr.Rmd")}
 #' ```
 #'
-#' @param companies A dataframe like [ictr_companies].
-#' @param co2 A dataframe like [ictr_inputs].
+#' @param companies A dataframe like [companies].
+#' @param co2 A dataframe like [inputs].
 #' @param low_threshold A numeric value to segment low and medium transition
 #'   risk products.
 #' @param high_threshold A numeric value to segment medium and high transition
@@ -33,10 +33,10 @@
 #' @export
 #'
 #' @examples
-#' companies <- ictr_companies
+#' companies <- companies
 #'
 #' # ICTR
-#' inputs <- ictr_inputs
+#' inputs <- inputs
 #'
 #' companies |>
 #'   xctr_at_product_level(co2 = inputs)
@@ -49,7 +49,7 @@
 #' companies |> xctr(co2 = inputs)
 #'
 #' # PCTR
-#' products <- pctr_ecoinvent_co2
+#' products <- products
 #'
 #' companies |>
 #'   xctr_at_product_level(co2 = products)
@@ -134,10 +134,9 @@ xctr_at_company_level_impl <- function(data, benchmarks) {
 
   .benchmarks <- map(benchmarks, ~ add_share(data, .x))
 
-  ictr_output <- append(list(template), .benchmarks) |>
-    reduce(left_join, by = c("company_id", "score"))
-
-  ictr_output |>
+  list(template) |>
+    append(.benchmarks) |>
+    reduce(left_join, by = c("company_id", "score")) |>
     mutate(
       across(starts_with("share_"), na_to_0_if_not_all_is_na),
       .by = "company_id"
@@ -149,33 +148,6 @@ na_to_0_if_not_all_is_na <- function(x) {
     return(x)
   }
   replace_na(x, 0)
-}
-
-xctr_score_companies <- function(companies,
-                                 co2,
-                                 uuid = "activity_uuid_product_uuid",
-                                 .by = c("all", "unit", "sector", "unit_sec")) {
-  stopifnot(hasName(companies, "company_id"))
-
-  companies_scores <- left_join(companies, co2, by = c(uuid))
-
-  # For each company show all risk levels even if the share is 0.
-  dt_sceleton <- tibble(
-    company_id = rep(unique(companies_scores$company_id), each = 3),
-    score = rep(c("high", "medium", "low"), length(unique(companies_scores$company_id))),
-  )
-
-  # Share in comparison to all inputs and those with same unit, sector, ...
-  benchmarks_list <- map(.by, ~ add_share(companies_scores, .x))
-
-  ictr_output <- append(list(dt_sceleton), benchmarks_list) |>
-    reduce(left_join, by = c("company_id", "score"))
-
-  ictr_output |>
-    mutate(
-      across(starts_with("share_"), na_to_0_if_not_all_is_na),
-      .by = "company_id"
-    )
 }
 
 xctr_add_ranks <- function(data, x) {
