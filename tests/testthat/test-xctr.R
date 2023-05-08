@@ -294,6 +294,7 @@ test_that("if the 'isic' column isn't a character, throws an error (#233)", {
     co2_footprint = 1,
     tilt_sector = "transport",
     unit = "metric ton*km",
+    # Not a character
     isic_4digit = 4575,
   )
 
