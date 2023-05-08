@@ -1,10 +1,10 @@
 test_that("hasn't change", {
-  out <- format_robust_snapshot(xctr(pctr_companies, pctr_ecoinvent_co2))
+  out <- format_robust_snapshot(xctr(companies, pctr_ecoinvent_co2))
   expect_snapshot(out)
 })
 
 test_that("outputs expected columns at company level", {
-  companies <- slice(pctr_companies, 1)
+  companies <- slice(companies, 1)
   co2 <- slice(pctr_ecoinvent_co2, 1)
 
   out <- xctr(companies, co2)
@@ -112,7 +112,7 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
 })
 
 test_that("is sensitive to low_threshold", {
-  companies <- slice(pctr_companies, 1:2)
+  companies <- slice(companies, 1:2)
   co2 <- slice(pctr_ecoinvent_co2, 1:2)
   out1 <- xctr(companies, co2, low_threshold = .1)
   out2 <- xctr(companies, co2, low_threshold = .9)
@@ -120,7 +120,7 @@ test_that("is sensitive to low_threshold", {
 })
 
 test_that("is sensitive to high_threshold", {
-  companies <- slice(pctr_companies, 1:2)
+  companies <- slice(companies, 1:2)
   co2 <- slice(pctr_ecoinvent_co2, 1:2)
   out1 <- xctr(companies, co2, high_threshold = .1)
   out2 <- xctr(companies, co2, high_threshold = .9)
@@ -186,7 +186,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
 })
 
 test_that("if `co2` has 0-rows, the output is normal", {
-  companies <- slice(pctr_companies, 1)
+  companies <- slice(companies, 1)
 
   co20 <- pctr_ecoinvent_co2[0, ]
   co21 <- pctr_ecoinvent_co2[1, ]
@@ -199,25 +199,25 @@ test_that("if `co2` has 0-rows, the output is normal", {
 })
 
 test_that("no longer drops companies depending on co2 data (#122)", {
-  companies <- pctr_companies |>
+  companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(pctr_ecoinvent_co2, 1:5)
   out <- xctr(companies, co2)
   expect_equal(length(unique(out$companies_id)), 2L)
 
-  companies <- pctr_companies |>
+  companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(pctr_ecoinvent_co2, 1:4)
   out <- xctr(companies, co2)
   expect_equal(length(unique(out$companies_id)), 2L)
 
-  companies <- pctr_companies |>
+  companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(pctr_ecoinvent_co2, 1:10)
   out <- xctr(companies, co2)
   expect_equal(length(unique(out$companies_id)), 2L)
 
-  companies <- pctr_companies |>
+  companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(pctr_ecoinvent_co2, 1:9)
   out <- xctr(companies, co2)

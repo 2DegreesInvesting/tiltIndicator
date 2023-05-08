@@ -42,13 +42,13 @@ NULL
 #' @family PCTR datasets
 #'
 #' @examples
-#' pctr_companies
+#' companies
 #'
 #' pctr_ecoinvent_co2
 #' @name pctr_datasets
 NULL
 #' @rdname pctr_datasets
-"pctr_companies"
+"companies"
 #' @rdname pctr_datasets
 "pctr_ecoinvent_co2"
 

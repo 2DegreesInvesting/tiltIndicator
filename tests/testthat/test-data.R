@@ -16,8 +16,8 @@ test_that("`istr_weo_2022` hasn't changed", {
   expect_snapshot(format_robust_snapshot(istr_weo_2022))
 })
 
-test_that("`pctr_companies` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(pctr_companies))
+test_that("`companies` hasn't changed", {
+  expect_snapshot(format_robust_snapshot(companies))
 })
 
 test_that("`istr_companies` hasn't changed", {

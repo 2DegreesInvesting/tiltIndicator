@@ -1212,10 +1212,10 @@
       8      91.49
       
 
-# `pctr_companies` hasn't changed
+# `companies` hasn't changed
 
     Code
-      format_robust_snapshot(pctr_companies)
+      format_robust_snapshot(companies)
     Output
       [[1]]
                                                        activity_uuid_product_uuid
@@ -1230,18 +1230,6 @@
       9                                                                      <NA>
       
       [[2]]
-                                      company_id
-      1 fleischerei-stiefsohn_00000005219477-001
-      2 fleischerei-stiefsohn_00000005219477-001
-      3        pecheries-basques_fra316541-00101
-      4    hoche-butter-gmbh_deu422723-693847001
-      5  vicquelin-espaces-verts_fra697272-00101
-      6   bst-procontrol-gmbh_00000005104947-001
-      7           leider-gmbh_00000005064318-001
-      8             cheries-baqu_neu316541-00101
-      9       ca-coity-trg-aua-gmbh_00000384-001
-      
-      [[3]]
           clustered
       1       stove
       2        oven
@@ -1253,19 +1241,19 @@
       8      rubber
       9       apple
       
-      [[4]]
-                              ei_activity_name
-      1       cookstove production or electric
-      2              microwave oven production
-      3       market for steel, chromium steel
-      4 cheese production, soft, from cow milk
-      5 cheese production, soft, from cow milk
-      6    market for cheese, fresh, unripened
-      7  market for seal, natural rubber based
-      8  seal production, natural rubber based
-      9                                   <NA>
+      [[3]]
+                                      company_id
+      1 fleischerei-stiefsohn_00000005219477-001
+      2 fleischerei-stiefsohn_00000005219477-001
+      3        pecheries-basques_fra316541-00101
+      4    hoche-butter-gmbh_deu422723-693847001
+      5  vicquelin-espaces-verts_fra697272-00101
+      6   bst-procontrol-gmbh_00000005104947-001
+      7           leider-gmbh_00000005064318-001
+      8             cheries-baqu_neu316541-00101
+      9       ca-coity-trg-aua-gmbh_00000384-001
       
-      [[5]]
+      [[4]]
         unit
       1 unit
       2 unit
