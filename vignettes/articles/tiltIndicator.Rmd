@@ -34,35 +34,20 @@ setNames(lapply(datasets, get), datasets)
 ```{r child=extdata_path("child/intro-general.Rmd")}
 ```
 
-## Input carbon transition risk (ICTR)
+## XCTR: ICTR & PCTR
+
+The acronym XCTR reflects that both ICTR and PCTR are calculated in exactly the
+same way. The difference is not the process but the kind of `co2` data: either
+comes from inputs or products.
+
+### Input carbon transition risk (ICTR)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-ictr.Rmd")}
 ```
 
-### Example
-
-```{r}
-ictr_companies |>
-  ictr(co2 = ictr_inputs)
-```
-
-## Input sector transition risk (ISTR)
-
-<!-- WARNING: Do not write here. Instead write in the `child` file -->
-
-```{r child=extdata_path("child/intro-istr.Rmd")}
-```
-
-### Example
-
-```{r}
-istr_companies |>
-  istr(scenario = istr_weo_2022, mapper = istr_ep_weo)
-```
-
-## Product carbon transition risk (PCTR)
+### Product carbon transition risk (PCTR)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
@@ -71,21 +56,35 @@ istr_companies |>
 
 ### Example
 
-```{r}
-pctr_companies |>
-  pctr(co2 = pctr_ecoinvent_co2)
-```
-
-## Product sector transition risk (PSTR)
-
-<!-- WARNING: Do not write here. Instead write in the `child` file -->
-
-```{r child=extdata_path("child/intro-pstr.Rmd")}
-```
-
-### Example
+Use `xctr*()` to calculate both ICTR and PCTR. Their difference is in the `co2`
+dataset.
 
 ```{r}
-pstr_companies |>
-  pstr(scenarios = pstr_scenarios)
+companies <- ictr_companies
+
+# ICTR
+inputs <- ictr_inputs
+
+companies |>
+  xctr_at_product_level(co2 = inputs)
+
+companies |>
+  xctr_at_product_level(co2 = inputs) |>
+  xctr_at_company_level()
+
+# Same
+companies |> xctr(co2 = inputs)
+
+# PCTR
+products <- pctr_ecoinvent_co2
+
+companies |>
+  xctr_at_product_level(co2 = products)
+
+companies |>
+  xctr_at_product_level(co2 = products) |>
+  xctr_at_company_level()
+
+# Same
+companies |> xctr(co2 = products)
 ```
