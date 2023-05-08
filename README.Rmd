@@ -41,10 +41,10 @@ library(tiltIndicator)
 
 packageVersion("tiltIndicator")
 
-companies <- ictr_companies
+companies
 
 # ICTR
-inputs <- ictr_inputs
+inputs
 
 companies |>
   xctr_at_product_level(co2 = inputs)
@@ -57,7 +57,7 @@ companies |>
 companies |> xctr(co2 = inputs)
 
 # PCTR
-products <- pctr_ecoinvent_co2
+products
 
 companies |>
   xctr_at_product_level(co2 = products)

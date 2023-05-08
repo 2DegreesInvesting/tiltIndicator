@@ -7,6 +7,7 @@ reference:
   - title: Main functions and datasets
     contents:
       - has_concept("XCTR functions")
+      - has_concept("general datasets")
       - has_concept("ICTR datasets")
       - has_concept("PCTR datasets")
 
