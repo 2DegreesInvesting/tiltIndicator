@@ -282,3 +282,23 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   out <- xctr(companies, co2, low_threshold, high_threshold)
   expect_true(identical(unique(out$value), expected_value))
 })
+
+test_that("isic sector column has character class", {
+  companies <- tibble(
+    company_id = rep("a"),
+    clustered = c("b"),
+    activity_uuid_product_uuid = c("c"),
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = c("c"),
+    co2_footprint = 1,
+    tilt_sector = "transport",
+    unit = "metric ton*km",
+    isic_4digit = "4575",
+  )
+  out <- co2 |>
+    xctr_rename() |>
+    xctr_add_ranks(col_to_rank(co2)) |>
+    xctr_add_scores(low_threshold = 1/3, high_threshold = 2/3)
+  expect_true(is.character(unlist(select(out ,contains("isic_sec")))))
+})
