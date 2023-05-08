@@ -1,5 +1,5 @@
-test_that("`ictr_inputs` hasn't changed", {
-  out <- ictr_inputs |> format_robust_snapshot()
+test_that("`inputs` hasn't changed", {
+  out <- inputs |> format_robust_snapshot()
   expect_snapshot(out)
 })
 

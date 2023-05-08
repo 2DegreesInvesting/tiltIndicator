@@ -1,4 +1,4 @@
-# `ictr_inputs` hasn't changed
+# `inputs` hasn't changed
 
     Code
       out

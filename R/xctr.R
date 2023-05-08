@@ -19,7 +19,7 @@
 #' ```
 #'
 #' @param companies A dataframe like [ictr_companies].
-#' @param co2 A dataframe like [ictr_inputs].
+#' @param co2 A dataframe like [inputs].
 #' @param low_threshold A numeric value to segment low and medium transition
 #'   risk products.
 #' @param high_threshold A numeric value to segment medium and high transition
@@ -36,7 +36,7 @@
 #' companies <- ictr_companies
 #'
 #' # ICTR
-#' inputs <- ictr_inputs
+#' inputs <- inputs
 #'
 #' companies |>
 #'   xctr_at_product_level(co2 = inputs)
