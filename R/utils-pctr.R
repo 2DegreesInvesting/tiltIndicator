@@ -14,16 +14,6 @@ pctr_ecoinvent_co2_crucial <- function() {
   c(crucial_in_pctr_at_product_level, crucial_in_pctr_at_company_level)
 }
 
-pctr_companies_crucial <- function() {
-  c(
-    "activity_uuid_product_uuid",
-    "company_id",
-    "clustered",
-    "ei_activity_name",
-    "unit"
-  )
-}
-
 pctr_at_company_level_crucial <- function() {
   c(
     "activity_product_uuid",
