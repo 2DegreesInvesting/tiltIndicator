@@ -5,7 +5,7 @@ devtools::load_all()
 
 # Source:
 # https://github.com/2DegreesInvesting/tiltIndicator/issues/167#issuecomment-1527223646
-inputs <- read_csv(here("data-raw", "inputs.csv")) |>
+inputs <- read_csv(here("data-raw", "inputs.csv"), col_types = cols(input_isic_4digit = col_character())) |>
   select(all_of(c(
     "input_co2_footprint",
     "input_tilt_sector",

@@ -19,7 +19,7 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit = 4575
+    isic_4digit = "4575"
   )
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
@@ -55,7 +55,7 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x", "y"),
-    isic_4digit = 4575
+    isic_4digit = "4575"
   )
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
@@ -83,7 +83,7 @@ test_that("if a company matches no co2, all shares are `NA` (#176)", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("y"),
-    isic_4digit = 4575
+    isic_4digit = "4575"
   )
 
   out <- xctr(companies, co2)
@@ -98,7 +98,7 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit = 4575
+    isic_4digit = "4575"
   )
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),
@@ -138,7 +138,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit = 4575
+    isic_4digit = "4575"
   )
 
   crucial <- "activity_uuid_product_uuid"
@@ -161,7 +161,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit = 4575
+    isic_4digit = "4575"
   )
 
   crucial <- "co2_footprint"
@@ -281,4 +281,22 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
 
   out <- xctr(companies, co2, low_threshold, high_threshold)
   expect_true(identical(unique(out$value), expected_value))
+})
+
+test_that("if the 'isic' column isn't a character, throws an error (#233)", {
+  companies <- tibble(
+    company_id = c("a"),
+    clustered = c("b"),
+    activity_uuid_product_uuid = c("c"),
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = c("c"),
+    co2_footprint = 1,
+    tilt_sector = "transport",
+    unit = "metric ton*km",
+    # Not a character
+    isic_4digit = 4575,
+  )
+
+  expect_error(xctr(companies, co2), "is.character.*not TRUE")
 })
