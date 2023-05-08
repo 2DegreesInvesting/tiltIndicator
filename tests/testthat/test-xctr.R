@@ -285,7 +285,7 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
 
 test_that("if the 'isic' column isn't a character, throws an error (#233)", {
   companies <- tibble(
-    company_id = rep("a"),
+    company_id = c("a"),
     clustered = c("b"),
     activity_uuid_product_uuid = c("c"),
   )
