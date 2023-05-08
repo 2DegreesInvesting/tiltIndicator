@@ -1,7 +1,7 @@
 # `companies` hasn't changed
 
     Code
-      format_robust_snapshot(companies)
+      format_robust_snapshot(tiltIndicator::companies)
     Output
       [[1]]
                                                        activity_uuid_product_uuid
@@ -55,7 +55,7 @@
 # `inputs` hasn't changed
 
     Code
-      format_robust_snapshot(inputs)
+      format_robust_snapshot(tiltIndicator::inputs)
     Output
       [[1]]
          input_co2_footprint
@@ -277,7 +277,7 @@
 # `products` hasn't changed
 
     Code
-      format_robust_snapshot(products)
+      format_robust_snapshot(tiltIndicator::products)
     Output
       [[1]]
         co2_footprint
@@ -343,7 +343,7 @@
 # `istr_ep_weo` hasn't changed
 
     Code
-      format_robust_snapshot(istr_ep_weo)
+      format_robust_snapshot(tiltIndicator::istr_ep_weo)
     Output
       [[1]]
                                ï..EP_categories_id
@@ -1165,7 +1165,7 @@
 # `istr_weo_2022` hasn't changed
 
     Code
-      format_robust_snapshot(istr_weo_2022)
+      format_robust_snapshot(tiltIndicator::istr_weo_2022)
     Output
       [[1]]
                       publication
@@ -1281,7 +1281,7 @@
 # `istr_companies` hasn't changed
 
     Code
-      format_robust_snapshot(istr_companies)
+      format_robust_snapshot(tiltIndicator::istr_companies)
     Output
       [[1]]
           X
@@ -2583,7 +2583,7 @@
 # `pstr_companies` hasn't changed
 
     Code
-      format_robust_snapshot(pstr_companies)
+      format_robust_snapshot(tiltIndicator::pstr_companies)
     Output
       [[1]]
                                                     company_id
@@ -2868,7 +2868,7 @@
 # `pstr_scenarios` hasn't changed
 
     Code
-      format_robust_snapshot(pstr_scenarios)
+      format_robust_snapshot(tiltIndicator::pstr_scenarios)
     Output
       [[1]]
                                      scenario
