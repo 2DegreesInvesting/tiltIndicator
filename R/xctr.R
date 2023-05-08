@@ -18,7 +18,7 @@
 #' ```{r child=extdata_path("child/intro-pctr.Rmd")}
 #' ```
 #'
-#' @param companies A dataframe like [ictr_companies].
+#' @param companies A dataframe like [companies].
 #' @param co2 A dataframe like [inputs].
 #' @param low_threshold A numeric value to segment low and medium transition
 #'   risk products.
@@ -33,7 +33,7 @@
 #' @export
 #'
 #' @examples
-#' companies <- ictr_companies
+#' companies <- companies
 #'
 #' # ICTR
 #' inputs <- inputs
