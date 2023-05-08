@@ -23,7 +23,7 @@
       16    bst-procontrol-gmbh_00000005104947-001
       17    bst-procontrol-gmbh_00000005104947-001
       18    bst-procontrol-gmbh_00000005104947-001
-      19        ca-coity-trg-aua-gmbh_00000384-001
+      19    bst-procontrol-gmbh_00000005104947-001
       20        ca-coity-trg-aua-gmbh_00000384-001
       21        ca-coity-trg-aua-gmbh_00000384-001
       22        ca-coity-trg-aua-gmbh_00000384-001
@@ -41,7 +41,7 @@
       34        ca-coity-trg-aua-gmbh_00000384-001
       35        ca-coity-trg-aua-gmbh_00000384-001
       36        ca-coity-trg-aua-gmbh_00000384-001
-      37              cheries-baqu_neu316541-00101
+      37        ca-coity-trg-aua-gmbh_00000384-001
       38              cheries-baqu_neu316541-00101
       39              cheries-baqu_neu316541-00101
       40              cheries-baqu_neu316541-00101
@@ -59,8 +59,8 @@
       52              cheries-baqu_neu316541-00101
       53              cheries-baqu_neu316541-00101
       54              cheries-baqu_neu316541-00101
-      55  fleischerei-stiefsohn_00000005219477-001
-      56  fleischerei-stiefsohn_00000005219477-001
+      55              cheries-baqu_neu316541-00101
+      56              cheries-baqu_neu316541-00101
       57  fleischerei-stiefsohn_00000005219477-001
       58  fleischerei-stiefsohn_00000005219477-001
       59  fleischerei-stiefsohn_00000005219477-001
@@ -77,10 +77,10 @@
       70  fleischerei-stiefsohn_00000005219477-001
       71  fleischerei-stiefsohn_00000005219477-001
       72  fleischerei-stiefsohn_00000005219477-001
-      73     hoche-butter-gmbh_deu422723-693847001
-      74     hoche-butter-gmbh_deu422723-693847001
-      75     hoche-butter-gmbh_deu422723-693847001
-      76     hoche-butter-gmbh_deu422723-693847001
+      73  fleischerei-stiefsohn_00000005219477-001
+      74  fleischerei-stiefsohn_00000005219477-001
+      75  fleischerei-stiefsohn_00000005219477-001
+      76  fleischerei-stiefsohn_00000005219477-001
       77     hoche-butter-gmbh_deu422723-693847001
       78     hoche-butter-gmbh_deu422723-693847001
       79     hoche-butter-gmbh_deu422723-693847001
@@ -95,11 +95,11 @@
       88     hoche-butter-gmbh_deu422723-693847001
       89     hoche-butter-gmbh_deu422723-693847001
       90     hoche-butter-gmbh_deu422723-693847001
-      91            leider-gmbh_00000005064318-001
-      92            leider-gmbh_00000005064318-001
-      93            leider-gmbh_00000005064318-001
-      94            leider-gmbh_00000005064318-001
-      95            leider-gmbh_00000005064318-001
+      91     hoche-butter-gmbh_deu422723-693847001
+      92     hoche-butter-gmbh_deu422723-693847001
+      93     hoche-butter-gmbh_deu422723-693847001
+      94     hoche-butter-gmbh_deu422723-693847001
+      95     hoche-butter-gmbh_deu422723-693847001
       96            leider-gmbh_00000005064318-001
       97            leider-gmbh_00000005064318-001
       98            leider-gmbh_00000005064318-001
@@ -113,12 +113,12 @@
       106           leider-gmbh_00000005064318-001
       107           leider-gmbh_00000005064318-001
       108           leider-gmbh_00000005064318-001
-      109        pecheries-basques_fra316541-00101
-      110        pecheries-basques_fra316541-00101
-      111        pecheries-basques_fra316541-00101
-      112        pecheries-basques_fra316541-00101
-      113        pecheries-basques_fra316541-00101
-      114        pecheries-basques_fra316541-00101
+      109           leider-gmbh_00000005064318-001
+      110           leider-gmbh_00000005064318-001
+      111           leider-gmbh_00000005064318-001
+      112           leider-gmbh_00000005064318-001
+      113           leider-gmbh_00000005064318-001
+      114           leider-gmbh_00000005064318-001
       115        pecheries-basques_fra316541-00101
       116        pecheries-basques_fra316541-00101
       117        pecheries-basques_fra316541-00101
@@ -131,12 +131,12 @@
       124        pecheries-basques_fra316541-00101
       125        pecheries-basques_fra316541-00101
       126        pecheries-basques_fra316541-00101
-      127  vicquelin-espaces-verts_fra697272-00101
-      128  vicquelin-espaces-verts_fra697272-00101
-      129  vicquelin-espaces-verts_fra697272-00101
-      130  vicquelin-espaces-verts_fra697272-00101
-      131  vicquelin-espaces-verts_fra697272-00101
-      132  vicquelin-espaces-verts_fra697272-00101
+      127        pecheries-basques_fra316541-00101
+      128        pecheries-basques_fra316541-00101
+      129        pecheries-basques_fra316541-00101
+      130        pecheries-basques_fra316541-00101
+      131        pecheries-basques_fra316541-00101
+      132        pecheries-basques_fra316541-00101
       133  vicquelin-espaces-verts_fra697272-00101
       134  vicquelin-espaces-verts_fra697272-00101
       135  vicquelin-espaces-verts_fra697272-00101
@@ -149,6 +149,13 @@
       142  vicquelin-espaces-verts_fra697272-00101
       143  vicquelin-espaces-verts_fra697272-00101
       144  vicquelin-espaces-verts_fra697272-00101
+      145  vicquelin-espaces-verts_fra697272-00101
+      146  vicquelin-espaces-verts_fra697272-00101
+      147  vicquelin-espaces-verts_fra697272-00101
+      148  vicquelin-espaces-verts_fra697272-00101
+      149  vicquelin-espaces-verts_fra697272-00101
+      150  vicquelin-espaces-verts_fra697272-00101
+      151  vicquelin-espaces-verts_fra697272-00101
       
       [[2]]
              grouped_by
@@ -164,138 +171,145 @@
       10           unit
       11           unit
       12           unit
-      13  unit_isic_sec
+      13           unit
       14  unit_isic_sec
       15  unit_isic_sec
-      16  unit_tilt_sec
+      16  unit_isic_sec
       17  unit_tilt_sec
       18  unit_tilt_sec
-      19            all
+      19  unit_tilt_sec
       20            all
       21            all
-      22       isic_sec
+      22            all
       23       isic_sec
       24       isic_sec
-      25       tilt_sec
+      25       isic_sec
       26       tilt_sec
       27       tilt_sec
-      28           unit
+      28       tilt_sec
       29           unit
       30           unit
-      31  unit_isic_sec
+      31           unit
       32  unit_isic_sec
       33  unit_isic_sec
-      34  unit_tilt_sec
+      34  unit_isic_sec
       35  unit_tilt_sec
       36  unit_tilt_sec
-      37            all
+      37  unit_tilt_sec
       38            all
       39            all
-      40       isic_sec
-      41       isic_sec
+      40            all
+      41            all
       42       isic_sec
-      43       tilt_sec
-      44       tilt_sec
+      43       isic_sec
+      44       isic_sec
       45       tilt_sec
-      46           unit
-      47           unit
+      46       tilt_sec
+      47       tilt_sec
       48           unit
-      49  unit_isic_sec
-      50  unit_isic_sec
+      49           unit
+      50           unit
       51  unit_isic_sec
-      52  unit_tilt_sec
-      53  unit_tilt_sec
+      52  unit_isic_sec
+      53  unit_isic_sec
       54  unit_tilt_sec
-      55            all
-      56            all
+      55  unit_tilt_sec
+      56  unit_tilt_sec
       57            all
-      58       isic_sec
-      59       isic_sec
-      60       isic_sec
-      61       tilt_sec
-      62       tilt_sec
-      63       tilt_sec
-      64           unit
-      65           unit
-      66           unit
-      67  unit_isic_sec
-      68  unit_isic_sec
-      69  unit_isic_sec
-      70  unit_tilt_sec
-      71  unit_tilt_sec
-      72  unit_tilt_sec
-      73            all
-      74            all
-      75            all
-      76       isic_sec
-      77       isic_sec
-      78       isic_sec
-      79       tilt_sec
-      80       tilt_sec
-      81       tilt_sec
-      82           unit
-      83           unit
-      84           unit
-      85  unit_isic_sec
-      86  unit_isic_sec
-      87  unit_isic_sec
-      88  unit_tilt_sec
-      89  unit_tilt_sec
-      90  unit_tilt_sec
-      91            all
-      92            all
-      93            all
-      94       isic_sec
-      95       isic_sec
-      96       isic_sec
-      97       tilt_sec
-      98       tilt_sec
-      99       tilt_sec
-      100          unit
-      101          unit
-      102          unit
-      103 unit_isic_sec
-      104 unit_isic_sec
-      105 unit_isic_sec
-      106 unit_tilt_sec
-      107 unit_tilt_sec
-      108 unit_tilt_sec
-      109           all
-      110           all
-      111           all
-      112      isic_sec
-      113      isic_sec
-      114      isic_sec
-      115      tilt_sec
-      116      tilt_sec
-      117      tilt_sec
-      118          unit
-      119          unit
-      120          unit
-      121 unit_isic_sec
-      122 unit_isic_sec
-      123 unit_isic_sec
-      124 unit_tilt_sec
-      125 unit_tilt_sec
-      126 unit_tilt_sec
-      127           all
-      128           all
-      129           all
-      130      isic_sec
-      131      isic_sec
-      132      isic_sec
-      133      tilt_sec
-      134      tilt_sec
-      135      tilt_sec
-      136          unit
-      137          unit
-      138          unit
-      139 unit_isic_sec
-      140 unit_isic_sec
-      141 unit_isic_sec
-      142 unit_tilt_sec
-      143 unit_tilt_sec
-      144 unit_tilt_sec
+      58            all
+      59            all
+      60            all
+      61       isic_sec
+      62       isic_sec
+      63       isic_sec
+      64       tilt_sec
+      65       tilt_sec
+      66       tilt_sec
+      67       tilt_sec
+      68           unit
+      69           unit
+      70           unit
+      71  unit_isic_sec
+      72  unit_isic_sec
+      73  unit_isic_sec
+      74  unit_tilt_sec
+      75  unit_tilt_sec
+      76  unit_tilt_sec
+      77            all
+      78            all
+      79            all
+      80       isic_sec
+      81       isic_sec
+      82       isic_sec
+      83       tilt_sec
+      84       tilt_sec
+      85       tilt_sec
+      86           unit
+      87           unit
+      88           unit
+      89           unit
+      90  unit_isic_sec
+      91  unit_isic_sec
+      92  unit_isic_sec
+      93  unit_tilt_sec
+      94  unit_tilt_sec
+      95  unit_tilt_sec
+      96            all
+      97            all
+      98            all
+      99            all
+      100      isic_sec
+      101      isic_sec
+      102      isic_sec
+      103      tilt_sec
+      104      tilt_sec
+      105      tilt_sec
+      106          unit
+      107          unit
+      108          unit
+      109 unit_isic_sec
+      110 unit_isic_sec
+      111 unit_isic_sec
+      112 unit_tilt_sec
+      113 unit_tilt_sec
+      114 unit_tilt_sec
+      115           all
+      116           all
+      117           all
+      118      isic_sec
+      119      isic_sec
+      120      isic_sec
+      121      tilt_sec
+      122      tilt_sec
+      123      tilt_sec
+      124          unit
+      125          unit
+      126          unit
+      127 unit_isic_sec
+      128 unit_isic_sec
+      129 unit_isic_sec
+      130 unit_tilt_sec
+      131 unit_tilt_sec
+      132 unit_tilt_sec
+      133           all
+      134           all
+      135           all
+      136      isic_sec
+      137      isic_sec
+      138      isic_sec
+      139      tilt_sec
+      140      tilt_sec
+      141      tilt_sec
+      142          unit
+      143          unit
+      144          unit
+      145          unit
+      146 unit_isic_sec
+      147 unit_isic_sec
+      148 unit_isic_sec
+      149 unit_tilt_sec
+      150 unit_tilt_sec
+      151 unit_tilt_sec
       
       [[3]]
           risk_category
@@ -309,53 +323,53 @@
       8          medium
       9             low
       10           high
-      11         medium
-      12            low
-      13           high
-      14         medium
-      15            low
-      16           high
-      17         medium
-      18            low
-      19           high
-      20         medium
-      21            low
-      22           high
-      23         medium
-      24            low
-      25           high
-      26         medium
-      27            low
-      28           high
-      29         medium
-      30            low
-      31           high
-      32         medium
-      33            low
-      34           high
-      35         medium
-      36            low
-      37           high
-      38         medium
-      39            low
-      40           high
-      41         medium
-      42            low
-      43           high
-      44         medium
-      45            low
-      46           high
-      47         medium
-      48            low
-      49           high
-      50         medium
-      51            low
-      52           high
-      53         medium
-      54            low
-      55           high
-      56         medium
-      57            low
+      11           high
+      12         medium
+      13            low
+      14           high
+      15         medium
+      16            low
+      17           high
+      18         medium
+      19            low
+      20           high
+      21         medium
+      22            low
+      23           high
+      24         medium
+      25            low
+      26           high
+      27         medium
+      28            low
+      29           high
+      30         medium
+      31            low
+      32           high
+      33         medium
+      34            low
+      35           high
+      36         medium
+      37            low
+      38           high
+      39         medium
+      40            low
+      41            low
+      42           high
+      43         medium
+      44            low
+      45           high
+      46         medium
+      47            low
+      48           high
+      49         medium
+      50            low
+      51           high
+      52         medium
+      53            low
+      54           high
+      55         medium
+      56            low
+      57           high
       58           high
       59         medium
       60            low
@@ -363,40 +377,40 @@
       62         medium
       63            low
       64           high
-      65         medium
-      66            low
-      67           high
-      68         medium
-      69            low
-      70           high
-      71         medium
-      72            low
-      73           high
-      74         medium
-      75            low
-      76           high
-      77         medium
-      78            low
-      79           high
-      80         medium
-      81            low
-      82           high
-      83         medium
-      84            low
-      85           high
-      86         medium
-      87            low
-      88           high
-      89         medium
-      90            low
-      91           high
-      92         medium
-      93            low
-      94           high
-      95         medium
-      96            low
-      97           high
-      98         medium
+      65           high
+      66         medium
+      67            low
+      68           high
+      69         medium
+      70            low
+      71           high
+      72         medium
+      73            low
+      74           high
+      75         medium
+      76            low
+      77           high
+      78         medium
+      79            low
+      80           high
+      81         medium
+      82            low
+      83           high
+      84         medium
+      85            low
+      86           high
+      87           high
+      88         medium
+      89            low
+      90           high
+      91         medium
+      92            low
+      93           high
+      94         medium
+      95            low
+      96           high
+      97         medium
+      98            low
       99            low
       100          high
       101        medium
@@ -441,8 +455,15 @@
       140        medium
       141           low
       142          high
-      143        medium
-      144           low
+      143          high
+      144        medium
+      145           low
+      146          high
+      147        medium
+      148           low
+      149          high
+      150        medium
+      151           low
       
       [[4]]
           value
@@ -455,16 +476,16 @@
       7     0.5
       8     0.5
       9     0.0
-      10    1.0
-      11    0.0
+      10    0.5
+      11    0.5
       12    0.0
-      13    0.5
+      13    0.0
       14    0.5
-      15    0.0
-      16    0.5
+      15    0.5
+      16    0.0
       17    0.5
-      18    0.0
-      19     NA
+      18    0.5
+      19    0.0
       20     NA
       21     NA
       22     NA
@@ -482,107 +503,107 @@
       34     NA
       35     NA
       36     NA
-      37    0.0
+      37     NA
       38    0.0
-      39    1.0
+      39    0.0
       40    0.5
       41    0.5
-      42    0.0
-      43    0.0
-      44    0.5
-      45    0.5
-      46    0.0
+      42    0.5
+      43    0.5
+      44    0.0
+      45    0.0
+      46    0.5
       47    0.5
-      48    0.5
+      48    0.0
       49    0.5
       50    0.5
-      51    0.0
+      51    0.5
       52    0.5
-      53    0.5
-      54    0.0
-      55    1.0
+      53    0.0
+      54    0.5
+      55    0.5
       56    0.0
-      57    0.0
+      57    0.5
       58    0.5
-      59    0.5
+      59    0.0
       60    0.0
-      61    1.0
-      62    0.0
+      61    0.5
+      62    0.5
       63    0.0
       64    0.5
       65    0.5
       66    0.0
-      67    0.5
+      67    0.0
       68    0.5
-      69    0.0
-      70    0.5
+      69    0.5
+      70    0.0
       71    0.5
-      72    0.0
-      73    0.5
+      72    0.5
+      73    0.0
       74    0.5
-      75    0.0
-      76    0.5
+      75    0.5
+      76    0.0
       77    0.5
-      78    0.0
-      79    0.5
+      78    0.5
+      79    0.0
       80    0.5
-      81    0.0
-      82    1.0
-      83    0.0
-      84    0.0
-      85    0.5
+      81    0.5
+      82    0.0
+      83    0.5
+      84    0.5
+      85    0.0
       86    0.5
-      87    0.0
-      88    0.5
-      89    0.5
-      90    0.0
-      91    0.0
+      87    0.5
+      88    0.0
+      89    0.0
+      90    0.5
+      91    0.5
       92    0.0
-      93    1.0
+      93    0.5
       94    0.5
-      95    0.5
+      95    0.0
       96    0.0
       97    0.0
       98    0.5
       99    0.5
-      100   0.0
+      100   0.5
       101   0.5
-      102   0.5
-      103   0.5
+      102   0.0
+      103   0.0
       104   0.5
-      105   0.0
-      106   0.5
+      105   0.5
+      106   0.0
       107   0.5
-      108   0.0
-      109   0.0
-      110   1.0
+      108   0.5
+      109   0.5
+      110   0.5
       111   0.0
-      112   1.0
-      113   0.0
+      112   0.5
+      113   0.5
       114   0.0
-      115   1.0
-      116   0.0
+      115   0.0
+      116   1.0
       117   0.0
-      118   0.0
-      119   1.0
+      118   1.0
+      119   0.0
       120   0.0
       121   1.0
       122   0.0
       123   0.0
-      124   1.0
-      125   0.0
+      124   0.0
+      125   1.0
       126   0.0
-      127   0.5
-      128   0.5
+      127   1.0
+      128   0.0
       129   0.0
-      130   0.5
-      131   0.5
+      130   1.0
+      131   0.0
       132   0.0
       133   0.5
       134   0.5
       135   0.0
-      136   1.0
-      137   0.0
+      136   0.5
+      137   0.5
       138   0.0
       139   0.5
       140   0.5
@@ -590,5 +611,12 @@
       142   0.5
       143   0.5
       144   0.0
+      145   0.0
+      146   0.5
+      147   0.5
+      148   0.0
+      149   0.5
+      150   0.5
+      151   0.0
       
 

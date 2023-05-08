@@ -83,39 +83,37 @@ xctr_at_product_level <- function(companies,
     xctr_add_ranks(col_to_rank(co2)) |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
-    xctr_polish_output_at_product_level()
+    xctr_polish_output_at_product_level() |>
+    prune_unmatched_products()
+}
+
+prune_unmatched_products <- function(data) {
+  filter(data, all_na_else_not_na(.data$risk_category), .by = "companies_id")
+}
+all_na_else_not_na <- function(x) {
+  if (all(is.na(x))) TRUE else !is.na(x)
 }
 
 #' @export
 #' @rdname xctr
 xctr_at_company_level <- function(data) {
-  benchmarks <- xctr_combined_benchmarks()
+  with_value <- data |>
+    select("companies_id", "grouped_by", "risk_category") |>
+    filter(!is.na(.data[["grouped_by"]])) |>
+    dplyr::add_count(companies_id, .data[["grouped_by"]]) |>
+    group_by(companies_id, .data[["grouped_by"]]) |>
+    mutate(value = .data$n / sum(.data$n)) |>
+    select(-all_of("n"))
 
-  data |>
-    # FIXME: Instead rename downstream
-    rename(company_id = "companies_id") |>
-    # FIXME: Instead handle data in long format
-    xctr_pivot_grouped_by_to_score() |>
-    xctr_at_company_level_impl(benchmarks) |>
-    xctr_polish_output_at_company_level()
-}
-
-xctr_at_company_level_impl <- function(data, benchmarks) {
-  # For each company show all risk levels even if the share is 0.
-  template <- tibble(
-    company_id = rep(unique(data$company_id), each = 3),
-    score = rep(c("high", "medium", "low"), length(unique(data$company_id))),
-  )
-
-  .benchmarks <- map(benchmarks, ~ add_share(data, .x))
-
-  list(template) |>
-    append(.benchmarks) |>
-    reduce(left_join, by = c("company_id", "score")) |>
-    mutate(
-      across(starts_with("share_"), na_to_0_if_not_all_is_na),
-      .by = "company_id"
-    )
+  levels <- c("high", "medium", "low")
+  with_value |>
+    mutate(risk_category = factor(risk_category, levels = levels)) |>
+    tidyr::expand(risk_category) |>
+    filter(!is.na(risk_category)) |>
+    left_join(with_value, by = join_by(companies_id, grouped_by, risk_category)) |>
+    group_by(companies_id, grouped_by) |>
+    mutate(value = na_to_0_if_not_all_is_na(value)) |>
+    ungroup()
 }
 
 na_to_0_if_not_all_is_na <- function(x) {
