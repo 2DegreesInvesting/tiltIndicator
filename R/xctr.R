@@ -116,24 +116,6 @@ xctr_at_company_level <- function(data) {
     ungroup()
 }
 
-xctr_at_company_level_impl <- function(data, benchmarks) {
-  # For each company show all risk levels even if the share is 0.
-  template <- tibble(
-    company_id = rep(unique(data$company_id), each = 3),
-    score = rep(c("high", "medium", "low"), length(unique(data$company_id))),
-  )
-
-  .benchmarks <- map(benchmarks, ~ add_share(data, .x))
-
-  list(template) |>
-    append(.benchmarks) |>
-    reduce(left_join, by = c("company_id", "score")) |>
-    mutate(
-      across(starts_with("share_"), na_to_0_if_not_all_is_na),
-      .by = "company_id"
-    )
-}
-
 na_to_0_if_not_all_is_na <- function(x) {
   if (all(is.na(x))) {
     return(x)
