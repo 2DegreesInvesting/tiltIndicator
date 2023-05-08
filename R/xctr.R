@@ -249,6 +249,6 @@ col_to_rank <- function(co2, pattern = "co2_footprint") {
 
 stop_if_isic_class_not_char <- function(co2, column){
   if(any(grepl(column, names(co2)))){
-    stopifnot(is.character(unlist(select(co2 ,contains(column)))))
+    stopifnot(is.character(unlist(select(co2, contains(column)))))
   }
 }
