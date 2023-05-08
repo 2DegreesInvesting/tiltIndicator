@@ -1,4 +1,4 @@
-test_that("pctr_at_product_level returns visibly (#238)", {
+test_that("returns visibly (#238)", {
   companies <- slice(companies, 1)
   co2 <- slice(products, 1)
   expect_visible(xctr_at_product_level(companies, co2))

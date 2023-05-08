@@ -167,10 +167,9 @@ xctr_score_companies <- function(companies,
   # Share in comparison to all inputs and those with same unit, sector, ...
   benchmarks_list <- map(.by, ~ add_share(companies_scores, .x))
 
-  ictr_output <- append(list(dt_sceleton), benchmarks_list) |>
-    reduce(left_join, by = c("company_id", "score"))
-
-  ictr_output |>
+  list(dt_sceleton) |>
+    append(benchmarks_list) |>
+    reduce(left_join, by = c("company_id", "score")) |>
     mutate(
       across(starts_with("share_"), na_to_0_if_not_all_is_na),
       .by = "company_id"
