@@ -48,6 +48,7 @@
 #' @importFrom tidyr separate
 #' @importFrom tidyr unite
 #' @importFrom tidyselect all_of
+#' @importFrom tidyselect contains
 #' @importFrom utils hasName
 ## usethis namespace: end
 NULL
