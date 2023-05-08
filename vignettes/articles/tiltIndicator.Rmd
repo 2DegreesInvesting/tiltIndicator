@@ -9,21 +9,20 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article introduces the tilt indicators. First we introduce the tilt
-indicators in general, then explain each indicator's details and show the code
-you can use to calculate it.
+This article helps you get started with the tiltIndicator pacakge. Currently it
+supports two indicators: Input Carbon Transition Risk (ICTR) and Product Carbon
+Transition Risk (PCTR). They are both calculated in exactly the same way. The
+difference is not the process but the kind of `co2` data: either comes from
+inputs or products.
 
-We'll use general purpose tools from the dplyr package, and the experimental [tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html) package.
+We'll use general purpose tools from the dplyr package, and the experimental
+[tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html)
+package.
 
 ```{r setup}
 library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
-
-The tiltIndicator package supports two indicators: Input Carbon Transition Risk
-(ICTR) and Product Carbon Transition Risk (PCTR). They are both calculated in
-exactly the same way. The difference is not the process but the kind of `co2`
-data: either comes from inputs or products.
 
 ## Input carbon transition risk (ICTR)
 
