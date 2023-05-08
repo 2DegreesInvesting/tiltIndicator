@@ -1,34 +1,9 @@
-xctr_polish_output_at_product_level <- function(data) {
-  data |>
-    xctr_pivot_score_to_grouped_by() |>
-    xctr_rename_at_product_level() |>
-    select_cols_at_product_level() |>
-    prune_unmatched_products()
-}
-
-prune_unmatched_products <- function(data) {
-  filter(data, all_na_else_not_na(.data$risk_category), .by = "companies_id")
-}
-
-all_na_else_not_na <- function(x) {
-  if (all(is.na(x))) TRUE else !is.na(x)
-}
-
 xctr_polish_output_at_company_level <- function(data) {
   data |>
     xctr_rename_at_company_level() |>
     xctr_pivot_score_to_grouped_by() |>
     relocate(all_of(cols_at_company_level())) |>
     arrange(.data$companies_id, .data$grouped_by)
-}
-
-xctr_pivot_score_to_grouped_by <- function(data) {
-  data |>
-    pivot_longer(
-      starts_with("score_"),
-      names_prefix = "score_",
-      names_to = "grouped_by"
-    )
 }
 
 xctr_pivot_grouped_by_to_score <- function(data) {
@@ -38,12 +13,6 @@ xctr_pivot_grouped_by_to_score <- function(data) {
       values_from = "risk_category",
       names_prefix = "score_"
     )
-}
-
-xctr_rename_at_product_level <- function(data) {
-  data |>
-    rename(companies_id = "company_id") |>
-    rename(risk_category = "value")
 }
 
 xctr_rename_at_company_level <- function(data) {
