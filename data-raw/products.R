@@ -7,7 +7,7 @@ devtools::load_all()
 # Source:
 # https://github.com/2DegreesInvesting/tiltIndicator/issues/167#issuecomment-1527223646
 products <- here("data-raw", "products.csv") |>
-  read_csv(show_col_types = FALSE, col_types="ncccccc") |>
+  read_csv(show_col_types = FALSE, col_types = cols(isic_4digit = col_character())) |>
   select(all_of(c(
     "co2_footprint",
     "tilt_sector",
