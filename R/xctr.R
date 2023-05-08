@@ -134,7 +134,8 @@ xctr_at_company_level_impl <- function(data, benchmarks) {
 
   .benchmarks <- map(benchmarks, ~ add_share(data, .x))
 
-  append(list(template), .benchmarks) |>
+  list(template) |>
+    append(.benchmarks) |>
     reduce(left_join, by = c("company_id", "score")) |>
     mutate(
       across(starts_with("share_"), na_to_0_if_not_all_is_na),
