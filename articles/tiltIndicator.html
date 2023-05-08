@@ -251,8 +251,14 @@ we’ll use in the examples below.</p>
 </ul>
 </div>
 <div class="section level2">
-<h2 id="input-carbon-transition-risk-ictr">Input carbon transition risk (ICTR)<a class="anchor" aria-label="anchor" href="#input-carbon-transition-risk-ictr"></a>
+<h2 id="xctr-ictr-pctr">XCTR: ICTR &amp; PCTR<a class="anchor" aria-label="anchor" href="#xctr-ictr-pctr"></a>
 </h2>
+<p>The acronym XCTR reflects that both ICTR and PCTR are calculated in
+exactly the same way. The difference is not the process but the kind of
+<code>co2</code> data: either comes from inputs or products.</p>
+<div class="section level3">
+<h3 id="input-carbon-transition-risk-ictr">Input carbon transition risk (ICTR)<a class="anchor" aria-label="anchor" href="#input-carbon-transition-risk-ictr"></a>
+</h3>
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 <p>The Input Product Carbon Transition Risk Indicator assesses the
 transition risk of the input products due to their relative carbon
@@ -292,86 +298,10 @@ information:</p>
 <li>sectors (as the matching with ecoinvent is not done yet, we do not
 have one sector per product yet)</li>
 </ul>
+</div>
 <div class="section level3">
-<h3 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h3 id="product-carbon-transition-risk-pctr">Product carbon transition risk (PCTR)<a class="anchor" aria-label="anchor" href="#product-carbon-transition-risk-pctr"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ictr_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/ictr.html">ictr</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">ictr_inputs</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
-<span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high          0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.429</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.429</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.429</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium        0.286</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low           0.286</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high          0.429</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium        0.286</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low           0.286</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high          0.286</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span></code></pre></div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="input-sector-transition-risk-istr">Input sector transition risk (ISTR)<a class="anchor" aria-label="anchor" href="#input-sector-transition-risk-istr"></a>
-</h2>
-<!-- WARNING: Do not write here. Instead write in the `child` file -->
-<p>The Input Product Sector Risk Indicator assesses the transition risk
-of the input products based on the sector’s emissions targets the input
-product belongs to. Those sector emission reduction targets vary across
-scenarios (e.g., net zero scenario or 1.5° scenario) and the time
-horizon (e.g., reduction needed in 2030, 2040, 2050 to achieve the
-targets). It, therefore, is similar to the Product Sector Risk Indicator
-but focuses on the input products that the company needs to produce its
-products.The input products are, for example, resources, packaging
-materials, energy and enabling services (such as tractor use on farm) to
-produce the product.</p>
-<p>If an input product belongs to a sector in which reduction targets
-are over 70%, it belongs to a high-risk sector and is classified as
-‘high sector transition risk’. If the input product belongs to a sector
-in which reduction targets are between 30-70%, the product is classified
-into the category ‘medium sector transition risk’ and if it is below 30%
-it belongs to the category of ‘low sector transition risk’. If it does
-not belong to a sector that has decarbonization targets, it is
-classified as ‘no sector transition risk’.</p>
-<p>After assessing the input products for each product, they are
-aggregated at company-level to derive what percentage of the input
-products required by the company to produce its products have high,
-medium and low sector transition risk. We, therefore, derive the
-company-level information.</p>
-<p>Please note that carbon emissions or emissions always mean CO2e.</p>
-<div class="section level3">
-<h3 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a>
-</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">istr_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/istr.html">istr</a></span><span class="op">(</span>scenario <span class="op">=</span> <span class="va">istr_weo_2022</span>, mapper <span class="op">=</span> <span class="va">istr_ep_weo</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 6</span></span></span>
-<span><span class="co">#&gt;    companies_id                   grouped_by risk_category  value scenario  year</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_0000000… Net Zero … high           400   Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_0000000… Net Zero … high          <span style="text-decoration: underline;">2</span>467.  Net Zer…  <span style="text-decoration: underline;">2</span>050</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_0000000… Stated Po… low           <span style="text-decoration: underline;">2</span>467.  Stated …  <span style="text-decoration: underline;">2</span>020</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_0000000… Net Zero … medium        <span style="text-decoration: underline;">2</span>467.  Net Zer…  <span style="text-decoration: underline;">2</span>030</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_0000000… Net Zero … medium        <span style="text-decoration: underline;">2</span>067.  Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_0000000… NA_NA      no_sector       28.6 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> hoche-butter-gmbh_deu422723-6… Net Zero … high           467.  Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> hoche-butter-gmbh_deu422723-6… Net Zero … high          <span style="text-decoration: underline;">3</span>867.  Net Zer…  <span style="text-decoration: underline;">2</span>050</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> hoche-butter-gmbh_deu422723-6… Stated Po… low           <span style="text-decoration: underline;">3</span>867.  Stated …  <span style="text-decoration: underline;">2</span>020</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> hoche-butter-gmbh_deu422723-6… Net Zero … medium        <span style="text-decoration: underline;">3</span>867.  Net Zer…  <span style="text-decoration: underline;">2</span>030</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> hoche-butter-gmbh_deu422723-6… Net Zero … medium        <span style="text-decoration: underline;">3</span>400   Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> pecheries-basques_fra316541-0… Net Zero … high          <span style="text-decoration: underline;">5</span>911.  Net Zer…  <span style="text-decoration: underline;">2</span>050</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> pecheries-basques_fra316541-0… Stated Po… low           <span style="text-decoration: underline;">5</span>911.  Stated …  <span style="text-decoration: underline;">2</span>020</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> pecheries-basques_fra316541-0… Net Zero … medium        <span style="text-decoration: underline;">5</span>911.  Net Zer…  <span style="text-decoration: underline;">2</span>030</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> pecheries-basques_fra316541-0… Net Zero … medium        <span style="text-decoration: underline;">5</span>911.  Net Zer…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> pecheries-basques_fra316541-0… NA_NA      no_sector       22.2 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="product-carbon-transition-risk-pctr">Product carbon transition risk (PCTR)<a class="anchor" aria-label="anchor" href="#product-carbon-transition-risk-pctr"></a>
-</h2>
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 <p>The Product Carbon Transition Risk measures the transition risk on
 the product-level of a company. The indicator is expressed in the
@@ -407,12 +337,115 @@ segment</li>
 <li>a column indicating whether the product has “low”, “medium” or
 “high” relative production emissions.</li>
 </ul>
+</div>
 <div class="section level3">
-<h3 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a>
+<h3 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pctr_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pctr.html">pctr</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">pctr_ecoinvent_co2</span><span class="op">)</span></span>
+<p>Use <code>xctr*()</code> to calculate both ICTR and PCTR. Their
+difference is in the <code>co2</code> dataset.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="va">ictr_companies</span></span>
+<span></span>
+<span><span class="co"># ICTR</span></span>
+<span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="va">ictr_inputs</span></span>
+<span></span>
+<span><span class="va">companies</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">inputs</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 324 × 7</span></span></span>
+<span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… tilt_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 314 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: input_activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   input_co2_footprint &lt;dbl&gt;</span></span></span>
+<span></span>
+<span><span class="va">companies</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">inputs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_company_level</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
+<span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high          0.143</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium        0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low           0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high          0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium        0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low           0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high          0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span>
+<span></span>
+<span><span class="co"># Same</span></span>
+<span><span class="va">companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">inputs</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
+<span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high          0.143</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium        0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low           0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high          0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium        0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low           0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high          0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span>
+<span></span>
+<span><span class="co"># PCTR</span></span>
+<span><span class="va">products</span> <span class="op">&lt;-</span> <span class="va">pctr_ecoinvent_co2</span></span>
+<span></span>
+<span><span class="va">companies</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">products</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 84 × 6</span></span></span>
+<span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… tilt_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… isic_sec   medium        oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sec   high          oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 74 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span></span>
+<span></span>
+<span><span class="va">companies</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">products</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_company_level</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
+<span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span>
+<span></span>
+<span><span class="co"># Same</span></span>
+<span><span class="va">companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">products</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -427,41 +460,6 @@ segment</li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span></code></pre></div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="product-sector-transition-risk-pstr">Product sector transition risk (PSTR)<a class="anchor" aria-label="anchor" href="#product-sector-transition-risk-pstr"></a>
-</h2>
-<!-- WARNING: Do not write here. Instead write in the `child` file -->
-<p>The Product Sector Transition Risk Indicator measures the transition
-risk of products based on the sector’s emissions targets the product
-belongs to. Those sector emission reduction targets vary across
-scenarios (e.g., net zero scenario or 1.5° scenario) and the time
-horizon (e.g., reduction needed in 2030, 2040, 2050 to achieve the
-targets).</p>
-<p>After assessing each product, all the products with the same category
-are aggregated and set in relation to all products of the company. We,
-therefore, derive company-level information.</p>
-<div class="section level3">
-<h3 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a>
-</h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pstr_companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pstr.html">pstr</a></span><span class="op">(</span>scenarios <span class="op">=</span> <span class="va">pstr_scenarios</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 45 × 6</span></span></span>
-<span><span class="co">#&gt;    companies_id                    grouped_by risk_category value scenario  year</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> barham-metall-gmbh_00000005371… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>020</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> barham-metall-gmbh_00000005371… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>030</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> barham-metall-gmbh_00000005371… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> barham-metall-gmbh_00000005371… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>050</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> barham-metall-gmbh_00000005371… NA_NA      no_sector        50 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> breuninger-leder-gmbh_00000005… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>020</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> breuninger-leder-gmbh_00000005… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>030</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> breuninger-leder-gmbh_00000005… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>040</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> breuninger-leder-gmbh_00000005… 1.5c requ… low             100 1.5c re…  <span style="text-decoration: underline;">2</span>050</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> breuninger-leder-gmbh_00000005… NA_NA      no_sector        50 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 35 more rows</span></span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
