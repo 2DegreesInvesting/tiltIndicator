@@ -1,5 +1,15 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9046
+
+The data is now simpler:
+
+* `ictr_companies` and `pctr_companies` are now retired. Instead use the new dataset `companies`.
+
+* `pctr_ecoinvent_co2` is now renamed to `products`.
+
+* `ictr_inputs` is now renamed to `inputs`.
+
 # tiltIndicator 0.0.0.9045
 
 * New `xctr*()` replace `ictr*()` and `pctr*()` (#256). The functions `ictr*()` and `pctr*()` are internal for backward compatibility but will be
