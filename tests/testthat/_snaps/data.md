@@ -2568,10 +2568,10 @@
       33 11
       
 
-# `pctr_ecoinvent_co2` hasn't changed
+# `products` hasn't changed
 
     Code
-      format_robust_snapshot(pctr_ecoinvent_co2)
+      format_robust_snapshot(products)
     Output
       [[1]]
         co2_footprint

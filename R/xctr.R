@@ -49,7 +49,7 @@
 #' companies |> xctr(co2 = inputs)
 #'
 #' # PCTR
-#' products <- pctr_ecoinvent_co2
+#' products <- products
 #'
 #' companies |>
 #'   xctr_at_product_level(co2 = products)

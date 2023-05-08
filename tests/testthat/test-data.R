@@ -24,8 +24,8 @@ test_that("`istr_companies` hasn't changed", {
   expect_snapshot(format_robust_snapshot(istr_companies))
 })
 
-test_that("`pctr_ecoinvent_co2` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(pctr_ecoinvent_co2))
+test_that("`products` hasn't changed", {
+  expect_snapshot(format_robust_snapshot(products))
 })
 
 test_that("`pstr_companies` hasn't changed", {
