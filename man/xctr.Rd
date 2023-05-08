@@ -18,9 +18,9 @@ xctr_at_product_level(
 xctr_at_company_level(data)
 }
 \arguments{
-\item{companies}{A dataframe like \link{ictr_companies}.}
+\item{companies}{A dataframe like \link{companies}.}
 
-\item{co2}{A dataframe like \link{ictr_inputs}.}
+\item{co2}{A dataframe like \link{inputs}.}
 
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}
@@ -124,10 +124,10 @@ The output of this indicator contains the following:
 }
 }
 \examples{
-companies <- ictr_companies
+companies <- companies
 
 # ICTR
-inputs <- ictr_inputs
+inputs <- inputs
 
 companies |>
   xctr_at_product_level(co2 = inputs)
@@ -140,7 +140,7 @@ companies |>
 companies |> xctr(co2 = inputs)
 
 # PCTR
-products <- pctr_ecoinvent_co2
+products <- products
 
 companies |>
   xctr_at_product_level(co2 = products)

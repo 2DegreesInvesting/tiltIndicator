@@ -3,6 +3,7 @@
 #' @family general datasets
 #'
 #' @examples
+#' companies
 "companies"
 
 #' ICTR datasets

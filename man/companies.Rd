@@ -13,6 +13,9 @@ companies
 \description{
 Companies data for all indicators
 }
+\examples{
+companies
+}
 \author{
 Kalash Singhal.
 }
