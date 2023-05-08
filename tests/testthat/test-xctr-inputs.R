@@ -1,5 +1,5 @@
 test_that("hasn't change", {
-  out <- format_robust_snapshot(ictr(ictr_companies, ictr_inputs))
+  out <- format_robust_snapshot(xctr(ictr_companies, ictr_inputs))
   expect_snapshot(out)
 })
 
@@ -7,7 +7,7 @@ test_that("outputs expected columns at company level", {
   companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1)
 
-  out <- ictr(companies, inputs)
+  out <- xctr(companies, inputs)
 
   expected <- cols_at_company_level()
   expect_equal(names(out)[seq_along(expected)], expected)
@@ -17,7 +17,7 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
   companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1)
 
-  out <- ictr(companies, inputs)
+  out <- xctr(companies, inputs)
 
   expect_equal(out, arrange(out, companies_id, grouped_by))
 })
@@ -37,7 +37,7 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
     activity_uuid_product_uuid = c("x", "y"),
     clustered = c("xyz", "abc")
   )
-  out <- ictr(companies, inputs)
+  out <- xctr(companies, inputs)
 
   n <- length(unique(out$companies_id)) *
     length(unique(out$risk_category)) *
@@ -50,7 +50,7 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
     activity_uuid_product_uuid = c("x", "y"),
     clustered = c("xyz", "abc")
   )
-  out <- ictr(companies, inputs)
+  out <- xctr(companies, inputs)
   n <- length(unique(out$companies_id)) *
     length(unique(out$risk_category)) *
     length(unique(out$grouped_by))
@@ -73,7 +73,7 @@ test_that("if a company matches at least one input, each share sums 1 (#175)", {
     input_isic_4digit = 4575
   )
 
-  out <- ictr(companies, inputs)
+  out <- xctr(companies, inputs)
   sum_of_each_share <- out |>
     group_by(grouped_by) |>
     summarize(sum = sum(value)) |>
@@ -97,7 +97,7 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
     input_isic_4digit = 4575
   )
 
-  out <- ictr(companies, inputs)
+  out <- xctr(companies, inputs)
 
   share_is_na <- is.na(unlist(select(out, starts_with("score"))))
   expect_true(all(share_is_na))
@@ -118,7 +118,7 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
     input_isic_4digit = 4575
   )
 
-  out <- ictr(companies, inputs)
+  out <- xctr(companies, inputs)
 
   share_is_na <- is.na(unlist(select(out, starts_with("score"))))
   expect_true(all(share_is_na))
@@ -139,7 +139,7 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
     input_isic_4digit = 4575
   )
 
-  out <- ictr(companies, inputs)
+  out <- xctr(companies, inputs)
   share_is_na <- is.na(unlist(select(out, starts_with("score"))))
   expect_false(any(share_is_na))
 })
@@ -147,16 +147,16 @@ test_that("if a company matches at least one input, no share is `NA` (#176)", {
 test_that("is sensitive to low_threshold", {
   companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1:2)
-  out1 <- ictr(companies, inputs, low_threshold = .1)
-  out2 <- ictr(companies, inputs, low_threshold = .9)
+  out1 <- xctr(companies, inputs, low_threshold = .1)
+  out2 <- xctr(companies, inputs, low_threshold = .9)
   expect_false(identical(out1, out2))
 })
 
 test_that("is sensitive to high_threshold", {
   companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1:2)
-  out1 <- ictr(companies, inputs, high_threshold = .1)
-  out2 <- ictr(companies, inputs, high_threshold = .9)
+  out1 <- xctr(companies, inputs, high_threshold = .1)
+  out2 <- xctr(companies, inputs, high_threshold = .9)
   expect_false(identical(out1, out2))
 })
 
@@ -166,11 +166,11 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(companies, -all_of(crucial))
-  expect_error(ictr(bad, inputs), crucial)
+  expect_error(xctr(bad, inputs), crucial)
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))
-  expect_error(ictr(bad, inputs), crucial)
+  expect_error(xctr(bad, inputs), crucial)
 })
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
@@ -179,30 +179,30 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(inputs, -all_of(crucial))
-  expect_error(ictr(companies, bad), crucial)
+  expect_error(xctr(companies, bad), crucial)
 
   crucial <- "co2_footprint"
   bad <- select(inputs, -ends_with(crucial))
-  expect_error(ictr(companies, bad), crucial)
+  expect_error(xctr(companies, bad), crucial)
 
   crucial <- "unit"
   bad <- select(inputs, -ends_with(crucial))
-  expect_error(ictr(companies, bad), crucial)
+  expect_error(xctr(companies, bad), crucial)
 
   crucial <- "tilt_sector"
   bad <- select(inputs, -ends_with(crucial))
-  expect_error(ictr(companies, bad), crucial)
+  expect_error(xctr(companies, bad), crucial)
 
   crucial <- "isic_4digit"
   bad <- select(inputs, -ends_with(crucial))
-  expect_error(ictr(companies, bad), crucial)
+  expect_error(xctr(companies, bad), crucial)
 })
 
 test_that("with a missing value in co2_footprint errors gracefully", {
   companies <- slice(ictr_companies, 1)
   inputs <- slice(ictr_inputs, 1)
   inputs$input_co2_footprint <- NA
-  expect_error(ictr(companies, inputs), "co2_footprint")
+  expect_error(xctr(companies, inputs), "co2_footprint")
 })
 
 test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
@@ -210,8 +210,8 @@ test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
 
   inputs0 <- ictr_inputs[0, ]
   inputs1 <- ictr_inputs[1, ]
-  out0 <- ictr(companies, inputs0)
-  out1 <- ictr(companies, inputs1)
+  out0 <- xctr(companies, inputs0)
+  out1 <- xctr(companies, inputs1)
 
   expect_s3_class(out0, "tbl_df")
   expect_equal(names(out0), names(out1))
@@ -232,7 +232,7 @@ test_that("handles duplicated `companies` data (#230)", {
     input_unit = "metric ton*km",
     input_isic_4digit = "4575"
   )
-  expect_no_error(ictr(companies, co2))
+  expect_no_error(xctr(companies, co2))
 })
 
 test_that("handles duplicated `co2` data (#230)", {
@@ -249,7 +249,7 @@ test_that("handles duplicated `co2` data (#230)", {
     input_unit = "metric ton*km",
     input_isic_4digit = "4575"
   )
-  expect_no_error(ictr(companies, co2))
+  expect_no_error(xctr(companies, co2))
 })
 
 test_that("for a company with 3 products of varying footprints, value is 1/3 (#243)", {
@@ -276,6 +276,6 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
     input_isic_4digit = "4575",
   )
 
-  out <- ictr(companies, co2, low_threshold, high_threshold)
+  out <- xctr(companies, co2, low_threshold, high_threshold)
   expect_true(identical(unique(out$value), expected_value))
 })
