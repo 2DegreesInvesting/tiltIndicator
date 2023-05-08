@@ -87,10 +87,38 @@
 <span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"tiltIndicator"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] '0.0.0.9045'</span></span>
 <span></span>
-<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="va">ictr_companies</span></span>
+<span><span class="va">companies</span></span>
+<span><span class="co">#&gt; # A tibble: 9 × 4</span></span>
+<span><span class="co">#&gt;   activity_uuid_product_uuid                          clustered company_id unit </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                                               &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0… stove     fleischer… unit </span></span>
+<span><span class="co">#&gt; 2 be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200… oven      fleischer… unit </span></span>
+<span><span class="co">#&gt; 3 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5… steel     pecheries… kg   </span></span>
+<span><span class="co">#&gt; 4 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c… aged che… hoche-but… kg   </span></span>
+<span><span class="co">#&gt; 5 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c… aged che… vicquelin… kg   </span></span>
+<span><span class="co">#&gt; 6 ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c… cheese    bst-proco… kg   </span></span>
+<span><span class="co">#&gt; 7 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb… cream     leider-gm… kg   </span></span>
+<span><span class="co">#&gt; 8 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb… rubber    cheries-b… kg   </span></span>
+<span><span class="co">#&gt; 9 &lt;NA&gt;                                                apple     ca-coity-… &lt;NA&gt;</span></span>
 <span></span>
 <span><span class="co"># ICTR</span></span>
-<span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="va">ictr_inputs</span></span>
+<span><span class="va">inputs</span></span>
+<span><span class="co">#&gt; # A tibble: 33 × 6</span></span>
+<span><span class="co">#&gt;    input_co2_footprint input_tilt_sector input_unit input_isic_4digit</span></span>
+<span><span class="co">#&gt;                  &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;                  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1             7.07e+0 Inudstry          kg                      2560</span></span>
+<span><span class="co">#&gt;  2             3.99e+1 Inudstry          kwh                     2560</span></span>
+<span><span class="co">#&gt;  3             5.12e-1 Inudstry          kg                      2560</span></span>
+<span><span class="co">#&gt;  4             1.24e+0 Inudstry          kg                      2560</span></span>
+<span><span class="co">#&gt;  5             2.12e+1 Inudstry          kwh                     2560</span></span>
+<span><span class="co">#&gt;  6             1.24e-9 Inudstry          kg                      2560</span></span>
+<span><span class="co">#&gt;  7             7   e-9 Inudstry          kg                      2560</span></span>
+<span><span class="co">#&gt;  8             1.04e+0 Inudstry          kg                      2560</span></span>
+<span><span class="co">#&gt;  9             1.12e+0 Inudstry          kg                      2560</span></span>
+<span><span class="co">#&gt; 10             3.51e+0 Inudstry          kg                      2560</span></span>
+<span><span class="co">#&gt; # ℹ 23 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: input_activity_uuid_product_uuid &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   activity_uuid_product_uuid &lt;chr&gt;</span></span>
 <span></span>
 <span><span class="va">companies</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">inputs</span><span class="op">)</span></span>
@@ -148,7 +176,18 @@
 <span><span class="co">#&gt; # ℹ 134 more rows</span></span>
 <span></span>
 <span><span class="co"># PCTR</span></span>
-<span><span class="va">products</span> <span class="op">&lt;-</span> <span class="va">pctr_ecoinvent_co2</span></span>
+<span><span class="va">products</span></span>
+<span><span class="co">#&gt; # A tibble: 7 × 6</span></span>
+<span><span class="co">#&gt;   co2_footprint tilt_sector    unit  isic_4digit activity_uuid_product_uuid     </span></span>
+<span><span class="co">#&gt;           &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;                          </span></span>
+<span><span class="co">#&gt; 1        176.   Industry       unit         2560 0a242b09-772a-5edf-8e82-9cb4ba…</span></span>
+<span><span class="co">#&gt; 2         58.1  Industry       unit         2560 be06d25c-73dc-55fb-965b-0f3004…</span></span>
+<span><span class="co">#&gt; 3          4.95 Steel &amp; Metals kg           2870 977d997e-c257-5033-ba39-d0edee…</span></span>
+<span><span class="co">#&gt; 4         12.5  Agriculture    kg           1780 ebb8475e-ff57-5e4e-937b-b57881…</span></span>
+<span><span class="co">#&gt; 5         12.5  Agriculture    kg           1780 ebb8475e-ff57-5e4e-937b-b57881…</span></span>
+<span><span class="co">#&gt; 6          2.07 Industry       kg           2679 2f7b77a7-1556-5c1b-b0aa-c4534d…</span></span>
+<span><span class="co">#&gt; 7          1.98 Industry       kg           2679 2f7b77a7-1556-5c1b-b0aa-c4534d…</span></span>
+<span><span class="co">#&gt; # ℹ 1 more variable: ei_activity_name &lt;chr&gt;</span></span>
 <span></span>
 <span><span class="va">companies</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">products</span><span class="op">)</span></span>

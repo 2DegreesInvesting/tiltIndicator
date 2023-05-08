@@ -28,6 +28,9 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/news/index.html</loc>
   </url>
   <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/companies.html</loc>
+  </url>
+  <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/extdata_path.html</loc>
   </url>
   <url>
@@ -40,10 +43,10 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr_at_product_level.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/ictr_datasets.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/index.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/inputs.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr.html</loc>
@@ -61,10 +64,10 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr_at_product_level.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pctr_datasets.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pipe.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/products.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr.html</loc>

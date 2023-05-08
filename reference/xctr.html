@@ -72,11 +72,11 @@ process is the same. What varies is the <code>co2</code> dataset.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>companies</dt>
-<dd><p>A dataframe like <a href="ictr_datasets.html">ictr_companies</a>.</p></dd>
+<dd><p>A dataframe like <a href="companies.html">companies</a>.</p></dd>
 
 
 <dt>co2</dt>
-<dd><p>A dataframe like <a href="ictr_datasets.html">ictr_inputs</a>.</p></dd>
+<dd><p>A dataframe like <a href="inputs.html">inputs</a>.</p></dd>
 
 
 <dt>low_threshold</dt>
@@ -177,10 +177,10 @@ relative production emissions per company.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="va">ictr_companies</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="va">companies</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># ICTR</span></span></span>
-<span class="r-in"><span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="va">ictr_inputs</span></span></span>
+<span class="r-in"><span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="va">inputs</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">xctr_at_product_level</span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">inputs</span><span class="op">)</span></span></span>
@@ -238,7 +238,7 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 134 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># PCTR</span></span></span>
-<span class="r-in"><span><span class="va">products</span> <span class="op">&lt;-</span> <span class="va">pctr_ecoinvent_co2</span></span></span>
+<span class="r-in"><span><span class="va">products</span> <span class="op">&lt;-</span> <span class="va">products</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">xctr_at_product_level</span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">products</span><span class="op">)</span></span></span>
