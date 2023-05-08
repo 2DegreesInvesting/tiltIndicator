@@ -2,7 +2,16 @@ xctr_polish_output_at_product_level <- function(data) {
   data |>
     xctr_pivot_score_to_grouped_by() |>
     xctr_rename_at_product_level() |>
-    select_cols_at_product_level()
+    select_cols_at_product_level() |>
+    prune_unmatched_products()
+}
+
+prune_unmatched_products <- function(data) {
+  filter(data, all_na_else_not_na(.data$risk_category), .by = "companies_id")
+}
+
+all_na_else_not_na <- function(x) {
+  if (all(is.na(x))) TRUE else !is.na(x)
 }
 
 xctr_polish_output_at_company_level <- function(data) {
