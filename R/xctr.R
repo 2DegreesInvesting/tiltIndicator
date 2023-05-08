@@ -83,21 +83,37 @@ xctr_at_product_level <- function(companies,
     xctr_add_ranks(col_to_rank(co2)) |>
     xctr_add_scores(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
-    xctr_polish_output_at_product_level()
+    xctr_polish_output_at_product_level() |>
+    prune_unmatched_products()
+}
+
+prune_unmatched_products <- function(data) {
+  filter(data, all_na_else_not_na(.data$risk_category), .by = "companies_id")
+}
+all_na_else_not_na <- function(x) {
+  if (all(is.na(x))) TRUE else !is.na(x)
 }
 
 #' @export
 #' @rdname xctr
 xctr_at_company_level <- function(data) {
-  benchmarks <- xctr_combined_benchmarks()
+  with_value <- data |>
+    select("companies_id", "grouped_by", "risk_category") |>
+    filter(!is.na(.data[["grouped_by"]])) |>
+    dplyr::add_count(companies_id, .data[["grouped_by"]]) |>
+    group_by(companies_id, .data[["grouped_by"]]) |>
+    mutate(value = .data$n / sum(.data$n)) |>
+    select(-all_of("n"))
 
-  data |>
-    # FIXME: Instead rename downstream
-    rename(company_id = "companies_id") |>
-    # FIXME: Instead handle data in long format
-    xctr_pivot_grouped_by_to_score() |>
-    xctr_at_company_level_impl(benchmarks) |>
-    xctr_polish_output_at_company_level()
+  levels <- c("high", "medium", "low")
+  with_value |>
+    mutate(risk_category = factor(risk_category, levels = levels)) |>
+    tidyr::expand(risk_category) |>
+    filter(!is.na(risk_category)) |>
+    left_join(with_value, by = join_by(companies_id, grouped_by, risk_category)) |>
+    group_by(companies_id, grouped_by) |>
+    mutate(value = na_to_0_if_not_all_is_na(value)) |>
+    ungroup()
 }
 
 xctr_at_company_level_impl <- function(data, benchmarks) {
