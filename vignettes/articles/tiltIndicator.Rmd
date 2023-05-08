@@ -20,44 +20,30 @@ library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
 ```
 
-The tiltIndicator package comes with a number of datasets, which we'll use in the examples below.
+The tiltIndicator package supports two indicators: Input Carbon Transition Risk
+(ICTR) and Product Carbon Transition Risk (PCTR). They are both calculated in
+exactly the same way. The difference is not the process but the kind of `co2`
+data: either comes from inputs or products.
 
-```{r echo=FALSE}
-datasets <- data(package = "tiltIndicator")[["results"]][, "Item"]
-setNames(lapply(datasets, get), datasets)
-```
-
-## General introduction
-
-<!-- WARNING: Do not write here. Instead write in the `child` file -->
-
-```{r child=extdata_path("child/intro-general.Rmd")}
-```
-
-## XCTR: ICTR & PCTR
-
-The acronym XCTR reflects that both ICTR and PCTR are calculated in exactly the
-same way. The difference is not the process but the kind of `co2` data: either
-comes from inputs or products.
-
-### Input carbon transition risk (ICTR)
+## Input carbon transition risk (ICTR)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-ictr.Rmd")}
 ```
 
-### Product carbon transition risk (PCTR)
+## Product carbon transition risk (PCTR)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-pctr.Rmd")}
 ```
 
-### Example
+## Example
 
 Use `xctr*()` to calculate both ICTR and PCTR. Their difference is in the `co2`
-dataset.
+dataset. Here we'll use example datasets that come with the tiltIndicator
+package: `companies`, `inputs`, and `products`.
 
 ```{r}
 companies
