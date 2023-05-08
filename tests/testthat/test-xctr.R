@@ -294,11 +294,8 @@ test_that("isic sector column has character class", {
     co2_footprint = 1,
     tilt_sector = "transport",
     unit = "metric ton*km",
-    isic_4digit = "4575",
+    isic_4digit = 4575,
   )
-  out <- co2 |>
-    xctr_rename() |>
-    xctr_add_ranks(col_to_rank(co2)) |>
-    xctr_add_scores(low_threshold = 1/3, high_threshold = 2/3)
-  expect_true(is.character(unlist(select(out ,contains("isic_sec")))))
+
+  expect_error(xctr(companies, co2), "is.character.*not TRUE")
 })
