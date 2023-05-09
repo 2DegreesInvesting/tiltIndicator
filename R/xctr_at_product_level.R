@@ -92,10 +92,10 @@ rank_proportion <- function(x) {
 }
 
 col_to_rank <- function(co2, pattern = "co2_footprint") {
-  match_name(co2, pattern)
+  extract_name(co2, pattern)
 }
 
-match_name <- function(data, pattern) {
+extract_name <- function(data, pattern) {
   out <- grep(pattern, names(data), value = TRUE)
   if (identical(out, character(0))) {
     out <- ""
@@ -104,11 +104,11 @@ match_name <- function(data, pattern) {
 }
 
 matches_name <- function(data, pattern) {
-  nzchar(match_name(data, pattern))
+  nzchar(extract_name(data, pattern))
 }
 
 get_col <- function(data, pattern) {
-  data[[match_name(data, pattern)]]
+  data[[extract_name(data, pattern)]]
 }
 
 xctr_add_scores <- function(data, low_threshold = 1 / 3, high_threshold = 2 / 3) {
