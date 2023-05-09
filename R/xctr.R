@@ -66,23 +66,25 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
     xctr_at_company_level()
 }
 
+#' @export
+#' @rdname xctr
 xctr_at_company_level <- function(data) {
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
     filter(!is.na(.data[["grouped_by"]])) |>
-    dplyr::add_count(companies_id, .data[["grouped_by"]]) |>
-    group_by(companies_id, .data[["grouped_by"]]) |>
+    add_count(.data$companies_id, .data[["grouped_by"]]) |>
+    group_by(.data$companies_id, .data[["grouped_by"]]) |>
     mutate(value = .data$n / sum(.data$n)) |>
     select(-all_of("n"))
 
   levels <- c("high", "medium", "low")
   with_value |>
-    mutate(risk_category = factor(risk_category, levels = levels)) |>
-    tidyr::expand(risk_category) |>
-    filter(!is.na(risk_category)) |>
-    left_join(with_value, by = join_by(companies_id, grouped_by, risk_category)) |>
-    group_by(companies_id, grouped_by) |>
-    mutate(value = na_to_0_if_not_all_is_na(value)) |>
+    mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
+    expand(.data$risk_category) |>
+    filter(!is.na(.data$risk_category)) |>
+    left_join(with_value, by = join_by("companies_id", "grouped_by", "risk_category")) |>
+    group_by(.data$companies_id, .data$grouped_by) |>
+    mutate(value = na_to_0_if_not_all_is_na(.data$value)) |>
     ungroup()
 }
 
