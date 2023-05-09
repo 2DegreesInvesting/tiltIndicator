@@ -7,6 +7,7 @@
 #' @importFrom dplyr arrange
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr case_when
+#' @importFrom dplyr count
 #' @importFrom dplyr distinct
 #' @importFrom dplyr distinct_all
 #' @importFrom dplyr ends_with
