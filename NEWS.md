@@ -2,7 +2,7 @@
 
 # tiltIndicator 0.0.0.9048
 
-* `xctr_at_product_level()` not drops `NA`s from unmatched products (#267).
+* `xctr_at_product_level()` now drops `NA`s from unmatched products (#267).
 
 # tiltIndicator 0.0.0.9047
 
