@@ -117,7 +117,6 @@ test_that("outputs correct values for edge cases", {
 })
 
 test_that("outputs values in proportion", {
-
   companies <- pstr_companies
   scenarios <- pstr_scenarios
 
