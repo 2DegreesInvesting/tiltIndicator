@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9048
+
+* `xctr_at_product_level()` not drops `NA`s from unmatched products (#267).
+
 # tiltIndicator 0.0.0.9047
 
 * `ictr*()` and `pctr*()` are now retired (#264).
