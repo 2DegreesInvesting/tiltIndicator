@@ -94,10 +94,3 @@ na_to_0_if_not_all_is_na <- function(x) {
   }
   replace_na(x, 0)
 }
-
-xctr_combined_benchmarks <- function() {
-  xctr_benchmarks() |>
-    lapply(paste, collapse = "_") |>
-    unlist() |>
-    unique()
-}
