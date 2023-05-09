@@ -20,9 +20,8 @@ xctr_at_product_level <- function(companies,
 
 xctr_check <- function(companies, co2) {
   stopifnot(hasName(companies, "company_id"))
-  stop_if_lacks(co2,"co2_footprint")
-  stop_if_lacks(co2, "tilt_sector")
-  stop_if_lacks(co2, "isic_4digit")
+  c("co2_footprint", "tilt_sector", "isic_4digit") |>
+    purrr::walk(~ stop_if_lacks(co2, .x))
   stop_if_col_to_rank_has_missing_values(co2)
   stop_if_isic_class_not_char(co2, "isic_4digit")
 }
