@@ -3,6 +3,7 @@
 
 ## usethis namespace: start
 #' @importFrom dplyr across
+#' @importFrom dplyr add_count
 #' @importFrom dplyr arrange
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr case_when
@@ -41,6 +42,7 @@
 #' @importFrom rlang .env
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
+#' @importFrom tidyr expand
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyr pivot_wider
 #' @importFrom tidyr replace_na
