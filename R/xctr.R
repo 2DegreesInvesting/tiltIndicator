@@ -95,13 +95,6 @@ na_to_0_if_not_all_is_na <- function(x) {
   replace_na(x, 0)
 }
 
-xctr_combined_benchmarks <- function() {
-  xctr_benchmarks() |>
-    lapply(paste, collapse = "_") |>
-    unlist() |>
-    unique()
-}
-
 stop_if_col_to_rank_has_missing_values <- function(co2) {
   if (anyNA(co2[[col_to_rank(co2)]])) {
     stop(col_to_rank(co2), " can't have missing values.")
