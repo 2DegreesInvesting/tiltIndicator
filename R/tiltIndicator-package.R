@@ -38,6 +38,7 @@
 #' @importFrom ggplot2 scale_x_discrete
 #' @importFrom purrr imap_dfr
 #' @importFrom purrr map
+#' @importFrom purrr walk
 #' @importFrom readr read_csv
 #' @importFrom rlang .env
 #' @importFrom tibble tibble
