@@ -6,9 +6,14 @@
 \alias{pstr_at_company_level}
 \title{Calculate the PSTR indicator}
 \usage{
-pstr(companies, scenarios)
+pstr(companies, scenarios, low_threshold = 30, high_threshold = 70)
 
-pstr_at_product_level(companies, scenarios)
+pstr_at_product_level(
+  companies,
+  scenarios,
+  low_threshold = 30,
+  high_threshold = 70
+)
 
 pstr_at_company_level(data, companies)
 }
@@ -16,6 +21,12 @@ pstr_at_company_level(data, companies)
 \item{companies}{A dataframe like \link{pstr_companies}.}
 
 \item{scenarios}{A dataframe like \link{pstr_scenarios}.}
+
+\item{low_threshold}{A numeric value to segment low and medium reduction
+targets.}
+
+\item{high_threshold}{A numeric value to segment medium and high reduction
+targets.}
 
 \item{data}{A dataframe. The output at product level.}
 }
