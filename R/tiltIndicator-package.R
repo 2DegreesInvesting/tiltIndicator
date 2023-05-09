@@ -52,5 +52,6 @@
 #' @importFrom tidyselect all_of
 #' @importFrom tidyselect contains
 #' @importFrom utils hasName
+#' @importFrom vctrs vec_assert
 ## usethis namespace: end
 NULL

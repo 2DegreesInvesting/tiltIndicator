@@ -300,5 +300,5 @@ test_that("if the 'isic' column isn't a character, throws an error (#233)", {
     isic_4digit = 4575,
   )
 
-  expect_error(xctr(companies, co2), "is.character.*not TRUE")
+  expect_error(xctr(companies, co2), "must be.*character")
 })

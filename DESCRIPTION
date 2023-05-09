@@ -29,6 +29,7 @@ Imports:
     tidyr,
     tidyselect,
     utils,
+    vctrs,
     withr
 Suggests: 
     covr,

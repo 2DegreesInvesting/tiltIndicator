@@ -47,9 +47,7 @@ stop_if_col_to_rank_has_missing_values <- function(co2) {
 }
 
 stop_if_isic_class_not_char <- function(co2, column) {
-  if (any(grepl(column, names(co2)))) {
-    stopifnot(is.character(unlist(select(co2, contains(column)))))
-  }
+  vec_assert(co2[[find_col(co2, "isic_4digit")]], character())
 }
 
 xctr_rename <- function(data) {
