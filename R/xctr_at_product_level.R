@@ -20,11 +20,21 @@ xctr_at_product_level <- function(companies,
 
 xctr_check <- function(companies, co2) {
   stopifnot(hasName(companies, "company_id"))
-  stopifnot(any(grepl("co2_footprint", names(co2))))
-  stopifnot(any(grepl("tilt_sector", names(co2))))
-  stopifnot(any(grepl("isic_4digit", names(co2))))
+  stop_if_lacks(co2,"co2_footprint")
+  stop_if_lacks(co2, "tilt_sector")
+  stop_if_lacks(co2, "isic_4digit")
   stop_if_col_to_rank_has_missing_values(co2)
   stop_if_isic_class_not_char(co2, "isic_4digit")
+}
+
+stop_if_lacks <- function(data, pattern) {
+  lacks_name <- !any(grepl(pattern, names(data)))
+  if (lacks_name) {
+    rlang::abort(c(
+      glue::glue("The data lacks a column matching the pattern '{pattern}'."),
+      i = "Are you using the correct data?"
+    ))
+  }
 }
 
 stop_if_col_to_rank_has_missing_values <- function(co2) {
