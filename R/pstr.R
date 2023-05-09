@@ -5,6 +5,10 @@
 #'
 #' @param companies A dataframe like [pstr_companies].
 #' @param scenarios A dataframe like [pstr_scenarios].
+#' @param low_threshold A numeric value to segment low and medium reduction
+#'   targets.
+#' @param high_threshold A numeric value to segment medium and high reduction
+#'   targets.
 #' @param data A dataframe. The output at product level.
 #'
 #' @family PSTR functions

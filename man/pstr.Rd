@@ -22,6 +22,12 @@ pstr_at_company_level(data, companies)
 
 \item{scenarios}{A dataframe like \link{pstr_scenarios}.}
 
+\item{low_threshold}{A numeric value to segment low and medium reduction
+targets.}
+
+\item{high_threshold}{A numeric value to segment medium and high reduction
+targets.}
+
 \item{data}{A dataframe. The output at product level.}
 }
 \value{
