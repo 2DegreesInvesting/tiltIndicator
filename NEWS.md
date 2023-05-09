@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9049
+
+* New article handling long runtime (#283)
+
+* `pstr*()` gain arguments `low_threshold` and `high_threshold` (@kalashsinghal #273).
+
+* `pstr*()` values are now expressed as proportion (@lindadelacombaz #274).
+
 # tiltIndicator 0.0.0.9048
 
 * `xctr_at_product_level()` now drops `NA`s from unmatched products (#267).
