@@ -30,7 +30,7 @@ xctr_check <- function(companies, co2) {
 }
 
 stop_if_lacks_name <- function(data, pattern) {
-  lacks_name <- identical(get_name(data, pattern), character(0))
+  lacks_name <- identical(match_name(data, pattern), character(0))
   if (lacks_name) {
     abort(c(
       glue("The data lacks a column matching the pattern '{pattern}'."),
@@ -93,15 +93,15 @@ rank_proportion <- function(x) {
 }
 
 col_to_rank <- function(co2, pattern = "co2_footprint") {
-  get_name(co2, pattern)
+  match_name(co2, pattern)
 }
 
-get_name <- function(data, pattern) {
+match_name <- function(data, pattern) {
   grep(pattern, names(data), value = TRUE)
 }
 
 get_col <- function(data, pattern) {
-  data[[get_name(data, pattern)]]
+  data[[match_name(data, pattern)]]
 }
 
 xctr_add_scores <- function(data, low_threshold = 1 / 3, high_threshold = 2 / 3) {
