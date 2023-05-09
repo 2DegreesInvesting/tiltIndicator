@@ -67,8 +67,8 @@ for (i in seq_along(companies_list)) {
   # Skip if run previously
   companies_id <- names(companies_list[i])
   file <- path(parent, indicator, paste0(companies_id, ".csv"))
-  if (exists(file)) next()
-  
+  if (file.exists(file)) next()
+
   # Run
   result <- xctr(companies_list[[i]], real_co2)
   
