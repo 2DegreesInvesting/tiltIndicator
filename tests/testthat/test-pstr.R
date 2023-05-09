@@ -143,7 +143,7 @@ test_that("is not sensitive to high_threshold", {
 test_that("each company has risk categories low, medium, and high (#215)", {
   companies <- slice(pstr_companies, 1)
   scenarios <- pstr_scenarios
-  out <- pstr_at_product_level(companies, scenarios)
+  out <- pstr(companies, scenarios)
   risk_categories <- sort(unique(out$risk_category))
   expect_equal(risk_categories, c("high", "low", "medium"))
 })
