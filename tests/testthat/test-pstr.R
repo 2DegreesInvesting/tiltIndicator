@@ -115,3 +115,13 @@ test_that("outputs correct values for edge cases", {
   out <- pstr(companies, mutate(scenarios, reductions = -1))
   expect_equal("low", out$risk_category)
 })
+
+test_that("outputs values in proportion", {
+  companies <- pstr_companies
+  scenarios <- pstr_scenarios
+
+  out <- pstr(companies, scenarios)
+  expect_true(all(out$value <= 1.0))
+})
+
+
