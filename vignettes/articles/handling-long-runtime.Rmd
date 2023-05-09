@@ -52,7 +52,6 @@ dir_create(path(parent, indicator))
 Split the data by company. 
 
 ```{r}
-# Split the data by company
 companies_list <- split(real_companies, real_companies$company_id)
 ```
 
@@ -68,8 +67,8 @@ for (i in seq_along(companies_list)) {
   # Skip if run previously
   companies_id <- names(companies_list[i])
   file <- path(parent, indicator, paste0(companies_id, ".csv"))
-  if (exists(file)) next()
-  
+  if (file.exists(file)) next()
+
   # Run
   result <- xctr(companies_list[[i]], real_co2)
   
