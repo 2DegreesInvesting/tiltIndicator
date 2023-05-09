@@ -25,7 +25,7 @@ xctr_check <- function(companies, co2) {
   crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
   walk(crucial, ~ stop_if_lacks_name(co2, .x))
 
-  stop_if_col_to_rank_has_missing_values(co2)
+  stop_if_has_na(co2, col_to_rank(co2))
   vec_assert(get_column(co2, "isic_4digit"), character())
 }
 
@@ -39,10 +39,11 @@ stop_if_lacks_name <- function(data, pattern) {
   invisible(data)
 }
 
-stop_if_col_to_rank_has_missing_values <- function(co2) {
-  if (anyNA(co2[[col_to_rank(co2)]])) {
-    stop(col_to_rank(co2), " can't have missing values.")
+stop_if_has_na <- function(data, name) {
+  if (anyNA(data[[name]])) {
+    abort(glue("{name} can't have missing values."))
   }
+  invisible(data)
 }
 
 xctr_rename <- function(data) {
