@@ -242,37 +242,37 @@ datasets that come with the tiltIndicator package:
 <span><span class="va">companies</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">inputs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_company_level</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 338 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high          0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 328 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium        0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low           0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high          0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium        0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low           0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high          0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Same</span></span>
 <span><span class="va">companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">inputs</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 338 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high          0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.143</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 328 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium        0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low           0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium        0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low           0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high          0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium        0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low           0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high          0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span>
 <span></span>
 <span><span class="co"># PCTR</span></span>
 <span><span class="va">products</span></span>
@@ -310,7 +310,7 @@ datasets that come with the tiltIndicator package:
 <span><span class="va">companies</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">products</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_company_level</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 151 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span></span>
@@ -322,12 +322,12 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high            0.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 141 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Same</span></span>
 <span><span class="va">companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">products</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 151 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span></span>
@@ -339,8 +339,8 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high            0.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 141 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

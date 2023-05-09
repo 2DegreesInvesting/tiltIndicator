@@ -142,7 +142,7 @@ to a .csv file, and skipping companies that are already done.</p>
 single dataset at once.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">combined_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html" class="external-link">dir_ls</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">parent</span>, <span class="va">indicator</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">151</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">4</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">144</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">4</span></span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (3): companies_id, grouped_by, risk_category</span></span>
@@ -151,7 +151,7 @@ single dataset at once.</p>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
 <span><span class="va">combined_results</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 151 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span></span>
@@ -163,8 +163,8 @@ single dataset at once.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high            0.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 141 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span></code></pre></div>
 <p>You may want to run this on as a <a href="https://docs.posit.co/ide/user/ide/guide/tools/jobs.html" class="external-link">background
 job</a> so you can use your R session for something else while the
 process runs on the background. Or better, you may run it on a remote
