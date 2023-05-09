@@ -20,17 +20,17 @@ xctr_at_product_level <- function(companies,
 
 xctr_check <- function(companies, co2) {
   crucial <- c("company_id")
-  walk(crucial, ~ stop_if_lacks(companies, .x))
+  walk(crucial, ~ stop_if_lacks_name(companies, .x))
 
   crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
-  walk(crucial, ~ stop_if_lacks(co2, .x))
+  walk(crucial, ~ stop_if_lacks_name(co2, .x))
 
   stop_if_col_to_rank_has_missing_values(co2)
   vec_assert(get_col(co2, "isic_4digit"), character())
 }
 
-stop_if_lacks <- function(data, pattern) {
-  lacks_name <- !any(grepl(pattern, names(data)))
+stop_if_lacks_name <- function(data, pattern) {
+  lacks_name <- identical(get_name(data, pattern), character(0))
   if (lacks_name) {
     abort(c(
       glue("The data lacks a column matching the pattern '{pattern}'."),
