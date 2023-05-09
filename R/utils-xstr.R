@@ -20,7 +20,7 @@ xstr_at_company_level <- function(data, companies) {
   out <- with_risk_category |>
     select(all_of(all_of(useful_cols))) |>
     group_by(.data$companies_id, .data$risk_category, .data$scenario, .data$year) |>
-    reframe(score_aggregated = (n() / .data$total_products_per_company * 100)) |>
+    reframe(score_aggregated = (n() / .data$total_products_per_company)) |>
     group_by(.data$companies_id, .data$risk_category, .data$scenario, .data$year) |>
     distinct() |>
     ungroup()
