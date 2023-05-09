@@ -75,9 +75,14 @@ derive company-level information.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pstr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pstr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, low_threshold <span class="op">=</span> <span class="fl">30</span>, high_threshold <span class="op">=</span> <span class="fl">70</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">pstr_at_product_level</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span><span class="op">)</span></span>
+<span><span class="fu">pstr_at_product_level</span><span class="op">(</span></span>
+<span>  <span class="va">companies</span>,</span>
+<span>  <span class="va">scenarios</span>,</span>
+<span>  low_threshold <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  high_threshold <span class="op">=</span> <span class="fl">70</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">pstr_at_company_level</span><span class="op">(</span><span class="va">data</span>, <span class="va">companies</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -90,6 +95,16 @@ derive company-level information.</p>
 
 <dt>scenarios</dt>
 <dd><p>A dataframe like <a href="pstr_datasets.html">pstr_scenarios</a>.</p></dd>
+
+
+<dt>low_threshold</dt>
+<dd><p>A numeric value to segment low and medium reduction
+targets.</p></dd>
+
+
+<dt>high_threshold</dt>
+<dd><p>A numeric value to segment medium and high reduction
+targets.</p></dd>
 
 
 <dt>data</dt>
