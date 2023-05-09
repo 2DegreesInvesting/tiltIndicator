@@ -20,16 +20,16 @@ xctr_at_product_level <- function(companies,
 
 xctr_check <- function(companies, co2) {
   crucial <- c("company_id")
-  walk(crucial, ~ stop_if_lacks_name(companies, .x))
+  walk(crucial, ~ assert_matches_name(companies, .x))
 
   crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
-  walk(crucial, ~ stop_if_lacks_name(co2, .x))
+  walk(crucial, ~ assert_matches_name(co2, .x))
 
-  stop_if_has_na(co2, col_to_rank(co2))
-  vec_assert(get_column(co2, "isic_4digit"), character())
+  assert_has_no_na(co2, col_to_rank(co2))
+  assert_is_character(get_column(co2, "isic_4digit"))
 }
 
-stop_if_lacks_name <- function(data, pattern) {
+assert_matches_name <- function(data, pattern) {
   if (!matches_name(data, pattern)) {
     abort(c(
       glue("The data lacks a column matching the pattern '{pattern}'."),
@@ -39,7 +39,7 @@ stop_if_lacks_name <- function(data, pattern) {
   invisible(data)
 }
 
-stop_if_has_na <- function(data, name) {
+assert_has_no_na <- function(data, name) {
   if (anyNA(data[[name]])) {
     abort(c(
       glue("The column '{name}' can't have missing values."),
@@ -47,6 +47,11 @@ stop_if_has_na <- function(data, name) {
     ))
   }
   invisible(data)
+}
+
+assert_is_character <- function(x) {
+  vec_assert(x, character())
+  invisible(x)
 }
 
 xctr_rename <- function(data) {
