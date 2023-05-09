@@ -51,7 +51,6 @@ check_has_no_na <- function(data, name) {
 
 check_is_character <- function(x) {
   vec_assert(x, character())
-  invisible(x)
 }
 
 xctr_rename <- function(data) {
