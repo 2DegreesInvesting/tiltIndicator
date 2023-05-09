@@ -26,7 +26,7 @@ xctr_check <- function(companies, co2) {
   walk(crucial, ~ stop_if_lacks(co2, .x))
 
   stop_if_col_to_rank_has_missing_values(co2)
-  stop_if_isic_class_not_char(co2, "isic_4digit")
+  vec_assert(get_col(co2, "isic_4digit"), character())
 }
 
 stop_if_lacks <- function(data, pattern) {
@@ -44,10 +44,6 @@ stop_if_col_to_rank_has_missing_values <- function(co2) {
   if (anyNA(co2[[col_to_rank(co2)]])) {
     stop(col_to_rank(co2), " can't have missing values.")
   }
-}
-
-stop_if_isic_class_not_char <- function(co2, column) {
-  vec_assert(co2[[find_col(co2, "isic_4digit")]], character())
 }
 
 xctr_rename <- function(data) {
@@ -97,11 +93,15 @@ rank_proportion <- function(x) {
 }
 
 col_to_rank <- function(co2, pattern = "co2_footprint") {
-  find_col(co2, pattern)
+  find_name(co2, pattern)
 }
 
-find_col <- function(data, pattern) {
+find_name <- function(data, pattern) {
   grep(pattern, names(data), value = TRUE)
+}
+
+get_col <- function(data, pattern) {
+  data[[find_name(data, pattern)]]
 }
 
 xctr_add_scores <- function(data, low_threshold = 1 / 3, high_threshold = 2 / 3) {
