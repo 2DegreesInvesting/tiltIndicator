@@ -94,15 +94,3 @@ na_to_0_if_not_all_is_na <- function(x) {
   }
   replace_na(x, 0)
 }
-
-stop_if_col_to_rank_has_missing_values <- function(co2) {
-  if (anyNA(co2[[col_to_rank(co2)]])) {
-    stop(col_to_rank(co2), " can't have missing values.")
-  }
-}
-
-stop_if_isic_class_not_char <- function(co2, column) {
-  if (any(grepl(column, names(co2)))) {
-    stopifnot(is.character(unlist(select(co2, contains(column)))))
-  }
-}

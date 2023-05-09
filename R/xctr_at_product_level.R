@@ -19,12 +19,38 @@ xctr_at_product_level <- function(companies,
 }
 
 xctr_check <- function(companies, co2) {
-  stopifnot(hasName(companies, "company_id"))
-  stopifnot(any(grepl("co2_footprint", names(co2))))
-  stopifnot(any(grepl("tilt_sector", names(co2))))
-  stopifnot(any(grepl("isic_4digit", names(co2))))
-  stop_if_col_to_rank_has_missing_values(co2)
-  stop_if_isic_class_not_char(co2, "isic_4digit")
+  crucial <- c("company_id")
+  walk(crucial, ~ check_matches_name(companies, .x))
+
+  crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
+  walk(crucial, ~ check_matches_name(co2, .x))
+
+  check_has_no_na(co2, col_to_rank(co2))
+  check_is_character(get_column(co2, "isic_4digit"))
+}
+
+check_matches_name <- function(data, pattern) {
+  if (!matches_name(data, pattern)) {
+    abort(c(
+      glue("The data lacks a column matching the pattern '{pattern}'."),
+      i = "Are you using the correct data?"
+    ))
+  }
+  invisible(data)
+}
+
+check_has_no_na <- function(data, name) {
+  if (anyNA(data[[name]])) {
+    abort(c(
+      glue("The column '{name}' can't have missing values."),
+      i = glue("Remove them with `dplyr::filter(data, !is.na({name}))`.")
+    ))
+  }
+  invisible(data)
+}
+
+check_is_character <- function(x) {
+  vec_assert(x, character())
 }
 
 xctr_rename <- function(data) {
@@ -74,11 +100,7 @@ rank_proportion <- function(x) {
 }
 
 col_to_rank <- function(co2, pattern = "co2_footprint") {
-  find_col(co2, pattern)
-}
-
-find_col <- function(data, pattern) {
-  grep(pattern, names(data), value = TRUE)
+  extract_name(co2, pattern)
 }
 
 xctr_add_scores <- function(data, low_threshold = 1 / 3, high_threshold = 2 / 3) {
