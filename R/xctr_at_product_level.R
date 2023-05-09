@@ -30,8 +30,7 @@ xctr_check <- function(companies, co2) {
 }
 
 stop_if_lacks_name <- function(data, pattern) {
-  lacks_name <- identical(match_name(data, pattern), character(0))
-  if (lacks_name) {
+  if (!matches_name(data, pattern)) {
     abort(c(
       glue("The data lacks a column matching the pattern '{pattern}'."),
       i = "Are you using the correct data?"
@@ -97,7 +96,15 @@ col_to_rank <- function(co2, pattern = "co2_footprint") {
 }
 
 match_name <- function(data, pattern) {
-  grep(pattern, names(data), value = TRUE)
+  out <- grep(pattern, names(data), value = TRUE)
+  if (identical(out, character(0))) {
+    out <- ""
+  }
+  out
+}
+
+matches_name <- function(data, pattern) {
+  nzchar(match_name(data, pattern))
 }
 
 get_col <- function(data, pattern) {
