@@ -1,20 +1,3 @@
-xctr_polish_output_at_company_level <- function(data) {
-  data |>
-    xctr_rename_at_company_level() |>
-    xctr_pivot_score_to_grouped_by() |>
-    relocate(all_of(cols_at_company_level())) |>
-    arrange(.data$companies_id, .data$grouped_by)
-}
-
-xctr_pivot_grouped_by_to_score <- function(data) {
-  data |>
-    pivot_wider(
-      names_from = "grouped_by",
-      values_from = "risk_category",
-      names_prefix = "score_"
-    )
-}
-
 xctr_rename_at_company_level <- function(data) {
   data |>
     rename(
