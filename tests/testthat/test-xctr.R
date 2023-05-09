@@ -302,3 +302,32 @@ test_that("if the 'isic' column isn't a character, throws an error (#233)", {
 
   expect_error(xctr(companies, co2), "must be.*character")
 })
+
+test_that("for each company & benchmark, each risk category is unique (#285)", {
+  # styler: off
+  companies <- tibble::tribble(
+                            ~company_id,          ~clustered,                                                 ~activity_uuid_product_uuid, ~unit,
+    "-fred-sl_00000005407085-741049001",      "fish, frozen", "0fe31e67-346a-504c-a03d-64f85ccc2a64_a459eea1-4e62-4daf-9135-1aea9805aa90",  "kg",
+    "-fred-sl_00000005407085-741049001", "fish, deep-frozen", "26104519-4d49-5d85-bc74-e8e03d1a7914_cdbf0bef-39f7-46c8-87a2-3f9f679b5bb7",  "kg"
+  )
+  co2 <- tibble::tribble(
+                                                    ~activity_uuid_product_uuid,  ~unit,            ~tilt_sector, ~isic_4digit,   ~co2_footprint,
+    # In companies
+    "0fe31e67-346a-504c-a03d-64f85ccc2a64_a459eea1-4e62-4daf-9135-1aea9805aa90",   "kg",                      NA,       "0311", 2.83222756713596,
+    "26104519-4d49-5d85-bc74-e8e03d1a7914_cdbf0bef-39f7-46c8-87a2-3f9f679b5bb7",   "kg",                      NA,       "0311",  2.1156617059259,
+    # Not in companies
+    "0faa7ecb-fef2-5117-8993-387c1898ffc8_c33b5236-001e-49b5-aa3d-810c0214f9ce",   "kg",      "Steel and Metals",       "2410", 4.94911765272901,
+    "9b414d69-2bd2-5b44-bd5d-56672896aac5_0f2ea065-f26c-4356-a261-39ef2799aea4", "unit", "Construction Industry",       "4322", 11266.1570789735,
+    "74c3b4f6-dc3d-5e13-badf-70b4c3a965d3_54186f39-acc2-4c84-95e7-fbb067bde4cd",   "ha",                      NA,       "0161", 51.6463779571345,
+    "72651603-406a-545d-a03d-1d1caf656efb_765e7edf-19bc-4110-bb7c-32df8d749c54",   "m3", "Non-metallic Minerals",       "2395", 424.269497499198
+  )
+  # styler: on
+
+  out <- xctr(companies, co2)
+
+  bad <- out |>
+    count(grouped_by, risk_category) |>
+    filter(n > 1) |>
+    nrow()
+  expect_equal(bad, 0)
+})
