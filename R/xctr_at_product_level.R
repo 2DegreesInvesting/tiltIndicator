@@ -41,7 +41,10 @@ stop_if_lacks_name <- function(data, pattern) {
 
 stop_if_has_na <- function(data, name) {
   if (anyNA(data[[name]])) {
-    abort(glue("{name} can't have missing values."))
+    abort(c(
+      glue("The column '{name}' can't have missing values."),
+      i = glue("Remove them with `dplyr::filter(data, !is.na({name}))`.")
+    ))
   }
   invisible(data)
 }
