@@ -9,5 +9,6 @@ TODO (if appropriate):
 - [ ] Mark the PR as draft.
 - [ ] [Include a unit test](https://code-review.tidyverse.org/reviewer/aspects.html#sec-tests).
 - [ ] Polish the PR title and description.
+- [ ] Ensure the checks pass or explain why not.
 - [ ] Change the status from draft to ready.
 - [ ] Assign a reviewer.
