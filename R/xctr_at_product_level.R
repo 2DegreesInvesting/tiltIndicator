@@ -142,3 +142,15 @@ prune_unmatched_products <- function(data) {
 all_na_else_not_na <- function(x) {
   if (all(is.na(x))) TRUE else !is.na(x)
 }
+
+stop_if_col_to_rank_has_missing_values <- function(co2) {
+  if (anyNA(co2[[col_to_rank(co2)]])) {
+    stop(col_to_rank(co2), " can't have missing values.")
+  }
+}
+
+stop_if_isic_class_not_char <- function(co2, column) {
+  if (any(grepl(column, names(co2)))) {
+    stopifnot(is.character(unlist(select(co2, contains(column)))))
+  }
+}
