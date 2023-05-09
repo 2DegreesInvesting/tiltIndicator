@@ -139,3 +139,24 @@ test_that("is not sensitive to high_threshold", {
   out2 <- pstr(companies, scenarios, high_threshold = 90)
   expect_true(identical(out1, out2))
 })
+
+test_that("outputs low, medium and high categories for each company", {
+  skip("This test does not work now - change the input data for it to work")
+  companies <- pstr_companies
+  scenarios <- pstr_scenarios
+
+  #FIXME : to delete once the inputs works - this makes the test pass
+  #scenarios$reductions <- sample(1:100, 484, replace = TRUE)
+
+  out <- pstr(companies,scenarios) |>
+    filter(risk_category != "no_sector")
+
+  categories <- c("low", "medium", "high")
+
+  every_categories <- out |>
+    select(c(companies_id, risk_category)) |>
+    group_by(companies_id) |>
+    summarize(check = all(risk_category %in% categories))
+
+  expect_true(all(every_categories$check))
+})
