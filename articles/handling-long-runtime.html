@@ -118,8 +118,7 @@ necessary.</p>
 <span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">parent</span>, <span class="va">indicator</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Split the data by company.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Split the data by company</span></span>
-<span><span class="va">companies_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">real_companies</span>, <span class="va">real_companies</span><span class="op">$</span><span class="va">company_id</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">companies_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">real_companies</span>, <span class="va">real_companies</span><span class="op">$</span><span class="va">company_id</span><span class="op">)</span></span></code></pre></div>
 <p>Calculate the indicator for each company at a time, saving the result
 to a .csv file, and skipping companies that are already done.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -131,8 +130,8 @@ to a .csv file, and skipping companies that are already done.</p>
 <span>  <span class="co"># Skip if run previously</span></span>
 <span>  <span class="va">companies_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
 <span>  <span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">parent</span>, <span class="va">indicator</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">companies_id</span>, <span class="st">".csv"</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/exists.html" class="external-link">exists</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span> <span class="kw">next</span><span class="op">(</span><span class="op">)</span></span>
-<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span> <span class="kw">next</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
 <span>  <span class="co"># Run</span></span>
 <span>  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="va">real_co2</span><span class="op">)</span></span>
 <span>  </span>
