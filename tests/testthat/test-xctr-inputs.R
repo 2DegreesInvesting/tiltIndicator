@@ -1,5 +1,7 @@
 test_that("hasn't change", {
-  out <- format_robust_snapshot(xctr(companies, inputs))
+  out <- xctr(companies, inputs) |>
+    dplyr::arrange(companies_id) |>
+    format_robust_snapshot()
   expect_snapshot(out)
 })
 

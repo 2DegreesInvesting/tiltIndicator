@@ -2,13 +2,10 @@
 % Please edit documentation in R/xctr.R, R/xctr_at_product_level.R
 \name{xctr}
 \alias{xctr}
-\alias{xctr_at_company_level}
 \alias{xctr_at_product_level}
 \title{Calculate input (or product) carbon transition risk}
 \usage{
 xctr(companies, co2, low_threshold = 1/3, high_threshold = 2/3)
-
-xctr_at_company_level(data)
 
 xctr_at_product_level(
   companies,
