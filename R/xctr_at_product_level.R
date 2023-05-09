@@ -32,8 +32,8 @@ xctr_check <- function(companies, co2) {
 stop_if_lacks <- function(data, pattern) {
   lacks_name <- !any(grepl(pattern, names(data)))
   if (lacks_name) {
-    rlang::abort(c(
-      glue::glue("The data lacks a column matching the pattern '{pattern}'."),
+    abort(c(
+      glue("The data lacks a column matching the pattern '{pattern}'."),
       i = "Are you using the correct data?"
     ))
   }
