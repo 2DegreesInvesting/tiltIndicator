@@ -25,7 +25,7 @@
 #' # Company level
 #' companies |>
 #'   istr_at_product_level(scenario, mapper) |>
-#'   xctr_at_company_level()
+#'   istr_at_company_level()
 #'
 #' # Same
 #' istr(companies, scenario, mapper)

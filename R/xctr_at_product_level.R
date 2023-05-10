@@ -18,6 +18,15 @@ xctr_at_product_level <- function(companies,
     xctr_polish_output_at_product_level()
 }
 
+# FIXME: Retire pstr_at_company_level
+#' @rdname pstr
+#' @export
+pstr_at_company_level <- xctr_at_product_level
+# FIXME: Retire istr_at_company_level
+#' @rdname istr
+#' @export
+istr_at_company_level <- xctr_at_product_level
+
 xctr_check <- function(companies, co2) {
   crucial <- c("company_id")
   walk(crucial, ~ check_matches_name(companies, .x))
