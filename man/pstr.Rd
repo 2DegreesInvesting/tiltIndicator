@@ -3,7 +3,6 @@
 \name{pstr}
 \alias{pstr}
 \alias{pstr_at_product_level}
-\alias{pstr_at_company_level}
 \title{Calculate the PSTR indicator}
 \usage{
 pstr(companies, scenarios, low_threshold = 30, high_threshold = 70)
@@ -14,8 +13,6 @@ pstr_at_product_level(
   low_threshold = 30,
   high_threshold = 70
 )
-
-pstr_at_company_level(data, companies)
 }
 \arguments{
 \item{companies}{A dataframe like \link{pstr_companies}.}
