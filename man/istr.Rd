@@ -61,13 +61,8 @@ companies |>
 
 # Company level
 companies |>
-<<<<<<< HEAD
-  istr_at_product_level(scenario, mapper) |>
-  istr_at_company_level()
-=======
   istr_at_product_level(scenarios, mapper) |>
-  istr_at_company_level(companies)
->>>>>>> main
+  istr_at_company_level()
 
 # Same
 istr(companies, scenarios, mapper)
