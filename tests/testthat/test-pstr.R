@@ -154,23 +154,9 @@ test_that("each company has risk categories low, medium, and high (#215)", {
   expect_equal(risk_categories, c("high", "low", "medium"))
 })
 
-test_that("with a missing value in the co2* column errors gracefully", {
-  na_in_co2_column <- NA_real_
-  scenarios <- tibble(
-    reductions = na_in_co2_column,
-    scenario = "1.5c required policy scenario",
-    sector = "total",
-    subsector = "energy",
-    year = 2020,
-    # value = 99,
-    type = "ipr",
-  )
-  companies <- tibble(
-    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
-    type = "ipr",
-    sector = "total",
-    subsector = "energy",
-  )
-
+test_that("with a missing value in the reductions column errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(pstr_scenarios, 1)
+  scenarios$reductions <- NA
   expect_error(pstr(companies, scenarios), "reductions")
 })
