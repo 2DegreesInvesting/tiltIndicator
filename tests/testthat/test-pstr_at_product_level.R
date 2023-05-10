@@ -10,9 +10,9 @@ test_that("outputs expected columns at product level", {
     "activity_uuid_product_uuid",
     "tilt_sector",
     "tilt_subsector",
-    # FIXME rename to scenario
-    "type",
-    "year"
+    "scenario",
+    "year",
+    "type"
   )
   out <- pstr_at_product_level(companies, scenarios)
   # FIXME: Implement
