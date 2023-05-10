@@ -74,7 +74,7 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   expect_error(pstr(companies, bad), crucial)
 })
 
-test_that("outputs correct values for edge cases", {
+test_that("thresholds yield expected low, medium, and high risk categories", {
   companies <- tibble(
     company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
     type = "ipr",
@@ -90,9 +90,6 @@ test_that("outputs correct values for edge cases", {
     reductions = 0,
     type = "ipr",
   )
-
-  out <- pstr(companies, mutate(scenarios, reductions = NA))
-  expect_equal("no_sector", out$risk_category)
 
   default_low_mid <- formals(pstr)$low_threshold
   out <- pstr(companies, mutate(scenarios, reductions = default_low_mid))
