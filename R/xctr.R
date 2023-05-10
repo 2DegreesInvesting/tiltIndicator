@@ -69,6 +69,8 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 #' @export
 #' @rdname xctr
 xctr_at_company_level <- function(data) {
+  if (identical(nrow(data), 0L)) return(ptype_at_company_level())
+
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
     filter(!is.na(.data[["grouped_by"]])) |>
