@@ -94,20 +94,38 @@ test_that("outputs correct values for edge cases", {
   out <- pstr(companies, mutate(scenarios, reductions = NA))
   expect_equal("no_sector", out$risk_category)
 
-  out <- pstr(companies, mutate(scenarios, reductions = 30))
-  expect_equal("low", out$risk_category)
+  default_low_mid <- formals(pstr)$low_threshold
+  out <- pstr(companies, mutate(scenarios, reductions = default_low_mid))
+  expect_equal(1, filter(out, risk_category == "low")$value)
+  expect_equal(0, filter(out, risk_category == "medium")$value)
+  expect_equal(0, filter(out, risk_category == "high")$value)
 
-  out <- pstr(companies, mutate(scenarios, reductions = 30.1))
-  expect_equal("medium", out$risk_category)
+  above_default_low_mid <- formals(pstr)$low_threshold + 0.001
+  out <- pstr(companies, mutate(scenarios, reductions = above_default_low_mid))
+  expect_equal(0, filter(out, risk_category == "low")$value)
+  expect_equal(1, filter(out, risk_category == "medium")$value)
+  expect_equal(0, filter(out, risk_category == "high")$value)
 
-  out <- pstr(companies, mutate(scenarios, reductions = 70))
-  expect_equal("medium", out$risk_category)
+  default_mid_high <- formals(pstr)$high_threshold
+  out <- pstr(companies, mutate(scenarios, reductions = default_mid_high))
+  expect_equal(0, filter(out, risk_category == "low")$value)
+  expect_equal(1, filter(out, risk_category == "medium")$value)
+  expect_equal(0, filter(out, risk_category == "high")$value)
 
   out <- pstr(companies, mutate(scenarios, reductions = 70.1))
   expect_equal("high", out$risk_category)
 
-  out <- pstr(companies, mutate(scenarios, reductions = -1))
-  expect_equal("low", out$risk_category)
+  above_default_mid_high <- formals(pstr)$high_threshold + 0.001
+  out <- pstr(companies, mutate(scenarios, reductions = above_default_mid_high))
+  expect_equal(0, filter(out, risk_category == "low")$value)
+  expect_equal(0, filter(out, risk_category == "medium")$value)
+  expect_equal(1, filter(out, risk_category == "high")$value)
+
+  below_0 <- -0.001
+  out <- pstr(companies, mutate(scenarios, reductions = below_0))
+  expect_equal(1, filter(out, risk_category == "low")$value)
+  expect_equal(0, filter(out, risk_category == "medium")$value)
+  expect_equal(0, filter(out, risk_category == "high")$value)
 })
 
 test_that("outputs values in proportion", {
