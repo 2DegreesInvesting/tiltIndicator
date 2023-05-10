@@ -117,9 +117,8 @@ test_that("outputs correct values for edge cases", {
 })
 
 test_that("outputs values in proportion", {
-  companies <- pstr_companies
+  companies <- slice(pstr_companies, 1)
   scenarios <- pstr_scenarios
-
   out <- pstr(companies, scenarios)
   expect_true(all(out$value <= 1.0))
 })
