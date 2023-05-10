@@ -12,3 +12,7 @@ xstr_polish_output_at_company_level <- function(data) {
     rename(value = "score_aggregated") |>
     relocate(all_of(cols_at_company_level()))
 }
+
+xstr_check <- function(scenarios) {
+  check_has_no_na(scenarios, "reductions")
+}

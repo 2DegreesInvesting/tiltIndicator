@@ -41,7 +41,7 @@ pstr <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) 
 #' @rdname pstr
 #' @export
 pstr_at_product_level <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) {
-  check_has_no_na(scenarios, "reductions")
+  xstr_check(scenarios)
 
   companies <- rename(companies, companies_id = "company_id")
   companies |>
