@@ -6,11 +6,9 @@ test_that("hasn't changed", {
 })
 
 test_that("outputs expected columns at company level", {
-  scenarios <- pstr_scenarios
   companies <- pstr_companies |> slice(1)
-
+  scenarios <- pstr_scenarios
   out <- pstr(companies, scenarios)
-
   expected <- cols_at_company_level()
   expect_equal(names(out)[seq_along(expected)], expected)
 })
