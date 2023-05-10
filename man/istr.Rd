@@ -6,7 +6,7 @@
 \alias{istr_at_company_level}
 \title{Calculate the ISTR indicator}
 \usage{
-istr(companies, scenario, mapper)
+istr(companies, scenarios, mapper)
 
 istr_at_product_level(companies, scenario, mapper)
 
@@ -15,9 +15,9 @@ istr_at_company_level(data, companies)
 \arguments{
 \item{companies}{A dataframe like \link{istr_companies}.}
 
-\item{scenario}{A dataframe like \link{istr_weo_2022}.}
-
 \item{mapper}{A dataframe like \link{istr_ep_weo}.}
+
+\item{scenario}{A dataframe like \link{istr_weo_2022}.}
 
 \item{data}{A dataframe. The output at product level.}
 }
@@ -52,19 +52,19 @@ Please note that carbon emissions or emissions always mean CO2e.
 }
 \examples{
 companies <- istr_companies
-scenario <- istr_weo_2022
+scenarios <- istr_weo_2022
 mapper <- istr_ep_weo
 
 # Product level
 companies |>
-  istr_at_product_level(scenario, mapper)
+  istr_at_product_level(scenarios, mapper)
 
 # Company level
 companies |>
-  istr_at_product_level(scenario, mapper) |>
+  istr_at_product_level(scenarios, mapper) |>
   istr_at_company_level(companies)
 
 # Same
-istr(companies, scenario, mapper)
+istr(companies, scenarios, mapper)
 }
 \concept{ISTR functions}

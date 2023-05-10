@@ -16,23 +16,23 @@
 #'
 #' @examples
 #' companies <- istr_companies
-#' scenario <- istr_weo_2022
+#' scenarios <- istr_weo_2022
 #' mapper <- istr_ep_weo
 #'
 #' # Product level
 #' companies |>
-#'   istr_at_product_level(scenario, mapper)
+#'   istr_at_product_level(scenarios, mapper)
 #'
 #' # Company level
 #' companies |>
-#'   istr_at_product_level(scenario, mapper) |>
+#'   istr_at_product_level(scenarios, mapper) |>
 #'   istr_at_company_level(companies)
 #'
 #' # Same
-#' istr(companies, scenario, mapper)
-istr <- function(companies, scenario, mapper) {
+#' istr(companies, scenarios, mapper)
+istr <- function(companies, scenarios, mapper) {
   companies |>
-    istr_at_product_level(scenario, mapper) |>
+    istr_at_product_level(scenarios, mapper) |>
     istr_at_company_level(companies)
 }
 
