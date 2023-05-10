@@ -8,6 +8,7 @@ TODO
 - [ ] Describe the goal of the PR. Avoid details that are clear in the diff.
 - [ ] Mark the PR as draft.
 - [ ] [Include a unit test](https://code-review.tidyverse.org/reviewer/aspects.html#sec-tests).
+- [ ] Review your own PR in "Files changed".
 - [ ] Ensure the checks pass or explain why not.
 - [ ] Change the status from draft to ready.
 - [ ] Polish the PR title and description.
