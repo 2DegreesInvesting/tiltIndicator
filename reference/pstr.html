@@ -64,7 +64,7 @@ derive company-level information."><!-- mathjax --><script src="https://cdnjs.cl
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Calculate the PSTR indicator</h1>
-      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/pstr.R" class="external-link"><code>R/pstr.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/pstr.R" class="external-link"><code>R/pstr.R</code></a>, <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/xctr.R" class="external-link"><code>R/xctr.R</code></a></small>
       <div class="d-none name"><code>pstr.Rd</code></div>
     </div>
 
@@ -90,7 +90,7 @@ derive company-level information.</p>
 <span>  high_threshold <span class="op">=</span> <span class="fl">70</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">pstr_at_company_level</span><span class="op">(</span><span class="va">data</span>, <span class="va">companies</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pstr_at_company_level</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -154,38 +154,38 @@ targets.</p></dd>
 <span class="r-in"><span><span class="co"># Company level</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">pstr_at_product_level</span><span class="op">(</span><span class="va">scenarios</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu">pstr_at_company_level</span><span class="op">(</span><span class="va">companies</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 70 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                    grouped_by risk_category value scenario  year</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_0000000510… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_0000000510… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_0000000510… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_0000000510… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_0000000510… NA_NA      no_sector       0.5 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ca-coity-trg-aua-gmbh_00000384… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ca-coity-trg-aua-gmbh_00000384… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ca-coity-trg-aua-gmbh_00000384… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ca-coity-trg-aua-gmbh_00000384… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ca-coity-trg-aua-gmbh_00000384… NA_NA      no_sector       0.5 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 60 more rows</span></span>
+<span class="r-in"><span>  <span class="fu">pstr_at_company_level</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 210 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by         risk_category value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… low               1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… low               1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… low               1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 200 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
 <span class="r-in"><span><span class="fu">pstr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 70 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                    grouped_by risk_category value scenario  year</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_0000000510… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_0000000510… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_0000000510… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_0000000510… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_0000000510… NA_NA      no_sector       0.5 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> ca-coity-trg-aua-gmbh_00000384… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> ca-coity-trg-aua-gmbh_00000384… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> ca-coity-trg-aua-gmbh_00000384… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ca-coity-trg-aua-gmbh_00000384… 1.5c requ… low             1   1.5c re…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ca-coity-trg-aua-gmbh_00000384… NA_NA      no_sector       0.5 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 60 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 210 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by         risk_category value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… low               1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… low               1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… low               1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 1.5c required pol… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 200 more rows</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

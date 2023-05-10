@@ -90,7 +90,7 @@ Please note that carbon emissions or emissions always mean CO2e."><!-- mathjax -
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Calculate the ISTR indicator</h1>
-      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/istr.R" class="external-link"><code>R/istr.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/istr.R" class="external-link"><code>R/istr.R</code></a>, <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/xctr.R" class="external-link"><code>R/xctr.R</code></a></small>
       <div class="d-none name"><code>istr.Rd</code></div>
     </div>
 
@@ -124,7 +124,7 @@ risk. We, therefore, derive the company-level information.</p>
 <span></span>
 <span><span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">istr_at_company_level</span><span class="op">(</span><span class="va">data</span>, <span class="va">companies</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">istr_at_company_level</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -185,48 +185,38 @@ risk. We, therefore, derive the company-level information.</p>
 <span class="r-in"><span><span class="co"># Company level</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu">istr_at_company_level</span><span class="op">(</span><span class="va">companies</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                   grouped_by risk_category  value scenario  year</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_0000000… Net Zero … high           4     Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_0000000… Net Zero … high          24.7   Net Zer…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_0000000… Stated Po… low           24.7   Stated …  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_0000000… Net Zero … medium        24.7   Net Zer…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_0000000… Net Zero … medium        20.7   Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_0000000… NA_NA      no_sector      0.286 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> hoche-butter-gmbh_deu422723-6… Net Zero … high           4.67  Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> hoche-butter-gmbh_deu422723-6… Net Zero … high          38.7   Net Zer…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> hoche-butter-gmbh_deu422723-6… Stated Po… low           38.7   Stated …  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> hoche-butter-gmbh_deu422723-6… Net Zero … medium        38.7   Net Zer…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> hoche-butter-gmbh_deu422723-6… Net Zero … medium        34     Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> pecheries-basques_fra316541-0… Net Zero … high          59.1   Net Zer…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> pecheries-basques_fra316541-0… Stated Po… low           59.1   Stated …  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> pecheries-basques_fra316541-0… Net Zero … medium        59.1   Net Zer…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> pecheries-basques_fra316541-0… Net Zero … medium        59.1   Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> pecheries-basques_fra316541-0… NA_NA      no_sector      0.222 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
+<span class="r-in"><span>  <span class="fu">istr_at_company_level</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 42 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                             grouped_by      risk_category  value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           high          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           medium        <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           low           <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           0    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium         1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… low            0    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           0.162</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium         0.838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… low            0    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 32 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
 <span class="r-in"><span><span class="fu">istr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                   grouped_by risk_category  value scenario  year</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_0000000… Net Zero … high           4     Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_0000000… Net Zero … high          24.7   Net Zer…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_0000000… Stated Po… low           24.7   Stated …  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_0000000… Net Zero … medium        24.7   Net Zer…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_0000000… Net Zero … medium        20.7   Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_0000000… NA_NA      no_sector      0.286 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> hoche-butter-gmbh_deu422723-6… Net Zero … high           4.67  Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> hoche-butter-gmbh_deu422723-6… Net Zero … high          38.7   Net Zer…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> hoche-butter-gmbh_deu422723-6… Stated Po… low           38.7   Stated …  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> hoche-butter-gmbh_deu422723-6… Net Zero … medium        38.7   Net Zer…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> hoche-butter-gmbh_deu422723-6… Net Zero … medium        34     Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> pecheries-basques_fra316541-0… Net Zero … high          59.1   Net Zer…  <span style="text-decoration: underline;">2</span>050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> pecheries-basques_fra316541-0… Stated Po… low           59.1   Stated …  <span style="text-decoration: underline;">2</span>020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> pecheries-basques_fra316541-0… Net Zero … medium        59.1   Net Zer…  <span style="text-decoration: underline;">2</span>030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> pecheries-basques_fra316541-0… Net Zero … medium        59.1   Net Zer…  <span style="text-decoration: underline;">2</span>040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> pecheries-basques_fra316541-0… NA_NA      no_sector      0.222 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 42 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                             grouped_by      risk_category  value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           high          <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           medium        <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           low           <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           0    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium         1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… low            0    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           0.162</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium         0.838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… low            0    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 32 more rows</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
