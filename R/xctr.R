@@ -88,7 +88,8 @@ xctr_at_company_level <- function(data) {
     ungroup() |>
     # Hack #285
     summarize(
-      value = sum(value), .by = c("companies_id", "grouped_by", "risk_category")
+      value = sum(.data$value),
+      .by = c("companies_id", "grouped_by", "risk_category")
     )
 }
 
