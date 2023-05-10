@@ -6,13 +6,10 @@ test_that("hasn't changed", {
 })
 
 test_that("outputs expected columns at company level", {
+  companies <- slice(pstr_companies, 1)
   scenarios <- pstr_scenarios
-  companies <- pstr_companies |> slice(1)
-
   out <- pstr(companies, scenarios)
-
-  expected <- cols_at_company_level()
-  expect_equal(names(out)[seq_along(expected)], expected)
+  expect_named(out, cols_at_company_level())
 })
 
 test_that("the output is not grouped", {
@@ -80,6 +77,10 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     type = "ipr",
     sector = "total",
     subsector = "energy",
+    clustered = "any",
+    activity_uuid_product_uuid = "any",
+    tilt_sector = "any",
+    tilt_subsector = "any",
   )
   scenarios <- tibble(
     scenario = "1.5c required policy scenario",
