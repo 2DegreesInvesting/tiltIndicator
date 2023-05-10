@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9053
+
+* In ISTR the old argument `scenario` is now named `scenarios`, consistently with PSTR (#299).
+
 # tiltIndicator 0.0.0.9052
 
 * In `xstr*()`, `NA`s in `reductions` now trigger an error (#298).
