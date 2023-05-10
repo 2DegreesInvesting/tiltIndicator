@@ -53,41 +53,11 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 30, high
 #' @rdname pstr
 #' @export
 pstr_at_company_level <- function(data, companies) {
-  .companies <- rename(companies, companies_id = "company_id")
-  xstr_at_company_level(data, .companies)
+  xstr_at_company_level(data)
 }
 
-xstr_at_company_level <- function(data, companies) {
-  return(xctr_at_company_level(data))
-
-  # FIXME: Remove dead code?
-  n_products_per_companies <- companies |>
-    group_by(.data$companies_id) |>
-    summarise(total_products_per_company = n())
-
-  with_risk_category <- data |>
-    left_join(
-      n_products_per_companies,
-      by = c("companies_id"),
-      relationship = "many-to-many"
-    )
-
-  useful_cols <- c(
-    "companies_id",
-    "risk_category",
-    "total_products_per_company",
-    "scenario",
-    "year"
-  )
-  out <- with_risk_category |>
-    select(all_of(all_of(useful_cols))) |>
-    group_by(.data$companies_id, .data$risk_category, .data$scenario, .data$year) |>
-    reframe(score_aggregated = (n() / .data$total_products_per_company)) |>
-    group_by(.data$companies_id, .data$risk_category, .data$scenario, .data$year) |>
-    distinct() |>
-    ungroup()
-
-  xstr_polish_output_at_company_level(out)
+xstr_at_company_level <- function(data, companies = NULL) {
+  xctr_at_company_level(data)
 }
 
 pstr_add_reductions <- function(companies, scenarios) {
