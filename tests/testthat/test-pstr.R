@@ -80,6 +80,10 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     type = "ipr",
     sector = "total",
     subsector = "energy",
+    clustered = "any",
+    activity_uuid_product_uuid = "any",
+    tilt_sector = "any",
+    tilt_subsector = "any",
   )
   scenarios <- tibble(
     scenario = "1.5c required policy scenario",
