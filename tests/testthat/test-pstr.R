@@ -82,7 +82,6 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 test_that("outputs correct values for edge cases", {
   companies <- tibble(
     company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
-    company_name = "cta - commodity trading austria gmbh",
     type = "ipr",
     sector = "total",
     subsector = "energy",
@@ -92,7 +91,7 @@ test_that("outputs correct values for edge cases", {
     sector = "total",
     subsector = "energy",
     year = 2020,
-    value = 99,
+    # value = 99,
     reductions = 0,
     type = "ipr",
   )
