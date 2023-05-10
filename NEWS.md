@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9054
+
+* `pstr_at_product_level()` now output columns as in the google sheet template (#303).
+
+* Each `company_id + grouped_by` now gets one low, medium & high `risk_category` (#278).
+
 # tiltIndicator 0.0.0.9053
 
 * In ISTR the old argument `scenario` is now named `scenarios`, consistently with PSTR (#299).
