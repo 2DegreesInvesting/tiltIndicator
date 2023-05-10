@@ -48,6 +48,7 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 30, high
     pstr_add_reductions(scenarios) |>
     pstr_add_transition_risk(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level() |>
+    rename(scenario = .data$type) |>
     select(all_of(pstr_cols_at_product_level()))
 }
 
