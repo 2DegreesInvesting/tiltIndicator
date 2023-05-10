@@ -9,14 +9,10 @@ pstr_prepare_companies(data)
 \arguments{
 \item{data}{A dataframe with these columns:
 \itemize{
-\item ipr_sector.x
-\item ipr_sector.y
-\item ipr_subsector.x
-\item ipr_subsector.y
-\item weo_product.x
-\item weo_product.y
-\item weo_flow.x
-\item weo_flow.y
+\item ipr_sector
+\item ipr_subsector
+\item weo_product
+\item weo_flow
 }}
 }
 \value{
@@ -29,7 +25,7 @@ Given a messy PSTR \code{companies} dataframe returns a cleaner one
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 
-raw_companies <- read_csv(extdata_path("pstr_raw_companies.csv"))
+raw_companies <- read_csv(extdata_path("pstr_companies.csv"))
 glimpse(raw_companies)
 
 companies <- pstr_prepare_companies(raw_companies)
