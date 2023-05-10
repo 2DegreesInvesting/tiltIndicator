@@ -32,7 +32,7 @@
 #' istr(companies, scenarios, mapper)
 istr <- function(companies, scenarios, mapper) {
   companies |>
-    istr_at_product_level(scenario, mapper) |>
+    istr_at_product_level(scenarios, mapper) |>
     xctr_at_company_level()
 }
 
