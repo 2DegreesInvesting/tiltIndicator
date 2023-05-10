@@ -6,6 +6,7 @@
 #' @param companies A dataframe like [istr_companies].
 #' @param scenario A dataframe like [istr_weo_2022].
 #' @param mapper A dataframe like [istr_ep_weo].
+#' @inheritParams xctr
 #'
 #' @family ISTR functions
 #'

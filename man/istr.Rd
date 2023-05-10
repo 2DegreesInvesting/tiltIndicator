@@ -18,6 +18,8 @@ istr_at_company_level(data)
 \item{scenario}{A dataframe like \link{istr_weo_2022}.}
 
 \item{mapper}{A dataframe like \link{istr_ep_weo}.}
+
+\item{data}{A dataframe. The output at product level.}
 }
 \value{
 At product level, a dataframe with at least columns companies_id, grouped_by, risk_category. At company level, a dataframe with at least columns companies_id, grouped_by, risk_category, value.

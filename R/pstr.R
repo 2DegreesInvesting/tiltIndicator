@@ -9,6 +9,7 @@
 #'   targets.
 #' @param high_threshold A numeric value to segment medium and high reduction
 #'   targets.
+#' @inheritParams xctr
 #'
 #' @family PSTR functions
 #'
