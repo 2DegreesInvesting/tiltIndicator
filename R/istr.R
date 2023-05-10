@@ -38,12 +38,12 @@ istr <- function(companies, scenarios, mapper) {
 
 #' @rdname istr
 #' @export
-istr_at_product_level <- function(companies, scenario, mapper) {
-  xstr_check(scenario)
+istr_at_product_level <- function(companies, scenarios, mapper) {
+  xstr_check(scenarios)
 
   companies |>
     istr_mapping(mapper) |>
-    istr_add_reductions(scenario) |>
+    istr_add_reductions(scenarios) |>
     istr_add_transition_risk() |>
     xstr_polish_output_at_product_level()
 }

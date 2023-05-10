@@ -8,7 +8,7 @@
 \usage{
 istr(companies, scenarios, mapper)
 
-istr_at_product_level(companies, scenario, mapper)
+istr_at_product_level(companies, scenarios, mapper)
 
 istr_at_company_level(data, companies)
 }
