@@ -85,7 +85,11 @@ xctr_at_company_level <- function(data) {
     left_join(with_value, by = join_by("companies_id", "grouped_by", "risk_category")) |>
     group_by(.data$companies_id, .data$grouped_by) |>
     mutate(value = na_to_0_if_not_all_is_na(.data$value)) |>
-    ungroup()
+    ungroup() |>
+    # Hack #285
+    summarize(
+      value = sum(value), .by = c("companies_id", "grouped_by", "risk_category")
+    )
 }
 
 na_to_0_if_not_all_is_na <- function(x) {
