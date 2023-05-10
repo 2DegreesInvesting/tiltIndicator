@@ -74,7 +74,7 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   expect_error(pstr(companies, bad), crucial)
 })
 
-test_that("thresholds yield expected low, medium, and high risk categories", {
+test_that("NA in `reductions` yield an error", {
   companies <- tibble(
     company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
     type = "ipr",

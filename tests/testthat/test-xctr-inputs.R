@@ -200,7 +200,7 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
   expect_error(xctr(companies, bad), crucial)
 })
 
-test_that("with a missing value in co2_footprint errors gracefully", {
+test_that("with a missing value in the co2* column errors gracefully", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1)
   inputs$input_co2_footprint <- NA
