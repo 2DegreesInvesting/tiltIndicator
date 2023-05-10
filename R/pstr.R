@@ -28,7 +28,7 @@
 #' # Company level
 #' companies |>
 #'   pstr_at_product_level(scenarios) |>
-#'   pstr_at_company_level(companies)
+#'   xctr_at_company_level()
 #'
 #' # Same
 #' pstr(companies, scenarios)
