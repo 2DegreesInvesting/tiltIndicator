@@ -46,3 +46,16 @@ matches_name <- function(data, pattern) {
 get_column <- function(data, pattern) {
   data[[extract_name(data, pattern)]]
 }
+
+ptype_at_company_level <- function() {
+  structure(
+    list(
+      companies_id = character(0),
+      grouped_by = character(0),
+      risk_category = character(0),
+      value = numeric(0)
+    ),
+    row.names = integer(0),
+    class = c("tbl_df", "tbl", "data.frame")
+  )
+}
