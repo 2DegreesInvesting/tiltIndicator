@@ -126,7 +126,7 @@ to a .csv file, and skipping companies that are already done.</p>
 <span><span class="va">pb</span> <span class="op">&lt;-</span> <span class="va"><a href="https://rdrr.io/pkg/progress/man/progress_bar.html" class="external-link">progress_bar</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">pb</span><span class="op">$</span><span class="fu">tick</span><span class="op">(</span><span class="op">)</span></span>
-<span>  </span>
+<span></span>
 <span>  <span class="co"># Skip if run previously</span></span>
 <span>  <span class="va">companies_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
 <span>  <span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">parent</span>, <span class="va">indicator</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">companies_id</span>, <span class="st">".csv"</span><span class="op">)</span><span class="op">)</span></span>
@@ -134,7 +134,7 @@ to a .csv file, and skipping companies that are already done.</p>
 <span></span>
 <span>  <span class="co"># Run</span></span>
 <span>  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="va">real_co2</span><span class="op">)</span></span>
-<span>  </span>
+<span></span>
 <span>  <span class="co"># Save into an indicator-specific folder, i.e. either ictr/ or pctr/</span></span>
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="va">result</span>, <span class="va">file</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
