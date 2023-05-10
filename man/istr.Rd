@@ -3,14 +3,11 @@
 \name{istr}
 \alias{istr}
 \alias{istr_at_product_level}
-\alias{istr_at_company_level}
 \title{Calculate the ISTR indicator}
 \usage{
 istr(companies, scenario, mapper)
 
 istr_at_product_level(companies, scenario, mapper)
-
-istr_at_company_level(data, companies)
 }
 \arguments{
 \item{companies}{A dataframe like \link{istr_companies}.}
