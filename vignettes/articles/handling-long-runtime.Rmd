@@ -63,7 +63,7 @@ file, and skipping companies that are already done.
 pb <- progress_bar$new(total = length(companies_list))
 for (i in seq_along(companies_list)) {
   pb$tick()
-  
+
   # Skip if run previously
   companies_id <- names(companies_list[i])
   file <- path(parent, indicator, paste0(companies_id, ".csv"))
@@ -71,7 +71,7 @@ for (i in seq_along(companies_list)) {
 
   # Run
   result <- xctr(companies_list[[i]], real_co2)
-  
+
   # Save into an indicator-specific folder, i.e. either ictr/ or pctr/
   write_csv(result, file)
 }
