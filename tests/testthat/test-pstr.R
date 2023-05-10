@@ -91,6 +91,27 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     type = "ipr",
   )
 
+  out <- pstr(companies, mutate(scenarios, reductions = NA))
+  expect_equal("no_sector", out$risk_category)
+})
+
+test_that("thresholds yield expected low, medium, and high risk categories", {
+  companies <- tibble(
+    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
+    type = "ipr",
+    sector = "total",
+    subsector = "energy",
+  )
+  scenarios <- tibble(
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    year = 2020,
+    # value = 99,
+    reductions = 0,
+    type = "ipr",
+  )
+
   default_low_mid <- formals(pstr)$low_threshold
   out <- pstr(companies, mutate(scenarios, reductions = default_low_mid))
   expect_equal(1, filter(out, risk_category == "low")$value)
