@@ -6,11 +6,10 @@ test_that("hasn't changed", {
 })
 
 test_that("outputs expected columns at company level", {
-  companies <- pstr_companies |> slice(1)
+  companies <- slice(pstr_companies, 1)
   scenarios <- pstr_scenarios
   out <- pstr(companies, scenarios)
-  expected <- cols_at_company_level()
-  expect_equal(names(out)[seq_along(expected)], expected)
+  expect_named(out, cols_at_company_level())
 })
 
 test_that("the output is not grouped", {
