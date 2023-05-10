@@ -46,4 +46,3 @@ xstr_polish_output_at_company_level <- function(data) {
 xstr_check <- function(scenarios) {
   check_has_no_na(scenarios, "reductions")
 }
-
