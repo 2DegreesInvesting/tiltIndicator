@@ -74,28 +74,6 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   expect_error(pstr(companies, bad), crucial)
 })
 
-
-test_that("with a missing value in the co2* column errors gracefully", {
-  na_in_co2_column <- NA_real_
-  scenarios <- tibble(
-    reductions = na_in_co2_column,
-    scenario = "1.5c required policy scenario",
-    sector = "total",
-    subsector = "energy",
-    year = 2020,
-    # value = 99,
-    type = "ipr",
-  )
-  companies <- tibble(
-    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
-    type = "ipr",
-    sector = "total",
-    subsector = "energy",
-  )
-
-  expect_error(pstr(companies, scenarios), "reductions")
-})
-
 test_that("thresholds yield expected low, medium, and high risk categories", {
   companies <- tibble(
     company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
@@ -174,4 +152,25 @@ test_that("each company has risk categories low, medium, and high (#215)", {
   out <- pstr(companies, scenarios)
   risk_categories <- sort(unique(out$risk_category))
   expect_equal(risk_categories, c("high", "low", "medium"))
+})
+
+test_that("with a missing value in the co2* column errors gracefully", {
+  na_in_co2_column <- NA_real_
+  scenarios <- tibble(
+    reductions = na_in_co2_column,
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    year = 2020,
+    # value = 99,
+    type = "ipr",
+  )
+  companies <- tibble(
+    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
+    type = "ipr",
+    sector = "total",
+    subsector = "energy",
+  )
+
+  expect_error(pstr(companies, scenarios), "reductions")
 })
