@@ -2586,192 +2586,223 @@
       format_robust_snapshot(tiltIndicator::pstr_companies)
     Output
       [[1]]
-                                                    company_id
-      1  cta-commodity-trading-austria-gmbh_00000005215384-001
-      2  cta-commodity-trading-austria-gmbh_00000005215384-001
-      3                               cbrit_00000005227812-001
-      4                               cbrit_00000005227812-001
-      5                  manz-backtechnik-gmbh_deu087356-00101
-      6                  manz-backtechnik-gmbh_deu087356-00101
-      7                  manz-backtechnik-gmbh_deu087356-00101
-      8                  manz-backtechnik-gmbh_deu087356-00101
-      9            barham-metall-gmbh_00000005371632-683574001
-      10           barham-metall-gmbh_00000005371632-683574001
-      11 cta-commodity-trading-austria-gmbh_00000005215384-001
-      12 cta-commodity-trading-austria-gmbh_00000005215384-001
-      13                              cbrit_00000005227812-001
-      14                              cbrit_00000005227812-001
-      15               queso-quintana_00000005400093-729229001
-      16               queso-quintana_00000005400093-729229001
-      17               quesos-finca-la-cruz_00000004641972-001
-      18               quesos-finca-la-cruz_00000004641972-001
-      19               lusitania-food_00000004012865-403509001
-      20               lusitania-food_00000004012865-403509001
-      21                              cbrit_00000005227812-001
-      22                              cbrit_00000005227812-001
-      23 cta-commodity-trading-austria-gmbh_00000005215384-001
-      24 cta-commodity-trading-austria-gmbh_00000005215384-001
-      25                       kurt-schmidt_00000004941462-001
-      26                       kurt-schmidt_00000004941462-001
-      27              breuninger-leder-gmbh_00000005064318-001
-      28              breuninger-leder-gmbh_00000005064318-001
+                                       company_id
+      1  fleischerei-stiefsohn_00000005219477-001
+      2  fleischerei-stiefsohn_00000005219477-001
+      3         pecheries-basques_fra316541-00101
+      4         pecheries-basques_fra316541-00101
+      5     hoche-butter-gmbh_deu422723-693847001
+      6     hoche-butter-gmbh_deu422723-693847001
+      7     hoche-butter-gmbh_deu422723-693847002
+      8     hoche-butter-gmbh_deu422723-693847002
+      9     hoche-butter-gmbh_deu422723-693847003
+      10    hoche-butter-gmbh_deu422723-693847003
+      11  vicquelin-espaces-verts_fra697272-00101
+      12  vicquelin-espaces-verts_fra697272-00101
+      13  vicquelin-espaces-verts_fra697272-00102
+      14  vicquelin-espaces-verts_fra697272-00102
+      15  vicquelin-espaces-verts_fra697272-00103
+      16  vicquelin-espaces-verts_fra697272-00103
+      17                  fleisohn_0000000492-001
+      18                  fleisohn_0000000492-001
+      19   bst-procontrol-gmbh_00000005104947-001
+      20   bst-procontrol-gmbh_00000005104947-001
+      21           leider-gmbh_00000005064318-001
+      22           leider-gmbh_00000005064318-001
+      23           leider-gmbh_00000005064318-002
+      24           leider-gmbh_00000005064318-002
+      25             cheries-baqu_neu316541-00101
+      26             cheries-baqu_neu316541-00101
+      27       ca-coity-trg-aua-gmbh_00000384-001
+      28       ca-coity-trg-aua-gmbh_00000384-001
       
       [[2]]
-                                 company_name
-      1  cta - commodity trading austria gmbh
-      2  cta - commodity trading austria gmbh
-      3                                cbr-it
-      4                                cbr-it
-      5                 manz backtechnik gmbh
-      6                 manz backtechnik gmbh
-      7                 manz backtechnik gmbh
-      8                 manz backtechnik gmbh
-      9                    barham metall gmbh
-      10                   barham metall gmbh
-      11 cta - commodity trading austria gmbh
-      12 cta - commodity trading austria gmbh
-      13                               cbr-it
-      14                               cbr-it
-      15                       queso quintana
-      16                       queso quintana
-      17                 quesos finca la cruz
-      18                 quesos finca la cruz
-      19                       lusitania food
-      20                       lusitania food
-      21                               cbr-it
-      22                               cbr-it
-      23 cta - commodity trading austria gmbh
-      24 cta - commodity trading austria gmbh
-      25                         kurt schmidt
-      26                         kurt schmidt
-      27                breuninger leder gmbh
-      28                breuninger leder gmbh
+                  company_name
+      1  fleischerei-stiefsohn
+      2  fleischerei-stiefsohn
+      3      pecheries-basques
+      4      pecheries-basques
+      5      hoche-butter-gmbh
+      6      hoche-butter-gmbh
+      7      hoche-butter-gmbh
+      8      hoche-butter-gmbh
+      9      hoche-butter-gmbh
+      10     hoche-butter-gmbh
+      11     vicquelin-espaces
+      12     vicquelin-espaces
+      13     vicquelin-espaces
+      14     vicquelin-espaces
+      15     vicquelin-espaces
+      16     vicquelin-espaces
+      17              fleisohn
+      18              fleisohn
+      19   bst-procontrol-gmbh
+      20   bst-procontrol-gmbh
+      21                leider
+      22                leider
+      23                leider
+      24                leider
+      25          cheries-baqu
+      26          cheries-baqu
+      27              ca-coity
+      28              ca-coity
       
       [[3]]
-                                                                          products
-      1                                                                       <NA>
-      2                                                                       <NA>
-      3                                                                       <NA>
-      4                                                                       <NA>
-      5  063e488f-803a-5d13-af19-852d6070f35c_cf47d9e8-58e4-41f9-bde9-4f938fdc8c7b
-      6  063e488f-803a-5d13-af19-852d6070f35c_cf47d9e8-58e4-41f9-bde9-4f938fdc8c7b
-      7  61d00580-6742-5050-91ec-7eba6fd63e90_a90c5322-b943-44d1-8f95-bc7e31a72990
-      8  61d00580-6742-5050-91ec-7eba6fd63e90_a90c5322-b943-44d1-8f95-bc7e31a72990
-      9  0faa7ecb-fef2-5117-8993-387c1898ffc8_c33b5236-001e-49b5-aa3d-810c0214f9ce
-      10 0faa7ecb-fef2-5117-8993-387c1898ffc8_c33b5236-001e-49b5-aa3d-810c0214f9ce
-      11                                                                      <NA>
-      12                                                                      <NA>
-      13                                                                      <NA>
-      14                                                                      <NA>
-      15 6e2f5d7d-37d0-5548-a38c-1533a9c76075_e35863ed-da3f-4255-a90d-623066f43fd3
-      16 6e2f5d7d-37d0-5548-a38c-1533a9c76075_e35863ed-da3f-4255-a90d-623066f43fd3
-      17 6e2f5d7d-37d0-5548-a38c-1533a9c76075_e35863ed-da3f-4255-a90d-623066f43fd3
-      18 6e2f5d7d-37d0-5548-a38c-1533a9c76075_e35863ed-da3f-4255-a90d-623066f43fd3
-      19 a6478da4-5cd6-5c9e-a00b-14148d44aad9_e35863ed-da3f-4255-a90d-623066f43fd3
-      20 a6478da4-5cd6-5c9e-a00b-14148d44aad9_e35863ed-da3f-4255-a90d-623066f43fd3
-      21                                                                      <NA>
-      22                                                                      <NA>
-      23                                                                      <NA>
-      24                                                                      <NA>
-      25 011da854-af42-5570-a442-de88ba590506_136f89b3-af52-4826-97f7-cc35f80f226f
-      26 011da854-af42-5570-a442-de88ba590506_136f89b3-af52-4826-97f7-cc35f80f226f
-      27 03fbf989-9a1a-5e3d-a5bd-15f4cd20abbc_136f89b3-af52-4826-97f7-cc35f80f226f
-      28 03fbf989-9a1a-5e3d-a5bd-15f4cd20abbc_136f89b3-af52-4826-97f7-cc35f80f226f
+                   clustered
+      1                steel
+      2                steel
+      3             nitrogen
+      4             nitrogen
+      5                waste
+      6                waste
+      7                  car
+      8                  car
+      9               heater
+      10              heater
+      11              biogas
+      12              biogas
+      13          ice engine
+      14          ice engine
+      15              bricks
+      16              bricks
+      17                beer
+      18                beer
+      19              rubber
+      20              rubber
+      21 alcoholic aperitifs
+      22 alcoholic aperitifs
+      23           aperitifs
+      24           aperitifs
+      25        fresh cheese
+      26        fresh cheese
+      27               shoes
+      28               shoes
       
       [[4]]
-         isic_4digit
-      1           NA
-      2           NA
-      3           NA
-      4           NA
-      5         2750
-      6         2750
-      7         2750
-      8         2750
-      9         2410
-      10        2410
-      11          NA
-      12          NA
-      13          NA
-      14          NA
-      15        1050
-      16        1050
-      17        1050
-      18        1050
-      19        1050
-      20        1050
-      21          NA
-      22          NA
-      23          NA
-      24          NA
-      25        2029
-      26        2029
-      27        2029
-      28        2029
+                                             activity_uuid_product_uuid
+      1    0faa7ecb-fef2-5117-8993-387c1236-001e-49b5-aa3d-810c0214f9ce
+      2    0faa7ecb-fef2-5117-8993-387c1236-001e-49b5-aa3d-810c0214f9ce
+      3  03fbf989-9a1a-5e3d-a5bd-15f36f89b3-af52-4826-97f7-cc35f80f226f
+      4  03fbf989-9a1a-5e3d-a5bd-15f36f89b3-af52-4826-97f7-cc35f80f226f
+      5                                                            <NA>
+      6                                                            <NA>
+      7                                                            <NA>
+      8                                                            <NA>
+      9                                                            <NA>
+      10                                                           <NA>
+      11                                                           <NA>
+      12                                                           <NA>
+      13                                                           <NA>
+      14                                                           <NA>
+      15                                                           <NA>
+      16                                                           <NA>
+      17  011da854-af42-5570-a4506_136f89b3-af52-4826-97f7-cc35f80f226f
+      18  011da854-af42-5570-a4506_136f89b3-af52-4826-97f7-cc35f80f226f
+      19     a6478da4-5cd6-5c9e-a00e35863ed-da3f-4255-a90d-623066f43fd3
+      20     a6478da4-5cd6-5c9e-a00e35863ed-da3f-4255-a90d-623066f43fd3
+      21 063e488f-803a-5d13-af19-c_cf47d9e8-58e4-41f9-bde9-4f938fdc8c7b
+      22 063e488f-803a-5d13-af19-c_cf47d9e8-58e4-41f9-bde9-4f938fdc8c7b
+      23      61d00580-6742-5050-91e90c5322-b943-44d1-8f95-bc7e31a72990
+      24      61d00580-6742-5050-91e90c5322-b943-44d1-8f95-bc7e31a72990
+      25  6e2f5d7d-37d0-5548-a38c-1535863ed-da3f-4255-a90d-623066f43fd3
+      26  6e2f5d7d-37d0-5548-a38c-1535863ed-da3f-4255-a90d-623066f43fd3
+      27  6e2f5d7d-37d0-5548-a38c-1535863ed-da3f-4255-a90d-623066f43fd3
+      28  6e2f5d7d-37d0-5548-a38c-1535863ed-da3f-4255-a90d-623066f43fd3
       
       [[5]]
+         isic_4digit
+      1         2410
+      2         2410
+      3         2029
+      4         2029
+      5         <NA>
+      6         <NA>
+      7         <NA>
+      8         <NA>
+      9         <NA>
+      10        <NA>
+      11        <NA>
+      12        <NA>
+      13        <NA>
+      14        <NA>
+      15        <NA>
+      16        <NA>
+      17        2029
+      18        2029
+      19        1050
+      20        1050
+      21        6758
+      22        6758
+      23        6758
+      24        6758
+      25        1050
+      26        1050
+      27        1050
+      28        1050
+      
+      [[6]]
                    tilt_sector
-      1                 energy
-      2                 energy
-      3                 energy
-      4                 energy
-      5                   <NA>
-      6                   <NA>
-      7                   <NA>
-      8                   <NA>
-      9                   <NA>
-      10                  <NA>
-      11        transportation
-      12        transportation
+      1                   <NA>
+      2                   <NA>
+      3                   <NA>
+      4                   <NA>
+      5                 energy
+      6                 energy
+      7         transportation
+      8         transportation
+      9  construction industry
+      10 construction industry
+      11                energy
+      12                energy
       13        transportation
       14        transportation
-      15                  <NA>
-      16                  <NA>
+      15 construction industry
+      16 construction industry
       17                  <NA>
       18                  <NA>
       19                  <NA>
       20                  <NA>
-      21 construction industry
-      22 construction industry
-      23 construction industry
-      24 construction industry
+      21                  <NA>
+      22                  <NA>
+      23                  <NA>
+      24                  <NA>
       25                  <NA>
       26                  <NA>
       27                  <NA>
       28                  <NA>
       
-      [[6]]
+      [[7]]
                  tilt_subsector
-      1       bioenergy & waste
-      2       bioenergy & waste
-      3       bioenergy & waste
-      4       bioenergy & waste
-      5                    <NA>
-      6                    <NA>
-      7                    <NA>
-      8                    <NA>
-      9                    <NA>
-      10                   <NA>
-      11         transportation
-      12         transportation
+      1                    <NA>
+      2                    <NA>
+      3                    <NA>
+      4                    <NA>
+      5       bioenergy & waste
+      6       bioenergy & waste
+      7          transportation
+      8          transportation
+      9  construction buildings
+      10 construction buildings
+      11      bioenergy & waste
+      12      bioenergy & waste
       13         transportation
       14         transportation
-      15                   <NA>
-      16                   <NA>
+      15 construction buildings
+      16 construction buildings
       17                   <NA>
       18                   <NA>
       19                   <NA>
       20                   <NA>
-      21 construction buildings
-      22 construction buildings
-      23 construction buildings
-      24 construction buildings
+      21                   <NA>
+      22                   <NA>
+      23                   <NA>
+      24                   <NA>
       25                   <NA>
       26                   <NA>
       27                   <NA>
       28                   <NA>
       
-      [[7]]
+      [[8]]
          type
       1   ipr
       2   weo
@@ -2802,67 +2833,67 @@
       27  ipr
       28  weo
       
-      [[8]]
+      [[9]]
                       sector
-      1                total
-      2  bioenergy and waste
-      3                total
-      4  bioenergy and waste
-      5             industry
-      6                total
-      7             industry
+      1             industry
+      2                total
+      3             industry
+      4                total
+      5                total
+      6  bioenergy and waste
+      7            transport
       8                total
-      9             industry
+      9            buildings
       10               total
-      11           transport
-      12               total
+      11               total
+      12 bioenergy and waste
       13           transport
       14               total
-      15            industry
+      15           buildings
       16               total
       17            industry
       18               total
       19            industry
       20               total
-      21           buildings
+      21            industry
       22               total
-      23           buildings
+      23            industry
       24               total
       25            industry
       26               total
       27            industry
       28               total
       
-      [[9]]
+      [[10]]
                    subsector
-      1               energy
-      2  total energy supply
-      3               energy
-      4  total energy supply
-      5       other industry
-      6             industry
-      7       other industry
-      8             industry
-      9       iron and steel
-      10      iron and steel
-      11     other transport
-      12           transport
+      1       iron and steel
+      2       iron and steel
+      3            chemicals
+      4            chemicals
+      5               energy
+      6  total energy supply
+      7      other transport
+      8            transport
+      9                 <NA>
+      10           buildings
+      11              energy
+      12 total energy supply
       13     other transport
       14           transport
-      15      other industry
-      16            industry
-      17      other industry
-      18            industry
+      15                <NA>
+      16           buildings
+      17           chemicals
+      18           chemicals
       19      other industry
       20            industry
-      21                <NA>
-      22           buildings
-      23                <NA>
-      24           buildings
-      25           chemicals
-      26           chemicals
-      27           chemicals
-      28           chemicals
+      21      other industry
+      22            industry
+      23      other industry
+      24            industry
+      25      other industry
+      26            industry
+      27      other industry
+      28            industry
       
 
 # `pstr_scenarios` hasn't changed
@@ -6767,493 +6798,6 @@
       484  weo
       
       [[9]]
-                        publication
-      1                        <NA>
-      2                        <NA>
-      3                        <NA>
-      4                        <NA>
-      5                        <NA>
-      6                        <NA>
-      7                        <NA>
-      8                        <NA>
-      9                        <NA>
-      10                       <NA>
-      11                       <NA>
-      12                       <NA>
-      13                       <NA>
-      14                       <NA>
-      15                       <NA>
-      16                       <NA>
-      17                       <NA>
-      18                       <NA>
-      19                       <NA>
-      20                       <NA>
-      21                       <NA>
-      22                       <NA>
-      23                       <NA>
-      24                       <NA>
-      25                       <NA>
-      26                       <NA>
-      27                       <NA>
-      28                       <NA>
-      29                       <NA>
-      30                       <NA>
-      31                       <NA>
-      32                       <NA>
-      33                       <NA>
-      34                       <NA>
-      35                       <NA>
-      36                       <NA>
-      37                       <NA>
-      38                       <NA>
-      39                       <NA>
-      40                       <NA>
-      41                       <NA>
-      42                       <NA>
-      43                       <NA>
-      44                       <NA>
-      45                       <NA>
-      46                       <NA>
-      47                       <NA>
-      48                       <NA>
-      49                       <NA>
-      50                       <NA>
-      51                       <NA>
-      52                       <NA>
-      53                       <NA>
-      54                       <NA>
-      55                       <NA>
-      56                       <NA>
-      57                       <NA>
-      58                       <NA>
-      59                       <NA>
-      60                       <NA>
-      61                       <NA>
-      62                       <NA>
-      63                       <NA>
-      64                       <NA>
-      65                       <NA>
-      66                       <NA>
-      67                       <NA>
-      68                       <NA>
-      69                       <NA>
-      70                       <NA>
-      71                       <NA>
-      72                       <NA>
-      73                       <NA>
-      74                       <NA>
-      75                       <NA>
-      76                       <NA>
-      77                       <NA>
-      78                       <NA>
-      79                       <NA>
-      80                       <NA>
-      81                       <NA>
-      82                       <NA>
-      83                       <NA>
-      84                       <NA>
-      85                       <NA>
-      86                       <NA>
-      87                       <NA>
-      88                       <NA>
-      89                       <NA>
-      90                       <NA>
-      91                       <NA>
-      92                       <NA>
-      93                       <NA>
-      94                       <NA>
-      95                       <NA>
-      96                       <NA>
-      97                       <NA>
-      98                       <NA>
-      99                       <NA>
-      100                      <NA>
-      101                      <NA>
-      102                      <NA>
-      103                      <NA>
-      104                      <NA>
-      105                      <NA>
-      106                      <NA>
-      107                      <NA>
-      108                      <NA>
-      109                      <NA>
-      110                      <NA>
-      111                      <NA>
-      112                      <NA>
-      113 world energy outlook 2022
-      114 world energy outlook 2022
-      115 world energy outlook 2022
-      116 world energy outlook 2022
-      117 world energy outlook 2022
-      118 world energy outlook 2022
-      119 world energy outlook 2022
-      120 world energy outlook 2022
-      121 world energy outlook 2022
-      122 world energy outlook 2022
-      123 world energy outlook 2022
-      124 world energy outlook 2022
-      125 world energy outlook 2022
-      126 world energy outlook 2022
-      127 world energy outlook 2022
-      128 world energy outlook 2022
-      129 world energy outlook 2022
-      130 world energy outlook 2022
-      131 world energy outlook 2022
-      132 world energy outlook 2022
-      133 world energy outlook 2022
-      134 world energy outlook 2022
-      135 world energy outlook 2022
-      136 world energy outlook 2022
-      137 world energy outlook 2022
-      138 world energy outlook 2022
-      139 world energy outlook 2022
-      140 world energy outlook 2022
-      141 world energy outlook 2022
-      142 world energy outlook 2022
-      143 world energy outlook 2022
-      144 world energy outlook 2022
-      145 world energy outlook 2022
-      146 world energy outlook 2022
-      147 world energy outlook 2022
-      148 world energy outlook 2022
-      149 world energy outlook 2022
-      150 world energy outlook 2022
-      151 world energy outlook 2022
-      152 world energy outlook 2022
-      153 world energy outlook 2022
-      154 world energy outlook 2022
-      155 world energy outlook 2022
-      156 world energy outlook 2022
-      157 world energy outlook 2022
-      158 world energy outlook 2022
-      159 world energy outlook 2022
-      160 world energy outlook 2022
-      161 world energy outlook 2022
-      162 world energy outlook 2022
-      163 world energy outlook 2022
-      164 world energy outlook 2022
-      165 world energy outlook 2022
-      166 world energy outlook 2022
-      167 world energy outlook 2022
-      168 world energy outlook 2022
-      169 world energy outlook 2022
-      170 world energy outlook 2022
-      171 world energy outlook 2022
-      172 world energy outlook 2022
-      173 world energy outlook 2022
-      174 world energy outlook 2022
-      175 world energy outlook 2022
-      176 world energy outlook 2022
-      177 world energy outlook 2022
-      178 world energy outlook 2022
-      179 world energy outlook 2022
-      180 world energy outlook 2022
-      181 world energy outlook 2022
-      182 world energy outlook 2022
-      183 world energy outlook 2022
-      184 world energy outlook 2022
-      185 world energy outlook 2022
-      186 world energy outlook 2022
-      187 world energy outlook 2022
-      188 world energy outlook 2022
-      189 world energy outlook 2022
-      190 world energy outlook 2022
-      191 world energy outlook 2022
-      192 world energy outlook 2022
-      193 world energy outlook 2022
-      194 world energy outlook 2022
-      195 world energy outlook 2022
-      196 world energy outlook 2022
-      197 world energy outlook 2022
-      198 world energy outlook 2022
-      199 world energy outlook 2022
-      200 world energy outlook 2022
-      201 world energy outlook 2022
-      202 world energy outlook 2022
-      203 world energy outlook 2022
-      204 world energy outlook 2022
-      205 world energy outlook 2022
-      206 world energy outlook 2022
-      207 world energy outlook 2022
-      208 world energy outlook 2022
-      209 world energy outlook 2022
-      210 world energy outlook 2022
-      211 world energy outlook 2022
-      212 world energy outlook 2022
-      213 world energy outlook 2022
-      214 world energy outlook 2022
-      215 world energy outlook 2022
-      216 world energy outlook 2022
-      217 world energy outlook 2022
-      218 world energy outlook 2022
-      219 world energy outlook 2022
-      220 world energy outlook 2022
-      221 world energy outlook 2022
-      222 world energy outlook 2022
-      223 world energy outlook 2022
-      224 world energy outlook 2022
-      225 world energy outlook 2022
-      226 world energy outlook 2022
-      227 world energy outlook 2022
-      228 world energy outlook 2022
-      229 world energy outlook 2022
-      230 world energy outlook 2022
-      231 world energy outlook 2022
-      232 world energy outlook 2022
-      233 world energy outlook 2022
-      234 world energy outlook 2022
-      235 world energy outlook 2022
-      236 world energy outlook 2022
-      237 world energy outlook 2022
-      238 world energy outlook 2022
-      239 world energy outlook 2022
-      240 world energy outlook 2022
-      241 world energy outlook 2022
-      242 world energy outlook 2022
-      243 world energy outlook 2022
-      244 world energy outlook 2022
-      245 world energy outlook 2022
-      246 world energy outlook 2022
-      247 world energy outlook 2022
-      248 world energy outlook 2022
-      249 world energy outlook 2022
-      250 world energy outlook 2022
-      251 world energy outlook 2022
-      252 world energy outlook 2022
-      253 world energy outlook 2022
-      254 world energy outlook 2022
-      255 world energy outlook 2022
-      256 world energy outlook 2022
-      257 world energy outlook 2022
-      258 world energy outlook 2022
-      259 world energy outlook 2022
-      260 world energy outlook 2022
-      261 world energy outlook 2022
-      262 world energy outlook 2022
-      263 world energy outlook 2022
-      264 world energy outlook 2022
-      265 world energy outlook 2022
-      266 world energy outlook 2022
-      267 world energy outlook 2022
-      268 world energy outlook 2022
-      269 world energy outlook 2022
-      270 world energy outlook 2022
-      271 world energy outlook 2022
-      272 world energy outlook 2022
-      273 world energy outlook 2022
-      274 world energy outlook 2022
-      275 world energy outlook 2022
-      276 world energy outlook 2022
-      277 world energy outlook 2022
-      278 world energy outlook 2022
-      279 world energy outlook 2022
-      280 world energy outlook 2022
-      281 world energy outlook 2022
-      282 world energy outlook 2022
-      283 world energy outlook 2022
-      284 world energy outlook 2022
-      285 world energy outlook 2022
-      286 world energy outlook 2022
-      287 world energy outlook 2022
-      288 world energy outlook 2022
-      289 world energy outlook 2022
-      290 world energy outlook 2022
-      291 world energy outlook 2022
-      292 world energy outlook 2022
-      293 world energy outlook 2022
-      294 world energy outlook 2022
-      295 world energy outlook 2022
-      296 world energy outlook 2022
-      297 world energy outlook 2022
-      298 world energy outlook 2022
-      299 world energy outlook 2022
-      300 world energy outlook 2022
-      301 world energy outlook 2022
-      302 world energy outlook 2022
-      303 world energy outlook 2022
-      304 world energy outlook 2022
-      305 world energy outlook 2022
-      306 world energy outlook 2022
-      307 world energy outlook 2022
-      308 world energy outlook 2022
-      309 world energy outlook 2022
-      310 world energy outlook 2022
-      311 world energy outlook 2022
-      312 world energy outlook 2022
-      313 world energy outlook 2022
-      314 world energy outlook 2022
-      315 world energy outlook 2022
-      316 world energy outlook 2022
-      317 world energy outlook 2022
-      318 world energy outlook 2022
-      319 world energy outlook 2022
-      320 world energy outlook 2022
-      321 world energy outlook 2022
-      322 world energy outlook 2022
-      323 world energy outlook 2022
-      324 world energy outlook 2022
-      325 world energy outlook 2022
-      326 world energy outlook 2022
-      327 world energy outlook 2022
-      328 world energy outlook 2022
-      329 world energy outlook 2022
-      330 world energy outlook 2022
-      331 world energy outlook 2022
-      332 world energy outlook 2022
-      333 world energy outlook 2022
-      334 world energy outlook 2022
-      335 world energy outlook 2022
-      336 world energy outlook 2022
-      337 world energy outlook 2022
-      338 world energy outlook 2022
-      339 world energy outlook 2022
-      340 world energy outlook 2022
-      341 world energy outlook 2022
-      342 world energy outlook 2022
-      343 world energy outlook 2022
-      344 world energy outlook 2022
-      345 world energy outlook 2022
-      346 world energy outlook 2022
-      347 world energy outlook 2022
-      348 world energy outlook 2022
-      349 world energy outlook 2022
-      350 world energy outlook 2022
-      351 world energy outlook 2022
-      352 world energy outlook 2022
-      353 world energy outlook 2022
-      354 world energy outlook 2022
-      355 world energy outlook 2022
-      356 world energy outlook 2022
-      357 world energy outlook 2022
-      358 world energy outlook 2022
-      359 world energy outlook 2022
-      360 world energy outlook 2022
-      361 world energy outlook 2022
-      362 world energy outlook 2022
-      363 world energy outlook 2022
-      364 world energy outlook 2022
-      365 world energy outlook 2022
-      366 world energy outlook 2022
-      367 world energy outlook 2022
-      368 world energy outlook 2022
-      369 world energy outlook 2022
-      370 world energy outlook 2022
-      371 world energy outlook 2022
-      372 world energy outlook 2022
-      373 world energy outlook 2022
-      374 world energy outlook 2022
-      375 world energy outlook 2022
-      376 world energy outlook 2022
-      377 world energy outlook 2022
-      378 world energy outlook 2022
-      379 world energy outlook 2022
-      380 world energy outlook 2022
-      381 world energy outlook 2022
-      382 world energy outlook 2022
-      383 world energy outlook 2022
-      384 world energy outlook 2022
-      385 world energy outlook 2022
-      386 world energy outlook 2022
-      387 world energy outlook 2022
-      388 world energy outlook 2022
-      389 world energy outlook 2022
-      390 world energy outlook 2022
-      391 world energy outlook 2022
-      392 world energy outlook 2022
-      393 world energy outlook 2022
-      394 world energy outlook 2022
-      395 world energy outlook 2022
-      396 world energy outlook 2022
-      397 world energy outlook 2022
-      398 world energy outlook 2022
-      399 world energy outlook 2022
-      400 world energy outlook 2022
-      401 world energy outlook 2022
-      402 world energy outlook 2022
-      403 world energy outlook 2022
-      404 world energy outlook 2022
-      405 world energy outlook 2022
-      406 world energy outlook 2022
-      407 world energy outlook 2022
-      408 world energy outlook 2022
-      409 world energy outlook 2022
-      410 world energy outlook 2022
-      411 world energy outlook 2022
-      412 world energy outlook 2022
-      413 world energy outlook 2022
-      414 world energy outlook 2022
-      415 world energy outlook 2022
-      416 world energy outlook 2022
-      417 world energy outlook 2022
-      418 world energy outlook 2022
-      419 world energy outlook 2022
-      420 world energy outlook 2022
-      421 world energy outlook 2022
-      422 world energy outlook 2022
-      423 world energy outlook 2022
-      424 world energy outlook 2022
-      425 world energy outlook 2022
-      426 world energy outlook 2022
-      427 world energy outlook 2022
-      428 world energy outlook 2022
-      429 world energy outlook 2022
-      430 world energy outlook 2022
-      431 world energy outlook 2022
-      432 world energy outlook 2022
-      433 world energy outlook 2022
-      434 world energy outlook 2022
-      435 world energy outlook 2022
-      436 world energy outlook 2022
-      437 world energy outlook 2022
-      438 world energy outlook 2022
-      439 world energy outlook 2022
-      440 world energy outlook 2022
-      441 world energy outlook 2022
-      442 world energy outlook 2022
-      443 world energy outlook 2022
-      444 world energy outlook 2022
-      445 world energy outlook 2022
-      446 world energy outlook 2022
-      447 world energy outlook 2022
-      448 world energy outlook 2022
-      449 world energy outlook 2022
-      450 world energy outlook 2022
-      451 world energy outlook 2022
-      452 world energy outlook 2022
-      453 world energy outlook 2022
-      454 world energy outlook 2022
-      455 world energy outlook 2022
-      456 world energy outlook 2022
-      457 world energy outlook 2022
-      458 world energy outlook 2022
-      459 world energy outlook 2022
-      460 world energy outlook 2022
-      461 world energy outlook 2022
-      462 world energy outlook 2022
-      463 world energy outlook 2022
-      464 world energy outlook 2022
-      465 world energy outlook 2022
-      466 world energy outlook 2022
-      467 world energy outlook 2022
-      468 world energy outlook 2022
-      469 world energy outlook 2022
-      470 world energy outlook 2022
-      471 world energy outlook 2022
-      472 world energy outlook 2022
-      473 world energy outlook 2022
-      474 world energy outlook 2022
-      475 world energy outlook 2022
-      476 world energy outlook 2022
-      477 world energy outlook 2022
-      478 world energy outlook 2022
-      479 world energy outlook 2022
-      480 world energy outlook 2022
-      481 world energy outlook 2022
-      482 world energy outlook 2022
-      483 world energy outlook 2022
-      484 world energy outlook 2022
-      
-      [[10]]
                       product
       1                  <NA>
       2                  <NA>
@@ -7740,7 +7284,7 @@
       483               total
       484               total
       
-      [[11]]
+      [[10]]
                                                 flow
       1                                         <NA>
       2                                         <NA>

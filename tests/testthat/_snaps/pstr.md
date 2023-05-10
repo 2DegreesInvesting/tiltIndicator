@@ -4,11 +4,11 @@
       format_robust_snapshot(out)
     Output
       [[1]]
-                                                 companies_id
-      1 cta-commodity-trading-austria-gmbh_00000005215384-001
-      2 cta-commodity-trading-austria-gmbh_00000005215384-001
-      3 cta-commodity-trading-austria-gmbh_00000005215384-001
-      4 cta-commodity-trading-austria-gmbh_00000005215384-001
+                                    companies_id
+      1 fleischerei-stiefsohn_00000005219477-001
+      2 fleischerei-stiefsohn_00000005219477-001
+      3 fleischerei-stiefsohn_00000005219477-001
+      4 fleischerei-stiefsohn_00000005219477-001
       
       [[2]]
                                 grouped_by
