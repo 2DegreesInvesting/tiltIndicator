@@ -51,10 +51,8 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 30, high
 #' @rdname pstr
 #' @export
 pstr_at_company_level <- function(data, companies) {
-  # FIXME: Move here the calculation of `value`. It belongs to company level.
-  # Then it shouold be the same process as xctr()
-  companies <- rename(companies, companies_id = "company_id")
-  xstr_at_company_level(data, companies)
+  .companies <- rename(companies, companies_id = "company_id")
+  xstr_at_company_level(data, .companies)
 }
 
 pstr_add_reductions <- function(companies, scenarios) {
