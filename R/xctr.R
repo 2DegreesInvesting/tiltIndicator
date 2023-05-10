@@ -69,6 +69,10 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 #' @export
 #' @rdname xctr
 xctr_at_company_level <- function(data) {
+  if (identical(nrow(data), 0L)) {
+    return(ptype_at_company_level())
+  }
+
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
     filter(!is.na(.data[["grouped_by"]])) |>
@@ -92,6 +96,15 @@ xctr_at_company_level <- function(data) {
       .by = c("companies_id", "grouped_by", "risk_category")
     )
 }
+
+# FIXME: Retire pstr_at_company_level
+#' @rdname pstr
+#' @export
+pstr_at_company_level <- xctr_at_company_level
+# FIXME: Retire istr_at_company_level
+#' @rdname istr
+#' @export
+istr_at_company_level <- xctr_at_company_level
 
 na_to_0_if_not_all_is_na <- function(x) {
   if (all(is.na(x))) {

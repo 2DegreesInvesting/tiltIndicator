@@ -9,7 +9,7 @@
 #'   targets.
 #' @param high_threshold A numeric value to segment medium and high reduction
 #'   targets.
-#' @param data A dataframe. The output at product level.
+#' @inheritParams xctr
 #'
 #' @family PSTR functions
 #'
@@ -28,14 +28,14 @@
 #' # Company level
 #' companies |>
 #'   pstr_at_product_level(scenarios) |>
-#'   pstr_at_company_level(companies)
+#'   pstr_at_company_level()
 #'
 #' # Same
 #' pstr(companies, scenarios)
 pstr <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) {
   companies |>
     pstr_at_product_level(scenarios, low_threshold, high_threshold) |>
-    pstr_at_company_level(companies)
+    xctr_at_company_level()
 }
 
 #' @rdname pstr
@@ -48,13 +48,6 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 30, high
     pstr_add_reductions(scenarios) |>
     pstr_add_transition_risk(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level()
-}
-
-#' @rdname pstr
-#' @export
-pstr_at_company_level <- function(data, companies) {
-  companies <- rename(companies, companies_id = "company_id")
-  xstr_at_company_level(data, companies)
 }
 
 pstr_add_reductions <- function(companies, scenarios) {

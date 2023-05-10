@@ -6,7 +6,7 @@
 #' @param companies A dataframe like [istr_companies].
 #' @param scenarios A dataframe like [istr_weo_2022].
 #' @param mapper A dataframe like [istr_ep_weo].
-#' @param data A dataframe. The output at product level.
+#' @inheritParams xctr
 #'
 #' @family ISTR functions
 #'
@@ -26,14 +26,14 @@
 #' # Company level
 #' companies |>
 #'   istr_at_product_level(scenarios, mapper) |>
-#'   istr_at_company_level(companies)
+#'   istr_at_company_level()
 #'
 #' # Same
 #' istr(companies, scenarios, mapper)
 istr <- function(companies, scenarios, mapper) {
   companies |>
     istr_at_product_level(scenarios, mapper) |>
-    istr_at_company_level(companies)
+    xctr_at_company_level()
 }
 
 #' @rdname istr
@@ -46,12 +46,6 @@ istr_at_product_level <- function(companies, scenarios, mapper) {
     istr_add_reductions(scenarios) |>
     istr_add_transition_risk() |>
     xstr_polish_output_at_product_level()
-}
-
-#' @rdname istr
-#' @export
-istr_at_company_level <- function(data, companies) {
-  xstr_at_company_level(data, companies)
 }
 
 istr_mapping <- function(companies, ep_weo) {
