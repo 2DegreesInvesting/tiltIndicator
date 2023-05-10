@@ -15,7 +15,5 @@ test_that("outputs expected columns at product level", {
     "type"
   )
   out <- pstr_at_product_level(companies, scenarios)
-  # FIXME: Implement
-  # out <- out |> select(all_of(expected))
   expect_named(out, expected)
 })
