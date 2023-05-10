@@ -9,7 +9,6 @@
 #'   targets.
 #' @param high_threshold A numeric value to segment medium and high reduction
 #'   targets.
-#' @param data A dataframe. The output at product level.
 #'
 #' @family PSTR functions
 #'

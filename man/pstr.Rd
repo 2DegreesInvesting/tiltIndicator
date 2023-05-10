@@ -24,8 +24,6 @@ targets.}
 
 \item{high_threshold}{A numeric value to segment medium and high reduction
 targets.}
-
-\item{data}{A dataframe. The output at product level.}
 }
 \value{
 At product level, a dataframe with at least columns companies_id, grouped_by, risk_category. At company level, a dataframe with at least columns companies_id, grouped_by, risk_category, value.
