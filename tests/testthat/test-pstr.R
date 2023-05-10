@@ -24,14 +24,8 @@ test_that("the output is not grouped", {
 
 test_that("with a 0-row `companies` outputs a well structured 0-row tibble", {
   companies <- pstr_companies[0L, ]
-  out0 <- pstr(companies, pstr_scenarios)
-  expect_s3_class(out0, "tbl")
-  expect_equal(nrow(out0), 0L)
-
-  out1 <- pstr(pstr_companies[1L, ], pstr_scenarios)
-  expect_s3_class(out1, "tbl")
-
-  expect_equal(names(out0), names(out1))
+  out <- pstr(companies, pstr_scenarios)
+  expect_equal(out, ptype_at_company_level())
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
