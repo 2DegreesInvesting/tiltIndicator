@@ -41,6 +41,8 @@ pstr <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) 
 #' @rdname pstr
 #' @export
 pstr_at_product_level <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) {
+  xstr_check(scenarios)
+
   companies <- rename(companies, companies_id = "company_id")
   companies |>
     pstr_add_reductions(scenarios) |>

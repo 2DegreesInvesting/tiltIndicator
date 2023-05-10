@@ -97,9 +97,6 @@ test_that("outputs correct values for edge cases", {
     type = "ipr",
   )
 
-  out <- pstr(companies, mutate(scenarios, reductions = NA))
-  expect_equal("no_sector", out$risk_category)
-
   out <- pstr(companies, mutate(scenarios, reductions = 30))
   expect_equal("low", out$risk_category)
 
@@ -138,4 +135,11 @@ test_that("is not sensitive to high_threshold", {
   out1 <- pstr(companies, scenarios, high_threshold = 40)
   out2 <- pstr(companies, scenarios, high_threshold = 90)
   expect_true(identical(out1, out2))
+})
+
+test_that("with a missing value in the reductions column errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(pstr_scenarios, 1)
+  scenarios$reductions <- NA
+  expect_error(pstr(companies, scenarios), "reductions")
 })
