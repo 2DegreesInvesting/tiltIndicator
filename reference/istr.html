@@ -120,9 +120,9 @@ risk. We, therefore, derive the company-level information.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">istr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenario</span>, <span class="va">mapper</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">istr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenario</span>, <span class="va">mapper</span><span class="op">)</span></span>
+<span><span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">istr_at_company_level</span><span class="op">(</span><span class="va">data</span>, <span class="va">companies</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -133,7 +133,7 @@ risk. We, therefore, derive the company-level information.</p>
 <dd><p>A dataframe like <a href="istr_datasets.html">istr_companies</a>.</p></dd>
 
 
-<dt>scenario</dt>
+<dt>scenarios</dt>
 <dd><p>A dataframe like <a href="istr_datasets.html">istr_weo_2022</a>.</p></dd>
 
 
@@ -155,12 +155,12 @@ risk. We, therefore, derive the company-level information.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="va">istr_companies</span></span></span>
-<span class="r-in"><span><span class="va">scenario</span> <span class="op">&lt;-</span> <span class="va">istr_weo_2022</span></span></span>
+<span class="r-in"><span><span class="va">scenarios</span> <span class="op">&lt;-</span> <span class="va">istr_weo_2022</span></span></span>
 <span class="r-in"><span><span class="va">mapper</span> <span class="op">&lt;-</span> <span class="va">istr_ep_weo</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Product level</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">scenario</span>, <span class="va">mapper</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4,672 × 51</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by risk_category     X company_name main_activity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
@@ -184,7 +184,7 @@ risk. We, therefore, derive the company-level information.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Company level</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">scenario</span>, <span class="va">mapper</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">istr_at_company_level</span><span class="op">(</span><span class="va">companies</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                   grouped_by risk_category  value scenario  year</span>
@@ -207,7 +207,7 @@ risk. We, therefore, derive the company-level information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> pecheries-basques_fra316541-0… NA_NA      no_sector      0.222 <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
-<span class="r-in"><span><span class="fu">istr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenario</span>, <span class="va">mapper</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">istr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                   grouped_by risk_category  value scenario  year</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
