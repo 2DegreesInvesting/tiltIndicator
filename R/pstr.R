@@ -44,12 +44,11 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 30, high
   xstr_check(scenarios)
 
   companies <- rename(companies, companies_id = "company_id")
-  out <- companies |>
+  companies |>
     pstr_add_reductions(scenarios) |>
     pstr_add_transition_risk(low_threshold, high_threshold) |>
-    xstr_polish_output_at_product_level()
-
-  out |>
+    xstr_polish_output_at_product_level() |>
+    # TODO: DRY with ISTR
     select(all_of(pstr_cols_at_product_level()))
 }
 
