@@ -23,7 +23,8 @@ test_that("the output is not grouped", {
 })
 
 test_that("with a 0-row `companies` outputs a well structured 0-row tibble", {
-  out0 <- pstr(pstr_companies[0L, ], pstr_scenarios)
+  companies <- pstr_companies[0L, ]
+  out0 <- pstr(companies, pstr_scenarios)
   expect_s3_class(out0, "tbl")
   expect_equal(nrow(out0), 0L)
 

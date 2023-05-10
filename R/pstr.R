@@ -56,9 +56,9 @@ pstr_at_company_level <- function(data, companies) {
 }
 
 xstr_at_company_level <- function(data, companies) {
-  # FIXME: Delete everything else?
   return(xctr_at_company_level(data))
 
+  # FIXME: Remove dead code?
   n_products_per_companies <- companies |>
     group_by(.data$companies_id) |>
     summarise(total_products_per_company = n())
