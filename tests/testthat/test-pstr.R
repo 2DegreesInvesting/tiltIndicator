@@ -74,25 +74,26 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   expect_error(pstr(companies, bad), crucial)
 })
 
-test_that("NA in `reductions` yield an error", {
+
+test_that("with a missing value in the co2* column errors gracefully", {
+  na_in_co2_column <- NA_real_
+  scenarios <- tibble(
+    reductions = na_in_co2_column,
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    year = 2020,
+    # value = 99,
+    type = "ipr",
+  )
   companies <- tibble(
     company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
     type = "ipr",
     sector = "total",
     subsector = "energy",
   )
-  scenarios <- tibble(
-    scenario = "1.5c required policy scenario",
-    sector = "total",
-    subsector = "energy",
-    year = 2020,
-    # value = 99,
-    reductions = 0,
-    type = "ipr",
-  )
 
-  out <- pstr(companies, mutate(scenarios, reductions = NA))
-  expect_equal("no_sector", out$risk_category)
+  expect_error(pstr(companies, scenarios), "reductions")
 })
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
@@ -129,9 +130,6 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(1, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
-
-  out <- pstr(companies, mutate(scenarios, reductions = 70.1))
-  expect_equal("high", out$risk_category)
 
   above_default_mid_high <- formals(pstr)$high_threshold + 0.001
   out <- pstr(companies, mutate(scenarios, reductions = above_default_mid_high))
