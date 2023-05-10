@@ -132,6 +132,7 @@ test_that("is sensitive to low_threshold", {
 })
 
 test_that("is not sensitive to high_threshold", {
+  # FIXME: Adapt this test to prove it IS sensitive (#280)
   companies <- slice(pstr_companies, 9:10)
   scenarios <- pstr_scenarios
   out1 <- pstr(companies, scenarios, high_threshold = 40)
