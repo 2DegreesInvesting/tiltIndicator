@@ -33,7 +33,7 @@
 istr <- function(companies, scenario, mapper) {
   companies |>
     istr_at_product_level(scenario, mapper) |>
-    istr_at_company_level()
+    xctr_at_company_level()
 }
 
 #' @rdname istr
@@ -44,12 +44,6 @@ istr_at_product_level <- function(companies, scenario, mapper) {
     istr_add_reductions(scenario) |>
     istr_add_transition_risk() |>
     xstr_polish_output_at_product_level()
-}
-
-#' @rdname istr
-#' @export
-istr_at_company_level <- function(data) {
-  xstr_at_company_level(data)
 }
 
 istr_mapping <- function(companies, ep_weo) {
