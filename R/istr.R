@@ -4,7 +4,7 @@
 #' ```
 #'
 #' @param companies A dataframe like [istr_companies].
-#' @param scenario A dataframe like [istr_weo_2022].
+#' @param scenarios A dataframe like [istr_weo_2022].
 #' @param mapper A dataframe like [istr_ep_weo].
 #' @param data A dataframe. The output at product level.
 #'

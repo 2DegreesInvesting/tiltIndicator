@@ -15,9 +15,9 @@ istr_at_company_level(data, companies)
 \arguments{
 \item{companies}{A dataframe like \link{istr_companies}.}
 
-\item{mapper}{A dataframe like \link{istr_ep_weo}.}
+\item{scenarios}{A dataframe like \link{istr_weo_2022}.}
 
-\item{scenario}{A dataframe like \link{istr_weo_2022}.}
+\item{mapper}{A dataframe like \link{istr_ep_weo}.}
 
 \item{data}{A dataframe. The output at product level.}
 }
