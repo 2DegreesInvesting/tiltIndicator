@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9051
+
+* In PSTR the example datasets are now updated (@kalashsinghal #287).
+
 # tiltIndicator 0.0.0.9050
 
 * Each company & benchmark now gets a unique risk_category (@Tilmon #286).
