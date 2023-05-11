@@ -19,19 +19,19 @@
       12 fleischerei-stiefsohn_00000005219477-001
       
       [[2]]
-                                 grouped_by
-      1  1.5c required policy scenario_2020
-      2  1.5c required policy scenario_2020
-      3  1.5c required policy scenario_2020
-      4  1.5c required policy scenario_2030
-      5  1.5c required policy scenario_2030
-      6  1.5c required policy scenario_2030
-      7  1.5c required policy scenario_2040
-      8  1.5c required policy scenario_2040
-      9  1.5c required policy scenario_2040
-      10 1.5c required policy scenario_2050
-      11 1.5c required policy scenario_2050
-      12 1.5c required policy scenario_2050
+                                     grouped_by
+      1  ipr_1.5c required policy scenario_2020
+      2  ipr_1.5c required policy scenario_2020
+      3  ipr_1.5c required policy scenario_2020
+      4  ipr_1.5c required policy scenario_2030
+      5  ipr_1.5c required policy scenario_2030
+      6  ipr_1.5c required policy scenario_2030
+      7  ipr_1.5c required policy scenario_2040
+      8  ipr_1.5c required policy scenario_2040
+      9  ipr_1.5c required policy scenario_2040
+      10 ipr_1.5c required policy scenario_2050
+      11 ipr_1.5c required policy scenario_2050
+      12 ipr_1.5c required policy scenario_2050
       
       [[3]]
          risk_category
