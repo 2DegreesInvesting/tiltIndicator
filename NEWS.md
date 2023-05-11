@@ -2,8 +2,7 @@
 
 # tiltIndicator 0.0.0.9057
 
-* `pstr_prepare_scenarios()` now handles "weo" data correctly (#309)
-
+* `pstr_prepare_scenarios()` now handles "weo" data correctly (@kalashsinghal #309).
 
 # tiltIndicator 0.0.0.9056
 
