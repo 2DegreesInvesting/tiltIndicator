@@ -2,7 +2,10 @@
 
 # tiltIndicator 0.0.0.9055
 
-* The column `grouped_by` now includes the scenario type (#306).
+* The column `grouped_by` now includes the scenario type (#306). This makes
+the column `grouped_by` contain all the information in `scenarios`, `year`, and
+`type` -- meaning that those columns could be removed to keep the output
+simpler, without loosing information.
 
 # tiltIndicator 0.0.0.9054
 
