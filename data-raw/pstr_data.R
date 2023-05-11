@@ -5,14 +5,14 @@ library(readr)
 library(usethis)
 devtools::load_all()
 
-pstr_companies <- read_csv(extdata_path("pstr_companies.csv"), col_types = cols(isic_4digit = col_character())) |>
+pstr_companies <- extdata_path("pstr_companies.csv") |>
+  read_csv(col_types = cols(isic_4digit = col_character())) |>
   pstr_prepare_companies()
 use_data(pstr_companies, overwrite = TRUE)
 
 pstr_scenarios <- list(
   ipr = read_csv(extdata_path("pstr_ipr_2022.csv")),
-  weo = read_csv(extdata_path("pstr_weo_2022.csv")) |>
-    rename(weo_sector = "weo_product", weo_subsector = "weo_flow")
+  weo = read_csv(extdata_path("pstr_weo_2022.csv"))
 ) |>
   pstr_prepare_scenario()
 use_data(pstr_scenarios, overwrite = TRUE)
