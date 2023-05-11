@@ -4,6 +4,7 @@ xstr_polish_output_at_product_level <- function(data) {
     rename(risk_category = "transition_risk") |>
     unite(
       "grouped_by",
+      # hack #305
       if (hasName(data, "type")) "type" else NULL,
       "scenario",
       "year",
