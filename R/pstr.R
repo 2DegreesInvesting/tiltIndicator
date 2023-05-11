@@ -41,7 +41,7 @@ pstr <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) 
 #' @rdname pstr
 #' @export
 pstr_at_product_level <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) {
-  xstr_check(scenarios)
+  pstr_check(scenarios)
 
   companies <- rename(companies, companies_id = "company_id")
   companies |>
@@ -82,3 +82,32 @@ pstr_add_transition_risk <- function(with_reductions, low_threshold, high_thresh
       )
     )
 }
+
+pstr_check <- function(scenarios) {
+  check_has_no_na(scenarios, "reductions")
+
+  pstr_check_type_has_sector_and_subsector(scenarios)
+
+}
+
+pstr_check_type_has_sector_and_subsector <- function(scenarios) {
+  bad <- scenarios |>
+    summarize(
+      all_na = all(is.na(.data$sector) & is.na(.data$subsector)),
+      .by = "type"
+    ) |>
+    filter(all_na) |>
+    pull(type)
+
+  has_bad_type <- !identical(bad, character(0))
+  if (has_bad_type) {
+    type <- toString(bad)
+    abort(c(
+      "Each type must have some `sector` and `subsector`.",
+      x = glue("All `sector` and `subsector` are missing for `type` {type}."),
+      i = "Did you need to prepare the data with `pstr_prepare_scenarios()`?"
+    ))
+  }
+  invisible(scenarios)
+}
+
