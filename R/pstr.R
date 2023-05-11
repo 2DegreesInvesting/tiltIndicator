@@ -85,10 +85,10 @@ pstr_add_transition_risk <- function(with_reductions, low_threshold, high_thresh
 
 pstr_check <- function(scenarios) {
   check_has_no_na(scenarios, "reductions")
-  pstr_check_type_has_sector_and_subsector(scenarios)
+  stop_if_all_sector_and_subsector_are_na_for_a_type(scenarios)
 }
 
-pstr_check_type_has_sector_and_subsector <- function(scenarios) {
+stop_if_all_sector_and_subsector_are_na_for_a_type <- function(scenarios) {
   bad <- scenarios |>
     summarize(
       all_na = all(is.na(.data$sector) & is.na(.data$subsector)), .by = "type"
