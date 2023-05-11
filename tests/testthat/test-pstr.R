@@ -164,7 +164,6 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
   scenarios <- pstr_scenarios |>
     filter(type == .type)
 
-  pstr_at_product_level(companies, scenarios)
   out <- pstr(companies, scenarios)
   sum <- out |>
     summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
