@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9058
+
+* Each scenario `type` must have some `sector` and `subsector`, else you
+an error (#311).
+
 # tiltIndicator 0.0.0.9057
 
 * `pstr_prepare_scenarios()` now handles "weo" data correctly (@kalashsinghal #309).
