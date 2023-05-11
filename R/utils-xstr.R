@@ -12,7 +12,3 @@ xstr_polish_output_at_product_level <- function(data) {
     ) |>
     relocate(all_of(cols_at_all_levels()))
 }
-
-xstr_check <- function(scenarios) {
-  check_has_no_na(scenarios, "reductions")
-}

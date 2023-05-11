@@ -39,7 +39,7 @@ istr <- function(companies, scenarios, mapper) {
 #' @rdname istr
 #' @export
 istr_at_product_level <- function(companies, scenarios, mapper) {
-  xstr_check(scenarios)
+  check_has_no_na(scenarios, "reductions")
 
   companies |>
     istr_mapping(mapper) |>

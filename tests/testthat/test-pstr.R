@@ -185,3 +185,26 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
 
   expect_true(all(sum$value_sum == 1))
 })
+
+test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
+  companies <- tibble(
+    company_id = "a",
+    type = "b",
+    sector = "c",
+    subsector = "d",
+    clustered = "e",
+    activity_uuid_product_uuid = "f",
+    tilt_sector = "g",
+    tilt_subsector = "i",
+  )
+  # For type "b" all `sector` and `subsector` are `NA`
+  scenarios <- tibble(
+    type = c("b", "b", "x", "x"),
+    scenario = c("y", "y", "z", "z"),
+    sector = c(NA_character_, NA_character_, "c", "c"),
+    subsector = c(NA_character_, NA_character_, "d", "d"),
+    year = 2030,
+    reductions = 1,
+  )
+  expect_error(pstr(companies, scenarios), "sector.*subsector.*type")
+})
