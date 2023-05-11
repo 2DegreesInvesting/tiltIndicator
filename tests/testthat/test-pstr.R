@@ -170,3 +170,18 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
 
   expect_true(all(sum$value_sum == 1))
 })
+
+test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
+  .type <- "weo"
+  companies <- pstr_companies |>
+    filter(type == .type) |>
+    filter(company_id %in% first(company_id))
+  scenarios <- pstr_scenarios |>
+    filter(type == .type)
+
+  out <- pstr(companies, scenarios)
+  sum <- out |>
+    summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
+
+  expect_true(all(sum$value_sum == 1))
+})

@@ -5,7 +5,8 @@ library(readr)
 library(usethis)
 devtools::load_all()
 
-pstr_companies <- read_csv(extdata_path("pstr_companies.csv"), col_types = cols(isic_4digit = col_character())) |>
+pstr_companies <- extdata_path("pstr_companies.csv") |>
+  read_csv(col_types = cols(isic_4digit = col_character())) |>
   pstr_prepare_companies()
 use_data(pstr_companies, overwrite = TRUE)
 

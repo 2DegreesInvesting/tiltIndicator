@@ -19,6 +19,15 @@
 #'
 #' pstr_prepare_scenario(raw_scenarios)
 pstr_prepare_scenario <- function(scenarios) {
+  # Hack #308
+  if (hasName(scenarios, "weo")) {
+    scenarios$weo <- rename(
+      scenarios$weo,
+      weo_sector = "weo_product",
+      weo_subsector = "weo_flow"
+    )
+  }
+
   imap_dfr(scenarios, ~ pstr_prepare_scenario_impl(.x, .y))
 }
 
