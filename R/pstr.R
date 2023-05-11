@@ -87,7 +87,6 @@ pstr_check <- function(scenarios) {
   check_has_no_na(scenarios, "reductions")
 
   pstr_check_type_has_sector_and_subsector(scenarios)
-
 }
 
 pstr_check_type_has_sector_and_subsector <- function(scenarios) {
@@ -110,4 +109,3 @@ pstr_check_type_has_sector_and_subsector <- function(scenarios) {
   }
   invisible(scenarios)
 }
-
