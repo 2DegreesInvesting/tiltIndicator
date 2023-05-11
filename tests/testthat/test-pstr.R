@@ -157,14 +157,15 @@ test_that("grouped_by includes the type of scenario", {
 })
 
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
+  .type <- "ipr"
   companies <- pstr_companies |>
-    filter(type == "ipr") |>
+    filter(type == .type) |>
     filter(company_id %in% first(company_id))
-  ipr <- pstr_scenarios |>
-    filter(type == "ipr")
+  scenarios <- pstr_scenarios |>
+    filter(type == .type)
 
-  pstr_at_product_level(companies, ipr)
-  out <- pstr(companies, ipr)
+  pstr_at_product_level(companies, scenarios)
+  out <- pstr(companies, scenarios)
   sum <- out |>
     summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
 
