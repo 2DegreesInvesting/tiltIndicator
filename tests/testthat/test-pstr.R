@@ -155,5 +155,3 @@ test_that("grouped_by includes the type of scenario", {
   out <- pstr(companies, weo)
   expect_true(all(grepl("ipr", unique(out$grouped_by))))
 })
-
-
