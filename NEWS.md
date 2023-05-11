@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9056
+
+* With `type` "ipr", for each company and `grouped_by`, `value` sums 1 (#307).
+
 # tiltIndicator 0.0.0.9055
 
 * The column `grouped_by` now includes the scenario type (#306). This makes
