@@ -13,13 +13,21 @@
 #' library(dplyr, warn.conflicts = FALSE)
 #' library(readr, warn.conflicts = FALSE)
 #'
-#' raw_weo <- read_csv(extdata_path("pstr_weo_2022.csv")) |>
-#'   rename(weo_sector = "weo_product", weo_subsector = "weo_flow")
+#' raw_weo <- read_csv(extdata_path("pstr_weo_2022.csv"))
 #' raw_ipr <- read_csv(extdata_path("pstr_ipr_2022.csv"))
 #' raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
 #'
 #' pstr_prepare_scenario(raw_scenarios)
 pstr_prepare_scenario <- function(scenarios) {
+  # Hack #308
+  if (hasName(scenarios, "weo")) {
+    scenarios$weo <- rename(
+      scenarios$weo,
+      weo_sector = "weo_product",
+      weo_subsector = "weo_flow"
+    )
+  }
+
   imap_dfr(scenarios, ~ pstr_prepare_scenario_impl(.x, .y))
 }
 
