@@ -89,19 +89,19 @@ pstr_check <- function(scenarios) {
 }
 
 stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
-  type <- scenarios |>
+  bad_type <- scenarios |>
     summarize(
       all_na = all(is.na(.data$sector) & is.na(.data$subsector)), .by = "type"
     ) |>
     filter(.data$all_na) |>
     pull(.data$type)
 
-  has_bad_type <- !identical(type, character(0))
+  has_bad_type <- !identical(bad_type, character(0))
   if (has_bad_type) {
-    .type <- toString(type)
+    bad <- toString(bad_type)
     abort(c(
       "Each scenario `type` must have some `sector` and `subsector`.",
-      x = glue("All `sector` and `subsector` are missing for `type` {.type}."),
+      x = glue("All `sector` and `subsector` are missing for `type` {bad}."),
       i = "Did you need to prepare the data with `pstr_prepare_scenarios()`?"
     ))
   }
