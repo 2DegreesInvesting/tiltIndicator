@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9055
+
+* The column `grouped_by` now includes the scenario type (#306).
+
 # tiltIndicator 0.0.0.9054
 
 * `pstr_at_product_level()` now output columns as in the google sheet template (#303).
