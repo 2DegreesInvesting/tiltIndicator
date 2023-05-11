@@ -155,3 +155,18 @@ test_that("grouped_by includes the type of scenario", {
   out <- pstr(companies, weo)
   expect_true(all(grepl("ipr", unique(out$grouped_by))))
 })
+
+test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
+  .type <- "ipr"
+  companies <- pstr_companies |>
+    filter(type == .type) |>
+    filter(company_id %in% first(company_id))
+  scenarios <- pstr_scenarios |>
+    filter(type == .type)
+
+  out <- pstr(companies, scenarios)
+  sum <- out |>
+    summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
+
+  expect_true(all(sum$value_sum == 1))
+})

@@ -12,6 +12,7 @@
 #' @importFrom dplyr distinct_all
 #' @importFrom dplyr ends_with
 #' @importFrom dplyr filter
+#' @importFrom dplyr first
 #' @importFrom dplyr group_by
 #' @importFrom dplyr if_else
 #' @importFrom dplyr inner_join
