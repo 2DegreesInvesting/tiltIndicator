@@ -85,7 +85,6 @@ pstr_add_transition_risk <- function(with_reductions, low_threshold, high_thresh
 
 pstr_check <- function(scenarios) {
   check_has_no_na(scenarios, "reductions")
-
   pstr_check_type_has_sector_and_subsector(scenarios)
 }
 
@@ -102,7 +101,7 @@ pstr_check_type_has_sector_and_subsector <- function(scenarios) {
   if (has_bad_type) {
     type <- toString(bad)
     abort(c(
-      "Each type must have some `sector` and `subsector`.",
+      "Each scenario `type` must have some `sector` and `subsector`.",
       x = glue("All `sector` and `subsector` are missing for `type` {type}."),
       i = "Did you need to prepare the data with `pstr_prepare_scenarios()`?"
     ))
