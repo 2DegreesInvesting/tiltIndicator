@@ -94,8 +94,8 @@ pstr_check_type_has_sector_and_subsector <- function(scenarios) {
       all_na = all(is.na(.data$sector) & is.na(.data$subsector)),
       .by = "type"
     ) |>
-    filter(all_na) |>
-    pull(type)
+    filter(.data$all_na) |>
+    pull(.data$type)
 
   has_bad_type <- !identical(bad, character(0))
   if (has_bad_type) {
