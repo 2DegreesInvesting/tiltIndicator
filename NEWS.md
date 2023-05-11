@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9056
+
+- Same as previous version.
+
+
 # tiltIndicator 0.0.0.9055
 
 * The column `grouped_by` now includes the scenario type (#306). This makes
