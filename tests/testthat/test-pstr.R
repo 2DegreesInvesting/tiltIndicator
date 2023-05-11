@@ -144,3 +144,12 @@ test_that("with a missing value in the reductions column errors gracefully", {
   scenarios$reductions <- NA
   expect_error(pstr(companies, scenarios), "reductions")
 })
+
+test_that("for each company and grouped_by value sums 1", {
+  companies <- pstr_companies |>
+    filter(company_id %in% dplyr::first(company_id))
+  scenarios <- pstr_scenarios
+  out <- pstr(companies, scenarios)
+  summarize()
+
+})
