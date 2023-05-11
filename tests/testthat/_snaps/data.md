@@ -3876,978 +3876,978 @@
       484                world
       
       [[3]]
-                sector
-      1          power
-      2          power
-      3          power
-      4          power
-      5      buildings
-      6      buildings
-      7      buildings
-      8      buildings
-      9       industry
-      10      industry
-      11      industry
-      12      industry
-      13      industry
-      14      industry
-      15      industry
-      16      industry
-      17      industry
-      18      industry
-      19      industry
-      20      industry
-      21      industry
-      22      industry
-      23      industry
-      24      industry
-      25     transport
-      26     transport
-      27     transport
-      28     transport
-      29     transport
-      30     transport
-      31     transport
-      32     transport
-      33     transport
-      34     transport
-      35     transport
-      36     transport
-      37     transport
-      38     transport
-      39     transport
-      40     transport
-      41     transport
-      42     transport
-      43     transport
-      44     transport
-      45  other energy
-      46  other energy
-      47  other energy
-      48  other energy
-      49         total
-      50         total
-      51         total
-      52         total
-      53          <NA>
-      54          <NA>
-      55          <NA>
-      56          <NA>
-      57         power
-      58         power
-      59         power
-      60         power
-      61     buildings
-      62     buildings
-      63     buildings
-      64     buildings
-      65      industry
-      66      industry
-      67      industry
-      68      industry
-      69      industry
-      70      industry
-      71      industry
-      72      industry
-      73      industry
-      74      industry
-      75      industry
-      76      industry
-      77      industry
-      78      industry
-      79      industry
-      80      industry
-      81     transport
-      82     transport
-      83     transport
-      84     transport
-      85     transport
-      86     transport
-      87     transport
-      88     transport
-      89     transport
-      90     transport
-      91     transport
-      92     transport
-      93     transport
-      94     transport
-      95     transport
-      96     transport
-      97     transport
-      98     transport
-      99     transport
-      100    transport
-      101 other energy
-      102 other energy
-      103 other energy
-      104 other energy
-      105        total
-      106        total
-      107        total
-      108        total
-      109         <NA>
-      110         <NA>
-      111         <NA>
-      112         <NA>
-      113         <NA>
-      114         <NA>
-      115         <NA>
-      116         <NA>
-      117         <NA>
-      118         <NA>
-      119         <NA>
-      120         <NA>
-      121         <NA>
-      122         <NA>
-      123         <NA>
-      124         <NA>
-      125         <NA>
-      126         <NA>
-      127         <NA>
-      128         <NA>
-      129         <NA>
-      130         <NA>
-      131         <NA>
-      132         <NA>
-      133         <NA>
-      134         <NA>
-      135         <NA>
-      136         <NA>
-      137         <NA>
-      138         <NA>
-      139         <NA>
-      140         <NA>
-      141         <NA>
-      142         <NA>
-      143         <NA>
-      144         <NA>
-      145         <NA>
-      146         <NA>
-      147         <NA>
-      148         <NA>
-      149         <NA>
-      150         <NA>
-      151         <NA>
-      152         <NA>
-      153         <NA>
-      154         <NA>
-      155         <NA>
-      156         <NA>
-      157         <NA>
-      158         <NA>
-      159         <NA>
-      160         <NA>
-      161         <NA>
-      162         <NA>
-      163         <NA>
-      164         <NA>
-      165         <NA>
-      166         <NA>
-      167         <NA>
-      168         <NA>
-      169         <NA>
-      170         <NA>
-      171         <NA>
-      172         <NA>
-      173         <NA>
-      174         <NA>
-      175         <NA>
-      176         <NA>
-      177         <NA>
-      178         <NA>
-      179         <NA>
-      180         <NA>
-      181         <NA>
-      182         <NA>
-      183         <NA>
-      184         <NA>
-      185         <NA>
-      186         <NA>
-      187         <NA>
-      188         <NA>
-      189         <NA>
-      190         <NA>
-      191         <NA>
-      192         <NA>
-      193         <NA>
-      194         <NA>
-      195         <NA>
-      196         <NA>
-      197         <NA>
-      198         <NA>
-      199         <NA>
-      200         <NA>
-      201         <NA>
-      202         <NA>
-      203         <NA>
-      204         <NA>
-      205         <NA>
-      206         <NA>
-      207         <NA>
-      208         <NA>
-      209         <NA>
-      210         <NA>
-      211         <NA>
-      212         <NA>
-      213         <NA>
-      214         <NA>
-      215         <NA>
-      216         <NA>
-      217         <NA>
-      218         <NA>
-      219         <NA>
-      220         <NA>
-      221         <NA>
-      222         <NA>
-      223         <NA>
-      224         <NA>
-      225         <NA>
-      226         <NA>
-      227         <NA>
-      228         <NA>
-      229         <NA>
-      230         <NA>
-      231         <NA>
-      232         <NA>
-      233         <NA>
-      234         <NA>
-      235         <NA>
-      236         <NA>
-      237         <NA>
-      238         <NA>
-      239         <NA>
-      240         <NA>
-      241         <NA>
-      242         <NA>
-      243         <NA>
-      244         <NA>
-      245         <NA>
-      246         <NA>
-      247         <NA>
-      248         <NA>
-      249         <NA>
-      250         <NA>
-      251         <NA>
-      252         <NA>
-      253         <NA>
-      254         <NA>
-      255         <NA>
-      256         <NA>
-      257         <NA>
-      258         <NA>
-      259         <NA>
-      260         <NA>
-      261         <NA>
-      262         <NA>
-      263         <NA>
-      264         <NA>
-      265         <NA>
-      266         <NA>
-      267         <NA>
-      268         <NA>
-      269         <NA>
-      270         <NA>
-      271         <NA>
-      272         <NA>
-      273         <NA>
-      274         <NA>
-      275         <NA>
-      276         <NA>
-      277         <NA>
-      278         <NA>
-      279         <NA>
-      280         <NA>
-      281         <NA>
-      282         <NA>
-      283         <NA>
-      284         <NA>
-      285         <NA>
-      286         <NA>
-      287         <NA>
-      288         <NA>
-      289         <NA>
-      290         <NA>
-      291         <NA>
-      292         <NA>
-      293         <NA>
-      294         <NA>
-      295         <NA>
-      296         <NA>
-      297         <NA>
-      298         <NA>
-      299         <NA>
-      300         <NA>
-      301         <NA>
-      302         <NA>
-      303         <NA>
-      304         <NA>
-      305         <NA>
-      306         <NA>
-      307         <NA>
-      308         <NA>
-      309         <NA>
-      310         <NA>
-      311         <NA>
-      312         <NA>
-      313         <NA>
-      314         <NA>
-      315         <NA>
-      316         <NA>
-      317         <NA>
-      318         <NA>
-      319         <NA>
-      320         <NA>
-      321         <NA>
-      322         <NA>
-      323         <NA>
-      324         <NA>
-      325         <NA>
-      326         <NA>
-      327         <NA>
-      328         <NA>
-      329         <NA>
-      330         <NA>
-      331         <NA>
-      332         <NA>
-      333         <NA>
-      334         <NA>
-      335         <NA>
-      336         <NA>
-      337         <NA>
-      338         <NA>
-      339         <NA>
-      340         <NA>
-      341         <NA>
-      342         <NA>
-      343         <NA>
-      344         <NA>
-      345         <NA>
-      346         <NA>
-      347         <NA>
-      348         <NA>
-      349         <NA>
-      350         <NA>
-      351         <NA>
-      352         <NA>
-      353         <NA>
-      354         <NA>
-      355         <NA>
-      356         <NA>
-      357         <NA>
-      358         <NA>
-      359         <NA>
-      360         <NA>
-      361         <NA>
-      362         <NA>
-      363         <NA>
-      364         <NA>
-      365         <NA>
-      366         <NA>
-      367         <NA>
-      368         <NA>
-      369         <NA>
-      370         <NA>
-      371         <NA>
-      372         <NA>
-      373         <NA>
-      374         <NA>
-      375         <NA>
-      376         <NA>
-      377         <NA>
-      378         <NA>
-      379         <NA>
-      380         <NA>
-      381         <NA>
-      382         <NA>
-      383         <NA>
-      384         <NA>
-      385         <NA>
-      386         <NA>
-      387         <NA>
-      388         <NA>
-      389         <NA>
-      390         <NA>
-      391         <NA>
-      392         <NA>
-      393         <NA>
-      394         <NA>
-      395         <NA>
-      396         <NA>
-      397         <NA>
-      398         <NA>
-      399         <NA>
-      400         <NA>
-      401         <NA>
-      402         <NA>
-      403         <NA>
-      404         <NA>
-      405         <NA>
-      406         <NA>
-      407         <NA>
-      408         <NA>
-      409         <NA>
-      410         <NA>
-      411         <NA>
-      412         <NA>
-      413         <NA>
-      414         <NA>
-      415         <NA>
-      416         <NA>
-      417         <NA>
-      418         <NA>
-      419         <NA>
-      420         <NA>
-      421         <NA>
-      422         <NA>
-      423         <NA>
-      424         <NA>
-      425         <NA>
-      426         <NA>
-      427         <NA>
-      428         <NA>
-      429         <NA>
-      430         <NA>
-      431         <NA>
-      432         <NA>
-      433         <NA>
-      434         <NA>
-      435         <NA>
-      436         <NA>
-      437         <NA>
-      438         <NA>
-      439         <NA>
-      440         <NA>
-      441         <NA>
-      442         <NA>
-      443         <NA>
-      444         <NA>
-      445         <NA>
-      446         <NA>
-      447         <NA>
-      448         <NA>
-      449         <NA>
-      450         <NA>
-      451         <NA>
-      452         <NA>
-      453         <NA>
-      454         <NA>
-      455         <NA>
-      456         <NA>
-      457         <NA>
-      458         <NA>
-      459         <NA>
-      460         <NA>
-      461         <NA>
-      462         <NA>
-      463         <NA>
-      464         <NA>
-      465         <NA>
-      466         <NA>
-      467         <NA>
-      468         <NA>
-      469         <NA>
-      470         <NA>
-      471         <NA>
-      472         <NA>
-      473         <NA>
-      474         <NA>
-      475         <NA>
-      476         <NA>
-      477         <NA>
-      478         <NA>
-      479         <NA>
-      480         <NA>
-      481         <NA>
-      482         <NA>
-      483         <NA>
-      484         <NA>
+                       sector
+      1                 power
+      2                 power
+      3                 power
+      4                 power
+      5             buildings
+      6             buildings
+      7             buildings
+      8             buildings
+      9              industry
+      10             industry
+      11             industry
+      12             industry
+      13             industry
+      14             industry
+      15             industry
+      16             industry
+      17             industry
+      18             industry
+      19             industry
+      20             industry
+      21             industry
+      22             industry
+      23             industry
+      24             industry
+      25            transport
+      26            transport
+      27            transport
+      28            transport
+      29            transport
+      30            transport
+      31            transport
+      32            transport
+      33            transport
+      34            transport
+      35            transport
+      36            transport
+      37            transport
+      38            transport
+      39            transport
+      40            transport
+      41            transport
+      42            transport
+      43            transport
+      44            transport
+      45         other energy
+      46         other energy
+      47         other energy
+      48         other energy
+      49                total
+      50                total
+      51                total
+      52                total
+      53                 <NA>
+      54                 <NA>
+      55                 <NA>
+      56                 <NA>
+      57                power
+      58                power
+      59                power
+      60                power
+      61            buildings
+      62            buildings
+      63            buildings
+      64            buildings
+      65             industry
+      66             industry
+      67             industry
+      68             industry
+      69             industry
+      70             industry
+      71             industry
+      72             industry
+      73             industry
+      74             industry
+      75             industry
+      76             industry
+      77             industry
+      78             industry
+      79             industry
+      80             industry
+      81            transport
+      82            transport
+      83            transport
+      84            transport
+      85            transport
+      86            transport
+      87            transport
+      88            transport
+      89            transport
+      90            transport
+      91            transport
+      92            transport
+      93            transport
+      94            transport
+      95            transport
+      96            transport
+      97            transport
+      98            transport
+      99            transport
+      100           transport
+      101        other energy
+      102        other energy
+      103        other energy
+      104        other energy
+      105               total
+      106               total
+      107               total
+      108               total
+      109                <NA>
+      110                <NA>
+      111                <NA>
+      112                <NA>
+      113               total
+      114               total
+      115               total
+      116               total
+      117                coal
+      118                coal
+      119                coal
+      120                coal
+      121                 oil
+      122                 oil
+      123                 oil
+      124                 oil
+      125         natural gas
+      126         natural gas
+      127         natural gas
+      128         natural gas
+      129 bioenergy and waste
+      130 bioenergy and waste
+      131 bioenergy and waste
+      132 bioenergy and waste
+      133               total
+      134               total
+      135               total
+      136               total
+      137               total
+      138               total
+      139               total
+      140               total
+      141                coal
+      142                coal
+      143                coal
+      144                coal
+      145                 oil
+      146                 oil
+      147                 oil
+      148                 oil
+      149         natural gas
+      150         natural gas
+      151         natural gas
+      152         natural gas
+      153 bioenergy and waste
+      154 bioenergy and waste
+      155 bioenergy and waste
+      156 bioenergy and waste
+      157               total
+      158               total
+      159               total
+      160               total
+      161               total
+      162               total
+      163               total
+      164               total
+      165                coal
+      166                coal
+      167                coal
+      168                coal
+      169                 oil
+      170                 oil
+      171                 oil
+      172                 oil
+      173         natural gas
+      174         natural gas
+      175         natural gas
+      176         natural gas
+      177 bioenergy and waste
+      178 bioenergy and waste
+      179 bioenergy and waste
+      180 bioenergy and waste
+      181               total
+      182               total
+      183               total
+      184               total
+      185               total
+      186               total
+      187               total
+      188               total
+      189               total
+      190               total
+      191               total
+      192               total
+      193               total
+      194               total
+      195               total
+      196               total
+      197               total
+      198               total
+      199               total
+      200               total
+      201               total
+      202               total
+      203               total
+      204               total
+      205               total
+      206               total
+      207               total
+      208               total
+      209               total
+      210               total
+      211               total
+      212               total
+      213               total
+      214               total
+      215               total
+      216               total
+      217               total
+      218               total
+      219               total
+      220               total
+      221               total
+      222               total
+      223               total
+      224               total
+      225               total
+      226               total
+      227               total
+      228               total
+      229               total
+      230               total
+      231               total
+      232               total
+      233               total
+      234               total
+      235               total
+      236               total
+      237               total
+      238               total
+      239               total
+      240               total
+      241                coal
+      242                coal
+      243                coal
+      244                coal
+      245                 oil
+      246                 oil
+      247                 oil
+      248                 oil
+      249         natural gas
+      250         natural gas
+      251         natural gas
+      252         natural gas
+      253 bioenergy and waste
+      254 bioenergy and waste
+      255 bioenergy and waste
+      256 bioenergy and waste
+      257               total
+      258               total
+      259               total
+      260               total
+      261               total
+      262               total
+      263               total
+      264               total
+      265                coal
+      266                coal
+      267                coal
+      268                coal
+      269                 oil
+      270                 oil
+      271                 oil
+      272                 oil
+      273         natural gas
+      274         natural gas
+      275         natural gas
+      276         natural gas
+      277 bioenergy and waste
+      278 bioenergy and waste
+      279 bioenergy and waste
+      280 bioenergy and waste
+      281               total
+      282               total
+      283               total
+      284               total
+      285               total
+      286               total
+      287               total
+      288               total
+      289                coal
+      290                coal
+      291                coal
+      292                coal
+      293                 oil
+      294                 oil
+      295                 oil
+      296                 oil
+      297         natural gas
+      298         natural gas
+      299         natural gas
+      300         natural gas
+      301 bioenergy and waste
+      302 bioenergy and waste
+      303 bioenergy and waste
+      304 bioenergy and waste
+      305               total
+      306               total
+      307               total
+      308               total
+      309               total
+      310               total
+      311               total
+      312               total
+      313               total
+      314               total
+      315               total
+      316               total
+      317               total
+      318               total
+      319               total
+      320               total
+      321               total
+      322               total
+      323               total
+      324               total
+      325               total
+      326               total
+      327               total
+      328               total
+      329               total
+      330               total
+      331               total
+      332               total
+      333               total
+      334               total
+      335               total
+      336               total
+      337               total
+      338               total
+      339               total
+      340               total
+      341               total
+      342               total
+      343               total
+      344               total
+      345               total
+      346               total
+      347               total
+      348               total
+      349               total
+      350               total
+      351               total
+      352               total
+      353               total
+      354               total
+      355               total
+      356               total
+      357               total
+      358               total
+      359               total
+      360               total
+      361               total
+      362               total
+      363               total
+      364               total
+      365                coal
+      366                coal
+      367                coal
+      368                coal
+      369                 oil
+      370                 oil
+      371                 oil
+      372                 oil
+      373         natural gas
+      374         natural gas
+      375         natural gas
+      376         natural gas
+      377 bioenergy and waste
+      378 bioenergy and waste
+      379 bioenergy and waste
+      380 bioenergy and waste
+      381               total
+      382               total
+      383               total
+      384               total
+      385               total
+      386               total
+      387               total
+      388               total
+      389                coal
+      390                coal
+      391                coal
+      392                coal
+      393                 oil
+      394                 oil
+      395                 oil
+      396                 oil
+      397         natural gas
+      398         natural gas
+      399         natural gas
+      400         natural gas
+      401 bioenergy and waste
+      402 bioenergy and waste
+      403 bioenergy and waste
+      404 bioenergy and waste
+      405               total
+      406               total
+      407               total
+      408               total
+      409               total
+      410               total
+      411               total
+      412               total
+      413                coal
+      414                coal
+      415                coal
+      416                coal
+      417                 oil
+      418                 oil
+      419                 oil
+      420                 oil
+      421         natural gas
+      422         natural gas
+      423         natural gas
+      424         natural gas
+      425 bioenergy and waste
+      426 bioenergy and waste
+      427 bioenergy and waste
+      428 bioenergy and waste
+      429               total
+      430               total
+      431               total
+      432               total
+      433               total
+      434               total
+      435               total
+      436               total
+      437               total
+      438               total
+      439               total
+      440               total
+      441               total
+      442               total
+      443               total
+      444               total
+      445               total
+      446               total
+      447               total
+      448               total
+      449               total
+      450               total
+      451               total
+      452               total
+      453               total
+      454               total
+      455               total
+      456               total
+      457               total
+      458               total
+      459               total
+      460               total
+      461               total
+      462               total
+      463               total
+      464               total
+      465               total
+      466               total
+      467               total
+      468               total
+      469               total
+      470               total
+      471               total
+      472               total
+      473               total
+      474               total
+      475               total
+      476               total
+      477               total
+      478               total
+      479               total
+      480               total
+      481               total
+      482               total
+      483               total
+      484               total
       
       [[4]]
-                      subsector
-      1                    <NA>
-      2                    <NA>
-      3                    <NA>
-      4                    <NA>
-      5                    <NA>
-      6                    <NA>
-      7                    <NA>
-      8                    <NA>
-      9          iron and steel
-      10         iron and steel
-      11         iron and steel
-      12         iron and steel
-      13  non-metallic minerals
-      14  non-metallic minerals
-      15  non-metallic minerals
-      16  non-metallic minerals
-      17              chemicals
-      18              chemicals
-      19              chemicals
-      20              chemicals
-      21         other industry
-      22         other industry
-      23         other industry
-      24         other industry
-      25                   cars
-      26                   cars
-      27                   cars
-      28                   cars
-      29                 trucks
-      30                 trucks
-      31                 trucks
-      32                 trucks
-      33               aviation
-      34               aviation
-      35               aviation
-      36               aviation
-      37               shipping
-      38               shipping
-      39               shipping
-      40               shipping
-      41        other transport
-      42        other transport
-      43        other transport
-      44        other transport
-      45                   <NA>
-      46                   <NA>
-      47                   <NA>
-      48                   <NA>
-      49                 energy
-      50                 energy
-      51                 energy
-      52                 energy
-      53               land use
-      54               land use
-      55               land use
-      56               land use
-      57                   <NA>
-      58                   <NA>
-      59                   <NA>
-      60                   <NA>
-      61                   <NA>
-      62                   <NA>
-      63                   <NA>
-      64                   <NA>
-      65         iron and steel
-      66         iron and steel
-      67         iron and steel
-      68         iron and steel
-      69  non-metallic minerals
-      70  non-metallic minerals
-      71  non-metallic minerals
-      72  non-metallic minerals
-      73              chemicals
-      74              chemicals
-      75              chemicals
-      76              chemicals
-      77         other industry
-      78         other industry
-      79         other industry
-      80         other industry
-      81                   cars
-      82                   cars
-      83                   cars
-      84                   cars
-      85                 trucks
-      86                 trucks
-      87                 trucks
-      88                 trucks
-      89               aviation
-      90               aviation
-      91               aviation
-      92               aviation
-      93               shipping
-      94               shipping
-      95               shipping
-      96               shipping
-      97        other transport
-      98        other transport
-      99        other transport
-      100       other transport
-      101                  <NA>
-      102                  <NA>
-      103                  <NA>
-      104                  <NA>
-      105                energy
-      106                energy
-      107                energy
-      108                energy
-      109              land use
-      110              land use
-      111              land use
-      112              land use
-      113                  <NA>
-      114                  <NA>
-      115                  <NA>
-      116                  <NA>
-      117                  <NA>
-      118                  <NA>
-      119                  <NA>
-      120                  <NA>
-      121                  <NA>
-      122                  <NA>
-      123                  <NA>
-      124                  <NA>
-      125                  <NA>
-      126                  <NA>
-      127                  <NA>
-      128                  <NA>
-      129                  <NA>
-      130                  <NA>
-      131                  <NA>
-      132                  <NA>
-      133                  <NA>
-      134                  <NA>
-      135                  <NA>
-      136                  <NA>
-      137                  <NA>
-      138                  <NA>
-      139                  <NA>
-      140                  <NA>
-      141                  <NA>
-      142                  <NA>
-      143                  <NA>
-      144                  <NA>
-      145                  <NA>
-      146                  <NA>
-      147                  <NA>
-      148                  <NA>
-      149                  <NA>
-      150                  <NA>
-      151                  <NA>
-      152                  <NA>
-      153                  <NA>
-      154                  <NA>
-      155                  <NA>
-      156                  <NA>
-      157                  <NA>
-      158                  <NA>
-      159                  <NA>
-      160                  <NA>
-      161                  <NA>
-      162                  <NA>
-      163                  <NA>
-      164                  <NA>
-      165                  <NA>
-      166                  <NA>
-      167                  <NA>
-      168                  <NA>
-      169                  <NA>
-      170                  <NA>
-      171                  <NA>
-      172                  <NA>
-      173                  <NA>
-      174                  <NA>
-      175                  <NA>
-      176                  <NA>
-      177                  <NA>
-      178                  <NA>
-      179                  <NA>
-      180                  <NA>
-      181                  <NA>
-      182                  <NA>
-      183                  <NA>
-      184                  <NA>
-      185                  <NA>
-      186                  <NA>
-      187                  <NA>
-      188                  <NA>
-      189                  <NA>
-      190                  <NA>
-      191                  <NA>
-      192                  <NA>
-      193                  <NA>
-      194                  <NA>
-      195                  <NA>
-      196                  <NA>
-      197                  <NA>
-      198                  <NA>
-      199                  <NA>
-      200                  <NA>
-      201                  <NA>
-      202                  <NA>
-      203                  <NA>
-      204                  <NA>
-      205                  <NA>
-      206                  <NA>
-      207                  <NA>
-      208                  <NA>
-      209                  <NA>
-      210                  <NA>
-      211                  <NA>
-      212                  <NA>
-      213                  <NA>
-      214                  <NA>
-      215                  <NA>
-      216                  <NA>
-      217                  <NA>
-      218                  <NA>
-      219                  <NA>
-      220                  <NA>
-      221                  <NA>
-      222                  <NA>
-      223                  <NA>
-      224                  <NA>
-      225                  <NA>
-      226                  <NA>
-      227                  <NA>
-      228                  <NA>
-      229                  <NA>
-      230                  <NA>
-      231                  <NA>
-      232                  <NA>
-      233                  <NA>
-      234                  <NA>
-      235                  <NA>
-      236                  <NA>
-      237                  <NA>
-      238                  <NA>
-      239                  <NA>
-      240                  <NA>
-      241                  <NA>
-      242                  <NA>
-      243                  <NA>
-      244                  <NA>
-      245                  <NA>
-      246                  <NA>
-      247                  <NA>
-      248                  <NA>
-      249                  <NA>
-      250                  <NA>
-      251                  <NA>
-      252                  <NA>
-      253                  <NA>
-      254                  <NA>
-      255                  <NA>
-      256                  <NA>
-      257                  <NA>
-      258                  <NA>
-      259                  <NA>
-      260                  <NA>
-      261                  <NA>
-      262                  <NA>
-      263                  <NA>
-      264                  <NA>
-      265                  <NA>
-      266                  <NA>
-      267                  <NA>
-      268                  <NA>
-      269                  <NA>
-      270                  <NA>
-      271                  <NA>
-      272                  <NA>
-      273                  <NA>
-      274                  <NA>
-      275                  <NA>
-      276                  <NA>
-      277                  <NA>
-      278                  <NA>
-      279                  <NA>
-      280                  <NA>
-      281                  <NA>
-      282                  <NA>
-      283                  <NA>
-      284                  <NA>
-      285                  <NA>
-      286                  <NA>
-      287                  <NA>
-      288                  <NA>
-      289                  <NA>
-      290                  <NA>
-      291                  <NA>
-      292                  <NA>
-      293                  <NA>
-      294                  <NA>
-      295                  <NA>
-      296                  <NA>
-      297                  <NA>
-      298                  <NA>
-      299                  <NA>
-      300                  <NA>
-      301                  <NA>
-      302                  <NA>
-      303                  <NA>
-      304                  <NA>
-      305                  <NA>
-      306                  <NA>
-      307                  <NA>
-      308                  <NA>
-      309                  <NA>
-      310                  <NA>
-      311                  <NA>
-      312                  <NA>
-      313                  <NA>
-      314                  <NA>
-      315                  <NA>
-      316                  <NA>
-      317                  <NA>
-      318                  <NA>
-      319                  <NA>
-      320                  <NA>
-      321                  <NA>
-      322                  <NA>
-      323                  <NA>
-      324                  <NA>
-      325                  <NA>
-      326                  <NA>
-      327                  <NA>
-      328                  <NA>
-      329                  <NA>
-      330                  <NA>
-      331                  <NA>
-      332                  <NA>
-      333                  <NA>
-      334                  <NA>
-      335                  <NA>
-      336                  <NA>
-      337                  <NA>
-      338                  <NA>
-      339                  <NA>
-      340                  <NA>
-      341                  <NA>
-      342                  <NA>
-      343                  <NA>
-      344                  <NA>
-      345                  <NA>
-      346                  <NA>
-      347                  <NA>
-      348                  <NA>
-      349                  <NA>
-      350                  <NA>
-      351                  <NA>
-      352                  <NA>
-      353                  <NA>
-      354                  <NA>
-      355                  <NA>
-      356                  <NA>
-      357                  <NA>
-      358                  <NA>
-      359                  <NA>
-      360                  <NA>
-      361                  <NA>
-      362                  <NA>
-      363                  <NA>
-      364                  <NA>
-      365                  <NA>
-      366                  <NA>
-      367                  <NA>
-      368                  <NA>
-      369                  <NA>
-      370                  <NA>
-      371                  <NA>
-      372                  <NA>
-      373                  <NA>
-      374                  <NA>
-      375                  <NA>
-      376                  <NA>
-      377                  <NA>
-      378                  <NA>
-      379                  <NA>
-      380                  <NA>
-      381                  <NA>
-      382                  <NA>
-      383                  <NA>
-      384                  <NA>
-      385                  <NA>
-      386                  <NA>
-      387                  <NA>
-      388                  <NA>
-      389                  <NA>
-      390                  <NA>
-      391                  <NA>
-      392                  <NA>
-      393                  <NA>
-      394                  <NA>
-      395                  <NA>
-      396                  <NA>
-      397                  <NA>
-      398                  <NA>
-      399                  <NA>
-      400                  <NA>
-      401                  <NA>
-      402                  <NA>
-      403                  <NA>
-      404                  <NA>
-      405                  <NA>
-      406                  <NA>
-      407                  <NA>
-      408                  <NA>
-      409                  <NA>
-      410                  <NA>
-      411                  <NA>
-      412                  <NA>
-      413                  <NA>
-      414                  <NA>
-      415                  <NA>
-      416                  <NA>
-      417                  <NA>
-      418                  <NA>
-      419                  <NA>
-      420                  <NA>
-      421                  <NA>
-      422                  <NA>
-      423                  <NA>
-      424                  <NA>
-      425                  <NA>
-      426                  <NA>
-      427                  <NA>
-      428                  <NA>
-      429                  <NA>
-      430                  <NA>
-      431                  <NA>
-      432                  <NA>
-      433                  <NA>
-      434                  <NA>
-      435                  <NA>
-      436                  <NA>
-      437                  <NA>
-      438                  <NA>
-      439                  <NA>
-      440                  <NA>
-      441                  <NA>
-      442                  <NA>
-      443                  <NA>
-      444                  <NA>
-      445                  <NA>
-      446                  <NA>
-      447                  <NA>
-      448                  <NA>
-      449                  <NA>
-      450                  <NA>
-      451                  <NA>
-      452                  <NA>
-      453                  <NA>
-      454                  <NA>
-      455                  <NA>
-      456                  <NA>
-      457                  <NA>
-      458                  <NA>
-      459                  <NA>
-      460                  <NA>
-      461                  <NA>
-      462                  <NA>
-      463                  <NA>
-      464                  <NA>
-      465                  <NA>
-      466                  <NA>
-      467                  <NA>
-      468                  <NA>
-      469                  <NA>
-      470                  <NA>
-      471                  <NA>
-      472                  <NA>
-      473                  <NA>
-      474                  <NA>
-      475                  <NA>
-      476                  <NA>
-      477                  <NA>
-      478                  <NA>
-      479                  <NA>
-      480                  <NA>
-      481                  <NA>
-      482                  <NA>
-      483                  <NA>
-      484                  <NA>
+                                           subsector
+      1                                         <NA>
+      2                                         <NA>
+      3                                         <NA>
+      4                                         <NA>
+      5                                         <NA>
+      6                                         <NA>
+      7                                         <NA>
+      8                                         <NA>
+      9                               iron and steel
+      10                              iron and steel
+      11                              iron and steel
+      12                              iron and steel
+      13                       non-metallic minerals
+      14                       non-metallic minerals
+      15                       non-metallic minerals
+      16                       non-metallic minerals
+      17                                   chemicals
+      18                                   chemicals
+      19                                   chemicals
+      20                                   chemicals
+      21                              other industry
+      22                              other industry
+      23                              other industry
+      24                              other industry
+      25                                        cars
+      26                                        cars
+      27                                        cars
+      28                                        cars
+      29                                      trucks
+      30                                      trucks
+      31                                      trucks
+      32                                      trucks
+      33                                    aviation
+      34                                    aviation
+      35                                    aviation
+      36                                    aviation
+      37                                    shipping
+      38                                    shipping
+      39                                    shipping
+      40                                    shipping
+      41                             other transport
+      42                             other transport
+      43                             other transport
+      44                             other transport
+      45                                        <NA>
+      46                                        <NA>
+      47                                        <NA>
+      48                                        <NA>
+      49                                      energy
+      50                                      energy
+      51                                      energy
+      52                                      energy
+      53                                    land use
+      54                                    land use
+      55                                    land use
+      56                                    land use
+      57                                        <NA>
+      58                                        <NA>
+      59                                        <NA>
+      60                                        <NA>
+      61                                        <NA>
+      62                                        <NA>
+      63                                        <NA>
+      64                                        <NA>
+      65                              iron and steel
+      66                              iron and steel
+      67                              iron and steel
+      68                              iron and steel
+      69                       non-metallic minerals
+      70                       non-metallic minerals
+      71                       non-metallic minerals
+      72                       non-metallic minerals
+      73                                   chemicals
+      74                                   chemicals
+      75                                   chemicals
+      76                                   chemicals
+      77                              other industry
+      78                              other industry
+      79                              other industry
+      80                              other industry
+      81                                        cars
+      82                                        cars
+      83                                        cars
+      84                                        cars
+      85                                      trucks
+      86                                      trucks
+      87                                      trucks
+      88                                      trucks
+      89                                    aviation
+      90                                    aviation
+      91                                    aviation
+      92                                    aviation
+      93                                    shipping
+      94                                    shipping
+      95                                    shipping
+      96                                    shipping
+      97                             other transport
+      98                             other transport
+      99                             other transport
+      100                            other transport
+      101                                       <NA>
+      102                                       <NA>
+      103                                       <NA>
+      104                                       <NA>
+      105                                     energy
+      106                                     energy
+      107                                     energy
+      108                                     energy
+      109                                   land use
+      110                                   land use
+      111                                   land use
+      112                                   land use
+      113                        total energy supply
+      114                        total energy supply
+      115                        total energy supply
+      116                        total energy supply
+      117                        total energy supply
+      118                        total energy supply
+      119                        total energy supply
+      120                        total energy supply
+      121                        total energy supply
+      122                        total energy supply
+      123                        total energy supply
+      124                        total energy supply
+      125                        total energy supply
+      126                        total energy supply
+      127                        total energy supply
+      128                        total energy supply
+      129                        total energy supply
+      130                        total energy supply
+      131                        total energy supply
+      132                        total energy supply
+      133 biofuels production and direct air capture
+      134 biofuels production and direct air capture
+      135 biofuels production and direct air capture
+      136 biofuels production and direct air capture
+      137                        power sector inputs
+      138                        power sector inputs
+      139                        power sector inputs
+      140                        power sector inputs
+      141                        power sector inputs
+      142                        power sector inputs
+      143                        power sector inputs
+      144                        power sector inputs
+      145                        power sector inputs
+      146                        power sector inputs
+      147                        power sector inputs
+      148                        power sector inputs
+      149                        power sector inputs
+      150                        power sector inputs
+      151                        power sector inputs
+      152                        power sector inputs
+      153                        power sector inputs
+      154                        power sector inputs
+      155                        power sector inputs
+      156                        power sector inputs
+      157                        other energy sector
+      158                        other energy sector
+      159                        other energy sector
+      160                        other energy sector
+      161                    total final consumption
+      162                    total final consumption
+      163                    total final consumption
+      164                    total final consumption
+      165                    total final consumption
+      166                    total final consumption
+      167                    total final consumption
+      168                    total final consumption
+      169                    total final consumption
+      170                    total final consumption
+      171                    total final consumption
+      172                    total final consumption
+      173                    total final consumption
+      174                    total final consumption
+      175                    total final consumption
+      176                    total final consumption
+      177                    total final consumption
+      178                    total final consumption
+      179                    total final consumption
+      180                    total final consumption
+      181                                   industry
+      182                                   industry
+      183                                   industry
+      184                                   industry
+      185                             iron and steel
+      186                             iron and steel
+      187                             iron and steel
+      188                             iron and steel
+      189                                  chemicals
+      190                                  chemicals
+      191                                  chemicals
+      192                                  chemicals
+      193              non-metallic minerals: cement
+      194              non-metallic minerals: cement
+      195              non-metallic minerals: cement
+      196              non-metallic minerals: cement
+      197                                  transport
+      198                                  transport
+      199                                  transport
+      200                                  transport
+      201                                       road
+      202                                       road
+      203                                       road
+      204                                       road
+      205          road passenger light duty vehicle
+      206          road passenger light duty vehicle
+      207          road passenger light duty vehicle
+      208          road passenger light duty vehicle
+      209                     road heavy-duty trucks
+      210                     road heavy-duty trucks
+      211                     road heavy-duty trucks
+      212                     road heavy-duty trucks
+      213      total aviation (domestic and bunkers)
+      214      total aviation (domestic and bunkers)
+      215      total aviation (domestic and bunkers)
+      216      total aviation (domestic and bunkers)
+      217    total navigation (domestic and bunkers)
+      218    total navigation (domestic and bunkers)
+      219    total navigation (domestic and bunkers)
+      220    total navigation (domestic and bunkers)
+      221                                  buildings
+      222                                  buildings
+      223                                  buildings
+      224                                  buildings
+      225                                residential
+      226                                residential
+      227                                residential
+      228                                residential
+      229                                   services
+      230                                   services
+      231                                   services
+      232                                   services
+      233                        total energy supply
+      234                        total energy supply
+      235                        total energy supply
+      236                        total energy supply
+      237                        total energy supply
+      238                        total energy supply
+      239                        total energy supply
+      240                        total energy supply
+      241                        total energy supply
+      242                        total energy supply
+      243                        total energy supply
+      244                        total energy supply
+      245                        total energy supply
+      246                        total energy supply
+      247                        total energy supply
+      248                        total energy supply
+      249                        total energy supply
+      250                        total energy supply
+      251                        total energy supply
+      252                        total energy supply
+      253                        total energy supply
+      254                        total energy supply
+      255                        total energy supply
+      256                        total energy supply
+      257 biofuels production and direct air capture
+      258 biofuels production and direct air capture
+      259 biofuels production and direct air capture
+      260 biofuels production and direct air capture
+      261                        power sector inputs
+      262                        power sector inputs
+      263                        power sector inputs
+      264                        power sector inputs
+      265                        power sector inputs
+      266                        power sector inputs
+      267                        power sector inputs
+      268                        power sector inputs
+      269                        power sector inputs
+      270                        power sector inputs
+      271                        power sector inputs
+      272                        power sector inputs
+      273                        power sector inputs
+      274                        power sector inputs
+      275                        power sector inputs
+      276                        power sector inputs
+      277                        power sector inputs
+      278                        power sector inputs
+      279                        power sector inputs
+      280                        power sector inputs
+      281                        other energy sector
+      282                        other energy sector
+      283                        other energy sector
+      284                        other energy sector
+      285                    total final consumption
+      286                    total final consumption
+      287                    total final consumption
+      288                    total final consumption
+      289                    total final consumption
+      290                    total final consumption
+      291                    total final consumption
+      292                    total final consumption
+      293                    total final consumption
+      294                    total final consumption
+      295                    total final consumption
+      296                    total final consumption
+      297                    total final consumption
+      298                    total final consumption
+      299                    total final consumption
+      300                    total final consumption
+      301                    total final consumption
+      302                    total final consumption
+      303                    total final consumption
+      304                    total final consumption
+      305                                   industry
+      306                                   industry
+      307                                   industry
+      308                                   industry
+      309                             iron and steel
+      310                             iron and steel
+      311                             iron and steel
+      312                             iron and steel
+      313                                  chemicals
+      314                                  chemicals
+      315                                  chemicals
+      316                                  chemicals
+      317              non-metallic minerals: cement
+      318              non-metallic minerals: cement
+      319              non-metallic minerals: cement
+      320              non-metallic minerals: cement
+      321                                  transport
+      322                                  transport
+      323                                  transport
+      324                                  transport
+      325                                       road
+      326                                       road
+      327                                       road
+      328                                       road
+      329          road passenger light duty vehicle
+      330          road passenger light duty vehicle
+      331          road passenger light duty vehicle
+      332          road passenger light duty vehicle
+      333                     road heavy-duty trucks
+      334                     road heavy-duty trucks
+      335                     road heavy-duty trucks
+      336                     road heavy-duty trucks
+      337      total aviation (domestic and bunkers)
+      338      total aviation (domestic and bunkers)
+      339      total aviation (domestic and bunkers)
+      340      total aviation (domestic and bunkers)
+      341    total navigation (domestic and bunkers)
+      342    total navigation (domestic and bunkers)
+      343    total navigation (domestic and bunkers)
+      344    total navigation (domestic and bunkers)
+      345                                  buildings
+      346                                  buildings
+      347                                  buildings
+      348                                  buildings
+      349                                residential
+      350                                residential
+      351                                residential
+      352                                residential
+      353                                   services
+      354                                   services
+      355                                   services
+      356                                   services
+      357                        total energy supply
+      358                        total energy supply
+      359                        total energy supply
+      360                        total energy supply
+      361                        total energy supply
+      362                        total energy supply
+      363                        total energy supply
+      364                        total energy supply
+      365                        total energy supply
+      366                        total energy supply
+      367                        total energy supply
+      368                        total energy supply
+      369                        total energy supply
+      370                        total energy supply
+      371                        total energy supply
+      372                        total energy supply
+      373                        total energy supply
+      374                        total energy supply
+      375                        total energy supply
+      376                        total energy supply
+      377                        total energy supply
+      378                        total energy supply
+      379                        total energy supply
+      380                        total energy supply
+      381 biofuels production and direct air capture
+      382 biofuels production and direct air capture
+      383 biofuels production and direct air capture
+      384 biofuels production and direct air capture
+      385                        power sector inputs
+      386                        power sector inputs
+      387                        power sector inputs
+      388                        power sector inputs
+      389                        power sector inputs
+      390                        power sector inputs
+      391                        power sector inputs
+      392                        power sector inputs
+      393                        power sector inputs
+      394                        power sector inputs
+      395                        power sector inputs
+      396                        power sector inputs
+      397                        power sector inputs
+      398                        power sector inputs
+      399                        power sector inputs
+      400                        power sector inputs
+      401                        power sector inputs
+      402                        power sector inputs
+      403                        power sector inputs
+      404                        power sector inputs
+      405                        other energy sector
+      406                        other energy sector
+      407                        other energy sector
+      408                        other energy sector
+      409                    total final consumption
+      410                    total final consumption
+      411                    total final consumption
+      412                    total final consumption
+      413                    total final consumption
+      414                    total final consumption
+      415                    total final consumption
+      416                    total final consumption
+      417                    total final consumption
+      418                    total final consumption
+      419                    total final consumption
+      420                    total final consumption
+      421                    total final consumption
+      422                    total final consumption
+      423                    total final consumption
+      424                    total final consumption
+      425                    total final consumption
+      426                    total final consumption
+      427                    total final consumption
+      428                    total final consumption
+      429                                   industry
+      430                                   industry
+      431                                   industry
+      432                                   industry
+      433                             iron and steel
+      434                             iron and steel
+      435                             iron and steel
+      436                             iron and steel
+      437                                  chemicals
+      438                                  chemicals
+      439                                  chemicals
+      440                                  chemicals
+      441              non-metallic minerals: cement
+      442              non-metallic minerals: cement
+      443              non-metallic minerals: cement
+      444              non-metallic minerals: cement
+      445                                  transport
+      446                                  transport
+      447                                  transport
+      448                                  transport
+      449                                       road
+      450                                       road
+      451                                       road
+      452                                       road
+      453          road passenger light duty vehicle
+      454          road passenger light duty vehicle
+      455          road passenger light duty vehicle
+      456          road passenger light duty vehicle
+      457                     road heavy-duty trucks
+      458                     road heavy-duty trucks
+      459                     road heavy-duty trucks
+      460                     road heavy-duty trucks
+      461      total aviation (domestic and bunkers)
+      462      total aviation (domestic and bunkers)
+      463      total aviation (domestic and bunkers)
+      464      total aviation (domestic and bunkers)
+      465    total navigation (domestic and bunkers)
+      466    total navigation (domestic and bunkers)
+      467    total navigation (domestic and bunkers)
+      468    total navigation (domestic and bunkers)
+      469                                  buildings
+      470                                  buildings
+      471                                  buildings
+      472                                  buildings
+      473                                residential
+      474                                residential
+      475                                residential
+      476                                residential
+      477                                   services
+      478                                   services
+      479                                   services
+      480                                   services
+      481                        total energy supply
+      482                        total energy supply
+      483                        total energy supply
+      484                        total energy supply
       
       [[5]]
           year
@@ -6796,979 +6796,5 @@
       482  weo
       483  weo
       484  weo
-      
-      [[9]]
-                      product
-      1                  <NA>
-      2                  <NA>
-      3                  <NA>
-      4                  <NA>
-      5                  <NA>
-      6                  <NA>
-      7                  <NA>
-      8                  <NA>
-      9                  <NA>
-      10                 <NA>
-      11                 <NA>
-      12                 <NA>
-      13                 <NA>
-      14                 <NA>
-      15                 <NA>
-      16                 <NA>
-      17                 <NA>
-      18                 <NA>
-      19                 <NA>
-      20                 <NA>
-      21                 <NA>
-      22                 <NA>
-      23                 <NA>
-      24                 <NA>
-      25                 <NA>
-      26                 <NA>
-      27                 <NA>
-      28                 <NA>
-      29                 <NA>
-      30                 <NA>
-      31                 <NA>
-      32                 <NA>
-      33                 <NA>
-      34                 <NA>
-      35                 <NA>
-      36                 <NA>
-      37                 <NA>
-      38                 <NA>
-      39                 <NA>
-      40                 <NA>
-      41                 <NA>
-      42                 <NA>
-      43                 <NA>
-      44                 <NA>
-      45                 <NA>
-      46                 <NA>
-      47                 <NA>
-      48                 <NA>
-      49                 <NA>
-      50                 <NA>
-      51                 <NA>
-      52                 <NA>
-      53                 <NA>
-      54                 <NA>
-      55                 <NA>
-      56                 <NA>
-      57                 <NA>
-      58                 <NA>
-      59                 <NA>
-      60                 <NA>
-      61                 <NA>
-      62                 <NA>
-      63                 <NA>
-      64                 <NA>
-      65                 <NA>
-      66                 <NA>
-      67                 <NA>
-      68                 <NA>
-      69                 <NA>
-      70                 <NA>
-      71                 <NA>
-      72                 <NA>
-      73                 <NA>
-      74                 <NA>
-      75                 <NA>
-      76                 <NA>
-      77                 <NA>
-      78                 <NA>
-      79                 <NA>
-      80                 <NA>
-      81                 <NA>
-      82                 <NA>
-      83                 <NA>
-      84                 <NA>
-      85                 <NA>
-      86                 <NA>
-      87                 <NA>
-      88                 <NA>
-      89                 <NA>
-      90                 <NA>
-      91                 <NA>
-      92                 <NA>
-      93                 <NA>
-      94                 <NA>
-      95                 <NA>
-      96                 <NA>
-      97                 <NA>
-      98                 <NA>
-      99                 <NA>
-      100                <NA>
-      101                <NA>
-      102                <NA>
-      103                <NA>
-      104                <NA>
-      105                <NA>
-      106                <NA>
-      107                <NA>
-      108                <NA>
-      109                <NA>
-      110                <NA>
-      111                <NA>
-      112                <NA>
-      113               total
-      114               total
-      115               total
-      116               total
-      117                coal
-      118                coal
-      119                coal
-      120                coal
-      121                 oil
-      122                 oil
-      123                 oil
-      124                 oil
-      125         natural gas
-      126         natural gas
-      127         natural gas
-      128         natural gas
-      129 bioenergy and waste
-      130 bioenergy and waste
-      131 bioenergy and waste
-      132 bioenergy and waste
-      133               total
-      134               total
-      135               total
-      136               total
-      137               total
-      138               total
-      139               total
-      140               total
-      141                coal
-      142                coal
-      143                coal
-      144                coal
-      145                 oil
-      146                 oil
-      147                 oil
-      148                 oil
-      149         natural gas
-      150         natural gas
-      151         natural gas
-      152         natural gas
-      153 bioenergy and waste
-      154 bioenergy and waste
-      155 bioenergy and waste
-      156 bioenergy and waste
-      157               total
-      158               total
-      159               total
-      160               total
-      161               total
-      162               total
-      163               total
-      164               total
-      165                coal
-      166                coal
-      167                coal
-      168                coal
-      169                 oil
-      170                 oil
-      171                 oil
-      172                 oil
-      173         natural gas
-      174         natural gas
-      175         natural gas
-      176         natural gas
-      177 bioenergy and waste
-      178 bioenergy and waste
-      179 bioenergy and waste
-      180 bioenergy and waste
-      181               total
-      182               total
-      183               total
-      184               total
-      185               total
-      186               total
-      187               total
-      188               total
-      189               total
-      190               total
-      191               total
-      192               total
-      193               total
-      194               total
-      195               total
-      196               total
-      197               total
-      198               total
-      199               total
-      200               total
-      201               total
-      202               total
-      203               total
-      204               total
-      205               total
-      206               total
-      207               total
-      208               total
-      209               total
-      210               total
-      211               total
-      212               total
-      213               total
-      214               total
-      215               total
-      216               total
-      217               total
-      218               total
-      219               total
-      220               total
-      221               total
-      222               total
-      223               total
-      224               total
-      225               total
-      226               total
-      227               total
-      228               total
-      229               total
-      230               total
-      231               total
-      232               total
-      233               total
-      234               total
-      235               total
-      236               total
-      237               total
-      238               total
-      239               total
-      240               total
-      241                coal
-      242                coal
-      243                coal
-      244                coal
-      245                 oil
-      246                 oil
-      247                 oil
-      248                 oil
-      249         natural gas
-      250         natural gas
-      251         natural gas
-      252         natural gas
-      253 bioenergy and waste
-      254 bioenergy and waste
-      255 bioenergy and waste
-      256 bioenergy and waste
-      257               total
-      258               total
-      259               total
-      260               total
-      261               total
-      262               total
-      263               total
-      264               total
-      265                coal
-      266                coal
-      267                coal
-      268                coal
-      269                 oil
-      270                 oil
-      271                 oil
-      272                 oil
-      273         natural gas
-      274         natural gas
-      275         natural gas
-      276         natural gas
-      277 bioenergy and waste
-      278 bioenergy and waste
-      279 bioenergy and waste
-      280 bioenergy and waste
-      281               total
-      282               total
-      283               total
-      284               total
-      285               total
-      286               total
-      287               total
-      288               total
-      289                coal
-      290                coal
-      291                coal
-      292                coal
-      293                 oil
-      294                 oil
-      295                 oil
-      296                 oil
-      297         natural gas
-      298         natural gas
-      299         natural gas
-      300         natural gas
-      301 bioenergy and waste
-      302 bioenergy and waste
-      303 bioenergy and waste
-      304 bioenergy and waste
-      305               total
-      306               total
-      307               total
-      308               total
-      309               total
-      310               total
-      311               total
-      312               total
-      313               total
-      314               total
-      315               total
-      316               total
-      317               total
-      318               total
-      319               total
-      320               total
-      321               total
-      322               total
-      323               total
-      324               total
-      325               total
-      326               total
-      327               total
-      328               total
-      329               total
-      330               total
-      331               total
-      332               total
-      333               total
-      334               total
-      335               total
-      336               total
-      337               total
-      338               total
-      339               total
-      340               total
-      341               total
-      342               total
-      343               total
-      344               total
-      345               total
-      346               total
-      347               total
-      348               total
-      349               total
-      350               total
-      351               total
-      352               total
-      353               total
-      354               total
-      355               total
-      356               total
-      357               total
-      358               total
-      359               total
-      360               total
-      361               total
-      362               total
-      363               total
-      364               total
-      365                coal
-      366                coal
-      367                coal
-      368                coal
-      369                 oil
-      370                 oil
-      371                 oil
-      372                 oil
-      373         natural gas
-      374         natural gas
-      375         natural gas
-      376         natural gas
-      377 bioenergy and waste
-      378 bioenergy and waste
-      379 bioenergy and waste
-      380 bioenergy and waste
-      381               total
-      382               total
-      383               total
-      384               total
-      385               total
-      386               total
-      387               total
-      388               total
-      389                coal
-      390                coal
-      391                coal
-      392                coal
-      393                 oil
-      394                 oil
-      395                 oil
-      396                 oil
-      397         natural gas
-      398         natural gas
-      399         natural gas
-      400         natural gas
-      401 bioenergy and waste
-      402 bioenergy and waste
-      403 bioenergy and waste
-      404 bioenergy and waste
-      405               total
-      406               total
-      407               total
-      408               total
-      409               total
-      410               total
-      411               total
-      412               total
-      413                coal
-      414                coal
-      415                coal
-      416                coal
-      417                 oil
-      418                 oil
-      419                 oil
-      420                 oil
-      421         natural gas
-      422         natural gas
-      423         natural gas
-      424         natural gas
-      425 bioenergy and waste
-      426 bioenergy and waste
-      427 bioenergy and waste
-      428 bioenergy and waste
-      429               total
-      430               total
-      431               total
-      432               total
-      433               total
-      434               total
-      435               total
-      436               total
-      437               total
-      438               total
-      439               total
-      440               total
-      441               total
-      442               total
-      443               total
-      444               total
-      445               total
-      446               total
-      447               total
-      448               total
-      449               total
-      450               total
-      451               total
-      452               total
-      453               total
-      454               total
-      455               total
-      456               total
-      457               total
-      458               total
-      459               total
-      460               total
-      461               total
-      462               total
-      463               total
-      464               total
-      465               total
-      466               total
-      467               total
-      468               total
-      469               total
-      470               total
-      471               total
-      472               total
-      473               total
-      474               total
-      475               total
-      476               total
-      477               total
-      478               total
-      479               total
-      480               total
-      481               total
-      482               total
-      483               total
-      484               total
-      
-      [[10]]
-                                                flow
-      1                                         <NA>
-      2                                         <NA>
-      3                                         <NA>
-      4                                         <NA>
-      5                                         <NA>
-      6                                         <NA>
-      7                                         <NA>
-      8                                         <NA>
-      9                                         <NA>
-      10                                        <NA>
-      11                                        <NA>
-      12                                        <NA>
-      13                                        <NA>
-      14                                        <NA>
-      15                                        <NA>
-      16                                        <NA>
-      17                                        <NA>
-      18                                        <NA>
-      19                                        <NA>
-      20                                        <NA>
-      21                                        <NA>
-      22                                        <NA>
-      23                                        <NA>
-      24                                        <NA>
-      25                                        <NA>
-      26                                        <NA>
-      27                                        <NA>
-      28                                        <NA>
-      29                                        <NA>
-      30                                        <NA>
-      31                                        <NA>
-      32                                        <NA>
-      33                                        <NA>
-      34                                        <NA>
-      35                                        <NA>
-      36                                        <NA>
-      37                                        <NA>
-      38                                        <NA>
-      39                                        <NA>
-      40                                        <NA>
-      41                                        <NA>
-      42                                        <NA>
-      43                                        <NA>
-      44                                        <NA>
-      45                                        <NA>
-      46                                        <NA>
-      47                                        <NA>
-      48                                        <NA>
-      49                                        <NA>
-      50                                        <NA>
-      51                                        <NA>
-      52                                        <NA>
-      53                                        <NA>
-      54                                        <NA>
-      55                                        <NA>
-      56                                        <NA>
-      57                                        <NA>
-      58                                        <NA>
-      59                                        <NA>
-      60                                        <NA>
-      61                                        <NA>
-      62                                        <NA>
-      63                                        <NA>
-      64                                        <NA>
-      65                                        <NA>
-      66                                        <NA>
-      67                                        <NA>
-      68                                        <NA>
-      69                                        <NA>
-      70                                        <NA>
-      71                                        <NA>
-      72                                        <NA>
-      73                                        <NA>
-      74                                        <NA>
-      75                                        <NA>
-      76                                        <NA>
-      77                                        <NA>
-      78                                        <NA>
-      79                                        <NA>
-      80                                        <NA>
-      81                                        <NA>
-      82                                        <NA>
-      83                                        <NA>
-      84                                        <NA>
-      85                                        <NA>
-      86                                        <NA>
-      87                                        <NA>
-      88                                        <NA>
-      89                                        <NA>
-      90                                        <NA>
-      91                                        <NA>
-      92                                        <NA>
-      93                                        <NA>
-      94                                        <NA>
-      95                                        <NA>
-      96                                        <NA>
-      97                                        <NA>
-      98                                        <NA>
-      99                                        <NA>
-      100                                       <NA>
-      101                                       <NA>
-      102                                       <NA>
-      103                                       <NA>
-      104                                       <NA>
-      105                                       <NA>
-      106                                       <NA>
-      107                                       <NA>
-      108                                       <NA>
-      109                                       <NA>
-      110                                       <NA>
-      111                                       <NA>
-      112                                       <NA>
-      113                        total energy supply
-      114                        total energy supply
-      115                        total energy supply
-      116                        total energy supply
-      117                        total energy supply
-      118                        total energy supply
-      119                        total energy supply
-      120                        total energy supply
-      121                        total energy supply
-      122                        total energy supply
-      123                        total energy supply
-      124                        total energy supply
-      125                        total energy supply
-      126                        total energy supply
-      127                        total energy supply
-      128                        total energy supply
-      129                        total energy supply
-      130                        total energy supply
-      131                        total energy supply
-      132                        total energy supply
-      133 biofuels production and direct air capture
-      134 biofuels production and direct air capture
-      135 biofuels production and direct air capture
-      136 biofuels production and direct air capture
-      137                        power sector inputs
-      138                        power sector inputs
-      139                        power sector inputs
-      140                        power sector inputs
-      141                        power sector inputs
-      142                        power sector inputs
-      143                        power sector inputs
-      144                        power sector inputs
-      145                        power sector inputs
-      146                        power sector inputs
-      147                        power sector inputs
-      148                        power sector inputs
-      149                        power sector inputs
-      150                        power sector inputs
-      151                        power sector inputs
-      152                        power sector inputs
-      153                        power sector inputs
-      154                        power sector inputs
-      155                        power sector inputs
-      156                        power sector inputs
-      157                        other energy sector
-      158                        other energy sector
-      159                        other energy sector
-      160                        other energy sector
-      161                    total final consumption
-      162                    total final consumption
-      163                    total final consumption
-      164                    total final consumption
-      165                    total final consumption
-      166                    total final consumption
-      167                    total final consumption
-      168                    total final consumption
-      169                    total final consumption
-      170                    total final consumption
-      171                    total final consumption
-      172                    total final consumption
-      173                    total final consumption
-      174                    total final consumption
-      175                    total final consumption
-      176                    total final consumption
-      177                    total final consumption
-      178                    total final consumption
-      179                    total final consumption
-      180                    total final consumption
-      181                                   industry
-      182                                   industry
-      183                                   industry
-      184                                   industry
-      185                             iron and steel
-      186                             iron and steel
-      187                             iron and steel
-      188                             iron and steel
-      189                                  chemicals
-      190                                  chemicals
-      191                                  chemicals
-      192                                  chemicals
-      193              non-metallic minerals: cement
-      194              non-metallic minerals: cement
-      195              non-metallic minerals: cement
-      196              non-metallic minerals: cement
-      197                                  transport
-      198                                  transport
-      199                                  transport
-      200                                  transport
-      201                                       road
-      202                                       road
-      203                                       road
-      204                                       road
-      205          road passenger light duty vehicle
-      206          road passenger light duty vehicle
-      207          road passenger light duty vehicle
-      208          road passenger light duty vehicle
-      209                     road heavy-duty trucks
-      210                     road heavy-duty trucks
-      211                     road heavy-duty trucks
-      212                     road heavy-duty trucks
-      213      total aviation (domestic and bunkers)
-      214      total aviation (domestic and bunkers)
-      215      total aviation (domestic and bunkers)
-      216      total aviation (domestic and bunkers)
-      217    total navigation (domestic and bunkers)
-      218    total navigation (domestic and bunkers)
-      219    total navigation (domestic and bunkers)
-      220    total navigation (domestic and bunkers)
-      221                                  buildings
-      222                                  buildings
-      223                                  buildings
-      224                                  buildings
-      225                                residential
-      226                                residential
-      227                                residential
-      228                                residential
-      229                                   services
-      230                                   services
-      231                                   services
-      232                                   services
-      233                        total energy supply
-      234                        total energy supply
-      235                        total energy supply
-      236                        total energy supply
-      237                        total energy supply
-      238                        total energy supply
-      239                        total energy supply
-      240                        total energy supply
-      241                        total energy supply
-      242                        total energy supply
-      243                        total energy supply
-      244                        total energy supply
-      245                        total energy supply
-      246                        total energy supply
-      247                        total energy supply
-      248                        total energy supply
-      249                        total energy supply
-      250                        total energy supply
-      251                        total energy supply
-      252                        total energy supply
-      253                        total energy supply
-      254                        total energy supply
-      255                        total energy supply
-      256                        total energy supply
-      257 biofuels production and direct air capture
-      258 biofuels production and direct air capture
-      259 biofuels production and direct air capture
-      260 biofuels production and direct air capture
-      261                        power sector inputs
-      262                        power sector inputs
-      263                        power sector inputs
-      264                        power sector inputs
-      265                        power sector inputs
-      266                        power sector inputs
-      267                        power sector inputs
-      268                        power sector inputs
-      269                        power sector inputs
-      270                        power sector inputs
-      271                        power sector inputs
-      272                        power sector inputs
-      273                        power sector inputs
-      274                        power sector inputs
-      275                        power sector inputs
-      276                        power sector inputs
-      277                        power sector inputs
-      278                        power sector inputs
-      279                        power sector inputs
-      280                        power sector inputs
-      281                        other energy sector
-      282                        other energy sector
-      283                        other energy sector
-      284                        other energy sector
-      285                    total final consumption
-      286                    total final consumption
-      287                    total final consumption
-      288                    total final consumption
-      289                    total final consumption
-      290                    total final consumption
-      291                    total final consumption
-      292                    total final consumption
-      293                    total final consumption
-      294                    total final consumption
-      295                    total final consumption
-      296                    total final consumption
-      297                    total final consumption
-      298                    total final consumption
-      299                    total final consumption
-      300                    total final consumption
-      301                    total final consumption
-      302                    total final consumption
-      303                    total final consumption
-      304                    total final consumption
-      305                                   industry
-      306                                   industry
-      307                                   industry
-      308                                   industry
-      309                             iron and steel
-      310                             iron and steel
-      311                             iron and steel
-      312                             iron and steel
-      313                                  chemicals
-      314                                  chemicals
-      315                                  chemicals
-      316                                  chemicals
-      317              non-metallic minerals: cement
-      318              non-metallic minerals: cement
-      319              non-metallic minerals: cement
-      320              non-metallic minerals: cement
-      321                                  transport
-      322                                  transport
-      323                                  transport
-      324                                  transport
-      325                                       road
-      326                                       road
-      327                                       road
-      328                                       road
-      329          road passenger light duty vehicle
-      330          road passenger light duty vehicle
-      331          road passenger light duty vehicle
-      332          road passenger light duty vehicle
-      333                     road heavy-duty trucks
-      334                     road heavy-duty trucks
-      335                     road heavy-duty trucks
-      336                     road heavy-duty trucks
-      337      total aviation (domestic and bunkers)
-      338      total aviation (domestic and bunkers)
-      339      total aviation (domestic and bunkers)
-      340      total aviation (domestic and bunkers)
-      341    total navigation (domestic and bunkers)
-      342    total navigation (domestic and bunkers)
-      343    total navigation (domestic and bunkers)
-      344    total navigation (domestic and bunkers)
-      345                                  buildings
-      346                                  buildings
-      347                                  buildings
-      348                                  buildings
-      349                                residential
-      350                                residential
-      351                                residential
-      352                                residential
-      353                                   services
-      354                                   services
-      355                                   services
-      356                                   services
-      357                        total energy supply
-      358                        total energy supply
-      359                        total energy supply
-      360                        total energy supply
-      361                        total energy supply
-      362                        total energy supply
-      363                        total energy supply
-      364                        total energy supply
-      365                        total energy supply
-      366                        total energy supply
-      367                        total energy supply
-      368                        total energy supply
-      369                        total energy supply
-      370                        total energy supply
-      371                        total energy supply
-      372                        total energy supply
-      373                        total energy supply
-      374                        total energy supply
-      375                        total energy supply
-      376                        total energy supply
-      377                        total energy supply
-      378                        total energy supply
-      379                        total energy supply
-      380                        total energy supply
-      381 biofuels production and direct air capture
-      382 biofuels production and direct air capture
-      383 biofuels production and direct air capture
-      384 biofuels production and direct air capture
-      385                        power sector inputs
-      386                        power sector inputs
-      387                        power sector inputs
-      388                        power sector inputs
-      389                        power sector inputs
-      390                        power sector inputs
-      391                        power sector inputs
-      392                        power sector inputs
-      393                        power sector inputs
-      394                        power sector inputs
-      395                        power sector inputs
-      396                        power sector inputs
-      397                        power sector inputs
-      398                        power sector inputs
-      399                        power sector inputs
-      400                        power sector inputs
-      401                        power sector inputs
-      402                        power sector inputs
-      403                        power sector inputs
-      404                        power sector inputs
-      405                        other energy sector
-      406                        other energy sector
-      407                        other energy sector
-      408                        other energy sector
-      409                    total final consumption
-      410                    total final consumption
-      411                    total final consumption
-      412                    total final consumption
-      413                    total final consumption
-      414                    total final consumption
-      415                    total final consumption
-      416                    total final consumption
-      417                    total final consumption
-      418                    total final consumption
-      419                    total final consumption
-      420                    total final consumption
-      421                    total final consumption
-      422                    total final consumption
-      423                    total final consumption
-      424                    total final consumption
-      425                    total final consumption
-      426                    total final consumption
-      427                    total final consumption
-      428                    total final consumption
-      429                                   industry
-      430                                   industry
-      431                                   industry
-      432                                   industry
-      433                             iron and steel
-      434                             iron and steel
-      435                             iron and steel
-      436                             iron and steel
-      437                                  chemicals
-      438                                  chemicals
-      439                                  chemicals
-      440                                  chemicals
-      441              non-metallic minerals: cement
-      442              non-metallic minerals: cement
-      443              non-metallic minerals: cement
-      444              non-metallic minerals: cement
-      445                                  transport
-      446                                  transport
-      447                                  transport
-      448                                  transport
-      449                                       road
-      450                                       road
-      451                                       road
-      452                                       road
-      453          road passenger light duty vehicle
-      454          road passenger light duty vehicle
-      455          road passenger light duty vehicle
-      456          road passenger light duty vehicle
-      457                     road heavy-duty trucks
-      458                     road heavy-duty trucks
-      459                     road heavy-duty trucks
-      460                     road heavy-duty trucks
-      461      total aviation (domestic and bunkers)
-      462      total aviation (domestic and bunkers)
-      463      total aviation (domestic and bunkers)
-      464      total aviation (domestic and bunkers)
-      465    total navigation (domestic and bunkers)
-      466    total navigation (domestic and bunkers)
-      467    total navigation (domestic and bunkers)
-      468    total navigation (domestic and bunkers)
-      469                                  buildings
-      470                                  buildings
-      471                                  buildings
-      472                                  buildings
-      473                                residential
-      474                                residential
-      475                                residential
-      476                                residential
-      477                                   services
-      478                                   services
-      479                                   services
-      480                                   services
-      481                        total energy supply
-      482                        total energy supply
-      483                        total energy supply
-      484                        total energy supply
       
 

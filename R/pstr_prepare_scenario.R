@@ -13,7 +13,8 @@
 #' library(dplyr, warn.conflicts = FALSE)
 #' library(readr, warn.conflicts = FALSE)
 #'
-#' raw_weo <- read_csv(extdata_path("pstr_weo_2022.csv"))
+#' raw_weo <- read_csv(extdata_path("pstr_weo_2022.csv")) |>
+#'   rename(weo_sector = "weo_product", weo_subsector = "weo_flow")
 #' raw_ipr <- read_csv(extdata_path("pstr_ipr_2022.csv"))
 #' raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
 #'
