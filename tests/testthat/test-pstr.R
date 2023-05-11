@@ -144,3 +144,16 @@ test_that("with a missing value in the reductions column errors gracefully", {
   scenarios$reductions <- NA
   expect_error(pstr(companies, scenarios), "reductions")
 })
+
+test_that("grouped_by includes the type of scenario", {
+  companies <- slice(pstr_companies, 1)
+  ipr <- filter(pstr_scenarios, type == "ipr")
+  out <- pstr(companies, ipr)
+  expect_true(all(grepl("ipr", unique(out$grouped_by))))
+
+  weo <- filter(pstr_scenarios, type == "weo")
+  out <- pstr(companies, weo)
+  expect_true(all(grepl("weo", unique(out$grouped_by))))
+})
+
+
