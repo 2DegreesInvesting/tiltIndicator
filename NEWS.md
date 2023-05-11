@@ -2,8 +2,7 @@
 
 # tiltIndicator 0.0.0.9056
 
-- Same as previous version.
-
+* With `type` "ipr", for each company and `grouped_by`, `value` sums 1 (#307).
 
 # tiltIndicator 0.0.0.9055
 
