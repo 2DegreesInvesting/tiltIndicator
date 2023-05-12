@@ -9,14 +9,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article shows how to calculate an indicator when it takes too long to run.
-It shows an approach that shows your progress, avoids running the same thing
-twice, continues despite errors, and allows you to restart from where you left
-after an interruption.
+This article shows you how to calculate an indicator when it takes too long to
+run. This approach allow you to monitor your progress, avoids running the same
+thing twice, continues despite errors, and allows you to resume after
+interruptions.
 
 ### Setup
 
-We'll need a number of packages. 
+You'll need a number of packages. 
 
 ```{r}
 library(dplyr, warn.conflicts = FALSE)
@@ -28,7 +28,8 @@ options(readr.show_col_types = FALSE)
 packageVersion("tiltIndicator")
 ```
 
-Here I use data from a temporary directory.
+These functions help to read the example data. Mine is in a temporary directory
+but yours may be anywhere.
 
 ```{r}
 # TODO: Replace `tempdir()` with something like "~/Downloads"
@@ -42,8 +43,6 @@ write_csv(tiltIndicator::companies, input("companies.csv"))
 write_csv(tiltIndicator::products, input("products.csv"))
 ```
 
-Here I use example data from the tiltIndicator package.
-
 ```{r}
 companies <- read_csv(input("companies.csv"))
 
@@ -51,14 +50,15 @@ isic_as_chr <- cols(isic_4digit = col_character())
 co2 <- read_csv(input("products.csv"), col_types = isic_as_chr)
 ```
 
-This example calculates the indicator "PCTR". Adapt it as necessary.
+As an example I calculate the indicator "PCTR" but you may adapt the code for
+other indicators.
 
 ```{r}
 # TODO: Replace with the literal string "ictr" for ICTR
 indicator <- "pctr"
 ```
 
-Create a folder to otput results at each level.
+Create a folder to output results at each level.
 
 ```{r}
 dir_create(output(indicator, "product"))
@@ -99,23 +99,22 @@ Monitor progress by counting the number of company files.
 length(dir_ls(output(indicator, "company")))
 ```
 
-When you're done (or before) you can read all the .csv files into a single
-dataset at once.
+Read all the .csv files into a single dataset.
 
 ```{r}
 result <- read_csv(dir_ls(output(indicator, "company")))
 result
 ```
 
-If the number of files is too large, the code above will fail and you'll need to
-combine results in chunks.
+If the number of files is too large, the code above will fail. To work around
+that you may combine results in chunks.
 
 ### Combine results in chunks
 
 Put the paths to each file into a table, and create a column to group them in
 any number of chunks. Each chunk should have no more files than you can
-successfully read at once. Here I show it for company files. Adapt it for
-product files.
+successfully read at once. Here I show it for company-level files only but you
+should also do it for product-level files.
 
 ```{r}
 chunks <- 3
@@ -143,8 +142,8 @@ for (i in unique(chunked$chunk)) {
 }
 ```
 
-The data is still split in pieces but they should be few enough to read them all
-at once into a single table.
+The data is still in multiple pieces but they should now be few enough to read
+them all at once into a single table.
 
 ```{r}
 all_companies <- read_csv(dir_ls(output("company_chunks")))
