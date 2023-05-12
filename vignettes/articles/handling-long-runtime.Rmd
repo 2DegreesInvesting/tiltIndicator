@@ -56,7 +56,6 @@ This example calculates the indicator "PCTR". Adapt it as necessary.
 ```{r}
 # TODO: Replace with the literal string "ictr" for ICTR
 indicator <- "pctr"
-
 ```
 
 Create a folder to otput results at each level.
@@ -80,10 +79,10 @@ for (i in seq_along(companies_list)) {
   companies_id <- names(companies_list[i])
   product_file <- output(indicator, "product", paste0(companies_id, ".csv"))
   company_file <- output(indicator, "company", paste0(companies_id, ".csv"))
-  
+
   # Skip if already done
   if (file_exists(company_file)) next()
-  
+
   # Continue even if one company fails
   try({
     product <- xctr_at_product_level(companies_list[[i]], co2)
@@ -120,7 +119,7 @@ product files.
 
 ```{r}
 chunks <- 3
-chunked <- tibble(file = dir_ls(output(indicator, "company"))) |> 
+chunked <- tibble(file = dir_ls(output(indicator, "company"))) |>
   mutate(chunk = as.integer(cut(row_number(), chunks)))
 chunked
 
@@ -136,7 +135,9 @@ for (i in unique(chunked$chunk)) {
   chunk_csv <- output("company_chunks", paste0(i, ".csv"))
   if (file_exists(chunk_csv)) next()
 
-  chunk_files <- chunked |> filter(chunk == i) |> pull(file)
+  chunk_files <- chunked |>
+    filter(chunk == i) |>
+    pull(file)
   chunk_data <- read_csv(chunk_files)
   write_csv(chunk_data, chunk_csv)
 }
