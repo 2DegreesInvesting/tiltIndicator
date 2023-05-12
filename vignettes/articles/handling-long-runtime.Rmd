@@ -9,84 +9,164 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article shows how to calculate an indicator when it takes too long to run.
-It shows an approach that shows your progress, avoids running the same thing
-twice, and allows you to restart from where you left if something fails or you
-need to interrupt.
+This article shows you how to calculate an indicator when it takes too long to
+run. This approach allow you to monitor your progress, avoids running the same
+thing twice, continues despite errors, and allows you to resume after
+interruptions.
 
 ### Setup
 
-We'll need a number of packages. 
+You'll need a number of packages. 
 
 ```{r}
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
-library(progress)
 library(tiltIndicator)
 library(fs)
 
+options(readr.show_col_types = FALSE)
 packageVersion("tiltIndicator")
 ```
 
-Here I use example data from the tiltIndicator package.
+These functions help to read the example data. Mine is in a temporary directory
+but yours may be anywhere.
 
 ```{r}
-# TODO: Replace with your real `companies`
-real_companies <- companies
-# TODO: Replace your real `inputs` for ICTR
-real_co2 <- products
+# TODO: Replace `tempdir()` with something like "~/Downloads"
+input <- function(..., parent = tempdir()) path(parent, "input", ...)
+output <- function(..., parent = tempdir()) path(parent, "output", ...)
 ```
 
-This example calculates the indicator "PCTR". Adapt it as necessary.
+```{r echo=FALSE}
+dir_create(input())
+write_csv(tiltIndicator::companies, input("companies.csv"))
+write_csv(tiltIndicator::products, input("products.csv"))
+```
+
+```{r}
+companies <- read_csv(input("companies.csv"))
+
+isic_as_chr <- cols(isic_4digit = col_character())
+co2 <- read_csv(input("products.csv"), col_types = isic_as_chr)
+```
+
+As an example I calculate the indicator "PCTR" but you may adapt the code for
+other indicators.
 
 ```{r}
 # TODO: Replace with the literal string "ictr" for ICTR
 indicator <- "pctr"
+```
 
-# Create a folder to store the results of each indicator
-# TODO: Replace `tempdir()` with a permanent folder, e.g. ~/Downloads
-parent <- tempdir()
-dir_create(path(parent, indicator))
+Create a folder to output results at each level.
+
+```{r}
+dir_create(output(indicator, "product"))
+dir_create(output(indicator, "company"))
 ```
 
 Split the data by company. 
 
 ```{r}
-companies_list <- split(real_companies, real_companies$company_id)
+companies_list <- split(companies, companies$company_id)
 ```
 
 Calculate the indicator for each company at a time, saving the result to a .csv
 file, and skipping companies that are already done.
 
 ```{r}
-# Setup a progress bar (pb)
-pb <- progress_bar$new(total = length(companies_list))
 for (i in seq_along(companies_list)) {
-  pb$tick()
-
-  # Skip if run previously
   companies_id <- names(companies_list[i])
-  file <- path(parent, indicator, paste0(companies_id, ".csv"))
-  if (file.exists(file)) next()
+  product_file <- output(indicator, "product", paste0(companies_id, ".csv"))
+  company_file <- output(indicator, "company", paste0(companies_id, ".csv"))
 
-  # Run
-  result <- xctr(companies_list[[i]], real_co2)
+  # Skip if already done
+  if (file_exists(company_file)) next()
 
-  # Save into an indicator-specific folder, i.e. either ictr/ or pctr/
-  write_csv(result, file)
+  # Continue even if one company fails
+  try({
+    product <- xctr_at_product_level(companies_list[[i]], co2)
+    write_csv(product, product_file)
+    company <- xctr_at_company_level(product)
+    write_csv(company, company_file)
+  })
 }
 ```
 
-When you're done (or before) you can read all the .csv files into a single
-dataset at once.
+Monitor progress by counting the number of company files.
 
 ```{r}
-combined_results <- read_csv(dir_ls(path(parent, indicator)))
-combined_results
+length(dir_ls(output(indicator, "company")))
 ```
 
-You may want to run this on as a [background
-job](https://docs.posit.co/ide/user/ide/guide/tools/jobs.html) so you can use
-your R session for something else while the process runs on the background. Or
-better, you may run it on a remote server so you can rent a massive computer for
-a short time, and use your time and laptop for other things.
+Read all the .csv files into a single dataset.
+
+```{r}
+result <- read_csv(dir_ls(output(indicator, "company")))
+result
+```
+
+If the number of files is too large, the code above will fail. To work around
+that you may combine results in chunks.
+
+### Combine results in chunks
+
+Put the paths to each file into a table, and create a column to group them in
+any number of chunks. Each chunk should have no more files than you can
+successfully read at once. Here I show it for company-level files only but you
+should also do it for product-level files.
+
+```{r}
+chunks <- 3
+chunked <- tibble(file = dir_ls(output(indicator, "company"))) |>
+  mutate(chunk = as.integer(cut(row_number(), chunks)))
+chunked
+
+chunked |> count(chunk)
+```
+
+Now read all the individual .csv files of a chunk into a single dataset, then
+save it into a single .csv.
+
+```{r}
+dir_create(output("company_chunks"))
+for (i in unique(chunked$chunk)) {
+  chunk_csv <- output("company_chunks", paste0(i, ".csv"))
+  if (file_exists(chunk_csv)) next()
+
+  chunk_files <- chunked |>
+    filter(chunk == i) |>
+    pull(file)
+  chunk_data <- read_csv(chunk_files)
+  write_csv(chunk_data, chunk_csv)
+}
+```
+
+The data is still in multiple pieces but they should now be few enough to read
+them all at once into a single table.
+
+```{r}
+all_companies <- read_csv(dir_ls(output("company_chunks")))
+all_companies
+```
+
+### Background jobs
+
+You may want to run this on as a [background job in
+RStudio](https://docs.posit.co/ide/user/ide/guide/tools/jobs.html) so you can
+use your R session for something else while the process runs on the background.
+
+RStudio may have its own issues. If your code is in "~/projects/ictr/run.R" you
+may run it directly from the terminal with:
+
+```bash
+Rscript ~/projects/ictr/run.R
+```
+
+Best is to do this from a remote server, which gives you a stable environment
+and the ability to briefly rent a computer more powerful than the one you have.
+
+### Targets
+
+If you run long processes often you should learn about
+[targets](https://docs.ropensci.org/targets/).
