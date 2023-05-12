@@ -83,74 +83,73 @@
 
     
     
-<p>This article shows how to calculate an indicator when it takes too
-long to run. It shows an approach that shows your progress, avoids
-running the same thing twice, and allows you to restart from where you
-left if something fails or you need to interrupt.</p>
+<p>This article shows you how to calculate an indicator when it takes
+too long to run. This approach allow you to monitor your progress,
+avoids running the same thing twice, continues despite errors, and
+allows you to resume after interruptions.</p>
 <div class="section level3">
 <h3 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h3>
-<p>We’ll need a number of packages.</p>
+<p>You’ll need a number of packages.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/progress#readme" class="external-link">progress</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span>
 <span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"tiltIndicator"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] '0.0.0.9058'</span></span></code></pre></div>
-<p>Here I use example data from the tiltIndicator package.</p>
+<p>These functions help to read the example data. Mine is in a temporary
+directory but yours may be anywhere.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># TODO: Replace with your real `companies`</span></span>
-<span><span class="va">real_companies</span> <span class="op">&lt;-</span> <span class="va">companies</span></span>
-<span><span class="co"># TODO: Replace your real `inputs` for ICTR</span></span>
-<span><span class="va">real_co2</span> <span class="op">&lt;-</span> <span class="va">products</span></span></code></pre></div>
-<p>This example calculates the indicator “PCTR”. Adapt it as
-necessary.</p>
+<code class="sourceCode R"><span><span class="co"># TODO: Replace `tempdir()` with something like "~/Downloads"</span></span>
+<span><span class="va">input</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span>, <span class="va">parent</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">parent</span>, <span class="st">"input"</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="va">output</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span>, <span class="va">parent</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">parent</span>, <span class="st">"output"</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># TODO: Replace with the literal string "ictr" for ICTR</span></span>
-<span><span class="va">indicator</span> <span class="op">&lt;-</span> <span class="st">"pctr"</span></span>
+<code class="sourceCode R"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu">input</span><span class="op">(</span><span class="st">"companies.csv"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create a folder to store the results of each indicator</span></span>
-<span><span class="co"># TODO: Replace `tempdir()` with a permanent folder, e.g. ~/Downloads</span></span>
-<span><span class="va">parent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">parent</span>, <span class="va">indicator</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Split the data by company.</p>
+<span><span class="va">isic_as_chr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html" class="external-link">cols</a></span><span class="op">(</span>isic_4digit <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html" class="external-link">col_character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">co2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu">input</span><span class="op">(</span><span class="st">"products.csv"</span><span class="op">)</span>, col_types <span class="op">=</span> <span class="va">isic_as_chr</span><span class="op">)</span></span></code></pre></div>
+<p>As an example I calculate the indicator “PCTR” but you may adapt the
+code for other indicators.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">companies_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">real_companies</span>, <span class="va">real_companies</span><span class="op">$</span><span class="va">company_id</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># TODO: Replace with the literal string "ictr" for ICTR</span></span>
+<span><span class="va">indicator</span> <span class="op">&lt;-</span> <span class="st">"pctr"</span></span></code></pre></div>
+<p>Create a folder to output results at each level.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="fu">output</span><span class="op">(</span><span class="va">indicator</span>, <span class="st">"product"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="fu">output</span><span class="op">(</span><span class="va">indicator</span>, <span class="st">"company"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Split the data by company.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">companies_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">companies</span><span class="op">$</span><span class="va">company_id</span><span class="op">)</span></span></code></pre></div>
 <p>Calculate the indicator for each company at a time, saving the result
 to a .csv file, and skipping companies that are already done.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Setup a progress bar (pb)</span></span>
-<span><span class="va">pb</span> <span class="op">&lt;-</span> <span class="va"><a href="https://rdrr.io/pkg/progress/man/progress_bar.html" class="external-link">progress_bar</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">pb</span><span class="op">$</span><span class="fu">tick</span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="co"># Skip if run previously</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">companies_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
-<span>  <span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">parent</span>, <span class="va">indicator</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">companies_id</span>, <span class="st">".csv"</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span> <span class="kw">next</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">product_file</span> <span class="op">&lt;-</span> <span class="fu">output</span><span class="op">(</span><span class="va">indicator</span>, <span class="st">"product"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">companies_id</span>, <span class="st">".csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">company_file</span> <span class="op">&lt;-</span> <span class="fu">output</span><span class="op">(</span><span class="va">indicator</span>, <span class="st">"company"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">companies_id</span>, <span class="st">".csv"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="co"># Run</span></span>
-<span>  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="va">real_co2</span><span class="op">)</span></span>
+<span>  <span class="co"># Skip if already done</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_access.html" class="external-link">file_exists</a></span><span class="op">(</span><span class="va">company_file</span><span class="op">)</span><span class="op">)</span> <span class="kw">next</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="co"># Save into an indicator-specific folder, i.e. either ictr/ or pctr/</span></span>
-<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="va">result</span>, <span class="va">file</span><span class="op">)</span></span>
+<span>  <span class="co"># Continue even if one company fails</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="va">product</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span><span class="va">companies_list</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="va">co2</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="va">product</span>, <span class="va">product_file</span><span class="op">)</span></span>
+<span>    <span class="va">company</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xctr.html">xctr_at_company_level</a></span><span class="op">(</span><span class="va">product</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="va">company</span>, <span class="va">company_file</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>When you’re done (or before) you can read all the .csv files into a
-single dataset at once.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">combined_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html" class="external-link">dir_ls</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">parent</span>, <span class="va">indicator</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">144</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">4</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (3): companies_id, grouped_by, risk_category</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (1): value</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
-<span><span class="va">combined_results</span></span>
+<p>Monitor progress by counting the number of company files.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html" class="external-link">dir_ls</a></span><span class="op">(</span><span class="fu">output</span><span class="op">(</span><span class="va">indicator</span>, <span class="st">"company"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 8</span></span></code></pre></div>
+<p>Read all the .csv files into a single dataset.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html" class="external-link">dir_ls</a></span><span class="op">(</span><span class="fu">output</span><span class="op">(</span><span class="va">indicator</span>, <span class="st">"company"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">result</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -165,13 +164,95 @@ single dataset at once.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span></code></pre></div>
-<p>You may want to run this on as a <a href="https://docs.posit.co/ide/user/ide/guide/tools/jobs.html" class="external-link">background
-job</a> so you can use your R session for something else while the
-process runs on the background. Or better, you may run it on a remote
-server so you can rent a massive computer for a short time, and use your
-time and laptop for other things.</p>
+<p>If the number of files is too large, the code above will fail. To
+work around that you may combine results in chunks.</p>
 </div>
-  </main>
+<div class="section level3">
+<h3 id="combine-results-in-chunks">Combine results in chunks<a class="anchor" aria-label="anchor" href="#combine-results-in-chunks"></a>
+</h3>
+<p>Put the paths to each file into a table, and create a column to group
+them in any number of chunks. Each chunk should have no more files than
+you can successfully read at once. Here I show it for company-level
+files only but you should also do it for product-level files.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">chunks</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
+<span><span class="va">chunked</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>file <span class="op">=</span> <span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html" class="external-link">dir_ls</a></span><span class="op">(</span><span class="fu">output</span><span class="op">(</span><span class="va">indicator</span>, <span class="st">"company"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>chunk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">chunks</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">chunked</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 2</span></span></span>
+<span><span class="co">#&gt;   file                                                                     chunk</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span>                                                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> …mp2I1I4P/output/pctr/company/bst-procontrol-gmbh_00000005104947-001.csv     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> …p/Rtmp2I1I4P/output/pctr/company/ca-coity-trg-aua-gmbh_00000384-001.csv     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> /tmp/Rtmp2I1I4P/output/pctr/company/cheries-baqu_neu316541-00101.csv         1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> …2I1I4P/output/pctr/company/fleischerei-stiefsohn_00000005219477-001.csv     2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> …tmp2I1I4P/output/pctr/company/hoche-butter-gmbh_deu422723-693847001.csv     2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> /tmp/Rtmp2I1I4P/output/pctr/company/leider-gmbh_00000005064318-001.csv       3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> …mp/Rtmp2I1I4P/output/pctr/company/pecheries-basques_fra316541-00101.csv     3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> …p2I1I4P/output/pctr/company/vicquelin-espaces-verts_fra697272-00101.csv     3</span></span>
+<span></span>
+<span><span class="va">chunked</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 2</span></span></span>
+<span><span class="co">#&gt;   chunk     n</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     3</span></span></code></pre></div>
+<p>Now read all the individual .csv files of a chunk into a single
+dataset, then save it into a single .csv.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="fu">output</span><span class="op">(</span><span class="st">"company_chunks"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">chunked</span><span class="op">$</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">chunk_csv</span> <span class="op">&lt;-</span> <span class="fu">output</span><span class="op">(</span><span class="st">"company_chunks"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">i</span>, <span class="st">".csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_access.html" class="external-link">file_exists</a></span><span class="op">(</span><span class="va">chunk_csv</span><span class="op">)</span><span class="op">)</span> <span class="kw">next</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">chunk_files</span> <span class="op">&lt;-</span> <span class="va">chunked</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">chunk</span> <span class="op">==</span> <span class="va">i</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span>
+<span>  <span class="va">chunk_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="va">chunk_files</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="va">chunk_data</span>, <span class="va">chunk_csv</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>The data is still in multiple pieces but they should now be few
+enough to read them all at once into a single table.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">all_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html" class="external-link">dir_ls</a></span><span class="op">(</span><span class="fu">output</span><span class="op">(</span><span class="st">"company_chunks"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">all_companies</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 144 × 4</span></span></span>
+<span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 134 more rows</span></span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="background-jobs">Background jobs<a class="anchor" aria-label="anchor" href="#background-jobs"></a>
+</h3>
+<p>You may want to run this on as a <a href="https://docs.posit.co/ide/user/ide/guide/tools/jobs.html" class="external-link">background
+job in RStudio</a> so you can use your R session for something else
+while the process runs on the background.</p>
+<p>RStudio may have its own issues. If your code is in
+“~/projects/ictr/run.R” you may run it directly from the terminal
+with:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> ~/projects/ictr/run.R</span></code></pre></div>
+<p>Best is to do this from a remote server, which gives you a stable
+environment and the ability to briefly rent a computer more powerful
+than the one you have.</p>
+</div>
+<div class="section level3">
+<h3 id="targets">Targets<a class="anchor" aria-label="anchor" href="#targets"></a>
+</h3>
+<p>If you run long processes often you should learn about <a href="https://docs.ropensci.org/targets/" class="external-link">targets</a>.</p>
+</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
