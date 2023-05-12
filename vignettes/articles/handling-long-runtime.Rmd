@@ -103,21 +103,29 @@ combined_results <- read_csv(dir_ls(output(indicator, "company")))
 combined_results
 ```
 
-If the number of files is too large you may need to combine them gradually.
+If the number of files is too large, the code above will fail and you'll need to
+combine them in chunks, then read all combined chunks at once.
 
-### Combine gradually
+### Combine chunks of files
 
-Consider the files at company level. We can put all file paths in a table and
-create a column to group them in any number of chunks.
+Consider the files at company level. 
+
+We can put the paths to each file into a table, and create a column to group
+them in any number of chunks. Each chunk should have no more files than you can
+successfully read at once.
 
 ```{r}
 chunks <- 3
 chunked <- tibble(file = dir_ls(output(indicator, "company"))) |> 
   mutate(chunk = as.integer(cut(row_number(), chunks)))
+chunked
 
-# Each chunk should have no more files than you can successfully read
 chunked |> count(chunk)
+```
 
+Now read each chunk of file at once, and save them into a single combined .csv.
+
+```{r}
 dir_create(output("company_chunks"))
 for (i in unique(chunked$chunk)) {
   chunk_csv <- output("company_chunks", paste0(i, ".csv"))
@@ -129,7 +137,8 @@ for (i in unique(chunked$chunk)) {
 }
 ```
 
-And now the number of chunk files should be small enough to read at once.
+Finally the number of chunk files should be small enough to read them at once.
+
 ```{r}
 result <- read_csv(dir_ls(output("company_chunks")))
 result
