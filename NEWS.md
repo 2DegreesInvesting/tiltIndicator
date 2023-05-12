@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9059
+
+* The article "Handling long runtime" is now updated based on the experience running `pstr*()` (#314).
+
 # tiltIndicator 0.0.0.9058
 
 * Each scenario `type` must have some `sector` and `subsector`, else you
