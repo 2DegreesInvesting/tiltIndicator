@@ -45,10 +45,10 @@ write_csv(tiltIndicator::products, input("products.csv"))
 Here I use example data from the tiltIndicator package.
 
 ```{r}
-real_companies <- read_csv(input("companies.csv"))
+companies <- read_csv(input("companies.csv"))
 
-isic_4digit_as_chr <- cols(isic_4digit = col_character())
-real_co2 <- read_csv(input("products.csv"), col_types = isic_4digit_as_chr)
+isic_as_chr <- cols(isic_4digit = col_character())
+co2 <- read_csv(input("products.csv"), col_types = isic_as_chr)
 ```
 
 This example calculates the indicator "PCTR". Adapt it as necessary.
@@ -57,7 +57,11 @@ This example calculates the indicator "PCTR". Adapt it as necessary.
 # TODO: Replace with the literal string "ictr" for ICTR
 indicator <- "pctr"
 
-# Create a folder to store the results of each indicator
+```
+
+Create a folder to otput results at each level.
+
+```{r}
 dir_create(output(indicator, "product"))
 dir_create(output(indicator, "company"))
 ```
@@ -65,7 +69,7 @@ dir_create(output(indicator, "company"))
 Split the data by company. 
 
 ```{r}
-companies_list <- split(real_companies, real_companies$company_id)
+companies_list <- split(companies, companies$company_id)
 ```
 
 Calculate the indicator for each company at a time, saving the result to a .csv
@@ -76,12 +80,13 @@ for (i in seq_along(companies_list)) {
   companies_id <- names(companies_list[i])
   product_file <- output(indicator, "product", paste0(companies_id, ".csv"))
   company_file <- output(indicator, "company", paste0(companies_id, ".csv"))
-  # Skip if run previously
+  
+  # Skip if already done
   if (file_exists(company_file)) next()
   
   # Continue even if one company fails
   try({
-    product <- xctr_at_product_level(companies_list[[i]], real_co2)
+    product <- xctr_at_product_level(companies_list[[i]], co2)
     write_csv(product, product_file)
     company <- xctr_at_company_level(product)
     write_csv(company, company_file)
@@ -99,20 +104,19 @@ When you're done (or before) you can read all the .csv files into a single
 dataset at once.
 
 ```{r}
-combined_results <- read_csv(dir_ls(output(indicator, "company")))
-combined_results
+result <- read_csv(dir_ls(output(indicator, "company")))
+result
 ```
 
 If the number of files is too large, the code above will fail and you'll need to
-combine them in chunks, then read all combined chunks at once.
+combine results in chunks.
 
-### Combine chunks of files
+### Combine results in chunks
 
-Consider the files at company level. 
-
-We can put the paths to each file into a table, and create a column to group
-them in any number of chunks. Each chunk should have no more files than you can
-successfully read at once.
+Put the paths to each file into a table, and create a column to group them in
+any number of chunks. Each chunk should have no more files than you can
+successfully read at once. Here I show it for company files. Adapt it for
+product files.
 
 ```{r}
 chunks <- 3
@@ -123,7 +127,8 @@ chunked
 chunked |> count(chunk)
 ```
 
-Now read each chunk of file at once, and save them into a single combined .csv.
+Now read all the individual .csv files of a chunk into a single dataset, then
+save it into a single .csv.
 
 ```{r}
 dir_create(output("company_chunks"))
@@ -137,17 +142,31 @@ for (i in unique(chunked$chunk)) {
 }
 ```
 
-Finally the number of chunk files should be small enough to read them at once.
+The data is still split in pieces but they should be few enough to read them all
+at once into a single table.
 
 ```{r}
-result <- read_csv(dir_ls(output("company_chunks")))
-result
+all_companies <- read_csv(dir_ls(output("company_chunks")))
+all_companies
 ```
 
 ### Background jobs
 
-You may want to run this on as a [background
-job](https://docs.posit.co/ide/user/ide/guide/tools/jobs.html) so you can use
-your R session for something else while the process runs on the background. Or
-better, you may run it on a remote server so you can rent a massive computer for
-a short time, and use your time and laptop for other things.
+You may want to run this on as a [background job in
+RStudio](https://docs.posit.co/ide/user/ide/guide/tools/jobs.html) so you can
+use your R session for something else while the process runs on the background.
+
+RStudio may have its own issues. If your code is in "~/projects/ictr/run.R" you
+may run it directly from the terminal with:
+
+```bash
+Rscript ~/projects/ictr/run.R
+```
+
+Best is to do this from a remote server, which gives you a stable environment
+and the ability to briefly rent a computer more powerful than the one you have.
+
+### Targets
+
+If you run long processes often you should learn about
+[targets](https://docs.ropensci.org/targets/).
