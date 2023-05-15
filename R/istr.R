@@ -62,7 +62,7 @@ istr_add_reductions <- function(companies, weo_2022) {
     left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
 }
 
-istr_add_transition_risk <- function(data, low_threshold = 30, high_threshold = 70) {
+istr_add_transition_risk <- function(data, low_threshold, high_threshold) {
   data |>
     mutate(
       transition_risk = case_when(
