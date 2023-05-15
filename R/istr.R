@@ -62,9 +62,9 @@ istr_add_transition_risk <- function(data, low_threshold = 30, high_threshold = 
   data |>
     mutate(
       transition_risk = case_when(
-        reductions <= 30 ~ "low",
-        reductions > 30 & reductions <= 70 ~ "medium",
-        reductions >= 70 ~ "high",
+        reductions <= low_threshold ~ "low",
+        reductions > low_threshold & reductions <= high_threshold ~ "medium",
+        reductions >= high_threshold ~ "high",
         TRUE ~ "no_sector",
       )
     )
