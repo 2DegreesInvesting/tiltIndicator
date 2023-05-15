@@ -30,8 +30,6 @@ pivot_type_sector_subsector <- function(companies) {
   companies |>
     rename(weo_sector = "weo_product", weo_subsector = "weo_flow") |>
     pivot_longer(c("ipr_sector", "ipr_subsector", "weo_sector", "weo_subsector")) |>
-    # FIXME: ?separate() has been superseded in favour of
-    # separate_wider_position() and separate_wider_delim()
     separate_wider_delim("name", delim = "_", names = c("type", "tmp")) |>
     pivot_wider(names_from = "tmp")
 }
