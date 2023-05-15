@@ -38,13 +38,17 @@ istr <- function(companies, scenarios, mapper) {
 
 #' @rdname istr
 #' @export
-istr_at_product_level <- function(companies, scenarios, mapper) {
+istr_at_product_level <- function(companies,
+                                  scenarios,
+                                  mapper,
+                                  low_threshold = 30,
+                                  high_threshold = 70) {
   check_has_no_na(scenarios, "reductions")
 
   companies |>
     istr_mapping(mapper) |>
     istr_add_reductions(scenarios) |>
-    istr_add_transition_risk() |>
+    istr_add_transition_risk(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level()
 }
 
