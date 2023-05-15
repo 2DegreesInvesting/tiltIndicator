@@ -103,7 +103,7 @@ col_to_rank <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
-xctr_add_scores <- function(data, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+xctr_add_scores <- function(data, low_threshold, high_threshold) {
   for (col in colnames(select(data, starts_with("perc_")))) {
     new_col <- gsub("perc_", "score_", col)
     data <- data |> mutate({{ new_col }} := case_when(
