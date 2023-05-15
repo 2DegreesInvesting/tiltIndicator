@@ -49,7 +49,7 @@ istr_at_product_level <- function(companies,
   companies |>
     istr_mapping(mapper) |>
     istr_add_reductions(scenarios) |>
-    istr_add_transition_risk(low_threshold, high_threshold) |>
+    istr_categorize_risk(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level()
 }
 
@@ -63,7 +63,7 @@ istr_add_reductions <- function(companies, weo_2022) {
     left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
 }
 
-istr_add_transition_risk <- function(data, low_threshold, high_threshold) {
+istr_categorize_risk <- function(data, low_threshold, high_threshold) {
   data |>
     mutate(
       transition_risk = case_when(
