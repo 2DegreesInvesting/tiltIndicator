@@ -71,8 +71,8 @@ pstr_add_reductions <- function(companies, scenarios) {
   )
 }
 
-pstr_add_transition_risk <- function(with_reductions, low_threshold, high_threshold) {
-  with_reductions |>
+pstr_add_transition_risk <- function(data, low_threshold, high_threshold) {
+  data |>
     mutate(
       transition_risk = case_when(
         reductions <= low_threshold ~ "low",
