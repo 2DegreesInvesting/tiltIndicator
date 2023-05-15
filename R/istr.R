@@ -7,6 +7,7 @@
 #' @param scenarios A dataframe like [istr_weo_2022].
 #' @param mapper A dataframe like [istr_ep_weo].
 #' @inheritParams xctr
+#' @inheritParams pstr
 #'
 #' @family ISTR functions
 #'
