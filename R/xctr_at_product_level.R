@@ -13,7 +13,7 @@ xctr_at_product_level <- function(companies,
   co2 |>
     xctr_rename() |>
     xctr_add_ranks(col_to_rank(co2)) |>
-    xctr_add_scores(low_threshold, high_threshold) |>
+    xctr_categorize_risk(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
     xctr_polish_output_at_product_level()
 }
@@ -103,7 +103,7 @@ col_to_rank <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
-xctr_add_scores <- function(data, low_threshold, high_threshold) {
+xctr_categorize_risk <- function(data, low_threshold, high_threshold) {
   for (col in colnames(select(data, starts_with("perc_")))) {
     new_col <- gsub("perc_", "score_", col)
     data <- data |> mutate({{ new_col }} := case_when(
