@@ -52,6 +52,7 @@
 #' @importFrom tidyr pivot_wider
 #' @importFrom tidyr replace_na
 #' @importFrom tidyr separate
+#' @importFrom tidyr separate_wider_delim
 #' @importFrom tidyr unite
 #' @importFrom tidyselect all_of
 #' @importFrom tidyselect contains
