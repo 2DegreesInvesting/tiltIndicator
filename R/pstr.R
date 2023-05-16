@@ -71,11 +71,12 @@ pstr_add_reductions <- function(companies, scenarios) {
   )
 }
 
-xstr_categorize_risk <- function(data, low_threshold, high_threshold) {
-  data |>
-    mutate(transition_risk = categorize_risk(
-      reductions, low_threshold, high_threshold,
-      .default = "no_sector"
+xstr_categorize_risk <- function(data,
+                                 low_threshold,
+                                 high_threshold,
+                                 .default = "no_sector") {
+  mutate(data, transition_risk = categorize_risk(
+      reductions, low_threshold, high_threshold, .default = .default
     ))
 }
 
