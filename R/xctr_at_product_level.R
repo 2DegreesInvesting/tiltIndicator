@@ -114,15 +114,6 @@ xctr_categorize_risk <- function(data, low_threshold, high_threshold) {
   data
 }
 
-categorize_risk <- function(x, low_threshold, high_threshold, ...) {
-  case_when(
-    x <= low_threshold ~ "low",
-    x > low_threshold & x <= high_threshold ~ "medium",
-    x > high_threshold ~ "high",
-    ...
-  )
-}
-
 xctr_join_companies <- function(product_level, companies) {
   left_join(
     companies,
