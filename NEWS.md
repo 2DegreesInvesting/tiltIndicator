@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9060
+
+* New `pstr_polish_output_at_company_level()` (#327)
+
 # tiltIndicator 0.0.0.9059
 
 * The article "Handling long runtime" is now updated based on the experience running `pstr*()` (#314).
