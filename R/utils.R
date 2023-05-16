@@ -47,7 +47,7 @@ get_column <- function(data, pattern) {
   data[[extract_name(data, pattern)]]
 }
 
-ptype_at_company_level <- function(companies_id = character(0)) {
+xctr_ptype_at_company_level <- function(companies_id = character(0)) {
   grouped_by <- map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
   risk_category <- risk_category_levels()
   value = NA_real_

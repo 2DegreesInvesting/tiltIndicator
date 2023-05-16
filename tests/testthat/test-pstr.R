@@ -22,7 +22,7 @@ test_that("the output is not grouped", {
 test_that("with a 0-row `companies` outputs a well structured 0-row tibble", {
   companies <- pstr_companies[0L, ]
   out <- pstr(companies, pstr_scenarios)
-  expect_equal(out, ptype_at_company_level())
+  expect_equal(out, xctr_ptype_at_company_level())
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
