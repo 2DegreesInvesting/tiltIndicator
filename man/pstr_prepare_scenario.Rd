@@ -27,7 +27,8 @@ raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
 pstr_prepare_scenario(raw_scenarios)
 }
 \seealso{
-Other pre-processing helpers: 
+Other helpers: 
+\code{\link{pstr_polish_output_at_copmany_level}()},
 \code{\link{pstr_prepare_companies}()}
 }
-\concept{pre-processing helpers}
+\concept{helpers}
