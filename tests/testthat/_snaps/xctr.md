@@ -23,132 +23,114 @@
       16    bst-procontrol-gmbh_00000005104947-001
       17    bst-procontrol-gmbh_00000005104947-001
       18    bst-procontrol-gmbh_00000005104947-001
-      19        ca-coity-trg-aua-gmbh_00000384-001
-      20        ca-coity-trg-aua-gmbh_00000384-001
-      21        ca-coity-trg-aua-gmbh_00000384-001
-      22        ca-coity-trg-aua-gmbh_00000384-001
-      23        ca-coity-trg-aua-gmbh_00000384-001
-      24        ca-coity-trg-aua-gmbh_00000384-001
-      25        ca-coity-trg-aua-gmbh_00000384-001
-      26        ca-coity-trg-aua-gmbh_00000384-001
-      27        ca-coity-trg-aua-gmbh_00000384-001
-      28        ca-coity-trg-aua-gmbh_00000384-001
-      29        ca-coity-trg-aua-gmbh_00000384-001
-      30        ca-coity-trg-aua-gmbh_00000384-001
-      31        ca-coity-trg-aua-gmbh_00000384-001
-      32        ca-coity-trg-aua-gmbh_00000384-001
-      33        ca-coity-trg-aua-gmbh_00000384-001
-      34        ca-coity-trg-aua-gmbh_00000384-001
-      35        ca-coity-trg-aua-gmbh_00000384-001
-      36        ca-coity-trg-aua-gmbh_00000384-001
-      37              cheries-baqu_neu316541-00101
-      38              cheries-baqu_neu316541-00101
-      39              cheries-baqu_neu316541-00101
-      40              cheries-baqu_neu316541-00101
-      41              cheries-baqu_neu316541-00101
-      42              cheries-baqu_neu316541-00101
-      43              cheries-baqu_neu316541-00101
-      44              cheries-baqu_neu316541-00101
-      45              cheries-baqu_neu316541-00101
-      46              cheries-baqu_neu316541-00101
-      47              cheries-baqu_neu316541-00101
-      48              cheries-baqu_neu316541-00101
-      49              cheries-baqu_neu316541-00101
-      50              cheries-baqu_neu316541-00101
-      51              cheries-baqu_neu316541-00101
-      52              cheries-baqu_neu316541-00101
-      53              cheries-baqu_neu316541-00101
-      54              cheries-baqu_neu316541-00101
-      55  fleischerei-stiefsohn_00000005219477-001
-      56  fleischerei-stiefsohn_00000005219477-001
-      57  fleischerei-stiefsohn_00000005219477-001
-      58  fleischerei-stiefsohn_00000005219477-001
-      59  fleischerei-stiefsohn_00000005219477-001
-      60  fleischerei-stiefsohn_00000005219477-001
-      61  fleischerei-stiefsohn_00000005219477-001
-      62  fleischerei-stiefsohn_00000005219477-001
-      63  fleischerei-stiefsohn_00000005219477-001
-      64  fleischerei-stiefsohn_00000005219477-001
-      65  fleischerei-stiefsohn_00000005219477-001
-      66  fleischerei-stiefsohn_00000005219477-001
-      67  fleischerei-stiefsohn_00000005219477-001
-      68  fleischerei-stiefsohn_00000005219477-001
-      69  fleischerei-stiefsohn_00000005219477-001
-      70  fleischerei-stiefsohn_00000005219477-001
-      71  fleischerei-stiefsohn_00000005219477-001
-      72  fleischerei-stiefsohn_00000005219477-001
-      73     hoche-butter-gmbh_deu422723-693847001
-      74     hoche-butter-gmbh_deu422723-693847001
-      75     hoche-butter-gmbh_deu422723-693847001
-      76     hoche-butter-gmbh_deu422723-693847001
-      77     hoche-butter-gmbh_deu422723-693847001
-      78     hoche-butter-gmbh_deu422723-693847001
-      79     hoche-butter-gmbh_deu422723-693847001
-      80     hoche-butter-gmbh_deu422723-693847001
-      81     hoche-butter-gmbh_deu422723-693847001
-      82     hoche-butter-gmbh_deu422723-693847001
-      83     hoche-butter-gmbh_deu422723-693847001
-      84     hoche-butter-gmbh_deu422723-693847001
-      85     hoche-butter-gmbh_deu422723-693847001
-      86     hoche-butter-gmbh_deu422723-693847001
-      87     hoche-butter-gmbh_deu422723-693847001
-      88     hoche-butter-gmbh_deu422723-693847001
-      89     hoche-butter-gmbh_deu422723-693847001
-      90     hoche-butter-gmbh_deu422723-693847001
-      91            leider-gmbh_00000005064318-001
-      92            leider-gmbh_00000005064318-001
-      93            leider-gmbh_00000005064318-001
-      94            leider-gmbh_00000005064318-001
-      95            leider-gmbh_00000005064318-001
-      96            leider-gmbh_00000005064318-001
-      97            leider-gmbh_00000005064318-001
-      98            leider-gmbh_00000005064318-001
-      99            leider-gmbh_00000005064318-001
-      100           leider-gmbh_00000005064318-001
-      101           leider-gmbh_00000005064318-001
-      102           leider-gmbh_00000005064318-001
-      103           leider-gmbh_00000005064318-001
-      104           leider-gmbh_00000005064318-001
-      105           leider-gmbh_00000005064318-001
-      106           leider-gmbh_00000005064318-001
-      107           leider-gmbh_00000005064318-001
-      108           leider-gmbh_00000005064318-001
-      109        pecheries-basques_fra316541-00101
-      110        pecheries-basques_fra316541-00101
-      111        pecheries-basques_fra316541-00101
-      112        pecheries-basques_fra316541-00101
-      113        pecheries-basques_fra316541-00101
-      114        pecheries-basques_fra316541-00101
-      115        pecheries-basques_fra316541-00101
-      116        pecheries-basques_fra316541-00101
-      117        pecheries-basques_fra316541-00101
-      118        pecheries-basques_fra316541-00101
-      119        pecheries-basques_fra316541-00101
-      120        pecheries-basques_fra316541-00101
-      121        pecheries-basques_fra316541-00101
-      122        pecheries-basques_fra316541-00101
-      123        pecheries-basques_fra316541-00101
-      124        pecheries-basques_fra316541-00101
-      125        pecheries-basques_fra316541-00101
-      126        pecheries-basques_fra316541-00101
-      127  vicquelin-espaces-verts_fra697272-00101
-      128  vicquelin-espaces-verts_fra697272-00101
-      129  vicquelin-espaces-verts_fra697272-00101
-      130  vicquelin-espaces-verts_fra697272-00101
-      131  vicquelin-espaces-verts_fra697272-00101
-      132  vicquelin-espaces-verts_fra697272-00101
-      133  vicquelin-espaces-verts_fra697272-00101
-      134  vicquelin-espaces-verts_fra697272-00101
-      135  vicquelin-espaces-verts_fra697272-00101
-      136  vicquelin-espaces-verts_fra697272-00101
-      137  vicquelin-espaces-verts_fra697272-00101
-      138  vicquelin-espaces-verts_fra697272-00101
-      139  vicquelin-espaces-verts_fra697272-00101
-      140  vicquelin-espaces-verts_fra697272-00101
-      141  vicquelin-espaces-verts_fra697272-00101
-      142  vicquelin-espaces-verts_fra697272-00101
-      143  vicquelin-espaces-verts_fra697272-00101
-      144  vicquelin-espaces-verts_fra697272-00101
+      19              cheries-baqu_neu316541-00101
+      20              cheries-baqu_neu316541-00101
+      21              cheries-baqu_neu316541-00101
+      22              cheries-baqu_neu316541-00101
+      23              cheries-baqu_neu316541-00101
+      24              cheries-baqu_neu316541-00101
+      25              cheries-baqu_neu316541-00101
+      26              cheries-baqu_neu316541-00101
+      27              cheries-baqu_neu316541-00101
+      28              cheries-baqu_neu316541-00101
+      29              cheries-baqu_neu316541-00101
+      30              cheries-baqu_neu316541-00101
+      31              cheries-baqu_neu316541-00101
+      32              cheries-baqu_neu316541-00101
+      33              cheries-baqu_neu316541-00101
+      34              cheries-baqu_neu316541-00101
+      35              cheries-baqu_neu316541-00101
+      36              cheries-baqu_neu316541-00101
+      37  fleischerei-stiefsohn_00000005219477-001
+      38  fleischerei-stiefsohn_00000005219477-001
+      39  fleischerei-stiefsohn_00000005219477-001
+      40  fleischerei-stiefsohn_00000005219477-001
+      41  fleischerei-stiefsohn_00000005219477-001
+      42  fleischerei-stiefsohn_00000005219477-001
+      43  fleischerei-stiefsohn_00000005219477-001
+      44  fleischerei-stiefsohn_00000005219477-001
+      45  fleischerei-stiefsohn_00000005219477-001
+      46  fleischerei-stiefsohn_00000005219477-001
+      47  fleischerei-stiefsohn_00000005219477-001
+      48  fleischerei-stiefsohn_00000005219477-001
+      49  fleischerei-stiefsohn_00000005219477-001
+      50  fleischerei-stiefsohn_00000005219477-001
+      51  fleischerei-stiefsohn_00000005219477-001
+      52  fleischerei-stiefsohn_00000005219477-001
+      53  fleischerei-stiefsohn_00000005219477-001
+      54  fleischerei-stiefsohn_00000005219477-001
+      55     hoche-butter-gmbh_deu422723-693847001
+      56     hoche-butter-gmbh_deu422723-693847001
+      57     hoche-butter-gmbh_deu422723-693847001
+      58     hoche-butter-gmbh_deu422723-693847001
+      59     hoche-butter-gmbh_deu422723-693847001
+      60     hoche-butter-gmbh_deu422723-693847001
+      61     hoche-butter-gmbh_deu422723-693847001
+      62     hoche-butter-gmbh_deu422723-693847001
+      63     hoche-butter-gmbh_deu422723-693847001
+      64     hoche-butter-gmbh_deu422723-693847001
+      65     hoche-butter-gmbh_deu422723-693847001
+      66     hoche-butter-gmbh_deu422723-693847001
+      67     hoche-butter-gmbh_deu422723-693847001
+      68     hoche-butter-gmbh_deu422723-693847001
+      69     hoche-butter-gmbh_deu422723-693847001
+      70     hoche-butter-gmbh_deu422723-693847001
+      71     hoche-butter-gmbh_deu422723-693847001
+      72     hoche-butter-gmbh_deu422723-693847001
+      73            leider-gmbh_00000005064318-001
+      74            leider-gmbh_00000005064318-001
+      75            leider-gmbh_00000005064318-001
+      76            leider-gmbh_00000005064318-001
+      77            leider-gmbh_00000005064318-001
+      78            leider-gmbh_00000005064318-001
+      79            leider-gmbh_00000005064318-001
+      80            leider-gmbh_00000005064318-001
+      81            leider-gmbh_00000005064318-001
+      82            leider-gmbh_00000005064318-001
+      83            leider-gmbh_00000005064318-001
+      84            leider-gmbh_00000005064318-001
+      85            leider-gmbh_00000005064318-001
+      86            leider-gmbh_00000005064318-001
+      87            leider-gmbh_00000005064318-001
+      88            leider-gmbh_00000005064318-001
+      89            leider-gmbh_00000005064318-001
+      90            leider-gmbh_00000005064318-001
+      91         pecheries-basques_fra316541-00101
+      92         pecheries-basques_fra316541-00101
+      93         pecheries-basques_fra316541-00101
+      94         pecheries-basques_fra316541-00101
+      95         pecheries-basques_fra316541-00101
+      96         pecheries-basques_fra316541-00101
+      97         pecheries-basques_fra316541-00101
+      98         pecheries-basques_fra316541-00101
+      99         pecheries-basques_fra316541-00101
+      100        pecheries-basques_fra316541-00101
+      101        pecheries-basques_fra316541-00101
+      102        pecheries-basques_fra316541-00101
+      103        pecheries-basques_fra316541-00101
+      104        pecheries-basques_fra316541-00101
+      105        pecheries-basques_fra316541-00101
+      106        pecheries-basques_fra316541-00101
+      107        pecheries-basques_fra316541-00101
+      108        pecheries-basques_fra316541-00101
+      109  vicquelin-espaces-verts_fra697272-00101
+      110  vicquelin-espaces-verts_fra697272-00101
+      111  vicquelin-espaces-verts_fra697272-00101
+      112  vicquelin-espaces-verts_fra697272-00101
+      113  vicquelin-espaces-verts_fra697272-00101
+      114  vicquelin-espaces-verts_fra697272-00101
+      115  vicquelin-espaces-verts_fra697272-00101
+      116  vicquelin-espaces-verts_fra697272-00101
+      117  vicquelin-espaces-verts_fra697272-00101
+      118  vicquelin-espaces-verts_fra697272-00101
+      119  vicquelin-espaces-verts_fra697272-00101
+      120  vicquelin-espaces-verts_fra697272-00101
+      121  vicquelin-espaces-verts_fra697272-00101
+      122  vicquelin-espaces-verts_fra697272-00101
+      123  vicquelin-espaces-verts_fra697272-00101
+      124  vicquelin-espaces-verts_fra697272-00101
+      125  vicquelin-espaces-verts_fra697272-00101
+      126  vicquelin-espaces-verts_fra697272-00101
       
       [[2]]
              grouped_by
@@ -278,24 +260,6 @@
       124 unit_tilt_sec
       125 unit_tilt_sec
       126 unit_tilt_sec
-      127           all
-      128           all
-      129           all
-      130      isic_sec
-      131      isic_sec
-      132      isic_sec
-      133      tilt_sec
-      134      tilt_sec
-      135      tilt_sec
-      136          unit
-      137          unit
-      138          unit
-      139 unit_isic_sec
-      140 unit_isic_sec
-      141 unit_isic_sec
-      142 unit_tilt_sec
-      143 unit_tilt_sec
-      144 unit_tilt_sec
       
       [[3]]
           risk_category
@@ -425,24 +389,6 @@
       124          high
       125        medium
       126           low
-      127          high
-      128        medium
-      129           low
-      130          high
-      131        medium
-      132           low
-      133          high
-      134        medium
-      135           low
-      136          high
-      137        medium
-      138           low
-      139          high
-      140        medium
-      141           low
-      142          high
-      143        medium
-      144           low
       
       [[4]]
           value
@@ -464,53 +410,53 @@
       16    0.5
       17    0.5
       18    0.0
-      19     NA
-      20     NA
-      21     NA
-      22     NA
-      23     NA
-      24     NA
-      25     NA
-      26     NA
-      27     NA
-      28     NA
-      29     NA
-      30     NA
-      31     NA
-      32     NA
-      33     NA
-      34     NA
-      35     NA
-      36     NA
-      37    0.0
+      19    0.0
+      20    0.0
+      21    1.0
+      22    0.5
+      23    0.5
+      24    0.0
+      25    0.0
+      26    0.5
+      27    0.5
+      28    0.0
+      29    0.5
+      30    0.5
+      31    0.5
+      32    0.5
+      33    0.0
+      34    0.5
+      35    0.5
+      36    0.0
+      37    1.0
       38    0.0
-      39    1.0
+      39    0.0
       40    0.5
       41    0.5
       42    0.0
-      43    0.0
-      44    0.5
-      45    0.5
-      46    0.0
+      43    1.0
+      44    0.0
+      45    0.0
+      46    0.5
       47    0.5
-      48    0.5
+      48    0.0
       49    0.5
       50    0.5
       51    0.0
       52    0.5
       53    0.5
       54    0.0
-      55    1.0
-      56    0.0
+      55    0.5
+      56    0.5
       57    0.0
       58    0.5
       59    0.5
       60    0.0
-      61    1.0
-      62    0.0
+      61    0.5
+      62    0.5
       63    0.0
-      64    0.5
-      65    0.5
+      64    1.0
+      65    0.0
       66    0.0
       67    0.5
       68    0.5
@@ -518,18 +464,18 @@
       70    0.5
       71    0.5
       72    0.0
-      73    0.5
-      74    0.5
-      75    0.0
+      73    0.0
+      74    0.0
+      75    1.0
       76    0.5
       77    0.5
       78    0.0
-      79    0.5
+      79    0.0
       80    0.5
-      81    0.0
-      82    1.0
-      83    0.0
-      84    0.0
+      81    0.5
+      82    0.0
+      83    0.5
+      84    0.5
       85    0.5
       86    0.5
       87    0.0
@@ -537,58 +483,40 @@
       89    0.5
       90    0.0
       91    0.0
-      92    0.0
-      93    1.0
-      94    0.5
-      95    0.5
+      92    1.0
+      93    0.0
+      94    1.0
+      95    0.0
       96    0.0
-      97    0.0
-      98    0.5
-      99    0.5
+      97    1.0
+      98    0.0
+      99    0.0
       100   0.0
-      101   0.5
-      102   0.5
-      103   0.5
-      104   0.5
+      101   1.0
+      102   0.0
+      103   1.0
+      104   0.0
       105   0.0
-      106   0.5
-      107   0.5
+      106   1.0
+      107   0.0
       108   0.0
-      109   0.0
-      110   1.0
+      109   0.5
+      110   0.5
       111   0.0
-      112   1.0
-      113   0.0
+      112   0.5
+      113   0.5
       114   0.0
-      115   1.0
-      116   0.0
+      115   0.5
+      116   0.5
       117   0.0
-      118   0.0
-      119   1.0
+      118   1.0
+      119   0.0
       120   0.0
-      121   1.0
-      122   0.0
+      121   0.5
+      122   0.5
       123   0.0
-      124   1.0
-      125   0.0
+      124   0.5
+      125   0.5
       126   0.0
-      127   0.5
-      128   0.5
-      129   0.0
-      130   0.5
-      131   0.5
-      132   0.0
-      133   0.5
-      134   0.5
-      135   0.0
-      136   1.0
-      137   0.0
-      138   0.0
-      139   0.5
-      140   0.5
-      141   0.0
-      142   0.5
-      143   0.5
-      144   0.0
       
 
