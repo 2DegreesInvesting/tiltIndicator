@@ -92,25 +92,25 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     type = "ipr",
   )
 
-  default_low_mid <- formals(pstr)$low_threshold
+  default_low_mid <- 1/3
   out <- pstr(companies, mutate(scenarios, reductions = default_low_mid))
   expect_equal(1, filter(out, risk_category == "low")$value)
   expect_equal(0, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
-  above_default_low_mid <- formals(pstr)$low_threshold + 0.001
+  above_default_low_mid <- 1/3 + 0.001
   out <- pstr(companies, mutate(scenarios, reductions = above_default_low_mid))
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(1, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
-  default_mid_high <- formals(pstr)$high_threshold
+  default_mid_high <- 2/3
   out <- pstr(companies, mutate(scenarios, reductions = default_mid_high))
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(1, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
-  above_default_mid_high <- formals(pstr)$high_threshold + 0.001
+  above_default_mid_high <- 2/3 + 0.001
   out <- pstr(companies, mutate(scenarios, reductions = above_default_mid_high))
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(0, filter(out, risk_category == "medium")$value)
