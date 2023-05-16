@@ -114,7 +114,6 @@ na_to_0_if_not_all_is_na <- function(x) {
 }
 
 xctr_categorize_risk <- function(data, low_threshold, high_threshold) {
-  # browser()
   for (col in colnames(select(data, starts_with("perc_")))) {
     new_col <- gsub("perc_", "score_", col)
     data <- data |>

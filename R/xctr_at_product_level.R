@@ -13,9 +13,23 @@ xctr_at_product_level <- function(companies,
   co2 |>
     xctr_rename() |>
     xctr_add_ranks(col_to_rank(co2)) |>
-    xctr_categorize_risk(low_threshold, high_threshold) |>
+
+    tidyr::pivot_longer(
+      cols = starts_with("perc_"),
+      names_prefix = "perc_",
+      names_to = "grouped_by"
+    ) |>
+    mutate(
+      risk_category = categorize_risk(value, low_threshold, high_threshold)
+    ) |>
+
     xctr_join_companies(companies) |>
-    xctr_polish_output_at_product_level()
+    # xctr_polish_output_at_product_level
+    # DETETE xctr_pivot_score_to_grouped_by() |>
+    # DELETE xctr_rename_at_product_level() |>
+    rename(companies_id = "company_id") |>
+    select_cols_at_product_level() |>
+    prune_unmatched_products()
 }
 
 xctr_check <- function(companies, co2) {
