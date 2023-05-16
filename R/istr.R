@@ -62,15 +62,3 @@ istr_add_reductions <- function(companies, weo_2022) {
   companies |>
     left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
 }
-
-istr_categorize_risk <- function(data, low_threshold, high_threshold) {
-  data |>
-    mutate(
-      transition_risk = case_when(
-        reductions <= low_threshold ~ "low",
-        reductions > low_threshold & reductions <= high_threshold ~ "medium",
-        reductions >= high_threshold ~ "high",
-        TRUE ~ "no_sector",
-      )
-    )
-}
