@@ -122,7 +122,13 @@ risk. We, therefore, derive the company-level information.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">istr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span></span>
+<span><span class="fu">istr_at_product_level</span><span class="op">(</span></span>
+<span>  <span class="va">companies</span>,</span>
+<span>  <span class="va">scenarios</span>,</span>
+<span>  <span class="va">mapper</span>,</span>
+<span>  low_threshold <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  high_threshold <span class="op">=</span> <span class="fl">70</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">istr_at_company_level</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -139,6 +145,16 @@ risk. We, therefore, derive the company-level information.</p>
 
 <dt>mapper</dt>
 <dd><p>A dataframe like <a href="istr_datasets.html">istr_ep_weo</a>.</p></dd>
+
+
+<dt>low_threshold</dt>
+<dd><p>A numeric value to segment low and medium transition
+risk products.</p></dd>
+
+
+<dt>high_threshold</dt>
+<dd><p>A numeric value to segment medium and high transition
+risk products.</p></dd>
 
 
 <dt>data</dt>
