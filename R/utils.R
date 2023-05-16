@@ -60,6 +60,16 @@ ptype_at_company_level <- function() {
   )
 }
 
+ptype_no_match <- function(companies_id) {
+  grouped_by <- map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
+  risk_category <- c("high", "medium", "low")
+  value = NA_real_
+  data <- expand_grid(grouped_by, risk_category, value)
+
+  map_df(companies_id, ~mutate(data, companies_id = .x)) |>
+    relocate(all_of(cols_at_company_level()))
+}
+
 categorize_risk <- function(x, low_threshold, high_threshold, ...) {
   case_when(
     x <= low_threshold ~ "low",
