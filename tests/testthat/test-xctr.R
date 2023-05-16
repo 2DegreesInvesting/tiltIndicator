@@ -187,10 +187,11 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   expect_error(xctr(companies, bad), crucial)
 })
 
-test_that("if `co2` has 0-rows, errors gracefully", {
+test_that("with a 0-row `co2` outputs a well structured 0-row tibble", {
   skip("FIXME")
   companies <- slice(companies, 1)
-  expect_error(xctr(companies, products[0, ]), "can't have 0 rows")
+  out <- xctr(companies, products[0, ])
+  expect_equal(out, ptype_at_company_level(companies$company_id))
 })
 
 test_that("no longer drops companies depending on co2 data (#122)", {
