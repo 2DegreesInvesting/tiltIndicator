@@ -14,7 +14,6 @@ xctr_at_product_level <- function(companies,
     xctr_rename() |>
     # FIXME: This is still in an awkward wide format
     xctr_add_ranks(col_to_rank(co2)) |>
-
     pivot_longer(
       cols = starts_with("perc_"),
       names_prefix = "perc_",
