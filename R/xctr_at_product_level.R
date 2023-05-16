@@ -103,17 +103,6 @@ col_to_rank <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
-xctr_categorize_risk <- function(data, low_threshold, high_threshold) {
-  for (col in colnames(select(data, starts_with("perc_")))) {
-    new_col <- gsub("perc_", "score_", col)
-    data <- data |>
-      mutate({{ new_col }} := categorize_risk(
-        .data[[col]], low_threshold, high_threshold
-      ))
-  }
-  data
-}
-
 xctr_join_companies <- function(product_level, companies) {
   left_join(
     companies,
