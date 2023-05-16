@@ -49,11 +49,15 @@ get_column <- function(data, pattern) {
 
 ptype_at_company_level <- function(companies_id = character(0)) {
   grouped_by <- map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
-  risk_category <- c("high", "medium", "low")
+  risk_category <- risk_category_levels()
   value = NA_real_
 
   out <- expand_grid(companies_id, grouped_by, risk_category, value)
   relocate(out, all_of(cols_at_company_level()))
+}
+
+risk_category_levels <- function() {
+  c("high", "medium", "low")
 }
 
 categorize_risk <- function(x, low_threshold, high_threshold, ...) {

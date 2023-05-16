@@ -85,7 +85,7 @@ xctr_at_company_level <- function(data) {
     return(ptype_at_company_level(unique(data$companies_id)))
   }
 
-  levels <- c("high", "medium", "low")
+  levels <- risk_category_levels()
   with_value |>
     mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
     expand(.data$risk_category) |>
