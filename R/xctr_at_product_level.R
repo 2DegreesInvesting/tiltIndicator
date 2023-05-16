@@ -62,17 +62,6 @@ check_is_character <- function(x) {
   vec_assert(x, character())
 }
 
-xctr_categorize_risk <- function(data, low_threshold, high_threshold) {
-  for (col in colnames(select(data, starts_with("perc_")))) {
-    new_col <- gsub("perc_", "score_", col)
-    data <- data |>
-      mutate({{ new_col }} := categorize_risk(
-        .data[[col]], low_threshold, high_threshold
-      ))
-  }
-  data
-}
-
 xctr_rename <- function(data) {
   data |>
     rename(
