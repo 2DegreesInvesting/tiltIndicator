@@ -13,7 +13,7 @@ xctr_at_product_level <- function(companies,
   co2 |>
     xctr_rename() |>
     xctr_add_ranks(col_to_rank(co2)) |>
-    tidyr::pivot_longer(
+    pivot_longer(
       cols = starts_with("perc_"),
       names_prefix = "perc_",
       names_to = "grouped_by"
