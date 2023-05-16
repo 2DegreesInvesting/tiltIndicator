@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9061
+
+* changed default arguments + wrote test
+* document()
+* changed test
+* added test for pstr_at_product_level
+* Update snapshots
+* Simplify test
+* remove test at product level
+
+
 # tiltIndicator 0.0.0.9060
 
 * New `pstr_polish_output_at_company_level()` (#327)
