@@ -32,7 +32,8 @@ companies <- pstr_prepare_companies(raw_companies)
 companies
 }
 \seealso{
-Other pre-processing helpers: 
+Other helpers: 
+\code{\link{pstr_polish_output_at_copmany_level}()},
 \code{\link{pstr_prepare_scenario}()}
 }
-\concept{pre-processing helpers}
+\concept{helpers}
