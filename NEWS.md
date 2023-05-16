@@ -2,14 +2,7 @@
 
 # tiltIndicator 0.0.0.9061
 
-* changed default arguments + wrote test
-* document()
-* changed test
-* added test for pstr_at_product_level
-* Update snapshots
-* Simplify test
-* remove test at product level
-
+* In PSTR default thresholds are now the  same as in XCTR (@lindadelacombaz #329).
 
 # tiltIndicator 0.0.0.9060
 
