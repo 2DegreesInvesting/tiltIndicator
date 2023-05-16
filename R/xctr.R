@@ -125,3 +125,14 @@ xctr_ptype_at_company_level <- function(companies_id = character(0)) {
   out <- expand_grid(companies_id, grouped_by, risk_category, value)
   relocate(out, all_of(cols_at_company_level()))
 }
+
+xctr_benchmarks <- function() {
+  list(
+    "all",
+    "isic_sec",
+    "tilt_sec",
+    "unit",
+    c("unit", "isic_sec"),
+    c("unit", "tilt_sec")
+  )
+}
