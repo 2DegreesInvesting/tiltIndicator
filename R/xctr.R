@@ -82,7 +82,7 @@ xctr_at_company_level <- function(data) {
     select(-all_of("n"))
 
   if (identical(nrow(with_value), 0L)) {
-    stop("FIXME")
+    return(ptype_at_company_level(unique(data$companies_id)))
   }
 
   levels <- c("high", "medium", "low")

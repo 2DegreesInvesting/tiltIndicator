@@ -47,27 +47,13 @@ get_column <- function(data, pattern) {
   data[[extract_name(data, pattern)]]
 }
 
-ptype_at_company_level <- function() {
-  structure(
-    list(
-      companies_id = character(0),
-      grouped_by = character(0),
-      risk_category = character(0),
-      value = numeric(0)
-    ),
-    row.names = integer(0),
-    class = c("tbl_df", "tbl", "data.frame")
-  )
-}
-
-ptype_no_match <- function(companies_id) {
+ptype_at_company_level <- function(companies_id = character(0)) {
   grouped_by <- map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
   risk_category <- c("high", "medium", "low")
   value = NA_real_
-  data <- expand_grid(grouped_by, risk_category, value)
 
-  map_df(companies_id, ~mutate(data, companies_id = .x)) |>
-    relocate(all_of(cols_at_company_level()))
+  out <- expand_grid(companies_id, grouped_by, risk_category, value)
+  relocate(out, all_of(cols_at_company_level()))
 }
 
 categorize_risk <- function(x, low_threshold, high_threshold, ...) {
