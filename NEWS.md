@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9061
+
+* In PSTR default thresholds are now the  same as in XCTR (@lindadelacombaz #329).
+
 # tiltIndicator 0.0.0.9060
 
 * New `pstr_polish_output_at_company_level()` (#327)
