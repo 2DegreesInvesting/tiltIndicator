@@ -6,13 +6,13 @@
 \alias{pstr_at_company_level}
 \title{Calculate the PSTR indicator}
 \usage{
-pstr(companies, scenarios, low_threshold = 30, high_threshold = 70)
+pstr(companies, scenarios, low_threshold = 1/3, high_threshold = 2/3)
 
 pstr_at_product_level(
   companies,
   scenarios,
-  low_threshold = 30,
-  high_threshold = 70
+  low_threshold = 1/3,
+  high_threshold = 2/3
 )
 
 pstr_at_company_level(data)

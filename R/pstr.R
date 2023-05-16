@@ -32,7 +32,7 @@
 #'
 #' # Same
 #' pstr(companies, scenarios)
-pstr <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) {
+pstr <- function(companies, scenarios, low_threshold = 1/3, high_threshold = 2/3) {
   companies |>
     pstr_at_product_level(scenarios, low_threshold, high_threshold) |>
     xctr_at_company_level()
@@ -40,7 +40,7 @@ pstr <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) 
 
 #' @rdname pstr
 #' @export
-pstr_at_product_level <- function(companies, scenarios, low_threshold = 30, high_threshold = 70) {
+pstr_at_product_level <- function(companies, scenarios, low_threshold = 1/3, high_threshold = 2/3) {
   pstr_check(scenarios)
 
   companies <- rename(companies, companies_id = "company_id")
