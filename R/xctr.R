@@ -116,4 +116,3 @@ na_to_0_if_not_all_is_na <- function(x) {
   }
   replace_na(x, 0)
 }
-

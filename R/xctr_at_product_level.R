@@ -13,7 +13,6 @@ xctr_at_product_level <- function(companies,
   co2 |>
     xctr_rename() |>
     xctr_add_ranks(col_to_rank(co2)) |>
-
     tidyr::pivot_longer(
       cols = starts_with("perc_"),
       names_prefix = "perc_",
@@ -22,7 +21,6 @@ xctr_at_product_level <- function(companies,
     mutate(
       risk_category = categorize_risk(value, low_threshold, high_threshold)
     ) |>
-
     xctr_join_companies(companies) |>
     # xctr_polish_output_at_product_level
     # DETETE xctr_pivot_score_to_grouped_by() |>
