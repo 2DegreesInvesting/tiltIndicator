@@ -19,9 +19,7 @@ xctr_at_product_level <- function(companies,
       names_to = "grouped_by",
       values_to = "values_to_categorize"
     ) |>
-    mutate(
-      risk_category = categorize_risk(values_to_categorize, low_threshold, high_threshold)
-    ) |>
+    add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
     rename(companies_id = "company_id") |>
     select_cols_at_product_level() |>
