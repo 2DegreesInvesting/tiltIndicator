@@ -22,9 +22,6 @@ xctr_at_product_level <- function(companies,
       risk_category = categorize_risk(value, low_threshold, high_threshold)
     ) |>
     xctr_join_companies(companies) |>
-    # xctr_polish_output_at_product_level
-    # DETETE xctr_pivot_score_to_grouped_by() |>
-    # DELETE xctr_rename_at_product_level() |>
     rename(companies_id = "company_id") |>
     select_cols_at_product_level() |>
     prune_unmatched_products()
@@ -122,29 +119,6 @@ xctr_join_companies <- function(product_level, companies) {
     by = "activity_uuid_product_uuid",
     relationship = "many-to-many"
   )
-}
-
-xctr_polish_output_at_product_level <- function(data) {
-  data |>
-    xctr_pivot_score_to_grouped_by() |>
-    xctr_rename_at_product_level() |>
-    select_cols_at_product_level() |>
-    prune_unmatched_products()
-}
-
-xctr_pivot_score_to_grouped_by <- function(data) {
-  data |>
-    pivot_longer(
-      starts_with("score_"),
-      names_prefix = "score_",
-      names_to = "grouped_by"
-    )
-}
-
-xctr_rename_at_product_level <- function(data) {
-  data |>
-    rename(companies_id = "company_id") |>
-    rename(risk_category = "value")
 }
 
 select_cols_at_product_level <- function(data) {
