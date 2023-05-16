@@ -49,7 +49,7 @@ istr_at_product_level <- function(companies,
   companies |>
     istr_mapping(mapper) |>
     istr_add_reductions(scenarios) |>
-    xstr_categorize_risk(low_threshold, high_threshold) |>
+    xstr_categorize_risk(low_threshold, high_threshold, .default = "no_sector") |>
     xstr_polish_output_at_product_level()
 }
 
