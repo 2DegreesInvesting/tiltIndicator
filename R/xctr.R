@@ -81,6 +81,10 @@ xctr_at_company_level <- function(data) {
     mutate(value = .data$n / sum(.data$n)) |>
     select(-all_of("n"))
 
+  if (identical(nrow(with_value), 0L)) {
+    stop("FIXME")
+  }
+
   levels <- c("high", "medium", "low")
   with_value |>
     mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
@@ -113,13 +117,3 @@ na_to_0_if_not_all_is_na <- function(x) {
   replace_na(x, 0)
 }
 
-xctr_categorize_risk <- function(data, low_threshold, high_threshold) {
-  for (col in colnames(select(data, starts_with("perc_")))) {
-    new_col <- gsub("perc_", "score_", col)
-    data <- data |>
-      mutate({{ new_col }} := categorize_risk(
-        .data[[col]], low_threshold, high_threshold
-      ))
-  }
-  data
-}
