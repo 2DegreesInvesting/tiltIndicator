@@ -209,10 +209,12 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
   expect_error(pstr(companies, scenarios), "sector.*subsector.*type")
 })
 
-test_that("Default arguments are in the range 0 to 1", {
-  companies <- pstr_companies
-  scenarios <- pstr_scenarios
+test_that("the thresholds are in the range 0 to 1", {
   pstr_arguments <- formals(pstr)
-  expect_true(pstr_arguments$low_threshold >= 0 & pstr_arguments$low_threshold <= 1, "low_threshold is not in the range 0 to 1")
-  expect_true(pstr_arguments$high_threshold >= 0 & pstr_arguments$high_threshold <= 1, "high_threshold is not in the range 0 to 1")
+
+  low_threshold <- eval(pstr_arguments$low_threshold)
+  high_threshold <- eval(pstr_arguments$high_threshold)
+
+  expect_true(low_threshold >= 0 & low_threshold <= 1)
+  expect_true(high_threshold >= 0 & high_threshold <= 1)
 })
