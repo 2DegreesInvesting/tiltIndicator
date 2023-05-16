@@ -73,14 +73,9 @@ pstr_add_reductions <- function(companies, scenarios) {
 
 pstr_categorize_risk <- function(data, low_threshold, high_threshold) {
   data |>
-    mutate(
-      transition_risk = case_when(
-        reductions <= low_threshold ~ "low",
-        reductions > low_threshold & reductions <= high_threshold ~ "medium",
-        reductions > high_threshold ~ "high",
-        TRUE ~ "no_sector",
-      )
-    )
+    mutate(transition_risk = categorize_risk(
+      reductions, low_threshold, high_threshold, .default = "no_sector"
+    ))
 }
 
 pstr_check <- function(scenarios) {
