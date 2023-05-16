@@ -70,7 +70,7 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 #' @rdname xctr
 xctr_at_company_level <- function(data) {
   if (identical(nrow(data), 0L)) {
-    return(xctr_ptype_at_company_level())
+    return(xctr_ptype_at_company_level(companies_id = character(0)))
   }
 
   with_value <- data |>
@@ -82,7 +82,8 @@ xctr_at_company_level <- function(data) {
     select(-all_of("n"))
 
   if (identical(nrow(with_value), 0L)) {
-    return(xctr_ptype_at_company_level(unique(data$companies_id)))
+    ids <- unique(data$companies_id)
+    return(xctr_ptype_at_company_level(companies_id = ids))
   }
 
   levels <- risk_category_levels()
