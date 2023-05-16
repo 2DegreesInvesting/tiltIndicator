@@ -7,6 +7,7 @@
 #' @param scenarios A dataframe like [istr_weo_2022].
 #' @param mapper A dataframe like [istr_ep_weo].
 #' @inheritParams xctr
+#' @inheritParams pstr
 #'
 #' @family ISTR functions
 #'
@@ -38,13 +39,17 @@ istr <- function(companies, scenarios, mapper) {
 
 #' @rdname istr
 #' @export
-istr_at_product_level <- function(companies, scenarios, mapper) {
+istr_at_product_level <- function(companies,
+                                  scenarios,
+                                  mapper,
+                                  low_threshold = 30,
+                                  high_threshold = 70) {
   check_has_no_na(scenarios, "reductions")
 
   companies |>
     istr_mapping(mapper) |>
     istr_add_reductions(scenarios) |>
-    istr_add_transition_risk() |>
+    xstr_categorize_risk(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level()
 }
 
@@ -56,16 +61,4 @@ istr_mapping <- function(companies, ep_weo) {
 istr_add_reductions <- function(companies, weo_2022) {
   companies |>
     left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
-}
-
-istr_add_transition_risk <- function(with_reductions) {
-  with_reductions |>
-    mutate(
-      transition_risk = case_when(
-        reductions <= 30 ~ "low",
-        reductions > 30 & reductions <= 70 ~ "medium",
-        reductions >= 70 ~ "high",
-        TRUE ~ "no_sector",
-      )
-    )
 }

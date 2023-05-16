@@ -8,7 +8,13 @@
 \usage{
 istr(companies, scenarios, mapper)
 
-istr_at_product_level(companies, scenarios, mapper)
+istr_at_product_level(
+  companies,
+  scenarios,
+  mapper,
+  low_threshold = 30,
+  high_threshold = 70
+)
 
 istr_at_company_level(data)
 }
@@ -18,6 +24,12 @@ istr_at_company_level(data)
 \item{scenarios}{A dataframe like \link{istr_weo_2022}.}
 
 \item{mapper}{A dataframe like \link{istr_ep_weo}.}
+
+\item{low_threshold}{A numeric value to segment low and medium transition
+risk products.}
+
+\item{high_threshold}{A numeric value to segment medium and high transition
+risk products.}
 
 \item{data}{A dataframe. The output at product level.}
 }

@@ -59,3 +59,12 @@ ptype_at_company_level <- function() {
     class = c("tbl_df", "tbl", "data.frame")
   )
 }
+
+categorize_risk <- function(x, low_threshold, high_threshold, ...) {
+  case_when(
+    x <= low_threshold ~ "low",
+    x > low_threshold & x <= high_threshold ~ "medium",
+    x > high_threshold ~ "high",
+    ...
+  )
+}
