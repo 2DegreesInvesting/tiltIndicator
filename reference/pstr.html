@@ -81,13 +81,13 @@ derive company-level information.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pstr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, low_threshold <span class="op">=</span> <span class="fl">30</span>, high_threshold <span class="op">=</span> <span class="fl">70</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pstr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>, high_threshold <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">pstr_at_product_level</span><span class="op">(</span></span>
 <span>  <span class="va">companies</span>,</span>
 <span>  <span class="va">scenarios</span>,</span>
-<span>  low_threshold <span class="op">=</span> <span class="fl">30</span>,</span>
-<span>  high_threshold <span class="op">=</span> <span class="fl">70</span></span>
+<span>  low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,</span>
+<span>  high_threshold <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">pstr_at_company_level</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
@@ -136,13 +136,13 @@ targets.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… ipr_1.5c … low           steel     0faa7ecb-fef2-5117-89…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… ipr_1.5c … low           steel     0faa7ecb-fef2-5117-89…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… ipr_1.5c … low           steel     0faa7ecb-fef2-5117-89…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… ipr_1.5c … low           steel     0faa7ecb-fef2-5117-89…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… ipr_1.5c … medium        steel     0faa7ecb-fef2-5117-89…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… ipr_1.5c … high          steel     0faa7ecb-fef2-5117-89…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… ipr_1.5c … high          steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… ipr_1.5c … low           steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… ipr_1.5c … low           steel     0faa7ecb-fef2-5117-89…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… ipr_1.5c … low           steel     0faa7ecb-fef2-5117-89…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… ipr_1.5c … low           steel     0faa7ecb-fef2-5117-89…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… ipr_1.5c … high          steel     0faa7ecb-fef2-5117-89…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… ipr_1.5c … high          steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… weo_state… low           steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… weo_state… low           steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 270 more rows</span></span>
@@ -157,16 +157,16 @@ targets.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 672 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by         risk_category value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high            0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium          0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low             1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high            0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium          0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low             1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high            0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium          0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low             0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high            1  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 662 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
@@ -174,16 +174,16 @@ targets.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 672 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by         risk_category value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high            0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium          0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low             1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high            0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium          0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low             1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high            0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… medium          0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… low             0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c required… high            1  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 662 more rows</span></span>
 </code></pre></div>
     </div>
