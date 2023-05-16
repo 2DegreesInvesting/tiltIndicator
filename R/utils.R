@@ -68,4 +68,3 @@ categorize_risk <- function(x, low_threshold, high_threshold, ...) {
     ...
   )
 }
-
