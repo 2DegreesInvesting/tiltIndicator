@@ -77,7 +77,7 @@ xstr_categorize_risk <- function(data,
                                  high_threshold,
                                  .default = "no_sector") {
   mutate(data, transition_risk = categorize_risk(
-    reductions, low_threshold, high_threshold,
+    .data$reductions, low_threshold, high_threshold,
     .default = .default
   ))
 }
