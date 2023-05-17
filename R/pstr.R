@@ -32,7 +32,7 @@
 #'
 #' # Same
 #' pstr(companies, scenarios)
-pstr <- function(companies, scenarios, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+pstr <- function(companies, scenarios, low_threshold = 1/3, high_threshold = 2/3) {
   companies |>
     pstr_at_product_level(scenarios, low_threshold, high_threshold) |>
     xctr_at_company_level()
@@ -40,17 +40,15 @@ pstr <- function(companies, scenarios, low_threshold = 1 / 3, high_threshold = 2
 
 #' @rdname pstr
 #' @export
-pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+pstr_at_product_level <- function(companies, scenarios, low_threshold = 1/3, high_threshold = 2/3) {
   pstr_check(scenarios)
 
   companies <- rename(companies, companies_id = "company_id")
   companies |>
     pstr_add_reductions(scenarios) |>
-
-    rename(values_to_categorize = "reductions") |>
-    add_risk_category(low_threshold, high_threshold, .default = "no_sector") |>
+    xstr_categorize_risk(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level() |>
-
+    # TODO: DRY with ISTR
     select(all_of(pstr_cols_at_product_level()))
 }
 
@@ -73,13 +71,13 @@ pstr_add_reductions <- function(companies, scenarios) {
   )
 }
 
-add_risk_category <- function(data,
-                              low_threshold,
-                              high_threshold,
-                              ...) {
-  mutate(data, risk_category = categorize_risk(
-    .data$values_to_categorize, low_threshold, high_threshold, ...
-  ))
+xstr_categorize_risk <- function(data,
+                                 low_threshold,
+                                 high_threshold,
+                                 .default = "no_sector") {
+  mutate(data, transition_risk = categorize_risk(
+      reductions, low_threshold, high_threshold, .default = .default
+    ))
 }
 
 pstr_check <- function(scenarios) {

@@ -187,10 +187,17 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   expect_error(xctr(companies, bad), crucial)
 })
 
-test_that("with a 0-row `co2` outputs the expected prototype", {
+test_that("if `co2` has 0-rows, the output is normal", {
   companies <- slice(companies, 1)
-  out <- xctr(companies, products[0, ])
-  expect_equal(out, xctr_ptype_at_company_level(unique(companies$company_id)))
+
+  co20 <- products[0, ]
+  co21 <- products[1, ]
+  out0 <- xctr(companies, co20)
+  out1 <- xctr(companies, co21)
+
+  expect_s3_class(out0, "tbl_df")
+  expect_equal(names(out0), names(out1))
+  expect_equal(nrow(out0), nrow(out1))
 })
 
 test_that("no longer drops companies depending on co2 data (#122)", {

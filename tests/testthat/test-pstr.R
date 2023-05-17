@@ -22,7 +22,7 @@ test_that("the output is not grouped", {
 test_that("with a 0-row `companies` outputs a well structured 0-row tibble", {
   companies <- pstr_companies[0L, ]
   out <- pstr(companies, pstr_scenarios)
-  expect_equal(out, xctr_ptype_at_company_level())
+  expect_equal(out, ptype_at_company_level())
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
@@ -92,25 +92,25 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     type = "ipr",
   )
 
-  default_low_mid <- 1 / 3
+  default_low_mid <- 1/3
   out <- pstr(companies, mutate(scenarios, reductions = default_low_mid))
   expect_equal(1, filter(out, risk_category == "low")$value)
   expect_equal(0, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
-  above_default_low_mid <- 1 / 3 + 0.001
+  above_default_low_mid <- 1/3 + 0.001
   out <- pstr(companies, mutate(scenarios, reductions = above_default_low_mid))
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(1, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
-  default_mid_high <- 2 / 3
+  default_mid_high <- 2/3
   out <- pstr(companies, mutate(scenarios, reductions = default_mid_high))
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(1, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
-  above_default_mid_high <- 2 / 3 + 0.001
+  above_default_mid_high <- 2/3 + 0.001
   out <- pstr(companies, mutate(scenarios, reductions = above_default_mid_high))
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(0, filter(out, risk_category == "medium")$value)

@@ -1,6 +1,7 @@
 xstr_polish_output_at_product_level <- function(data) {
   data |>
     ungroup() |>
+    rename(risk_category = "transition_risk") |>
     unite(
       "grouped_by",
       # hack #305
