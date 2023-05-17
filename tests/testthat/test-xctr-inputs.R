@@ -207,7 +207,7 @@ test_that("with a missing value in the co2* column errors gracefully", {
   expect_error(xctr(companies, inputs), "co2_footprint")
 })
 
-test_that("a 0-row `co2` yields normal output but `NA` `values`", {
+test_that("a 0-row `co2` yields normal output but `NA` `value`s", {
   companies <- slice(companies, 1)
 
   out0 <- xctr(companies, inputs[0, ])

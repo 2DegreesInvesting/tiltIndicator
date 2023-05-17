@@ -25,6 +25,17 @@ test_that("a 0-row `companies` yields normal output but 0-rows", {
   expect_equal(out0, out1[0L, ])
 })
 
+test_that("a 0-row `co2` yields normal output but `NA` `value`s", {
+  skip("FIXME")
+  companies <- slice(pstr_companies, 1)
+
+  out0 <- pstr(companies, pstr_scenarios[0L, ])
+  out1 <- pstr(companies, pstr_scenarios)
+
+  expect_equal(select(out0, -value), select(out1, -value))
+  expect_true(all(is.na(out0$value)))
+})
+
 test_that("if `companies` lacks crucial columns, errors gracefully", {
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(pstr_scenarios, 1)
