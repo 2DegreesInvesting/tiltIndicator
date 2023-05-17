@@ -19,10 +19,10 @@ test_that("the output is not grouped", {
   expect_false(dplyr::is_grouped_df(out))
 })
 
-test_that("a 0-row `companies` yields the expected prototype with 0-rows", {
-  companies <- pstr_companies[0L, ]
-  out <- pstr(companies, pstr_scenarios)
-  expect_equal(out, xctr_ptype_at_company_level())
+test_that("a 0-row `companies` yields normal output but 0-rows", {
+  out0 <- pstr(pstr_companies[0L, ], pstr_scenarios)
+  out1 <- pstr(pstr_companies, pstr_scenarios)
+  expect_equal(out0, out1[0L, ])
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
