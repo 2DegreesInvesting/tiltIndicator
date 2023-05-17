@@ -26,7 +26,6 @@ test_that("a 0-row `companies` yields normal output but 0-rows", {
 })
 
 test_that("a 0-row `co2` yields normal output but `NA` `value`s", {
-  skip("FIXME")
   companies <- slice(pstr_companies, 1)
 
   out0 <- pstr(companies, pstr_scenarios[0L, ])
