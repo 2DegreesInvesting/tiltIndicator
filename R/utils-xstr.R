@@ -1,3 +1,10 @@
+xstr_check <- function(scenarios) {
+  if (identical(nrow(scenarios), 0L)) {
+    abort("`scenarios` can't have 0-row.")
+  }
+  check_has_no_na(scenarios, "reductions")
+}
+
 xstr_polish_output_at_product_level <- function(data) {
   data |>
     ungroup() |>

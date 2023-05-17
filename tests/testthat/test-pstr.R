@@ -92,25 +92,25 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     type = "ipr",
   )
 
-  default_low_mid <- 1/3
+  default_low_mid <- 1 / 3
   out <- pstr(companies, mutate(scenarios, reductions = default_low_mid))
   expect_equal(1, filter(out, risk_category == "low")$value)
   expect_equal(0, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
-  above_default_low_mid <- 1/3 + 0.001
+  above_default_low_mid <- 1 / 3 + 0.001
   out <- pstr(companies, mutate(scenarios, reductions = above_default_low_mid))
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(1, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
-  default_mid_high <- 2/3
+  default_mid_high <- 2 / 3
   out <- pstr(companies, mutate(scenarios, reductions = default_mid_high))
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(1, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
-  above_default_mid_high <- 2/3 + 0.001
+  above_default_mid_high <- 2 / 3 + 0.001
   out <- pstr(companies, mutate(scenarios, reductions = above_default_mid_high))
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(0, filter(out, risk_category == "medium")$value)
@@ -217,4 +217,9 @@ test_that("the thresholds are in the range 0 to 1", {
 
   expect_true(low_threshold >= 0 & low_threshold <= 1)
   expect_true(high_threshold >= 0 & high_threshold <= 1)
+})
+
+test_that("a 0-row `scenarios` errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  expect_error(pstr(companies, pstr_scenarios[0L, ]), "can't have 0-row")
 })

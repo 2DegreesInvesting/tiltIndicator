@@ -32,7 +32,7 @@
 #'
 #' # Same
 #' pstr(companies, scenarios)
-pstr <- function(companies, scenarios, low_threshold = 1/3, high_threshold = 2/3) {
+pstr <- function(companies, scenarios, low_threshold = 1 / 3, high_threshold = 2 / 3) {
   companies |>
     pstr_at_product_level(scenarios, low_threshold, high_threshold) |>
     xctr_at_company_level()
@@ -40,8 +40,9 @@ pstr <- function(companies, scenarios, low_threshold = 1/3, high_threshold = 2/3
 
 #' @rdname pstr
 #' @export
-pstr_at_product_level <- function(companies, scenarios, low_threshold = 1/3, high_threshold = 2/3) {
-  pstr_check(scenarios)
+pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+  xstr_check(scenarios)
+  stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
   companies <- rename(companies, companies_id = "company_id")
   companies |>
@@ -76,13 +77,9 @@ xstr_categorize_risk <- function(data,
                                  high_threshold,
                                  .default = "no_sector") {
   mutate(data, transition_risk = categorize_risk(
-      reductions, low_threshold, high_threshold, .default = .default
-    ))
-}
-
-pstr_check <- function(scenarios) {
-  check_has_no_na(scenarios, "reductions")
-  stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
+    reductions, low_threshold, high_threshold,
+    .default = .default
+  ))
 }
 
 stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
