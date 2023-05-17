@@ -187,7 +187,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   expect_error(xctr(companies, bad), crucial)
 })
 
-test_that("a 0-row `co2` yields the prototype but all `value` are `NA`", {
+test_that("a 0-row `co2` yields the expected prototype with `NA` `values`", {
   companies <- slice(companies, 1)
 
   out <- xctr(companies, products[0, ])

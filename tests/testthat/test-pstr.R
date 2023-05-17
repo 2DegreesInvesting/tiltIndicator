@@ -19,7 +19,7 @@ test_that("the output is not grouped", {
   expect_false(dplyr::is_grouped_df(out))
 })
 
-test_that("with a 0-row `companies` outputs a well structured 0-row tibble", {
+test_that("a 0-row `companies` yields the expected prototype with 0-rows", {
   companies <- pstr_companies[0L, ]
   out <- pstr(companies, pstr_scenarios)
   expect_equal(out, xctr_ptype_at_company_level())
