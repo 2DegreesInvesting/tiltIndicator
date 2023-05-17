@@ -44,7 +44,7 @@ istr_at_product_level <- function(companies,
                                   mapper,
                                   low_threshold = 30,
                                   high_threshold = 70) {
-  check_has_no_na(scenarios, "reductions")
+  xstr_check(scenarios)
 
   companies |>
     istr_mapping(mapper) |>
