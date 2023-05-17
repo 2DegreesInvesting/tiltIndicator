@@ -187,10 +187,17 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   expect_error(xctr(companies, bad), crucial)
 })
 
-test_that("with a 0-row `co2` outputs the expected prototype", {
+test_that("a 0-row `co2` yields the prototype but all `value` are `NA`", {
   companies <- slice(companies, 1)
+
   out <- xctr(companies, products[0, ])
+
   expect_equal(out, xctr_ptype_at_company_level(unique(companies$company_id)))
+  expect_equal(unique(out$companies_id), unique(companies$company_id))
+  benchmarks <- map_chr(xctr_benchmarks(), underscore)
+  expect_equal(unique(out$grouped_by), benchmarks)
+  expect_equal(unique(out$risk_category), risk_category_levels())
+  expect_true(all(is.na(out$value)))
 })
 
 test_that("no longer drops companies depending on co2 data (#122)", {
