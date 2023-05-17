@@ -208,8 +208,11 @@ test_that("with a missing value in the co2* column errors gracefully", {
 })
 
 test_that("a 0-row `companies` yields normal output but 0-rows", {
-  out0 <- xctr(companies[0L, ], inputs)
-  out1 <- xctr(slice(companies, 1), inputs)
+  companies0 <- slice(companies, 1)[0L, ]
+  companies1 <- slice(companies, 1)
+
+  out0 <- xctr(companies0, inputs)
+  out1 <- xctr(companies1, inputs)
 
   expect_equal(out0, out1[0L, ])
 })
