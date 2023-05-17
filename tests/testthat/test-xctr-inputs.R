@@ -218,10 +218,8 @@ test_that("a 0-row `companies` yields normal output but 0-rows", {
 })
 
 test_that("a 0-row `co2` yields normal output but `NA` `value`s", {
-  companies <- slice(companies, 1)
-
-  out0 <- xctr(companies, inputs[0, ])
-  out1 <- xctr(companies, inputs)
+  out0 <- xctr(slice(companies, 1), inputs[0, ])
+  out1 <- xctr(slice(companies, 1), inputs)
 
   expect_equal(select(out0, -value), select(out1, -value))
   expect_true(all(is.na(out0$value)))
