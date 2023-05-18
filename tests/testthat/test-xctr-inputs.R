@@ -208,7 +208,10 @@ test_that("with a missing value in the co2* column errors gracefully", {
 })
 
 test_that("a 0-row `inputs` yields an error", {
-  expect_error(xctr(slice(companies, 1), inputs[0L, ]), "co2.*can't have 0-row")
+  expect_error(
+    xctr(slice(companies, 1), inputs[0L, ]),
+    "co2.*can't have 0-row"
+  )
 })
 
 test_that("handles duplicated `companies` data (#230)", {
