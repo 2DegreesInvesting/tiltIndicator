@@ -76,4 +76,3 @@ stop_if_has_0_rows <- function(data) {
   }
   invisible(data)
 }
-
