@@ -139,5 +139,3 @@ xctr_benchmarks <- function() {
     c("unit", "tilt_sec")
   )
 }
-
-underscore <-function(x) paste(x, collapse = "_")
