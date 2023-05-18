@@ -169,8 +169,8 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   companies <- tibble(
     company_id = c("a", "b"),
     type = c("x", "y"),
-    sector =  c("x", "y"),
-    subsector =  c("x", "y"),
+    sector = c("x", "y"),
+    subsector = c("x", "y"),
     clustered = "x",
     activity_uuid_product_uuid = "x",
     tilt_sector = "x",
