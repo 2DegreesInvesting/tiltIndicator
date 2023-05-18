@@ -140,14 +140,13 @@ test_that("with a missing value in the reductions column errors gracefully", {
 })
 
 test_that("grouped_by includes the type of scenario", {
-  companies <- slice(pstr_companies, 1)
-  ipr <- filter(pstr_scenarios, type == "ipr")
-  out <- pstr(companies, ipr)
-  expect_true(all(grepl("ipr", unique(out$grouped_by))))
+  .type <- "ipr"
+  companies <- filter(slice(pstr_companies, 1), type == .type)
+  co2 <- filter(pstr_scenarios, type == .type)
 
-  weo <- filter(pstr_scenarios, type == "weo")
-  out <- pstr(companies, weo)
-  expect_true(all(grepl("ipr", unique(out$grouped_by))))
+  out <- pstr(companies, co2)
+
+  expect_true(all(grepl(.type, unique(out$grouped_by))))
 })
 
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {

@@ -81,6 +81,7 @@ xctr_at_company_level <- function(data) {
     add_count(.data$companies_id, .data[["grouped_by"]]) |>
     group_by(.data$companies_id, .data[["grouped_by"]]) |>
     mutate(value = .data$n / sum(.data$n)) |>
+    ungroup() |>
     select(-all_of("n"))
 
   if (identical(nrow(with_value), 0L)) {
@@ -91,6 +92,7 @@ xctr_at_company_level <- function(data) {
 
   levels <- risk_category_levels()
   out <- with_value |>
+    group_by(.data$companies_id, .data$grouped_by) |>
     mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
     expand(.data$risk_category) |>
     filter(!is.na(.data$risk_category)) |>
@@ -109,10 +111,10 @@ xctr_at_company_level <- function(data) {
     ids <- unique(unmatched$companies_id)
     # FIXME This prototype should work for XSTR too
     tmp <- xctr_ptype_at_company_level(companies_id = ids)
-    out <- bind_rows(with_value, tmp)
+    out <- bind_rows(out, tmp)
   }
-  # FIXME ungroup upstream
-  out |> ungroup()
+
+  out
 }
 
 # FIXME: Retire pstr_at_company_level

@@ -43,7 +43,7 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
     clustered = c("xyz", "abc")
   )
 
-  out <- xctr(companies, co2)
+  outn <- xctr(companies, co2)
   n <- length(unique(out$companies_id)) *
     length(unique(out$risk_category)) *
     length(unique(out$grouped_by))
