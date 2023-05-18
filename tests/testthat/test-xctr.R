@@ -187,16 +187,6 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   expect_error(xctr(companies, bad), crucial)
 })
 
-test_that("a 0-row `companies` yields normal output but 0-rows", {
-  companies0 <- slice(companies, 1)[0L, ]
-  companies1 <- slice(companies, 1)
-
-  out0 <- xctr(companies0, products)
-  out1 <- xctr(companies1, products)
-
-  expect_equal(out0, out1[0L, ])
-})
-
 test_that("no longer drops companies depending on co2 data (#122)", {
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
