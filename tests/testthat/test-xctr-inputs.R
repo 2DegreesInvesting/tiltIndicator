@@ -207,13 +207,6 @@ test_that("with a missing value in the co2* column errors gracefully", {
   expect_error(xctr(companies, inputs), "co2_footprint")
 })
 
-test_that("a 0-row `inputs` yields an error", {
-  expect_error(
-    xctr(slice(companies, 1), inputs[0L, ]),
-    "co2.*can't have 0-row"
-  )
-})
-
 test_that("handles duplicated `companies` data (#230)", {
   companies <- tibble(
     company_id = rep("a", 2),
@@ -275,3 +268,21 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   out <- xctr(companies, co2, low_threshold, high_threshold)
   expect_true(identical(unique(out$value), expected_value))
 })
+
+test_that("a 0-row `companies` yields normal output but 0-rows", {
+  companies0 <- slice(companies, 1)[0L, ]
+  companies1 <- slice(companies, 1)
+
+  out0 <- xctr(companies0, inputs)
+  out1 <- xctr(companies1, inputs)
+
+  expect_equal(out0, out1[0L, ])
+})
+
+test_that("a 0-row `inputs` yields an error", {
+  expect_error(
+    xctr(slice(companies, 1), inputs[0L, ]),
+    "co2.*can't have 0-row"
+  )
+})
+

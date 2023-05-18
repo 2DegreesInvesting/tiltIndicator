@@ -319,6 +319,16 @@ test_that("for each company & benchmark, each risk category is unique (#285)", {
   expect_equal(bad, 0)
 })
 
+test_that("a 0-row `companies` yields normal output but 0-rows", {
+  companies0 <- slice(companies, 1)[0L, ]
+  companies1 <- slice(companies, 1)
+
+  out0 <- xctr(companies0, products)
+  out1 <- xctr(companies1, products)
+
+  expect_equal(out0, out1[0L, ])
+})
+
 test_that("a 0-row `co2` yields an error", {
   expect_error(
     xctr(slice(companies, 1), products[0L, ]),
