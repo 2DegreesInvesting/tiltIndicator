@@ -269,14 +269,11 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   expect_true(identical(unique(out$value), expected_value))
 })
 
-test_that("a 0-row `companies` yields normal output but 0-rows", {
-  companies0 <- slice(companies, 1)[0L, ]
-  companies1 <- slice(companies, 1)
-
-  out0 <- xctr(companies0, inputs)
-  out1 <- xctr(companies1, inputs)
-
-  expect_equal(out0, out1[0L, ])
+test_that("a 0-row `companies` yields an error", {
+  expect_error(
+    xctr(companies[0L, ], inputs),
+    "companies.*can't have 0-row"
+  )
 })
 
 test_that("a 0-row `inputs` yields an error", {
@@ -285,4 +282,3 @@ test_that("a 0-row `inputs` yields an error", {
     "co2.*can't have 0-row"
   )
 })
-

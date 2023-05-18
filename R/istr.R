@@ -44,7 +44,7 @@ istr_at_product_level <- function(companies,
                                   mapper,
                                   low_threshold = 30,
                                   high_threshold = 70) {
-  xstr_check(scenarios)
+  xstr_check(companies, scenarios)
 
   companies |>
     istr_mapping(mapper) |>
