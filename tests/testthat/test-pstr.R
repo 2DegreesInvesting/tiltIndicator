@@ -19,12 +19,6 @@ test_that("the output is not grouped", {
   expect_false(dplyr::is_grouped_df(out))
 })
 
-test_that("with a 0-row `companies` outputs a well structured 0-row tibble", {
-  companies <- pstr_companies[0L, ]
-  out <- pstr(companies, pstr_scenarios)
-  expect_equal(out, ptype_at_company_level())
-})
-
 test_that("if `companies` lacks crucial columns, errors gracefully", {
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(pstr_scenarios, 1)
@@ -219,7 +213,13 @@ test_that("the thresholds are in the range 0 to 1", {
   expect_true(high_threshold >= 0 & high_threshold <= 1)
 })
 
-test_that("a 0-row `scenarios` errors gracefully", {
+test_that("a 0-row `companies` yields normal output but 0-rows", {
+  out0 <- pstr(pstr_companies[0L, ], pstr_scenarios)
+  out1 <- pstr(pstr_companies, pstr_scenarios)
+  expect_equal(out0, out1[0L, ])
+})
+
+test_that("a 0-row `scenarios` yields an error", {
   companies <- slice(pstr_companies, 1)
   expect_error(
     pstr(companies, pstr_scenarios[0L, ]),
