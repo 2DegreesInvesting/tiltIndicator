@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9062
+
+* XSTR and XCTR functions now stop if `scenarios` or `co2` has 0-row (#337, #338).
+
 # tiltIndicator 0.0.0.9061
 
 * In PSTR default thresholds are now the  same as in XCTR (@lindadelacombaz #329).
