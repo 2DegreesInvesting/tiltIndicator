@@ -19,6 +19,8 @@ xctr_at_product_level <- function(companies,
 }
 
 xctr_check <- function(companies, co2) {
+  stop_if_has_0_rows(co2)
+
   crucial <- c("company_id")
   walk(crucial, ~ check_matches_name(companies, .x))
 

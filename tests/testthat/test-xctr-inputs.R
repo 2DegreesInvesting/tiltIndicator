@@ -207,17 +207,11 @@ test_that("with a missing value in the co2* column errors gracefully", {
   expect_error(xctr(companies, inputs), "co2_footprint")
 })
 
-test_that("if `inputs` has 0-rows, the output is normal (shares are NA)", {
-  companies <- slice(companies, 1)
-
-  inputs0 <- inputs[0, ]
-  inputs1 <- inputs[1, ]
-  out0 <- xctr(companies, inputs0)
-  out1 <- xctr(companies, inputs1)
-
-  expect_s3_class(out0, "tbl_df")
-  expect_equal(names(out0), names(out1))
-  expect_equal(nrow(out0), nrow(out1))
+test_that("a 0-row `inputs` yields an error", {
+  expect_error(
+    xctr(slice(companies, 1), inputs[0L, ]),
+    "co2.*can't have 0-row"
+  )
 })
 
 test_that("handles duplicated `companies` data (#230)", {

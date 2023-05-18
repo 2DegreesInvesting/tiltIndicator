@@ -68,3 +68,11 @@ categorize_risk <- function(x, low_threshold, high_threshold, ...) {
     ...
   )
 }
+
+stop_if_has_0_rows <- function(data) {
+  label <- deparse(substitute(data))
+  if (identical(nrow(data), 0L)) {
+    abort(glue("`{label}` can't have 0-row."))
+  }
+  invisible(data)
+}
