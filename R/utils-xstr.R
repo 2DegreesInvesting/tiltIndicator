@@ -1,7 +1,8 @@
 xstr_check <- function(scenarios) {
   stop_if_has_0_rows <- function(data) {
+    label <- deparse(substitute(data))
     if (identical(nrow(data), 0L)) {
-      abort("`scenarios` can't have 0-row.")
+      abort(glue("`{label}` can't have 0-row."))
     }
     invisible(data)
   }
