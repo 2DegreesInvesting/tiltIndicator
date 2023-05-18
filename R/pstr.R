@@ -41,7 +41,7 @@ pstr <- function(companies, scenarios, low_threshold = 1 / 3, high_threshold = 2
 #' @rdname pstr
 #' @export
 pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, high_threshold = 2 / 3) {
-  xstr_check(scenarios)
+  xstr_check(companies, scenarios)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
   companies <- rename(companies, companies_id = "company_id")
