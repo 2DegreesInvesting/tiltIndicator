@@ -1,11 +1,4 @@
 xstr_check <- function(scenarios) {
-  stop_if_has_0_rows <- function(data) {
-    label <- deparse(substitute(data))
-    if (identical(nrow(data), 0L)) {
-      abort(glue("`{label}` can't have 0-row."))
-    }
-    invisible(data)
-  }
   stop_if_has_0_rows(scenarios)
   check_has_no_na(scenarios, "reductions")
 }
