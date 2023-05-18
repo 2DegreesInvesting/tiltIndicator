@@ -197,6 +197,34 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   expect_true(all_na)
 })
 
+test_that("no matches yield the expected prototype (#176)", {
+  companies <- tibble(
+    company_id = c("a", "b"),
+    type = c("x", "y"),
+    sector = c("x", "y"),
+    subsector = c("x", "y"),
+    clustered = "x",
+    activity_uuid_product_uuid = "x",
+    tilt_sector = "x",
+    tilt_subsector = "x",
+  )
+
+  scenarios <- tibble(
+    type = "z",
+    sector = "z",
+    subsector = "z",
+    scenario = "z",
+    year = 2030,
+    reductions = 1,
+  )
+
+  out <- pstr(companies, scenarios)
+  expect_equal(unique(out$companies_id), c("a", "b"))
+  expect_equal(unique(out$grouped_by), c("x_NA_NA", "y_NA_NA"))
+  expect_equal(unique(out$risk_category), c("high", "medium", "low"))
+  expect_equal(unique(out$value), NA_real_)
+})
+
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
   .type <- "weo"
   companies <- pstr_companies |>
