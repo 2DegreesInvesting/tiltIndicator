@@ -1,9 +1,9 @@
 xstr_check <- function(scenarios) {
-  stop_if_has_0_rows <- function(scenarios) {
-    if (identical(nrow(scenarios), 0L)) {
+  stop_if_has_0_rows <- function(data) {
+    if (identical(nrow(data), 0L)) {
       abort("`scenarios` can't have 0-row.")
     }
-    invisible(scenarios)
+    invisible(data)
   }
   stop_if_has_0_rows(scenarios)
   check_has_no_na(scenarios, "reductions")
