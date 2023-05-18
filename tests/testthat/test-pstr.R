@@ -165,6 +165,39 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
   expect_true(all(sum$value_sum == 1))
 })
 
+test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
+  companies <- tibble(
+    company_id = c("a", "b"),
+    type = c("x", "y"),
+    sector =  c("x", "y"),
+    subsector =  c("x", "y"),
+    clustered = "x",
+    activity_uuid_product_uuid = "x",
+    tilt_sector = "x",
+    tilt_subsector = "x",
+  )
+
+  scenarios <- tibble(
+    type = "x",
+    sector = "x",
+    subsector = "x",
+    scenario = "x",
+    year = 2030,
+    reductions = 1,
+  )
+
+  out <- pstr(companies, scenarios)
+  expect_equal(unique(out$companies_id), c("a", "b"))
+
+  with_match <- filter(out, companies_id == "a")
+  sum <- unique(summarise(with_match, sum = sum(value), .by = grouped_by)$sum)
+  expect_equal(sum, 1)
+
+  without_match <- filter(out, companies_id == "b")
+  all_na <- all(is.na(without_match$value))
+  expect_true(all_na)
+})
+
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
   .type <- "weo"
   companies <- pstr_companies |>
