@@ -95,7 +95,7 @@ retired soon.
 
 # tiltIndicator 0.0.0.9042
 
-* A company with 3 different products and varying footprints now getes correct value (@Tilmon #248).
+* A company with 3 different products and varying footprints now gets correct value (@Tilmon #248).
 
 # tiltIndicator 0.0.0.9041
 

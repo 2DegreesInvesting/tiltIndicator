@@ -1,8 +1,8 @@
 CMD
 CODEOWNERS
 Codecov
+Depracated
 Ecoinvent
-Ecoinvent's
 Europages
 ICTR
 IEA
@@ -12,9 +12,12 @@ Metaprogramming
 ORCID
 PCTR
 PSTR
+RStudio
 Rmd
 WEO
+XCTR
 YAML
+csv
 decarbonization
 dev
 dplyr
@@ -26,6 +29,7 @@ frontmatter
 funder
 ggplot
 ictr
+ipr
 ish
 istr
 knitr
@@ -37,6 +41,7 @@ params
 pctr
 pstr
 rlang
+subsector
 subsectors
 tunnelled
 tunnelling
@@ -44,5 +49,6 @@ un
 ungrouped
 uuid
 weo
+xctr
 yaml
 yml
