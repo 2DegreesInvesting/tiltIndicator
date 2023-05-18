@@ -221,5 +221,8 @@ test_that("the thresholds are in the range 0 to 1", {
 
 test_that("a 0-row `scenarios` errors gracefully", {
   companies <- slice(pstr_companies, 1)
-  expect_error(pstr(companies, pstr_scenarios[0L, ]), "can't have 0-row")
+  expect_error(
+    pstr(companies, pstr_scenarios[0L, ]),
+    "scenario.*can't have 0-row"
+  )
 })
