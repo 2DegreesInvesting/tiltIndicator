@@ -60,90 +60,30 @@ test_that("returns n rows equal to companies x risk_category x grouped_by", {
   expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 })
 
-test_that("if a company matches at least one input, each share sums 1 (#175)", {
+test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   companies <- tibble(
-    company_id = "a",
-    activity_uuid_product_uuid = c("a", "b"),
-    clustered = c("xyz", "abc")
+    activity_uuid_product_uuid = c("x", "y"),
+    company_id = c("a", "b"),
+    clustered = c("xy")
   )
-  inputs <- tibble(
-    activity_uuid_product_uuid = c("a"),
-    input_activity_uuid_product_uuid = c("y"),
+  co2 <- tibble(
+    activity_uuid_product_uuid = c("x"),
     input_co2_footprint = 1,
-    input_tilt_sector = "transport",
+    input_tilt_sector = "Transport",
     input_unit = "metric ton*km",
     input_isic_4digit = "4575"
   )
 
-  out <- xctr(companies, inputs)
-  sum_of_each_share <- out |>
-    group_by(grouped_by) |>
-    summarize(sum = sum(value)) |>
-    distinct(sum) |>
-    pull()
-  expect_equal(sum_of_each_share, 1)
-})
+  out <- xctr(companies, co2)
+  expect_equal(unique(out$companies_id), c("a", "b"))
 
-test_that("if a company matches no inputs, all shares are `NA` (#176)", {
-  companies <- tibble(
-    company_id = "a",
-    activity_uuid_product_uuid = "a",
-    clustered = "xyz"
-  )
-  inputs <- tibble(
-    activity_uuid_product_uuid = "b",
-    input_activity_uuid_product_uuid = "y",
-    input_co2_footprint = 1,
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
-  )
+  with_match <- filter(out, companies_id == "a")
+  sum <- unique(summarise(with_match, sum = sum(value), .by = grouped_by)$sum)
+  expect_equal(sum, 1)
 
-  out <- xctr(companies, inputs)
-
-  share_is_na <- is.na(unlist(select(out, starts_with("score"))))
-  expect_true(all(share_is_na))
-})
-
-test_that("if a company matches no inputs, all shares are `NA` (#176)", {
-  companies <- tibble(
-    company_id = c("a"),
-    activity_uuid_product_uuid = c("a"),
-    clustered = c("xyz")
-  )
-  inputs <- tibble(
-    activity_uuid_product_uuid = "b",
-    input_activity_uuid_product_uuid = "y",
-    input_co2_footprint = 1,
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
-  )
-
-  out <- xctr(companies, inputs)
-
-  share_is_na <- is.na(unlist(select(out, starts_with("score"))))
-  expect_true(all(share_is_na))
-})
-
-test_that("if a company matches at least one input, no share is `NA` (#176)", {
-  companies <- tibble(
-    company_id = "a",
-    activity_uuid_product_uuid = c("a", "b"),
-    clustered = c("xyz", "abc")
-  )
-  inputs <- tibble(
-    activity_uuid_product_uuid = "a",
-    input_activity_uuid_product_uuid = "y",
-    input_co2_footprint = 1,
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
-  )
-
-  out <- xctr(companies, inputs)
-  share_is_na <- is.na(unlist(select(out, starts_with("score"))))
-  expect_false(any(share_is_na))
+  without_match <- filter(out, companies_id == "b")
+  all_na <- all(is.na(without_match$value))
+  expect_true(all_na)
 })
 
 test_that("is sensitive to low_threshold", {
