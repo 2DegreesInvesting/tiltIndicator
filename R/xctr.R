@@ -69,13 +69,14 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 #' @export
 #' @rdname xctr
 xctr_at_company_level <- function(data) {
+  # FIXME: Is this dead code?
   if (identical(nrow(data), 0L)) {
     # FIXME This prototype should work for XSTR too
     return(xctr_ptype_at_company_level(companies_id = character(0)))
   }
 
-  with_value <- data |>
-    select("companies_id", "grouped_by", "risk_category") |>
+  tmp <- select(data, "companies_id", "grouped_by", "risk_category")
+  with_value <- tmp |>
     filter(!is.na(.data[["grouped_by"]])) |>
     add_count(.data$companies_id, .data[["grouped_by"]]) |>
     group_by(.data$companies_id, .data[["grouped_by"]]) |>
@@ -89,7 +90,7 @@ xctr_at_company_level <- function(data) {
   }
 
   levels <- risk_category_levels()
-  with_value |>
+  out <- with_value |>
     mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
     expand(.data$risk_category) |>
     filter(!is.na(.data$risk_category)) |>
@@ -102,6 +103,16 @@ xctr_at_company_level <- function(data) {
       value = sum(.data$value),
       .by = c("companies_id", "grouped_by", "risk_category")
     )
+
+  if (anyNA(tmp$risk_category)) {
+    unmatched <- filter(tmp, is.na(risk_category))
+    ids <- unique(unmatched$companies_id)
+    # FIXME This prototype should work for XSTR too
+    tmp <- xctr_ptype_at_company_level(companies_id = ids)
+    out <- bind_rows(with_value, tmp)
+  }
+  # FIXME ungroup upstream
+  out |> ungroup()
 }
 
 # FIXME: Retire pstr_at_company_level
