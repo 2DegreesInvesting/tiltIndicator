@@ -1,4 +1,5 @@
-xstr_check <- function(scenarios) {
+xstr_check <- function(companies, scenarios) {
+  stop_if_has_0_rows(companies)
   stop_if_has_0_rows(scenarios)
   check_has_no_na(scenarios, "reductions")
 }

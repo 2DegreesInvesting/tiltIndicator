@@ -213,16 +213,16 @@ test_that("the thresholds are in the range 0 to 1", {
   expect_true(high_threshold >= 0 & high_threshold <= 1)
 })
 
-test_that("a 0-row `companies` yields normal output but 0-rows", {
-  out0 <- pstr(pstr_companies[0L, ], pstr_scenarios)
-  out1 <- pstr(pstr_companies, pstr_scenarios)
-  expect_equal(out0, out1[0L, ])
+test_that("a 0-row `companies` yields an error", {
+  expect_error(
+    pstr(pstr_companies[0L, ], pstr_scenarios),
+    "companies.*can't have 0-row"
+  )
 })
 
 test_that("a 0-row `scenarios` yields an error", {
-  companies <- slice(pstr_companies, 1)
   expect_error(
-    pstr(companies, pstr_scenarios[0L, ]),
+    pstr(slice(pstr_companies, 1), pstr_scenarios[0L, ]),
     "scenario.*can't have 0-row"
   )
 })
