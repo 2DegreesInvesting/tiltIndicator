@@ -47,9 +47,9 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
   companies <- rename(companies, companies_id = "company_id")
   out <- companies |>
     pstr_add_reductions(scenarios) |>
-
     rename(values_to_categorize = "reductions") |>
     add_risk_category(low_threshold, high_threshold) |>
+    xstr_polish_output_at_product_level() |>
     select(all_of(pstr_cols_at_product_level()))
   out
 }
