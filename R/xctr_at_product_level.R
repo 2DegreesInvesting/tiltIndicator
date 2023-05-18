@@ -12,10 +12,19 @@ xctr_at_product_level <- function(companies,
 
   co2 |>
     xctr_rename() |>
+    # FIXME: This is still in an awkward wide format
     xctr_add_ranks(col_to_rank(co2)) |>
-    xctr_categorize_risk(low_threshold, high_threshold) |>
+    pivot_longer(
+      cols = starts_with("perc_"),
+      names_prefix = "perc_",
+      names_to = "grouped_by",
+      values_to = "values_to_categorize"
+    ) |>
+    add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
-    xctr_polish_output_at_product_level()
+    rename(companies_id = "company_id") |>
+    select_cols_at_product_level() |>
+    prune_unmatched_products()
 }
 
 xctr_check <- function(companies, co2) {
@@ -73,17 +82,6 @@ xctr_add_ranks <- function(data, x) {
   out
 }
 
-xctr_benchmarks <- function() {
-  list(
-    "all",
-    "isic_sec",
-    "tilt_sec",
-    "unit",
-    c("unit", "isic_sec"),
-    c("unit", "tilt_sec")
-  )
-}
-
 add_rank <- function(data, x, .by) {
   if (identical(.by, "all")) {
     benchmark <- "all"
@@ -105,17 +103,6 @@ col_to_rank <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
-xctr_categorize_risk <- function(data, low_threshold, high_threshold) {
-  for (col in colnames(select(data, starts_with("perc_")))) {
-    new_col <- gsub("perc_", "score_", col)
-    data <- data |>
-      mutate({{ new_col }} := categorize_risk(
-        .data[[col]], low_threshold, high_threshold
-      ))
-  }
-  data
-}
-
 xctr_join_companies <- function(product_level, companies) {
   left_join(
     companies,
@@ -123,29 +110,6 @@ xctr_join_companies <- function(product_level, companies) {
     by = "activity_uuid_product_uuid",
     relationship = "many-to-many"
   )
-}
-
-xctr_polish_output_at_product_level <- function(data) {
-  data |>
-    xctr_pivot_score_to_grouped_by() |>
-    xctr_rename_at_product_level() |>
-    select_cols_at_product_level() |>
-    prune_unmatched_products()
-}
-
-xctr_pivot_score_to_grouped_by <- function(data) {
-  data |>
-    pivot_longer(
-      starts_with("score_"),
-      names_prefix = "score_",
-      names_to = "grouped_by"
-    )
-}
-
-xctr_rename_at_product_level <- function(data) {
-  data |>
-    rename(companies_id = "company_id") |>
-    rename(risk_category = "value")
 }
 
 select_cols_at_product_level <- function(data) {

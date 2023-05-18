@@ -70,7 +70,8 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 #' @rdname xctr
 xctr_at_company_level <- function(data) {
   if (identical(nrow(data), 0L)) {
-    return(ptype_at_company_level())
+    # FIXME This prototype should work for XSTR too
+    return(xctr_ptype_at_company_level(companies_id = character(0)))
   }
 
   with_value <- data |>
@@ -81,7 +82,13 @@ xctr_at_company_level <- function(data) {
     mutate(value = .data$n / sum(.data$n)) |>
     select(-all_of("n"))
 
-  levels <- c("high", "medium", "low")
+  if (identical(nrow(with_value), 0L)) {
+    ids <- unique(data$companies_id)
+    # FIXME This prototype should work for XSTR too
+    return(xctr_ptype_at_company_level(companies_id = ids))
+  }
+
+  levels <- risk_category_levels()
   with_value |>
     mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
     expand(.data$risk_category) |>
@@ -112,3 +119,25 @@ na_to_0_if_not_all_is_na <- function(x) {
   }
   replace_na(x, 0)
 }
+
+xctr_ptype_at_company_level <- function(companies_id = character(0)) {
+  grouped_by <- map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
+  risk_category <- risk_category_levels()
+  value <- NA_real_
+
+  out <- expand_grid(companies_id, grouped_by, risk_category, value)
+  relocate(out, all_of(cols_at_company_level()))
+}
+
+xctr_benchmarks <- function() {
+  list(
+    "all",
+    "isic_sec",
+    "tilt_sec",
+    "unit",
+    c("unit", "isic_sec"),
+    c("unit", "tilt_sec")
+  )
+}
+
+underscore <-function(x) paste(x, collapse = "_")
