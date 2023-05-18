@@ -105,27 +105,6 @@ test_that("if a company matches no inputs, all shares are `NA` (#176)", {
   expect_true(all(share_is_na))
 })
 
-test_that("if a company matches no inputs, all shares are `NA` (#176)", {
-  companies <- tibble(
-    company_id = c("a"),
-    activity_uuid_product_uuid = c("a"),
-    clustered = c("xyz")
-  )
-  inputs <- tibble(
-    activity_uuid_product_uuid = "b",
-    input_activity_uuid_product_uuid = "y",
-    input_co2_footprint = 1,
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
-  )
-
-  out <- xctr(companies, inputs)
-
-  share_is_na <- is.na(unlist(select(out, starts_with("score"))))
-  expect_true(all(share_is_na))
-})
-
 test_that("if a company matches at least one input, no share is `NA` (#176)", {
   companies <- tibble(
     company_id = "a",
