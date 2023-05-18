@@ -332,7 +332,7 @@ test_that("for each company & benchmark, each risk category is unique (#285)", {
   expect_equal(bad, 0)
 })
 
-test_that("a 0-row `scenarios` errors gracefully", {
+test_that("a 0-row `co2` yields an error", {
   comp <- slice(companies, 1)
   prod <- products[0L, ]
   expect_error(xctr(comp, prod), "co2.*can't have 0-row")
