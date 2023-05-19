@@ -133,7 +133,7 @@ xctr_at_company_level <- function(data) {
 }
 
 empty_output_at_company_level <- function(companies_id, grouped_by) {
-  tidyr::expand_grid(
+  expand_grid(
     companies_id = companies_id,
     grouped_by = grouped_by,
     risk_category = risk_category_levels(),
