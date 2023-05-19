@@ -106,5 +106,7 @@ standardize_co2 <- function(co2) {
 }
 
 standardize_scenarios <- function(scenarios) {
-  rename(scenarios, metric = "reductions")
+  scenarios |>
+    distinct() |>
+    rename(metric = "reductions")
 }
