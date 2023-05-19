@@ -109,12 +109,13 @@ xctr_at_company_level <- function(data) {
 
   if (anyNA(tmp$risk_category)) {
     unmatched <- filter(tmp, is.na(.data$risk_category))
-    unmatched_out <- empty_output_at_company_level(
-      companies_id = unique(unmatched$companies_id),
-      grouped_by = grouped_by(data, unmatched$grouped_by)
+    out <- bind_rows(
+      out,
+      empty_output_at_company_level(
+        companies_id = unique(unmatched$companies_id),
+        grouped_by = grouped_by(data, unmatched$grouped_by)
+      )
     )
-
-    out <- bind_rows(out, unmatched_out)
   }
 
   out
