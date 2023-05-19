@@ -70,6 +70,7 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 #' @rdname xctr
 xctr_at_company_level <- function(data) {
   tmp <- select(data, "companies_id", "grouped_by", "risk_category")
+
   with_value <- tmp |>
     filter(!is.na(.data$risk_category)) |>
     add_count(.data$companies_id, .data$grouped_by) |>
@@ -108,17 +109,12 @@ xctr_at_company_level <- function(data) {
 
   if (anyNA(tmp$risk_category)) {
     unmatched <- filter(tmp, is.na(.data$risk_category))
-    ids <- unique(unmatched$companies_id)
-    .grouped_by <- grouped_by(data, unmatched$grouped_by)
-
-    tmp <- tidyr::expand_grid(
-      companies_id = ids,
-      grouped_by = .grouped_by,
-      risk_category = risk_category_levels(),
-      value = NA_real_
+    unmatched_out <- empty_output_at_company_level(
+      companies_id = unique(unmatched$companies_id),
+      grouped_by = grouped_by(data, unmatched$grouped_by)
     )
 
-    out <- bind_rows(out, tmp)
+    out <- bind_rows(out, unmatched_out)
   }
 
   out
