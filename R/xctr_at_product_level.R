@@ -85,6 +85,10 @@ xctr_benchmarks <- function() {
   )
 }
 
+flat_benchmarks <- function() {
+    map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
+}
+
 add_rank <- function(data, x, .by) {
   if (identical(.by, "all")) {
     benchmark <- "all"
