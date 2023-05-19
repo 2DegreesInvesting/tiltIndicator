@@ -145,7 +145,7 @@ na_to_0_if_not_all_is_na <- function(x) {
 }
 
 xctr_ptype_at_company_level <- function(companies_id = character(0)) {
-  grouped_by <- map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
+  grouped_by <- flat_benchmarks()
   risk_category <- risk_category_levels()
   value <- NA_real_
 
@@ -162,4 +162,8 @@ xctr_benchmarks <- function() {
     c("unit", "isic_sec"),
     c("unit", "tilt_sec")
   )
+}
+
+flat_benchmarks <- function() {
+  map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
 }
