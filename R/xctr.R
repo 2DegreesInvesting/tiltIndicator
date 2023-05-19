@@ -132,11 +132,20 @@ xctr_at_company_level <- function(data) {
   out
 }
 
-grouped_by <- function(data, .grouped_by) {
+empty_output_at_company_level <- function(companies_id, grouped_by) {
+  tidyr::expand_grid(
+    companies_id = companies_id,
+    grouped_by = grouped_by,
+    risk_category = risk_category_levels(),
+    value = NA_real_
+  )
+}
+
+grouped_by <- function(data, grouped_by) {
   if (is_xctr(data)) {
-    .grouped_by <- flat_benchmarks()
+    grouped_by <- flat_benchmarks()
   }
-  .grouped_by
+  grouped_by
 }
 
 # FIXME: Retire pstr_at_company_level
