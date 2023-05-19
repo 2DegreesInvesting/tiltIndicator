@@ -80,16 +80,9 @@ xctr_at_company_level <- function(data) {
     select(-all_of("n"))
 
   if (identical(nrow(with_value), 0L)) {
-    # TODO: Extract into prototype_at_company_level()
     ids <- unique(data$companies_id)
     .grouped_by <- grouped_by(data, tmp$grouped_by)
-
-    out <- tidyr::expand_grid(
-      companies_id = ids,
-      grouped_by = .grouped_by,
-      risk_category = risk_category_levels(),
-      value = NA_real_
-    )
+    out <- empty_output_at_company_level(ids, .grouped_by)
 
     return(out)
   }
