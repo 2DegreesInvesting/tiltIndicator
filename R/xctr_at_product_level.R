@@ -8,7 +8,8 @@ xctr_at_product_level <- function(companies,
 
   # #230
   co2 <- distinct(co2)
-  companies <- distinct(companies)
+  companies <- distinct(companies) |>
+    rename(companies_id = "company_id")
 
   co2 |>
     xctr_rename() |>
@@ -22,7 +23,6 @@ xctr_at_product_level <- function(companies,
     ) |>
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(companies) |>
-    rename(companies_id = "company_id") |>
     select_cols_at_product_level() |>
     prune_unmatched_products()
 }
