@@ -36,12 +36,12 @@ xctr_check <- function(companies, co2) {
   crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
   walk(crucial, ~ check_matches_name(co2, .x))
 
-  check_has_no_na(co2, xctr_find_metric(co2))
+  check_has_no_na(co2, find_co2_metric(co2))
   check_is_character(get_column(co2, "isic_4digit"))
 }
 
 restore_original_metric_name <- function(out, co2) {
-  metric_alias <- as.symbol(xctr_find_metric(co2))
+  metric_alias <- as.symbol(find_co2_metric(co2))
   rename(out, "{{ metric_alias }}" := "metric")
 }
 
@@ -110,7 +110,7 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
-xctr_find_metric <- function(co2, pattern = "co2_footprint") {
+find_co2_metric <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
