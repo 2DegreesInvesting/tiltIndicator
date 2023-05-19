@@ -11,7 +11,7 @@ xctr_at_product_level <- function(companies,
 
   out <- .co2 |>
     # FIXME: This is still in an awkward wide format
-    xctr_add_ranks(metric()) |>
+    xctr_add_ranks(col_to_categorize()) |>
     pivot_longer(
       cols = starts_with("perc_"),
       names_prefix = "perc_",
@@ -56,7 +56,7 @@ xctr_standardize_co2_names <- function(co2) {
 
 restore_original_metric_name <- function(out, co2) {
   metric_alias <- as.symbol(col_to_rank(co2))
-  rename(out, "{{ metric_alias }}" := metric())
+  rename(out, "{{ metric_alias }}" := col_to_categorize())
 }
 
 check_matches_name <- function(data, pattern) {
@@ -128,6 +128,10 @@ col_to_rank <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
+col_to_categorize <- function() {
+  "metric"
+}
+
 xctr_join_companies <- function(product_level, companies) {
   left_join(
     companies,
@@ -143,7 +147,7 @@ select_cols_at_product_level <- function(data) {
       all_of(cols_at_product_level()),
       ends_with("activity_uuid_product_uuid"),
       # Required to uniquely identify rows when using pivot
-      metric()
+      col_to_categorize()
     )
 }
 

@@ -87,5 +87,3 @@ grouped_by <- function(data, grouped_by) {
   }
   grouped_by
 }
-
-metric <- function() "metric"
