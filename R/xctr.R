@@ -80,16 +80,18 @@ xctr_at_company_level <- function(data) {
     select(-all_of("n"))
 
   if (identical(nrow(with_value), 0L)) {
-    # TODO: Extract into prototype_at_company_level()
-    .grouped_by <- tmp$grouped_by
-    if (is_xctr(data)) {
-      .grouped_by <- flat_benchmarks()
+    grouped_by <- function(data, .grouped_by) {
+      if (is_xctr(data)) {
+        .grouped_by <- flat_benchmarks()
+      }
+      .grouped_by
     }
 
+    # TODO: Extract into prototype_at_company_level()
     ids <- unique(data$companies_id)
     out <- tidyr::expand_grid(
       companies_id = ids,
-      grouped_by = .grouped_by,
+      grouped_by = grouped_by(data, tmp$grouped_by),
       risk_category = c("high", "medium", "low"),
       value = NA_real_
     )
