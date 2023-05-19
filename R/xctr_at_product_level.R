@@ -9,11 +9,13 @@ xctr_at_product_level <- function(companies,
 
   # Rename to a consistent set of columns
   .co2 <- .co2 |>
-    distinct() |>
     rename(metric = col_to_rank(.co2)) |>
-    xctr_rename()
+    rename(
+      tilt_sec = ends_with("tilt_sector"),
+      unit = ends_with("unit"),
+      isic_sec = ends_with("isic_4digit")
+    )
   companies <- companies |>
-    distinct() |>
     rename(companies_id = "company_id")
 
   .co2 <- distinct(.co2)
@@ -74,15 +76,6 @@ check_has_no_na <- function(data, name) {
 
 check_is_character <- function(x) {
   vec_assert(x, character())
-}
-
-xctr_rename <- function(data) {
-  data |>
-    rename(
-      tilt_sec = ends_with("tilt_sector"),
-      unit = ends_with("unit"),
-      isic_sec = ends_with("isic_4digit")
-    )
 }
 
 xctr_add_ranks <- function(data, x) {
