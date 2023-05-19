@@ -77,7 +77,6 @@ xctr_at_company_level <- function(data) {
 
   tmp <- select(data, "companies_id", "grouped_by", "risk_category")
   with_value <- tmp |>
-    # filter(!is.na(.data$grouped_by)) |>
     filter(!is.na(.data$risk_category)) |>
     add_count(.data$companies_id, .data$grouped_by) |>
     mutate(
