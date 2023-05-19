@@ -83,6 +83,21 @@ xctr_add_ranks <- function(data, x) {
   out
 }
 
+xctr_benchmarks <- function() {
+  list(
+    "all",
+    "isic_sec",
+    "tilt_sec",
+    "unit",
+    c("unit", "isic_sec"),
+    c("unit", "tilt_sec")
+  )
+}
+
+flat_benchmarks <- function() {
+    mabp_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
+}
+
 add_rank <- function(data, x, .by) {
   if (identical(.by, "all")) {
     benchmark <- "all"
