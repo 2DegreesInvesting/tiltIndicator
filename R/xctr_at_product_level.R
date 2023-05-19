@@ -6,8 +6,8 @@ xctr_at_product_level <- function(companies,
                                   high_threshold = 2 / 3) {
   xctr_check(companies, co2)
 
-  .companies <- xctr_standardize_companies_names(distinct(companies))
-  .co2 <- xctr_standardize_co2_names(distinct(co2))
+  .companies <- standardize_companies(distinct(companies))
+  .co2 <- xctr_standardize_co2(distinct(co2))
 
   out <- .co2 |>
     # FIXME: This is still in an awkward wide format
@@ -40,11 +40,11 @@ xctr_check <- function(companies, co2) {
   check_is_character(get_column(co2, "isic_4digit"))
 }
 
-xctr_standardize_companies_names <- function(companies) {
+standardize_companies <- function(companies) {
   rename(companies, companies_id = "company_id")
 }
 
-xctr_standardize_co2_names <- function(co2) {
+xctr_standardize_co2 <- function(co2) {
   co2 |>
     rename(metric = xctr_find_metric(co2)) |>
     rename(
