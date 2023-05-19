@@ -100,7 +100,7 @@ xctr_at_company_level <- function(data) {
       value = na_to_0_if_not_all_is_na(.data$value),
       .by = c("companies_id", "grouped_by")
     ) |>
-    # Hack #285
+    # Hack #285. FIXME: Explore why this happens
     summarize(
       value = sum(.data$value),
       .by = c("companies_id", "grouped_by", "risk_category")
@@ -120,11 +120,9 @@ xctr_at_company_level <- function(data) {
   out
 }
 
-# FIXME: Retire pstr_at_company_level
 #' @rdname pstr
 #' @export
 pstr_at_company_level <- xctr_at_company_level
-# FIXME: Retire istr_at_company_level
 #' @rdname istr
 #' @export
 istr_at_company_level <- xctr_at_company_level

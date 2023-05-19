@@ -110,3 +110,7 @@ standardize_scenarios <- function(scenarios) {
     distinct() |>
     rename(metric = "reductions")
 }
+
+lowercase_characters <- function(data) {
+  mutate(data, across(where(is.character), tolower))
+}
