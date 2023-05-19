@@ -48,7 +48,7 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
   .companies <- standardize_companies(companies)
 
   .companies |>
-    pstr_add_reductions(.scenarios) |>
+    pstr_add_metric(.scenarios) |>
     rename(values_to_categorize = "metric") |>
     add_risk_category(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level() |>
@@ -66,7 +66,7 @@ pstr_cols_at_product_level <- function() {
   )
 }
 
-pstr_add_reductions <- function(companies, scenarios) {
+pstr_add_metric <- function(companies, scenarios) {
   left_join(
     companies, scenarios,
     by = join_by("type", "sector", "subsector"),
