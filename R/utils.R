@@ -94,6 +94,17 @@ standardize_companies <- function(companies) {
     rename(companies_id = "company_id")
 }
 
+standardize_co2 <- function(co2) {
+  co2 |>
+    distinct() |>
+    rename(metric = xctr_find_metric(co2)) |>
+    rename(
+      tilt_sec = ends_with("tilt_sector"),
+      unit = ends_with("unit"),
+      isic_sec = ends_with("isic_4digit")
+    )
+}
+
 standardize_scenarios <- function(scenarios) {
   rename(scenarios, metric = "reductions")
 }

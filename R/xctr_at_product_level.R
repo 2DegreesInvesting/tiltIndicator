@@ -7,7 +7,7 @@ xctr_at_product_level <- function(companies,
   xctr_check(companies, co2)
 
   .companies <- standardize_companies(companies)
-  .co2 <- xctr_standardize_co2(co2)
+  .co2 <- standardize_co2(co2)
 
   out <- .co2 |>
     # FIXME: This is still in an awkward wide format
@@ -38,17 +38,6 @@ xctr_check <- function(companies, co2) {
 
   check_has_no_na(co2, xctr_find_metric(co2))
   check_is_character(get_column(co2, "isic_4digit"))
-}
-
-xctr_standardize_co2 <- function(co2) {
-  co2 |>
-    distinct() |>
-    rename(metric = xctr_find_metric(co2)) |>
-    rename(
-      tilt_sec = ends_with("tilt_sector"),
-      unit = ends_with("unit"),
-      isic_sec = ends_with("isic_4digit")
-    )
 }
 
 restore_original_metric_name <- function(out, co2) {
