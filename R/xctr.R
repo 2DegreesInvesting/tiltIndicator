@@ -81,10 +81,12 @@ xctr_at_company_level <- function(data) {
     select(-all_of("n"))
 
   if (identical(nrow(with_value), 0L)) {
-    return(empty_output_at_company_level(
-      companies_id = unique(data$companies_id),
-      grouped_by = grouped_by(data, tmp$grouped_by)
-    ))
+    return(
+      empty_output_at_company_level(
+        companies_id = unique(data$companies_id),
+        grouped_by = grouped_by(data, tmp$grouped_by)
+      )
+    )
   }
 
   levels <- risk_category_levels()
@@ -109,6 +111,7 @@ xctr_at_company_level <- function(data) {
 
   if (anyNA(tmp$risk_category)) {
     unmatched <- filter(tmp, is.na(.data$risk_category))
+
     out <- bind_rows(
       out,
       empty_output_at_company_level(
