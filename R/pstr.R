@@ -44,10 +44,12 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
   xstr_check(companies, scenarios)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
-  companies |>
-    rename(companies_id = "company_id") |>
-    pstr_add_reductions(scenarios) |>
-    rename(values_to_categorize = "reductions") |>
+  .scenarios <- standardize_scenarios(scenarios)
+  .companies <- standardize_companies(companies)
+
+  .companies |>
+    pstr_add_metric(.scenarios) |>
+    rename(values_to_categorize = "metric") |>
     add_risk_category(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level() |>
     select(all_of(pstr_cols_at_product_level()))
@@ -64,7 +66,7 @@ pstr_cols_at_product_level <- function() {
   )
 }
 
-pstr_add_reductions <- function(companies, scenarios) {
+pstr_add_metric <- function(companies, scenarios) {
   left_join(
     companies, scenarios,
     by = join_by("type", "sector", "subsector"),
