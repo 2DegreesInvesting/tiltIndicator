@@ -5,21 +5,21 @@ xctr_at_product_level <- function(companies,
                                   low_threshold = 1 / 3,
                                   high_threshold = 2 / 3) {
   xctr_check(companies, co2)
+  .co2 <- co2
 
   # Rename to a consistent set of columns
-  metric_alias <- as.symbol(col_to_rank(co2))
-  co2 <- co2 |>
+  .co2 <- .co2 |>
     distinct() |>
-    rename(metric = col_to_rank(co2)) |>
+    rename(metric = col_to_rank(.co2)) |>
     xctr_rename()
   companies <- companies |>
     distinct() |>
     rename(companies_id = "company_id")
 
-  co2 <- distinct(co2)
+  .co2 <- distinct(.co2)
   companies <- distinct(companies)
 
-  out <- co2 |>
+  out <- .co2 |>
     # FIXME: This is still in an awkward wide format
     xctr_add_ranks("metric") |>
     pivot_longer(
@@ -33,6 +33,7 @@ xctr_at_product_level <- function(companies,
     select_cols_at_product_level() |>
     prune_unmatched_products()
 
+  metric_alias <- as.symbol(col_to_rank(co2))
   out |>
     rename("{{ metric_alias }}" := "metric")
 }
