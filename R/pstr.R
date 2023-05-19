@@ -44,7 +44,10 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
   xstr_check(companies, scenarios)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
-  .scenarios <- scenarios |> rename(metric = "reductions")
+  standardize_scenarios <- function(scenarios) {
+    rename(scenarios, metric = "reductions")
+  }
+  .scenarios <- standardize_scenarios(scenarios)
   .companies <- standardize_companies(companies)
 
   .companies |>
