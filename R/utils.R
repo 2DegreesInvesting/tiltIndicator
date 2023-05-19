@@ -93,3 +93,7 @@ standardize_companies <- function(companies) {
     distinct() |>
     rename(companies_id = "company_id")
 }
+
+standardize_scenarios <- function(scenarios) {
+  rename(scenarios, metric = "reductions")
+}
