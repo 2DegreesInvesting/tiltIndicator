@@ -210,19 +210,20 @@ test_that("no matches yield the expected prototype (#176)", {
   )
 
   scenarios <- tibble(
-    type = "z",
-    sector = "z",
-    subsector = "z",
-    scenario = "z",
+    type = "x",
+    sector = "x",
+    subsector = "x",
+    scenario = "x",
     year = 2030,
     reductions = 1,
   )
 
   out <- pstr(companies, scenarios)
-  expect_equal(unique(out$companies_id), c("a", "b"))
-  expect_equal(unique(out$grouped_by), c("x_NA_NA", "y_NA_NA"))
-  expect_equal(unique(out$risk_category), c("high", "medium", "low"))
-  expect_equal(unique(out$value), NA_real_)
+  unmatched <- filter(out, companies_id == "b")
+  expect_equal(unique(unmatched$companies_id), c("b"))
+  expect_equal(unique(unmatched$grouped_by), c("x_NA_NA"))
+  expect_equal(unique(unmatched$risk_category), c("high", "medium", "low"))
+  expect_equal(unique(unmatched$value), NA_real_)
 })
 
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
