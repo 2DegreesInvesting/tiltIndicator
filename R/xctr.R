@@ -81,7 +81,7 @@ xctr_at_company_level <- function(data) {
     mutate(value = .data$n / sum(.data$n)) |>
     select(-all_of("n"))
 
-  levels <- c("high", "medium", "low")
+  levels <- risk_category_levels()
   with_value |>
     mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
     expand(.data$risk_category) |>
