@@ -9,13 +9,13 @@ xctr_at_product_level <- function(companies,
   metric_alias <- as.symbol(col_to_rank(co2))
   co2 <- co2 |>
     distinct() |>
-    rename(metric = col_to_rank(co2))
+    rename(metric = col_to_rank(co2)) |>
+    xctr_rename()
   companies <- companies |>
     distinct() |>
     rename(companies_id = "company_id")
 
   out <- co2 |>
-    xctr_rename() |>
     # FIXME: This is still in an awkward wide format
     xctr_add_ranks("metric") |>
     pivot_longer(
