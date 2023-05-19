@@ -117,10 +117,17 @@ xctr_at_company_level <- function(data) {
     )
 
   if (anyNA(tmp$risk_category)) {
+    # FIXME: Refactor
     unmatched <- filter(tmp, is.na(.data$risk_category))
+    .grouped_by <- ifelse(is_xctr(data), flat_benchmarks(), unmatched$grouped_by)
     ids <- unique(unmatched$companies_id)
     # FIXME This prototype should work for XSTR too
-    tmp <- xctr_ptype_at_company_level(companies_id = ids)
+    tmp <- tidyr::expand_grid(
+      companies_id = ids,
+      grouped_by = .grouped_by,
+      risk_category = c("high", "medium", "low"),
+      value = NA_real_
+    )
     out <- bind_rows(out, tmp)
   }
 

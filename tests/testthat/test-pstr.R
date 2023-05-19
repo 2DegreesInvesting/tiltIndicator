@@ -221,7 +221,7 @@ test_that("no matches yield the expected prototype (#176)", {
   out <- pstr(companies, scenarios)
   unmatched <- filter(out, companies_id == "b")
   expect_equal(unique(unmatched$companies_id), c("b"))
-  expect_equal(unique(unmatched$grouped_by), c("x_NA_NA"))
+  expect_equal(unique(unmatched$grouped_by), c("y_NA_NA"))
   expect_equal(unique(unmatched$risk_category), c("high", "medium", "low"))
   expect_equal(unique(unmatched$value), NA_real_)
 })
