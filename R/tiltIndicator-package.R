@@ -49,6 +49,7 @@
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
 #' @importFrom tidyr expand
+#' @importFrom tidyr expand_grid
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyr pivot_wider
 #' @importFrom tidyr replace_na
