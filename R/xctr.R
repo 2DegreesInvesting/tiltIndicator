@@ -77,7 +77,8 @@ xctr_at_company_level <- function(data) {
 
   tmp <- select(data, "companies_id", "grouped_by", "risk_category")
   with_value <- tmp |>
-    filter(!is.na(.data$grouped_by)) |>
+    # filter(!is.na(.data$grouped_by)) |>
+    filter(!is.na(.data$risk_category)) |>
     add_count(.data$companies_id, .data$grouped_by) |>
     mutate(
       value = .data$n / sum(.data$n),
@@ -87,8 +88,13 @@ xctr_at_company_level <- function(data) {
 
   if (identical(nrow(with_value), 0L)) {
     ids <- unique(data$companies_id)
-    # FIXME This prototype should work for XSTR too
-    return(xctr_ptype_at_company_level(companies_id = ids))
+    out <- tidyr::expand_grid(
+      companies_id = ids,
+      grouped_by = tmp$grouped_by,
+      risk_category = c("high", "medium", "low"),
+      value = NA_real_
+    )
+    return(out)
   }
 
   levels <- risk_category_levels()
