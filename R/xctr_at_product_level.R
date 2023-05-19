@@ -5,7 +5,6 @@ xctr_at_product_level <- function(companies,
                                   low_threshold = 1 / 3,
                                   high_threshold = 2 / 3) {
   xctr_check(companies, co2)
-  .co2 <- co2
 
   # Rename to a consistent set of columns
   xctr_standardize_co2 <- function(co2) {
@@ -17,14 +16,14 @@ xctr_at_product_level <- function(companies,
         isic_sec = ends_with("isic_4digit")
       )
   }
-  .co2 <- xctr_standardize_co2(.co2)
   companies <- companies |>
     rename(companies_id = "company_id")
 
-  .co2 <- distinct(.co2)
   companies <- distinct(companies)
 
-  out <- .co2 |>
+  out <- co2 |>
+    xctr_standardize_co2() |>
+    distinct() |>
     # FIXME: This is still in an awkward wide format
     xctr_add_ranks("metric") |>
     pivot_longer(
