@@ -44,7 +44,7 @@ matches_name <- function(data, pattern) {
 }
 
 is_xctr <- function(data) {
-  matches_name(data, col_to_rank(data))
+  any(grepl("co2_footprint", names(data)))
 }
 
 risk_category_levels <- function() {
