@@ -81,11 +81,6 @@ add_risk_category <- function(data,
   ))
 }
 
-pstr_check <- function(scenarios) {
-  check_has_no_na(scenarios, "reductions")
-  stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
-}
-
 stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
   bad_type <- scenarios |>
     summarize(
