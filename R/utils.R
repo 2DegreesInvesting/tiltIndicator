@@ -55,10 +55,6 @@ get_column <- function(data, pattern) {
   data[[extract_name(data, pattern)]]
 }
 
-risk_category_levels <- function() {
-  c("high", "medium", "low")
-}
-
 categorize_risk <- function(x, low_threshold, high_threshold, ...) {
   case_when(
     x > high_threshold ~ "high",
