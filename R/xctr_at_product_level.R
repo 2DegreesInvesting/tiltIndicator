@@ -23,8 +23,7 @@ xctr_at_product_level <- function(companies,
     select_cols_at_product_level() |>
     prune_unmatched_products()
 
-  out <- restore_original_metric_name(out, co2)
-  out
+  restore_original_metric_name(out, co2)
 }
 
 restore_original_metric_name <- function(out, co2) {
