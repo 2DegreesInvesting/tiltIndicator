@@ -6,8 +6,8 @@ xctr_at_product_level <- function(companies,
                                   high_threshold = 2 / 3) {
   xctr_check(companies, co2)
 
-  .companies <- standardize_companies(distinct(companies))
-  .co2 <- xctr_standardize_co2(distinct(co2))
+  .companies <- standardize_companies(companies)
+  .co2 <- xctr_standardize_co2(co2)
 
   out <- .co2 |>
     # FIXME: This is still in an awkward wide format
@@ -41,11 +41,14 @@ xctr_check <- function(companies, co2) {
 }
 
 standardize_companies <- function(companies) {
-  rename(companies, companies_id = "company_id")
+  companies |>
+    distinct() |>
+    rename(companies_id = "company_id")
 }
 
 xctr_standardize_co2 <- function(co2) {
   co2 |>
+    distinct() |>
     rename(metric = xctr_find_metric(co2)) |>
     rename(
       tilt_sec = ends_with("tilt_sector"),
