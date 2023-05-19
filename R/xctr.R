@@ -80,13 +80,6 @@ xctr_at_company_level <- function(data) {
     select(-all_of("n"))
 
   if (identical(nrow(with_value), 0L)) {
-    grouped_by <- function(data, .grouped_by) {
-      if (is_xctr(data)) {
-        .grouped_by <- flat_benchmarks()
-      }
-      .grouped_by
-    }
-
     # TODO: Extract into prototype_at_company_level()
     ids <- unique(data$companies_id)
     out <- tidyr::expand_grid(
@@ -119,18 +112,11 @@ xctr_at_company_level <- function(data) {
     )
 
   if (anyNA(tmp$risk_category)) {
-    # FIXME: Refactor
     unmatched <- filter(tmp, is.na(.data$risk_category))
-    .grouped_by <- unmatched$grouped_by
-    if (is_xctr(data)) {
-      .grouped_by <- flat_benchmarks()
-    }
-
     ids <- unique(unmatched$companies_id)
-    # FIXME This prototype should work for XSTR too
     tmp <- tidyr::expand_grid(
       companies_id = ids,
-      grouped_by = .grouped_by,
+      grouped_by = grouped_by(data, unmatched$grouped_by),
       risk_category = c("high", "medium", "low"),
       value = NA_real_
     )
@@ -138,6 +124,13 @@ xctr_at_company_level <- function(data) {
   }
 
   out
+}
+
+grouped_by <- function(data, .grouped_by) {
+  if (is_xctr(data)) {
+    .grouped_by <- flat_benchmarks()
+  }
+  .grouped_by
 }
 
 # FIXME: Retire pstr_at_company_level
