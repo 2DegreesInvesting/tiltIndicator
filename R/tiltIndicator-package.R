@@ -47,6 +47,7 @@
 #' @importFrom readr read_csv
 #' @importFrom rlang .env
 #' @importFrom rlang abort
+#' @importFrom rlang set_names
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
 #' @importFrom tidyr expand

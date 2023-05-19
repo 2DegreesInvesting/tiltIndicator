@@ -10,14 +10,7 @@ xctr_at_product_level <- function(companies,
   .co2 <- standardize_co2(co2)
 
   out <- .co2 |>
-    # FIXME: This is still in an awkward wide format
-    xctr_add_ranks("metric") |>
-    pivot_longer(
-      cols = starts_with("perc_"),
-      names_prefix = "perc_",
-      names_to = "grouped_by",
-      values_to = "values_to_categorize"
-    ) |>
+    xctr_add_ranks() |>
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
     select_cols_at_product_level() |>
@@ -69,13 +62,18 @@ check_is_character <- function(x) {
   vec_assert(x, character())
 }
 
-xctr_add_ranks <- function(data, x) {
-  .by <- xctr_benchmarks()
-  out <- distinct(data)
-  for (i in seq_along(.by)) {
-    out <- add_rank(out, x, .by = .by[[i]])
-  }
-  out
+xctr_add_ranks <- function(data) {
+  benchmarks <- set_names(xctr_benchmarks(), flat_benchmarks())
+  map_df(benchmarks, ~ add_ranks_impl(data, .x), .id = "grouped_by")
+}
+
+add_ranks_impl <- function(data, .by) {
+  if (identical(.by, "all")) .by <- NULL
+  mutate(
+    data,
+    values_to_categorize = rank_proportion(.data$metric),
+    .by = all_of(.by)
+  )
 }
 
 xctr_benchmarks <- function() {
@@ -91,19 +89,6 @@ xctr_benchmarks <- function() {
 
 flat_benchmarks <- function() {
   map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
-}
-
-add_rank <- function(data, x, .by) {
-  if (identical(.by, "all")) {
-    benchmark <- "all"
-    ..by <- NULL
-  } else {
-    benchmark <- paste(.by, collapse = "_")
-    ..by <- .by
-  }
-
-  nm <- as.symbol(paste0("perc_", benchmark))
-  mutate(data, "{{ nm }}" := rank_proportion(.data[[x]]), .by = all_of(..by))
 }
 
 rank_proportion <- function(x) {
