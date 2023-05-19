@@ -40,12 +40,6 @@ xctr_check <- function(companies, co2) {
   check_is_character(get_column(co2, "isic_4digit"))
 }
 
-standardize_companies <- function(companies) {
-  companies |>
-    distinct() |>
-    rename(companies_id = "company_id")
-}
-
 xctr_standardize_co2 <- function(co2) {
   co2 |>
     distinct() |>

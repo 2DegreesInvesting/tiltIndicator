@@ -87,3 +87,9 @@ grouped_by <- function(data, grouped_by) {
   }
   grouped_by
 }
+
+standardize_companies <- function(companies) {
+  companies |>
+    distinct() |>
+    rename(companies_id = "company_id")
+}
