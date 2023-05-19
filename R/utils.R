@@ -55,24 +55,11 @@ get_column <- function(data, pattern) {
   data[[extract_name(data, pattern)]]
 }
 
-ptype_at_company_level <- function() {
-  structure(
-    list(
-      companies_id = character(0),
-      grouped_by = character(0),
-      risk_category = character(0),
-      value = numeric(0)
-    ),
-    row.names = integer(0),
-    class = c("tbl_df", "tbl", "data.frame")
-  )
-}
-
 categorize_risk <- function(x, low_threshold, high_threshold, ...) {
   case_when(
-    x <= low_threshold ~ "low",
-    x > low_threshold & x <= high_threshold ~ "medium",
     x > high_threshold ~ "high",
+    x > low_threshold & x <= high_threshold ~ "medium",
+    x <= low_threshold ~ "low",
     ...
   )
 }

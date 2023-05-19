@@ -77,6 +77,27 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   expect_true(all_na)
 })
 
+test_that("no matches yield the expected prototype", {
+  companies <- tibble(
+    activity_uuid_product_uuid = c("x", "x"),
+    company_id = c("a", "b"),
+    clustered = c("xx")
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = c("y"),
+    co2_footprint = 1,
+    tilt_sector = "Transport",
+    unit = "metric ton*km",
+    isic_4digit = "4575"
+  )
+
+  out <- xctr(companies, co2)
+  expect_equal(unique(out$companies_id), c("a", "b"))
+  expect_equal(unique(out$grouped_by), flat_benchmarks())
+  expect_equal(unique(out$risk_category), c("high", "medium", "low"))
+  expect_equal(unique(out$value), NA_real_)
+})
+
 test_that("is sensitive to low_threshold", {
   companies <- slice(companies, 1:2)
   co2 <- slice(products, 1:2)

@@ -42,6 +42,7 @@
 #' @importFrom purrr imap_dfr
 #' @importFrom purrr map
 #' @importFrom purrr map_chr
+#' @importFrom purrr map_df
 #' @importFrom purrr walk
 #' @importFrom readr read_csv
 #' @importFrom rlang .env
