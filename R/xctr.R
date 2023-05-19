@@ -87,10 +87,14 @@ xctr_at_company_level <- function(data) {
     select(-all_of("n"))
 
   if (identical(nrow(with_value), 0L)) {
+    .grouped_by <- tmp$grouped_by
+    if (is_xctr(data))
+    .grouped_by <- flat_benchmarks()
+
     ids <- unique(data$companies_id)
     out <- tidyr::expand_grid(
       companies_id = ids,
-      grouped_by = tmp$grouped_by,
+      grouped_by = .grouped_by,
       risk_category = c("high", "medium", "low"),
       value = NA_real_
     )

@@ -43,6 +43,10 @@ matches_name <- function(data, pattern) {
   nzchar(extract_name(data, pattern))
 }
 
+is_xctr <- function(data) {
+  matches_name(data, col_to_rank(data))
+}
+
 get_column <- function(data, pattern) {
   data[[extract_name(data, pattern)]]
 }
