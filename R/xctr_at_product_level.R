@@ -6,11 +6,10 @@ xctr_at_product_level <- function(companies,
                                   high_threshold = 2 / 3) {
   xctr_check(companies, co2)
 
-  companies <- xctr_standardize_companies_names(distinct(companies))
+  .companies <- xctr_standardize_companies_names(distinct(companies))
+  .co2 <- xctr_standardize_co2_names(distinct(co2))
 
-  out <- co2 |>
-    xctr_standardize_co2_names() |>
-    distinct() |>
+  out <- .co2 |>
     # FIXME: This is still in an awkward wide format
     xctr_add_ranks("metric") |>
     pivot_longer(
@@ -20,7 +19,7 @@ xctr_at_product_level <- function(companies,
       values_to = "values_to_categorize"
     ) |>
     add_risk_category(low_threshold, high_threshold) |>
-    xctr_join_companies(companies) |>
+    xctr_join_companies(.companies) |>
     select_cols_at_product_level() |>
     prune_unmatched_products()
 
