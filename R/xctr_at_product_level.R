@@ -23,9 +23,13 @@ xctr_at_product_level <- function(companies,
     select_cols_at_product_level() |>
     prune_unmatched_products()
 
+  out <- restore_original_metric_name(out, co2)
+  out
+}
+
+restore_original_metric_name <- function(out, co2) {
   metric_alias <- as.symbol(col_to_rank(co2))
-  out |>
-    rename("{{ metric_alias }}" := "metric")
+  rename(out, "{{ metric_alias }}" := "metric")
 }
 
 xctr_check <- function(companies, co2) {
