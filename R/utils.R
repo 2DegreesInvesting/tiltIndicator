@@ -47,6 +47,10 @@ is_xctr <- function(data) {
   matches_name(data, col_to_rank(data))
 }
 
+risk_category_levels <- function() {
+  c("high", "medium", "low")
+}
+
 get_column <- function(data, pattern) {
   data[[extract_name(data, pattern)]]
 }
