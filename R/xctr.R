@@ -69,9 +69,8 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 #' @export
 #' @rdname xctr
 xctr_at_company_level <- function(data) {
-  tmp <- select(data, "companies_id", "grouped_by", "risk_category")
-
-  with_value <- tmp |>
+  with_value <- data |>
+    select("companies_id", "grouped_by", "risk_category") |>
     filter(!is.na(.data$risk_category)) |>
     add_count(.data$companies_id, .data$grouped_by) |>
     mutate(
@@ -84,7 +83,7 @@ xctr_at_company_level <- function(data) {
     return(
       empty_output_at_company_level(
         companies_id = unique(data$companies_id),
-        grouped_by = grouped_by(data, tmp$grouped_by)
+        grouped_by = grouped_by(data, data$grouped_by)
       )
     )
   }
@@ -109,8 +108,8 @@ xctr_at_company_level <- function(data) {
       .by = c("companies_id", "grouped_by", "risk_category")
     )
 
-  if (anyNA(tmp$risk_category)) {
-    unmatched <- filter(tmp, is.na(.data$risk_category))
+  if (anyNA(data$risk_category)) {
+    unmatched <- filter(data, is.na(.data$risk_category))
 
     out <- bind_rows(
       out,
