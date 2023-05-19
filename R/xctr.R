@@ -136,12 +136,3 @@ na_to_0_if_not_all_is_na <- function(x) {
   }
   replace_na(x, 0)
 }
-
-xctr_ptype_at_company_level <- function(companies_id = character(0)) {
-  grouped_by <- flat_benchmarks()
-  risk_category <- risk_category_levels()
-  value <- NA_real_
-
-  out <- expand_grid(companies_id, grouped_by, risk_category, value)
-  relocate(out, all_of(cols_at_company_level()))
-}
