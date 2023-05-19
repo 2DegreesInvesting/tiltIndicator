@@ -87,8 +87,9 @@ xctr_at_company_level <- function(data) {
 
   if (identical(nrow(with_value), 0L)) {
     .grouped_by <- tmp$grouped_by
-    if (is_xctr(data))
-    .grouped_by <- flat_benchmarks()
+    if (is_xctr(data)) {
+      .grouped_by <- flat_benchmarks()
+    }
 
     ids <- unique(data$companies_id)
     out <- tidyr::expand_grid(
