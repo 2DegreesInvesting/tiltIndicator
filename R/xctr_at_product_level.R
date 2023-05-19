@@ -6,23 +6,10 @@ xctr_at_product_level <- function(companies,
                                   high_threshold = 2 / 3) {
   xctr_check(companies, co2)
 
-  # Rename to a consistent set of columns
-  xctr_standardize_co2 <- function(co2) {
-    co2 |>
-      rename(metric = col_to_rank(co2)) |>
-      rename(
-        tilt_sec = ends_with("tilt_sector"),
-        unit = ends_with("unit"),
-        isic_sec = ends_with("isic_4digit")
-      )
-  }
-  companies <- companies |>
-    rename(companies_id = "company_id")
-
-  companies <- distinct(companies)
+  companies <- xctr_standardize_companies_names(distinct(companies))
 
   out <- co2 |>
-    xctr_standardize_co2() |>
+    xctr_standardize_co2_names() |>
     distinct() |>
     # FIXME: This is still in an awkward wide format
     xctr_add_ranks("metric") |>
@@ -54,6 +41,20 @@ xctr_check <- function(companies, co2) {
 
   check_has_no_na(co2, col_to_rank(co2))
   check_is_character(get_column(co2, "isic_4digit"))
+}
+
+xctr_standardize_companies_names <- function(companies) {
+  rename(companies, companies_id = "company_id")
+}
+
+xctr_standardize_co2_names <- function(co2) {
+  co2 |>
+    rename(metric = col_to_rank(co2)) |>
+    rename(
+      tilt_sec = ends_with("tilt_sector"),
+      unit = ends_with("unit"),
+      isic_sec = ends_with("isic_4digit")
+    )
 }
 
 check_matches_name <- function(data, pattern) {
