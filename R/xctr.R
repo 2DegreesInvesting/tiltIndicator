@@ -80,9 +80,10 @@ xctr_at_company_level <- function(data) {
     select(-all_of("n"))
 
   if (identical(nrow(with_value), 0L)) {
-    ids <- unique(data$companies_id)
-    .grouped_by <- grouped_by(data, tmp$grouped_by)
-    out <- empty_output_at_company_level(ids, .grouped_by)
+    out <- empty_output_at_company_level(
+      companies_id = unique(data$companies_id),
+      grouped_by = grouped_by(data, tmp$grouped_by)
+    )
     return(out)
   }
 
