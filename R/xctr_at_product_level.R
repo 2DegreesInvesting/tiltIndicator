@@ -11,7 +11,7 @@ xctr_at_product_level <- function(companies,
 
   out <- .co2 |>
     # FIXME: This is still in an awkward wide format
-    xctr_add_ranks(col_metric()) |>
+    xctr_add_ranks(values_to_categorize()) |>
     pivot_longer(
       cols = starts_with("perc_"),
       names_prefix = "perc_",
@@ -36,7 +36,7 @@ xctr_check <- function(companies, co2) {
   crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
   walk(crucial, ~ check_matches_name(co2, .x))
 
-  check_has_no_na(co2, xctr_find_col_metric(co2))
+  check_has_no_na(co2, xctr_find_values_to_categorize(co2))
   check_is_character(get_column(co2, "isic_4digit"))
 }
 
@@ -46,7 +46,7 @@ xctr_standardize_companies_names <- function(companies) {
 
 xctr_standardize_co2_names <- function(co2) {
   co2 |>
-    rename(metric = xctr_find_col_metric(co2)) |>
+    rename(metric = xctr_find_values_to_categorize(co2)) |>
     rename(
       tilt_sec = ends_with("tilt_sector"),
       unit = ends_with("unit"),
@@ -55,8 +55,8 @@ xctr_standardize_co2_names <- function(co2) {
 }
 
 restore_original_metric_name <- function(out, co2) {
-  metric_alias <- as.symbol(xctr_find_col_metric(co2))
-  rename(out, "{{ metric_alias }}" := col_metric())
+  metric_alias <- as.symbol(xctr_find_values_to_categorize(co2))
+  rename(out, "{{ metric_alias }}" := values_to_categorize())
 }
 
 check_matches_name <- function(data, pattern) {
@@ -124,11 +124,11 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
-xctr_find_col_metric <- function(co2, pattern = "co2_footprint") {
+xctr_find_values_to_categorize <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
-col_metric <- function() {
+values_to_categorize <- function() {
   "metric"
 }
 
@@ -147,7 +147,7 @@ select_cols_at_product_level <- function(data) {
       all_of(cols_at_product_level()),
       ends_with("activity_uuid_product_uuid"),
       # Required to uniquely identify rows when using pivot
-      col_metric()
+      values_to_categorize()
     )
 }
 
