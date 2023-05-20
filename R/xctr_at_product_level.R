@@ -33,11 +33,6 @@ xctr_check <- function(companies, co2) {
   check_is_character(get_column(co2, "isic_4digit"))
 }
 
-restore_original_metric_name <- function(out, co2) {
-  metric_alias <- as.symbol(find_co2_metric(co2))
-  rename(out, "{{ metric_alias }}" := "metric")
-}
-
 check_matches_name <- function(data, pattern) {
   if (!matches_name(data, pattern)) {
     abort(c(
