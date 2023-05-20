@@ -49,7 +49,6 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
 
   .companies |>
     pstr_add_metric(.scenarios) |>
-    rename(values_to_categorize = "metric") |>
     add_risk_category(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level() |>
     select(all_of(pstr_cols_at_product_level()))
@@ -67,11 +66,13 @@ pstr_cols_at_product_level <- function() {
 }
 
 pstr_add_metric <- function(companies, scenarios) {
-  left_join(
+  out <- left_join(
     companies, scenarios,
     by = join_by("type", "sector", "subsector"),
     relationship = "many-to-many"
   )
+
+  rename(out, values_to_categorize = "metric")
 }
 
 add_risk_category <- function(data,
