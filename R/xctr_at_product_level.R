@@ -56,17 +56,17 @@ check_is_character <- function(x) {
 }
 
 xctr_add_values_to_categorize <- function(data) {
-  benchmarks <- set_names(xctr_benchmarks(), flat_benchmarks())
-  map_df(benchmarks, ~ xctr_add_values_to_categorize_impl(data, .x), .id = "grouped_by")
-}
+  add_rank <- function(data, .by) {
+    if (identical(.by, "all")) .by <- NULL
+    mutate(
+      data,
+      values_to_categorize = rank_proportion(.data[[find_co2_footprint(data)]]),
+      .by = all_of(.by)
+    )
+  }
 
-xctr_add_values_to_categorize_impl <- function(data, .by) {
-  if (identical(.by, "all")) .by <- NULL
-  mutate(
-    data,
-    values_to_categorize = rank_proportion(.data[[find_co2_footprint(data)]]),
-    .by = all_of(.by)
-  )
+  benchmarks <- set_names(xctr_benchmarks(), flat_benchmarks())
+  map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
 }
 
 xctr_benchmarks <- function() {
