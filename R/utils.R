@@ -97,7 +97,6 @@ standardize_companies <- function(companies) {
 standardize_co2 <- function(co2) {
   co2 |>
     distinct() |>
-    rename(metric = find_co2_metric(co2)) |>
     rename(
       tilt_sec = ends_with("tilt_sector"),
       unit = ends_with("unit"),

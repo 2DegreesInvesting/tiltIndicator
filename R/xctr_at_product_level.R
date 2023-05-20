@@ -16,7 +16,7 @@ xctr_at_product_level <- function(companies,
     xctr_select_cols_at_product_level() |>
     prune_unmatched_products()
 
-  restore_original_metric_name(out, co2)
+  out
 }
 
 xctr_check <- function(companies, co2) {
@@ -71,7 +71,7 @@ xctr_add_values_to_categorize_impl <- function(data, .by) {
   if (identical(.by, "all")) .by <- NULL
   mutate(
     data,
-    values_to_categorize = rank_proportion(.data$metric),
+    values_to_categorize = rank_proportion(.data[[find_co2_metric(data)]]),
     .by = all_of(.by)
   )
 }
@@ -114,7 +114,7 @@ xctr_select_cols_at_product_level <- function(data) {
       all_of(cols_at_product_level()),
       ends_with("activity_uuid_product_uuid"),
       # Required to uniquely identify rows when using pivot
-      "metric"
+      find_co2_metric(data)
     )
 }
 
