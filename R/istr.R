@@ -51,8 +51,7 @@ istr_at_product_level <- function(companies,
   companies |>
     distinct() |>
     istr_mapping(mapper) |>
-    istr_add_metric(.scenarios) |>
-    rename(values_to_categorize = "metric") |>
+    istr_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = "no_sector") |>
     xstr_polish_output_at_product_level()
 }
@@ -62,7 +61,7 @@ istr_mapping <- function(companies, ep_weo) {
     left_join(ep_weo, by = c("eco_sectors" = "ECO_sector"))
 }
 
-istr_add_metric <- function(companies, weo_2022) {
+istr_add_values_to_categorize <- function(companies, weo_2022) {
   companies |>
     left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
 }
