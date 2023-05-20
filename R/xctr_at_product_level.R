@@ -9,14 +9,12 @@ xctr_at_product_level <- function(companies,
   .companies <- standardize_companies(companies)
   .co2 <- standardize_co2(co2)
 
-  out <- .co2 |>
-    xctr_add_ranks() |>
+  .co2 |>
+    xctr_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
-    select_cols_at_product_level() |>
+    xctr_select_cols_at_product_level() |>
     prune_unmatched_products()
-
-  restore_original_metric_name(out, co2)
 }
 
 xctr_check <- function(companies, co2) {
@@ -29,13 +27,8 @@ xctr_check <- function(companies, co2) {
   crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
   walk(crucial, ~ check_matches_name(co2, .x))
 
-  check_has_no_na(co2, find_co2_metric(co2))
+  check_has_no_na(co2, find_co2_footprint(co2))
   check_is_character(get_column(co2, "isic_4digit"))
-}
-
-restore_original_metric_name <- function(out, co2) {
-  metric_alias <- as.symbol(find_co2_metric(co2))
-  rename(out, "{{ metric_alias }}" := "metric")
 }
 
 check_matches_name <- function(data, pattern) {
@@ -62,18 +55,18 @@ check_is_character <- function(x) {
   vec_assert(x, character())
 }
 
-xctr_add_ranks <- function(data) {
-  benchmarks <- set_names(xctr_benchmarks(), flat_benchmarks())
-  map_df(benchmarks, ~ add_ranks_impl(data, .x), .id = "grouped_by")
-}
+xctr_add_values_to_categorize <- function(data) {
+  add_rank <- function(data, .by) {
+    if (identical(.by, "all")) .by <- NULL
+    mutate(
+      data,
+      values_to_categorize = rank_proportion(.data[[find_co2_footprint(data)]]),
+      .by = all_of(.by)
+    )
+  }
 
-add_ranks_impl <- function(data, .by) {
-  if (identical(.by, "all")) .by <- NULL
-  mutate(
-    data,
-    values_to_categorize = rank_proportion(.data$metric),
-    .by = all_of(.by)
-  )
+  benchmarks <- set_names(xctr_benchmarks(), flat_benchmarks())
+  map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
 }
 
 xctr_benchmarks <- function() {
@@ -95,7 +88,7 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
-find_co2_metric <- function(co2, pattern = "co2_footprint") {
+find_co2_footprint <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
@@ -108,13 +101,12 @@ xctr_join_companies <- function(product_level, companies) {
   )
 }
 
-select_cols_at_product_level <- function(data) {
+xctr_select_cols_at_product_level <- function(data) {
   data |>
     select(
       all_of(cols_at_product_level()),
       ends_with("activity_uuid_product_uuid"),
-      # Required to uniquely identify rows when using pivot
-      "metric"
+      find_co2_footprint(data)
     )
 }
 
