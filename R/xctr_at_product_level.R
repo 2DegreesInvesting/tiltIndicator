@@ -29,7 +29,7 @@ xctr_check <- function(companies, co2) {
   crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
   walk(crucial, ~ check_matches_name(co2, .x))
 
-  check_has_no_na(co2, find_co2_metric(co2))
+  check_has_no_na(co2, find_co2_footprint(co2))
   check_is_character(get_column(co2, "isic_4digit"))
 }
 
@@ -66,7 +66,7 @@ xctr_add_values_to_categorize_impl <- function(data, .by) {
   if (identical(.by, "all")) .by <- NULL
   mutate(
     data,
-    values_to_categorize = rank_proportion(.data[[find_co2_metric(data)]]),
+    values_to_categorize = rank_proportion(.data[[find_co2_footprint(data)]]),
     .by = all_of(.by)
   )
 }
@@ -90,7 +90,7 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
-find_co2_metric <- function(co2, pattern = "co2_footprint") {
+find_co2_footprint <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
@@ -108,7 +108,7 @@ xctr_select_cols_at_product_level <- function(data) {
     select(
       all_of(cols_at_product_level()),
       ends_with("activity_uuid_product_uuid"),
-      find_co2_metric(data)
+      find_co2_footprint(data)
     )
 }
 
