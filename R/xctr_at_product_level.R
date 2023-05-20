@@ -108,7 +108,6 @@ xctr_select_cols_at_product_level <- function(data) {
     select(
       all_of(cols_at_product_level()),
       ends_with("activity_uuid_product_uuid"),
-      # Required to uniquely identify rows when using pivot
       find_co2_metric(data)
     )
 }
