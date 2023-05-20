@@ -64,10 +64,10 @@ check_is_character <- function(x) {
 
 xctr_add_values_to_categorize <- function(data) {
   benchmarks <- set_names(xctr_benchmarks(), flat_benchmarks())
-  map_df(benchmarks, ~ add_ranks_impl(data, .x), .id = "grouped_by")
+  map_df(benchmarks, ~ add_values_to_categorize_impl(data, .x), .id = "grouped_by")
 }
 
-add_ranks_impl <- function(data, .by) {
+add_values_to_categorize_impl <- function(data, .by) {
   if (identical(.by, "all")) .by <- NULL
   mutate(
     data,
