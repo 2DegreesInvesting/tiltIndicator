@@ -51,7 +51,11 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
     pstr_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold) |>
     xstr_polish_output_at_product_level() |>
-    select(all_of(pstr_cols_at_product_level()))
+    pstr_select_cols_at_product_level()
+}
+
+pstr_select_cols_at_product_level <- function(data) {
+  select(data, all_of(pstr_cols_at_product_level()))
 }
 
 pstr_cols_at_product_level <- function() {
