@@ -13,7 +13,7 @@ xctr_at_product_level <- function(companies,
     xctr_add_ranks() |>
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
-    select_cols_at_product_level() |>
+    xctr_select_cols_at_product_level() |>
     prune_unmatched_products()
 
   restore_original_metric_name(out, co2)
@@ -108,7 +108,7 @@ xctr_join_companies <- function(product_level, companies) {
   )
 }
 
-select_cols_at_product_level <- function(data) {
+xctr_select_cols_at_product_level <- function(data) {
   data |>
     select(
       all_of(cols_at_product_level()),
