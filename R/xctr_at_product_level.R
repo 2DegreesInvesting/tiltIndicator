@@ -9,14 +9,12 @@ xctr_at_product_level <- function(companies,
   .companies <- standardize_companies(companies)
   .co2 <- standardize_co2(co2)
 
-  out <- .co2 |>
+  .co2 |>
     xctr_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
     xctr_select_cols_at_product_level() |>
     prune_unmatched_products()
-
-  out
 }
 
 xctr_check <- function(companies, co2) {
