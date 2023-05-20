@@ -10,7 +10,7 @@ xctr_at_product_level <- function(companies,
   .co2 <- standardize_co2(co2)
 
   out <- .co2 |>
-    xctr_add_ranks() |>
+    xctr_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
     xctr_select_cols_at_product_level() |>
@@ -62,7 +62,7 @@ check_is_character <- function(x) {
   vec_assert(x, character())
 }
 
-xctr_add_ranks <- function(data) {
+xctr_add_values_to_categorize <- function(data) {
   benchmarks <- set_names(xctr_benchmarks(), flat_benchmarks())
   map_df(benchmarks, ~ add_ranks_impl(data, .x), .id = "grouped_by")
 }
