@@ -105,4 +105,3 @@ pstr_cols_at_product_level <- function() {
     "type"
   )
 }
-
