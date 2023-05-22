@@ -12,8 +12,8 @@ istr_at_product_level(
   companies,
   scenarios,
   mapper,
-  low_threshold = 30,
-  high_threshold = 70
+  low_threshold = 1/3,
+  high_threshold = 2/3
 )
 
 istr_at_company_level(data)
