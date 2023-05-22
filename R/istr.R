@@ -42,8 +42,8 @@ istr <- function(companies, scenarios, mapper) {
 istr_at_product_level <- function(companies,
                                   scenarios,
                                   mapper,
-                                  low_threshold = 30,
-                                  high_threshold = 70) {
+                                  low_threshold = 1 / 3,
+                                  high_threshold = 2 / 3) {
   xstr_check(companies, scenarios)
 
   .scenarios <- standardize_scenarios(scenarios)
