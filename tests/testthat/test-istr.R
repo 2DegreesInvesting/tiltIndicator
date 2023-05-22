@@ -30,3 +30,13 @@ test_that("a 0-row `scenarios` yields an error", {
     "scenarios.*can't have 0-row"
   )
 })
+
+test_that("the thresholds are in the range 0 to 1", {
+  istr_arguments <- formals(istr_at_product_level)
+
+  low_threshold <- eval(istr_arguments$low_threshold)
+  high_threshold <- eval(istr_arguments$high_threshold)
+
+  expect_true(low_threshold >= 0 & low_threshold <= 1)
+  expect_true(high_threshold >= 0 & high_threshold <= 1)
+})
