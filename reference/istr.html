@@ -126,8 +126,8 @@ risk. We, therefore, derive the company-level information.</p>
 <span>  <span class="va">companies</span>,</span>
 <span>  <span class="va">scenarios</span>,</span>
 <span>  <span class="va">mapper</span>,</span>
-<span>  low_threshold <span class="op">=</span> <span class="fl">30</span>,</span>
-<span>  high_threshold <span class="op">=</span> <span class="fl">70</span></span>
+<span>  low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,</span>
+<span>  high_threshold <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">istr_at_company_level</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
@@ -181,15 +181,15 @@ risk products.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by risk_category     X company_name main_activity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… Stated Po… low               1 fleischerei… manufacturer…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… Net Zero … medium            1 fleischerei… manufacturer…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… Net Zero … medium            1 fleischerei… manufacturer…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… Net Zero … high              1 fleischerei… manufacturer…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… Net Zero … high              1 fleischerei… manufacturer…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… Net Zero … high              1 fleischerei… manufacturer…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… Stated Po… low               1 fleischerei… manufacturer…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… Net Zero … medium            1 fleischerei… manufacturer…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… Net Zero … medium            1 fleischerei… manufacturer…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… Net Zero … high              1 fleischerei… manufacturer…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… Net Zero … high              1 fleischerei… manufacturer…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… Net Zero … high              1 fleischerei… manufacturer…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… Stated Po… low               1 fleischerei… manufacturer…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… Net Zero … medium            1 fleischerei… manufacturer…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… Net Zero … high              1 fleischerei… manufacturer…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4,662 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 45 more variables: address &lt;chr&gt;, company_city &lt;chr&gt;, postcode &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   country &lt;chr&gt;, clustered &lt;chr&gt;, clustered_unit_ecoinvent &lt;chr&gt;,</span></span>
@@ -203,35 +203,35 @@ risk products.</p></dd>
 <span class="r-in"><span>  <span class="fu">istr_at_product_level</span><span class="op">(</span><span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">istr_at_company_level</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 42 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                             grouped_by      risk_category  value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           high          <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           medium        <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           low           <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           0    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium         1    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… low            0    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           0.162</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium         0.838</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… low            0    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                             grouped_by       risk_category value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 NA_NA            high             <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 NA_NA            medium           <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 NA_NA            low              <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… high              1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 32 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
 <span class="r-in"><span><span class="fu">istr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">mapper</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 42 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                             grouped_by      risk_category  value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           high          <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           medium        <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 NA_NA           low           <span style="color: #BB0000;">NA</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           0    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium         1    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… low            0    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           0.162</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… medium         0.838</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… low            0    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emiss… high           1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                             grouped_by       risk_category value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 NA_NA            high             <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 NA_NA            medium           <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 NA_NA            low              <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 Net Zero Emissi… high              1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 32 more rows</span></span>
 </code></pre></div>
     </div>
