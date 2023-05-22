@@ -132,13 +132,6 @@ test_that("each company has risk categories low, medium, and high (#215)", {
   expect_equal(risk_categories, c("high", "low", "medium"))
 })
 
-test_that("with a missing value in the reductions column errors gracefully", {
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(pstr_scenarios, 1)
-  scenarios$reductions <- NA
-  expect_error(pstr(companies, scenarios), "reductions")
-})
-
 test_that("grouped_by includes the type of scenario", {
   .type <- "ipr"
   companies <- filter(slice(pstr_companies, 1), type == .type)
@@ -286,4 +279,52 @@ test_that("a 0-row `scenarios` yields an error", {
     pstr(slice(pstr_companies, 1), pstr_scenarios[0L, ]),
     "scenario.*can't have 0-row"
   )
+})
+
+test_that("NA in the reductions column yields `NA` in risk_category at product level", {
+  companies <- tibble(
+    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
+    type = "ipr",
+    sector = "total",
+    subsector = "energy",
+    clustered = "any",
+    activity_uuid_product_uuid = "any",
+    tilt_sector = "any",
+    tilt_subsector = "any",
+  )
+  scenarios <- tibble(
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    year = 2020,
+    reductions = NA,
+    type = "ipr",
+  )
+
+  out <- pstr_at_product_level(companies, scenarios)
+  expect_equal(out$risk_category, NA_character_)
+})
+
+test_that("NA in the reductions column should be ignored from the value calculations", {
+  companies <- tibble(
+    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
+    type = "ipr",
+    sector = "total",
+    subsector = "energy",
+    clustered = "any",
+    activity_uuid_product_uuid = "any",
+    tilt_sector = "any",
+    tilt_subsector = "any"
+  )
+  scenarios <- tibble(
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    year = 2020,
+    reductions = NA,
+    type = "ipr",
+  )
+
+  out <- pstr(companies, scenarios)
+  expect_true(all(is.na(out$value)))
 })
