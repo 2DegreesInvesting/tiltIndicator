@@ -6,12 +6,12 @@
 \alias{istr_at_company_level}
 \title{Calculate the ISTR indicator}
 \usage{
-istr(companies, scenarios, mapper)
+istr(companies, scenarios, inputs)
 
 istr_at_product_level(
   companies,
   scenarios,
-  mapper,
+  inputs,
   low_threshold = 1/3,
   high_threshold = 2/3
 )
@@ -21,9 +21,9 @@ istr_at_company_level(data)
 \arguments{
 \item{companies}{A dataframe like \link{istr_companies}.}
 
-\item{scenarios}{A dataframe like \link{istr_weo_2022}.}
+\item{scenarios}{A dataframe like \link{istr_scenarios}.}
 
-\item{mapper}{A dataframe like \link{istr_ep_weo}.}
+\item{inputs}{A dataframe like \link{istr_inputs}.}
 
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}
@@ -64,19 +64,19 @@ Please note that carbon emissions or emissions always mean CO2e.
 }
 \examples{
 companies <- istr_companies
-scenarios <- istr_weo_2022
-mapper <- istr_ep_weo
+scenarios <- istr_scenarios
+inputs <- istr_inputs
 
 # Product level
 companies |>
-  istr_at_product_level(scenarios, mapper)
+  istr_at_product_level(scenarios, inputs)
 
 # Company level
 companies |>
-  istr_at_product_level(scenarios, mapper) |>
+  istr_at_product_level(scenarios, inputs) |>
   istr_at_company_level()
 
 # Same
-istr(companies, scenarios, mapper)
+istr(companies, scenarios, inputs)
 }
 \concept{ISTR functions}
