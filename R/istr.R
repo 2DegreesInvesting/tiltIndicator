@@ -59,9 +59,9 @@ istr_at_product_level <- function(companies,
 
 # TODO: Remove duplication for mapping
 istr_add_values_to_categorize <- function(inputs, scenarios) {
-    left_join(
-      inputs, scenarios,
-      by = join_by("type", "sector", "subsector"),
-      relationship = "many-to-many"
-    )
+  left_join(
+    inputs, scenarios,
+    by = join_by("type", "sector", "subsector"),
+    relationship = "many-to-many"
+  )
 }
