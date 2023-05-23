@@ -29,5 +29,5 @@ relative production emissions per company.
 The output of this indicator contains the following:
 
 - a column with production emissions
-- a column indicating the proportion relative to (i) all products with same unit (ii) products in same sector (iii) products in same segment
+- a column indicating the percentile relative to (i) all products with same unit (ii) products in same sector (iii) products in same segment
 - a column indicating whether the product has "low", "medium" or "high" relative production emissions.

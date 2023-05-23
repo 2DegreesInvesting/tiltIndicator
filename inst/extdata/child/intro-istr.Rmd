@@ -8,8 +8,8 @@ needs to produce its products.The input products are, for example, resources,
 packaging materials, energy and enabling services (such as tractor use on farm)
 to produce the product.
 
-If an input product belongs to a sector in which reduction targets are strictly 
-over 66.66%, it belongs to a high-risk sector and is classified as 'high sector transition
+If an input product belongs to a sector in which reduction targets are over 66.66%, 
+it belongs to a high-risk sector and is classified as 'high sector transition
 risk'. If the input product belongs to a sector in which reduction targets are
 ≥33.33% and <66.66%, the product is classified into the category 'medium sector
 transition risk' and if it is strictly below 33.33% it belongs to the category of 'low
