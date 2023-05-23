@@ -1,7 +1,6 @@
 xstr_check <- function(companies, scenarios) {
   stop_if_has_0_rows(companies)
   stop_if_has_0_rows(scenarios)
-  check_has_no_na(scenarios, "reductions")
 }
 
 xstr_polish_output_at_product_level <- function(data) {

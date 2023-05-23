@@ -52,7 +52,7 @@ istr_at_product_level <- function(companies,
   inputs |>
     distinct() |>
     istr_add_values_to_categorize(.scenarios) |>
-    add_risk_category(low_threshold, high_threshold, .default = "no_sector") |>
+    add_risk_category(low_threshold, high_threshold, .default = NA) |>
     xctr_join_companies(.companies) |>
     xstr_polish_output_at_product_level()
 }
