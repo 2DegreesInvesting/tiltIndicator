@@ -1,14 +1,21 @@
-library(readr)
-library(here)
+#TODO: Source of the data
 library(usethis)
+library(readr)
+devtools::load_all()
 
+# TODO: Remove this line if unnecessary
 options(readr.show_col_types = FALSE)
 
-istr_companies <- read_csv(here("data-raw", "istr", "istr_companies.csv"))
+istr_companies <- extdata_path("istr_companies.csv") |>
+  read_csv()
 use_data(istr_companies, overwrite = TRUE)
 
-istr_ep_weo <- read_csv(here("data-raw", "istr", "istr_ep_weo.csv"))
-use_data(istr_ep_weo, overwrite = TRUE)
+istr_inputs <- extdata_path("istr_inputs.csv") |>
+  read_csv(col_types = cols(input_isic_4digit = col_character())) |>
+  # TODO: Remove duplication through `xstr_prepare_companies`
+  pstr_prepare_companies()
+use_data(istr_inputs, overwrite = TRUE)
 
-istr_weo_2022 <- read_csv(here("data-raw", "istr", "istr_weo_2022.csv"))
-use_data(istr_weo_2022, overwrite = TRUE)
+#TODO: Create XSTR Scenarios dataset
+istr_scenarios <- pstr_scenarios
+use_data(istr_scenarios, overwrite = TRUE)
