@@ -12,9 +12,9 @@ to produce the product.
 
 After identifying each carbon footprint for one input product, the input
 products are ranked according to their footprint. Input products in the highest
-percentile (≥70%) are classified as high transition risk input products. Input
-products in the medium percentile (between ≥30% and <70%) are classified as
-medium transition risk input products. Products in the lowest percentile (<30%)
+proportion (≥2/3) are classified as high transition risk input products. Input
+products in the medium proportion (between ≥1/3 and <2/3) are classified as
+medium transition risk input products. Products in the lowest proportion (<1/3)
 are classified as low transition risk input products.
 
 After assessing the input products' transition risk based on the carbon
