@@ -283,22 +283,22 @@ test_that("a 0-row `scenarios` yields an error", {
 
 test_that("NA in the reductions column yields `NA` in risk_category at product level", {
   companies <- tibble(
-    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
-    type = "ipr",
-    sector = "total",
-    subsector = "energy",
+    company_id = "1",
+    type = "a",
+    sector = "b",
+    subsector = "c",
     clustered = "any",
-    activity_uuid_product_uuid = "any",
-    tilt_sector = "any",
-    tilt_subsector = "any",
+    activity_uuid_product_uuid = "x",
+    tilt_sector = "x",
+    tilt_subsector = "x",
   )
   scenarios <- tibble(
-    scenario = "1.5c required policy scenario",
-    sector = "total",
-    subsector = "energy",
+    scenario = "2",
+    sector = "b",
+    subsector = "c",
     year = 2020,
     reductions = NA,
-    type = "ipr",
+    type = "a",
   )
 
   out <- pstr_at_product_level(companies, scenarios)
@@ -307,22 +307,22 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
 
 test_that("NA in the reductions column should be ignored from the value calculations", {
   companies <- tibble(
-    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
-    type = "ipr",
-    sector = "total",
-    subsector = "energy",
+    company_id = "1",
+    type = "a",
+    sector = "b",
+    subsector = "c",
     clustered = "any",
-    activity_uuid_product_uuid = "any",
-    tilt_sector = "any",
-    tilt_subsector = "any"
+    activity_uuid_product_uuid = "x",
+    tilt_sector = "x",
+    tilt_subsector = "x",
   )
   scenarios <- tibble(
-    scenario = "1.5c required policy scenario",
-    sector = "total",
-    subsector = "energy",
+    scenario = "2",
+    sector = "b",
+    subsector = "c",
     year = 2020,
     reductions = NA,
-    type = "ipr",
+    type = "a",
   )
 
   out <- pstr(companies, scenarios)
