@@ -1,4 +1,11 @@
-# TODO: Add the snapshot test for ISTR
+test_that("hasn't changed", {
+  companies <- istr_companies |> slice(1)
+  scenarios <- istr_scenarios
+  inputs <- istr_inputs
+
+  out <- istr(companies, scenarios, inputs)
+  expect_snapshot(format_robust_snapshot(out))
+})
 
 test_that("outputs expected columns at company level", {
   companies <- slice(istr_companies, 1)

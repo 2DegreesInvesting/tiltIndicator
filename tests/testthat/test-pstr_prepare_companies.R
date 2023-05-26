@@ -1,3 +1,4 @@
+# TODO: Paarameter `col_types = cols(isic_4digit = col_character())` is missing
 test_that("snapshot", {
   withr::local_options(list(readr.show_col_types = FALSE))
   companies <- slice(read_csv(extdata_path("pstr_companies.csv")), 1)
