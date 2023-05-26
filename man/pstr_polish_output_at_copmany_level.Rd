@@ -25,7 +25,7 @@ out |> pstr_polish_output_at_copmany_level()
 }
 \seealso{
 Other helpers: 
-\code{\link{pstr_prepare_companies}()},
-\code{\link{pstr_prepare_scenario}()}
+\code{\link{pstr_prepare_scenario}()},
+\code{\link{xstr_pivot_type_sector_subsector}()}
 }
 \concept{helpers}
