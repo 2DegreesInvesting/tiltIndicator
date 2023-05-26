@@ -1,3 +1,4 @@
+#TODO: Adapt these tests after changing `prapare` functions to `xstr_prepare` functions
 test_that("outputs the expected snapshot", {
   withr::local_options(list(readr.show_col_types = FALSE))
 
