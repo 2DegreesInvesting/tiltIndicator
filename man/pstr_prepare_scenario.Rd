@@ -29,6 +29,6 @@ pstr_prepare_scenario(raw_scenarios)
 \seealso{
 Other helpers: 
 \code{\link{pstr_polish_output_at_copmany_level}()},
-\code{\link{pstr_prepare_companies}()}
+\code{\link{xstr_pivot_type_sector_subsector}()}
 }
 \concept{helpers}

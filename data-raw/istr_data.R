@@ -12,8 +12,7 @@ use_data(istr_companies, overwrite = TRUE)
 
 istr_inputs <- extdata_path("istr_inputs.csv") |>
   read_csv(col_types = cols(input_isic_4digit = col_character())) |>
-  # TODO: Remove duplication through `xstr_prepare_companies`
-  pstr_prepare_companies()
+  xstr_pivot_type_sector_subsector()
 use_data(istr_inputs, overwrite = TRUE)
 
 # TODO: Create XSTR Scenarios dataset

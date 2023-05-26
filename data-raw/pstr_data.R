@@ -7,7 +7,7 @@ devtools::load_all()
 
 pstr_companies <- extdata_path("pstr_companies.csv") |>
   read_csv(col_types = cols(isic_4digit = col_character())) |>
-  pstr_prepare_companies()
+  xstr_pivot_type_sector_subsector()
 use_data(pstr_companies, overwrite = TRUE)
 
 pstr_scenarios <- list(
