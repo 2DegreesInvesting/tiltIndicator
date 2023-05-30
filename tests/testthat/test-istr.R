@@ -41,7 +41,6 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   expect_error(istr(bad, scenarios, inputs), crucial)
 })
 
-# TODO: Common test in both istr and pstr because both use same scenario dataset
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   companies <- istr_companies |> slice(1)
   scenarios <- istr_scenarios
