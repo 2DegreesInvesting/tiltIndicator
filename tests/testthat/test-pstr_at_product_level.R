@@ -1,3 +1,4 @@
+# TODO: Add similar test for ISTR indicator
 test_that("outputs expected columns at product level", {
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(pstr_scenarios, 1)
