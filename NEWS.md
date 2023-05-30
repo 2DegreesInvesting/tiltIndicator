@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9064
+
+* In XSTR `NA`s in reductions are no longer an error but handled specially (@lindadelacombaz #350).
+
+* In ISTR sample data and code now use the new structure (@kalashsinghal #353).
+
+* In ISTR default thresholds are now the same as in XCTR (@lindadelacombaz #348).
+
 # tiltIndicator 0.0.0.9063
 
 * XXTR functions now stop if 'copmanies' has 0-rows (#340).
