@@ -1,4 +1,5 @@
-# TODO: Source of the data
+# Source: @Tilmon via:
+# https://github.com/2DegreesInvesting/tiltIndicator/issues/347#issue-1717975337
 library(usethis)
 library(readr)
 devtools::load_all()
