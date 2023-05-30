@@ -48,15 +48,15 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
   .companies <- standardize_companies(companies)
 
   .companies |>
-    pstr_add_values_to_categorize(.scenarios) |>
+    xstr_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     xstr_polish_output_at_product_level() |>
     pstr_select_cols_at_product_level()
 }
 
-pstr_add_values_to_categorize <- function(companies, scenarios) {
+xstr_add_values_to_categorize <- function(data, scenarios) {
   left_join(
-    companies, scenarios,
+    data, scenarios,
     by = join_by("type", "sector", "subsector"),
     relationship = "many-to-many"
   )
