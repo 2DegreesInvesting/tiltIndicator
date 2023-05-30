@@ -3,9 +3,6 @@ library(usethis)
 library(readr)
 devtools::load_all()
 
-# TODO: Remove this line if unnecessary
-options(readr.show_col_types = FALSE)
-
 istr_companies <- extdata_path("istr_companies.csv") |>
   read_csv()
 use_data(istr_companies, overwrite = TRUE)
