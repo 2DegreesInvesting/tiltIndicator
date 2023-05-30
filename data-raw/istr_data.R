@@ -13,6 +13,5 @@ istr_inputs <- extdata_path("istr_inputs.csv") |>
   xstr_pivot_type_sector_subsector()
 use_data(istr_inputs, overwrite = TRUE)
 
-# TODO: Create XSTR Scenarios dataset
 istr_scenarios <- pstr_scenarios
 use_data(istr_scenarios, overwrite = TRUE)
