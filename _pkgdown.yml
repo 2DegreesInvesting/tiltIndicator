@@ -17,7 +17,11 @@ reference:
       - has_concept("PSTR functions")
       - has_concept("PSTR datasets")
 
-  - title: Helpers
+  - title: Pre-processing helpers
     contents:
-      - has_concept("helpers")
+      - has_concept("pre-processing helpers")
+
+  - title: Post-processing helpers
+    contents:
+      - has_concept("post-processing helpers")
 

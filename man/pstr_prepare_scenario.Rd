@@ -27,9 +27,8 @@ raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
 pstr_prepare_scenario(raw_scenarios)
 }
 \seealso{
-Other helpers: 
+Other pre-processing helpers: 
 \code{\link{xstr_pivot_type_sector_subsector}()},
-\code{\link{xstr_polish_output_at_company_level}()},
 \code{\link{xstr_prune_companies}()}
 }
-\concept{helpers}
+\concept{pre-processing helpers}

@@ -5,7 +5,7 @@
 #'
 #' @param data Typically an XSTR `*companies` dataframe.
 #'
-#' @family helpers
+#' @family pre-processing helpers
 #'
 #' @return A dataframe with maybe fewer rows than the input `data`.
 #' @export

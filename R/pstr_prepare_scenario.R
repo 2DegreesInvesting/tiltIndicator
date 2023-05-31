@@ -2,7 +2,7 @@
 #'
 #' @param scenarios A named list of identically structured scenarios.
 #'
-#' @family helpers
+#' @family pre-processing helpers
 #'
 #' @return A single, cleaner dataframe with an additional column to identify
 #'   which rows come from which scenario.
