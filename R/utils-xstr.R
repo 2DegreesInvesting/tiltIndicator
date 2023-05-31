@@ -16,3 +16,13 @@ xstr_polish_output_at_product_level <- function(data) {
     ) |>
     relocate(all_of(cols_at_all_levels()))
 }
+
+xstr_cols_at_product_level <- function() {
+  c(
+    cols_at_product_level(),
+    "tilt_sector",
+    "scenario",
+    "year",
+    "type"
+  )
+}
