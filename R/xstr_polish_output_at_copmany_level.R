@@ -9,11 +9,11 @@
 #'
 #' @examples
 #' out <- pstr(pstr_companies, pstr_scenarios)
-#' out |> xstr_polish_output_at_copmany_level()
+#' out |> xstr_separate_grouped_by()
 #'
 #' out <- istr(istr_companies, istr_scenarios, istr_inputs)
-#' out |> xstr_polish_output_at_copmany_level()
-xstr_polish_output_at_copmany_level <- function(data) {
+#' out |> xstr_separate_grouped_by()
+xstr_separate_grouped_by <- function(data) {
   separate_wider_delim(
     data,
     cols = "grouped_by",

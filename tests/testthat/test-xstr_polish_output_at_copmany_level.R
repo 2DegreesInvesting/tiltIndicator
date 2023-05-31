@@ -8,7 +8,7 @@ test_that("outputs the expected columns", {
   )
   # styler: on
 
-  out <- xstr_polish_output_at_copmany_level(pstr)
+  out <- xstr_separate_grouped_by(pstr)
 
   exp <- c("companies_id", "type", "scenario", "year", "risk_category", "value")
   expect_named(out, exp)
