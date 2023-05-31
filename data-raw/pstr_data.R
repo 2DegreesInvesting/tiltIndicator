@@ -14,5 +14,5 @@ pstr_scenarios <- list(
   ipr = read_csv(extdata_path("pstr_ipr_2022.csv")),
   weo = read_csv(extdata_path("pstr_weo_2022.csv"))
 ) |>
-  pstr_prepare_scenario()
+  xstr_prepare_scenario()
 use_data(pstr_scenarios, overwrite = TRUE)
