@@ -2,7 +2,7 @@
 #'
 #' @param data The output of `xstr*()` functions.
 #'
-#' @family helpers
+#' @family post-processing helpers
 #'
 #' @return A dataframe.
 #' @export
