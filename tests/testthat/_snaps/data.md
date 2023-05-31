@@ -4633,6 +4633,160 @@
       74              3821
       
       [[6]]
+             input_tilt_sector
+      1  non-metallic minerals
+      2  non-metallic minerals
+      3  non-metallic minerals
+      4  non-metallic minerals
+      5  non-metallic minerals
+      6  non-metallic minerals
+      7  non-metallic minerals
+      8  non-metallic minerals
+      9  non-metallic minerals
+      10 non-metallic minerals
+      11 non-metallic minerals
+      12 non-metallic minerals
+      13 non-metallic minerals
+      14 non-metallic minerals
+      15 non-metallic minerals
+      16 non-metallic minerals
+      17 non-metallic minerals
+      18 non-metallic minerals
+      19 non-metallic minerals
+      20 non-metallic minerals
+      21 non-metallic minerals
+      22 non-metallic minerals
+      23 non-metallic minerals
+      24 non-metallic minerals
+      25 non-metallic minerals
+      26 non-metallic minerals
+      27 non-metallic minerals
+      28 non-metallic minerals
+      29 non-metallic minerals
+      30 non-metallic minerals
+      31 non-metallic minerals
+      32 non-metallic minerals
+      33 non-metallic minerals
+      34 non-metallic minerals
+      35 non-metallic minerals
+      36 non-metallic minerals
+      37 non-metallic minerals
+      38 non-metallic minerals
+      39 non-metallic minerals
+      40 non-metallic minerals
+      41 non-metallic minerals
+      42 non-metallic minerals
+      43 non-metallic minerals
+      44 non-metallic minerals
+      45 non-metallic minerals
+      46 non-metallic minerals
+      47 non-metallic minerals
+      48 non-metallic minerals
+      49 non-metallic minerals
+      50 non-metallic minerals
+      51 non-metallic minerals
+      52 non-metallic minerals
+      53 non-metallic minerals
+      54 non-metallic minerals
+      55 non-metallic minerals
+      56 non-metallic minerals
+      57 non-metallic minerals
+      58 non-metallic minerals
+      59 non-metallic minerals
+      60 non-metallic minerals
+      61 non-metallic minerals
+      62 non-metallic minerals
+      63 non-metallic minerals
+      64 non-metallic minerals
+      65 non-metallic minerals
+      66 non-metallic minerals
+      67 non-metallic minerals
+      68 non-metallic minerals
+      69 non-metallic minerals
+      70 non-metallic minerals
+      71 non-metallic minerals
+      72 non-metallic minerals
+      73 non-metallic minerals
+      74 non-metallic minerals
+      
+      [[7]]
+         input_tilt_subsector
+      1          raw minerals
+      2          raw minerals
+      3          raw minerals
+      4          raw minerals
+      5          raw minerals
+      6          raw minerals
+      7          raw minerals
+      8          raw minerals
+      9          raw minerals
+      10         raw minerals
+      11         raw minerals
+      12         raw minerals
+      13         raw minerals
+      14         raw minerals
+      15         raw minerals
+      16         raw minerals
+      17         raw minerals
+      18         raw minerals
+      19         raw minerals
+      20         raw minerals
+      21         raw minerals
+      22         raw minerals
+      23         raw minerals
+      24         raw minerals
+      25         raw minerals
+      26         raw minerals
+      27         raw minerals
+      28         raw minerals
+      29         raw minerals
+      30         raw minerals
+      31         raw minerals
+      32         raw minerals
+      33         raw minerals
+      34         raw minerals
+      35         raw minerals
+      36         raw minerals
+      37         raw minerals
+      38         raw minerals
+      39         raw minerals
+      40         raw minerals
+      41         raw minerals
+      42         raw minerals
+      43         raw minerals
+      44         raw minerals
+      45         raw minerals
+      46         raw minerals
+      47         raw minerals
+      48         raw minerals
+      49         raw minerals
+      50         raw minerals
+      51         raw minerals
+      52         raw minerals
+      53         raw minerals
+      54         raw minerals
+      55         raw minerals
+      56         raw minerals
+      57         raw minerals
+      58         raw minerals
+      59         raw minerals
+      60         raw minerals
+      61         raw minerals
+      62         raw minerals
+      63         raw minerals
+      64         raw minerals
+      65         raw minerals
+      66         raw minerals
+      67         raw minerals
+      68         raw minerals
+      69         raw minerals
+      70         raw minerals
+      71         raw minerals
+      72         raw minerals
+      73         raw minerals
+      74         raw minerals
+      
+      [[8]]
          type
       1   ipr
       2   weo
@@ -4709,7 +4863,7 @@
       73  ipr
       74  weo
       
-      [[7]]
+      [[9]]
                       sector
       1             no_match
       2  bioenergy and waste
@@ -4786,7 +4940,7 @@
       73            no_match
       74 bioenergy and waste
       
-      [[8]]
+      [[10]]
                                        subsector
       1                                 no_match
       2                      total energy supply
@@ -4923,6 +5077,17 @@
       6   kg
       7   kg
       8   kg
+      
+      [[6]]
+        tilt_sector
+      1      energy
+      2      energy
+      3      energy
+      4        <NA>
+      5    land use
+      6    land use
+      7    land use
+      8    land use
       
 
 # `pstr_companies` hasn't changed
