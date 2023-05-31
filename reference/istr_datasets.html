@@ -69,9 +69,9 @@
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>An object of class <code>spec_tbl_df</code> (inherits from <code>tbl_df</code>, <code>tbl</code>, <code>data.frame</code>) with 8 rows and 5 columns.</p>
+    <p>An object of class <code>spec_tbl_df</code> (inherits from <code>tbl_df</code>, <code>tbl</code>, <code>data.frame</code>) with 8 rows and 6 columns.</p>
 <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 484 rows and 8 columns.</p>
-<p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 74 rows and 8 columns.</p>
+<p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 74 rows and 10 columns.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -81,17 +81,17 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">istr_companies</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   company_id             clustered activity_uuid_produc…¹ ei_activity_name unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> fleischerei-stiefsohn… stove     0a242b09-772a-5edf-8e… cookstove produ… unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> fleischerei-stiefsohn… oven      be06d25c-73dc-55fb-96… microwave oven … unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> pecheries-basques_fra… steel     977d997e-c257-5033-ba… market for stee… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> hoche-butter-gmbh_deu… aged che… ebb8475e-ff57-5e4e-93… cheese producti… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> vicquelin-espaces-ver… aged che… ebb8475e-ff57-5e4e-93… cheese producti… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> bst-procontrol-gmbh_0… cheese    ebb8475e-ff57-5e4e-93… market for chee… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> leider-gmbh_000000050… cream     2f7b77a7-1556-5c1b-b0… market for seal… kg   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> cheries-baqu_neu31654… rubber    2f7b77a7-1556-5c1b-b0… seal production… kg   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   company_id clustered activity_uuid_produc…¹ ei_activity_name unit  tilt_sector</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> fleischer… stove     0a242b09-772a-5edf-8e… cookstove produ… unit  energy     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> fleischer… oven      be06d25c-73dc-55fb-96… microwave oven … unit  energy     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> pecheries… steel     977d997e-c257-5033-ba… market for stee… kg    energy     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> hoche-but… aged che… ebb8475e-ff57-5e4e-93… cheese producti… kg    <span style="color: #BB0000;">NA</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> vicquelin… aged che… ebb8475e-ff57-5e4e-93… cheese producti… kg    land use   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> bst-proco… cheese    ebb8475e-ff57-5e4e-93… market for chee… kg    land use   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> leider-gm… cream     2f7b77a7-1556-5c1b-b0… market for seal… kg    land use   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> cheries-b… rubber    2f7b77a7-1556-5c1b-b0… seal production… kg    land use   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">istr_scenarios</span></span></span>
@@ -111,7 +111,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 474 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">istr_inputs</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 74 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 74 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    activity_uuid_product_uuid      input_activity_uuid_…¹ input_reference_prod…²</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0a242b09-772a-5edf-8e82-9cb4ba… 5de8c337-dea9-5c1f-9d… biowaste              </span>
@@ -127,7 +127,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 64 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated names: ¹​input_activity_uuid_product_uuid,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​input_reference_product_name</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: input_unit &lt;chr&gt;, input_isic_4digit &lt;chr&gt;, type &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: input_unit &lt;chr&gt;, input_isic_4digit &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   input_tilt_sector &lt;chr&gt;, input_tilt_subsector &lt;chr&gt;, type &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sector &lt;chr&gt;, subsector &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
