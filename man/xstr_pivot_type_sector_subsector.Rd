@@ -34,7 +34,7 @@ companies
 \seealso{
 Other helpers: 
 \code{\link{pstr_prepare_scenario}()},
-\code{\link{xstr_prune_companies}()},
-\code{\link{xstr_separate_grouped_by}()}
+\code{\link{xstr_polish_output_at_company_level}()},
+\code{\link{xstr_prune_companies}()}
 }
 \concept{helpers}

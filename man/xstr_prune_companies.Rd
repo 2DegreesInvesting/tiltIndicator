@@ -37,6 +37,6 @@ xstr_prune_companies(companies)
 Other helpers: 
 \code{\link{pstr_prepare_scenario}()},
 \code{\link{xstr_pivot_type_sector_subsector}()},
-\code{\link{xstr_separate_grouped_by}()}
+\code{\link{xstr_polish_output_at_company_level}()}
 }
 \concept{helpers}
