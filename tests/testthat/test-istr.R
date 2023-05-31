@@ -95,9 +95,7 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     company_id = "a",
     tilt_sector = "any",
     clustered = "any",
-    activity_uuid_product_uuid = "any",
-    ei_activity_name = "any",
-    unit = "unit"
+    activity_uuid_product_uuid = "any"
   )
 
   inputs <- tibble(
@@ -209,9 +207,7 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
     company_id = c("a", "b"),
     tilt_sector = c("any", "any"),
     clustered = "x",
-    activity_uuid_product_uuid = c("x", "y"),
-    ei_activity_name = "x",
-    unit = "x"
+    activity_uuid_product_uuid = c("x", "y")
   )
 
   inputs <- tibble(
@@ -243,9 +239,7 @@ test_that("no matches yield the expected prototype (#176)", {
     company_id = c("a", "b"),
     tilt_sector = c("any", "any"),
     clustered = "x",
-    activity_uuid_product_uuid = c("x", "y"),
-    ei_activity_name = "x",
-    unit = "x"
+    activity_uuid_product_uuid = c("x", "y")
   )
 
   inputs <- tibble(
@@ -296,9 +290,7 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
     company_id = "a",
     tilt_sector = "any",
     clustered = "x",
-    activity_uuid_product_uuid = "f",
-    ei_activity_name = "x",
-    unit = "x"
+    activity_uuid_product_uuid = "f"
   )
 
   inputs <- tibble(
@@ -361,8 +353,6 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
 
   companies <- tibble(
     company_id = "1",
-    ei_activity_name = "x",
-    unit = "x",
     clustered = "any",
     activity_uuid_product_uuid = "x",
     tilt_sector = "x",
