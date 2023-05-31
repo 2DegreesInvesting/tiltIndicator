@@ -33,7 +33,7 @@ companies
 }
 \seealso{
 Other pre-processing helpers: 
-\code{\link{pstr_prepare_scenario}()},
+\code{\link{xstr_prepare_scenario}()},
 \code{\link{xstr_prune_companies}()}
 }
 \concept{pre-processing helpers}
