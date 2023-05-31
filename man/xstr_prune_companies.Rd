@@ -19,21 +19,15 @@ missing and the sector information is duplicated.
 \examples{
 # styler: off
 companies <- tibble::tribble(
-  ~row_id, ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector,
+  ~row, ~company_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector,
   # Keep: Has product info
-        1,           "a",       "b1",                        "c1",          "x",
+     1,         "a",       "b1",                        "c1",          "x",
   # Drop: Lacks product info and sector info is duplicated
-        2,           "a",         NA,                          NA,          "x",
-  # Drop: Lacks product info and sector info is duplicated
-        3,           "a",         NA,                          NA,          "x",
+     2,         "a",         NA,                          NA,          "x",
   # Keep: Lacks product info but sector info is unique
-        4,           "a",         NA,                          NA,          "y",
+     3,         "a",         NA,                          NA,          "y",
   # Drop: Lacks product info and sector info is duplicated
-        5,           "a",         NA,                          NA,          "y",
-  # Keep: Has product info
-        6,           "a",       "b6",                        "c6",          "z",
-  # Keep: Has product info
-        7,           "a",       "b7",                          NA,          "z",
+     4,         "a",         NA,                          NA,          "y",
 )
 # styler: on
 
