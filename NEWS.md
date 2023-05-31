@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9067
+
+- Same as previous version.
+
+
 # tiltIndicator 0.0.0.9066
 
 * New helper `xstr_prune_companies()` to drop rows where product info is 'NA' & sector info is duplicated (#379).
