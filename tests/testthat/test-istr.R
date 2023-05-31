@@ -92,7 +92,7 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
   companies <- tibble(
-    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
+    company_id = "a",
     tilt_sector = "any",
     clustered = "any",
     activity_uuid_product_uuid = "any",
