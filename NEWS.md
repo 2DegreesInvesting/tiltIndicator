@@ -2,8 +2,7 @@
 
 # tiltIndicator 0.0.0.9067
 
-- Same as previous version.
-
+* `xstr_prune_companies()` now expects the column `company_id` (#380).
 
 # tiltIndicator 0.0.0.9066
 
