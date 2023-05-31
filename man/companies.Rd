@@ -3,7 +3,7 @@
 \docType{data}
 \name{companies}
 \alias{companies}
-\title{Companies data for all indicators}
+\title{XCTR datasets}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 9 rows and 4 columns.
 }
@@ -11,7 +11,7 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 companies
 }
 \description{
-Companies data for all indicators
+XCTR datasets
 }
 \examples{
 companies
@@ -19,5 +19,5 @@ companies
 \author{
 Kalash Singhal.
 }
-\concept{general datasets}
+\concept{XCTR datasets}
 \keyword{datasets}

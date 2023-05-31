@@ -1,6 +1,6 @@
-#' Companies data for all indicators
+#' XCTR datasets
 #' @author Kalash Singhal.
-#' @family general datasets
+#' @family XCTR datasets
 #'
 #' @examples
 #' companies
