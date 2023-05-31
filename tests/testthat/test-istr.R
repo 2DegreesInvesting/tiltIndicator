@@ -350,6 +350,15 @@ test_that("the thresholds are in the range 0 to 1", {
 })
 
 test_that("NA in the reductions column yields `NA` in risk_category at product level", {
+  scenarios <- tibble(
+    reductions = NA,
+    scenario = "2",
+    sector = "b",
+    subsector = "c",
+    year = 2020,
+    type = "a",
+  )
+
   companies <- tibble(
     company_id = "1",
     ei_activity_name = "x",
@@ -357,14 +366,6 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
     clustered = "any",
     activity_uuid_product_uuid = "x",
     tilt_sector = "x",
-  )
-  scenarios <- tibble(
-    scenario = "2",
-    sector = "b",
-    subsector = "c",
-    year = 2020,
-    reductions = NA,
-    type = "a",
   )
 
   inputs <- tibble(
