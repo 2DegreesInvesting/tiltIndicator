@@ -91,15 +91,17 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
   companies <- tibble(
-    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
+    company_id = "a",
+    tilt_sector = "any",
     clustered = "any",
-    activity_uuid_product_uuid = "any",
-    ei_activity_name = "any",
-    unit = "unit"
+    activity_uuid_product_uuid = "any"
   )
 
   inputs <- tibble(
     activity_uuid_product_uuid = "any",
+    input_activity_uuid_product_uuid = "any",
+    input_tilt_sector = "any",
+    input_tilt_subsector = "any",
     type = "ipr",
     sector = "total",
     subsector = "energy",
@@ -200,14 +202,16 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
 
   companies <- tibble(
     company_id = c("a", "b"),
+    tilt_sector = c("any", "any"),
     clustered = "x",
-    activity_uuid_product_uuid = c("x", "y"),
-    ei_activity_name = "x",
-    unit = "x"
+    activity_uuid_product_uuid = c("x", "y")
   )
 
   inputs <- tibble(
     activity_uuid_product_uuid = c("x", "y"),
+    input_activity_uuid_product_uuid = c("any", "any"),
+    input_tilt_sector = c("any", "any"),
+    input_tilt_subsector = c("any", "any"),
     type = c("x", "y"),
     sector = c("x", "y"),
     subsector = c("x", "y"),
@@ -230,14 +234,16 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
 test_that("no matches yield the expected prototype (#176)", {
   companies <- tibble(
     company_id = c("a", "b"),
+    tilt_sector = c("any", "any"),
     clustered = "x",
-    activity_uuid_product_uuid = c("x", "y"),
-    ei_activity_name = "x",
-    unit = "x"
+    activity_uuid_product_uuid = c("x", "y")
   )
 
   inputs <- tibble(
     activity_uuid_product_uuid = c("x", "y"),
+    input_activity_uuid_product_uuid = c("any", "any"),
+    input_tilt_sector = c("any", "any"),
+    input_tilt_subsector = c("any", "any"),
     type = c("x", "y"),
     sector = c("x", "y"),
     subsector = c("x", "y"),
@@ -278,14 +284,16 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
 test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
   companies <- tibble(
     company_id = "a",
+    tilt_sector = "any",
     clustered = "x",
-    activity_uuid_product_uuid = "f",
-    ei_activity_name = "x",
-    unit = "x"
+    activity_uuid_product_uuid = "f"
   )
 
   inputs <- tibble(
     activity_uuid_product_uuid = "f",
+    input_activity_uuid_product_uuid = "any",
+    input_tilt_sector = "any",
+    input_tilt_subsector = "any",
     type = "b",
     sector = "c",
     subsector = "d",
@@ -330,29 +338,27 @@ test_that("the thresholds are in the range 0 to 1", {
 })
 
 test_that("NA in the reductions column yields `NA` in risk_category at product level", {
-  companies <- tibble(
-    company_id = "1",
-    type = "a",
-    sector = "b",
-    subsector = "c",
-    clustered = "any",
-    activity_uuid_product_uuid = "x",
-    tilt_sector = "x",
-    tilt_subsector = "x",
-  )
   scenarios <- tibble(
+    reductions = NA,
     scenario = "2",
     sector = "b",
     subsector = "c",
     year = 2020,
-    reductions = NA,
     type = "a",
+  )
+
+  companies <- tibble(
+    company_id = "1",
+    clustered = "any",
+    activity_uuid_product_uuid = "x",
+    tilt_sector = "x",
   )
 
   inputs <- tibble(
     activity_uuid_product_uuid = "x",
-    input_activity_uuid_product_uuid = "y",
-    input_reference_product_name = "y",
+    input_activity_uuid_product_uuid = "any",
+    input_tilt_sector = "any",
+    input_tilt_subsector = "any",
     input_unit = "y",
     input_isic_4digit = "y",
     type = "a",
@@ -367,13 +373,11 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
 test_that("NA in the reductions column should be ignored from the value calculations", {
   companies <- tibble(
     company_id = "1",
-    type = "a",
-    sector = "b",
-    subsector = "c",
+    ei_activity_name = "x",
+    unit = "x",
     clustered = "any",
     activity_uuid_product_uuid = "x",
     tilt_sector = "x",
-    tilt_subsector = "x",
   )
   scenarios <- tibble(
     scenario = "2",
@@ -386,8 +390,9 @@ test_that("NA in the reductions column should be ignored from the value calculat
 
   inputs <- tibble(
     activity_uuid_product_uuid = "x",
-    input_activity_uuid_product_uuid = "y",
-    input_reference_product_name = "y",
+    input_activity_uuid_product_uuid = "any",
+    input_tilt_sector = "any",
+    input_tilt_subsector = "any",
     input_unit = "y",
     input_isic_4digit = "y",
     type = "a",

@@ -67,7 +67,7 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
   companies <- tibble(
-    company_id = "cta-commodity-trading-austria-gmbh_00000005215384-001",
+    company_id = "a",
     type = "ipr",
     sector = "total",
     subsector = "energy",

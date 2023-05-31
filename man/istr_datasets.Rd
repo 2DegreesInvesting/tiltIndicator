@@ -8,11 +8,11 @@
 \alias{istr_inputs}
 \title{ISTR datasets}
 \format{
-An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 8 rows and 5 columns.
+An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 8 rows and 6 columns.
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 484 rows and 8 columns.
 
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 74 rows and 8 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 74 rows and 10 columns.
 }
 \usage{
 istr_companies

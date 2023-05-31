@@ -97,11 +97,7 @@ pstr_select_cols_at_product_level <- function(data) {
 
 pstr_cols_at_product_level <- function() {
   c(
-    cols_at_product_level(),
-    "tilt_sector",
-    "tilt_subsector",
-    "scenario",
-    "year",
-    "type"
+    xstr_cols_at_product_level(),
+    "tilt_subsector"
   )
 }

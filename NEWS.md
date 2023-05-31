@@ -1,5 +1,17 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9067
+
+* `xstr_prune_companies()` now expects the column `company_id` (#380).
+
+# tiltIndicator 0.0.0.9066
+
+* New helper `xstr_prune_companies()` to drop rows where product info is 'NA' & sector info is duplicated (#379).
+
+# tiltIndicator 0.0.0.9065
+
+* `istr_inputs` now includes columns required in the output (@kalashsinghal #376).
+
 # tiltIndicator 0.0.0.9064
 
 * In XSTR `NA`s in reductions are no longer an error but handled specially (@lindadelacombaz #350).
