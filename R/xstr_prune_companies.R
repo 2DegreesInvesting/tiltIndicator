@@ -1,8 +1,7 @@
-#' Prune companies retaining as much sector information per company as possible
+#' Drop rows where the product info is `NA` & sector info is duplicated
 #'
-#' For each company, this function preserves rows that lack product information
-#' but have unique sector information. In other words, it only drops rows where
-#' the product information is missing and the sector information is duplicated.
+#' For each company, this function drops rows where the product information is
+#' missing and the sector information is duplicated.
 #'
 #' @param data Typically an XSTR `*companies` dataframe.
 #'

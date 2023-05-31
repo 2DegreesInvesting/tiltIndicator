@@ -2,7 +2,7 @@
 % Please edit documentation in R/xstr_prune_companies.R
 \name{xstr_prune_companies}
 \alias{xstr_prune_companies}
-\title{Prune companies retaining as much sector information per company as possible}
+\title{Drop rows where the product info is \code{NA} & sector info is duplicated}
 \usage{
 xstr_prune_companies(data)
 }
@@ -13,9 +13,8 @@ xstr_prune_companies(data)
 A dataframe with maybe fewer rows than the input \code{data}.
 }
 \description{
-For each company, this function preserves rows that lack product information
-but have unique sector information. In other words, it only drops rows where
-the product information is missing and the sector information is duplicated.
+For each company, this function drops rows where the product information is
+missing and the sector information is duplicated.
 }
 \examples{
 # styler: off
