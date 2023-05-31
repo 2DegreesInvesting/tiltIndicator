@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9065
+
+* `istr_inputs` now includes columns required in the output (@kalashsinghal #376).
+
 # tiltIndicator 0.0.0.9064
 
 * In XSTR `NA`s in reductions are no longer an error but handled specially (@lindadelacombaz #350).
