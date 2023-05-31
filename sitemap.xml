@@ -64,9 +64,6 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_datasets.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_prepare_scenario.html</loc>
-  </url>
-  <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/render_to_list.html</loc>
   </url>
   <url>
@@ -83,6 +80,9 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/xstr_polish_output_at_company_level.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/xstr_prepare_scenario.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/xstr_prune_companies.html</loc>
