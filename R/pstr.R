@@ -96,5 +96,8 @@ pstr_select_cols_at_product_level <- function(data) {
 }
 
 pstr_cols_at_product_level <- function() {
-  c(xstr_cols_at_product_level(), "tilt_subsector")
+  c(
+    xstr_cols_at_product_level(),
+    "tilt_subsector"
+  )
 }
