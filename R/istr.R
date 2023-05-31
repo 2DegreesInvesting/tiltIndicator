@@ -65,13 +65,9 @@ istr_select_cols_at_product_level <- function(data) {
 
 istr_cols_at_product_level <- function() {
   c(
-    cols_at_product_level(),
+    xstr_cols_at_product_level(),
     "input_activity_uuid_product_uuid",
     "input_tilt_sector",
-    "input_tilt_subsector",
-    "tilt_sector",
-    "scenario",
-    "year",
-    "type"
+    "input_tilt_subsector"
   )
 }
