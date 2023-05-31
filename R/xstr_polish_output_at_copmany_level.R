@@ -11,10 +11,11 @@
 #' library(dplyr, warn.conflicts = FALSE)
 #'
 #' out <- pstr(slice(pstr_companies, 1), pstr_scenarios)
-#' out
+#' out |> xstr_polish_output_at_copmany_level()
 #'
-#' out |> pstr_polish_output_at_copmany_level()
-pstr_polish_output_at_copmany_level <- function(data) {
+#' out <- istr(slice(istr_companies, 1), istr_scenarios, istr_inputs)
+#' out |> xstr_polish_output_at_copmany_lxevel()
+xstr_polish_output_at_copmany_level <- function(data) {
   separate_wider_delim(
     data,
     cols = "grouped_by",
