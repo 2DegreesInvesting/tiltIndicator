@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9068
+
+* `pstr_polish_output_at_copmany_level()` is now named `xstr_polish_output_at_copmany_level()` (#383).
+
 # tiltIndicator 0.0.0.9067
 
 * `xstr_prune_companies()` now expects the column `company_id` (#380).
