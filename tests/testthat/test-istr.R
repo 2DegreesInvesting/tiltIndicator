@@ -41,7 +41,6 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   expect_error(istr(bad, scenarios, inputs), crucial)
 })
 
-# TODO: Common test in both istr and pstr because both use same scenario dataset
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   companies <- istr_companies |> slice(1)
   scenarios <- istr_scenarios
@@ -151,13 +150,12 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
   expect_equal(0, filter(out, risk_category == "high")$value)
 })
 
-# TODO: This test should be changed to handle `NA` values in the `value` column
 test_that("outputs values in proportion", {
-  companies <- istr_companies |> slice(3)
+  companies <- istr_companies |> slice(1)
   scenarios <- istr_scenarios
   inputs <- istr_inputs
   out <- istr(companies, scenarios, inputs)
-  expect_true(all(out$value <= 1.0))
+  expect_true(all(na.omit(out$value) <= 1.0))
 })
 
 test_that("each company has risk categories low, medium, and high (#215)", {
@@ -179,10 +177,9 @@ test_that("grouped_by includes the type of scenario", {
   expect_true(all(grepl(.type, unique(out$grouped_by))))
 })
 
-# TODO: This test should be changed to handle `NA` values in the `value` column
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
   .type <- "ipr"
-  companies <- istr_companies |> slice(3)
+  companies <- istr_companies |> slice(1)
   scenarios <- istr_scenarios |> filter(type == .type)
   inputs <- istr_inputs |> filter(type == .type)
 
@@ -190,7 +187,7 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
   sum <- out |>
     summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
 
-  expect_true(all(sum$value_sum == 1))
+  expect_true(all(na.omit(sum$value_sum) == 1))
 })
 
 test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
@@ -271,10 +268,9 @@ test_that("no matches yield the expected prototype (#176)", {
   expect_equal(unique(unmatched$value), NA_real_)
 })
 
-# TODO: This test should be changed to handle `NA` values in the `value` column
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
   .type <- "weo"
-  companies <- istr_companies |> slice(3)
+  companies <- istr_companies |> slice(1)
   scenarios <- istr_scenarios |> filter(type == .type)
   inputs <- istr_inputs |> filter(type == .type)
 
@@ -282,7 +278,7 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
   sum <- out |>
     summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
 
-  expect_true(all(sum$value_sum == 1))
+  expect_true(all(na.omit(sum$value_sum) == 1))
 })
 
 test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {

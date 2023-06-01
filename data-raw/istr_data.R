@@ -1,10 +1,8 @@
-# TODO: Source of the data
+# Source: @Tilmon via:
+# https://github.com/2DegreesInvesting/tiltIndicator/issues/347#issue-1717975337
 library(usethis)
 library(readr)
 devtools::load_all()
-
-# TODO: Remove this line if unnecessary
-options(readr.show_col_types = FALSE)
 
 istr_companies <- extdata_path("istr_companies.csv") |>
   read_csv()
@@ -16,6 +14,5 @@ istr_inputs <- extdata_path("istr_inputs.csv") |>
   xstr_pivot_type_sector_subsector()
 use_data(istr_inputs, overwrite = TRUE)
 
-# TODO: Create XSTR Scenarios dataset
 istr_scenarios <- pstr_scenarios
 use_data(istr_scenarios, overwrite = TRUE)
