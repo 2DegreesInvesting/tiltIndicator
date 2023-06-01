@@ -34,9 +34,8 @@ companies <- tibble::tribble(
 xstr_prune_companies(companies)
 }
 \seealso{
-Other helpers: 
-\code{\link{pstr_polish_output_at_copmany_level}()},
-\code{\link{pstr_prepare_scenario}()},
-\code{\link{xstr_pivot_type_sector_subsector}()}
+Other pre-processing helpers: 
+\code{\link{xstr_pivot_type_sector_subsector}()},
+\code{\link{xstr_prepare_scenario}()}
 }
-\concept{helpers}
+\concept{pre-processing helpers}

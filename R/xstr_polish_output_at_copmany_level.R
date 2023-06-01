@@ -2,19 +2,18 @@
 #'
 #' @param data The output of `xstr*()` functions.
 #'
-#' @family helpers
+#' @family post-processing helpers
 #'
 #' @return A dataframe.
 #' @export
 #'
 #' @examples
-#' library(dplyr, warn.conflicts = FALSE)
+#' pstr(pstr_companies, pstr_scenarios) |>
+#'   xstr_polish_output_at_company_level()
 #'
-#' out <- pstr(slice(pstr_companies, 1), pstr_scenarios)
-#' out
-#'
-#' out |> pstr_polish_output_at_copmany_level()
-pstr_polish_output_at_copmany_level <- function(data) {
+#' istr(istr_companies, istr_scenarios, istr_inputs) |>
+#'   xstr_polish_output_at_company_level()
+xstr_polish_output_at_company_level <- function(data) {
   separate_wider_delim(
     data,
     cols = "grouped_by",

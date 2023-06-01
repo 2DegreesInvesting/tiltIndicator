@@ -2,7 +2,7 @@
 % Please edit documentation in R/xstr_pivot_type_sector_subsector.R
 \name{xstr_pivot_type_sector_subsector}
 \alias{xstr_pivot_type_sector_subsector}
-\title{Given a messy PSTR \code{companies} dataframe returns a cleaner one}
+\title{Restructure XSTR \code{companies}}
 \usage{
 xstr_pivot_type_sector_subsector(data)
 }
@@ -19,7 +19,7 @@ xstr_pivot_type_sector_subsector(data)
 A \code{companies} dataset as required by PSTR functions.
 }
 \description{
-Given a messy PSTR \code{companies} dataframe returns a cleaner one
+Restructure XSTR \code{companies}
 }
 \examples{
 library(dplyr, warn.conflicts = FALSE)
@@ -32,9 +32,8 @@ companies <- xstr_pivot_type_sector_subsector(raw_companies)
 companies
 }
 \seealso{
-Other helpers: 
-\code{\link{pstr_polish_output_at_copmany_level}()},
-\code{\link{pstr_prepare_scenario}()},
+Other pre-processing helpers: 
+\code{\link{xstr_prepare_scenario}()},
 \code{\link{xstr_prune_companies}()}
 }
-\concept{helpers}
+\concept{pre-processing helpers}

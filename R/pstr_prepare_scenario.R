@@ -2,7 +2,7 @@
 #'
 #' @param scenarios A named list of identically structured scenarios.
 #'
-#' @family helpers
+#' @family pre-processing helpers
 #'
 #' @return A single, cleaner dataframe with an additional column to identify
 #'   which rows come from which scenario.
@@ -17,8 +17,8 @@
 #' raw_ipr <- read_csv(extdata_path("pstr_ipr_2022.csv"))
 #' raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
 #'
-#' pstr_prepare_scenario(raw_scenarios)
-pstr_prepare_scenario <- function(scenarios) {
+#' xstr_prepare_scenario(raw_scenarios)
+xstr_prepare_scenario <- function(scenarios) {
   # Hack #308
   if (hasName(scenarios, "weo")) {
     scenarios$weo <- rename(
@@ -28,10 +28,10 @@ pstr_prepare_scenario <- function(scenarios) {
     )
   }
 
-  imap_dfr(scenarios, ~ pstr_prepare_scenario_impl(.x, .y))
+  imap_dfr(scenarios, ~ xstr_prepare_scenario_impl(.x, .y))
 }
 
-pstr_prepare_scenario_impl <- function(data, type) {
+xstr_prepare_scenario_impl <- function(data, type) {
   data |>
     lowercase_characters() |>
     rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
