@@ -1,0 +1,64 @@
+---
+output: github_document
+params:
+  product: "~/Downloads/pstr_product_level_v2_fixed.csv"
+  company: "~/Downloads/pstr_company_level_v2_fixed.csv"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Check XSTR
+
+The goal of this document is to check XSTR outputs are as we expect. It
+automates checks that we would otherwise run interactively.
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+library(testthat, warn.conflicts = FALSE)
+```
+
+## At both levels
+
+```{r}
+message("Using ", params$product)
+product <- read_csv(params$product)
+product |> glimpse()
+
+message("Using ", params$company)
+company <- read_csv(params$company)
+company |> glimpse()
+```
+
+```{r}
+has_no_duplicates <- identical(anyDuplicated(product), 0L)
+expect_true(has_no_duplicates)
+
+has_no_duplicates <- identical(anyDuplicated(company), 0L)
+expect_true(has_no_duplicates)
+```
+
+## At product level
+
+```{r}
+n_products_per_company <- unique(count(product, companies_id, clustered)$n)
+# FIXME? bit.ly/3ISwI2y. We expect 2 or 4 but after removing duplicates we may
+# also get 1 and 3
+expect_equal(sort(n_products_per_company), c(1:4))
+```
+
+## At company level
+
+```{r}
+rows_per_company <- unique(count(company, companies_id)$n)
+expect_equal(sort(rows_per_company), c(1L, 6L, 12L))
+```
