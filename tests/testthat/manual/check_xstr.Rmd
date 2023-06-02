@@ -3,8 +3,6 @@ output: github_document
 params:
   product: "~/Downloads/pstr_product_level_v2_fixed.csv"
   company: "~/Downloads/pstr_company_level_v2_fixed.csv"
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
