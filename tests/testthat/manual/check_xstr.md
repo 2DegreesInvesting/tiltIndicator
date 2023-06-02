@@ -4,13 +4,16 @@
 The goal of this document is to check XSTR outputs are as we expect. It
 automates checks that we would otherwise run interactively.
 
+## Setup
+
 ``` r
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 library(testthat, warn.conflicts = FALSE)
 ```
 
-## At both levels
+**TODO**: Use your own data in RStudio via *Knit \> Knit with
+Parameters*.
 
 ``` r
 message("Using ", params$product)
@@ -60,6 +63,8 @@ company |> glimpse()
 #> $ value         <dbl> 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0,…
 ```
 
+## At both levels
+
 ``` r
 has_no_duplicates <- identical(anyDuplicated(product), 0L)
 expect_true(has_no_duplicates)
@@ -72,8 +77,8 @@ expect_true(has_no_duplicates)
 
 ``` r
 n_products_per_company <- unique(count(product, companies_id, clustered)$n)
-# FIXME? bit.ly/3ISwI2y. We expect 2 or 4 but after removing duplicates we may
-# also get 1 and 3
+# FIXME? We expect 2 or 4 but after removing duplicates we may also get 1 and 3
+# bit.ly/3ISwI2y
 expect_equal(sort(n_products_per_company), c(1:4))
 ```
 
