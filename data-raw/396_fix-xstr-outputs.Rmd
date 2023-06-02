@@ -1,0 +1,124 @@
+---
+output: github_document
+params:
+  import_product_level: "~/Downloads/pstr_product_level_v2.csv"
+  import_company_level: "~/Downloads/pstr_company_level_v2.csv"
+  export_product_level: "~/Downloads/pstr_product_level_v2_fixed.csv"
+  export_company_level: "~/Downloads/pstr_company_level_v2_fixed.csv"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Fix XSTR outputs (#396)
+
+Closes #396 by applying on the output what #391, #392, and #393 should have done
+on the code.
+
+## Setup
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+
+options(readr.show_col_types = FALSE)
+```
+
+## Data
+
+```{r}
+xstr_product_level <- read_csv(params$import_product_level)
+xstr_product_level |> glimpse()
+
+xstr_company_level <- read_csv(params$import_company_level)
+xstr_company_level |> glimpse()
+```
+
+## Fix
+
+### At product level, remove bad output
+
+https://github.com/2DegreesInvesting/tiltIndicator/issues/391
+
+```{r}
+# The bad output resulted from duplicated data in the weo scenario
+bad <- xstr_product_level |>
+  filter(
+    type == "weo",
+    # Exclude weo_flow = "energy" & weo_product = "total energy supply"
+    tilt_sector == "energy",
+    tilt_subsector == "total energy",
+    # Exclude the one that has low risk (because emission capture)
+    risk_category == "low",
+  )
+bad
+
+xstr_product_level2 <- anti_join(xstr_product_level, bad)
+xstr_product_level2
+```
+
+### At both levels, remove duplicated rows
+
+https://github.com/2DegreesInvesting/tiltIndicator/issues/392
+
+```{r}
+xstr_product_level3 <- distinct(xstr_product_level2)
+nrow(xstr_product_level2)
+nrow(xstr_product_level3)
+
+xstr_company_level2 <- distinct(xstr_company_level)
+nrow(xstr_company_level)
+nrow(xstr_company_level2)
+```
+
+### At company level, remove needless rows with missing values
+
+https://github.com/2DegreesInvesting/tiltIndicator/issues/393
+
+```{r}
+# Rows where `value` is not `NA` from companies with at least one such `value`
+filtered_complete_data <- xstr_company_level2 |>
+  group_by(companies_id) |>
+  # Drop companies where all `value` is `NA`
+  filter(!all(is.na(value))) |>
+  # Drop rows where `value` is `NA`
+  filter(!is.na(value)) |>
+  ungroup()
+
+# In companies where all `value` is `NA`, make `type` & `risk_category` also `NA`
+filtered_incomplete_data <- xstr_company_level2 |>
+  group_by(companies_id) |>
+  # Where all `value` is `NA` ...
+  filter(all(is.na(value))) |>
+  # ... pick the first row and ...
+  slice(1) |>
+  # ... make `type` and `risk_category` also `NA`
+  mutate(type = NA_character_, risk_category = NA_character_) |>
+  ungroup()
+
+xstr_company_level3 <- bind_rows(filtered_complete_data, filtered_incomplete_data)
+```
+
+## Test
+
+```{r}
+test <- xstr_company_level3 |> 
+  count(companies_id) |> 
+  count(n, sort = TRUE)
+test
+
+stopifnot(identical(test$n, c(12L, 6L, 1L)))
+```
+
+## Export
+
+```{r}
+write_csv(xstr_product_level3, params$export_product_level)
+write_csv(xstr_company_level3, params$export_company_level)
+```
