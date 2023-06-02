@@ -1,5 +1,33 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9069
+
+* `pstr_prepare_scenario()` is now named `xstr_prepare_scenario()` (#385).
+
+# tiltIndicator 0.0.0.9068
+
+* `pstr_polish_output_at_copmany_level()` is now named `xstr_polish_output_at_copmany_level()` (#383).
+
+# tiltIndicator 0.0.0.9067
+
+* `xstr_prune_companies()` now expects the column `company_id` (#380).
+
+# tiltIndicator 0.0.0.9066
+
+* New helper `xstr_prune_companies()` to drop rows where product info is 'NA' & sector info is duplicated (#379).
+
+# tiltIndicator 0.0.0.9065
+
+* `istr_inputs` now includes columns required in the output (@kalashsinghal #376).
+
+# tiltIndicator 0.0.0.9064
+
+* In XSTR `NA`s in reductions are no longer an error but handled specially (@lindadelacombaz #350).
+
+* In ISTR sample data and code now use the new structure (@kalashsinghal #353).
+
+* In ISTR default thresholds are now the same as in XCTR (@lindadelacombaz #348).
+
 # tiltIndicator 0.0.0.9063
 
 * XXTR functions now stop if 'copmanies' has 0-rows (#340).
@@ -27,7 +55,7 @@ an error (#311).
 
 # tiltIndicator 0.0.0.9057
 
-* `pstr_prepare_scenarios()` now handles "weo" data correctly (@kalashsinghal #309).
+* `pstr_prepare_scenario()` now handles "weo" data correctly (@kalashsinghal #309).
 
 # tiltIndicator 0.0.0.9056
 

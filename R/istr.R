@@ -52,17 +52,22 @@ istr_at_product_level <- function(companies,
 
   inputs |>
     distinct() |>
-    istr_add_values_to_categorize(.scenarios) |>
+    xstr_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     xctr_join_companies(.companies) |>
-    xstr_polish_output_at_product_level()
+    xstr_polish_output_at_product_level() |>
+    istr_select_cols_at_product_level()
 }
 
-# TODO: Remove duplication for mapping
-istr_add_values_to_categorize <- function(inputs, scenarios) {
-  left_join(
-    inputs, scenarios,
-    by = join_by("type", "sector", "subsector"),
-    relationship = "many-to-many"
+istr_select_cols_at_product_level <- function(data) {
+  select(data, all_of(istr_cols_at_product_level()))
+}
+
+istr_cols_at_product_level <- function() {
+  c(
+    xstr_cols_at_product_level(),
+    "input_activity_uuid_product_uuid",
+    "input_tilt_sector",
+    "input_tilt_subsector"
   )
 }

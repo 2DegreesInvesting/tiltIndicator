@@ -7,18 +7,21 @@ reference:
   - title: Main functions and datasets
     contents:
       - has_concept("XCTR functions")
-      - has_concept("general datasets")
+      - has_concept("XCTR datasets")
       - has_concept("ICTR datasets")
       - has_concept("PCTR datasets")
 
-  - title: Experimental functions and datasets
-    contents:
       - has_concept("ISTR functions")
-      - has_concept("PSTR functions")
       - has_concept("ISTR datasets")
+
+      - has_concept("PSTR functions")
       - has_concept("PSTR datasets")
 
-  - title: Helpers
+  - title: Pre-processing helpers
     contents:
-      - has_concept("helpers")
+      - has_concept("pre-processing helpers")
+
+  - title: Post-processing helpers
+    contents:
+      - has_concept("post-processing helpers")
 

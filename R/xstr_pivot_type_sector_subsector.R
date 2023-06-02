@@ -1,4 +1,4 @@
-#' Given a messy PSTR `companies` dataframe returns a cleaner one
+#' Restructure XSTR `companies`
 #'
 #' @param data A dataframe with these columns:
 #' * ipr_sector
@@ -6,7 +6,7 @@
 #' * weo_product
 #' * weo_flow
 #'
-#' @family helpers
+#' @family pre-processing helpers
 #'
 #' @return A `companies` dataset as required by PSTR functions.
 #' @export
