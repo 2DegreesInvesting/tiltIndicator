@@ -49,6 +49,15 @@ xstr_company_level |> glimpse()
 
 <https://github.com/2DegreesInvesting/tiltIndicator/issues/391>
 
+Expect either 4 or 2.
+
+``` r
+unique(count(xstr_product_level, companies_id, clustered)$n)
+#> [1] 2 4 6
+```
+
+Fix.
+
 ``` r
 # The bad output resulted from duplicated data in the weo scenario
 bad <- xstr_product_level |>
@@ -102,9 +111,26 @@ xstr_product_level2
 #> #   type <chr>, tilt_subsector <chr>
 ```
 
+Test.
+
+``` r
+unique(count(xstr_product_level2, companies_id, clustered)$n)
+#> [1] 2 4
+```
+
 ### At both levels, remove duplicated rows
 
 <https://github.com/2DegreesInvesting/tiltIndicator/issues/392>
+
+``` r
+anyDuplicated(xstr_product_level2)
+#> [1] 7
+
+anyDuplicated(xstr_company_level)
+#> [1] 13
+```
+
+Fix.
 
 ``` r
 xstr_product_level3 <- distinct(xstr_product_level2)
@@ -120,9 +146,39 @@ nrow(xstr_company_level2)
 #> [1] 2752110
 ```
 
+Test.
+
+``` r
+anyDuplicated(xstr_product_level3)
+#> [1] 0
+
+anyDuplicated(xstr_company_level2)
+#> [1] 0
+```
+
+Note this step makes product-level data to no longer have only 4 or 2
+rows per company per product – as we expected before.
+
+``` r
+unique(count(xstr_product_level2, companies_id, clustered)$n)
+#> [1] 2 4
+
+unique(count(xstr_product_level3, companies_id, clustered)$n)
+#> [1] 2 3 4 1
+```
+
 ### At company level, remove needless rows with missing values
 
 <https://github.com/2DegreesInvesting/tiltIndicator/issues/393>
+
+Expect either 12, 6, or 1.
+
+``` r
+unique(count(xstr_company_level2, companies_id)$n)
+#> [1]  6  9 12  3 15 18
+```
+
+Fix.
 
 ``` r
 # Rows where `value` is not `NA` from companies with at least one such `value`
@@ -148,23 +204,11 @@ filtered_incomplete_data <- xstr_company_level2 |>
 xstr_company_level3 <- bind_rows(filtered_complete_data, filtered_incomplete_data)
 ```
 
-## Test
+Test.
 
 ``` r
-test <- xstr_company_level3 |> 
-  count(companies_id) |> 
-  count(n, sort = TRUE)
-#> Storing counts in `nn`, as `n` already present in input
-#> ℹ Use `name = "new_name"` to pick a new name.
-test
-#> # A tibble: 3 × 2
-#>       n     nn
-#>   <int>  <int>
-#> 1    12 131341
-#> 2     6 128112
-#> 3     1  28525
-
-stopifnot(identical(test$n, c(12L, 6L, 1L)))
+unique(count(xstr_company_level3, companies_id)$n)
+#> [1]  6  1 12
 ```
 
 ## Export

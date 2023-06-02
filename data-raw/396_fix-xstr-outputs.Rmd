@@ -46,6 +46,14 @@ xstr_company_level |> glimpse()
 
 https://github.com/2DegreesInvesting/tiltIndicator/issues/391
 
+Expect either 4 or 2.
+
+```{r}
+unique(count(xstr_product_level, companies_id, clustered)$n)
+```
+
+Fix.
+
 ```{r}
 # The bad output resulted from duplicated data in the weo scenario
 bad <- xstr_product_level |>
@@ -63,9 +71,23 @@ xstr_product_level2 <- anti_join(xstr_product_level, bad)
 xstr_product_level2
 ```
 
+Test.
+
+```{r}
+unique(count(xstr_product_level2, companies_id, clustered)$n)
+```
+
 ### At both levels, remove duplicated rows
 
 https://github.com/2DegreesInvesting/tiltIndicator/issues/392
+
+```{r}
+anyDuplicated(xstr_product_level2)
+
+anyDuplicated(xstr_company_level)
+```
+
+Fix.
 
 ```{r}
 xstr_product_level3 <- distinct(xstr_product_level2)
@@ -77,9 +99,33 @@ nrow(xstr_company_level)
 nrow(xstr_company_level2)
 ```
 
+Test.
+
+```{r}
+anyDuplicated(xstr_product_level3)
+
+anyDuplicated(xstr_company_level2)
+```
+
+Note this step makes product-level data to no longer have only 4 or 2 rows per company per product -- as we expected before.
+
+```{r}
+unique(count(xstr_product_level2, companies_id, clustered)$n)
+
+unique(count(xstr_product_level3, companies_id, clustered)$n)
+```
+
 ### At company level, remove needless rows with missing values
 
 https://github.com/2DegreesInvesting/tiltIndicator/issues/393
+
+Expect either 12, 6, or 1.
+
+```{r}
+unique(count(xstr_company_level2, companies_id)$n)
+```
+
+Fix.
 
 ```{r}
 # Rows where `value` is not `NA` from companies with at least one such `value`
@@ -105,15 +151,10 @@ filtered_incomplete_data <- xstr_company_level2 |>
 xstr_company_level3 <- bind_rows(filtered_complete_data, filtered_incomplete_data)
 ```
 
-## Test
+Test.
 
 ```{r}
-test <- xstr_company_level3 |> 
-  count(companies_id) |> 
-  count(n, sort = TRUE)
-test
-
-stopifnot(identical(test$n, c(12L, 6L, 1L)))
+unique(count(xstr_company_level3, companies_id)$n)
 ```
 
 ## Export
