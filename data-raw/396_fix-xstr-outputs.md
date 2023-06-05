@@ -9,6 +9,7 @@ should have done on the code.
 ``` r
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
+library(stringr)
 
 options(readr.show_col_types = FALSE)
 ```
@@ -16,6 +17,10 @@ options(readr.show_col_types = FALSE)
 ## Data
 
 ``` r
+pstr_companies <- params$import_pstr_companies |> 
+  # Avoid parsing problems
+  read_csv(col_select = -company_name)
+
 xstr_product_level <- read_csv(params$import_product_level)
 xstr_product_level |> glimpse()
 #> Rows: 1,832,962
@@ -274,9 +279,79 @@ sum(is.na(xstr_product_level4$risk_category))
 #> [1] 83213
 ```
 
+### At company level, remove `companies_id` with “;” either of the relevant
+
+columns in `pstr_companies`
+
+<https://github.com/2DegreesInvesting/tiltIndicator/issues/405>
+
+``` r
+semicolon <- pstr_companies |> 
+  select(-starts_with("tilt_")) |> 
+  filter(if_any(ends_with("sector"), ~ str_detect(.x, ";")))
+
+# Note ";"
+select(semicolon, ends_with("sector"))
+#> # A tibble: 48,811 × 4
+#>    ipr_sector             ipr_subsector                 weo_sector weo_subsector
+#>    <chr>                  <chr>                         <chr>      <chr>        
+#>  1 buildings              <NA>                          total      residential;…
+#>  2 transport              trucks; other transport       total      road heavy d…
+#>  3 buildings              land use                      total; no… buildings; n…
+#>  4 industry; total; power iron and steel; energy        total; na… iron and ste…
+#>  5 industry               other industry; iron and ste… total      industry; ir…
+#>  6 buildings; transport   other transport               total      buildings; t…
+#>  7 buildings              <NA>                          total      buildings; r…
+#>  8 buildings              land use                      total; no… buildings; r…
+#>  9 transport              other transport; cars         total      transport; r…
+#> 10 transport              trucks; other transport       total      road heavy d…
+#> # ℹ 48,801 more rows
+
+# Affected companies
+distinct(semicolon, companies_id)
+#> # A tibble: 48,486 × 1
+#>    companies_id                                                                 
+#>    <chr>                                                                        
+#>  1 040-elektricien_00000005335951-634140001                                     
+#>  2 1-2-3-autoservice-gmbh_00000004895557-001                                    
+#>  3 1-a-arbeitsbuhnen-baumaschinen-stapler-u-kran-vermietung-beyer-mietservice_0…
+#>  4 1-blechdesign-bauspenglerei-haslinger-harald-eu_00000005229852-001           
+#>  5 1-iso-giesstechnik-maik-straile-ek_00000004818898-001                        
+#>  6 123-abflussfrei-gmbh_00000004883869-001                                      
+#>  7 123-carrelage-lille_00000005467896-840021001                                 
+#>  8 123-filter-gmbh_00000005275457-001                                           
+#>  9 123carcamnl_00000004686127-486065001                                         
+#> 10 123repair-deutschland_00000005109249-001                                     
+#> # ℹ 48,476 more rows
+
+# Remove affected companies
+xstr_company_level4 <- xstr_company_level3 |> 
+  anti_join(distinct(semicolon, companies_id))
+#> Joining with `by = join_by(companies_id)`
+```
+
+Test.
+
+``` r
+# Compare
+nrow(xstr_company_level3)
+#> [1] 2373289
+nrow(xstr_company_level4)
+#> [1] 1940769
+
+# All gone
+inner_join(xstr_company_level4, semicolon)
+#> Joining with `by = join_by(companies_id)`
+#> # A tibble: 0 × 13
+#> # ℹ 13 variables: companies_id <chr>, type <chr>, scenario <chr>, year <dbl>,
+#> #   risk_category <chr>, value <dbl>, clustered <chr>,
+#> #   activity_uuid_product_uuid <chr>, isic_4digit <chr>, ipr_sector <chr>,
+#> #   ipr_subsector <chr>, weo_sector <chr>, weo_subsector <chr>
+```
+
 ## Export
 
 ``` r
 write_csv(xstr_product_level4, params$export_product_level)
-write_csv(xstr_company_level3, params$export_company_level)
+write_csv(xstr_company_level4, params$export_company_level)
 ```
