@@ -75,7 +75,7 @@ Fix.
 
 ```{r}
 # The bad output resulted from duplicated data in the weo scenario
-bad <- xstr_product_level |>
+bad_391 <- xstr_product_level |>
   filter(
     type == "weo",
     # Exclude weo_flow = "energy" & weo_product = "total energy supply"
@@ -84,9 +84,9 @@ bad <- xstr_product_level |>
     # Exclude the one that has low risk (because emission capture)
     risk_category == "low",
   )
-bad
+bad_391
 
-xstr_product_level2 <- anti_join(xstr_product_level, bad)
+xstr_product_level2 <- anti_join(xstr_product_level, bad_391)
 xstr_product_level2
 ```
 
@@ -241,9 +241,41 @@ nrow(xstr_company_level4)
 inner_join(xstr_company_level4, semicolon)
 ```
 
+### At both levels, remove companies affected by duplicated scenario data
+
+* https://github.com/2DegreesInvesting/tiltIndicator/issues/403
+* https://github.com/2DegreesInvesting/tiltIndicator/issues/391
+
+```{r}
+# Affected companies
+ids_391 <- distinct(bad_391, companies_id)
+ids_391
+
+xstr_product_level5 <- xstr_product_level4 |> anti_join(ids_391)
+xstr_company_level5 <- xstr_company_level4 |> anti_join(ids_391)
+```
+
+Test.
+
+```{r}
+# Compare
+nrow(xstr_product_level4)
+nrow(xstr_product_level5)
+
+# Gone
+inner_join(xstr_product_level5, ids_391)
+
+# Compare
+nrow(xstr_company_level4)
+nrow(xstr_company_level5)
+
+# Gone
+inner_join(xstr_company_level5, ids_391)
+```
+
 ## Export
 
 ```{r}
-write_csv(xstr_product_level4, params$export_product_level)
-write_csv(xstr_company_level4, params$export_company_level)
+write_csv(xstr_product_level5, params$export_product_level)
+write_csv(xstr_company_level5, params$export_company_level)
 ```

@@ -77,7 +77,7 @@ Fix.
 
 ``` r
 # The bad output resulted from duplicated data in the weo scenario
-bad <- xstr_product_level |>
+bad_391 <- xstr_product_level |>
   filter(
     type == "weo",
     # Exclude weo_flow = "energy" & weo_product = "total energy supply"
@@ -86,7 +86,7 @@ bad <- xstr_product_level |>
     # Exclude the one that has low risk (because emission capture)
     risk_category == "low",
   )
-bad
+bad_391
 #> # A tibble: 1,810 × 10
 #>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹
 #>    <chr>               <chr>      <chr>         <chr>     <chr>                 
@@ -105,7 +105,7 @@ bad
 #> # ℹ 5 more variables: tilt_sector <chr>, scenario <chr>, year <dbl>,
 #> #   type <chr>, tilt_subsector <chr>
 
-xstr_product_level2 <- anti_join(xstr_product_level, bad)
+xstr_product_level2 <- anti_join(xstr_product_level, bad_391)
 #> Joining with `by = join_by(companies_id, grouped_by, risk_category, clustered,
 #> activity_uuid_product_uuid, tilt_sector, scenario, year, type, tilt_subsector)`
 xstr_product_level2
@@ -349,9 +349,70 @@ inner_join(xstr_company_level4, semicolon)
 #> #   ipr_subsector <chr>, weo_sector <chr>, weo_subsector <chr>
 ```
 
+### At both levels, remove companies affected by duplicated scenario data
+
+- <https://github.com/2DegreesInvesting/tiltIndicator/issues/403>
+- <https://github.com/2DegreesInvesting/tiltIndicator/issues/391>
+
+``` r
+# Affected companies
+ids_391 <- distinct(bad_391, companies_id)
+ids_391
+#> # A tibble: 902 × 1
+#>    companies_id                                              
+#>    <chr>                                                     
+#>  1 1a-autoservice-wolfgang-meschede_00000004940450-001       
+#>  2 1a-baloonide_00000004972901-001                           
+#>  3 aceitunas-jope_00000003986658-001                         
+#>  4 zugel-gmbh-co-kg_00000005078611-001                       
+#>  5 zwickl-mineralolvetriebs-gmbh_00000005039177-001          
+#>  6 bama-mineralolkontor-gmbh-co-kg_deu058222-00101           
+#>  7 barmeier-holzhandel-inh-manuel-barmeier_00000005072363-001
+#>  8 barriquand-technologies-thermiques_fra310535-00101        
+#>  9 batra-sl_esp030231-00101                                  
+#> 10 bau-brennstoffe-bender_00000004966624-001                 
+#> # ℹ 892 more rows
+
+xstr_product_level5 <- xstr_product_level4 |> anti_join(ids_391)
+#> Joining with `by = join_by(companies_id)`
+xstr_company_level5 <- xstr_company_level4 |> anti_join(ids_391)
+#> Joining with `by = join_by(companies_id)`
+```
+
+Test.
+
+``` r
+# Compare
+nrow(xstr_product_level4)
+#> [1] 1562165
+nrow(xstr_product_level5)
+#> [1] 1548430
+
+# Gone
+inner_join(xstr_product_level5, ids_391)
+#> Joining with `by = join_by(companies_id)`
+#> # A tibble: 0 × 10
+#> # ℹ 10 variables: companies_id <chr>, grouped_by <chr>, risk_category <chr>,
+#> #   clustered <chr>, activity_uuid_product_uuid <chr>, tilt_sector <chr>,
+#> #   scenario <chr>, year <dbl>, type <chr>, tilt_subsector <chr>
+
+# Compare
+nrow(xstr_company_level4)
+#> [1] 1940769
+nrow(xstr_company_level5)
+#> [1] 1933701
+
+# Gone
+inner_join(xstr_company_level5, ids_391)
+#> Joining with `by = join_by(companies_id)`
+#> # A tibble: 0 × 6
+#> # ℹ 6 variables: companies_id <chr>, type <chr>, scenario <chr>, year <dbl>,
+#> #   risk_category <chr>, value <dbl>
+```
+
 ## Export
 
 ``` r
-write_csv(xstr_product_level4, params$export_product_level)
-write_csv(xstr_company_level4, params$export_company_level)
+write_csv(xstr_product_level5, params$export_product_level)
+write_csv(xstr_company_level5, params$export_company_level)
 ```
