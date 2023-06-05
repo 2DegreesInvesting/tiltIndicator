@@ -40,6 +40,18 @@ xstr_company_level <- read_csv(params$import_company_level)
 xstr_company_level |> glimpse()
 ```
 
+## Helpers
+
+```{r}
+if_all_na_is_first_else_not_na <- function(x) {
+  if (all(is.na(x))) is_first(x) else !is.na(x)
+}
+
+is_first <- function(x) {
+  seq_along(x) == 1L
+}
+```
+
 ## Fix
 
 ### At product level, remove bad output
@@ -157,9 +169,42 @@ Test.
 unique(count(xstr_company_level3, companies_id)$n)
 ```
 
+### At product level, each company should have 1, 2, or 4 rows per product
+
+https://github.com/2DegreesInvesting/tiltIndicator/issues/402
+
+Expect 1, 2, or 4.
+
+```{r}
+xstr_product_level3 |> 
+  count(companies_id, clustered) |> 
+  count(n)
+```
+
+Fix
+
+```{r}
+xstr_product_level4 <- xstr_product_level3 |> 
+  filter(
+    if_all_na_is_first_else_not_na(.data$risk_category), 
+    .by = c("companies_id", "clustered")
+  )
+```
+
+Test.
+
+```{r}
+xstr_product_level4 |> 
+  count(companies_id, clustered) |> 
+  count(n)
+
+# The companies with only 1 row should all have missing `risk_category`
+sum(is.na(xstr_product_level4$risk_category))
+```
+
 ## Export
 
 ```{r}
-write_csv(xstr_product_level3, params$export_product_level)
+write_csv(xstr_product_level4, params$export_product_level)
 write_csv(xstr_company_level3, params$export_company_level)
 ```

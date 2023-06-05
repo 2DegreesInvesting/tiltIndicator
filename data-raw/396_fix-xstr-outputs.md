@@ -43,6 +43,18 @@ xstr_company_level |> glimpse()
 #> $ value         <dbl> 1, 0, 0, 1, 0, 0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
 ```
 
+## Helpers
+
+``` r
+if_all_na_is_first_else_not_na <- function(x) {
+  if (all(is.na(x))) is_first(x) else !is.na(x)
+}
+
+is_first <- function(x) {
+  seq_along(x) == 1L
+}
+```
+
 ## Fix
 
 ### At product level, remove bad output
@@ -211,9 +223,60 @@ unique(count(xstr_company_level3, companies_id)$n)
 #> [1]  6  1 12
 ```
 
+### At product level, each company should have 1, 2, or 4 rows per product
+
+<https://github.com/2DegreesInvesting/tiltIndicator/issues/402>
+
+Expect 1, 2, or 4.
+
+``` r
+xstr_product_level3 |> 
+  count(companies_id, clustered) |> 
+  count(n)
+#> Storing counts in `nn`, as `n` already present in input
+#> ℹ Use `name = "new_name"` to pick a new name.
+#> # A tibble: 4 × 2
+#>       n     nn
+#>   <int>  <int>
+#> 1     1  66658
+#> 2     2 173725
+#> 3     3  76332
+#> 4     4 252987
+```
+
+Fix
+
+``` r
+xstr_product_level4 <- xstr_product_level3 |> 
+  filter(
+    if_all_na_is_first_else_not_na(.data$risk_category), 
+    .by = c("companies_id", "clustered")
+  )
+```
+
+Test.
+
+``` r
+xstr_product_level4 |> 
+  count(companies_id, clustered) |> 
+  count(n)
+#> Storing counts in `nn`, as `n` already present in input
+#> ℹ Use `name = "new_name"` to pick a new name.
+#> # A tibble: 3 × 2
+#>       n     nn
+#>   <int>  <int>
+#> 1     1  83213
+#> 2     2 233502
+#> 3     4 252987
+
+# The companies with only 1 row should all have missing `risk_category`
+sum(is.na(xstr_product_level4$risk_category))
+#> [1] 83213
+```
+
 ## Export
 
 ``` r
-write_csv(xstr_product_level3, params$export_product_level)
+write_csv(xstr_product_level4, params$export_product_level)
 write_csv(xstr_company_level3, params$export_company_level)
 ```
