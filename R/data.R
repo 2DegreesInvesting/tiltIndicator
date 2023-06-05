@@ -1,6 +1,6 @@
-#' Companies data for all indicators
+#' XCTR datasets
 #' @author Kalash Singhal.
-#' @family general datasets
+#' @family XCTR datasets
 #'
 #' @examples
 #' companies
@@ -29,17 +29,17 @@
 #' @examples
 #' istr_companies
 #'
-#' istr_ep_weo
+#' istr_scenarios
 #'
-#' istr_weo_2022
+#' istr_inputs
 #' @name istr_datasets
 NULL
 #' @rdname istr_datasets
 "istr_companies"
 #' @rdname istr_datasets
-"istr_ep_weo"
+"istr_scenarios"
 #' @rdname istr_datasets
-"istr_weo_2022"
+"istr_inputs"
 
 #' PSTR datasets
 #'

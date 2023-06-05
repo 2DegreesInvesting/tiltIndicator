@@ -4,8 +4,8 @@
 #' ```
 #'
 #' @param companies A dataframe like [istr_companies].
-#' @param scenarios A dataframe like [istr_weo_2022].
-#' @param mapper A dataframe like [istr_ep_weo].
+#' @param scenarios A dataframe like [istr_scenarios].
+#' @param inputs A dataframe like [istr_inputs].
 #' @inheritParams xctr
 #' @inheritParams pstr
 #'
@@ -17,23 +17,23 @@
 #'
 #' @examples
 #' companies <- istr_companies
-#' scenarios <- istr_weo_2022
-#' mapper <- istr_ep_weo
+#' scenarios <- istr_scenarios
+#' inputs <- istr_inputs
 #'
 #' # Product level
 #' companies |>
-#'   istr_at_product_level(scenarios, mapper)
+#'   istr_at_product_level(scenarios, inputs)
 #'
 #' # Company level
 #' companies |>
-#'   istr_at_product_level(scenarios, mapper) |>
+#'   istr_at_product_level(scenarios, inputs) |>
 #'   istr_at_company_level()
 #'
 #' # Same
-#' istr(companies, scenarios, mapper)
-istr <- function(companies, scenarios, mapper) {
+#' istr(companies, scenarios, inputs)
+istr <- function(companies, scenarios, inputs) {
   companies |>
-    istr_at_product_level(scenarios, mapper) |>
+    istr_at_product_level(scenarios, inputs) |>
     xctr_at_company_level()
 }
 
@@ -41,27 +41,33 @@ istr <- function(companies, scenarios, mapper) {
 #' @export
 istr_at_product_level <- function(companies,
                                   scenarios,
-                                  mapper,
+                                  inputs,
                                   low_threshold = 1 / 3,
                                   high_threshold = 2 / 3) {
   xstr_check(companies, scenarios)
+  stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
   .scenarios <- standardize_scenarios(scenarios)
+  .companies <- standardize_companies(companies)
 
-  companies |>
+  inputs |>
     distinct() |>
-    istr_mapping(mapper) |>
-    istr_add_values_to_categorize(.scenarios) |>
-    add_risk_category(low_threshold, high_threshold, .default = "no_sector") |>
-    xstr_polish_output_at_product_level()
+    xstr_add_values_to_categorize(.scenarios) |>
+    add_risk_category(low_threshold, high_threshold, .default = NA) |>
+    xctr_join_companies(.companies) |>
+    xstr_polish_output_at_product_level() |>
+    istr_select_cols_at_product_level()
 }
 
-istr_mapping <- function(companies, ep_weo) {
-  companies |>
-    left_join(ep_weo, by = c("eco_sectors" = "ECO_sector"))
+istr_select_cols_at_product_level <- function(data) {
+  select(data, all_of(istr_cols_at_product_level()))
 }
 
-istr_add_values_to_categorize <- function(companies, weo_2022) {
-  companies |>
-    left_join(weo_2022, by = c("weo_product_mapper" = "product", "weo_flow_mapper" = "flow"))
+istr_cols_at_product_level <- function() {
+  c(
+    xstr_cols_at_product_level(),
+    "input_activity_uuid_product_uuid",
+    "input_tilt_sector",
+    "input_tilt_subsector"
+  )
 }

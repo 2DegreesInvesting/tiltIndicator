@@ -1,4 +1,4 @@
-#' Given a messy PSTR `companies` dataframe returns a cleaner one
+#' Restructure XSTR `companies`
 #'
 #' @param data A dataframe with these columns:
 #' * ipr_sector
@@ -6,9 +6,9 @@
 #' * weo_product
 #' * weo_flow
 #'
-#' @family helpers
+#' @family pre-processing helpers
 #'
-#' @return A `copmanies` dataset as required by PSTR functions.
+#' @return A `companies` dataset as required by PSTR functions.
 #' @export
 #'
 #' @examples
@@ -18,16 +18,11 @@
 #' raw_companies <- read_csv(extdata_path("pstr_companies.csv"))
 #' glimpse(raw_companies)
 #'
-#' companies <- pstr_prepare_companies(raw_companies)
+#' companies <- xstr_pivot_type_sector_subsector(raw_companies)
 #' companies
-pstr_prepare_companies <- function(data) {
+xstr_pivot_type_sector_subsector <- function(data) {
   data |>
     lowercase_characters() |>
-    pivot_type_sector_subsector()
-}
-
-pivot_type_sector_subsector <- function(companies) {
-  companies |>
     rename(weo_sector = "weo_product", weo_subsector = "weo_flow") |>
     pivot_longer(c("ipr_sector", "ipr_subsector", "weo_sector", "weo_subsector")) |>
     separate_wider_delim("name", delim = "_", names = c("type", "tmp")) |>

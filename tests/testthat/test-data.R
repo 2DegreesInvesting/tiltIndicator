@@ -10,12 +10,12 @@ test_that("`products` hasn't changed", {
   expect_snapshot(format_robust_snapshot(tiltIndicator::products))
 })
 
-test_that("`istr_ep_weo` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(tiltIndicator::istr_ep_weo))
+test_that("`istr_scenarios` hasn't changed", {
+  expect_snapshot(format_robust_snapshot(tiltIndicator::istr_scenarios))
 })
 
-test_that("`istr_weo_2022` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(tiltIndicator::istr_weo_2022))
+test_that("`istr_inputs` hasn't changed", {
+  expect_snapshot(format_robust_snapshot(tiltIndicator::istr_inputs))
 })
 
 test_that("`istr_companies` hasn't changed", {

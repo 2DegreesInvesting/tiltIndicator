@@ -48,15 +48,15 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
   .companies <- standardize_companies(companies)
 
   .companies |>
-    pstr_add_values_to_categorize(.scenarios) |>
+    xstr_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     xstr_polish_output_at_product_level() |>
     pstr_select_cols_at_product_level()
 }
 
-pstr_add_values_to_categorize <- function(companies, scenarios) {
+xstr_add_values_to_categorize <- function(data, scenarios) {
   left_join(
-    companies, scenarios,
+    data, scenarios,
     by = join_by("type", "sector", "subsector"),
     relationship = "many-to-many"
   )
@@ -85,7 +85,7 @@ stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
     abort(c(
       "Each scenario `type` must have some `sector` and `subsector`.",
       x = glue("All `sector` and `subsector` are missing for `type` {bad}."),
-      i = "Did you need to prepare the data with `pstr_prepare_scenarios()`?"
+      i = "Did you need to prepare the data with `xstr_prepare_scenario()`?"
     ))
   }
   invisible(scenarios)
@@ -97,11 +97,7 @@ pstr_select_cols_at_product_level <- function(data) {
 
 pstr_cols_at_product_level <- function() {
   c(
-    cols_at_product_level(),
-    "tilt_sector",
-    "tilt_subsector",
-    "scenario",
-    "year",
-    "type"
+    xstr_cols_at_product_level(),
+    "tilt_subsector"
   )
 }
