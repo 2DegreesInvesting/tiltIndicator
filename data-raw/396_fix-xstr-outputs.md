@@ -1,9 +1,6 @@
 
 # Fix XSTR outputs (#396)
 
-Closes \#396 by applying on the output what \#391, \#392, and \#393
-should have done on the code.
-
 ## Setup
 
 ``` r
