@@ -4,4 +4,4 @@ than `low_threshold` and lower or equal than `high_threshold`) are classified as
 medium transition risk products. Products in the lowest percentile (lower or 
 equal than `low_threshold`) are classified as low transition risk products. 
 For details about the default `low/high_thresholds`, refer to the documentation of 
-the corresponding **tr() function ([example](https://2degreesinvesting.github.io/tiltIndicator/reference/xctr.html#ref-usage)).
+the corresponding `**tr()` function ([example](https://2degreesinvesting.github.io/tiltIndicator/reference/xctr.html#ref-usage)).
