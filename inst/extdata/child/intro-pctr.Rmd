@@ -9,11 +9,8 @@ product. As a default option each product is compared to the carbon footprint of
 every other product. Products with a higher carbon-footprint face a higher risk.
 
 After identifying each carbon footprint for one product, the products are ranked
-according to their carbon footprint. Products in the highest percentile (≥66.66%)
-are classified as high transition risk products. Products in the medium
-percentile (between ≥33.33% and <66.66%) are classified as medium transition risk
-products. Products in the lowest percentile (<33.33%) are classified as low
-transition risk products.
+according to their carbon footprint. The ranking method is explained in the 
+[Thresholds](https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds) section.
 
 After categorization, we aggregate all products from the same category and set
 them in relation to all products that the company produces. We derive the

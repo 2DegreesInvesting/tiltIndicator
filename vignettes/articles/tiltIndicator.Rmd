@@ -38,6 +38,13 @@ library(tiltIndicator)
 ```{r child=extdata_path("child/intro-pctr.Rmd")}
 ```
 
+## Thresholds
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child=extdata_path("child/thresholds.Rmd")}
+```
+
 ## Example
 
 Use `xctr*()` to calculate both ICTR and PCTR. Their difference is in the `co2`

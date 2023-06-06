@@ -11,11 +11,8 @@ packaging materials, energy and enabling services (such as tractor use on farm)
 to produce the product.
 
 After identifying each carbon footprint for one input product, the input
-products are ranked according to their footprint. Input products in the highest
-percentile (≥66.66%) are classified as high transition risk input products. Input
-products in the medium percentile (between ≥33.33% and <66.66%) are classified as
-medium transition risk input products. Products in the lowest percentile (<33.33%)
-are classified as low transition risk input products.
+products are ranked according to their footprint. The ranking method is explained 
+in the [Thresholds](https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds) section.
 
 After assessing the input products' transition risk based on the carbon
 footprint of each product, they are aggregated at the company-level. We derive
