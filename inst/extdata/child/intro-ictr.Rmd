@@ -12,7 +12,7 @@ to produce the product.
 
 After identifying each carbon footprint for one input product, the input
 products are ranked according to their footprint. The ranking method is explained 
-in the [Thresholds](https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds) section.
+in the [Thresholds] section.
 
 After assessing the input products' transition risk based on the carbon
 footprint of each product, they are aggregated at the company-level. We derive
