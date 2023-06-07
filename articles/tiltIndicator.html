@@ -111,12 +111,9 @@ on the input products and not the product of the company. Input products
 are, for example, resources, packaging materials, energy and enabling
 services (such as tractor use on farm) to produce the product.</p>
 <p>After identifying each carbon footprint for one input product, the
-input products are ranked according to their footprint. Input products
-in the highest percentile (≥70%) are classified as high transition risk
-input products. Input products in the medium percentile (between ≥30%
-and &lt;70%) are classified as medium transition risk input products.
-Products in the lowest percentile (&lt;30%) are classified as low
-transition risk input products.</p>
+input products are ranked according to their footprint. The ranking
+method is explained in the <a href="#thresholds">Thresholds</a>
+section.</p>
 <p>After assessing the input products’ transition risk based on the
 carbon footprint of each product, they are aggregated at the
 company-level. We derive what percentage of the input products are high,
@@ -153,11 +150,8 @@ footprint per product. As a default option each product is compared to
 the carbon footprint of every other product. Products with a higher
 carbon-footprint face a higher risk.</p>
 <p>After identifying each carbon footprint for one product, the products
-are ranked according to their carbon footprint. Products in the highest
-percentile (≥70%) are classified as high transition risk products.
-Products in the medium percentile (between ≥30% and &lt;70%) are
-classified as medium transition risk products. Products in the lowest
-percentile (&lt;30%) are classified as low transition risk products.</p>
+are ranked according to their carbon footprint. The ranking method is
+explained in the <a href="#thresholds">Thresholds</a> section.</p>
 <p>After categorization, we aggregate all products from the same
 category and set them in relation to all products that the company
 produces. We derive the Product Carbon Transition Risks.</p>
@@ -176,6 +170,21 @@ segment</li>
 <li>a column indicating whether the product has “low”, “medium” or
 “high” relative production emissions.</li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="thresholds">Thresholds<a class="anchor" aria-label="anchor" href="#thresholds"></a>
+</h2>
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+<p>Products in the highest percentile (greater than
+<code>high_threshold</code>) are classified as high transition risk
+products. Products in the medium percentile (greater than
+<code>low_threshold</code> and lower or equal than
+<code>high_threshold</code>) are classified as medium transition risk
+products. Products in the lowest percentile (lower or equal than
+<code>low_threshold</code>) are classified as low transition risk
+products. For details about the default <code>low_threshold</code> and
+<code>high_threshold</code>, refer to the documentation of the
+corresponding <code>**tr()</code> function (e.g. <a href="https://2degreesinvesting.github.io/tiltIndicator/reference/xctr.html#ref-usage"><code>xctr()</code></a>).</p>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
