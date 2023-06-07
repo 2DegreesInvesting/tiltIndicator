@@ -47,13 +47,9 @@ needs to produce its products.The input products are, for example, resources,
 packaging materials, energy and enabling services (such as tractor use on farm)
 to produce the product.
 
-If an input product belongs to a sector in which reduction targets are over 70\%,
-it belongs to a high-risk sector and is classified as 'high sector transition
-risk'. If the input product belongs to a sector in which reduction targets are
-between 30-70\%, the product is classified into the category 'medium sector
-transition risk' and if it is below 30\% it belongs to the category of 'low
-sector transition risk'. If it does not belong to a sector that has
-decarbonization targets, it is classified as 'no sector transition risk'.
+After identifying each carbon footprint for one input product, the input
+products are ranked according to their footprint. The ranking method is explained in the
+\href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds} section.
 
 After assessing the input products for each product, they are aggregated at
 company-level to derive what percentage of the input products required by the
