@@ -10,7 +10,7 @@ every other product. Products with a higher carbon-footprint face a higher risk.
 
 After identifying each carbon footprint for one product, the products are ranked
 according to their carbon footprint. The ranking method is explained in the 
-[Thresholds] section.
+[Thresholds](https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds) section.
 
 After categorization, we aggregate all products from the same category and set
 them in relation to all products that the company produces. We derive the
