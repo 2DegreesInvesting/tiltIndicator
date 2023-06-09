@@ -8,10 +8,10 @@
 #' @export
 #'
 #' @examples
-#' pstr(pstr_companies, pstr_scenarios) |>
+#' pstr(pstr_companies, xstr_scenarios) |>
 #'   xstr_polish_output_at_company_level()
 #'
-#' istr(istr_companies, istr_scenarios, istr_inputs) |>
+#' istr(istr_companies, xstr_scenarios, istr_inputs) |>
 #'   xstr_polish_output_at_company_level()
 xstr_polish_output_at_company_level <- function(data) {
   separate_wider_delim(

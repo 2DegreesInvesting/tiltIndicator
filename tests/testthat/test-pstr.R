@@ -1,5 +1,5 @@
 test_that("hasn't changed", {
-  scenarios <- pstr_scenarios
+  scenarios <- xstr_scenarios
   companies <- pstr_companies |> slice(1)
   out <- pstr(companies, scenarios)
   expect_snapshot(format_robust_snapshot(out))
@@ -7,13 +7,13 @@ test_that("hasn't changed", {
 
 test_that("outputs expected columns at company level", {
   companies <- slice(pstr_companies, 1)
-  scenarios <- pstr_scenarios
+  scenarios <- xstr_scenarios
   out <- pstr(companies, scenarios)
   expect_named(out, cols_at_company_level())
 })
 
 test_that("the output is not grouped", {
-  scenarios <- pstr_scenarios
+  scenarios <- xstr_scenarios
   companies <- pstr_companies |> slice(1)
   out <- pstr(companies, scenarios)
   expect_false(dplyr::is_grouped_df(out))
@@ -21,7 +21,7 @@ test_that("the output is not grouped", {
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
   companies <- slice(pstr_companies, 1)
-  scenarios <- slice(pstr_scenarios, 1)
+  scenarios <- slice(xstr_scenarios, 1)
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))
@@ -42,7 +42,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   companies <- slice(pstr_companies, 1)
-  scenarios <- slice(pstr_scenarios, 1)
+  scenarios <- slice(xstr_scenarios, 1)
 
   crucial <- "type"
   bad <- select(scenarios, -all_of(crucial))
@@ -119,14 +119,14 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 
 test_that("outputs values in proportion", {
   companies <- slice(pstr_companies, 1)
-  scenarios <- pstr_scenarios
+  scenarios <- xstr_scenarios
   out <- pstr(companies, scenarios)
   expect_true(all(out$value <= 1.0))
 })
 
 test_that("each company has risk categories low, medium, and high (#215)", {
   companies <- slice(pstr_companies, 1)
-  scenarios <- pstr_scenarios
+  scenarios <- xstr_scenarios
   out <- pstr(companies, scenarios)
   risk_categories <- sort(unique(out$risk_category))
   expect_equal(risk_categories, c("high", "low", "medium"))
@@ -135,7 +135,7 @@ test_that("each company has risk categories low, medium, and high (#215)", {
 test_that("grouped_by includes the type of scenario", {
   .type <- "ipr"
   companies <- filter(slice(pstr_companies, 1), type == .type)
-  co2 <- filter(pstr_scenarios, type == .type)
+  co2 <- filter(xstr_scenarios, type == .type)
 
   out <- pstr(companies, co2)
 
@@ -147,7 +147,7 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
   companies <- pstr_companies |>
     filter(type == .type) |>
     filter(company_id %in% first(company_id))
-  scenarios <- pstr_scenarios |>
+  scenarios <- xstr_scenarios |>
     filter(type == .type)
 
   out <- pstr(companies, scenarios)
@@ -224,7 +224,7 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
   companies <- pstr_companies |>
     filter(type == .type) |>
     filter(company_id %in% first(company_id))
-  scenarios <- pstr_scenarios |>
+  scenarios <- xstr_scenarios |>
     filter(type == .type)
 
   out <- pstr(companies, scenarios)
@@ -269,14 +269,14 @@ test_that("the thresholds are in the range 0 to 1", {
 
 test_that("a 0-row `companies` yields an error", {
   expect_error(
-    pstr(pstr_companies[0L, ], pstr_scenarios),
+    pstr(pstr_companies[0L, ], xstr_scenarios),
     "companies.*can't have 0-row"
   )
 })
 
 test_that("a 0-row `scenarios` yields an error", {
   expect_error(
-    pstr(slice(pstr_companies, 1), pstr_scenarios[0L, ]),
+    pstr(slice(pstr_companies, 1), xstr_scenarios[0L, ]),
     "scenario.*can't have 0-row"
   )
 })

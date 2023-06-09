@@ -1,6 +1,6 @@
 test_that("hasn't changed", {
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios
+  scenarios <- xstr_scenarios
   inputs <- istr_inputs
 
   out <- istr(companies, scenarios, inputs)
@@ -9,7 +9,7 @@ test_that("hasn't changed", {
 
 test_that("outputs expected columns at company level", {
   companies <- slice(istr_companies, 1)
-  scenarios <- slice(istr_scenarios, 1)
+  scenarios <- slice(xstr_scenarios, 1)
   inputs <- slice(istr_inputs, 1)
 
   out <- istr(companies, scenarios, inputs)
@@ -20,7 +20,7 @@ test_that("outputs expected columns at company level", {
 
 test_that("the output is not grouped", {
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios
+  scenarios <- xstr_scenarios
   inputs <- istr_inputs
 
   out <- istr(companies, scenarios, inputs)
@@ -29,7 +29,7 @@ test_that("the output is not grouped", {
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios
+  scenarios <- xstr_scenarios
   inputs <- istr_inputs
 
   crucial <- "company_id"
@@ -43,7 +43,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios
+  scenarios <- xstr_scenarios
   inputs <- istr_inputs
 
   crucial <- "type"
@@ -69,7 +69,7 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios
+  scenarios <- xstr_scenarios
   inputs <- istr_inputs
 
   crucial <- "type"
@@ -152,7 +152,7 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 
 test_that("outputs values in proportion", {
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios
+  scenarios <- xstr_scenarios
   inputs <- istr_inputs
   out <- istr(companies, scenarios, inputs)
   expect_true(all(na.omit(out$value) <= 1.0))
@@ -160,7 +160,7 @@ test_that("outputs values in proportion", {
 
 test_that("each company has risk categories low, medium, and high (#215)", {
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios
+  scenarios <- xstr_scenarios
   inputs <- istr_inputs
   out <- istr(companies, scenarios, inputs)
   risk_categories <- sort(unique(out$risk_category))
@@ -170,7 +170,7 @@ test_that("each company has risk categories low, medium, and high (#215)", {
 test_that("grouped_by includes the type of scenario", {
   .type <- "ipr"
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios |> filter(type == .type)
+  scenarios <- xstr_scenarios |> filter(type == .type)
   inputs <- istr_inputs |> filter(type == .type)
 
   out <- istr(companies, scenarios, inputs)
@@ -180,7 +180,7 @@ test_that("grouped_by includes the type of scenario", {
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
   .type <- "ipr"
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios |> filter(type == .type)
+  scenarios <- xstr_scenarios |> filter(type == .type)
   inputs <- istr_inputs |> filter(type == .type)
 
   out <- istr(companies, scenarios, inputs)
@@ -271,7 +271,7 @@ test_that("no matches yield the expected prototype (#176)", {
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
   .type <- "weo"
   companies <- istr_companies |> slice(1)
-  scenarios <- istr_scenarios |> filter(type == .type)
+  scenarios <- xstr_scenarios |> filter(type == .type)
   inputs <- istr_inputs |> filter(type == .type)
 
   out <- istr(companies, scenarios, inputs)
@@ -315,14 +315,14 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
 
 test_that("a 0-row `companies` yields an error", {
   expect_error(
-    istr(istr_companies[0L, ], istr_scenarios, istr_inputs),
+    istr(istr_companies[0L, ], xstr_scenarios, istr_inputs),
     "companies.*can't have 0-row"
   )
 })
 
 test_that("a 0-row `scenarios` yields an error", {
   expect_error(
-    istr(istr_companies, istr_scenarios[0L, ], istr_inputs),
+    istr(istr_companies, xstr_scenarios[0L, ], istr_inputs),
     "scenarios.*can't have 0-row"
   )
 })

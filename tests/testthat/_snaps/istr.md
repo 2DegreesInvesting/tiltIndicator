@@ -56,72 +56,60 @@
       49 fleischerei-stiefsohn_00000005219477-001
       50 fleischerei-stiefsohn_00000005219477-001
       51 fleischerei-stiefsohn_00000005219477-001
-      52 fleischerei-stiefsohn_00000005219477-001
-      53 fleischerei-stiefsohn_00000005219477-001
-      54 fleischerei-stiefsohn_00000005219477-001
-      55 fleischerei-stiefsohn_00000005219477-001
-      56 fleischerei-stiefsohn_00000005219477-001
-      57 fleischerei-stiefsohn_00000005219477-001
       
       [[2]]
                                            grouped_by
-      1        ipr_1.5c required policy scenario_2020
-      2        ipr_1.5c required policy scenario_2020
-      3        ipr_1.5c required policy scenario_2020
-      4        ipr_1.5c required policy scenario_2030
-      5        ipr_1.5c required policy scenario_2030
-      6        ipr_1.5c required policy scenario_2030
-      7        ipr_1.5c required policy scenario_2040
-      8        ipr_1.5c required policy scenario_2040
-      9        ipr_1.5c required policy scenario_2040
-      10       ipr_1.5c required policy scenario_2050
-      11       ipr_1.5c required policy scenario_2050
-      12       ipr_1.5c required policy scenario_2050
-      13          weo_announced pledges scenario_2020
-      14          weo_announced pledges scenario_2020
-      15          weo_announced pledges scenario_2020
-      16          weo_announced pledges scenario_2030
-      17          weo_announced pledges scenario_2030
-      18          weo_announced pledges scenario_2030
-      19          weo_announced pledges scenario_2040
-      20          weo_announced pledges scenario_2040
-      21          weo_announced pledges scenario_2040
-      22          weo_announced pledges scenario_2050
-      23          weo_announced pledges scenario_2050
-      24          weo_announced pledges scenario_2050
-      25 weo_net zero emissions by 2050 scenario_2020
-      26 weo_net zero emissions by 2050 scenario_2020
-      27 weo_net zero emissions by 2050 scenario_2020
-      28 weo_net zero emissions by 2050 scenario_2030
-      29 weo_net zero emissions by 2050 scenario_2030
-      30 weo_net zero emissions by 2050 scenario_2030
-      31 weo_net zero emissions by 2050 scenario_2040
-      32 weo_net zero emissions by 2050 scenario_2040
-      33 weo_net zero emissions by 2050 scenario_2040
-      34 weo_net zero emissions by 2050 scenario_2050
-      35 weo_net zero emissions by 2050 scenario_2050
-      36 weo_net zero emissions by 2050 scenario_2050
-      37            weo_stated policies scenario_2020
-      38            weo_stated policies scenario_2020
-      39            weo_stated policies scenario_2020
-      40            weo_stated policies scenario_2030
-      41            weo_stated policies scenario_2030
-      42            weo_stated policies scenario_2030
-      43            weo_stated policies scenario_2040
-      44            weo_stated policies scenario_2040
-      45            weo_stated policies scenario_2040
-      46            weo_stated policies scenario_2050
-      47            weo_stated policies scenario_2050
-      48            weo_stated policies scenario_2050
-      49                                    ipr_NA_NA
-      50                                    ipr_NA_NA
-      51                                    ipr_NA_NA
-      52                                    ipr_NA_NA
-      53                                    ipr_NA_NA
-      54                                    ipr_NA_NA
-      55                                    weo_NA_NA
-      56                                    weo_NA_NA
-      57                                    weo_NA_NA
+      1                             ipr_1.5c rps_2030
+      2                             ipr_1.5c rps_2030
+      3                             ipr_1.5c rps_2030
+      4                             ipr_1.5c rps_2050
+      5                             ipr_1.5c rps_2050
+      6                             ipr_1.5c rps_2050
+      7           weo_announced pledges scenario_2020
+      8           weo_announced pledges scenario_2020
+      9           weo_announced pledges scenario_2020
+      10          weo_announced pledges scenario_2030
+      11          weo_announced pledges scenario_2030
+      12          weo_announced pledges scenario_2030
+      13          weo_announced pledges scenario_2040
+      14          weo_announced pledges scenario_2040
+      15          weo_announced pledges scenario_2040
+      16          weo_announced pledges scenario_2050
+      17          weo_announced pledges scenario_2050
+      18          weo_announced pledges scenario_2050
+      19 weo_net zero emissions by 2050 scenario_2020
+      20 weo_net zero emissions by 2050 scenario_2020
+      21 weo_net zero emissions by 2050 scenario_2020
+      22 weo_net zero emissions by 2050 scenario_2030
+      23 weo_net zero emissions by 2050 scenario_2030
+      24 weo_net zero emissions by 2050 scenario_2030
+      25 weo_net zero emissions by 2050 scenario_2040
+      26 weo_net zero emissions by 2050 scenario_2040
+      27 weo_net zero emissions by 2050 scenario_2040
+      28 weo_net zero emissions by 2050 scenario_2050
+      29 weo_net zero emissions by 2050 scenario_2050
+      30 weo_net zero emissions by 2050 scenario_2050
+      31            weo_stated policies scenario_2020
+      32            weo_stated policies scenario_2020
+      33            weo_stated policies scenario_2020
+      34            weo_stated policies scenario_2030
+      35            weo_stated policies scenario_2030
+      36            weo_stated policies scenario_2030
+      37            weo_stated policies scenario_2040
+      38            weo_stated policies scenario_2040
+      39            weo_stated policies scenario_2040
+      40            weo_stated policies scenario_2050
+      41            weo_stated policies scenario_2050
+      42            weo_stated policies scenario_2050
+      43                                    ipr_NA_NA
+      44                                    ipr_NA_NA
+      45                                    ipr_NA_NA
+      46                                    ipr_NA_NA
+      47                                    ipr_NA_NA
+      48                                    ipr_NA_NA
+      49                                    weo_NA_NA
+      50                                    weo_NA_NA
+      51                                    weo_NA_NA
       
       [[3]]
          risk_category
@@ -176,71 +164,59 @@
       49          high
       50        medium
       51           low
-      52          high
-      53        medium
-      54           low
-      55          high
-      56        medium
-      57           low
       
       [[4]]
-              value
-      1  0.00000000
-      2  0.00000000
-      3  1.00000000
-      4  0.08333333
-      5  0.25000000
-      6  0.66666667
-      7  0.66666667
-      8  0.33333333
-      9  0.00000000
-      10 1.00000000
-      11 0.00000000
-      12 0.00000000
-      13 0.00000000
-      14 0.00000000
-      15 1.00000000
-      16 0.00000000
-      17 0.00000000
-      18 1.00000000
-      19 0.12500000
-      20 0.37500000
-      21 0.50000000
-      22 0.25000000
-      23 0.62500000
-      24 0.12500000
-      25 0.00000000
-      26 0.00000000
-      27 1.00000000
-      28 0.12500000
-      29 0.37500000
-      30 0.50000000
-      31 0.50000000
-      32 0.37500000
-      33 0.12500000
-      34 0.87500000
-      35 0.00000000
-      36 0.12500000
-      37 0.00000000
-      38 0.00000000
-      39 1.00000000
-      40 0.00000000
-      41 0.00000000
-      42 1.00000000
-      43 0.00000000
-      44 0.00000000
-      45 1.00000000
-      46 0.00000000
-      47 0.00000000
-      48 1.00000000
-      49         NA
-      50         NA
-      51         NA
-      52         NA
-      53         NA
-      54         NA
-      55         NA
-      56         NA
-      57         NA
+             value
+      1  0.0000000
+      2  0.1666667
+      3  0.8333333
+      4  1.0000000
+      5  0.0000000
+      6  0.0000000
+      7  0.0000000
+      8  0.0000000
+      9  1.0000000
+      10 0.0000000
+      11 0.0000000
+      12 1.0000000
+      13 0.1428571
+      14 0.4285714
+      15 0.4285714
+      16 0.2857143
+      17 0.7142857
+      18 0.0000000
+      19 0.0000000
+      20 0.0000000
+      21 1.0000000
+      22 0.1428571
+      23 0.4285714
+      24 0.4285714
+      25 0.5714286
+      26 0.4285714
+      27 0.0000000
+      28 1.0000000
+      29 0.0000000
+      30 0.0000000
+      31 0.0000000
+      32 0.0000000
+      33 1.0000000
+      34 0.0000000
+      35 0.0000000
+      36 1.0000000
+      37 0.0000000
+      38 0.0000000
+      39 1.0000000
+      40 0.0000000
+      41 0.0000000
+      42 1.0000000
+      43        NA
+      44        NA
+      45        NA
+      46        NA
+      47        NA
+      48        NA
+      49        NA
+      50        NA
+      51        NA
       
 

@@ -13,6 +13,3 @@ istr_inputs <- extdata_path("istr_inputs.csv") |>
   rename(weo_product = "input_weo_product", weo_flow = "input_weo_flow", ipr_sector = "input_ipr_sector", ipr_subsector = "input_ipr_subsector") |>
   xstr_pivot_type_sector_subsector()
 use_data(istr_inputs, overwrite = TRUE)
-
-istr_scenarios <- pstr_scenarios
-use_data(istr_scenarios, overwrite = TRUE)

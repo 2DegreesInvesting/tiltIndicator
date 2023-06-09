@@ -21,7 +21,7 @@ istr_at_company_level(data)
 \arguments{
 \item{companies}{A dataframe like \link{istr_companies}.}
 
-\item{scenarios}{A dataframe like \link{istr_scenarios}.}
+\item{scenarios}{A dataframe like \link{xstr_scenarios}.}
 
 \item{inputs}{A dataframe like \link{istr_inputs}.}
 
@@ -49,7 +49,7 @@ to produce the product.
 
 After identifying each carbon footprint for one input product, the input
 products are ranked according to their footprint. The ranking method is explained in the
-\href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds} section.
+\link{Thresholds} section.
 
 After assessing the input products for each product, they are aggregated at
 company-level to derive what percentage of the input products required by the
@@ -60,7 +60,7 @@ Please note that carbon emissions or emissions always mean CO2e.
 }
 \examples{
 companies <- istr_companies
-scenarios <- istr_scenarios
+scenarios <- xstr_scenarios
 inputs <- istr_inputs
 
 # Product level
