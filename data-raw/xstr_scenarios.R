@@ -1,5 +1,4 @@
 # Source: Tilman via slack
-# TODO: Add source
 
 library(readr)
 library(usethis)
