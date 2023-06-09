@@ -187,7 +187,7 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
   sum <- out |>
     summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
 
-  expect_true(all(na.omit(sum$value_sum)|> near(1)))
+  expect_true(all(na.omit(sum$value_sum) |> near(1)))
 })
 
 test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
