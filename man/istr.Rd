@@ -49,7 +49,7 @@ to produce the product.
 
 After identifying each carbon footprint for one input product, the input
 products are ranked according to their footprint. The ranking method is explained in the
-\link{Thresholds} section.
+\href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds} section.
 
 After assessing the input products for each product, they are aggregated at
 company-level to derive what percentage of the input products required by the
