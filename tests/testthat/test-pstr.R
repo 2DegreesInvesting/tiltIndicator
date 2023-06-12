@@ -77,7 +77,7 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
     tilt_subsector = "any",
   )
 
-  between_low_2030_and_other_years <- 1/6
+  between_low_2030_and_other_years <- 0.2
   scenarios <- tibble(
     reductions = between_low_2030_and_other_years,
     year = c(2030, 2050),
@@ -87,10 +87,7 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
     type = "ipr",
   )
 
-  out <- pstr(
-    companies,
-    scenarios
-  )
+  out <- pstr(companies, scenarios)
 
   # 2030: Reductions > low = "medium"
   out_2030 <- filter(out, grepl("2030", grouped_by), value == 1)
@@ -99,6 +96,39 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
   # Other years: Reductions < low = "low"
   out_other_years <- filter(out, grepl("2050", grouped_by), value == 1)
   expect_equal(out_other_years$risk_category, "low")
+})
+
+test_that("`high_threshold` and `year` yield the expected risk categories", {
+  companies <- tibble(
+    company_id = "a",
+    type = "ipr",
+    sector = "total",
+    subsector = "energy",
+    clustered = "any",
+    activity_uuid_product_uuid = "any",
+    tilt_sector = "any",
+    tilt_subsector = "any",
+  )
+
+  between_high_2030_and_other_years <- 0.4
+  scenarios <- tibble(
+    reductions = between_high_2030_and_other_years,
+    year = c(2030, 2050),
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    type = "ipr",
+  )
+
+  out <- pstr(companies, scenarios)
+
+  # 2030: xxxxxxx
+  out_2030 <- filter(out, grepl("2030", grouped_by), value == 1)
+  expect_equal(out_2030$risk_category, "high")
+
+  # xxxxxxxx
+  out_other_years <- filter(out, grepl("2050", grouped_by), value == 1)
+  expect_equal(out_other_years$risk_category, "medium")
 })
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
