@@ -42,12 +42,12 @@ istr <- function(companies, scenarios, inputs) {
 istr_at_product_level <- function(companies,
                                   scenarios,
                                   inputs,
-                                  low_threshold = 1 / 3,
-                                  high_threshold = 2 / 3) {
+                                  low_threshold = case_when(scenarios$year == 2030 ~ 1 / 9, .default = 1 / 3),
+                                  high_threshold = case_when(scenarios$year == 2030 ~ 2 / 9, .default = 2 / 3)) {
   xstr_check(companies, scenarios)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
-  .scenarios <- standardize_scenarios(scenarios)
+  .scenarios <- standardize_scenarios(scenarios, low_threshold, high_threshold)
   .companies <- standardize_companies(companies)
 
   inputs |>

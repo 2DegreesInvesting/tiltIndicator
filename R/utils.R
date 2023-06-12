@@ -104,10 +104,12 @@ standardize_co2 <- function(co2) {
     )
 }
 
-standardize_scenarios <- function(scenarios) {
+standardize_scenarios <- function(scenarios, low_threshold, high_threshold) {
   scenarios |>
     distinct() |>
-    rename(values_to_categorize = "reductions")
+    rename(values_to_categorize = "reductions") |>
+    mutate(low_threshold = low_threshold) |>
+    mutate(high_threshold = high_threshold)
 }
 
 lowercase_characters <- function(data) {
