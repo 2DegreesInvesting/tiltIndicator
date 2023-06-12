@@ -65,6 +65,46 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   expect_error(pstr(companies, bad), crucial)
 })
 
+test_that("`low_threshold` and `year` yield the expected risk categories", {
+  companies <- tibble(
+    company_id = "a",
+    type = "ipr",
+    sector = "total",
+    subsector = "energy",
+    clustered = "any",
+    activity_uuid_product_uuid = "any",
+    tilt_sector = "any",
+    tilt_subsector = "any",
+  )
+
+  low_default <- 1/3
+  reductions <- 1/6
+  low_2030 <- 1/9
+
+  scenarios <- tibble(
+    reductions = reductions,
+    year = c(2030, 2050),
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    type = "ipr",
+  )
+
+  out <- pstr(
+    # low_threshold = ifelse(scenarios$year == 2030, low_2030, low_default),
+    companies,
+    scenarios
+  )
+
+  # 2030: Reductions > low = "medium"
+  out_2030 <- filter(out, grepl("2030", grouped_by), value == 1)
+  expect_equal(out_2030$risk_category, "medium")
+
+  # 2050: Reductions < low = "low"
+  default <- filter(out, grepl("2050", grouped_by), value == 1)
+  expect_equal(out_2050$risk_category, "low")
+})
+
 test_that("thresholds yield expected low, medium, and high risk categories", {
   companies <- tibble(
     company_id = "a",
