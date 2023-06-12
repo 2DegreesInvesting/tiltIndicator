@@ -62,15 +62,12 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">istr_companies</span></span>
 <span></span>
-<span><span class="va">istr_scenarios</span></span>
-<span></span>
 <span><span class="va">istr_inputs</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
     <p>An object of class <code>spec_tbl_df</code> (inherits from <code>tbl_df</code>, <code>tbl</code>, <code>data.frame</code>) with 8 rows and 6 columns.</p>
-<p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 484 rows and 8 columns.</p>
 <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 74 rows and 10 columns.</p>
     </div>
     <div class="section level2">
@@ -94,21 +91,21 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> cheries-b… rubber    2f7b77a7-1556-5c1b-b0… seal production… kg    land use   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">istr_scenarios</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 484 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    scenario                region sector subsector  year  value reductions type </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1.5c required policy s… weste… power  <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>020  550.       0     ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1.5c required policy s… weste… power  <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>030   47.4      0.914 ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1.5c required policy s… weste… power  <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>040  -<span style="color: #BB0000;">60.6</span>      1.11  ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1.5c required policy s… weste… power  <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>050 -<span style="color: #BB0000;">175.</span>       1.32  ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1.5c required policy s… weste… build… <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>020  397.       0     ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1.5c required policy s… weste… build… <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>030  189.       0.525 ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1.5c required policy s… weste… build… <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>040   13.1      0.967 ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1.5c required policy s… weste… build… <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">2</span>050    0        1     ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1.5c required policy s… weste… indus… iron and…  <span style="text-decoration: underline;">2</span>020   70.2      0     ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1.5c required policy s… weste… indus… iron and…  <span style="text-decoration: underline;">2</span>030   30.5      0.565 ipr  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 474 more rows</span></span>
+<span class="r-in"><span><span class="va">xstr_scenarios</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 388 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    scenario region sector    subsector              year  value reductions type </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1.5c rps world  power     <span style="color: #BB0000;">NA</span>                     <span style="text-decoration: underline;">2</span>030 <span style="text-decoration: underline;">5</span>359.        0.58 ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1.5c rps world  power     <span style="color: #BB0000;">NA</span>                     <span style="text-decoration: underline;">2</span>050 -<span style="color: #BB0000;">807.</span>        1.06 ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1.5c rps world  buildings <span style="color: #BB0000;">NA</span>                     <span style="text-decoration: underline;">2</span>030 <span style="text-decoration: underline;">2</span>454.        0.18 ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1.5c rps world  buildings <span style="color: #BB0000;">NA</span>                     <span style="text-decoration: underline;">2</span>050   61.3       0.98 ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1.5c rps world  industry  iron and steel         <span style="text-decoration: underline;">2</span>030 <span style="text-decoration: underline;">1</span>872.        0.23 ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1.5c rps world  industry  iron and steel         <span style="text-decoration: underline;">2</span>050   88.3       0.96 ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1.5c rps world  industry  non-metallic minerals  <span style="text-decoration: underline;">2</span>030 <span style="text-decoration: underline;">2</span>641.        0.13 ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1.5c rps world  industry  non-metallic minerals  <span style="text-decoration: underline;">2</span>050  592.        0.8  ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1.5c rps world  industry  chemicals              <span style="text-decoration: underline;">2</span>030 <span style="text-decoration: underline;">1</span>218.        0.12 ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1.5c rps world  industry  chemicals              <span style="text-decoration: underline;">2</span>050  102.        0.93 ipr  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 378 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">istr_inputs</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 74 × 10</span></span>
