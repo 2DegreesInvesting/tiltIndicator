@@ -18,8 +18,8 @@ comes from inputs or products.
 
 In the XSTR family, you have two indicators: Input Product Sector Transition Risk 
 (ISTR) and Product Sector Transition Risk (PSTR). They are both calculated in the
-same way, but ISTR takes `inputs` as an additional argument, since it focuses on 
-the input products.
+same way, but ISTR takes `inputs` data as an additional argument, since it focuses 
+on the input products.
 
 We'll use general purpose tools from the dplyr package, and the experimental
 [tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html)
