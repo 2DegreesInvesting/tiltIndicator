@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9070
+
+* New `xstr_scenarios` replaces `istr_scenarios` and `pstr_scenarios` (@kalashsinghal #413).
+
 # tiltIndicator 0.0.0.9069
 
 * `pstr_prepare_scenario()` is now named `xstr_prepare_scenario()` (#385).
