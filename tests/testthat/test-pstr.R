@@ -65,7 +65,7 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   expect_error(pstr(companies, bad), crucial)
 })
 
-test_that("thresholds yield expected low, medium, and high risk categories", {
+test_that("thresholds for year 2050 yield expected low, medium, and high risk categories", {
   companies <- tibble(
     company_id = "a",
     type = "ipr",
@@ -80,8 +80,7 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     scenario = "1.5c required policy scenario",
     sector = "total",
     subsector = "energy",
-    year = 2020,
-    # value = 99,
+    year = 2050,
     reductions = 0,
     type = "ipr",
   )
@@ -116,6 +115,58 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
   expect_equal(0, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 })
+
+test_that("thresholds for year 2030 yield expected low, medium, and high risk categories", {
+  companies <- tibble(
+    company_id = "a",
+    type = "ipr",
+    sector = "total",
+    subsector = "energy",
+    clustered = "any",
+    activity_uuid_product_uuid = "any",
+    tilt_sector = "any",
+    tilt_subsector = "any",
+  )
+  scenarios <- tibble(
+    scenario = "1.5c required policy scenario",
+    sector = "total",
+    subsector = "energy",
+    year = 2030,
+    reductions = 0,
+    type = "ipr",
+  )
+
+  default_low_mid <- 1 / 9
+  out <- pstr(companies, mutate(scenarios, reductions = default_low_mid))
+  expect_equal(1, filter(out, risk_category == "low")$value)
+  expect_equal(0, filter(out, risk_category == "medium")$value)
+  expect_equal(0, filter(out, risk_category == "high")$value)
+
+  above_default_low_mid <- 1 / 9 + 0.001
+  out <- pstr(companies, mutate(scenarios, reductions = above_default_low_mid))
+  expect_equal(0, filter(out, risk_category == "low")$value)
+  expect_equal(1, filter(out, risk_category == "medium")$value)
+  expect_equal(0, filter(out, risk_category == "high")$value)
+
+  default_mid_high <- 2 / 9
+  out <- pstr(companies, mutate(scenarios, reductions = default_mid_high))
+  expect_equal(0, filter(out, risk_category == "low")$value)
+  expect_equal(1, filter(out, risk_category == "medium")$value)
+  expect_equal(0, filter(out, risk_category == "high")$value)
+
+  above_default_mid_high <- 2 / 9 + 0.001
+  out <- pstr(companies, mutate(scenarios, reductions = above_default_mid_high))
+  expect_equal(0, filter(out, risk_category == "low")$value)
+  expect_equal(0, filter(out, risk_category == "medium")$value)
+  expect_equal(1, filter(out, risk_category == "high")$value)
+
+  below_0 <- -0.001
+  out <- pstr(companies, mutate(scenarios, reductions = below_0))
+  expect_equal(1, filter(out, risk_category == "low")$value)
+  expect_equal(0, filter(out, risk_category == "medium")$value)
+  expect_equal(0, filter(out, risk_category == "high")$value)
+})
+
 
 test_that("outputs values in proportion", {
   companies <- slice(pstr_companies, 1)
@@ -255,16 +306,6 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
     reductions = 1,
   )
   expect_error(pstr(companies, scenarios), "sector.*subsector.*type")
-})
-
-test_that("the thresholds are in the range 0 to 1", {
-  pstr_arguments <- formals(pstr)
-
-  low_threshold <- eval(pstr_arguments$low_threshold)
-  high_threshold <- eval(pstr_arguments$high_threshold)
-
-  expect_true(low_threshold >= 0 & low_threshold <= 1)
-  expect_true(high_threshold >= 0 & high_threshold <= 1)
 })
 
 test_that("a 0-row `companies` yields an error", {

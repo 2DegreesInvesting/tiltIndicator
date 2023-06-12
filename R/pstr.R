@@ -5,10 +5,6 @@
 #'
 #' @param companies A dataframe like [pstr_companies].
 #' @param scenarios A dataframe like [xstr_scenarios].
-#' @param low_threshold A numeric value to segment low and medium reduction
-#'   targets.
-#' @param high_threshold A numeric value to segment medium and high reduction
-#'   targets.
 #' @inheritParams xctr
 #'
 #' @family PSTR functions
@@ -32,15 +28,15 @@
 #'
 #' # Same
 #' pstr(companies, scenarios)
-pstr <- function(companies, scenarios, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+pstr <- function(companies, scenarios) {
   companies |>
-    pstr_at_product_level(scenarios, low_threshold, high_threshold) |>
+    pstr_at_product_level(scenarios) |>
     xctr_at_company_level()
 }
 
 #' @rdname pstr
 #' @export
-pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+pstr_at_product_level <- function(companies, scenarios) {
   xstr_check(companies, scenarios)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
@@ -49,9 +45,17 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
 
   .companies |>
     xstr_add_values_to_categorize(.scenarios) |>
-    add_risk_category(low_threshold, high_threshold, .default = NA) |>
+    xstr_add_risk_category(.default = NA) |>
     xstr_polish_output_at_product_level() |>
     pstr_select_cols_at_product_level()
+}
+
+# Threshold categories based on years to segment low, medium, and high reduction targets.
+threshold_categories <- function(data) {
+  case_when(
+    data == 2030 ~ list(low = 1/9, high = 2/9),
+    .default = list(low = 1/3, high = 2/3)
+  )
 }
 
 xstr_add_values_to_categorize <- function(data, scenarios) {
@@ -62,12 +66,11 @@ xstr_add_values_to_categorize <- function(data, scenarios) {
   )
 }
 
-add_risk_category <- function(data,
-                              low_threshold,
-                              high_threshold,
+xstr_add_risk_category <- function(data,
                               ...) {
+  lst_of_thresholds <- do.call(rbind, lapply(data$year, threshold_categories))
   mutate(data, risk_category = categorize_risk(
-    .data$values_to_categorize, low_threshold, high_threshold, ...
+    .data$values_to_categorize, low_threshold = lst_of_thresholds[,1], high_threshold = lst_of_thresholds[,2], ...
   ))
 }
 

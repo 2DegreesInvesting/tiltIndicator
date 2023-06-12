@@ -11,10 +11,19 @@ xctr_at_product_level <- function(companies,
 
   .co2 |>
     xctr_add_values_to_categorize() |>
-    add_risk_category(low_threshold, high_threshold) |>
+    xctr_add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
     xctr_select_cols_at_product_level() |>
     prune_unmatched_products()
+}
+
+xctr_add_risk_category <- function(data,
+                              low_threshold,
+                              high_threshold,
+                              ...) {
+  mutate(data, risk_category = categorize_risk(
+    .data$values_to_categorize, low_threshold, high_threshold, ...
+  ))
 }
 
 xctr_check <- function(companies, co2) {

@@ -41,9 +41,7 @@ istr <- function(companies, scenarios, inputs) {
 #' @export
 istr_at_product_level <- function(companies,
                                   scenarios,
-                                  inputs,
-                                  low_threshold = 1 / 3,
-                                  high_threshold = 2 / 3) {
+                                  inputs) {
   xstr_check(companies, scenarios)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
@@ -53,7 +51,7 @@ istr_at_product_level <- function(companies,
   inputs |>
     distinct() |>
     xstr_add_values_to_categorize(.scenarios) |>
-    add_risk_category(low_threshold, high_threshold, .default = NA) |>
+    xstr_add_risk_category(.default = NA) |>
     xctr_join_companies(.companies) |>
     xstr_polish_output_at_product_level() |>
     istr_select_cols_at_product_level()

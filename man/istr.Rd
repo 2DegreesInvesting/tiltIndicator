@@ -8,13 +8,7 @@
 \usage{
 istr(companies, scenarios, inputs)
 
-istr_at_product_level(
-  companies,
-  scenarios,
-  inputs,
-  low_threshold = 1/3,
-  high_threshold = 2/3
-)
+istr_at_product_level(companies, scenarios, inputs)
 
 istr_at_company_level(data)
 }
@@ -24,12 +18,6 @@ istr_at_company_level(data)
 \item{scenarios}{A dataframe like \link{xstr_scenarios}.}
 
 \item{inputs}{A dataframe like \link{istr_inputs}.}
-
-\item{low_threshold}{A numeric value to segment low and medium transition
-risk products.}
-
-\item{high_threshold}{A numeric value to segment medium and high transition
-risk products.}
 
 \item{data}{A dataframe. The output at product level.}
 }
