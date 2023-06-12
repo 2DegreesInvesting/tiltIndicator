@@ -77,9 +77,9 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
     tilt_subsector = "any",
   )
 
-  between_low_2030_and_default <- 1/6
+  between_low_2030_and_other_years <- 1/6
   scenarios <- tibble(
-    reductions = between_low_2030_and_default,
+    reductions = between_low_2030_and_other_years,
     year = c(2030, 2050),
     scenario = "1.5c required policy scenario",
     sector = "total",
@@ -96,9 +96,9 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
   out_2030 <- filter(out, grepl("2030", grouped_by), value == 1)
   expect_equal(out_2030$risk_category, "medium")
 
-  # Default: Reductions < low = "low"
-  out_other <- filter(out, grepl("2050", grouped_by), value == 1)
-  expect_equal(out_other$risk_category, "low")
+  # Other years: Reductions < low = "low"
+  out_other_years <- filter(out, grepl("2050", grouped_by), value == 1)
+  expect_equal(out_other_years$risk_category, "low")
 })
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
