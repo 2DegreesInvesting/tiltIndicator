@@ -4,7 +4,7 @@
 #' ```
 #'
 #' @param companies A dataframe like [istr_companies].
-#' @param scenarios A dataframe like [istr_scenarios].
+#' @param scenarios A dataframe like [xstr_scenarios].
 #' @param inputs A dataframe like [istr_inputs].
 #' @inheritParams xctr
 #' @inheritParams pstr
@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' companies <- istr_companies
-#' scenarios <- istr_scenarios
+#' scenarios <- xstr_scenarios
 #' inputs <- istr_inputs
 #'
 #' # Product level

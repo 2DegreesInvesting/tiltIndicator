@@ -20,7 +20,7 @@ pstr_at_company_level(data)
 \arguments{
 \item{companies}{A dataframe like \link{pstr_companies}.}
 
-\item{scenarios}{A dataframe like \link{pstr_scenarios}.}
+\item{scenarios}{A dataframe like \link{xstr_scenarios}.}
 
 \item{low_threshold}{A numeric value to segment low and medium reduction
 targets.}
@@ -46,7 +46,7 @@ derive company-level information.
 }
 \examples{
 companies <- pstr_companies
-scenarios <- pstr_scenarios
+scenarios <- xstr_scenarios
 
 # Product level
 companies |>

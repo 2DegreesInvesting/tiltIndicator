@@ -20,6 +20,13 @@
 #' products
 "products"
 
+#' XSTR datasets
+#' @author Tilman Trompke.
+#' @family XSTR datasets
+#' @examples
+#' xstr_scenarios
+"xstr_scenarios"
+
 #' ISTR datasets
 #'
 #' @author Lyanne Ho.
@@ -29,15 +36,13 @@
 #' @examples
 #' istr_companies
 #'
-#' istr_scenarios
+#' xstr_scenarios
 #'
 #' istr_inputs
 #' @name istr_datasets
 NULL
 #' @rdname istr_datasets
 "istr_companies"
-#' @rdname istr_datasets
-"istr_scenarios"
 #' @rdname istr_datasets
 "istr_inputs"
 
@@ -56,10 +61,8 @@ NULL
 #' @examples
 #' pstr_companies
 #'
-#' pstr_scenarios
+#' xstr_scenarios
 #' @name pstr_datasets
 NULL
 #' @rdname pstr_datasets
 "pstr_companies"
-#' @rdname pstr_datasets
-"pstr_scenarios"

@@ -20,6 +20,7 @@
 #' @importFrom dplyr left_join
 #' @importFrom dplyr mutate
 #' @importFrom dplyr n
+#' @importFrom dplyr near
 #' @importFrom dplyr pull
 #' @importFrom dplyr reframe
 #' @importFrom dplyr relocate

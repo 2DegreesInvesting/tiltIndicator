@@ -10,8 +10,8 @@ test_that("`products` hasn't changed", {
   expect_snapshot(format_robust_snapshot(tiltIndicator::products))
 })
 
-test_that("`istr_scenarios` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(tiltIndicator::istr_scenarios))
+test_that("`xstr_scenarios` hasn't changed", {
+  expect_snapshot(format_robust_snapshot(tiltIndicator::xstr_scenarios))
 })
 
 test_that("`istr_inputs` hasn't changed", {
@@ -24,8 +24,4 @@ test_that("`istr_companies` hasn't changed", {
 
 test_that("`pstr_companies` hasn't changed", {
   expect_snapshot(format_robust_snapshot(tiltIndicator::pstr_companies))
-})
-
-test_that("`pstr_scenarios` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(tiltIndicator::pstr_scenarios))
 })
