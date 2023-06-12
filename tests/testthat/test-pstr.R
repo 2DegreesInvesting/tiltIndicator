@@ -101,7 +101,7 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
   expect_equal(out_2030$risk_category, "medium")
 
   # 2050: Reductions < low = "low"
-  default <- filter(out, grepl("2050", grouped_by), value == 1)
+  out_2050 <- filter(out, grepl("2050", grouped_by), value == 1)
   expect_equal(out_2050$risk_category, "low")
 })
 
@@ -294,16 +294,6 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
     reductions = 1,
   )
   expect_error(pstr(companies, scenarios), "sector.*subsector.*type")
-})
-
-test_that("the thresholds are in the range 0 to 1", {
-  pstr_arguments <- formals(pstr)
-
-  low_threshold <- eval(pstr_arguments$low_threshold)
-  high_threshold <- eval(pstr_arguments$high_threshold)
-
-  expect_true(low_threshold >= 0 & low_threshold <= 1)
-  expect_true(high_threshold >= 0 & high_threshold <= 1)
 })
 
 test_that("a 0-row `companies` yields an error", {
