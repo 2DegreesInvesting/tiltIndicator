@@ -53,8 +53,8 @@ pstr_at_product_level <- function(companies, scenarios) {
 # Threshold categories based on years to segment low, medium, and high reduction targets.
 threshold_categories <- function(data) {
   case_when(
-    data == 2030 ~ list(low = 1/9, high = 2/9),
-    .default = list(low = 1/3, high = 2/3)
+    data == 2030 ~ list(low = 1 / 9, high = 2 / 9),
+    .default = list(low = 1 / 3, high = 2 / 3)
   )
 }
 
@@ -67,10 +67,11 @@ xstr_add_values_to_categorize <- function(data, scenarios) {
 }
 
 xstr_add_risk_category <- function(data,
-                              ...) {
+                                   ...) {
   lst_of_thresholds <- do.call(rbind, lapply(data$year, threshold_categories))
   mutate(data, risk_category = categorize_risk(
-    .data$values_to_categorize, low_threshold = lst_of_thresholds[,1], high_threshold = lst_of_thresholds[,2], ...
+    .data$values_to_categorize,
+    low_threshold = lst_of_thresholds[, 1], high_threshold = lst_of_thresholds[, 2], ...
   ))
 }
 
