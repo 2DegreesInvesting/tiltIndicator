@@ -402,3 +402,13 @@ test_that("NA in the reductions column should be ignored from the value calculat
   out <- istr(companies, scenarios, inputs)
   expect_true(all(is.na(out$value)))
 })
+
+test_that("is sensitive to low_threshold", {
+  companies <- slice(istr_companies, 1)
+  scenarios <- xstr_scenarios
+  inputs <- istr_inputs
+
+  out1 <- istr(companies, inputs, low_threshold = .1)
+  out2 <- istr(companies, inputs, low_threshold = .9)
+  expect_false(identical(out1, out2))
+})
