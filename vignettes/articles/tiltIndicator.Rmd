@@ -19,7 +19,8 @@ comes from inputs or products.
 In the XSTR family, you have two indicators: Input Product Sector Transition Risk 
 (ISTR) and Product Sector Transition Risk (PSTR). They are both calculated in the
 same way, but ISTR takes `inputs` data as an additional argument, since it focuses 
-on the input products.
+on the input products. 
+You can find the main functions of the families [here](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#main-functions-and-datasets).
 
 We'll use general purpose tools from the dplyr package, and the experimental
 [tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html)
