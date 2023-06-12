@@ -6,7 +6,12 @@
 \alias{pstr_at_company_level}
 \title{Calculate the PSTR indicator}
 \usage{
-pstr(companies, scenarios, low_threshold = 1/3, high_threshold = 2/3)
+pstr(
+  companies,
+  scenarios,
+  low_threshold = case_when(scenarios$year == 2030 ~ 1/9, .default = 1/3),
+  high_threshold = case_when(scenarios$year == 2030 ~ 2/9, .default = 2/3)
+)
 
 pstr_at_product_level(
   companies,
