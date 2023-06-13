@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9071
+
+* `istr()` is now sensitive to `low_threshold` and `high_threshold` (#420).
+
 # tiltIndicator 0.0.0.9070
 
 * New `xstr_scenarios` replaces `istr_scenarios` and `pstr_scenarios` (@kalashsinghal #413).
