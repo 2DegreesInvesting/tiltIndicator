@@ -88,13 +88,13 @@ grouped_by <- function(data, grouped_by) {
   grouped_by
 }
 
-standardize_companies <- function(companies) {
+prepare_companies <- function(companies) {
   companies |>
     distinct() |>
     rename(companies_id = "company_id")
 }
 
-standardize_co2 <- function(data, low_threshold, high_threshold) {
+prepare_co2 <- function(data, low_threshold, high_threshold) {
   data |>
     distinct() |>
     mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
@@ -105,7 +105,7 @@ standardize_co2 <- function(data, low_threshold, high_threshold) {
     )
 }
 
-standardize_scenarios <- function(data, low_threshold, high_threshold) {
+prepare_scenarios <- function(data, low_threshold, high_threshold) {
   data |>
     distinct() |>
     mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
