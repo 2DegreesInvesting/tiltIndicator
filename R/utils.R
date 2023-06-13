@@ -97,19 +97,19 @@ standardize_companies <- function(companies) {
 standardize_co2 <- function(co2, low_threshold, high_threshold) {
   co2 |>
     distinct() |>
+    mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
     rename(
       tilt_sec = ends_with("tilt_sector"),
       unit = ends_with("unit"),
       isic_sec = ends_with("isic_4digit")
-    ) |>
-    mutate(low_threshold = low_threshold, high_threshold = high_threshold)
+    )
 }
 
 standardize_scenarios <- function(scenarios, low_threshold, high_threshold) {
   scenarios |>
     distinct() |>
-    rename(values_to_categorize = "reductions") |>
-    mutate(low_threshold = low_threshold, high_threshold = high_threshold)
+    mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
+    rename(values_to_categorize = "reductions")
 }
 
 lowercase_characters <- function(data) {
