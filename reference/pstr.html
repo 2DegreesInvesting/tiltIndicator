@@ -81,13 +81,18 @@ derive company-level information.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pstr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>, high_threshold <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pstr</span><span class="op">(</span></span>
+<span>  <span class="va">companies</span>,</span>
+<span>  <span class="va">scenarios</span>,</span>
+<span>  low_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>  high_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">pstr_at_product_level</span><span class="op">(</span></span>
 <span>  <span class="va">companies</span>,</span>
 <span>  <span class="va">scenarios</span>,</span>
-<span>  low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,</span>
-<span>  high_threshold <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span></span>
+<span>  low_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>  high_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">pstr_at_company_level</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
@@ -135,14 +140,14 @@ targets.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 196 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… ipr_1.5c … low           steel     0faa7ecb-fef2-5117-89…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… ipr_1.5c … high          steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… ipr_1.5c … high          steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… weo_state… low           steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… weo_annou… low           steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… weo_net z… low           steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… weo_state… low           steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… weo_annou… low           steel     0faa7ecb-fef2-5117-89…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… weo_net z… low           steel     0faa7ecb-fef2-5117-89…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… weo_net z… high          steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… weo_state… low           steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… weo_annou… medium        steel     0faa7ecb-fef2-5117-89…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 186 more rows</span></span>

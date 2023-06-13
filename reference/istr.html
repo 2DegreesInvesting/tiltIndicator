@@ -108,14 +108,20 @@ risk. We, therefore, derive the company-level information.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">istr</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">inputs</span>, low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>, high_threshold <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">istr</span><span class="op">(</span></span>
+<span>  <span class="va">companies</span>,</span>
+<span>  <span class="va">scenarios</span>,</span>
+<span>  <span class="va">inputs</span>,</span>
+<span>  low_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>  high_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">istr_at_product_level</span><span class="op">(</span></span>
 <span>  <span class="va">companies</span>,</span>
 <span>  <span class="va">scenarios</span>,</span>
 <span>  <span class="va">inputs</span>,</span>
-<span>  low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,</span>
-<span>  high_threshold <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span></span>
+<span>  low_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>  high_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">istr_at_company_level</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
@@ -174,7 +180,7 @@ risk products.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… weo_annou… low           stove     0a242b09-772a-5edf-8e…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… weo_annou… low           stove     0a242b09-772a-5edf-8e…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… weo_annou… high          stove     0a242b09-772a-5edf-8e…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… weo_annou… high          stove     0a242b09-772a-5edf-8e…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… weo_annou… high          stove     0a242b09-772a-5edf-8e…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… weo_net z… low           stove     0a242b09-772a-5edf-8e…</span>
@@ -191,16 +197,16 @@ risk products.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 375 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by         risk_category value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  high              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  low               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  high            0.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  medium          0.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  low             0.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  high            1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  medium          0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  low             0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… high            0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… medium          0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… low             1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… high            0  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 365 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
@@ -208,16 +214,16 @@ risk products.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 375 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by         risk_category value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  high              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  low               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  high            0.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  medium          0.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2030  low             0.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  high            1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  medium          0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 ipr_1.5c rps_2050  low             0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… high            0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… medium          0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… low             1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 weo_announced ple… high            0  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 365 more rows</span></span>
 </code></pre></div>
     </div>
