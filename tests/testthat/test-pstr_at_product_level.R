@@ -5,7 +5,6 @@ test_that("outputs expected columns at product level", {
   expect_named(out, pstr_cols_at_product_level())
 })
 
-
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(xstr_scenarios, 1)
