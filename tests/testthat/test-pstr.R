@@ -40,6 +40,31 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   expect_error(pstr(bad, scenarios), crucial)
 })
 
+test_that("if `scenarios` lacks crucial columns, errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(xstr_scenarios, 1)
+
+  crucial <- "type"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "sector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "subsector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "year"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+
+  crucial <- "scenario"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr(companies, bad), crucial)
+})
+
 test_that("thresholds yield expected low, medium, and high risk categories", {
   companies <- tibble(
     company_id = "a",
