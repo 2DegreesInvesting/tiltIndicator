@@ -94,20 +94,26 @@ standardize_companies <- function(companies) {
     rename(companies_id = "company_id")
 }
 
-standardize_co2 <- function(co2) {
+standardize_co2 <- function(co2, low_threshold, high_threshold) {
   co2 |>
     distinct() |>
     rename(
       tilt_sec = ends_with("tilt_sector"),
       unit = ends_with("unit"),
       isic_sec = ends_with("isic_4digit")
-    )
+    ) |>
+    add_thresholds(low_threshold, high_threshold)
 }
 
-standardize_scenarios <- function(scenarios) {
+standardize_scenarios <- function(scenarios, low_threshold, high_threshold) {
   scenarios |>
     distinct() |>
-    rename(values_to_categorize = "reductions")
+    rename(values_to_categorize = "reductions") |>
+    add_thresholds(low_threshold, high_threshold)
+}
+
+add_thresholds <- function(data, low_threshold, high_threshold) {
+  mutate(data, low_threshold = low_threshold, high_threshold = high_threshold)
 }
 
 lowercase_characters <- function(data) {
@@ -150,4 +156,10 @@ abort_missing_names <- function(missing_names) {
       {paste0('`', missing_names, '`', collapse = ', ')}"
     )
   )
+}
+
+add_risk_category <- function(data, low_threshold, high_threshold, ...) {
+  mutate(data, risk_category = categorize_risk(
+    .data$values_to_categorize, .data$low_threshold, .data$high_threshold, ...
+  ))
 }

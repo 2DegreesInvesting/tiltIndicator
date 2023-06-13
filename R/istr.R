@@ -47,7 +47,7 @@ istr_at_product_level <- function(companies,
   xstr_check(companies, scenarios)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
-  .scenarios <- standardize_scenarios(scenarios)
+  .scenarios <- standardize_scenarios(scenarios, low_threshold, high_threshold)
   .companies <- standardize_companies(companies)
 
   inputs |>

@@ -44,7 +44,7 @@ pstr_at_product_level <- function(companies, scenarios, low_threshold = 1 / 3, h
   xstr_check(companies, scenarios)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 
-  .scenarios <- standardize_scenarios(scenarios)
+  .scenarios <- standardize_scenarios(scenarios, low_threshold, high_threshold)
   .companies <- standardize_companies(companies)
 
   .companies |>
@@ -60,15 +60,6 @@ xstr_add_values_to_categorize <- function(data, scenarios) {
     by = join_by("type", "sector", "subsector"),
     relationship = "many-to-many"
   )
-}
-
-add_risk_category <- function(data,
-                              low_threshold,
-                              high_threshold,
-                              ...) {
-  mutate(data, risk_category = categorize_risk(
-    .data$values_to_categorize, low_threshold, high_threshold, ...
-  ))
 }
 
 stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
