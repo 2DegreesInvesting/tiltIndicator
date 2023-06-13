@@ -6,8 +6,8 @@ xctr_at_product_level <- function(companies,
                                   high_threshold = 2 / 3) {
   xctr_check(companies, co2)
 
-  .companies <- standardize_companies(companies)
-  .co2 <- standardize_co2(co2)
+  .companies <- prepare_companies(companies)
+  .co2 <- prepare_co2(co2, low_threshold, high_threshold)
 
   .co2 |>
     xctr_add_values_to_categorize() |>
