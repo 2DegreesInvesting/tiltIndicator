@@ -31,9 +31,13 @@
 #'
 #' # Same
 #' istr(companies, scenarios, inputs)
-istr <- function(companies, scenarios, inputs) {
+istr <- function(companies,
+                 scenarios,
+                 inputs,
+                 low_threshold = 1 / 3,
+                 high_threshold = 2 / 3) {
   companies |>
-    istr_at_product_level(scenarios, inputs) |>
+    istr_at_product_level(scenarios, inputs, low_threshold, high_threshold) |>
     xctr_at_company_level()
 }
 
