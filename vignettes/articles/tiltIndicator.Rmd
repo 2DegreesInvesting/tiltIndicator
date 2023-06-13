@@ -9,11 +9,18 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article helps you get started with the tiltIndicator package. Currently it
-supports two indicators: Input Carbon Transition Risk (ICTR) and Product Carbon
-Transition Risk (PCTR). They are both calculated in exactly the same way. The
-difference is not the process but the kind of `co2` data: either comes from
-inputs or products.
+This article helps you get started with the tiltIndicator package. Currently it 
+supports two families of indicators: XCTR and XSTR.
+In the XCTR family, you have two indicators: Input Carbon Transition Risk (ICTR) 
+and Product Carbon Transition Risk (PCTR). They are both calculated in exactly the 
+same way. The difference is not the process but the kind of `co2` data: either 
+comes from inputs or products.
+
+In the XSTR family, you have two indicators: Input Product Sector Transition Risk 
+(ISTR) and Product Sector Transition Risk (PSTR). They are both calculated in the
+same way, but ISTR takes `inputs` data as an additional argument, since it focuses 
+on the input products. 
+You can find the main functions of the families [here](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#main-functions-and-datasets).
 
 We'll use general purpose tools from the dplyr package, and the experimental
 [tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html)
