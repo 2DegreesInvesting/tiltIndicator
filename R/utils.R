@@ -102,18 +102,14 @@ standardize_co2 <- function(co2, low_threshold, high_threshold) {
       unit = ends_with("unit"),
       isic_sec = ends_with("isic_4digit")
     ) |>
-    add_thresholds(low_threshold, high_threshold)
+    mutate(low_threshold = low_threshold, high_threshold = high_threshold)
 }
 
 standardize_scenarios <- function(scenarios, low_threshold, high_threshold) {
   scenarios |>
     distinct() |>
     rename(values_to_categorize = "reductions") |>
-    add_thresholds(low_threshold, high_threshold)
-}
-
-add_thresholds <- function(data, low_threshold, high_threshold) {
-  mutate(data, low_threshold = low_threshold, high_threshold = high_threshold)
+    mutate(low_threshold = low_threshold, high_threshold = high_threshold)
 }
 
 lowercase_characters <- function(data) {
