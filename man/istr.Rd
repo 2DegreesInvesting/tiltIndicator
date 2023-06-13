@@ -6,7 +6,7 @@
 \alias{istr_at_company_level}
 \title{Calculate the ISTR indicator}
 \usage{
-istr(companies, scenarios, inputs)
+istr(companies, scenarios, inputs, low_threshold = 1/3, high_threshold = 2/3)
 
 istr_at_product_level(
   companies,

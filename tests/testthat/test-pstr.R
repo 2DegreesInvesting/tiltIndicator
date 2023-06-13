@@ -81,7 +81,6 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     sector = "total",
     subsector = "energy",
     year = 2020,
-    # value = 99,
     reductions = 0,
     type = "ipr",
   )

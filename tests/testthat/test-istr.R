@@ -114,7 +114,6 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     sector = "total",
     subsector = "energy",
     year = 2020,
-    # value = 99,
     reductions = 0,
     type = "ipr",
   )
@@ -402,4 +401,14 @@ test_that("NA in the reductions column should be ignored from the value calculat
 
   out <- istr(companies, scenarios, inputs)
   expect_true(all(is.na(out$value)))
+})
+
+test_that("is sensitive to low_threshold", {
+  companies <- slice(istr_companies, 1)
+  scenarios <- xstr_scenarios
+  inputs <- istr_inputs
+
+  out1 <- istr(companies, scenarios, inputs, low_threshold = .1)
+  out2 <- istr(companies, scenarios, inputs, low_threshold = .9)
+  expect_false(identical(out1, out2))
 })
