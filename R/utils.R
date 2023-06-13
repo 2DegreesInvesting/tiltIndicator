@@ -102,7 +102,6 @@ standardize_co2 <- function(data, low_threshold, high_threshold) {
       tilt_sec = ends_with("tilt_sector"),
       unit = ends_with("unit"),
       isic_sec = ends_with("isic_4digit")
-
     )
 }
 
