@@ -88,15 +88,16 @@ grouped_by <- function(data, grouped_by) {
   grouped_by
 }
 
-standardize_companies <- function(companies) {
+prepare_companies <- function(companies) {
   companies |>
     distinct() |>
     rename(companies_id = "company_id")
 }
 
-standardize_co2 <- function(co2) {
-  co2 |>
+prepare_co2 <- function(data, low_threshold, high_threshold) {
+  data |>
     distinct() |>
+    mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
     rename(
       tilt_sec = ends_with("tilt_sector"),
       unit = ends_with("unit"),
@@ -104,12 +105,11 @@ standardize_co2 <- function(co2) {
     )
 }
 
-standardize_scenarios <- function(scenarios, low_threshold, high_threshold) {
-  scenarios |>
+prepare_scenarios <- function(data, low_threshold, high_threshold) {
+  data |>
     distinct() |>
-    rename(values_to_categorize = "reductions") |>
-    mutate(low_threshold = low_threshold) |>
-    mutate(high_threshold = high_threshold)
+    mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
+    rename(values_to_categorize = "reductions")
 }
 
 lowercase_characters <- function(data) {
@@ -152,4 +152,10 @@ abort_missing_names <- function(missing_names) {
       {paste0('`', missing_names, '`', collapse = ', ')}"
     )
   )
+}
+
+add_risk_category <- function(data, low_threshold, high_threshold, ...) {
+  mutate(data, risk_category = categorize_risk(
+    .data$values_to_categorize, .data$low_threshold, .data$high_threshold, ...
+  ))
 }
