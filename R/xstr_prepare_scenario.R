@@ -19,13 +19,15 @@
 #'
 #' xstr_prepare_scenario(raw_scenarios)
 xstr_prepare_scenario <- function(scenarios) {
-  scenarios |>
+  out <- scenarios |>
     map_dfr(xstr_prepare_scenario_impl) |>
     abort_if_duplicated_cols()
+  out
 }
 
 xstr_prepare_scenario_impl <- function(data) {
   type <- extract_scenario_type(data)
+
   data |>
     lowercase_characters() |>
     rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
