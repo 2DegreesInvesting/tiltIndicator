@@ -45,6 +45,7 @@
 #' @importFrom purrr map
 #' @importFrom purrr map_chr
 #' @importFrom purrr map_df
+#' @importFrom purrr map_dfr
 #' @importFrom purrr walk
 #' @importFrom readr col_character
 #' @importFrom readr cols
