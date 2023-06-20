@@ -24,18 +24,18 @@ xstr_prepare_scenario <- function(scenarios) {
     abort_if_duplicated_cols()
 }
 
-get_scenario_type <- function(data) {
-  types <- grep("sector", names(data), value = TRUE)
-  unique(unlist(lapply(strsplit(types, "_"), "[[", 1)))
-}
-
 xstr_prepare_scenario_impl <- function(data) {
-  type <- get_scenario_type(data)
+  type <- extract_scenario_type(data)
   data |>
     lowercase_characters() |>
     rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
     mutate(type = type) |>
     rename(reductions = "co2_reductions")
+}
+
+extract_scenario_type <- function(data) {
+  types <- grep("sector", names(data), value = TRUE)
+  unique(unlist(lapply(strsplit(types, "_"), "[[", 1)))
 }
 
 abort_if_duplicated_cols <- function(data) {
