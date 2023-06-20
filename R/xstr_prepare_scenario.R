@@ -24,11 +24,9 @@ xstr_prepare_scenario <- function(scenarios) {
 
 xstr_prepare_scenario_impl <- function(data) {
   cols <- rlang::quos("scenario", "year", ends_with("sector"))
-  data |> abort_if_duplicated_cols(cols)
-
+  abort_if_duplicated_cols(data, cols)
 
   type <- extract_scenario_type(data)
-
   data |>
     lowercase_characters() |>
     rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
