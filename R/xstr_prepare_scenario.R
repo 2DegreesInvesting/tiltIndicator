@@ -19,13 +19,23 @@
 #'
 #' xstr_prepare_scenario(raw_scenarios)
 xstr_prepare_scenario <- function(scenarios) {
-  imap_dfr(scenarios, ~ xstr_prepare_scenario_impl(.x, .y))
+  map_dfr(scenarios, xstr_prepare_scenario_impl)
 }
 
-xstr_prepare_scenario_impl <- function(data, type) {
+xstr_prepare_scenario_impl <- function(data) {
+  data |>
+    select("scenario", "year", ends_with("sector")) |>
+    abort_if_duplicated()
+
+  type <- extract_scenario_type(data)
   data |>
     lowercase_characters() |>
     rename_with(~ gsub(paste0(type, "_"), "", .x)) |>
     mutate(type = type) |>
     rename(reductions = "co2_reductions")
+}
+
+extract_scenario_type <- function(data) {
+  types <- grep("sector", names(data), value = TRUE)
+  unique(unlist(lapply(strsplit(types, "_"), "[[", 1)))
 }

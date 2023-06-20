@@ -159,3 +159,11 @@ add_risk_category <- function(data, low_threshold, high_threshold, ...) {
     .data$values_to_categorize, .data$low_threshold, .data$high_threshold, ...
   ))
 }
+
+abort_if_duplicated <- function(data) {
+  is_unique <- identical(anyDuplicated(data), 0L)
+  if (!is_unique) {
+    abort(glue("`data` must be unique by {toString(names(data))}."))
+  }
+  invisible(data)
+}
