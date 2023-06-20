@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9072
+
+* `xstr_prepare_scenario()` with duplicated scenario data now throws an error (#431). This avoids running indicators with corrupt input data and alerts that
+the preparation must be fixed.
+
 # tiltIndicator 0.0.0.9071
 
 * `istr()` is now sensitive to `low_threshold` and `high_threshold` (#420).
