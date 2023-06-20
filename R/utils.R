@@ -160,7 +160,7 @@ add_risk_category <- function(data, low_threshold, high_threshold, ...) {
   ))
 }
 
-#' A general error constructor to error the given duplicated columns
+#' A low-level error constructor to abort if the given columns are duplicated
 #'
 #' @examples
 #' data <- tibble::tibble(x = 1, y = 1, z = 1:2)
