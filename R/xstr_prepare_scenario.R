@@ -19,9 +19,10 @@
 #'
 #' xstr_prepare_scenario(raw_scenarios)
 xstr_prepare_scenario <- function(scenarios) {
-  out <- scenarios |>
-    map_dfr(xstr_prepare_scenario_impl) |>
-    abort_if_duplicated_cols()
+  out <- map_dfr(scenarios, xstr_prepare_scenario_impl)
+
+  cols <- rlang::quos("scenario", "year", ends_with("sector"))
+  out <- abort_if_duplicated_cols(out, cols)
   out
 }
 
@@ -40,16 +41,16 @@ extract_scenario_type <- function(data) {
   unique(unlist(lapply(strsplit(types, "_"), "[[", 1)))
 }
 
-abort_if_duplicated_cols <- function(data) {
-  if (!is_unique_cols(data)) {
+abort_if_duplicated_cols <- function(data, cols) {
+  if (!is_unique_cols(data, cols)) {
     abort("`data` must be unique by `scenario`, `year`, `sector`, `subsector`.")
   }
   invisible(data)
 }
 
-is_unique_cols <- function(data) {
+is_unique_cols <- function(data, cols) {
   data |>
-    select("scenario", "year", ends_with("sector")) |>
+    select(!!!cols) |>
     anyDuplicated() |>
     identical(0L)
 }
