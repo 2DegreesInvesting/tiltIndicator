@@ -23,8 +23,7 @@ xstr_prepare_scenario <- function(scenarios) {
 }
 
 xstr_prepare_scenario_impl <- function(data) {
-  cols <- rlang::quos("scenario", "year", ends_with("sector"))
-  abort_if_duplicated_cols(data, cols)
+  abort_if_duplicated_cols(data, quos("scenario", "year", ends_with("sector")))
 
   type <- extract_scenario_type(data)
   data |>

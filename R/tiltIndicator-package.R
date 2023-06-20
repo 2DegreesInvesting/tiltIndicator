@@ -52,6 +52,7 @@
 #' @importFrom readr read_csv
 #' @importFrom rlang .env
 #' @importFrom rlang abort
+#' @importFrom rlang quos
 #' @importFrom rlang set_names
 #' @importFrom tibble rowid_to_column
 #' @importFrom tibble tibble
