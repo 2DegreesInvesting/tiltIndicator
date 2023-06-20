@@ -20,6 +20,8 @@ test_that("with duplicated scenario+year+sector+subsector errors gracefully (#39
     xstr_prepare_scenario(list(weo = duplicated)),
     "must be unique.*sector"
   )
+
+  expect_snapshot_error(xstr_prepare_scenario(list(weo = duplicated)))
 })
 
 test_that("returns visibly", {
