@@ -19,14 +19,14 @@
 #'
 #' xstr_prepare_scenario(raw_scenarios)
 xstr_prepare_scenario <- function(scenarios) {
-  out <- map_dfr(scenarios, xstr_prepare_scenario_impl)
-
-  cols <- rlang::quos("scenario", "year", ends_with("sector"))
-  out <- abort_if_duplicated_cols(out, cols)
-  out
+  map_dfr(scenarios, xstr_prepare_scenario_impl)
 }
 
 xstr_prepare_scenario_impl <- function(data) {
+  cols <- rlang::quos("scenario", "year", ends_with("sector"))
+  data |> abort_if_duplicated_cols(cols)
+
+
   type <- extract_scenario_type(data)
 
   data |>
