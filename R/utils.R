@@ -160,10 +160,20 @@ add_risk_category <- function(data, low_threshold, high_threshold, ...) {
   ))
 }
 
+#' A general error constructor to error the given duplicated columns
+#'
+#' @examples
+#' data <- tibble::tibble(x = 1, y = 1, z = 1:2)
+#'
+#' # Fails: `x`, `y` are duplicated. Note the message prints column names
+#' abort_if_duplicated_cols(data, rlang::quos(x, y))
+#' # Passes: `z` is not duplicated
+#' abort_if_duplicated_cols(data, rlang::quos(z))
+#' @noRd
 abort_if_duplicated_cols <- function(data, cols) {
   if (!is_unique_cols(data, cols)) {
     nms <- toString(names(select(data, !!!cols)))
-    abort(glue::glue(c("`data` must be unique by {nms}")))
+    abort(glue::glue(c("`data` must be unique by {nms}.")))
   }
   invisible(data)
 }
