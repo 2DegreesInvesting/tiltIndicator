@@ -40,17 +40,3 @@ extract_scenario_type <- function(data) {
   types <- grep("sector", names(data), value = TRUE)
   unique(unlist(lapply(strsplit(types, "_"), "[[", 1)))
 }
-
-abort_if_duplicated_cols <- function(data, cols) {
-  if (!is_unique_cols(data, cols)) {
-    abort("`data` must be unique by `scenario`, `year`, `sector`, `subsector`.")
-  }
-  invisible(data)
-}
-
-is_unique_cols <- function(data, cols) {
-  data |>
-    select(!!!cols) |>
-    anyDuplicated() |>
-    identical(0L)
-}

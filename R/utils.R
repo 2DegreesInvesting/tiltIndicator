@@ -159,3 +159,18 @@ add_risk_category <- function(data, low_threshold, high_threshold, ...) {
     .data$values_to_categorize, .data$low_threshold, .data$high_threshold, ...
   ))
 }
+
+abort_if_duplicated_cols <- function(data, cols) {
+  if (!is_unique_cols(data, cols)) {
+    nms <- toString(names(select(data, !!!cols)))
+    abort(glue::glue(c("`data` must be unique by {nms}")))
+  }
+  invisible(data)
+}
+
+is_unique_cols <- function(data, cols) {
+  data |>
+    select(!!!cols) |>
+    anyDuplicated() |>
+    identical(0L)
+}
