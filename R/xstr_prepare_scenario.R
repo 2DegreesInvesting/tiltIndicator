@@ -25,7 +25,7 @@ xstr_prepare_scenario <- function(scenarios) {
 xstr_prepare_scenario_impl <- function(data) {
   data |>
     select("scenario", "year", ends_with("sector")) |>
-    abort_if_duplicated_cols()
+    abort_if_duplicated()
 
   type <- extract_scenario_type(data)
   data |>
