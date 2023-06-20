@@ -19,8 +19,9 @@
 #'
 #' xstr_prepare_scenario(raw_scenarios)
 xstr_prepare_scenario <- function(scenarios) {
-  out <- map_dfr(scenarios, xstr_prepare_scenario_impl)
-  out |> abort_if_duplicated_cols()
+  scenarios |>
+    map_dfr(xstr_prepare_scenario_impl) |>
+    abort_if_duplicated_cols()
 }
 
 get_scenario_type <- function(data) {
@@ -50,4 +51,3 @@ is_unique_cols <- function(data) {
     anyDuplicated() |>
     identical(0L)
 }
-
