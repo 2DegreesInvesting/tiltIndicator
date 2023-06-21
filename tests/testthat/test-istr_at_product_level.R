@@ -81,3 +81,36 @@ test_that("`high_threshold` and `year` yield the expected risk categories", {
   # Reductions < threshold = "medium"
   expect_equal(filter(out, year != 2030)$risk_category, "medium")
 })
+
+test_that("NA in the reductions column yields `NA` in risk_category at product level", {
+  scenarios <- tibble(
+    reductions = NA,
+    scenario = "2",
+    sector = "b",
+    subsector = "c",
+    year = 2020,
+    type = "a",
+  )
+
+  companies <- tibble(
+    company_id = "1",
+    clustered = "any",
+    activity_uuid_product_uuid = "x",
+    tilt_sector = "x",
+  )
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = "x",
+    input_activity_uuid_product_uuid = "any",
+    input_tilt_sector = "any",
+    input_tilt_subsector = "any",
+    input_unit = "y",
+    input_isic_4digit = "y",
+    type = "a",
+    sector = "b",
+    subsector = "c"
+  )
+
+  out <- istr_at_product_level(companies, scenarios, inputs)
+  expect_equal(out$risk_category, NA_character_)
+})
