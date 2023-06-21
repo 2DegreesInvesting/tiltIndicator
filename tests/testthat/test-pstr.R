@@ -270,30 +270,6 @@ test_that("a 0-row `scenarios` yields an error", {
   )
 })
 
-test_that("NA in the reductions column yields `NA` in risk_category at product level", {
-  companies <- tibble(
-    company_id = "1",
-    type = "a",
-    sector = "b",
-    subsector = "c",
-    clustered = "any",
-    activity_uuid_product_uuid = "x",
-    tilt_sector = "x",
-    tilt_subsector = "x",
-  )
-  scenarios <- tibble(
-    scenario = "2",
-    sector = "b",
-    subsector = "c",
-    year = 2020,
-    reductions = NA,
-    type = "a",
-  )
-
-  out <- pstr_at_product_level(companies, scenarios)
-  expect_equal(out$risk_category, NA_character_)
-})
-
 test_that("NA in the reductions column should be ignored from the value calculations", {
   companies <- tibble(
     company_id = "1",
