@@ -270,7 +270,7 @@ test_that("a 0-row `scenarios` yields an error", {
   )
 })
 
-test_that("NA in the reductions column should be ignored from the value calculations", {
+test_that("NA in reductions yields expected risk_category and NAs in value (#300)", {
   companies <- tibble(
     company_id = "1",
     type = "a",
