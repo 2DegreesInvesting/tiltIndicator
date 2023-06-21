@@ -24,35 +24,25 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
   expect_equal(out, arrange(out, companies_id, grouped_by))
 })
 
-test_that("returns n rows equal to companies x risk_category x grouped_by", {
+test_that("some match yields n rows = companies x risk_category x grouped_by (#393)", {
+  some_match <- c("match", "unmatched")
+  companies <- tibble(
+    company_id = "x",
+    activity_uuid_product_uuid = some_match,
+    clustered = "x"
+  )
+
   inputs <- tibble(
-    activity_uuid_product_uuid = "x",
-    input_activity_uuid_product_uuid = "y",
+    activity_uuid_product_uuid = "match",
+    input_activity_uuid_product_uuid = "x",
     input_co2_footprint = 1,
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
+    input_tilt_sector = "x",
+    input_unit = "x",
+    input_isic_4digit = "x"
   )
 
-  companies <- tibble(
-    company_id = "a",
-    activity_uuid_product_uuid = c("x", "y"),
-    clustered = c("xyz", "abc")
-  )
   out <- xctr(companies, inputs)
 
-  n <- length(unique(out$companies_id)) *
-    length(unique(out$risk_category)) *
-    length(unique(out$grouped_by))
-  expect_equal(nrow(out), n)
-  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
-
-  companies <- tibble(
-    company_id = c("a", "b"),
-    activity_uuid_product_uuid = c("x", "y"),
-    clustered = c("xyz", "abc")
-  )
-  out <- xctr(companies, inputs)
   n <- length(unique(out$companies_id)) *
     length(unique(out$risk_category)) *
     length(unique(out$grouped_by))
@@ -87,25 +77,26 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
 })
 
 
-test_that("no matches yield the expected prototype", {
+test_that("no matches yield the expected prototype (#393)", {
   companies <- tibble(
-    activity_uuid_product_uuid = c("x", "x"),
-    company_id = c("a", "b"),
-    clustered = c("xx")
+    activity_uuid_product_uuid = "x",
+    company_id = "x",
+    clustered = "x"
   )
   co2 <- tibble(
-    activity_uuid_product_uuid = c("y"),
+    activity_uuid_product_uuid = "y",
     input_co2_footprint = 1,
-    input_tilt_sector = "Transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
+    input_tilt_sector = "y",
+    input_unit = "y",
+    input_isic_4digit = "y"
   )
 
   out <- xctr(companies, co2)
-  expect_equal(unique(out$companies_id), c("a", "b"))
-  expect_equal(unique(out$grouped_by), flat_benchmarks())
-  expect_equal(unique(out$risk_category), c("high", "medium", "low"))
-  expect_equal(unique(out$value), NA_real_)
+
+  expect_equal(out$companies_id, "x")
+  expect_equal(out$grouped_by, NA_character_)
+  expect_equal(out$risk_category, NA_character_)
+  expect_equal(out$value, NA_real_)
 })
 
 test_that("is sensitive to low_threshold", {
