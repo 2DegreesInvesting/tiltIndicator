@@ -1,3 +1,4 @@
+# FIXME: Remove dead code
 test_that("outputs the expected columns", {
   # styler: off
   pstr <- tribble(
