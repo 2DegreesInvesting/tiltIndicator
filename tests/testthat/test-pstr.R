@@ -293,3 +293,62 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
   out <- pstr(companies, scenarios)
   expect_true(all(is.na(out$value)))
 })
+
+test_that("NA in `risk_category` are dropped except to preserve companies (#)", {
+  skip("TODO")
+
+  # Debug xstr_polish_output_at_company_level() and
+  # see how if it gets NAs in risk_category. Else rewreite
+  # the issue title.
+
+  companies <- tibble(
+    company_id = "a",
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a",
+    tilt_sector = "a",
+    tilt_subsector = "a",
+  )
+  scenarios <- tibble(
+    scenario = "a",
+    sector = NA,
+    subsector = "b",
+    year = 2020,
+    reductions = NA,
+    type = "b",
+  )
+
+  pstr(companies, scenarios)
+  out <- pstr(companies, scenarios)
+  expect_true(all(is.na(out$value)))
+})
+
+test_that("1 company w/ 2 matching products yields 3 values that sum 1 (#393)", {
+  # TODO: Find and remove redundant test
+  companies <- tibble(
+    company_id = "a",
+    type = "a",
+    sector = c("a", "b"),
+    subsector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a",
+    tilt_sector = "a",
+    tilt_subsector = "a",
+  )
+
+  scenarios <- tibble(
+    type = "a",
+    sector = c("a", "b"),
+    subsector = "a",
+    scenario = "a",
+    year = 2025,
+    reductions = 1,
+  )
+
+  out <- pstr(companies, scenarios)
+  expect_equal(nrow(out), 3L)
+  expect_equal(sum(out$value), 1L)
+  expect_false(anyNA(out$value))
+})
