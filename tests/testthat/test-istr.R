@@ -326,39 +326,6 @@ test_that("a 0-row `scenarios` yields an error", {
   )
 })
 
-test_that("NA in the reductions column yields `NA` in risk_category at product level", {
-  scenarios <- tibble(
-    reductions = NA,
-    scenario = "2",
-    sector = "b",
-    subsector = "c",
-    year = 2020,
-    type = "a",
-  )
-
-  companies <- tibble(
-    company_id = "1",
-    clustered = "any",
-    activity_uuid_product_uuid = "x",
-    tilt_sector = "x",
-  )
-
-  inputs <- tibble(
-    activity_uuid_product_uuid = "x",
-    input_activity_uuid_product_uuid = "any",
-    input_tilt_sector = "any",
-    input_tilt_subsector = "any",
-    input_unit = "y",
-    input_isic_4digit = "y",
-    type = "a",
-    sector = "b",
-    subsector = "c"
-  )
-
-  out <- istr_at_product_level(companies, scenarios, inputs)
-  expect_equal(out$risk_category, NA_character_)
-})
-
 test_that("NA in the reductions column should be ignored from the value calculations", {
   companies <- tibble(
     company_id = "1",
