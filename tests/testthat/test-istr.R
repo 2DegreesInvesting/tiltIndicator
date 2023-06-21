@@ -230,43 +230,6 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   expect_true(all_na)
 })
 
-test_that("no matches yield the expected prototype (#176)", {
-  companies <- tibble(
-    company_id = c("a", "b"),
-    tilt_sector = c("any", "any"),
-    clustered = "x",
-    activity_uuid_product_uuid = c("x", "y")
-  )
-
-  inputs <- tibble(
-    activity_uuid_product_uuid = c("x", "y"),
-    input_activity_uuid_product_uuid = c("any", "any"),
-    input_tilt_sector = c("any", "any"),
-    input_tilt_subsector = c("any", "any"),
-    type = c("x", "y"),
-    sector = c("x", "y"),
-    subsector = c("x", "y"),
-    input_unit = "any",
-    input_isic_4digit = "4578",
-  )
-
-  scenarios <- tibble(
-    type = "x",
-    sector = "x",
-    subsector = "x",
-    scenario = "x",
-    year = 2030,
-    reductions = 1,
-  )
-
-  out <- istr(companies, scenarios, inputs)
-  unmatched <- filter(out, companies_id == "b")
-  expect_equal(unique(unmatched$companies_id), c("b"))
-  expect_equal(unique(unmatched$grouped_by), c("y_NA_NA"))
-  expect_equal(unique(unmatched$risk_category), c("high", "medium", "low"))
-  expect_equal(unique(unmatched$value), NA_real_)
-})
-
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
   .type <- "weo"
   companies <- istr_companies |> slice(1)
@@ -368,4 +331,41 @@ test_that("is sensitive to low_threshold", {
   out1 <- istr(companies, scenarios, inputs, low_threshold = .1)
   out2 <- istr(companies, scenarios, inputs, low_threshold = .9)
   expect_false(identical(out1, out2))
+})
+
+test_that("no matches yield the expected prototype (#176)", {
+  companies <- tibble(
+    company_id = c("a", "b"),
+    tilt_sector = c("any", "any"),
+    clustered = "x",
+    activity_uuid_product_uuid = c("x", "y")
+  )
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = c("x", "y"),
+    input_activity_uuid_product_uuid = c("any", "any"),
+    input_tilt_sector = c("any", "any"),
+    input_tilt_subsector = c("any", "any"),
+    type = c("x", "y"),
+    sector = c("x", "y"),
+    subsector = c("x", "y"),
+    input_unit = "any",
+    input_isic_4digit = "4578",
+  )
+
+  scenarios <- tibble(
+    type = "x",
+    sector = "x",
+    subsector = "x",
+    scenario = "x",
+    year = 2030,
+    reductions = 1,
+  )
+
+  out <- istr(companies, scenarios, inputs)
+  unmatched <- filter(out, companies_id == "b")
+  expect_equal(length(unmatched$companies_id), 1L)
+  expect_equal(unmatched$grouped_by, NA_character_)
+  expect_equal(unmatched$risk_category, NA_character_)
+  expect_equal(unmatched$value, NA_real_)
 })
