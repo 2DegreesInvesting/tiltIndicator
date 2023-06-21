@@ -189,35 +189,6 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   expect_true(all_na)
 })
 
-test_that("no matches yield the expected prototype (#176)", {
-  companies <- tibble(
-    company_id = c("a", "b"),
-    type = c("x", "y"),
-    sector = c("x", "y"),
-    subsector = c("x", "y"),
-    clustered = "x",
-    activity_uuid_product_uuid = "x",
-    tilt_sector = "x",
-    tilt_subsector = "x",
-  )
-
-  scenarios <- tibble(
-    type = "x",
-    sector = "x",
-    subsector = "x",
-    scenario = "x",
-    year = 2030,
-    reductions = 1,
-  )
-
-  out <- pstr(companies, scenarios)
-  unmatched <- filter(out, companies_id == "b")
-  expect_equal(unique(unmatched$companies_id), c("b"))
-  expect_equal(unique(unmatched$grouped_by), c("y_NA_NA"))
-  expect_equal(unique(unmatched$risk_category), c("high", "medium", "low"))
-  expect_equal(unique(unmatched$value), NA_real_)
-})
-
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
   .type <- "weo"
   companies <- pstr_companies |>
@@ -294,7 +265,7 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
   expect_true(all(is.na(out$value)))
 })
 
-test_that("2 of 2 matching products yields 3 values that sum 1 (#393)", {
+test_that("2 of 2 matches yield 3 `value` that sum 1 (#393)", {
   # TODO: Find and remove redundant test
   companies <- tibble(
     company_id = "a",
@@ -322,7 +293,7 @@ test_that("2 of 2 matching products yields 3 values that sum 1 (#393)", {
   expect_false(anyNA(out$value))
 })
 
-test_that("1 of 2 matching products yields 3 values that sum 1 (#393)", {
+test_that("1 of 2 matches yield 3 `value` that sum 1 (#393)", {
   companies <- tibble(
     company_id = "a",
     type = "a",
@@ -350,7 +321,7 @@ test_that("1 of 2 matching products yields 3 values that sum 1 (#393)", {
   expect_false(anyNA(out$value))
 })
 
-test_that("0 matching products yields `3` values that is NA (#393)", {
+test_that("0 match yields 1 `companies_id` & `NA` in all other columns (#393)", {
   companies <- tibble(
     company_id = "a",
     type = "a",
@@ -370,12 +341,12 @@ test_that("0 matching products yields `3` values that is NA (#393)", {
     year = 2025,
     reductions = 1,
   )
-  # TODO: Refactor
-  out <- pstr(companies, scenarios)
-  expect_equal(length(out$value), 1L)
-  expect_true(is.na(out$value))
-  # FIXME
-  # expect_true(is.na(out$risk_category))
-  # expect_true(is.na(out$grouped_by))
-})
 
+  out <- pstr(companies, scenarios)
+
+  expect_equal(out$companies_id, "a")
+  expect_equal(length(out$companies_id), 1L)
+  expect_true(is.na(out$value))
+  expect_true(is.na(out$risk_category))
+  expect_true(is.na(out$grouped_by))
+})

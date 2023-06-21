@@ -73,10 +73,10 @@ stop_if_has_0_rows <- function(data) {
 }
 
 empty_output_at_company_level <- function(companies_id, grouped_by) {
-  expand_grid(
+  tibble(
     companies_id = companies_id,
-    grouped_by = grouped_by,
-    risk_category = risk_category_levels(),
+    grouped_by = NA_character_,
+    risk_category = NA_character_,
     value = NA_real_
   )
 }
