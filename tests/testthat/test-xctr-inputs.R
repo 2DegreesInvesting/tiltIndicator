@@ -187,8 +187,6 @@ test_that("some match yields n rows = companies x risk_category x grouped_by (#3
   expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 })
 
-
-
 test_that("no matches yield the expected prototype (#393)", {
   companies <- tibble(
     activity_uuid_product_uuid = "x",
