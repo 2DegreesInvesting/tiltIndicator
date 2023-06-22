@@ -258,7 +258,7 @@ test_that("values sum 1", {
   expect_equal(sum, 1)
 })
 
-test_that("some match yields 3 rows with no NA (#393)", {
+test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
   companies <- tibble(
     company_id = "a",
     type = "a",
