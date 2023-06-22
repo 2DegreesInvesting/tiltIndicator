@@ -299,7 +299,6 @@ test_that("some match yields 18 rows with no NA (#393)", {
 
   out <- xctr(companies, co2)
 
-
   expect_equal(nrow(out), 18L)
   n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
   expect_equal(n, 18L)

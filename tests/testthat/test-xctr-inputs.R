@@ -234,3 +234,25 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   expect_equal(out$risk_category, NA_character_)
   expect_equal(out$value, NA_real_)
 })
+
+test_that("some match yields 18 rows with no NA (#393)", {
+  companies <- tibble(
+    activity_uuid_product_uuid = c("a", "unmatched"),
+    company_id = "a",
+    clustered = "a"
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_co2_footprint = 1,
+    input_tilt_sector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a"
+  )
+
+  out <- xctr(companies, co2)
+
+  expect_equal(nrow(out), 18L)
+  n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
+  expect_equal(n, 18L)
+  expect_false(anyNA(out))
+})
