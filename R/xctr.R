@@ -77,8 +77,7 @@ xctr_at_company_level <- function(data) {
       value = .data$n / sum(.data$n),
       .by = c("companies_id", "grouped_by")
     ) |>
-    # TODO: Refactor select(-"n")
-    select(-all_of("n"))
+    select(-"n")
 
   if (identical(nrow(with_value), 0L)) {
     return(
