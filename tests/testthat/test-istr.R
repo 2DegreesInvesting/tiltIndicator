@@ -333,39 +333,40 @@ test_that("is sensitive to low_threshold", {
   expect_false(identical(out1, out2))
 })
 
-test_that("no matches yield the expected prototype (#176)", {
+test_that("no match yields 1 row with NA in all columns (#393)", {
   companies <- tibble(
-    company_id = c("a", "b"),
-    tilt_sector = c("any", "any"),
-    clustered = "x",
-    activity_uuid_product_uuid = c("x", "y")
-  )
-
-  inputs <- tibble(
-    activity_uuid_product_uuid = c("x", "y"),
-    input_activity_uuid_product_uuid = c("any", "any"),
-    input_tilt_sector = c("any", "any"),
-    input_tilt_subsector = c("any", "any"),
-    type = c("x", "y"),
-    sector = c("x", "y"),
-    subsector = c("x", "y"),
-    input_unit = "any",
-    input_isic_4digit = "4578",
+    company_id = "a",
+    tilt_sector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "unmatched"
   )
 
   scenarios <- tibble(
-    type = "x",
-    sector = "x",
-    subsector = "x",
-    scenario = "x",
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    scenario = "a",
     year = 2030,
     reductions = 1,
   )
 
+  inputs <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_activity_uuid_product_uuid = "a",
+    input_tilt_sector = "a",
+    input_tilt_subsector = "a",
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a",
+  )
+
   out <- istr(companies, scenarios, inputs)
-  unmatched <- filter(out, companies_id == "b")
-  expect_equal(length(unmatched$companies_id), 1L)
-  expect_equal(unmatched$grouped_by, NA_character_)
-  expect_equal(unmatched$risk_category, NA_character_)
-  expect_equal(unmatched$value, NA_real_)
+
+  expect_equal(nrow(out), 1)
+  expect_equal(out$companies_id, "a")
+  expect_true(is.na(out$value))
+  expect_true(is.na(out$risk_category))
+  expect_true(is.na(out$grouped_by))
 })

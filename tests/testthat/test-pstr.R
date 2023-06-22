@@ -265,7 +265,7 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
   expect_true(all(is.na(out$value)))
 })
 
-test_that("some match yields 1 row with no NA (#393)", {
+test_that("some match yields 3 rows with no NA (#393)", {
   companies <- tibble(
     company_id = "a",
     type = "a",
@@ -287,7 +287,7 @@ test_that("some match yields 1 row with no NA (#393)", {
 
   out <- pstr(companies, scenarios)
 
-  expect_equal(sum(out$value), 1L)
+  expect_equal(nrow(out), 3L)
   expect_false(anyNA(out))
 })
 
