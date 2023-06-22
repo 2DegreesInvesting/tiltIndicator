@@ -180,3 +180,10 @@ is_first <- function(x) {
   seq_along(x) == 1L
 }
 
+spread_na_across <- function(data, across, from) {
+  mutate(data, across(all_of(across), ~ spread_na(.data[[from]], .x)))
+}
+spread_na <- function(from, to) {
+  if_else(is.na(from), NA, to)
+}
+

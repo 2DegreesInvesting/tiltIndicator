@@ -65,14 +65,6 @@ pstr_at_product_level <- function(companies,
     spread_na_across(na_cols, from = "risk_category")
 }
 
-# FIXME: Move elsewhere
-spread_na_across <- function(data, across, from) {
-  mutate(data, across(all_of(across), ~ spread_na(.data[[from]], .x)))
-}
-spread_na <- function(from, to) {
-  if_else(is.na(from), NA, to)
-}
-
 xstr_add_values_to_categorize <- function(data, scenarios) {
   left_join(
     data, scenarios,
