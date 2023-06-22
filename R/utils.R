@@ -168,8 +168,8 @@ abort_if_duplicated <- function(data) {
   invisible(data)
 }
 
-prune_unmatched_at_company_level <- function(data) {
-  filter(data, if_all_na_is_first_else_not_na(.data$value), .by = "companies_id")
+prune_unmatched <- function(data, col = "value", .by = "companies_id") {
+  filter(data, if_all_na_is_first_else_not_na(.data[[col]]), .by = all_of(.by))
 }
 
 if_all_na_is_first_else_not_na <- function(x) {

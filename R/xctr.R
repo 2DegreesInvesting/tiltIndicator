@@ -117,7 +117,7 @@ xctr_at_company_level <- function(data) {
     )
   }
 
-  out <- prune_unmatched_at_company_level(out)
+  out <- prune_unmatched(out)
   out
 }
 

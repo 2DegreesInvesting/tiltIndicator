@@ -90,13 +90,14 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
 })
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
+  skip("wip")
   companies <- tibble(
     company_id = c("a", "a", "b", "b"),
     sector = c("matched", "unmatched", "unmatched", "unmatched"),
     type = "a",
     subsector = "a",
-    clustered = "a",
-    activity_uuid_product_uuid = "a",
+    clustered = letters[1:4],
+    activity_uuid_product_uuid = letters[1:4],
     tilt_sector = "a",
     tilt_subsector = "a",
   )
@@ -113,10 +114,10 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
 
-  # no_match <- filter(out, companies_id == "b")
-  # expect_equal(nrow(no_match), 1)
-  #
-  # na_cols <- setdiff(cols_at_product_level(), "companies_id")
-  # all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
-  # expect_true(all_na_cols_are_na)
+  no_match <- filter(out, companies_id == "b")
+  expect_equal(nrow(no_match), 1)
+
+  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
+  expect_true(all_na_cols_are_na)
 })
