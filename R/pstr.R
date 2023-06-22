@@ -98,15 +98,3 @@ pstr_cols_at_product_level <- function() {
     "tilt_subsector"
   )
 }
-
-prune_unmatched_products_at_company_level <- function(data) {
-  filter(data, if_all_na_is_first_else_not_na(.data$value), .by = "companies_id")
-}
-
-if_all_na_is_first_else_not_na <- function(x) {
-  if (all(is.na(x))) is_first(x) else !is.na(x)
-}
-
-is_first <- function(x) {
-  seq_along(x) == 1L
-}
