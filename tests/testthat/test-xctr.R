@@ -299,7 +299,7 @@ test_that("a 0-row `co2` yields an error", {
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
   companies <- tibble(
-    activity_uuid_product_uuid = "a",
+    activity_uuid_product_uuid = "unmatched",
     company_id = "a",
     clustered = "a"
   )
@@ -313,7 +313,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
 
   out <- xctr(companies, co2)
 
-  expect_equal(out$companies_id, "x")
+  expect_equal(out$companies_id, "a")
   expect_equal(out$grouped_by, NA_character_)
   expect_equal(out$risk_category, NA_character_)
   expect_equal(out$value, NA_real_)
