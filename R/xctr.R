@@ -117,8 +117,7 @@ xctr_at_company_level <- function(data) {
     )
   }
 
-  out <- prune_unmatched(out)
-  out
+  out |> prune_unmatched("value", .by = "companies_id")
 }
 
 #' @rdname pstr
