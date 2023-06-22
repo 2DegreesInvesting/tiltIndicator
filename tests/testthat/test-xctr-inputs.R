@@ -161,7 +161,7 @@ test_that("a 0-row `inputs` yields an error", {
   )
 })
 
-test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
+test_that("values sum 1 (#176)", {
   companies <- tibble(
     activity_uuid_product_uuid = "a",
     company_id = "a",
