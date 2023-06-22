@@ -205,7 +205,7 @@ relative production emissions per company.</p>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">xctr_at_product_level</span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">inputs</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">xctr_at_company_level</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 144 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 127 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by risk_category value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high          0.143</span>
@@ -218,11 +218,11 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium        0.286</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low           0.286</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high          0.286</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 134 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 117 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span> <span class="fu">xctr</span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">inputs</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 144 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 127 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by risk_category value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high          0.143</span>
@@ -235,7 +235,7 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium        0.286</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low           0.286</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high          0.286</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 134 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 117 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># PCTR</span></span></span>
 <span class="r-in"><span><span class="va">products</span> <span class="op">&lt;-</span> <span class="va">products</span></span></span>
@@ -262,7 +262,7 @@ relative production emissions per company.</p>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">xctr_at_product_level</span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">products</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">xctr_at_company_level</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 144 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 127 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by risk_category value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span>
@@ -275,11 +275,11 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 134 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 117 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span> <span class="fu">xctr</span><span class="op">(</span>co2 <span class="op">=</span> <span class="va">products</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 144 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 127 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by risk_category value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span>
@@ -292,7 +292,7 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 134 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 117 more rows</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
