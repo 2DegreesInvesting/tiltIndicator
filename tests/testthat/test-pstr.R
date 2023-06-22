@@ -269,7 +269,7 @@ test_that("some match yields 3 rows with no NA (#393)", {
   companies <- tibble(
     company_id = "a",
     type = "a",
-    sector = c("matched", "unmatched"),
+    sector = c("a", "unmatched"),
     subsector = "a",
     clustered = c("a", "b"),
     activity_uuid_product_uuid = c("a", "b"),
@@ -278,7 +278,7 @@ test_that("some match yields 3 rows with no NA (#393)", {
   )
   scenarios <- tibble(
     type = "a",
-    sector = "matched",
+    sector = "a",
     subsector = "a",
     scenario = "a",
     year = 2050,
