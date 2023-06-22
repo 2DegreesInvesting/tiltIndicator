@@ -21,4 +21,3 @@ xstr_polish_output_at_company_level <- function(data) {
     names = c("type", "scenario", "year")
   )
 }
-
