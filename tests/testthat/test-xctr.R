@@ -77,28 +77,6 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   expect_true(all_na)
 })
 
-test_that("no matches yield the expected prototype (#393)", {
-  companies <- tibble(
-    activity_uuid_product_uuid = "x",
-    company_id = "x",
-    clustered = "x"
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = "y",
-    co2_footprint = 1,
-    tilt_sector = "y",
-    unit = "y",
-    isic_4digit = "y"
-  )
-
-  out <- xctr(companies, co2)
-
-  expect_equal(out$companies_id, "x")
-  expect_equal(out$grouped_by, NA_character_)
-  expect_equal(out$risk_category, NA_character_)
-  expect_equal(out$value, NA_real_)
-})
-
 test_that("is sensitive to low_threshold", {
   companies <- slice(companies, 1:2)
   co2 <- slice(products, 1:2)
@@ -317,4 +295,26 @@ test_that("a 0-row `co2` yields an error", {
     xctr(slice(companies, 1), products[0L, ]),
     "co2.*can't have 0-row"
   )
+})
+
+test_that("no match yields 1 row with NA in all columns (#393)", {
+  companies <- tibble(
+    activity_uuid_product_uuid = "a",
+    company_id = "a",
+    clustered = "a"
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = "a",
+    co2_footprint = 1,
+    tilt_sector = "a",
+    unit = "a",
+    isic_4digit = "a"
+  )
+
+  out <- xctr(companies, co2)
+
+  expect_equal(out$companies_id, "x")
+  expect_equal(out$grouped_by, NA_character_)
+  expect_equal(out$risk_category, NA_character_)
+  expect_equal(out$value, NA_real_)
 })

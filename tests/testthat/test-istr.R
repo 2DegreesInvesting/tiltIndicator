@@ -378,7 +378,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
 
   scenarios <- tibble(
     type = "a",
-    sector = "a",
+    sector = "unmatched",
     subsector = "a",
     scenario = "a",
     year = 2030,
@@ -391,7 +391,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
     input_tilt_sector = "a",
     input_tilt_subsector = "a",
     type = "a",
-    sector = "unmatched",
+    sector = "a",
     subsector = "a",
     input_unit = "a",
     input_isic_4digit = "a",
