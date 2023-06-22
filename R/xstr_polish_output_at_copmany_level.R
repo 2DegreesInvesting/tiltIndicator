@@ -1,4 +1,3 @@
-# FIXME: Remove dead code
 #' Polish output at company level
 #'
 #' @param data The output of `xstr*()` functions.
