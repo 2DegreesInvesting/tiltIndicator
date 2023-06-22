@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9073
+
+* At company level, each company with a match has 3 `value`s that sum 1 and no `NA`, and each company with no match has 1 `value` that is `NA` (#434)
+
+
 # tiltIndicator 0.0.0.9072
 
 * `xstr_prepare_scenario()` with duplicated scenario data now throws an error (#431). This avoids running indicators with corrupt input data and alerts that
