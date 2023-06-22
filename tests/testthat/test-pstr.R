@@ -265,87 +265,56 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
   expect_true(all(is.na(out$value)))
 })
 
-test_that("2 of 2 matches yield 3 `value` that sum 1 (#393)", {
-  # TODO: Find and remove redundant test
+test_that("some match yields 1 row with no NA (#393)", {
   companies <- tibble(
     company_id = "a",
     type = "a",
-    sector = "a",
+    sector = c("matched", "unmatched"),
     subsector = "a",
     clustered = c("a", "b"),
     activity_uuid_product_uuid = c("a", "b"),
     tilt_sector = "a",
     tilt_subsector = "a",
   )
-
   scenarios <- tibble(
     type = "a",
-    sector = "a",
+    sector = "matched",
     subsector = "a",
     scenario = "a",
-    year = 2025,
+    year = 2050,
     reductions = 1,
   )
 
   out <- pstr(companies, scenarios)
-  expect_equal(length(out$value), 3L)
+
   expect_equal(sum(out$value), 1L)
-  expect_false(anyNA(out$value))
+  expect_false(anyNA(out))
 })
 
-test_that("1 of 2 matches yield 3 `value` that sum 1 (#393)", {
-  companies <- tibble(
-    company_id = "a",
-    type = "a",
-    sector = c("a", "unmatched"),
-    subsector = "a",
-    clustered = c("a", "b"),
-    activity_uuid_product_uuid = c("a", "b"),
-    tilt_sector = "a",
-    tilt_subsector = "a",
-  )
-
-  scenarios <- tibble(
-    type = "a",
-    sector = "a",
-    subsector = "a",
-    scenario = "a",
-    year = 2025,
-    reductions = 1,
-  )
-  # TODO: Refactor
-  out <- pstr(companies, scenarios) |>
-    filter(if_all_na_is_first_else_not_na(.data$value), .by = "companies_id")
-  expect_equal(length(out$value), 3L)
-  expect_equal(sum(out$value), 1L)
-  expect_false(anyNA(out$value))
-})
-
-test_that("0 match yields 1 `companies_id` & `NA` in all other columns (#393)", {
+test_that("no match yields 1 row with NA in all columns (#393)", {
   companies <- tibble(
     company_id = "a",
     type = "a",
     sector = "unmatched",
     subsector = "a",
-    clustered = c("a", "b"),
-    activity_uuid_product_uuid = c("a", "b"),
+    clustered = "a",
+    activity_uuid_product_uuid = "a",
     tilt_sector = "a",
     tilt_subsector = "a",
   )
-
   scenarios <- tibble(
     type = "a",
     sector = "a",
     subsector = "a",
     scenario = "a",
-    year = 2025,
+    year = 2050,
     reductions = 1,
   )
 
   out <- pstr(companies, scenarios)
 
+  expect_equal(nrow(out), 1)
   expect_equal(out$companies_id, "a")
-  expect_equal(length(out$companies_id), 1L)
   expect_true(is.na(out$value))
   expect_true(is.na(out$risk_category))
   expect_true(is.na(out$grouped_by))
