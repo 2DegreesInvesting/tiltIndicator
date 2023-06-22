@@ -90,7 +90,6 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
 })
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
-  skip("wip")
   companies <- tibble(
     company_id = c("a", "a", "b", "b"),
     sector = c("matched", "unmatched", "unmatched", "unmatched"),
