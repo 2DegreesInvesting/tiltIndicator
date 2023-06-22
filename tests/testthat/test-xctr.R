@@ -283,7 +283,6 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   expect_equal(out$value, NA_real_)
 })
 
-# test_that("some match yields 3 rows with no NA (#393)", {
 test_that("some match yields 18 rows with no NA (#393)", {
   companies <- tibble(
     activity_uuid_product_uuid = "a",
