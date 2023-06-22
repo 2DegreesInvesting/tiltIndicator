@@ -116,7 +116,7 @@ xctr_at_company_level <- function(data) {
       )
     )
   }
-
+  # TODO: DRY with prune_unmatched_products()?
   out <- prune_unmatched_products_at_company_level(out)
   out
 }
