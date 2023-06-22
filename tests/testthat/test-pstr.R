@@ -288,6 +288,8 @@ test_that("some match yields 3 rows with no NA (#393)", {
   out <- pstr(companies, scenarios)
 
   expect_equal(nrow(out), 3L)
+  n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
+  expect_equal(n, 3L)
   expect_false(anyNA(out))
 })
 
