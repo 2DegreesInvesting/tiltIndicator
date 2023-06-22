@@ -38,8 +38,7 @@ pstr <- function(companies,
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   companies |>
     pstr_at_product_level(scenarios, low_threshold, high_threshold) |>
-    xctr_at_company_level() |>
-    xstr_prune_unmatched_products()
+    xctr_at_company_level()
 }
 
 #' @rdname pstr

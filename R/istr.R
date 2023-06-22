@@ -38,10 +38,7 @@ istr <- function(companies,
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   companies |>
     istr_at_product_level(scenarios, inputs, low_threshold, high_threshold) |>
-    xctr_at_company_level() |>
-    # TODO: Check if this is an overkill. Maybe what's left to proune needs a
-    # simpler implementation.
-    xstr_prune_unmatched_products()
+    xctr_at_company_level()
 }
 
 #' @rdname istr

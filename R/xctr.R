@@ -117,7 +117,8 @@ xctr_at_company_level <- function(data) {
     )
   }
 
-  out
+  out |>
+    xstr_prune_unmatched_products()
 }
 
 #' @rdname pstr
