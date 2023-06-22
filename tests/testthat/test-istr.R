@@ -333,12 +333,12 @@ test_that("is sensitive to low_threshold", {
   expect_false(identical(out1, out2))
 })
 
-test_that("no match yields 1 row with NA in all columns (#393)", {
+test_that("some match yields 3 rows with no NA (#393)", {
   companies <- tibble(
     company_id = "a",
     tilt_sector = "a",
     clustered = "a",
-    activity_uuid_product_uuid = "unmatched"
+    activity_uuid_product_uuid = "a"
   )
 
   scenarios <- tibble(
@@ -357,6 +357,41 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
     input_tilt_subsector = "a",
     type = "a",
     sector = "a",
+    subsector = c("a", "unmatched"),
+    input_unit = "a",
+    input_isic_4digit = "a",
+  )
+
+  out <- istr(companies, scenarios, inputs)
+
+  expect_equal(nrow(out), 3L)
+  expect_false(anyNA(out))
+})
+
+test_that("no match yields 1 row with NA in all columns (#393)", {
+  companies <- tibble(
+    company_id = "a",
+    tilt_sector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a"
+  )
+
+  scenarios <- tibble(
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    scenario = "a",
+    year = 2030,
+    reductions = 1,
+  )
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_activity_uuid_product_uuid = "a",
+    input_tilt_sector = "a",
+    input_tilt_subsector = "a",
+    type = "a",
+    sector = "unmatched",
     subsector = "a",
     input_unit = "a",
     input_isic_4digit = "a",
