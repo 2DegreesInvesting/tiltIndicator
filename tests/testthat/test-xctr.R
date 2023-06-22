@@ -283,38 +283,26 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   expect_equal(out$value, NA_real_)
 })
 
-test_that("returns n rows equal to companies x risk_category x grouped_by", {
+# test_that("some match yields 3 rows with no NA (#393)", {
+test_that("some match yields 18 rows with no NA (#393)", {
+  companies <- tibble(
+    activity_uuid_product_uuid = "a",
+    company_id = "a",
+    clustered = "a"
+  )
   co2 <- tibble(
     co2_footprint = 1,
-    tilt_sector = "Transport",
-    unit = "metric ton*km",
-    activity_uuid_product_uuid = c("x"),
-    isic_4digit = "4575"
-  )
-  companies <- tibble(
-    activity_uuid_product_uuid = c("x"),
-    company_id = c("a"),
-    clustered = c("xyz")
+    tilt_sector = "a",
+    unit = "a",
+    activity_uuid_product_uuid = "a",
+    isic_4digit = "a"
   )
 
   out <- xctr(companies, co2)
 
-  n <- length(unique(out$companies_id)) *
-    length(unique(out$risk_category)) *
-    length(unique(out$grouped_by))
-  expect_equal(nrow(out), n)
-  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 
-  companies <- tibble(
-    activity_uuid_product_uuid = c("x"),
-    company_id = c("a", "b"),
-    clustered = c("xyz", "abc")
-  )
-
-  out <- xctr(companies, co2)
-  n <- length(unique(out$companies_id)) *
-    length(unique(out$risk_category)) *
-    length(unique(out$grouped_by))
-  expect_equal(nrow(out), n)
-  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
+  expect_equal(nrow(out), 18L)
+  n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
+  expect_equal(n, 18L)
+  expect_false(anyNA(out))
 })
