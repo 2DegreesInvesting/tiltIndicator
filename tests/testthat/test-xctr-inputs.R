@@ -187,28 +187,6 @@ test_that("some match yields n rows = companies x risk_category x grouped_by (#3
   expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
 })
 
-test_that("no matches yield the expected prototype (#393)", {
-  companies <- tibble(
-    activity_uuid_product_uuid = "x",
-    company_id = "x",
-    clustered = "x"
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = "y",
-    input_co2_footprint = 1,
-    input_tilt_sector = "y",
-    input_unit = "y",
-    input_isic_4digit = "y"
-  )
-
-  out <- xctr(companies, co2)
-
-  expect_equal(out$companies_id, "x")
-  expect_equal(out$grouped_by, NA_character_)
-  expect_equal(out$risk_category, NA_character_)
-  expect_equal(out$value, NA_real_)
-})
-
 test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x", "y"),
@@ -233,4 +211,26 @@ test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   without_match <- filter(out, companies_id == "b")
   all_na <- all(is.na(without_match$value))
   expect_true(all_na)
+})
+
+test_that("no match yields 1 row with NA in all columns (#393)", {
+  companies <- tibble(
+    activity_uuid_product_uuid = "unmatched",
+    company_id = "a",
+    clustered = "a"
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_co2_footprint = 1,
+    input_tilt_sector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a"
+  )
+
+  out <- xctr(companies, co2)
+
+  expect_equal(out$companies_id, "a")
+  expect_equal(out$grouped_by, NA_character_)
+  expect_equal(out$risk_category, NA_character_)
+  expect_equal(out$value, NA_real_)
 })
