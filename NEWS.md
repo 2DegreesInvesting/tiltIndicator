@@ -2,8 +2,7 @@
 
 # tiltIndicator 0.0.0.9073
 
-* At company level, each company with a match has 3 `value`s that sum 1 and no `NA`, and each company with no match has 1 `value` that is `NA` (#434)
-
+* For all indicators at company level, each company with a match has 3 `value`s that sum 1 and no `NA` for each level of `grouped_by`, and each company with no match has 1 `value` that is `NA` in total (#434).
 
 # tiltIndicator 0.0.0.9072
 
