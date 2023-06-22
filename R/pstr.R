@@ -61,8 +61,7 @@ pstr_at_product_level <- function(companies,
   out |>
     xstr_polish_output_at_product_level() |>
     pstr_select_cols_at_product_level() |>
-    # FIXME: Test .by with clustered
-    prune_unmatched(col = "risk_category", .by = "companies_id") |>
+    prune_unmatched(col = "risk_category", "companies_id") |>
     spread_na_across(na_cols, from = "risk_category")
 }
 
