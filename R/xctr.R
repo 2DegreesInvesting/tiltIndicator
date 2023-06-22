@@ -77,7 +77,7 @@ xctr_at_company_level <- function(data) {
       value = .data$n / sum(.data$n),
       .by = c("companies_id", "grouped_by")
     ) |>
-    select(-all_of("n"))
+    select(-"n")
 
   if (identical(nrow(with_value), 0L)) {
     return(
@@ -117,6 +117,7 @@ xctr_at_company_level <- function(data) {
     )
   }
 
+  out <- prune_unmatched_at_company_level(out)
   out
 }
 

@@ -47,15 +47,6 @@
       40 fleischerei-stiefsohn_00000005219477-001
       41 fleischerei-stiefsohn_00000005219477-001
       42 fleischerei-stiefsohn_00000005219477-001
-      43 fleischerei-stiefsohn_00000005219477-001
-      44 fleischerei-stiefsohn_00000005219477-001
-      45 fleischerei-stiefsohn_00000005219477-001
-      46 fleischerei-stiefsohn_00000005219477-001
-      47 fleischerei-stiefsohn_00000005219477-001
-      48 fleischerei-stiefsohn_00000005219477-001
-      49 fleischerei-stiefsohn_00000005219477-001
-      50 fleischerei-stiefsohn_00000005219477-001
-      51 fleischerei-stiefsohn_00000005219477-001
       
       [[2]]
                                            grouped_by
@@ -101,15 +92,6 @@
       40            weo_stated policies scenario_2050
       41            weo_stated policies scenario_2050
       42            weo_stated policies scenario_2050
-      43                                    ipr_NA_NA
-      44                                    ipr_NA_NA
-      45                                    ipr_NA_NA
-      46                                    ipr_NA_NA
-      47                                    ipr_NA_NA
-      48                                    ipr_NA_NA
-      49                                    weo_NA_NA
-      50                                    weo_NA_NA
-      51                                    weo_NA_NA
       
       [[3]]
          risk_category
@@ -155,15 +137,6 @@
       40          high
       41        medium
       42           low
-      43          high
-      44        medium
-      45           low
-      46          high
-      47        medium
-      48           low
-      49          high
-      50        medium
-      51           low
       
       [[4]]
              value
@@ -209,14 +182,5 @@
       40 0.0000000
       41 0.0000000
       42 1.0000000
-      43        NA
-      44        NA
-      45        NA
-      46        NA
-      47        NA
-      48        NA
-      49        NA
-      50        NA
-      51        NA
       
 

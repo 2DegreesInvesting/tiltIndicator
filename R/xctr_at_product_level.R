@@ -14,7 +14,7 @@ xctr_at_product_level <- function(companies,
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
     xctr_select_cols_at_product_level() |>
-    prune_unmatched_products()
+    prune_unmatched_at_product_level()
 }
 
 xctr_check <- function(companies, co2) {
@@ -110,7 +110,7 @@ xctr_select_cols_at_product_level <- function(data) {
     )
 }
 
-prune_unmatched_products <- function(data) {
+prune_unmatched_at_product_level <- function(data) {
   filter(data, all_na_else_not_na(.data$risk_category), .by = "companies_id")
 }
 

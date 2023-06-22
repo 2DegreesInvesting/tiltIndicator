@@ -189,84 +189,6 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
   expect_true(all(na.omit(sum$value_sum) |> near(1)))
 })
 
-test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
-  scenarios <- tibble(
-    scenario = "x",
-    sector = "x",
-    subsector = "x",
-    year = 2020,
-    reductions = 1,
-    type = "x",
-  )
-
-  companies <- tibble(
-    company_id = c("a", "b"),
-    tilt_sector = c("any", "any"),
-    clustered = "x",
-    activity_uuid_product_uuid = c("x", "y")
-  )
-
-  inputs <- tibble(
-    activity_uuid_product_uuid = c("x", "y"),
-    input_activity_uuid_product_uuid = c("any", "any"),
-    input_tilt_sector = c("any", "any"),
-    input_tilt_subsector = c("any", "any"),
-    type = c("x", "y"),
-    sector = c("x", "y"),
-    subsector = c("x", "y"),
-    input_unit = "any",
-    input_isic_4digit = "4578",
-  )
-
-  out <- istr(companies, scenarios, inputs)
-  expect_equal(unique(out$companies_id), c("a", "b"))
-
-  with_match <- filter(out, companies_id == "a")
-  sum <- unique(summarise(with_match, sum = sum(value), .by = grouped_by)$sum)
-  expect_equal(sum, 1)
-
-  without_match <- filter(out, companies_id == "b")
-  all_na <- all(is.na(without_match$value))
-  expect_true(all_na)
-})
-
-test_that("no matches yield the expected prototype (#176)", {
-  companies <- tibble(
-    company_id = c("a", "b"),
-    tilt_sector = c("any", "any"),
-    clustered = "x",
-    activity_uuid_product_uuid = c("x", "y")
-  )
-
-  inputs <- tibble(
-    activity_uuid_product_uuid = c("x", "y"),
-    input_activity_uuid_product_uuid = c("any", "any"),
-    input_tilt_sector = c("any", "any"),
-    input_tilt_subsector = c("any", "any"),
-    type = c("x", "y"),
-    sector = c("x", "y"),
-    subsector = c("x", "y"),
-    input_unit = "any",
-    input_isic_4digit = "4578",
-  )
-
-  scenarios <- tibble(
-    type = "x",
-    sector = "x",
-    subsector = "x",
-    scenario = "x",
-    year = 2030,
-    reductions = 1,
-  )
-
-  out <- istr(companies, scenarios, inputs)
-  unmatched <- filter(out, companies_id == "b")
-  expect_equal(unique(unmatched$companies_id), c("b"))
-  expect_equal(unique(unmatched$grouped_by), c("y_NA_NA"))
-  expect_equal(unique(unmatched$risk_category), c("high", "medium", "low"))
-  expect_equal(unique(unmatched$value), NA_real_)
-})
-
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
   .type <- "weo"
   companies <- istr_companies |> slice(1)
@@ -368,4 +290,113 @@ test_that("is sensitive to low_threshold", {
   out1 <- istr(companies, scenarios, inputs, low_threshold = .1)
   out2 <- istr(companies, scenarios, inputs, low_threshold = .9)
   expect_false(identical(out1, out2))
+})
+
+test_that("values sum 1", {
+  scenarios <- tibble(
+    scenario = "a",
+    sector = "a",
+    subsector = "a",
+    year = 2050,
+    reductions = 1,
+    type = "a",
+  )
+
+  companies <- tibble(
+    company_id = "a",
+    tilt_sector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a"
+  )
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_activity_uuid_product_uuid = "a",
+    input_tilt_sector = "a",
+    input_tilt_subsector = "a",
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a",
+  )
+
+  out <- istr(companies, scenarios, inputs)
+  sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
+  expect_equal(sum, 1)
+})
+
+test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
+  companies <- tibble(
+    company_id = "a",
+    tilt_sector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a"
+  )
+
+  scenarios <- tibble(
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    scenario = "a",
+    year = 2030,
+    reductions = 1,
+  )
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_activity_uuid_product_uuid = "a",
+    input_tilt_sector = "a",
+    input_tilt_subsector = "a",
+    type = "a",
+    sector = "a",
+    subsector = c("a", "unmatched"),
+    input_unit = "a",
+    input_isic_4digit = "a",
+  )
+
+  out <- istr(companies, scenarios, inputs)
+
+  expect_equal(nrow(out), 3L)
+  n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
+  expect_equal(n, 3L)
+  expect_false(anyNA(out))
+})
+
+test_that("no match yields 1 row with NA in all columns (#393)", {
+  companies <- tibble(
+    company_id = "a",
+    tilt_sector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a"
+  )
+
+  scenarios <- tibble(
+    type = "a",
+    sector = "unmatched",
+    subsector = "a",
+    scenario = "a",
+    year = 2030,
+    reductions = 1,
+  )
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_activity_uuid_product_uuid = "a",
+    input_tilt_sector = "a",
+    input_tilt_subsector = "a",
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a",
+  )
+
+  out <- istr(companies, scenarios, inputs)
+
+  expect_equal(nrow(out), 1)
+  expect_equal(out$companies_id, "a")
+  expect_true(is.na(out$value))
+  expect_true(is.na(out$risk_category))
+  expect_true(is.na(out$grouped_by))
 })

@@ -24,90 +24,6 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
   expect_equal(out, arrange(out, companies_id, grouped_by))
 })
 
-test_that("returns n rows equal to companies x risk_category x grouped_by", {
-  inputs <- tibble(
-    activity_uuid_product_uuid = "x",
-    input_activity_uuid_product_uuid = "y",
-    input_co2_footprint = 1,
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
-  )
-
-  companies <- tibble(
-    company_id = "a",
-    activity_uuid_product_uuid = c("x", "y"),
-    clustered = c("xyz", "abc")
-  )
-  out <- xctr(companies, inputs)
-
-  n <- length(unique(out$companies_id)) *
-    length(unique(out$risk_category)) *
-    length(unique(out$grouped_by))
-  expect_equal(nrow(out), n)
-  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
-
-  companies <- tibble(
-    company_id = c("a", "b"),
-    activity_uuid_product_uuid = c("x", "y"),
-    clustered = c("xyz", "abc")
-  )
-  out <- xctr(companies, inputs)
-  n <- length(unique(out$companies_id)) *
-    length(unique(out$risk_category)) *
-    length(unique(out$grouped_by))
-  expect_equal(nrow(out), n)
-  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
-})
-
-test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
-  companies <- tibble(
-    activity_uuid_product_uuid = c("x", "y"),
-    company_id = c("a", "b"),
-    clustered = c("xy")
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("x"),
-    input_co2_footprint = 1,
-    input_tilt_sector = "Transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
-  )
-
-  out <- xctr(companies, co2)
-  expect_equal(unique(out$companies_id), c("a", "b"))
-
-  with_match <- filter(out, companies_id == "a")
-  sum <- unique(summarise(with_match, sum = sum(value), .by = grouped_by)$sum)
-  expect_equal(sum, 1)
-
-  without_match <- filter(out, companies_id == "b")
-  all_na <- all(is.na(without_match$value))
-  expect_true(all_na)
-})
-
-
-test_that("no matches yield the expected prototype", {
-  companies <- tibble(
-    activity_uuid_product_uuid = c("x", "x"),
-    company_id = c("a", "b"),
-    clustered = c("xx")
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("y"),
-    input_co2_footprint = 1,
-    input_tilt_sector = "Transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
-  )
-
-  out <- xctr(companies, co2)
-  expect_equal(unique(out$companies_id), c("a", "b"))
-  expect_equal(unique(out$grouped_by), flat_benchmarks())
-  expect_equal(unique(out$risk_category), c("high", "medium", "low"))
-  expect_equal(unique(out$value), NA_real_)
-})
-
 test_that("is sensitive to low_threshold", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1:2)
@@ -243,4 +159,68 @@ test_that("a 0-row `inputs` yields an error", {
     xctr(slice(companies, 1), inputs[0L, ]),
     "co2.*can't have 0-row"
   )
+})
+
+test_that("values sum 1", {
+  companies <- tibble(
+    activity_uuid_product_uuid = "a",
+    company_id = "a",
+    clustered = "a"
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_co2_footprint = 1,
+    input_tilt_sector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a"
+  )
+
+  out <- xctr(companies, co2)
+
+  sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
+  expect_equal(sum, 1)
+})
+
+test_that("no match yields 1 row with NA in all columns (#393)", {
+  companies <- tibble(
+    activity_uuid_product_uuid = "unmatched",
+    company_id = "a",
+    clustered = "a"
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_co2_footprint = 1,
+    input_tilt_sector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a"
+  )
+
+  out <- xctr(companies, co2)
+
+  expect_equal(out$companies_id, "a")
+  expect_equal(out$grouped_by, NA_character_)
+  expect_equal(out$risk_category, NA_character_)
+  expect_equal(out$value, NA_real_)
+})
+
+test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
+  companies <- tibble(
+    activity_uuid_product_uuid = c("a", "unmatched"),
+    company_id = "a",
+    clustered = "a"
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_co2_footprint = 1,
+    input_tilt_sector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a"
+  )
+
+  out <- xctr(companies, co2)
+
+  expect_equal(nrow(out), 18L)
+  n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
+  expect_equal(n, 18L)
+  expect_false(anyNA(out))
 })

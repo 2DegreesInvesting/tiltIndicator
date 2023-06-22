@@ -156,68 +156,6 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
   expect_true(all(sum$value_sum == 1))
 })
 
-test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
-  companies <- tibble(
-    company_id = c("a", "b"),
-    type = c("x", "y"),
-    sector = c("x", "y"),
-    subsector = c("x", "y"),
-    clustered = "x",
-    activity_uuid_product_uuid = "x",
-    tilt_sector = "x",
-    tilt_subsector = "x",
-  )
-
-  scenarios <- tibble(
-    type = "x",
-    sector = "x",
-    subsector = "x",
-    scenario = "x",
-    year = 2030,
-    reductions = 1,
-  )
-
-  out <- pstr(companies, scenarios)
-  expect_equal(unique(out$companies_id), c("a", "b"))
-
-  with_match <- filter(out, companies_id == "a")
-  sum <- unique(summarise(with_match, sum = sum(value), .by = grouped_by)$sum)
-  expect_equal(sum, 1)
-
-  without_match <- filter(out, companies_id == "b")
-  all_na <- all(is.na(without_match$value))
-  expect_true(all_na)
-})
-
-test_that("no matches yield the expected prototype (#176)", {
-  companies <- tibble(
-    company_id = c("a", "b"),
-    type = c("x", "y"),
-    sector = c("x", "y"),
-    subsector = c("x", "y"),
-    clustered = "x",
-    activity_uuid_product_uuid = "x",
-    tilt_sector = "x",
-    tilt_subsector = "x",
-  )
-
-  scenarios <- tibble(
-    type = "x",
-    sector = "x",
-    subsector = "x",
-    scenario = "x",
-    year = 2030,
-    reductions = 1,
-  )
-
-  out <- pstr(companies, scenarios)
-  unmatched <- filter(out, companies_id == "b")
-  expect_equal(unique(unmatched$companies_id), c("b"))
-  expect_equal(unique(unmatched$grouped_by), c("y_NA_NA"))
-  expect_equal(unique(unmatched$risk_category), c("high", "medium", "low"))
-  expect_equal(unique(unmatched$value), NA_real_)
-})
-
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
   .type <- "weo"
   companies <- pstr_companies |>
@@ -292,4 +230,87 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
 
   out <- pstr(companies, scenarios)
   expect_true(all(is.na(out$value)))
+})
+
+test_that("values sum 1", {
+  companies <- tibble(
+    company_id = "a",
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a",
+    tilt_sector = "a",
+    tilt_subsector = "a",
+  )
+
+  scenarios <- tibble(
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    scenario = "a",
+    year = 2050,
+    reductions = 1,
+  )
+
+  out <- pstr(companies, scenarios)
+  sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
+  expect_equal(sum, 1)
+})
+
+test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
+  companies <- tibble(
+    company_id = "a",
+    type = "a",
+    sector = c("a", "unmatched"),
+    subsector = "a",
+    clustered = c("a", "b"),
+    activity_uuid_product_uuid = c("a", "b"),
+    tilt_sector = "a",
+    tilt_subsector = "a",
+  )
+  scenarios <- tibble(
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    scenario = "a",
+    year = 2050,
+    reductions = 1,
+  )
+
+  out <- pstr(companies, scenarios)
+
+  expect_equal(nrow(out), 3L)
+  n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
+  expect_equal(n, 3L)
+  expect_false(anyNA(out))
+})
+
+test_that("no match yields 1 row with NA in all columns (#393)", {
+  companies <- tibble(
+    company_id = "a",
+    type = "a",
+    sector = "unmatched",
+    subsector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a",
+    tilt_sector = "a",
+    tilt_subsector = "a",
+  )
+  scenarios <- tibble(
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    scenario = "a",
+    year = 2050,
+    reductions = 1,
+  )
+
+  out <- pstr(companies, scenarios)
+
+  expect_equal(nrow(out), 1)
+  expect_equal(out$companies_id, "a")
+  expect_true(is.na(out$value))
+  expect_true(is.na(out$risk_category))
+  expect_true(is.na(out$grouped_by))
 })

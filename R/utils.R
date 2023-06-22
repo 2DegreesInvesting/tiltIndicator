@@ -73,10 +73,10 @@ stop_if_has_0_rows <- function(data) {
 }
 
 empty_output_at_company_level <- function(companies_id, grouped_by) {
-  expand_grid(
+  tibble(
     companies_id = companies_id,
-    grouped_by = grouped_by,
-    risk_category = risk_category_levels(),
+    grouped_by = NA_character_,
+    risk_category = NA_character_,
     value = NA_real_
   )
 }
@@ -167,3 +167,16 @@ abort_if_duplicated <- function(data) {
   }
   invisible(data)
 }
+
+prune_unmatched_at_company_level <- function(data) {
+  filter(data, if_all_na_is_first_else_not_na(.data$value), .by = "companies_id")
+}
+
+if_all_na_is_first_else_not_na <- function(x) {
+  if (all(is.na(x))) is_first(x) else !is.na(x)
+}
+
+is_first <- function(x) {
+  seq_along(x) == 1L
+}
+
