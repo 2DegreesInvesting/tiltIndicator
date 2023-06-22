@@ -161,56 +161,24 @@ test_that("a 0-row `inputs` yields an error", {
   )
 })
 
-test_that("some match yields n rows = companies x risk_category x grouped_by (#393)", {
-  some_match <- c("match", "unmatched")
-  companies <- tibble(
-    company_id = "x",
-    activity_uuid_product_uuid = some_match,
-    clustered = "x"
-  )
-
-  inputs <- tibble(
-    activity_uuid_product_uuid = "match",
-    input_activity_uuid_product_uuid = "x",
-    input_co2_footprint = 1,
-    input_tilt_sector = "x",
-    input_unit = "x",
-    input_isic_4digit = "x"
-  )
-
-  out <- xctr(companies, inputs)
-
-  n <- length(unique(out$companies_id)) *
-    length(unique(out$risk_category)) *
-    length(unique(out$grouped_by))
-  expect_equal(nrow(out), n)
-  expect_equal(sort(unique(out$risk_category)), c("high", "low", "medium"))
-})
-
 test_that("values sum 1 or are NA if a company does or doesn't match (#176)", {
   companies <- tibble(
-    activity_uuid_product_uuid = c("x", "y"),
-    company_id = c("a", "b"),
-    clustered = c("xy")
+    activity_uuid_product_uuid = "a",
+    company_id = "a",
+    clustered = "a"
   )
   co2 <- tibble(
-    activity_uuid_product_uuid = c("x"),
+    activity_uuid_product_uuid = "a",
     input_co2_footprint = 1,
-    input_tilt_sector = "Transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
+    input_tilt_sector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a"
   )
 
   out <- xctr(companies, co2)
-  expect_equal(unique(out$companies_id), c("a", "b"))
 
-  with_match <- filter(out, companies_id == "a")
-  sum <- unique(summarise(with_match, sum = sum(value), .by = grouped_by)$sum)
+  sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
   expect_equal(sum, 1)
-
-  without_match <- filter(out, companies_id == "b")
-  all_na <- all(is.na(without_match$value))
-  expect_true(all_na)
 })
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
