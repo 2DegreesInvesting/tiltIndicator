@@ -54,7 +54,7 @@ istr_at_product_level <- function(companies,
   .scenarios <- prepare_scenarios(scenarios, low_threshold, high_threshold)
   .companies <- prepare_companies(companies)
 
-  out <- inputs |>
+  inputs |>
     distinct() |>
     xstr_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
