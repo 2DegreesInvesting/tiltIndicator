@@ -72,22 +72,6 @@ stop_if_has_0_rows <- function(data) {
   invisible(data)
 }
 
-empty_output_at_company_level <- function(companies_id, grouped_by) {
-  tibble(
-    companies_id = companies_id,
-    grouped_by = NA_character_,
-    risk_category = NA_character_,
-    value = NA_real_
-  )
-}
-
-grouped_by <- function(data, grouped_by) {
-  if (is_xctr(data)) {
-    grouped_by <- flat_benchmarks()
-  }
-  grouped_by
-}
-
 prepare_companies <- function(companies) {
   companies |>
     distinct() |>

@@ -80,13 +80,13 @@ xctr_at_company_level <- function(data) {
     select(-"n")
 
   if (identical(nrow(with_value), 0L)) {
-    return(
-      # FIXME: Remove empty_output_at_company_level()?
-      empty_output_at_company_level(
-        companies_id = unique(data$companies_id),
-        grouped_by = grouped_by(data, data$grouped_by)
-      )
+    empty <- tibble(
+      companies_id = unique(data$companies_id),
+      grouped_by = NA_character_,
+      risk_category = NA_character_,
+      value = NA_real_
     )
+    return(empty)
   }
 
   levels <- risk_category_levels()
