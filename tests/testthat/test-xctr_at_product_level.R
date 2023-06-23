@@ -52,3 +52,53 @@ test_that("unmatched products don't introduce NA's (#266)", {
   out <- xctr_at_product_level(companies, products)
   expect_false(anyNA(out$risk_category))
 })
+
+test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)", {
+  companies <- tibble(
+    company_id = c("a", "a", "b", "b"),
+    activity_uuid_product_uuid = c("matched", paste0("unmatched", 1:3)),
+    clustered = "a"
+  )
+  products <- tibble(
+    activity_uuid_product_uuid = "matched",
+    co2_footprint = 1,
+    tilt_sector = "a",
+    unit = "a",
+    isic_4digit = "a"
+  )
+
+  # PCTR
+  out <- xctr_at_product_level(companies, products)
+
+  some_match <- filter(out, companies_id == "a")
+  expect_false(anyNA(some_match))
+
+  no_match <- filter(out, companies_id == "b")
+  expect_equal(nrow(no_match), 1)
+
+  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
+  expect_true(all_na_cols_are_na)
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = "matched",
+    input_activity_uuid_product_uuid = "matched",
+    input_co2_footprint = 1,
+    input_tilt_sector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a"
+  )
+
+  # ICTR
+  out <- xctr_at_product_level(companies, inputs)
+
+  some_match <- filter(out, companies_id == "a")
+  expect_false(anyNA(some_match))
+
+  no_match <- filter(out, companies_id == "b")
+  expect_equal(nrow(no_match), 1)
+
+  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
+  expect_true(all_na_cols_are_na)
+})

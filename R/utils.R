@@ -72,22 +72,6 @@ stop_if_has_0_rows <- function(data) {
   invisible(data)
 }
 
-empty_output_at_company_level <- function(companies_id, grouped_by) {
-  tibble(
-    companies_id = companies_id,
-    grouped_by = NA_character_,
-    risk_category = NA_character_,
-    value = NA_real_
-  )
-}
-
-grouped_by <- function(data, grouped_by) {
-  if (is_xctr(data)) {
-    grouped_by <- flat_benchmarks()
-  }
-  grouped_by
-}
-
 prepare_companies <- function(companies) {
   companies |>
     distinct() |>
@@ -168,8 +152,8 @@ abort_if_duplicated <- function(data) {
   invisible(data)
 }
 
-prune_unmatched_at_company_level <- function(data) {
-  filter(data, if_all_na_is_first_else_not_na(.data$value), .by = "companies_id")
+prune_unmatched <- function(data, col, .by) {
+  filter(data, if_all_na_is_first_else_not_na(.data[[col]]), .by = all_of(.by))
 }
 
 if_all_na_is_first_else_not_na <- function(x) {
@@ -180,3 +164,16 @@ is_first <- function(x) {
   seq_along(x) == 1L
 }
 
+handle_unmatched <- function(data, level_cols) {
+  na_cols <- setdiff(level_cols, "companies_id")
+  data |>
+    prune_unmatched("risk_category", .by = "companies_id") |>
+    spread_na_across(na_cols, from = "risk_category")
+}
+
+spread_na_across <- function(data, across, from) {
+  mutate(data, across(all_of(across), ~ spread_na(.data[[from]], .x)))
+}
+spread_na <- function(from, to) {
+  if_else(is.na(from), NA, to)
+}

@@ -60,7 +60,8 @@ istr_at_product_level <- function(companies,
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     xctr_join_companies(.companies) |>
     xstr_polish_output_at_product_level() |>
-    istr_select_cols_at_product_level()
+    istr_select_cols_at_product_level() |>
+    handle_unmatched(level_cols = cols_at_product_level())
 }
 
 istr_select_cols_at_product_level <- function(data) {
