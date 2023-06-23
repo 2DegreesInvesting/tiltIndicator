@@ -3,6 +3,7 @@ xstr_check <- function(companies, scenarios) {
   stop_if_has_0_rows(scenarios)
   crucial <- c("type", "sector", "subsector", "year", "scenario")
   check_crucial_names(scenarios, crucial)
+  stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
 }
 
 stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
