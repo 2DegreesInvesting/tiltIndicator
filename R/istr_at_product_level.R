@@ -9,15 +9,19 @@ istr_at_product_level <- function(companies,
 
   .companies <- prepare_companies(companies)
   .scenarios <- prepare_scenarios(scenarios, low_threshold, high_threshold)
+  .inputs <- prepare_inputs(inputs)
 
-  inputs |>
-    distinct() |>
+  .inputs |>
     xstr_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     xctr_join_companies(.companies) |>
     xstr_polish_output_at_product_level() |>
     istr_select_cols_at_product_level() |>
     polish_output(cols_at_product_level())
+}
+
+prepare_inputs <- function(data) {
+  distinct(data)
 }
 
 istr_select_cols_at_product_level <- function(data) {
