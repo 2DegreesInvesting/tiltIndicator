@@ -113,11 +113,3 @@ xctr_select_cols_at_product_level <- function(data) {
       find_co2_footprint(data)
     )
 }
-
-prune_unmatched_at_product_level <- function(data) {
-  filter(data, all_na_else_not_na(.data$risk_category), .by = "companies_id")
-}
-
-all_na_else_not_na <- function(x) {
-  if (all(is.na(x))) TRUE else !is.na(x)
-}
