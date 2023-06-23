@@ -81,6 +81,7 @@ xctr_at_company_level <- function(data) {
 
   if (identical(nrow(with_value), 0L)) {
     return(
+      # FIXME: Remove empty_output_at_company_level()?
       empty_output_at_company_level(
         companies_id = unique(data$companies_id),
         grouped_by = grouped_by(data, data$grouped_by)
