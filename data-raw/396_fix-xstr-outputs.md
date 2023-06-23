@@ -61,7 +61,7 @@ is_first <- function(x) {
 
 ### At product level, remove bad output
 
-- <https://github.com/2DegreesInvesting/tiltIndicator/issues/391>
+- [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/391)
 - [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/431)
 
 Expect either 4 or 2.
@@ -135,7 +135,7 @@ unique(count(xstr_product_level2, companies_id, clustered)$n)
 
 ### At both levels, remove duplicated rows
 
-- <https://github.com/2DegreesInvesting/tiltIndicator/issues/392>
+- [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/392)
 - [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/438)
 
 ``` r
@@ -185,7 +185,7 @@ unique(count(xstr_product_level3, companies_id, clustered)$n)
 
 ### At company level, remove needless rows with missing values
 
-- <https://github.com/2DegreesInvesting/tiltIndicator/issues/393>
+- [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/393)
 - [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/434)
 
 Expect either 12, 6, or 1.
@@ -230,7 +230,7 @@ unique(count(xstr_company_level3, companies_id)$n)
 
 ### At product level, each company should have 1, 2, or 4 rows per product
 
-- <https://github.com/2DegreesInvesting/tiltIndicator/issues/402>
+- [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/402)
 - [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/436)
 
 Expect 1, 2, or 4.
@@ -282,8 +282,8 @@ sum(is.na(xstr_product_level4$risk_category))
 
 ### At company level, remove `companies_id` with “;” in either of the relevant columns in `pstr_companies`
 
-- <https://github.com/2DegreesInvesting/tiltIndicator/issues/405>
-- <https://github.com/2DegreesInvesting/tiltIndicator/issues/439>
+- [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/405)
+- [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/439)
 
 ``` r
 semicolon <- pstr_companies |> 
@@ -351,8 +351,8 @@ inner_join(xstr_company_level4, semicolon)
 
 ### At both levels, remove companies affected by duplicated scenario data
 
-- <https://github.com/2DegreesInvesting/tiltIndicator/issues/403>
-- <https://github.com/2DegreesInvesting/tiltIndicator/issues/391>
+- [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/403)
+- [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/391)
 - [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/431)
 
 ``` r
