@@ -12,7 +12,7 @@ xctr_at_product_level <- function(companies,
   .co2 |>
     xctr_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
-    xctr_join_companies(.companies) |>
+    join_companies_by_activity_uuid_product_uuid(.companies) |>
     xctr_select_cols_at_product_level() |>
     polish_output(cols_at_product_level())
 }
@@ -90,15 +90,6 @@ rank_proportion <- function(x) {
 
 find_co2_footprint <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
-}
-
-xctr_join_companies <- function(product_level, companies) {
-  left_join(
-    companies,
-    product_level,
-    by = "activity_uuid_product_uuid",
-    relationship = "many-to-many"
-  )
 }
 
 xctr_select_cols_at_product_level <- function(data) {

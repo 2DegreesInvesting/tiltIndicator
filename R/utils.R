@@ -171,3 +171,12 @@ spread_na_across <- function(data, across, from) {
 spread_na <- function(from, to) {
   if_else(is.na(from), NA, to)
 }
+
+join_companies_by_activity_uuid_product_uuid <- function(data, companies) {
+  left_join(
+    companies,
+    data,
+    by = "activity_uuid_product_uuid",
+    relationship = "many-to-many"
+  )
+}

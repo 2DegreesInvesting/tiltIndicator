@@ -14,7 +14,7 @@ istr_at_product_level <- function(companies,
   .inputs |>
     xstr_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
-    xctr_join_companies(.companies) |>
+    join_companies_by_activity_uuid_product_uuid(.companies) |>
     xstr_polish_output_at_product_level() |>
     istr_select_cols_at_product_level() |>
     polish_output(cols_at_product_level())
