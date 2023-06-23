@@ -62,7 +62,7 @@ is_first <- function(x) {
 ### At product level, remove bad output
 
 - <https://github.com/2DegreesInvesting/tiltIndicator/issues/391>
-- <https://github.com/2DegreesInvesting/tiltIndicator/pull/431>
+- [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/431)
 
 Expect either 4 or 2.
 
@@ -136,7 +136,7 @@ unique(count(xstr_product_level2, companies_id, clustered)$n)
 ### At both levels, remove duplicated rows
 
 - <https://github.com/2DegreesInvesting/tiltIndicator/issues/392>
-- <https://github.com/2DegreesInvesting/tiltIndicator/pull/438>
+- [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/438)
 
 ``` r
 anyDuplicated(xstr_product_level2)
@@ -186,7 +186,7 @@ unique(count(xstr_product_level3, companies_id, clustered)$n)
 ### At company level, remove needless rows with missing values
 
 - <https://github.com/2DegreesInvesting/tiltIndicator/issues/393>
-- <https://github.com/2DegreesInvesting/tiltIndicator/pull/434>
+- [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/434)
 
 Expect either 12, 6, or 1.
 
@@ -231,7 +231,7 @@ unique(count(xstr_company_level3, companies_id)$n)
 ### At product level, each company should have 1, 2, or 4 rows per product
 
 - <https://github.com/2DegreesInvesting/tiltIndicator/issues/402>
-- <https://github.com/2DegreesInvesting/tiltIndicator/pull/436>
+- [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/436)
 
 Expect 1, 2, or 4.
 
@@ -353,7 +353,7 @@ inner_join(xstr_company_level4, semicolon)
 
 - <https://github.com/2DegreesInvesting/tiltIndicator/issues/403>
 - <https://github.com/2DegreesInvesting/tiltIndicator/issues/391>
-- <https://github.com/2DegreesInvesting/tiltIndicator/pull/431>
+- [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/431)
 
 ``` r
 # Affected companies
