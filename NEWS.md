@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9074
+
+* For all indicators at product level, each company with some match outputs no `NA`, and with no match outputs 1 row with `NA`s in all columns (except `companeis_id` (#436).
+
 # tiltIndicator 0.0.0.9073
 
 * For all indicators at company level, each company with a match has 3 `value`s that sum 1 and no `NA` for each level of `grouped_by`, and each company with no match has 1 `value` that is `NA` in total (#434).
