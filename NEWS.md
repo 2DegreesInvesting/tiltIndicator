@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9075
+
+* XSTR no longer errors with duplicated scenarios (#437).
+
 # tiltIndicator 0.0.0.9074
 
 * For all indicators at product level, each company with some match outputs no `NA`, and with no match outputs 1 row with `NA`s in all columns (except `companeis_id` (#436).
