@@ -59,7 +59,7 @@ test_that("some match yield no NA and no match yields 1 row with `NA`s (#393)", 
     activity_uuid_product_uuid = c("matched", paste0("unmatched", 1:3)),
     clustered = "a"
   )
-  co2 <- tibble(
+  products <- tibble(
     activity_uuid_product_uuid = "matched",
     co2_footprint = 1,
     tilt_sector = "a",
@@ -67,7 +67,7 @@ test_that("some match yield no NA and no match yields 1 row with `NA`s (#393)", 
     isic_4digit = "a"
   )
 
-  out <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_product_level(companies, products)
 
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
