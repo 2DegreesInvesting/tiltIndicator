@@ -106,7 +106,7 @@ xctr_at_company_level <- function(data) {
       value = sum(.data$value),
       .by = c("companies_id", "grouped_by", "risk_category")
     ) |>
-    polish_output(level_cols = cols_at_company_level())
+    polish_output(cols_at_company_level())
 }
 
 #' @rdname pstr
