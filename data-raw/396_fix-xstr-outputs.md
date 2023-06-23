@@ -353,6 +353,7 @@ inner_join(xstr_company_level4, semicolon)
 
 - <https://github.com/2DegreesInvesting/tiltIndicator/issues/403>
 - <https://github.com/2DegreesInvesting/tiltIndicator/issues/391>
+- <https://github.com/2DegreesInvesting/tiltIndicator/pull/431>
 
 ``` r
 # Affected companies
