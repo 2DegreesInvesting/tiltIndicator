@@ -168,7 +168,8 @@ handle_unmatched <- function(data, level_cols) {
   na_cols <- setdiff(level_cols, "companies_id")
   data |>
     prune_unmatched("risk_category", .by = "companies_id") |>
-    spread_na_across(na_cols, from = "risk_category")
+    spread_na_across(na_cols, from = "risk_category") |>
+    distinct()
 }
 
 spread_na_across <- function(data, across, from) {
