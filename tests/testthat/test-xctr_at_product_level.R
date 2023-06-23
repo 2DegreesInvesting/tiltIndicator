@@ -67,7 +67,30 @@ test_that("some match yield no NA and no match yields 1 row with `NA`s (#393)", 
     isic_4digit = "a"
   )
 
+  # PCTR
   out <- xctr_at_product_level(companies, products)
+
+  some_match <- filter(out, companies_id == "a")
+  expect_false(anyNA(some_match))
+
+  no_match <- filter(out, companies_id == "b")
+  expect_equal(nrow(no_match), 1)
+
+  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
+  expect_true(all_na_cols_are_na)
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = "matched",
+    input_activity_uuid_product_uuid = "matched",
+    input_co2_footprint = 1,
+    input_tilt_sector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a"
+  )
+
+  # ICTR
+  out <- xctr_at_product_level(companies, inputs)
 
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
