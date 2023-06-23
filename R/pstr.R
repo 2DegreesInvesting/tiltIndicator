@@ -58,7 +58,7 @@ pstr_at_product_level <- function(companies,
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     xstr_polish_output_at_product_level() |>
     pstr_select_cols_at_product_level() |>
-    handle_unmatched(cols_at_product_level())
+    polish_output(cols_at_product_level())
 }
 
 xstr_add_values_to_categorize <- function(data, scenarios) {
