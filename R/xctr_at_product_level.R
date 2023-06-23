@@ -9,12 +9,17 @@ xctr_at_product_level <- function(companies,
   .companies <- prepare_companies(companies)
   .co2 <- prepare_co2(co2, low_threshold, high_threshold)
 
-  .co2 |>
+  out <- .co2 |>
     xctr_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
     xctr_select_cols_at_product_level() |>
     prune_unmatched_at_product_level()
+
+  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  out |>
+    prune_unmatched(col = "risk_category", "companies_id") |>
+    spread_na_across(na_cols, from = "risk_category")
 }
 
 xctr_check <- function(companies, co2) {
