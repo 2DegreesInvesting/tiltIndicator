@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9076
+
+* Ensure all outputs have no duplicate (#438)
+
 # tiltIndicator 0.0.0.9075
 
 * XSTR no longer errors with duplicated scenarios (#437).
