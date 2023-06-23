@@ -135,7 +135,8 @@ unique(count(xstr_product_level2, companies_id, clustered)$n)
 
 ### At both levels, remove duplicated rows
 
-<https://github.com/2DegreesInvesting/tiltIndicator/issues/392>
+- <https://github.com/2DegreesInvesting/tiltIndicator/issues/392>
+- <https://github.com/2DegreesInvesting/tiltIndicator/pull/438>
 
 ``` r
 anyDuplicated(xstr_product_level2)
@@ -184,7 +185,8 @@ unique(count(xstr_product_level3, companies_id, clustered)$n)
 
 ### At company level, remove needless rows with missing values
 
-<https://github.com/2DegreesInvesting/tiltIndicator/issues/393>
+- <https://github.com/2DegreesInvesting/tiltIndicator/issues/393>
+- <https://github.com/2DegreesInvesting/tiltIndicator/pull/434>
 
 Expect either 12, 6, or 1.
 
@@ -228,7 +230,8 @@ unique(count(xstr_company_level3, companies_id)$n)
 
 ### At product level, each company should have 1, 2, or 4 rows per product
 
-<https://github.com/2DegreesInvesting/tiltIndicator/issues/402>
+- <https://github.com/2DegreesInvesting/tiltIndicator/issues/402>
+- <https://github.com/2DegreesInvesting/tiltIndicator/pull/436>
 
 Expect 1, 2, or 4.
 
@@ -277,9 +280,7 @@ sum(is.na(xstr_product_level4$risk_category))
 #> [1] 83213
 ```
 
-### At company level, remove `companies_id` with “;” either of the relevant
-
-columns in `pstr_companies`
+### At company level, remove `companies_id` with “;” either of the relevant columns in `pstr_companies`
 
 <https://github.com/2DegreesInvesting/tiltIndicator/issues/405>
 
