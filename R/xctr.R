@@ -90,7 +90,7 @@ xctr_at_company_level <- function(data) {
   }
 
   levels <- risk_category_levels()
-  out <- with_value |>
+  with_value |>
     group_by(.data$companies_id, .data$grouped_by) |>
     mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
     expand(.data$risk_category) |>
@@ -105,9 +105,7 @@ xctr_at_company_level <- function(data) {
     summarize(
       value = sum(.data$value),
       .by = c("companies_id", "grouped_by", "risk_category")
-    )
-
-  out |>
+    ) |>
     handle_unmatched(level_cols = cols_at_company_level())
 }
 
