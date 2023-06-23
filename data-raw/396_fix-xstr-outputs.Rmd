@@ -1,16 +1,17 @@
 ---
 output: github_document
 params:
-  import_pstr_companies: "~/Downloads/str_companies.csv"
-  import_product_level: "~/Downloads/pstr_product_level_v2.csv"
-  import_company_level: "~/Downloads/pstr_company_level_v2.csv"
-  export_product_level: "~/Downloads/pstr_product_level_v2_fixed.csv"
-  export_company_level: "~/Downloads/pstr_company_level_v2_fixed.csv"
+  import_pstr_companies: "~/Downloads/tiltIndicator/bad/str_companies.csv"
+  import_product_level: "~/Downloads/tiltIndicator/bad/pstr_product_level_v2.csv"
+  import_company_level: "~/Downloads/tiltIndicator/bad/pstr_company_level_v2.csv"
+  export_product_level: "~/Downloads/tiltIndicator/fixed/pstr_product_level_v2_fixed.csv"
+  export_company_level: "~/Downloads/tiltIndicator/fixed/pstr_company_level_v2_fixed.csv"
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  cache = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%"
@@ -59,7 +60,8 @@ is_first <- function(x) {
 
 ### At product level, remove bad output
 
-https://github.com/2DegreesInvesting/tiltIndicator/issues/391
+* https://github.com/2DegreesInvesting/tiltIndicator/issues/391
+* https://github.com/2DegreesInvesting/tiltIndicator/pull/431
 
 Expect either 4 or 2.
 

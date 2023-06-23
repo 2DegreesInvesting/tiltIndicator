@@ -61,7 +61,8 @@ is_first <- function(x) {
 
 ### At product level, remove bad output
 
-<https://github.com/2DegreesInvesting/tiltIndicator/issues/391>
+- <https://github.com/2DegreesInvesting/tiltIndicator/issues/391>
+- <https://github.com/2DegreesInvesting/tiltIndicator/pull/431>
 
 Expect either 4 or 2.
 
