@@ -5,6 +5,14 @@ xstr_check <- function(companies, scenarios) {
   check_crucial_names(scenarios, crucial)
 }
 
+xstr_add_values_to_categorize <- function(data, scenarios) {
+  left_join(
+    data, scenarios,
+    by = join_by("type", "sector", "subsector"),
+    relationship = "many-to-many"
+  )
+}
+
 xstr_polish_output_at_product_level <- function(data) {
   data |>
     ungroup() |>

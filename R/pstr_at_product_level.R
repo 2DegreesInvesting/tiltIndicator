@@ -18,14 +18,6 @@ pstr_at_product_level <- function(companies,
     polish_output(cols_at_product_level())
 }
 
-xstr_add_values_to_categorize <- function(data, scenarios) {
-  left_join(
-    data, scenarios,
-    by = join_by("type", "sector", "subsector"),
-    relationship = "many-to-many"
-  )
-}
-
 stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
   bad_type <- scenarios |>
     summarize(
