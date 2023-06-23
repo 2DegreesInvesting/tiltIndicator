@@ -180,7 +180,7 @@ is_first <- function(x) {
   seq_along(x) == 1L
 }
 
-handle_unmatched <- function(data, level_cols = cols_at_product_level()) {
+handle_unmatched <- function(data, level_cols) {
   na_cols <- setdiff(level_cols, "companies_id")
   data |>
     prune_unmatched("risk_category", .by = "companies_id") |>
