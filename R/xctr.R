@@ -106,19 +106,25 @@ xctr_at_company_level <- function(data) {
       .by = c("companies_id", "grouped_by", "risk_category")
     )
 
-  if (anyNA(data$risk_category)) {
-    unmatched <- filter(data, is.na(.data$risk_category))
-    out <- bind_rows(
-      out,
-      empty_output_at_company_level(
-        companies_id = unique(unmatched$companies_id),
-        grouped_by = grouped_by(data, unmatched$grouped_by)
-      )
-    )
-  }
-
+  # FIXME: Remove dead code
+  # if (anyNA(data$risk_category)) {
+  #   unmatched <- filter(data, is.na(.data$risk_category))
+  #   out <- bind_rows(
+  #     out,
+  #     empty_output_at_company_level(
+  #       companies_id = unique(unmatched$companies_id),
+  #       grouped_by = grouped_by(data, unmatched$grouped_by)
+  #     )
+  #   )
+  # }
+  na_cols <- setdiff(cols_at_company_level(), "companies_id")
   out |>
-    prune_unmatched("value", .by = "companies_id")
+    prune_unmatched("risk_category", .by = "companies_id") |>
+    spread_na_across(na_cols, from = "risk_category")
+
+
+  # out |>
+  #   prune_unmatched("value", .by = "companies_id")
 }
 
 #' @rdname pstr
