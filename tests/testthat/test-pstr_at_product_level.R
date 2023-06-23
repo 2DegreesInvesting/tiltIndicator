@@ -89,7 +89,7 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
   expect_equal(out$risk_category, NA_character_)
 })
 
-test_that("some match yield no NA and no match yields 1 row with `NA`s (#393)", {
+test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)", {
   companies <- tibble(
     company_id = c("a", "a", "b", "b"),
     sector = c("matched", "unmatched", "unmatched", "unmatched"),

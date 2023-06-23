@@ -53,7 +53,7 @@ test_that("unmatched products don't introduce NA's (#266)", {
   expect_false(anyNA(out$risk_category))
 })
 
-test_that("some match yield no NA and no match yields 1 row with `NA`s (#393)", {
+test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)", {
   companies <- tibble(
     company_id = c("a", "a", "b", "b"),
     activity_uuid_product_uuid = c("matched", paste0("unmatched", 1:3)),
