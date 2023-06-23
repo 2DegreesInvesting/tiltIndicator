@@ -13,8 +13,7 @@ xctr_at_product_level <- function(companies,
     xctr_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
-    xctr_select_cols_at_product_level() |>
-    prune_unmatched_at_product_level()
+    xctr_select_cols_at_product_level()
 
   na_cols <- setdiff(cols_at_product_level(), "companies_id")
   out |>
