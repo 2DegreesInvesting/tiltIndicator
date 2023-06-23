@@ -18,26 +18,6 @@ pstr_at_product_level <- function(companies,
     polish_output(cols_at_product_level())
 }
 
-stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
-  bad_type <- scenarios |>
-    summarize(
-      all_na = all(is.na(.data$sector) & is.na(.data$subsector)), .by = "type"
-    ) |>
-    filter(.data$all_na) |>
-    pull(.data$type)
-
-  has_bad_type <- !identical(bad_type, character(0))
-  if (has_bad_type) {
-    bad <- toString(bad_type)
-    abort(c(
-      "Each scenario `type` must have some `sector` and `subsector`.",
-      x = glue("All `sector` and `subsector` are missing for `type` {bad}."),
-      i = "Did you need to prepare the data with `xstr_prepare_scenario()`?"
-    ))
-  }
-  invisible(scenarios)
-}
-
 pstr_select_cols_at_product_level <- function(data) {
   select(data, all_of(pstr_cols_at_product_level()))
 }
