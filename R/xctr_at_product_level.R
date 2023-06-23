@@ -17,7 +17,7 @@ xctr_at_product_level <- function(companies,
 
   na_cols <- setdiff(cols_at_product_level(), "companies_id")
   out |>
-    prune_unmatched(col = "risk_category", "companies_id") |>
+    prune_unmatched("risk_category", .by = "companies_id") |>
     spread_na_across(na_cols, from = "risk_category")
 }
 
