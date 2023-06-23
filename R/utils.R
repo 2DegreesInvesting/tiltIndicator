@@ -80,8 +80,8 @@ prepare_companies <- function(companies) {
 
 prepare_co2 <- function(data, low_threshold, high_threshold) {
   data |>
-    distinct() |>
     mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
+    distinct() |>
     rename(
       tilt_sec = ends_with("tilt_sector"),
       unit = ends_with("unit"),
@@ -91,8 +91,8 @@ prepare_co2 <- function(data, low_threshold, high_threshold) {
 
 prepare_scenarios <- function(data, low_threshold, high_threshold) {
   data |>
-    distinct() |>
     mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
+    distinct() |>
     rename(values_to_categorize = "reductions")
 }
 

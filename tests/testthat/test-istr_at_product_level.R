@@ -154,3 +154,34 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
   all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
   expect_true(all_na_cols_are_na)
 })
+
+test_that("with duplicated scenarios throws no error (#435)", {
+  duplicated <- c("a", "a")
+  scenarios <- tibble(
+    sector = duplicated,
+    type = "a",
+    subsector = "a",
+    scenario = "a",
+    year = 2050,
+    reductions = 1,
+  )
+  companies <- tibble(
+    company_id = "a",
+    tilt_sector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a"
+  )
+  inputs <- tibble(
+    activity_uuid_product_uuid = "a",
+    input_activity_uuid_product_uuid = "a",
+    input_tilt_sector = "a",
+    input_tilt_subsector = "a",
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    input_unit = "a",
+    input_isic_4digit = "a",
+  )
+
+  expect_no_error(istr_at_product_level(companies, scenarios, inputs))
+})

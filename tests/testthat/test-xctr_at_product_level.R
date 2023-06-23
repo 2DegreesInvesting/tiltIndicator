@@ -102,3 +102,21 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
   all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
   expect_true(all_na_cols_are_na)
 })
+
+test_that("with duplicated co2 throws no error (#435)", {
+  duplicated <- c("a", "a")
+  co2 <- tibble(
+    activity_uuid_product_uuid = duplicated,
+    co2_footprint = 1,
+    tilt_sector = "a",
+    unit = "a",
+    isic_4digit = "a"
+  )
+  companies <- tibble(
+    company_id = "a",
+    activity_uuid_product_uuid = "a",
+    clustered = "a"
+  )
+
+  expect_no_error(xctr_at_product_level(companies, co2))
+})
