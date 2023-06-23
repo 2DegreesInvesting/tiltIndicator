@@ -150,12 +150,11 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
 
-  # FIXME Uncomment
-  # no_match <- filter(out, companies_id == "b")
-  # expect_equal(nrow(no_match), 1)
-  #
-  # na_cols <- setdiff(cols_at_product_level(), "companies_id")
-  # all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
-  # expect_true(all_na_cols_are_na)
+  no_match <- filter(out, companies_id == "b")
+  expect_equal(nrow(no_match), 1)
+
+  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
+  expect_true(all_na_cols_are_na)
 
 })
