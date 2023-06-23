@@ -115,38 +115,35 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
   expect_equal(out$risk_category, NA_character_)
 })
 
-# test_that("some match yield no NA and no match yields 1 row with `NA`s (#393)", {
-test_that("no match yields 1 row with NA in all columns (#393)", {
+test_that("some match yield no NA and no match yields 1 row with `NA`s (#393)", {
   companies <- tibble(
     company_id = c("a", "a", "b", "b"),
     tilt_sector = "a",
-    clustered = letters[1:4],
-    activity_uuid_product_uuid = letters[1:4]
+    clustered = c("matched", "unmatched1", "unmatched2", "unmatched3"),
+    activity_uuid_product_uuid = c("matched", "unmatched1", "unmatched2", "unmatched3")
   )
-
   scenarios <- tibble(
     type = "a",
-    sector = c("matched", "unmatched", "unmatched", "unmatched"),
+    sector = "a",
     subsector = "a",
     scenario = "a",
     year = 2050,
     reductions = 1,
   )
-
   inputs <- tibble(
-    activity_uuid_product_uuid = "a",
+    activity_uuid_product_uuid = "matched",
     input_activity_uuid_product_uuid = "a",
     input_tilt_sector = "a",
     input_tilt_subsector = "a",
     type = "a",
-    sector = "matched",
+    sector = "a",
     subsector = "a",
     input_unit = "a",
     input_isic_4digit = "a",
   )
 
-  # FIXME: use defaults after fixing #435
-  out <- istr_at_product_level(companies, scenarios, inputs, 1/3, 2/3)
+  out <- istr_at_product_level(companies, scenarios, inputs)
+
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
 
@@ -156,5 +153,4 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   na_cols <- setdiff(cols_at_product_level(), "companies_id")
   all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
   expect_true(all_na_cols_are_na)
-
 })
