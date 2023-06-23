@@ -119,8 +119,8 @@ test_that("some match yield no NA and no match yields 1 row with `NA`s (#393)", 
   companies <- tibble(
     company_id = c("a", "a", "b", "b"),
     tilt_sector = "a",
-    clustered = c("matched", "unmatched1", "unmatched2", "unmatched3"),
-    activity_uuid_product_uuid = c("matched", "unmatched1", "unmatched2", "unmatched3")
+    clustered = c("matched", paste0("unmatched", 1:3)),
+    activity_uuid_product_uuid = c("matched", paste0("unmatched", 1:3))
   )
   scenarios <- tibble(
     type = "a",
