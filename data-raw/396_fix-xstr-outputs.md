@@ -282,7 +282,8 @@ sum(is.na(xstr_product_level4$risk_category))
 
 ### At company level, remove `companies_id` with “;” in either of the relevant columns in `pstr_companies`
 
-<https://github.com/2DegreesInvesting/tiltIndicator/issues/405>
+- <https://github.com/2DegreesInvesting/tiltIndicator/issues/405>
+- <https://github.com/2DegreesInvesting/tiltIndicator/issues/439>
 
 ``` r
 semicolon <- pstr_companies |> 
