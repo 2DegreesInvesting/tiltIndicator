@@ -61,7 +61,7 @@ istr_at_product_level <- function(companies,
     xctr_join_companies(.companies) |>
     xstr_polish_output_at_product_level() |>
     istr_select_cols_at_product_level() |>
-    handle_unmatched(level_cols = cols_at_product_level())
+    polish_output(level_cols = cols_at_product_level())
 }
 
 istr_select_cols_at_product_level <- function(data) {

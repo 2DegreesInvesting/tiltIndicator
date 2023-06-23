@@ -14,7 +14,7 @@ xctr_at_product_level <- function(companies,
     add_risk_category(low_threshold, high_threshold) |>
     xctr_join_companies(.companies) |>
     xctr_select_cols_at_product_level() |>
-    handle_unmatched(level_cols = cols_at_product_level())
+    polish_output(level_cols = cols_at_product_level())
 }
 
 xctr_check <- function(companies, co2) {
