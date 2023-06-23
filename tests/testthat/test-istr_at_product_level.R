@@ -146,7 +146,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   )
 
   # FIXME: use defaults after fixing #435
-  out <- ixstr_at_product_level(companies, scenarios, inputs, 1/3, 2/3)
+  out <- istr_at_product_level(companies, scenarios, inputs, 1/3, 2/3)
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
 

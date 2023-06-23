@@ -55,12 +55,12 @@ pstr_at_product_level <- function(companies,
 
   out <- .companies |>
     xstr_add_values_to_categorize(.scenarios) |>
-    add_risk_category(low_threshold, high_threshold, .default = NA)
+    add_risk_category(low_threshold, high_threshold, .default = NA) |>
+    xstr_polish_output_at_product_level() |>
+    pstr_select_cols_at_product_level()
 
   na_cols <- setdiff(cols_at_product_level(), "companies_id")
   out |>
-    xstr_polish_output_at_product_level() |>
-    pstr_select_cols_at_product_level() |>
     prune_unmatched(col = "risk_category", "companies_id") |>
     spread_na_across(na_cols, from = "risk_category")
 }
