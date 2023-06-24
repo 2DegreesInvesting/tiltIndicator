@@ -168,11 +168,12 @@ polish_output <- function(data, level_cols) {
 spread_na_across <- function(data, across, from) {
   mutate(data, across(all_of(across), ~ spread_na(.data[[from]], .x)))
 }
+
 spread_na <- function(from, to) {
   if_else(is.na(from), NA, to)
 }
 
-join_companies_by_activity_uuid_product_uuid <- function(data, companies) {
+join_companies <- function(data, companies) {
   left_join(
     companies,
     data,

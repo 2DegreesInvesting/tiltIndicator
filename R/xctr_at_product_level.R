@@ -12,7 +12,7 @@ xctr_at_product_level <- function(companies,
   .co2 |>
     xctr_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
-    join_companies_by_activity_uuid_product_uuid(.companies) |>
+    join_companies(.companies) |>
     xctr_select_cols_at_product_level() |>
     polish_output(cols_at_product_level())
 }
