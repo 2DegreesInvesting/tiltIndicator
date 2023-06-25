@@ -19,6 +19,8 @@ unnest_product <- function(data) {
   unnest(nested, "product")
 }
 
+#' @export
+#' @rdname unnest_product
 unnest_company <- function(data) {
   nested <- select(data, -"product")
   unnest(nested, "company")

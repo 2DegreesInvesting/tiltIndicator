@@ -36,12 +36,9 @@
 #' # Now
 #' both <- product_sector(companies, scenarios)
 #'
-#' company_level <- both |> select(-product) |> unnest(company)
-#' company_level
+#' both |> unnest_product()
 #'
-#' # Also
-#' product_level <- both |> select(-company) |> unnest(product)
-#' product_level
+#' both |> unnest_company()
 #' @keywords internal
 pstr <- function(companies,
                  scenarios,

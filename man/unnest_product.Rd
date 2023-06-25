@@ -2,9 +2,12 @@
 % Please edit documentation in R/unnest.R
 \name{unnest_product}
 \alias{unnest_product}
+\alias{unnest_company}
 \title{Unnest product- and company-level results}
 \usage{
 unnest_product(data)
+
+unnest_company(data)
 }
 \arguments{
 \item{data}{A nested data frame, e.g. the output of \code{\link[=product_sector]{product_sector()}}.}
