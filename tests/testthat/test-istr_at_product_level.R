@@ -185,3 +185,18 @@ test_that("with duplicated scenarios throws no error (#435)", {
 
   expect_no_error(istr_at_product_level(companies, scenarios, inputs))
 })
+
+test_that("if `companies` lacks crucial columns, errors gracefully", {
+  companies <- istr_companies |> slice(1)
+  scenarios <- xstr_scenarios
+  inputs <- istr_inputs
+
+  crucial <- "company_id"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(istr_at_product_level(bad, scenarios, inputs), crucial)
+
+  crucial <- "activity_uuid_product_uuid"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(istr_at_product_level(bad, scenarios, inputs), crucial)
+})
+

@@ -30,20 +30,6 @@ test_that("the output is not grouped", {
   expect_false(dplyr::is_grouped_df(out))
 })
 
-test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- istr_companies |> slice(1)
-  scenarios <- xstr_scenarios
-  inputs <- istr_inputs
-
-  crucial <- "company_id"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(istr(bad, scenarios, inputs), crucial)
-
-  crucial <- "activity_uuid_product_uuid"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(istr(bad, scenarios, inputs), crucial)
-})
-
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   companies <- istr_companies |> slice(1)
   scenarios <- xstr_scenarios
