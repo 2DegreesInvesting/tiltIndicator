@@ -1,5 +1,5 @@
 test_that("wraps the output at product and company levels", {
-  out <- x_carbon(companies, products)
+  out <- xctr(companies, products)
 
   product <- unnest_product(out)
   expect_equal(product, xctr_at_product_level(companies, products))
