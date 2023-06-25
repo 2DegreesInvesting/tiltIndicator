@@ -168,3 +168,30 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   expect_error(pstr_at_product_level(bad, scenarios), crucial)
 })
 
+test_that("if `scenarios` lacks crucial columns, errors gracefully", {
+  withr::local_options(lifecycle_verbosity = "quiet")
+
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(xstr_scenarios, 1)
+
+  crucial <- "type"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+
+  crucial <- "sector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+
+  crucial <- "subsector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+
+  crucial <- "year"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+
+  crucial <- "scenario"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+})
+

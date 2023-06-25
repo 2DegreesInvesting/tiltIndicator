@@ -39,33 +39,6 @@ test_that("the output is not grouped", {
   expect_false(dplyr::is_grouped_df(out))
 })
 
-test_that("if `scenarios` lacks crucial columns, errors gracefully", {
-    withr::local_options(lifecycle_verbosity = "quiet")
-
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
-
-  crucial <- "type"
-  bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr(companies, bad), crucial)
-
-  crucial <- "sector"
-  bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr(companies, bad), crucial)
-
-  crucial <- "subsector"
-  bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr(companies, bad), crucial)
-
-  crucial <- "year"
-  bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr(companies, bad), crucial)
-
-  crucial <- "scenario"
-  bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr(companies, bad), crucial)
-})
-
 test_that("thresholds yield expected low, medium, and high risk categories", {
     withr::local_options(lifecycle_verbosity = "quiet")
 
