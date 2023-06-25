@@ -150,7 +150,8 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
     input_isic_4digit = "4575",
   )
 
-  out <- xctr(companies, co2, low_threshold, high_threshold)
+  product <- xctr_at_product_level(companies, co2, low_threshold, high_threshold)
+  out <- xctr_at_company_level(product)
   expect_true(identical(unique(out$value), expected_value))
 })
 
