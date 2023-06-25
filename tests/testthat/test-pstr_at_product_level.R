@@ -146,8 +146,6 @@ test_that("with duplicated scenarios throws no error (#435)", {
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
-  
-
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(xstr_scenarios, 1)
 
@@ -169,8 +167,6 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 })
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
-  
-
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(xstr_scenarios, 1)
 
@@ -196,8 +192,6 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 })
 
 test_that("grouped_by includes the type of scenario", {
-  
-
   .type <- "ipr"
   companies <- filter(slice(pstr_companies, 1), type == .type)
   co2 <- filter(xstr_scenarios, type == .type)
@@ -209,8 +203,6 @@ test_that("grouped_by includes the type of scenario", {
 })
 
 test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
-  
-
   companies <- tibble(
     company_id = "a",
     type = "b",
@@ -234,8 +226,6 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
 })
 
 test_that("a 0-row `companies` yields an error", {
-  
-
   expect_error(
     pstr_at_product_level(pstr_companies[0L, ], xstr_scenarios),
     "companies.*can't have 0-row"
@@ -243,8 +233,6 @@ test_that("a 0-row `companies` yields an error", {
 })
 
 test_that("a 0-row `scenarios` yields an error", {
-  
-
   expect_error(
     pstr_at_product_level(slice(pstr_companies, 1), xstr_scenarios[0L, ]),
     "scenario.*can't have 0-row"

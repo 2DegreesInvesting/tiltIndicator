@@ -10,8 +10,6 @@ test_that("still works but warns deprecation", {
 })
 
 test_that("hasn't changed", {
-  
-
   scenarios <- xstr_scenarios
   companies <- pstr_companies |> slice(1)
   product <- pstr_at_product_level(companies, scenarios)
@@ -20,8 +18,6 @@ test_that("hasn't changed", {
 })
 
 test_that("outputs expected columns at company level", {
-  
-
   companies <- slice(pstr_companies, 1)
   scenarios <- xstr_scenarios
   product <- pstr_at_product_level(companies, scenarios)
@@ -30,8 +26,6 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("the output is not grouped", {
-  
-
   scenarios <- xstr_scenarios
   companies <- pstr_companies |> slice(1)
   product <- pstr_at_product_level(companies, scenarios)
@@ -40,8 +34,6 @@ test_that("the output is not grouped", {
 })
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
-  
-
   companies <- tibble(
     company_id = "a",
     type = "ipr",
@@ -98,8 +90,6 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 })
 
 test_that("outputs values in proportion", {
-  
-
   companies <- slice(pstr_companies, 1)
   scenarios <- xstr_scenarios
   product <- pstr_at_product_level(companies, scenarios)
@@ -108,8 +98,6 @@ test_that("outputs values in proportion", {
 })
 
 test_that("each company has risk categories low, medium, and high (#215)", {
-  
-
   companies <- slice(pstr_companies, 1)
   scenarios <- xstr_scenarios
   product <- pstr_at_product_level(companies, scenarios)
@@ -119,8 +107,6 @@ test_that("each company has risk categories low, medium, and high (#215)", {
 })
 
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
-  
-
   .type <- "ipr"
   companies <- pstr_companies |>
     filter(type == .type) |>
@@ -137,8 +123,6 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
 })
 
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
-  
-
   .type <- "weo"
   companies <- pstr_companies |>
     filter(type == .type) |>
@@ -155,8 +139,6 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
 })
 
 test_that("NA in reductions yields expected risk_category and NAs in value (#300)", {
-  
-
   companies <- tibble(
     company_id = "1",
     type = "a",
@@ -182,8 +164,6 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
 })
 
 test_that("values sum 1", {
-  
-
   companies <- tibble(
     company_id = "a",
     type = "a",
@@ -211,8 +191,6 @@ test_that("values sum 1", {
 })
 
 test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
-  
-
   companies <- tibble(
     company_id = "a",
     type = "a",
@@ -242,8 +220,6 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
 })
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
-  
-
   companies <- tibble(
     company_id = "a",
     type = "a",
