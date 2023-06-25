@@ -195,3 +195,15 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   expect_error(pstr_at_product_level(companies, bad), crucial)
 })
 
+test_that("grouped_by includes the type of scenario", {
+  withr::local_options(lifecycle_verbosity = "quiet")
+
+  .type <- "ipr"
+  companies <- filter(slice(pstr_companies, 1), type == .type)
+  co2 <- filter(xstr_scenarios, type == .type)
+
+  product <- pstr_at_product_level(companies, co2)
+  out <- pstr_at_company_level(product)
+
+  expect_true(all(grepl(.type, unique(out$grouped_by))))
+})

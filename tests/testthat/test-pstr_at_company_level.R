@@ -118,18 +118,6 @@ test_that("each company has risk categories low, medium, and high (#215)", {
   expect_equal(risk_categories, c("high", "low", "medium"))
 })
 
-test_that("grouped_by includes the type of scenario", {
-    withr::local_options(lifecycle_verbosity = "quiet")
-
-  .type <- "ipr"
-  companies <- filter(slice(pstr_companies, 1), type == .type)
-  co2 <- filter(xstr_scenarios, type == .type)
-
-  out <- pstr(companies, co2)
-
-  expect_true(all(grepl(.type, unique(out$grouped_by))))
-})
-
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
     withr::local_options(lifecycle_verbosity = "quiet")
 
