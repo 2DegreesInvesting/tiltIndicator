@@ -41,7 +41,6 @@
 #' @importFrom ggplot2 scale_fill_gradient2
 #' @importFrom ggplot2 scale_x_discrete
 #' @importFrom glue glue
-#' @importFrom lifecycle deprecated
 #' @importFrom purrr map
 #' @importFrom purrr map_chr
 #' @importFrom purrr map_df
