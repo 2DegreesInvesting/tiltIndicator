@@ -1,4 +1,16 @@
+test_that("still works but warns deprecation", {
+  companies <- pstr_companies |> slice(1)
+  scenarios <- xstr_scenarios
+
+  expect_snapshot({
+    out <- pstr(companies, scenarios)
+    expect_named(out, cols_at_company_level())
+  })
+})
+
 test_that("hasn't changed", {
+  withr::local_options(lifecycle_verbosity = "quiet")
+
   scenarios <- xstr_scenarios
   companies <- pstr_companies |> slice(1)
   out <- pstr(companies, scenarios)
@@ -6,6 +18,8 @@ test_that("hasn't changed", {
 })
 
 test_that("outputs expected columns at company level", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- slice(pstr_companies, 1)
   scenarios <- xstr_scenarios
   out <- pstr(companies, scenarios)
@@ -13,6 +27,8 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("the output is not grouped", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   scenarios <- xstr_scenarios
   companies <- pstr_companies |> slice(1)
   out <- pstr(companies, scenarios)
@@ -20,6 +36,8 @@ test_that("the output is not grouped", {
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(xstr_scenarios, 1)
 
@@ -41,6 +59,8 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 })
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(xstr_scenarios, 1)
 
@@ -66,6 +86,8 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 })
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- tibble(
     company_id = "a",
     type = "ipr",
@@ -117,6 +139,8 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 })
 
 test_that("outputs values in proportion", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- slice(pstr_companies, 1)
   scenarios <- xstr_scenarios
   out <- pstr(companies, scenarios)
@@ -124,6 +148,8 @@ test_that("outputs values in proportion", {
 })
 
 test_that("each company has risk categories low, medium, and high (#215)", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- slice(pstr_companies, 1)
   scenarios <- xstr_scenarios
   out <- pstr(companies, scenarios)
@@ -132,6 +158,8 @@ test_that("each company has risk categories low, medium, and high (#215)", {
 })
 
 test_that("grouped_by includes the type of scenario", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   .type <- "ipr"
   companies <- filter(slice(pstr_companies, 1), type == .type)
   co2 <- filter(xstr_scenarios, type == .type)
@@ -142,6 +170,8 @@ test_that("grouped_by includes the type of scenario", {
 })
 
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   .type <- "ipr"
   companies <- pstr_companies |>
     filter(type == .type) |>
@@ -157,6 +187,8 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
 })
 
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   .type <- "weo"
   companies <- pstr_companies |>
     filter(type == .type) |>
@@ -172,6 +204,8 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
 })
 
 test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- tibble(
     company_id = "a",
     type = "b",
@@ -195,6 +229,8 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
 })
 
 test_that("a 0-row `companies` yields an error", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   expect_error(
     pstr(pstr_companies[0L, ], xstr_scenarios),
     "companies.*can't have 0-row"
@@ -202,6 +238,8 @@ test_that("a 0-row `companies` yields an error", {
 })
 
 test_that("a 0-row `scenarios` yields an error", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   expect_error(
     pstr(slice(pstr_companies, 1), xstr_scenarios[0L, ]),
     "scenario.*can't have 0-row"
@@ -209,6 +247,8 @@ test_that("a 0-row `scenarios` yields an error", {
 })
 
 test_that("NA in reductions yields expected risk_category and NAs in value (#300)", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- tibble(
     company_id = "1",
     type = "a",
@@ -233,6 +273,8 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
 })
 
 test_that("values sum 1", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- tibble(
     company_id = "a",
     type = "a",
@@ -259,6 +301,8 @@ test_that("values sum 1", {
 })
 
 test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- tibble(
     company_id = "a",
     type = "a",
@@ -287,6 +331,8 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
 })
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
+    withr::local_options(lifecycle_verbosity = "quiet")
+
   companies <- tibble(
     company_id = "a",
     type = "a",

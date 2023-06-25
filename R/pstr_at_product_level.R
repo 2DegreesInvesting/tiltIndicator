@@ -1,4 +1,4 @@
-#' @rdname pstr
+#' @rdname product_sector
 #' @export
 pstr_at_product_level <- function(companies,
                                   scenarios,
