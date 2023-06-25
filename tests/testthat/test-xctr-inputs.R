@@ -30,16 +30,20 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
 test_that("is sensitive to low_threshold", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1:2)
-  out1 <- xctr(companies, inputs, low_threshold = .1)
-  out2 <- xctr(companies, inputs, low_threshold = .9)
+  out1 <- xctr_at_product_level(companies, inputs, low_threshold = .1) |>
+    xctr_at_company_level()
+  out2 <- xctr_at_product_level(companies, inputs, low_threshold = .9) |>
+    xctr_at_company_level()
   expect_false(identical(out1, out2))
 })
 
 test_that("is sensitive to high_threshold", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1:2)
-  out1 <- xctr(companies, inputs, high_threshold = .1)
-  out2 <- xctr(companies, inputs, high_threshold = .9)
+  out1 <- xctr_at_product_level(companies, inputs, high_threshold = .1) |>
+    xctr_at_company_level()
+  out2 <- xctr_at_product_level(companies, inputs, high_threshold = .9) |>
+    xctr_at_company_level()
   expect_false(identical(out1, out2))
 })
 
