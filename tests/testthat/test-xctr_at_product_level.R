@@ -211,4 +211,21 @@ test_that("handles duplicated `co2` data (#230)", {
   expect_no_error(xctr_at_product_level(companies, co2))
 })
 
+test_that("if the 'isic' column isn't a character, throws an error (#233)", {
+  companies <- tibble(
+    company_id = c("a"),
+    clustered = c("b"),
+    activity_uuid_product_uuid = c("c"),
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = c("c"),
+    co2_footprint = 1,
+    tilt_sector = "transport",
+    unit = "metric ton*km",
+    # Not a character
+    isic_4digit = 4575,
+  )
+
+  expect_error(xctr_at_product_level(companies, co2), "must be.*character")
+})
 

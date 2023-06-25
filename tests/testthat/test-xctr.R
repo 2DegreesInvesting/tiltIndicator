@@ -95,24 +95,6 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   expect_true(identical(unique(out$value), expected_value))
 })
 
-test_that("if the 'isic' column isn't a character, throws an error (#233)", {
-  companies <- tibble(
-    company_id = c("a"),
-    clustered = c("b"),
-    activity_uuid_product_uuid = c("c"),
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("c"),
-    co2_footprint = 1,
-    tilt_sector = "transport",
-    unit = "metric ton*km",
-    # Not a character
-    isic_4digit = 4575,
-  )
-
-  expect_error(xctr(companies, co2), "must be.*character")
-})
-
 test_that("for each company & benchmark, each risk category is unique (#285)", {
   # styler: off
   companies <- tibble::tribble(
