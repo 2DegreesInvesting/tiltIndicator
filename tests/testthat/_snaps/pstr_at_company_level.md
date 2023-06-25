@@ -1,12 +1,8 @@
 # still works but warns deprecation
 
     Code
-      out <- pstr(companies, scenarios)
-    Condition
-      Warning:
-      `pstr()` was deprecated in tiltIndicator 0.0.0.9076.
-      i Please use `product_sector()` instead.
-    Code
+      product <- pstr_at_product_level(companies, scenarios)
+      out <- pstr_at_company_level(product)
       expect_named(out, cols_at_company_level())
 
 # hasn't changed
