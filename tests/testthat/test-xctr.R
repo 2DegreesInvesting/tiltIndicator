@@ -37,29 +37,6 @@ test_that("is sensitive to high_threshold", {
   expect_false(identical(out1, out2))
 })
 
-test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- tibble(
-    activity_uuid_product_uuid = c("x"),
-    company_id = c("a"),
-    clustered = c("xyz")
-  )
-  co2 <- tibble(
-    co2_footprint = 1,
-    tilt_sector = "Transport",
-    unit = "metric ton*km",
-    activity_uuid_product_uuid = c("x"),
-    isic_4digit = "4575"
-  )
-
-  crucial <- "activity_uuid_product_uuid"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(xctr(bad, co2), crucial)
-
-  crucial <- "company_id"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(xctr(bad, co2), crucial)
-})
-
 test_that("if `co2` lacks crucial columns, errors gracefully", {
   companies <- tibble(
     activity_uuid_product_uuid = c("x"),

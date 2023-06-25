@@ -120,3 +120,27 @@ test_that("with duplicated co2 throws no error (#435)", {
 
   expect_no_error(xctr_at_product_level(companies, co2))
 })
+
+test_that("if `companies` lacks crucial columns, errors gracefully", {
+  companies <- tibble(
+    activity_uuid_product_uuid = c("x"),
+    company_id = c("a"),
+    clustered = c("xyz")
+  )
+  co2 <- tibble(
+    co2_footprint = 1,
+    tilt_sector = "Transport",
+    unit = "metric ton*km",
+    activity_uuid_product_uuid = c("x"),
+    isic_4digit = "4575"
+  )
+
+  crucial <- "activity_uuid_product_uuid"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(xctr(bad, co2), crucial)
+
+  crucial <- "company_id"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(xctr_at_product_level(bad, co2), crucial)
+})
+
