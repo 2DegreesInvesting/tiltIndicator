@@ -154,24 +154,6 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
   expect_true(all(sum$value_sum == 1))
 })
 
-test_that("a 0-row `companies` yields an error", {
-    withr::local_options(lifecycle_verbosity = "quiet")
-
-  expect_error(
-    pstr(pstr_companies[0L, ], xstr_scenarios),
-    "companies.*can't have 0-row"
-  )
-})
-
-test_that("a 0-row `scenarios` yields an error", {
-    withr::local_options(lifecycle_verbosity = "quiet")
-
-  expect_error(
-    pstr(slice(pstr_companies, 1), xstr_scenarios[0L, ]),
-    "scenario.*can't have 0-row"
-  )
-})
-
 test_that("NA in reductions yields expected risk_category and NAs in value (#300)", {
     withr::local_options(lifecycle_verbosity = "quiet")
 

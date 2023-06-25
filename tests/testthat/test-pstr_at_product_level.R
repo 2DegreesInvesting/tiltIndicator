@@ -232,3 +232,21 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
   )
   expect_error(pstr_at_product_level(companies, scenarios), "sector.*subsector.*type")
 })
+
+test_that("a 0-row `companies` yields an error", {
+  withr::local_options(lifecycle_verbosity = "quiet")
+
+  expect_error(
+    pstr_at_product_level(pstr_companies[0L, ], xstr_scenarios),
+    "companies.*can't have 0-row"
+  )
+})
+
+test_that("a 0-row `scenarios` yields an error", {
+  withr::local_options(lifecycle_verbosity = "quiet")
+
+  expect_error(
+    pstr_at_product_level(slice(pstr_companies, 1), xstr_scenarios[0L, ]),
+    "scenario.*can't have 0-row"
+  )
+})
