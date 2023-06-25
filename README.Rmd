@@ -54,7 +54,12 @@ companies |>
   xctr_at_company_level()
 
 # Same
-companies |> xctr(co2 = inputs)
+both <- xctr(companies, co2 = inputs)
+both
+
+both |> unnest_product()
+
+both |> unnest_company()
 
 # PCTR
 products
@@ -67,5 +72,10 @@ companies |>
   xctr_at_company_level()
 
 # Same
-companies |> xctr(co2 = products)
+both <- xctr(companies, co2 = products)
+both
+
+both |> unnest_product()
+
+both |> unnest_company()
 ```

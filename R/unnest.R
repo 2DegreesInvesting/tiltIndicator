@@ -12,6 +12,7 @@
 #' scenarios <- xstr_scenarios
 #'
 #' both <- pstr(companies, scenarios)
+#' both
 #'
 #' both |> unnest_product()
 #'

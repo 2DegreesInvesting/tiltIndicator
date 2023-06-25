@@ -132,6 +132,7 @@ companies |>
 
 # Same
 both <- xctr(companies, inputs)
+both
 
 both |> unnest_product()
 
@@ -149,6 +150,7 @@ companies |>
 
 # Same
 both <- xctr(companies, products)
+both
 
 both |> unnest_product()
 

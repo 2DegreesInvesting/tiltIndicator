@@ -31,6 +31,7 @@
 #'
 #' # Same
 #' both <- istr(companies, scenarios, inputs)
+#' both
 #'
 #' both |> unnest_product()
 #'
