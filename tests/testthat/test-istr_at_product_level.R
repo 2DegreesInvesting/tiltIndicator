@@ -279,3 +279,18 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
   )
   expect_error(istr_at_product_level(companies, scenarios, inputs), "sector.*subsector.*type")
 })
+
+test_that("a 0-row `companies` yields an error", {
+  expect_error(
+    istr_at_product_level(istr_companies[0L, ], xstr_scenarios, istr_inputs),
+    "companies.*can't have 0-row"
+  )
+})
+
+test_that("a 0-row `scenarios` yields an error", {
+  expect_error(
+    istr_at_product_level(istr_companies, xstr_scenarios[0L, ], istr_inputs),
+    "scenarios.*can't have 0-row"
+  )
+})
+

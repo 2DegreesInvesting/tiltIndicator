@@ -153,20 +153,6 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
   expect_true(all(na.omit(sum$value_sum) |> near(1)))
 })
 
-test_that("a 0-row `companies` yields an error", {
-  expect_error(
-    istr(istr_companies[0L, ], xstr_scenarios, istr_inputs),
-    "companies.*can't have 0-row"
-  )
-})
-
-test_that("a 0-row `scenarios` yields an error", {
-  expect_error(
-    istr(istr_companies, xstr_scenarios[0L, ], istr_inputs),
-    "scenarios.*can't have 0-row"
-  )
-})
-
 test_that("NA in reductions yields expected risk_category and NAs in value (#300)", {
   companies <- tibble(
     company_id = "1",
