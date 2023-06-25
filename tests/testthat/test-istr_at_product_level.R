@@ -225,3 +225,25 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   bad <- select(scenarios, -all_of(crucial))
   expect_error(istr_at_product_level(companies, bad, inputs), crucial)
 })
+
+test_that("if `inputs` lacks crucial columns, errors gracefully", {
+  companies <- istr_companies |> slice(1)
+  scenarios <- xstr_scenarios
+  inputs <- istr_inputs
+
+  crucial <- "type"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+
+  crucial <- "sector"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+
+  crucial <- "subsector"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+
+  crucial <- "activity_uuid_product_uuid"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+})

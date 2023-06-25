@@ -30,28 +30,6 @@ test_that("the output is not grouped", {
   expect_false(dplyr::is_grouped_df(out))
 })
 
-test_that("if `inputs` lacks crucial columns, errors gracefully", {
-  companies <- istr_companies |> slice(1)
-  scenarios <- xstr_scenarios
-  inputs <- istr_inputs
-
-  crucial <- "type"
-  bad <- select(inputs, -all_of(crucial))
-  expect_error(istr(companies, scenarios, bad), crucial)
-
-  crucial <- "sector"
-  bad <- select(inputs, -all_of(crucial))
-  expect_error(istr(companies, scenarios, bad), crucial)
-
-  crucial <- "subsector"
-  bad <- select(inputs, -all_of(crucial))
-  expect_error(istr(companies, scenarios, bad), crucial)
-
-  crucial <- "activity_uuid_product_uuid"
-  bad <- select(inputs, -all_of(crucial))
-  expect_error(istr(companies, scenarios, bad), crucial)
-})
-
 test_that("thresholds yield expected low, medium, and high risk categories", {
   companies <- tibble(
     company_id = "a",
