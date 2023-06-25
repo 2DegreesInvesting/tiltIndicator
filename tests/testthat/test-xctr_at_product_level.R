@@ -179,3 +179,36 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   expect_error(xctr_at_product_level(companies, bad), crucial)
 })
 
+test_that("handles duplicated `companies` data (#230)", {
+  companies <- tibble(
+    company_id = rep("a", 2),
+    clustered = c("b"),
+    activity_uuid_product_uuid = c("c"),
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = c("c"),
+    co2_footprint = 1,
+    tilt_sector = "transport",
+    unit = "metric ton*km",
+    isic_4digit = "4575",
+  )
+  expect_no_error(xctr_at_product_level(companies, co2))
+})
+
+test_that("handles duplicated `co2` data (#230)", {
+  companies <- tibble(
+    company_id = c("a"),
+    clustered = c("b"),
+    activity_uuid_product_uuid = c("c"),
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = rep("c", 2),
+    co2_footprint = 1,
+    tilt_sector = "transport",
+    unit = "metric ton*km",
+    isic_4digit = "4575",
+  )
+  expect_no_error(xctr_at_product_level(companies, co2))
+})
+
+

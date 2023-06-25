@@ -67,38 +67,6 @@ test_that("no longer drops companies depending on co2 data (#122)", {
   expect_equal(length(unique(out$companies_id)), 2L)
 })
 
-test_that("handles duplicated `companies` data (#230)", {
-  companies <- tibble(
-    company_id = rep("a", 2),
-    clustered = c("b"),
-    activity_uuid_product_uuid = c("c"),
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("c"),
-    co2_footprint = 1,
-    tilt_sector = "transport",
-    unit = "metric ton*km",
-    isic_4digit = "4575",
-  )
-  expect_no_error(xctr(companies, co2))
-})
-
-test_that("handles duplicated `co2` data (#230)", {
-  companies <- tibble(
-    company_id = c("a"),
-    clustered = c("b"),
-    activity_uuid_product_uuid = c("c"),
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = rep("c", 2),
-    co2_footprint = 1,
-    tilt_sector = "transport",
-    unit = "metric ton*km",
-    isic_4digit = "4575",
-  )
-  expect_no_error(xctr(companies, co2))
-})
-
 test_that("for a company with 3 products of varying footprints, value is 1/3 (#243)", {
   # > Adjusting the risk thresholds to 1/3 and 2/3
   low_threshold <- 1 / 3
