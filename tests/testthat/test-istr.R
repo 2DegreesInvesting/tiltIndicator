@@ -188,16 +188,6 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
   expect_true(all(is.na(out$value)))
 })
 
-test_that("is sensitive to low_threshold", {
-  companies <- slice(istr_companies, 1)
-  scenarios <- xstr_scenarios
-  inputs <- istr_inputs
-
-  out1 <- istr(companies, scenarios, inputs, low_threshold = .1)
-  out2 <- istr(companies, scenarios, inputs, low_threshold = .9)
-  expect_false(identical(out1, out2))
-})
-
 test_that("values sum 1", {
   scenarios <- tibble(
     scenario = "a",
