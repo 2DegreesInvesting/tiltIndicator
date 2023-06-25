@@ -146,7 +146,7 @@ test_that("with duplicated scenarios throws no error (#435)", {
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(xstr_scenarios, 1)
@@ -169,7 +169,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 })
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(xstr_scenarios, 1)
@@ -196,7 +196,7 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 })
 
 test_that("grouped_by includes the type of scenario", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   .type <- "ipr"
   companies <- filter(slice(pstr_companies, 1), type == .type)
@@ -209,7 +209,7 @@ test_that("grouped_by includes the type of scenario", {
 })
 
 test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- tibble(
     company_id = "a",
@@ -234,7 +234,7 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
 })
 
 test_that("a 0-row `companies` yields an error", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   expect_error(
     pstr_at_product_level(pstr_companies[0L, ], xstr_scenarios),
@@ -243,7 +243,7 @@ test_that("a 0-row `companies` yields an error", {
 })
 
 test_that("a 0-row `scenarios` yields an error", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   expect_error(
     pstr_at_product_level(slice(pstr_companies, 1), xstr_scenarios[0L, ]),

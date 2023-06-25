@@ -10,7 +10,7 @@ test_that("still works but warns deprecation", {
 })
 
 test_that("hasn't changed", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   scenarios <- xstr_scenarios
   companies <- pstr_companies |> slice(1)
@@ -20,7 +20,7 @@ test_that("hasn't changed", {
 })
 
 test_that("outputs expected columns at company level", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- slice(pstr_companies, 1)
   scenarios <- xstr_scenarios
@@ -30,7 +30,7 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("the output is not grouped", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   scenarios <- xstr_scenarios
   companies <- pstr_companies |> slice(1)
@@ -40,7 +40,7 @@ test_that("the output is not grouped", {
 })
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- tibble(
     company_id = "a",
@@ -98,7 +98,7 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 })
 
 test_that("outputs values in proportion", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- slice(pstr_companies, 1)
   scenarios <- xstr_scenarios
@@ -108,7 +108,7 @@ test_that("outputs values in proportion", {
 })
 
 test_that("each company has risk categories low, medium, and high (#215)", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- slice(pstr_companies, 1)
   scenarios <- xstr_scenarios
@@ -119,7 +119,7 @@ test_that("each company has risk categories low, medium, and high (#215)", {
 })
 
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   .type <- "ipr"
   companies <- pstr_companies |>
@@ -137,7 +137,7 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
 })
 
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   .type <- "weo"
   companies <- pstr_companies |>
@@ -155,7 +155,7 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
 })
 
 test_that("NA in reductions yields expected risk_category and NAs in value (#300)", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- tibble(
     company_id = "1",
@@ -182,7 +182,7 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
 })
 
 test_that("values sum 1", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- tibble(
     company_id = "a",
@@ -211,7 +211,7 @@ test_that("values sum 1", {
 })
 
 test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- tibble(
     company_id = "a",
@@ -242,7 +242,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
 })
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
-  withr::local_options(lifecycle_verbosity = "quiet")
+  
 
   companies <- tibble(
     company_id = "a",
