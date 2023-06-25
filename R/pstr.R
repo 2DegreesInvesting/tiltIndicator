@@ -18,6 +18,9 @@
 #' @export
 #'
 #' @examples
+#' library(dplyr, warn.conflicts = FALSE)
+#' library(tidyr)
+#'
 #' companies <- pstr_companies
 #' scenarios <- xstr_scenarios
 #'
@@ -30,13 +33,26 @@
 #'   pstr_at_product_level(scenarios) |>
 #'   pstr_at_company_level()
 #'
-#' # Same
-#' pstr(companies, scenarios)
+#' # Or
+#' both <- pstr(companies, scenarios)
+#' both
+#'
+#' # Product level
+#' both |> unnest_product()
+#'
+#' # Company level
+#' both |> unnest_company()
 pstr <- function(companies,
                  scenarios,
                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  companies |>
-    pstr_at_product_level(scenarios, low_threshold, high_threshold) |>
-    xctr_at_company_level()
+  product <- pstr_at_product_level(companies, scenarios, low_threshold, high_threshold)
+  company <- xctr_at_company_level(product)
+
+  .by <- "companies_id"
+  left_join(
+    nest(product, .by = all_of(.by), .key = "product"),
+    nest(company, .by = all_of(.by), .key = "company"),
+    by = .by
+  )
 }

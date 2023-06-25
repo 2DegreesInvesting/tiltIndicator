@@ -144,3 +144,97 @@ test_that("with duplicated scenarios throws no error (#435)", {
 
   expect_no_error(pstr_at_product_level(companies, scenarios))
 })
+
+test_that("if `companies` lacks crucial columns, errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(xstr_scenarios, 1)
+
+  crucial <- "company_id"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+
+  crucial <- "type"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+
+  crucial <- "sector"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+
+  crucial <- "subsector"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+})
+
+test_that("if `scenarios` lacks crucial columns, errors gracefully", {
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(xstr_scenarios, 1)
+
+  crucial <- "type"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+
+  crucial <- "sector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+
+  crucial <- "subsector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+
+  crucial <- "year"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+
+  crucial <- "scenario"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(pstr_at_product_level(companies, bad), crucial)
+})
+
+test_that("grouped_by includes the type of scenario", {
+  .type <- "ipr"
+  companies <- filter(slice(pstr_companies, 1), type == .type)
+  co2 <- filter(xstr_scenarios, type == .type)
+
+  product <- pstr_at_product_level(companies, co2)
+  out <- pstr_at_company_level(product)
+
+  expect_true(all(grepl(.type, unique(out$grouped_by))))
+})
+
+test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
+  companies <- tibble(
+    company_id = "a",
+    type = "b",
+    sector = "c",
+    subsector = "d",
+    clustered = "e",
+    activity_uuid_product_uuid = "f",
+    tilt_sector = "g",
+    tilt_subsector = "i",
+  )
+  # For type "b" all `sector` and `subsector` are `NA`
+  scenarios <- tibble(
+    type = c("b", "b", "x", "x"),
+    scenario = c("y", "y", "z", "z"),
+    sector = c(NA_character_, NA_character_, "c", "c"),
+    subsector = c(NA_character_, NA_character_, "d", "d"),
+    year = 2030,
+    reductions = 1,
+  )
+  expect_error(pstr_at_product_level(companies, scenarios), "sector.*subsector.*type")
+})
+
+test_that("a 0-row `companies` yields an error", {
+  expect_error(
+    pstr_at_product_level(pstr_companies[0L, ], xstr_scenarios),
+    "companies.*can't have 0-row"
+  )
+})
+
+test_that("a 0-row `scenarios` yields an error", {
+  expect_error(
+    pstr_at_product_level(slice(pstr_companies, 1), xstr_scenarios[0L, ]),
+    "scenario.*can't have 0-row"
+  )
+})

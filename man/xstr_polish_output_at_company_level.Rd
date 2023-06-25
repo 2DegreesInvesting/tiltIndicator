@@ -17,6 +17,7 @@ Polish output at company level
 }
 \examples{
 pstr(pstr_companies, xstr_scenarios) |>
+  unnest_company() |>
   xstr_polish_output_at_company_level()
 
 istr(istr_companies, xstr_scenarios, istr_inputs) |>

@@ -50,6 +50,9 @@ aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 }
 \examples{
+library(dplyr, warn.conflicts = FALSE)
+library(tidyr)
+
 companies <- pstr_companies
 scenarios <- xstr_scenarios
 
@@ -62,7 +65,14 @@ companies |>
   pstr_at_product_level(scenarios) |>
   pstr_at_company_level()
 
-# Same
-pstr(companies, scenarios)
+# Or
+both <- pstr(companies, scenarios)
+both
+
+# Product level
+both |> unnest_product()
+
+# Company level
+both |> unnest_company()
 }
 \concept{PSTR functions}
