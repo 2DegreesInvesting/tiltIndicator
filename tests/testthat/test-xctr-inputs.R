@@ -182,7 +182,8 @@ test_that("values sum 1", {
     input_isic_4digit = "a"
   )
 
-  out <- xctr(companies, co2)
+  out <- xctr_at_product_level(companies, co2) |>
+    xctr_at_company_level()
 
   sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
   expect_equal(sum, 1)
@@ -202,7 +203,8 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
     input_isic_4digit = "a"
   )
 
-  out <- xctr(companies, co2)
+  out <- xctr_at_product_level(companies, co2) |>
+    xctr_at_company_level()
 
   expect_equal(out$companies_id, "a")
   expect_equal(out$grouped_by, NA_character_)
@@ -224,7 +226,8 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
     input_isic_4digit = "a"
   )
 
-  out <- xctr(companies, co2)
+  out <- xctr_at_product_level(companies, co2) |>
+    xctr_at_company_level()
 
   expect_equal(nrow(out), 18L)
   n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
