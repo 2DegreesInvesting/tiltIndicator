@@ -37,41 +37,6 @@ test_that("is sensitive to high_threshold", {
   expect_false(identical(out1, out2))
 })
 
-test_that("if `co2` lacks crucial columns, errors gracefully", {
-  companies <- tibble(
-    activity_uuid_product_uuid = c("x"),
-    company_id = c("a"),
-    clustered = c("xyz")
-  )
-  co2 <- tibble(
-    co2_footprint = 1,
-    tilt_sector = "Transport",
-    unit = "metric ton*km",
-    activity_uuid_product_uuid = c("x"),
-    isic_4digit = "4575"
-  )
-
-  crucial <- "co2_footprint"
-  bad <- select(co2, -ends_with(crucial))
-  expect_error(xctr(companies, bad), crucial)
-
-  crucial <- "tilt_sector"
-  bad <- select(co2, -ends_with(crucial))
-  expect_error(xctr(companies, bad), crucial)
-
-  crucial <- "unit"
-  bad <- select(co2, -ends_with(crucial))
-  expect_error(xctr(companies, bad), crucial)
-
-  crucial <- "activity_uuid_product_uuid"
-  bad <- select(co2, -all_of(crucial))
-  expect_error(xctr(companies, bad), crucial)
-
-  crucial <- "isic_4digit"
-  bad <- select(co2, -ends_with(crucial))
-  expect_error(xctr(companies, bad), crucial)
-})
-
 test_that("no longer drops companies depending on co2 data (#122)", {
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])

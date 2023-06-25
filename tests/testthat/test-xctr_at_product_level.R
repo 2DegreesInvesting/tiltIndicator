@@ -144,3 +144,38 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   expect_error(xctr_at_product_level(bad, co2), crucial)
 })
 
+test_that("if `co2` lacks crucial columns, errors gracefully", {
+  companies <- tibble(
+    activity_uuid_product_uuid = c("x"),
+    company_id = c("a"),
+    clustered = c("xyz")
+  )
+  co2 <- tibble(
+    co2_footprint = 1,
+    tilt_sector = "Transport",
+    unit = "metric ton*km",
+    activity_uuid_product_uuid = c("x"),
+    isic_4digit = "4575"
+  )
+
+  crucial <- "co2_footprint"
+  bad <- select(co2, -ends_with(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+
+  crucial <- "tilt_sector"
+  bad <- select(co2, -ends_with(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+
+  crucial <- "unit"
+  bad <- select(co2, -ends_with(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+
+  crucial <- "activity_uuid_product_uuid"
+  bad <- select(co2, -all_of(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+
+  crucial <- "isic_4digit"
+  bad <- select(co2, -ends_with(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+})
+
