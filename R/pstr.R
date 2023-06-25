@@ -3,7 +3,7 @@
 #' @description
 #' `r lifecycle::badge("deprecated")`
 #'
-#' This function was deprecated because its name is terse and it didn't help
+#' This function was deprecated because its name is terse and it doesn't help
 #' access results at product level.
 #'
 #' ```{r child=extdata_path("child/intro-pstr.Rmd")}

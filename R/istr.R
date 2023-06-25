@@ -7,7 +7,7 @@
 #' @param scenarios A dataframe like [xstr_scenarios].
 #' @param inputs A dataframe like [istr_inputs].
 #' @inheritParams xctr
-#' @inheritParams pstr
+#' @inheritParams product_sector
 #'
 #' @family ISTR functions
 #'

@@ -28,7 +28,7 @@ At product level, a dataframe with at least columns companies_id, grouped_by, ri
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
-This function was deprecated because its name is terse and it didn't help
+This function was deprecated because its name is terse and it doesn't help
 access results at product level.
 
 The Product Sector Transition Risk Indicator measures the transition risk of
