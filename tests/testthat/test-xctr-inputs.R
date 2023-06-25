@@ -1,5 +1,6 @@
 test_that("hasn't change", {
-  out <- xctr(companies, inputs) |>
+  out <- xctr_at_product_level(companies, inputs) |>
+    xctr_at_company_level() |>
     dplyr::arrange(companies_id) |>
     format_robust_snapshot()
   expect_snapshot(out)
@@ -9,7 +10,8 @@ test_that("outputs expected columns at company level", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1)
 
-  out <- xctr(companies, inputs)
+  out <- xctr_at_product_level(companies, inputs) |>
+    xctr_at_company_level()
 
   expected <- cols_at_company_level()
   expect_equal(names(out)[seq_along(expected)], expected)
@@ -19,7 +21,8 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1)
 
-  out <- xctr(companies, inputs)
+  out <- xctr_at_product_level(companies, inputs) |>
+    xctr_at_company_level()
 
   expect_equal(out, arrange(out, companies_id, grouped_by))
 })
