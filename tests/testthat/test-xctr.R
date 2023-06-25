@@ -19,16 +19,20 @@ test_that("outputs expected columns at company level", {
 test_that("is sensitive to low_threshold", {
   companies <- slice(companies, 1:2)
   co2 <- slice(products, 1:2)
-  out1 <- xctr(companies, co2, low_threshold = .1)
-  out2 <- xctr(companies, co2, low_threshold = .9)
+  out1 <- xctr_at_product_level(companies, co2, low_threshold = .1) |>
+    xctr_at_company_level()
+  out2 <- xctr_at_product_level(companies, co2, low_threshold = .9) |>
+    xctr_at_company_level()
   expect_false(identical(out1, out2))
 })
 
 test_that("is sensitive to high_threshold", {
   companies <- slice(companies, 1:2)
   co2 <- slice(products, 1:2)
-  out1 <- xctr(companies, co2, high_threshold = .1)
-  out2 <- xctr(companies, co2, high_threshold = .9)
+  out1 <- xctr_at_product_level(companies, co2, high_threshold = .1) |>
+    xctr_at_company_level()
+  out2 <- xctr_at_product_level(companies, co2, high_threshold = .9) |>
+    xctr_at_company_level()
   expect_false(identical(out1, out2))
 })
 
@@ -175,7 +179,8 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
     isic_4digit = "4575",
   )
 
-  out <- xctr(companies, co2, low_threshold, high_threshold)
+  out <- xctr_at_product_level(companies, co2, low_threshold, high_threshold) |>
+    xctr_at_company_level()
   expect_true(identical(unique(out$value), expected_value))
 })
 
