@@ -242,4 +242,3 @@ test_that("a 0-row `co2` yields an error", {
     "co2.*can't have 0-row"
   )
 })
-
