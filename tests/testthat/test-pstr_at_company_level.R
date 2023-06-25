@@ -39,29 +39,6 @@ test_that("the output is not grouped", {
   expect_false(dplyr::is_grouped_df(out))
 })
 
-test_that("if `companies` lacks crucial columns, errors gracefully", {
-    withr::local_options(lifecycle_verbosity = "quiet")
-
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
-
-  crucial <- "company_id"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(pstr(bad, scenarios), crucial)
-
-  crucial <- "type"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(pstr(bad, scenarios), crucial)
-
-  crucial <- "sector"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(pstr(bad, scenarios), crucial)
-
-  crucial <- "subsector"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(pstr(bad, scenarios), crucial)
-})
-
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
     withr::local_options(lifecycle_verbosity = "quiet")
 

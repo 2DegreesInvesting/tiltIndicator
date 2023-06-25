@@ -144,3 +144,27 @@ test_that("with duplicated scenarios throws no error (#435)", {
 
   expect_no_error(pstr_at_product_level(companies, scenarios))
 })
+
+test_that("if `companies` lacks crucial columns, errors gracefully", {
+  withr::local_options(lifecycle_verbosity = "quiet")
+
+  companies <- slice(pstr_companies, 1)
+  scenarios <- slice(xstr_scenarios, 1)
+
+  crucial <- "company_id"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+
+  crucial <- "type"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+
+  crucial <- "sector"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+
+  crucial <- "subsector"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+})
+
