@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9077
+
+* `pstr()` now outputs results at both levels (#441).
+
+* New `unnest_product()` and `unnest_company()` help get results at product and
+company levels from nested outputs like the one of `pstr()`.
+
+
 # tiltIndicator 0.0.0.9076
 
 * Ensure all outputs have no duplicate (#438)
