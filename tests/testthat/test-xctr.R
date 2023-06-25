@@ -1,5 +1,6 @@
 test_that("hasn't change", {
-  out <- xctr(companies, products) |>
+  out <- xctr_at_product_level(companies, products) |>
+    xctr_at_company_level() |>
     dplyr::arrange(companies_id) |>
     format_robust_snapshot()
   expect_snapshot(out)
