@@ -293,4 +293,3 @@ test_that("a 0-row `scenarios` yields an error", {
     "scenarios.*can't have 0-row"
   )
 })
-
