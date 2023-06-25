@@ -137,7 +137,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(companies, -all_of(crucial))
-  expect_error(xctr(bad, co2), crucial)
+  expect_error(xctr_at_product_level(bad, co2), crucial)
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))
