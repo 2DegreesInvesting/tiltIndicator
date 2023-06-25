@@ -7,7 +7,6 @@
 * New `unnest_product()` and `unnest_company()` help get results at product and
 company levels from nested outputs like the one of `pstr()`.
 
-
 # tiltIndicator 0.0.0.9076
 
 * Ensure all outputs have no duplicate (#438)
