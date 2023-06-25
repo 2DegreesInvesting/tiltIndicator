@@ -155,20 +155,6 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   expect_true(identical(unique(out$value), expected_value))
 })
 
-test_that("a 0-row `companies` yields an error", {
-  expect_error(
-    xctr(companies[0L, ], inputs),
-    "companies.*can't have 0-row"
-  )
-})
-
-test_that("a 0-row `inputs` yields an error", {
-  expect_error(
-    xctr(slice(companies, 1), inputs[0L, ]),
-    "co2.*can't have 0-row"
-  )
-})
-
 test_that("values sum 1", {
   companies <- tibble(
     activity_uuid_product_uuid = "a",

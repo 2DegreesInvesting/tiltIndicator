@@ -242,3 +242,18 @@ test_that("a 0-row `co2` yields an error", {
     "co2.*can't have 0-row"
   )
 })
+
+
+test_that("a 0-row `companies` yields an error", {
+  expect_error(
+    xctr_at_product_level(companies[0L, ], inputs),
+    "companies.*can't have 0-row"
+  )
+})
+
+test_that("a 0-row `inputs` yields an error", {
+  expect_error(
+    xctr_at_product_level(slice(companies, 1), inputs[0L, ]),
+    "co2.*can't have 0-row"
+  )
+})
