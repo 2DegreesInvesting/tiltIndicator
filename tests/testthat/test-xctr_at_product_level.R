@@ -257,3 +257,16 @@ test_that("a 0-row `inputs` yields an error", {
     "co2.*can't have 0-row"
   )
 })
+
+test_that("if `companies` lacks crucial columns, errors gracefully", {
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1)
+
+  crucial <- "activity_uuid_product_uuid"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(xctr_at_product_level(bad, inputs), crucial)
+
+  crucial <- "company_id"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(xctr_at_product_level(bad, inputs), crucial)
+})

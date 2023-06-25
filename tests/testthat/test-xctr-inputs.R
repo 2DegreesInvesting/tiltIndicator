@@ -47,19 +47,6 @@ test_that("is sensitive to high_threshold", {
   expect_false(identical(out1, out2))
 })
 
-test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- slice(companies, 1)
-  inputs <- slice(inputs, 1)
-
-  crucial <- "activity_uuid_product_uuid"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(xctr(bad, inputs), crucial)
-
-  crucial <- "company_id"
-  bad <- select(companies, -all_of(crucial))
-  expect_error(xctr(bad, inputs), crucial)
-})
-
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1)
