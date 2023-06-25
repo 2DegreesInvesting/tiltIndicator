@@ -297,3 +297,43 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
 })
 
 
+test_that("handles duplicated `companies` data (#230)", {
+  companies <- tibble(
+    company_id = rep("a", 2),
+    clustered = c("b"),
+    activity_uuid_product_uuid = c("c"),
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = c("c"),
+    input_activity_uuid_product_uuid = "d",
+    input_co2_footprint = 1,
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit = "4575"
+  )
+  expect_no_error(xctr_at_product_level(companies, co2))
+})
+
+test_that("handles duplicated `co2` data (#230)", {
+  companies <- tibble(
+    company_id = c("a"),
+    clustered = c("b"),
+    activity_uuid_product_uuid = c("c"),
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = rep("c", 2),
+    input_activity_uuid_product_uuid = "d",
+    input_co2_footprint = 1,
+    input_tilt_sector = "transport",
+    input_unit = "metric ton*km",
+    input_isic_4digit = "4575"
+  )
+  expect_no_error(xctr_at_product_level(companies, co2))
+})
+
+test_that("with a missing value in the co2* column errors gracefully", {
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1)
+  inputs$input_co2_footprint <- NA
+  expect_error(xctr_at_product_level(companies, inputs), "co2_footprint")
+})
