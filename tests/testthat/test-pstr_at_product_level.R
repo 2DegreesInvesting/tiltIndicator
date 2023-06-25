@@ -207,3 +207,28 @@ test_that("grouped_by includes the type of scenario", {
 
   expect_true(all(grepl(.type, unique(out$grouped_by))))
 })
+
+test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
+  withr::local_options(lifecycle_verbosity = "quiet")
+
+  companies <- tibble(
+    company_id = "a",
+    type = "b",
+    sector = "c",
+    subsector = "d",
+    clustered = "e",
+    activity_uuid_product_uuid = "f",
+    tilt_sector = "g",
+    tilt_subsector = "i",
+  )
+  # For type "b" all `sector` and `subsector` are `NA`
+  scenarios <- tibble(
+    type = c("b", "b", "x", "x"),
+    scenario = c("y", "y", "z", "z"),
+    sector = c(NA_character_, NA_character_, "c", "c"),
+    subsector = c(NA_character_, NA_character_, "d", "d"),
+    year = 2030,
+    reductions = 1,
+  )
+  expect_error(pstr_at_product_level(companies, scenarios), "sector.*subsector.*type")
+})
