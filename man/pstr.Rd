@@ -71,13 +71,9 @@ both <- pstr(companies, scenarios)
 both
 
 # Product level
-both |>
-  select(-company) |>
-  unnest(product)
+both |> unnest_product()
 
 # Company level
-both |>
-  select(-product) |>
-  unnest(company)
+both |> unnest_company()
 }
 \concept{PSTR functions}
