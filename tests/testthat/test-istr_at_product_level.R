@@ -185,3 +185,111 @@ test_that("with duplicated scenarios throws no error (#435)", {
 
   expect_no_error(istr_at_product_level(companies, scenarios, inputs))
 })
+
+test_that("if `companies` lacks crucial columns, errors gracefully", {
+  companies <- istr_companies |> slice(1)
+  scenarios <- xstr_scenarios
+  inputs <- istr_inputs
+
+  crucial <- "company_id"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(istr_at_product_level(bad, scenarios, inputs), crucial)
+
+  crucial <- "activity_uuid_product_uuid"
+  bad <- select(companies, -all_of(crucial))
+  expect_error(istr_at_product_level(bad, scenarios, inputs), crucial)
+})
+
+test_that("if `scenarios` lacks crucial columns, errors gracefully", {
+  companies <- istr_companies |> slice(1)
+  scenarios <- xstr_scenarios
+  inputs <- istr_inputs
+
+  crucial <- "type"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+
+  crucial <- "sector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+
+  crucial <- "subsector"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+
+  crucial <- "year"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+
+  crucial <- "scenario"
+  bad <- select(scenarios, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+})
+
+test_that("if `inputs` lacks crucial columns, errors gracefully", {
+  companies <- istr_companies |> slice(1)
+  scenarios <- xstr_scenarios
+  inputs <- istr_inputs
+
+  crucial <- "type"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+
+  crucial <- "sector"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+
+  crucial <- "subsector"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+
+  crucial <- "activity_uuid_product_uuid"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+})
+
+test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
+  companies <- tibble(
+    company_id = "a",
+    tilt_sector = "any",
+    clustered = "x",
+    activity_uuid_product_uuid = "f"
+  )
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = "f",
+    input_activity_uuid_product_uuid = "any",
+    input_tilt_sector = "any",
+    input_tilt_subsector = "any",
+    type = "b",
+    sector = "c",
+    subsector = "d",
+    input_unit = "any",
+    input_isic_4digit = "4578",
+  )
+
+  # For type "b" all `sector` and `subsector` are `NA`
+  scenarios <- tibble(
+    type = c("b", "b", "x", "x"),
+    scenario = c("y", "y", "z", "z"),
+    sector = c(NA_character_, NA_character_, "c", "c"),
+    subsector = c(NA_character_, NA_character_, "d", "d"),
+    year = 2030,
+    reductions = 1,
+  )
+  expect_error(istr_at_product_level(companies, scenarios, inputs), "sector.*subsector.*type")
+})
+
+test_that("a 0-row `companies` yields an error", {
+  expect_error(
+    istr_at_product_level(istr_companies[0L, ], xstr_scenarios, istr_inputs),
+    "companies.*can't have 0-row"
+  )
+})
+
+test_that("a 0-row `scenarios` yields an error", {
+  expect_error(
+    istr_at_product_level(istr_companies, xstr_scenarios[0L, ], istr_inputs),
+    "scenarios.*can't have 0-row"
+  )
+})

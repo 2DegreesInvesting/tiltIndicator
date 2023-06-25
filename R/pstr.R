@@ -48,11 +48,5 @@ pstr <- function(companies,
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   product <- pstr_at_product_level(companies, scenarios, low_threshold, high_threshold)
   company <- xctr_at_company_level(product)
-
-  .by <- "companies_id"
-  left_join(
-    nest(product, .by = all_of(.by), .key = "product"),
-    nest(company, .by = all_of(.by), .key = "company"),
-    by = .by
-  )
+  nest_levels(product, company)
 }

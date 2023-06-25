@@ -21,6 +21,7 @@ pstr(pstr_companies, xstr_scenarios) |>
   xstr_polish_output_at_company_level()
 
 istr(istr_companies, xstr_scenarios, istr_inputs) |>
+  unnest_company() |>
   xstr_polish_output_at_company_level()
 }
 \concept{post-processing helpers}
