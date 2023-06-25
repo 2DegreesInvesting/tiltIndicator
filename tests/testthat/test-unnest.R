@@ -8,4 +8,9 @@ test_that("unnests", {
     unnest_product(out),
     unnest(select(out, -"company"), "product")
   )
+
+  expect_equal(
+    unnest_company(out),
+    unnest(select(out, -"product"), "company")
+  )
 })
