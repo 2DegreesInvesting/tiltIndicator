@@ -80,7 +80,7 @@ companies |>
 
 # Same
 both <- istr(companies, scenarios, inputs)
-both |> unnest(product)
-both |> unnest(company)
+both |> unnest_product()
+both |> unnest_company()
 }
 \concept{ISTR functions}
