@@ -109,7 +109,7 @@ xctr_at_company_level <- function(data) {
     polish_output(cols_at_company_level())
 }
 
-#' @rdname product_sector
+#' @rdname pstr
 #' @export
 pstr_at_company_level <- xctr_at_company_level
 #' @rdname istr

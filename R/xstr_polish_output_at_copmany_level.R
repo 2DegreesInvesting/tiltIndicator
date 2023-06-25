@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' product_sector(pstr_companies, xstr_scenarios) |>
+#' pstr(pstr_companies, xstr_scenarios) |>
 #'   unnest_company() |>
 #'   xstr_polish_output_at_company_level()
 #'

@@ -34,7 +34,7 @@
 #'   pstr_at_company_level()
 #'
 #' # Or
-#' both <- product_sector(companies, scenarios)
+#' both <- pstr(companies, scenarios)
 #' both
 #'
 #' # Product level
@@ -46,7 +46,7 @@
 #' both |>
 #'   select(-product) |>
 #'   unnest(company)
-product_sector <- function(companies,
+pstr <- function(companies,
                            scenarios,
                            low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                            high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {

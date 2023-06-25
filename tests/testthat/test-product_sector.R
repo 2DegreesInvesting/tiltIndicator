@@ -2,7 +2,7 @@ test_that("wraps the output at product and company levels", {
   companies <- pstr_companies
   scenarios <- xstr_scenarios
 
-  out <- product_sector(companies, scenarios)
+  out <- pstr(companies, scenarios)
 
   product <- unnest(select(out, -"company"), product)
   expect_equal(product, pstr_at_product_level(companies, scenarios))
