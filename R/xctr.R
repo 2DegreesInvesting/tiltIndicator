@@ -39,27 +39,35 @@
 #' inputs <- inputs
 #'
 #' companies |>
-#'   xctr_at_product_level(co2 = inputs)
+#'   xctr_at_product_level(inputs)
 #'
 #' companies |>
-#'   xctr_at_product_level(co2 = inputs) |>
+#'   xctr_at_product_level(inputs) |>
 #'   xctr_at_company_level()
 #'
 #' # Same
-#' companies |> xctr(co2 = inputs)
+#' both <- xctr(companies, inputs)
+#'
+#' both |> unnest_product()
+#'
+#' both |> unnest_company()
 #'
 #' # PCTR
 #' products <- products
 #'
 #' companies |>
-#'   xctr_at_product_level(co2 = products)
+#'   xctr_at_product_level(products)
 #'
 #' companies |>
-#'   xctr_at_product_level(co2 = products) |>
+#'   xctr_at_product_level(products) |>
 #'   xctr_at_company_level()
 #'
 #' # Same
-#' companies |> xctr(co2 = products)
+#' both <- xctr(companies, products)
+#'
+#' both |> unnest_product()
+#'
+#' both |> unnest_company()
 xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
   product <- xctr_at_product_level(companies, co2, low_threshold, high_threshold)
   company <- xctr_at_company_level(product)
