@@ -229,3 +229,17 @@ test_that("if the 'isic' column isn't a character, throws an error (#233)", {
   expect_error(xctr_at_product_level(companies, co2), "must be.*character")
 })
 
+test_that("a 0-row `co2` yields an error", {
+  expect_error(
+    xctr_at_product_level(companies[0L, ], products),
+    "companies.*can't have 0-row"
+  )
+})
+
+test_that("a 0-row `co2` yields an error", {
+  expect_error(
+    xctr_at_product_level(slice(companies, 1), products[0L, ]),
+    "co2.*can't have 0-row"
+  )
+})
+

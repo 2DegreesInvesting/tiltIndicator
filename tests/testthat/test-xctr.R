@@ -125,20 +125,6 @@ test_that("for each company & benchmark, each risk category is unique (#285)", {
   expect_equal(bad, 0)
 })
 
-test_that("a 0-row `co2` yields an error", {
-  expect_error(
-    xctr(companies[0L, ], products),
-    "companies.*can't have 0-row"
-  )
-})
-
-test_that("a 0-row `co2` yields an error", {
-  expect_error(
-    xctr(slice(companies, 1), products[0L, ]),
-    "co2.*can't have 0-row"
-  )
-})
-
 test_that("values sum 1", {
   companies <- tibble(
     activity_uuid_product_uuid = "a",
