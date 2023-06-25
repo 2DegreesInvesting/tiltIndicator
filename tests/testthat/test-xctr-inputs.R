@@ -47,31 +47,6 @@ test_that("is sensitive to high_threshold", {
   expect_false(identical(out1, out2))
 })
 
-test_that("if `inputs` lacks crucial columns, errors gracefully", {
-  companies <- slice(companies, 1)
-  inputs <- slice(inputs, 1)
-
-  crucial <- "activity_uuid_product_uuid"
-  bad <- select(inputs, -all_of(crucial))
-  expect_error(xctr(companies, bad), crucial)
-
-  crucial <- "co2_footprint"
-  bad <- select(inputs, -ends_with(crucial))
-  expect_error(xctr(companies, bad), crucial)
-
-  crucial <- "unit"
-  bad <- select(inputs, -ends_with(crucial))
-  expect_error(xctr(companies, bad), crucial)
-
-  crucial <- "tilt_sector"
-  bad <- select(inputs, -ends_with(crucial))
-  expect_error(xctr(companies, bad), crucial)
-
-  crucial <- "isic_4digit"
-  bad <- select(inputs, -ends_with(crucial))
-  expect_error(xctr(companies, bad), crucial)
-})
-
 test_that("with a missing value in the co2* column errors gracefully", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1)

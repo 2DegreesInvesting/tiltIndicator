@@ -270,3 +270,30 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
   bad <- select(companies, -all_of(crucial))
   expect_error(xctr_at_product_level(bad, inputs), crucial)
 })
+
+test_that("if `inputs` lacks crucial columns, errors gracefully", {
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1)
+
+  crucial <- "activity_uuid_product_uuid"
+  bad <- select(inputs, -all_of(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+
+  crucial <- "co2_footprint"
+  bad <- select(inputs, -ends_with(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+
+  crucial <- "unit"
+  bad <- select(inputs, -ends_with(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+
+  crucial <- "tilt_sector"
+  bad <- select(inputs, -ends_with(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+
+  crucial <- "isic_4digit"
+  bad <- select(inputs, -ends_with(crucial))
+  expect_error(xctr_at_product_level(companies, bad), crucial)
+})
+
+
