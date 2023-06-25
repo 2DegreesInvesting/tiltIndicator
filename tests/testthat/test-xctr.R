@@ -9,7 +9,8 @@ test_that("outputs expected columns at company level", {
   companies <- slice(companies, 1)
   co2 <- slice(products, 1)
 
-  out <- xctr(companies, co2)
+  product <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_company_level(product)
 
   expected <- cols_at_company_level()
   expect_equal(names(out)[seq_along(expected)], expected)
@@ -93,25 +94,29 @@ test_that("no longer drops companies depending on co2 data (#122)", {
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(products, 1:5)
-  out <- xctr(companies, co2)
+  product <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(products, 1:4)
-  out <- xctr(companies, co2)
+  product <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(products, 1:10)
-  out <- xctr(companies, co2)
+  product <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(products, 1:9)
-  out <- xctr(companies, co2)
+  product <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 })
 
@@ -212,7 +217,8 @@ test_that("for each company & benchmark, each risk category is unique (#285)", {
   )
   # styler: on
 
-  out <- xctr(companies, co2)
+  product <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_company_level(product)
 
   bad <- out |>
     count(grouped_by, risk_category) |>
@@ -249,7 +255,8 @@ test_that("values sum 1", {
     isic_4digit = "a"
   )
 
-  out <- xctr(companies, co2)
+  product <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_company_level(product)
 
   sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
   expect_equal(sum, 1)
@@ -269,7 +276,8 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
     isic_4digit = "a"
   )
 
-  out <- xctr(companies, co2)
+  product <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_company_level(product)
 
   expect_equal(out$companies_id, "a")
   expect_equal(out$grouped_by, NA_character_)
@@ -291,7 +299,8 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
     isic_4digit = "a"
   )
 
-  out <- xctr(companies, co2)
+  product <- xctr_at_product_level(companies, co2)
+  out <- xctr_at_company_level(product)
 
   expect_equal(nrow(out), 18L)
   n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
