@@ -153,38 +153,6 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
   expect_true(all(na.omit(sum$value_sum) |> near(1)))
 })
 
-test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
-  companies <- tibble(
-    company_id = "a",
-    tilt_sector = "any",
-    clustered = "x",
-    activity_uuid_product_uuid = "f"
-  )
-
-  inputs <- tibble(
-    activity_uuid_product_uuid = "f",
-    input_activity_uuid_product_uuid = "any",
-    input_tilt_sector = "any",
-    input_tilt_subsector = "any",
-    type = "b",
-    sector = "c",
-    subsector = "d",
-    input_unit = "any",
-    input_isic_4digit = "4578",
-  )
-
-  # For type "b" all `sector` and `subsector` are `NA`
-  scenarios <- tibble(
-    type = c("b", "b", "x", "x"),
-    scenario = c("y", "y", "z", "z"),
-    sector = c(NA_character_, NA_character_, "c", "c"),
-    subsector = c(NA_character_, NA_character_, "d", "d"),
-    year = 2030,
-    reductions = 1,
-  )
-  expect_error(istr(companies, scenarios, inputs), "sector.*subsector.*type")
-})
-
 test_that("a 0-row `companies` yields an error", {
   expect_error(
     istr(istr_companies[0L, ], xstr_scenarios, istr_inputs),

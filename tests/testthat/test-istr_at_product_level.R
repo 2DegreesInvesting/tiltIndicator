@@ -247,3 +247,35 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
   bad <- select(inputs, -all_of(crucial))
   expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
 })
+
+test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
+  companies <- tibble(
+    company_id = "a",
+    tilt_sector = "any",
+    clustered = "x",
+    activity_uuid_product_uuid = "f"
+  )
+
+  inputs <- tibble(
+    activity_uuid_product_uuid = "f",
+    input_activity_uuid_product_uuid = "any",
+    input_tilt_sector = "any",
+    input_tilt_subsector = "any",
+    type = "b",
+    sector = "c",
+    subsector = "d",
+    input_unit = "any",
+    input_isic_4digit = "4578",
+  )
+
+  # For type "b" all `sector` and `subsector` are `NA`
+  scenarios <- tibble(
+    type = c("b", "b", "x", "x"),
+    scenario = c("y", "y", "z", "z"),
+    sector = c(NA_character_, NA_character_, "c", "c"),
+    subsector = c(NA_character_, NA_character_, "d", "d"),
+    year = 2030,
+    reductions = 1,
+  )
+  expect_error(istr_at_product_level(companies, scenarios, inputs), "sector.*subsector.*type")
+})
