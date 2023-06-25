@@ -30,13 +30,17 @@
 #'   istr_at_company_level()
 #'
 #' # Same
-#' istr(companies, scenarios, inputs)
+#' both <- istr(companies, scenarios, inputs)
+#' both |> unnest(product)
+#' both |> unnest(company)
 istr <- function(companies,
-                 scenarios,
-                 inputs,
-                 low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
-                 high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  companies |>
-    istr_at_product_level(scenarios, inputs, low_threshold, high_threshold) |>
-    xctr_at_company_level()
+                         scenarios,
+                         inputs,
+                         low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
+                         high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+  product <- istr_at_product_level(
+    companies, scenarios, inputs, low_threshold, high_threshold
+  )
+  company <- xctr_at_company_level(product)
+  nest_levels(product, company)
 }
