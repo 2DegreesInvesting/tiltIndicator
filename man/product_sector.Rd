@@ -71,13 +71,13 @@ both <- product_sector(companies, scenarios)
 both
 
 # Product level
-both |> select(-company) |> unnest(product)
+both |>
+  select(-company) |>
+  unnest(product)
 
 # Company level
-both |> select(-product) |> unnest(company)
-}
-\seealso{
-Other PSTR functions: 
-\code{\link{pstr}()}
+both |>
+  select(-product) |>
+  unnest(company)
 }
 \concept{PSTR functions}
