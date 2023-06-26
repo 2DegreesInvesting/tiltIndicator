@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9079
+
+* `xctr()` now outptus results at both levels (#443).
+
 # tiltIndicator 0.0.0.9078
 
 * `istr()` now outputs results at both levels (#442).
