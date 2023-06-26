@@ -1,8 +1,8 @@
 document_value <- function() {
   paste0(
-    "A data frame with columns `companies_id` and nested columns `product` and",
-    " `company` holding the outputs at product and company level. Unnesting ",
-    "`product` yields a data frame with at least columns ",
+    "A data frame with the column `companies_id`, and the nested columns ",
+    "`product` and `company` holding the outputs at product and company level.",
+    " Unnesting `product` yields a data frame with at least columns ",
     toString(paste0("`", cols_at_all_levels(), "`")), ". ",
     "Unnesting `company` yields a data frame with at least columns ",
     toString(paste0("`", cols_at_company_level(), "`")), "."
