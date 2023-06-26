@@ -68,7 +68,7 @@ inputs
 #> #   activity_uuid_product_uuid <chr>
 
 companies |>
-  xctr_at_product_level(co2 = inputs)
+  xctr_at_product_level(inputs)
 #> # A tibble: 319 × 7
 #>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹
 #>    <chr>               <chr>      <chr>         <chr>     <chr>                 
@@ -88,7 +88,7 @@ companies |>
 #> #   input_co2_footprint <dbl>
 
 companies |>
-  xctr_at_product_level(co2 = inputs) |>
+  xctr_at_product_level(inputs) |>
   xctr_at_company_level()
 #> # A tibble: 126 × 4
 #>    companies_id                           grouped_by risk_category value
@@ -106,7 +106,7 @@ companies |>
 #> # ℹ 116 more rows
 
 # Same
-both <- xctr(companies, co2 = inputs)
+both <- xctr(companies, inputs)
 both
 #> # A tibble: 8 × 3
 #>   companies_id                             product           company          
@@ -170,7 +170,7 @@ products
 #> # ℹ 1 more variable: ei_activity_name <chr>
 
 companies |>
-  xctr_at_product_level(co2 = products)
+  xctr_at_product_level(products)
 #> # A tibble: 79 × 6
 #>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹
 #>    <chr>               <chr>      <chr>         <chr>     <chr>                 
@@ -189,7 +189,7 @@ companies |>
 #> # ℹ 1 more variable: co2_footprint <dbl>
 
 companies |>
-  xctr_at_product_level(co2 = products) |>
+  xctr_at_product_level(products) |>
   xctr_at_company_level()
 #> # A tibble: 126 × 4
 #>    companies_id                           grouped_by risk_category value
@@ -207,7 +207,7 @@ companies |>
 #> # ℹ 116 more rows
 
 # Same
-both <- xctr(companies, co2 = products)
+both <- xctr(companies, products)
 both
 #> # A tibble: 8 × 3
 #>   companies_id                             product           company          
