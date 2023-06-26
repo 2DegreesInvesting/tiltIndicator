@@ -36,7 +36,7 @@ targets.}
 \item{data}{A dataframe. The output at product level.}
 }
 \value{
-A data frame with columns \code{companies_id} and nested columns \code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns companies_id, grouped_by, risk_category. Unnesting \code{company} yields a data frame with at least columns companies_id, grouped_by, risk_category, value.
+A data frame with columns \code{companies_id} and nested columns \code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
 }
 \description{
 The Product Sector Transition Risk Indicator measures the transition risk of
