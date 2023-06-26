@@ -32,7 +32,7 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 library(tiltIndicator)
 
 packageVersion("tiltIndicator")
-#> [1] '0.0.0.9076'
+#> [1] '0.0.0.9078'
 
 companies
 #> # A tibble: 9 × 4
@@ -68,7 +68,7 @@ inputs
 #> #   activity_uuid_product_uuid <chr>
 
 companies |>
-  xctr_at_product_level(co2 = inputs)
+  xctr_at_product_level(inputs)
 #> # A tibble: 319 × 7
 #>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹
 #>    <chr>               <chr>      <chr>         <chr>     <chr>                 
@@ -88,7 +88,7 @@ companies |>
 #> #   input_co2_footprint <dbl>
 
 companies |>
-  xctr_at_product_level(co2 = inputs) |>
+  xctr_at_product_level(inputs) |>
   xctr_at_company_level()
 #> # A tibble: 126 × 4
 #>    companies_id                           grouped_by risk_category value
@@ -106,20 +106,53 @@ companies |>
 #> # ℹ 116 more rows
 
 # Same
-companies |> xctr(co2 = inputs)
+both <- xctr(companies, inputs)
+both
+#> # A tibble: 8 × 3
+#>   companies_id                             product           company          
+#>   <chr>                                    <list>            <list>           
+#> 1 fleischerei-stiefsohn_00000005219477-001 <tibble [84 × 6]> <tibble [18 × 3]>
+#> 2 pecheries-basques_fra316541-00101        <tibble [36 × 6]> <tibble [18 × 3]>
+#> 3 hoche-butter-gmbh_deu422723-693847001    <tibble [42 × 6]> <tibble [18 × 3]>
+#> 4 vicquelin-espaces-verts_fra697272-00101  <tibble [42 × 6]> <tibble [18 × 3]>
+#> 5 bst-procontrol-gmbh_00000005104947-001   <tibble [42 × 6]> <tibble [18 × 3]>
+#> 6 leider-gmbh_00000005064318-001           <tibble [36 × 6]> <tibble [18 × 3]>
+#> 7 cheries-baqu_neu316541-00101             <tibble [36 × 6]> <tibble [18 × 3]>
+#> 8 ca-coity-trg-aua-gmbh_00000384-001       <tibble [1 × 6]>  <NULL>
+
+both |> unnest_product()
+#> # A tibble: 319 × 7
+#>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹
+#>    <chr>               <chr>      <chr>         <chr>     <chr>                 
+#>  1 fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…
+#>  2 fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…
+#>  3 fleischerei-stiefs… all        medium        stove     0a242b09-772a-5edf-8e…
+#>  4 fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…
+#>  5 fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…
+#>  6 fleischerei-stiefs… all        low           stove     0a242b09-772a-5edf-8e…
+#>  7 fleischerei-stiefs… all        low           stove     0a242b09-772a-5edf-8e…
+#>  8 fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…
+#>  9 fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…
+#> 10 fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…
+#> # ℹ 309 more rows
+#> # ℹ abbreviated name: ¹​activity_uuid_product_uuid
+#> # ℹ 2 more variables: input_activity_uuid_product_uuid <chr>,
+#> #   input_co2_footprint <dbl>
+
+both |> unnest_company()
 #> # A tibble: 126 × 4
-#>    companies_id                           grouped_by risk_category value
-#>    <chr>                                  <chr>      <chr>         <dbl>
-#>  1 bst-procontrol-gmbh_00000005104947-001 all        high          0.143
-#>  2 bst-procontrol-gmbh_00000005104947-001 all        medium        0.429
-#>  3 bst-procontrol-gmbh_00000005104947-001 all        low           0.429
-#>  4 bst-procontrol-gmbh_00000005104947-001 isic_sec   high          0.429
-#>  5 bst-procontrol-gmbh_00000005104947-001 isic_sec   medium        0.286
-#>  6 bst-procontrol-gmbh_00000005104947-001 isic_sec   low           0.286
-#>  7 bst-procontrol-gmbh_00000005104947-001 tilt_sec   high          0.429
-#>  8 bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium        0.286
-#>  9 bst-procontrol-gmbh_00000005104947-001 tilt_sec   low           0.286
-#> 10 bst-procontrol-gmbh_00000005104947-001 unit       high          0.286
+#>    companies_id                             grouped_by risk_category value
+#>    <chr>                                    <chr>      <chr>         <dbl>
+#>  1 fleischerei-stiefsohn_00000005219477-001 all        high          0.571
+#>  2 fleischerei-stiefsohn_00000005219477-001 all        medium        0.214
+#>  3 fleischerei-stiefsohn_00000005219477-001 all        low           0.214
+#>  4 fleischerei-stiefsohn_00000005219477-001 isic_sec   high          0.357
+#>  5 fleischerei-stiefsohn_00000005219477-001 isic_sec   medium        0.357
+#>  6 fleischerei-stiefsohn_00000005219477-001 isic_sec   low           0.286
+#>  7 fleischerei-stiefsohn_00000005219477-001 tilt_sec   high          0.429
+#>  8 fleischerei-stiefsohn_00000005219477-001 tilt_sec   medium        0.357
+#>  9 fleischerei-stiefsohn_00000005219477-001 tilt_sec   low           0.214
+#> 10 fleischerei-stiefsohn_00000005219477-001 unit       high          0.429
 #> # ℹ 116 more rows
 
 # PCTR
@@ -137,7 +170,7 @@ products
 #> # ℹ 1 more variable: ei_activity_name <chr>
 
 companies |>
-  xctr_at_product_level(co2 = products)
+  xctr_at_product_level(products)
 #> # A tibble: 79 × 6
 #>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹
 #>    <chr>               <chr>      <chr>         <chr>     <chr>                 
@@ -156,7 +189,7 @@ companies |>
 #> # ℹ 1 more variable: co2_footprint <dbl>
 
 companies |>
-  xctr_at_product_level(co2 = products) |>
+  xctr_at_product_level(products) |>
   xctr_at_company_level()
 #> # A tibble: 126 × 4
 #>    companies_id                           grouped_by risk_category value
@@ -174,19 +207,51 @@ companies |>
 #> # ℹ 116 more rows
 
 # Same
-companies |> xctr(co2 = products)
+both <- xctr(companies, products)
+both
+#> # A tibble: 8 × 3
+#>   companies_id                             product           company          
+#>   <chr>                                    <list>            <list>           
+#> 1 fleischerei-stiefsohn_00000005219477-001 <tibble [12 × 5]> <tibble [18 × 3]>
+#> 2 pecheries-basques_fra316541-00101        <tibble [6 × 5]>  <tibble [18 × 3]>
+#> 3 hoche-butter-gmbh_deu422723-693847001    <tibble [12 × 5]> <tibble [18 × 3]>
+#> 4 vicquelin-espaces-verts_fra697272-00101  <tibble [12 × 5]> <tibble [18 × 3]>
+#> 5 bst-procontrol-gmbh_00000005104947-001   <tibble [12 × 5]> <tibble [18 × 3]>
+#> 6 leider-gmbh_00000005064318-001           <tibble [12 × 5]> <tibble [18 × 3]>
+#> 7 cheries-baqu_neu316541-00101             <tibble [12 × 5]> <tibble [18 × 3]>
+#> 8 ca-coity-trg-aua-gmbh_00000384-001       <tibble [1 × 5]>  <NULL>
+
+both |> unnest_product()
+#> # A tibble: 79 × 6
+#>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹
+#>    <chr>               <chr>      <chr>         <chr>     <chr>                 
+#>  1 fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…
+#>  2 fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…
+#>  3 fleischerei-stiefs… tilt_sec   high          stove     0a242b09-772a-5edf-8e…
+#>  4 fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…
+#>  5 fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…
+#>  6 fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…
+#>  7 fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…
+#>  8 fleischerei-stiefs… isic_sec   medium        oven      be06d25c-73dc-55fb-96…
+#>  9 fleischerei-stiefs… tilt_sec   high          oven      be06d25c-73dc-55fb-96…
+#> 10 fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…
+#> # ℹ 69 more rows
+#> # ℹ abbreviated name: ¹​activity_uuid_product_uuid
+#> # ℹ 1 more variable: co2_footprint <dbl>
+
+both |> unnest_company()
 #> # A tibble: 126 × 4
-#>    companies_id                           grouped_by risk_category value
-#>    <chr>                                  <chr>      <chr>         <dbl>
-#>  1 bst-procontrol-gmbh_00000005104947-001 all        high            0.5
-#>  2 bst-procontrol-gmbh_00000005104947-001 all        medium          0.5
-#>  3 bst-procontrol-gmbh_00000005104947-001 all        low             0  
-#>  4 bst-procontrol-gmbh_00000005104947-001 isic_sec   high            0.5
-#>  5 bst-procontrol-gmbh_00000005104947-001 isic_sec   medium          0.5
-#>  6 bst-procontrol-gmbh_00000005104947-001 isic_sec   low             0  
-#>  7 bst-procontrol-gmbh_00000005104947-001 tilt_sec   high            0.5
-#>  8 bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5
-#>  9 bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  
-#> 10 bst-procontrol-gmbh_00000005104947-001 unit       high            1  
+#>    companies_id                             grouped_by risk_category value
+#>    <chr>                                    <chr>      <chr>         <dbl>
+#>  1 fleischerei-stiefsohn_00000005219477-001 all        high            1  
+#>  2 fleischerei-stiefsohn_00000005219477-001 all        medium          0  
+#>  3 fleischerei-stiefsohn_00000005219477-001 all        low             0  
+#>  4 fleischerei-stiefsohn_00000005219477-001 isic_sec   high            0.5
+#>  5 fleischerei-stiefsohn_00000005219477-001 isic_sec   medium          0.5
+#>  6 fleischerei-stiefsohn_00000005219477-001 isic_sec   low             0  
+#>  7 fleischerei-stiefsohn_00000005219477-001 tilt_sec   high            1  
+#>  8 fleischerei-stiefsohn_00000005219477-001 tilt_sec   medium          0  
+#>  9 fleischerei-stiefsohn_00000005219477-001 tilt_sec   low             0  
+#> 10 fleischerei-stiefsohn_00000005219477-001 unit       high            0.5
 #> # ℹ 116 more rows
 ```

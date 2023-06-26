@@ -124,26 +124,36 @@ companies <- companies
 inputs <- inputs
 
 companies |>
-  xctr_at_product_level(co2 = inputs)
+  xctr_at_product_level(inputs)
 
 companies |>
-  xctr_at_product_level(co2 = inputs) |>
+  xctr_at_product_level(inputs) |>
   xctr_at_company_level()
 
 # Same
-companies |> xctr(co2 = inputs)
+both <- xctr(companies, inputs)
+both
+
+both |> unnest_product()
+
+both |> unnest_company()
 
 # PCTR
 products <- products
 
 companies |>
-  xctr_at_product_level(co2 = products)
+  xctr_at_product_level(products)
 
 companies |>
-  xctr_at_product_level(co2 = products) |>
+  xctr_at_product_level(products) |>
   xctr_at_company_level()
 
 # Same
-companies |> xctr(co2 = products)
+both <- xctr(companies, products)
+both
+
+both |> unnest_product()
+
+both |> unnest_company()
 }
 \concept{XCTR functions}

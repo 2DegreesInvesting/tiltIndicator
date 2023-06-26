@@ -12,7 +12,10 @@
 #' scenarios <- xstr_scenarios
 #'
 #' both <- pstr(companies, scenarios)
+#' both
+#'
 #' both |> unnest_product()
+#'
 #' both |> unnest_company()
 unnest_product <- function(data) {
   nested <- select(data, -"company")

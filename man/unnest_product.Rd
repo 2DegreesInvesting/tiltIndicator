@@ -23,7 +23,10 @@ companies <- pstr_companies
 scenarios <- xstr_scenarios
 
 both <- pstr(companies, scenarios)
+both
+
 both |> unnest_product()
+
 both |> unnest_company()
 }
 \concept{helpers}
