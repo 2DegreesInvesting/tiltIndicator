@@ -275,7 +275,7 @@ relative production emissions per company.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">xctr_at_product_level</span><span class="op">(</span><span class="va">products</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 79 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 49 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span>
@@ -286,9 +286,9 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… isic_sec   medium        oven      be06d25c-73dc-55fb-96…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sec   high          oven      be06d25c-73dc-55fb-96…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sec   medium        oven      be06d25c-73dc-55fb-96…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 69 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 39 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
@@ -298,16 +298,16 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 126 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                           grouped_by risk_category value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium          0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low             0  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high            0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium          0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low             0  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high            0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium            1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high              1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 116 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
@@ -318,15 +318,15 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> fleischerei-stiefsohn_00000005219477-001 <span style="color: #949494;">&lt;tibble [12 × 5]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> pecheries-basques_fra316541-00101        <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [12 × 5]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [12 × 5]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [12 × 5]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [12 × 5]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [12 × 5]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 5]&gt;</span>  <span style="color: #949494;">&lt;NULL&gt;</span>           </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 79 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 49 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span>
@@ -337,9 +337,9 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… isic_sec   medium        oven      be06d25c-73dc-55fb-96…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sec   high          oven      be06d25c-73dc-55fb-96…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sec   medium        oven      be06d25c-73dc-55fb-96…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 69 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 39 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
@@ -353,8 +353,8 @@ relative production emissions per company.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 isic_sec   high            0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 isic_sec   medium          0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 isic_sec   low             0  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   high            1  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   medium          0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   high            0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   medium          0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   low             0  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 unit       high            0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 116 more rows</span></span>

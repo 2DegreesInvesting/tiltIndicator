@@ -153,16 +153,16 @@ to a .csv file, and skipping companies that are already done.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 127 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high              0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium            1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high              1</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 117 more rows</span></span></span></code></pre></div>
 <p>If the number of files is too large, the code above will fail. To
 work around that you may combine results in chunks.</p>
@@ -182,14 +182,14 @@ files only but you should also do it for product-level files.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 2</span></span></span>
 <span><span class="co">#&gt;   file                                                                     chunk</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span>                                                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> …mpzMb6lN/output/pctr/company/bst-procontrol-gmbh_00000005104947-001.csv     1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> …p/RtmpzMb6lN/output/pctr/company/ca-coity-trg-aua-gmbh_00000384-001.csv     1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> /tmp/RtmpzMb6lN/output/pctr/company/cheries-baqu_neu316541-00101.csv         1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> …zMb6lN/output/pctr/company/fleischerei-stiefsohn_00000005219477-001.csv     2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> …tmpzMb6lN/output/pctr/company/hoche-butter-gmbh_deu422723-693847001.csv     2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> /tmp/RtmpzMb6lN/output/pctr/company/leider-gmbh_00000005064318-001.csv       3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> …mp/RtmpzMb6lN/output/pctr/company/pecheries-basques_fra316541-00101.csv     3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> …pzMb6lN/output/pctr/company/vicquelin-espaces-verts_fra697272-00101.csv     3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> …mpwENUaQ/output/pctr/company/bst-procontrol-gmbh_00000005104947-001.csv     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> …p/RtmpwENUaQ/output/pctr/company/ca-coity-trg-aua-gmbh_00000384-001.csv     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> /tmp/RtmpwENUaQ/output/pctr/company/cheries-baqu_neu316541-00101.csv         1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> …wENUaQ/output/pctr/company/fleischerei-stiefsohn_00000005219477-001.csv     2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> …tmpwENUaQ/output/pctr/company/hoche-butter-gmbh_deu422723-693847001.csv     2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> /tmp/RtmpwENUaQ/output/pctr/company/leider-gmbh_00000005064318-001.csv       3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> …mp/RtmpwENUaQ/output/pctr/company/pecheries-basques_fra316541-00101.csv     3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> …pwENUaQ/output/pctr/company/vicquelin-espaces-verts_fra697272-00101.csv     3</span></span>
 <span></span>
 <span><span class="va">chunked</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 2</span></span></span>
@@ -220,16 +220,16 @@ enough to read them all at once into a single table.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 127 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high            1  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> bst-procontrol-gmbh_00000005104947-001 all        high              0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> bst-procontrol-gmbh_00000005104947-001 all        medium            1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> bst-procontrol-gmbh_00000005104947-001 all        low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> bst-procontrol-gmbh_00000005104947-001 isic_sec   low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> bst-procontrol-gmbh_00000005104947-001 tilt_sec   low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001 unit       high              1</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 117 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
