@@ -17,6 +17,6 @@ products <- here("data-raw", "products.csv") |>
     "ei_activity_name"
   ))) |>
   # #390
-  filter(row_number() == 1L,  .by = "activity_uuid_product_uuid")
+  filter(row_number() == 1L, .by = "activity_uuid_product_uuid")
 
 use_data(products, overwrite = TRUE)
