@@ -72,10 +72,14 @@ check_no_semicolon <- function(data) {
     select(ends_with("sector"))
 
   has_relevant_cols <- ncol(relevant_cols) > 0L
-  if (!has_relevant_cols) return(data)
+  if (!has_relevant_cols) {
+    return(data)
+  }
 
-  has_semicolon <- any(map_lgl(relevant_cols, ~any(grepl(";", .x))))
-  if (!has_semicolon) return(data)
+  has_semicolon <- any(map_lgl(relevant_cols, ~ any(grepl(";", .x))))
+  if (!has_semicolon) {
+    return(data)
+  }
 
   warn(c(
     "The `*sector` columns used to match scenarios shouln't have semicolon ';'.",
