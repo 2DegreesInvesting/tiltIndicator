@@ -53,6 +53,7 @@
 #' @importFrom rlang .env
 #' @importFrom rlang abort
 #' @importFrom rlang set_names
+#' @importFrom rlang warn
 #' @importFrom tibble rowid_to_column
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble

@@ -238,3 +238,26 @@ test_that("a 0-row `scenarios` yields an error", {
     "scenario.*can't have 0-row"
   )
 })
+
+test_that("with ';' in `*sector` throws an error", {
+  bad <- "a; b"
+  companies <- tibble(
+    sector = bad,
+    company_id = "a",
+    type = "a",
+    subsector = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a",
+    tilt_sector = "a",
+    tilt_subsector = "a",
+  )
+  scenarios <- tibble(
+    type = "a",
+    sector = "a",
+    subsector = "a",
+    scenario = "a",
+    year = 2050,
+    reductions = 1,
+  )
+  expect_snapshot_warning(pstr_at_product_level(companies, scenarios))
+})
