@@ -259,5 +259,6 @@ test_that("with ';' in `*sector` throws an warning", {
     year = 2050,
     reductions = 1,
   )
+
   expect_snapshot_warning(pstr_at_product_level(companies, scenarios))
 })
