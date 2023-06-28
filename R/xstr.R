@@ -4,6 +4,7 @@ xstr_check <- function(companies, scenarios) {
   crucial <- c("type", "sector", "subsector", "year", "scenario")
   check_crucial_names(scenarios, crucial)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
+  check_no_semicolon(companies)
 }
 
 stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
@@ -63,4 +64,28 @@ xstr_cols_at_product_level <- function() {
     "year",
     "type"
   )
+}
+
+check_no_semicolon <- function(data) {
+  relevant_cols <- data |>
+    select(-starts_with("tilt_")) |>
+    select(ends_with("sector"))
+
+  has_relevant_cols <- ncol(relevant_cols) > 0L
+  if (!has_relevant_cols) {
+    return(data)
+  }
+
+  has_semicolon <- any(map_lgl(relevant_cols, ~ any(grepl(";", .x))))
+  if (!has_semicolon) {
+    return(data)
+  }
+
+  warn(c(
+    "The `*sector` columns used to match scenarios shouln't have semicolon ';'.",
+    x = "Unmatched values of `sector` and `subsector` result in `NA`s.",
+    i = "Do you need see the evolution of this issue on GitHub (#448)?"
+  ))
+
+  data
 }
