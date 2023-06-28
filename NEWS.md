@@ -2,12 +2,11 @@
 
 # tiltIndicator 0.0.0.9080
 
-* In `products`, `activity_uuid_product_uuid` is now unique (#447)
-
+* In `products`, `activity_uuid_product_uuid` is now unique (#447).
 
 # tiltIndicator 0.0.0.9079
 
-* `xctr()` now outptus results at both levels (#443).
+* `xctr()` now outputs results at both levels (#443).
 
 # tiltIndicator 0.0.0.9078
 
