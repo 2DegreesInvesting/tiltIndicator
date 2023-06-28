@@ -239,7 +239,7 @@ test_that("a 0-row `scenarios` yields an error", {
   )
 })
 
-test_that("with ';' in `*sector` throws an error", {
+test_that("with ';' in `*sector` throws an warning", {
   bad <- "a; b"
   companies <- tibble(
     sector = bad,
