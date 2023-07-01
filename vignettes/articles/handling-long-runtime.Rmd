@@ -28,21 +28,12 @@ beyond R](https://github.com/pditommaso/awesome-pipeline).
 
 Learning pipeline tools pays off but it isn't trivial, so here you'll use a
 basic, custom toolkit based on tools you already know -- mostly the tidyverse
-and friends:
-
-* You'll split data in chunks with dplyr and tidyr.
-* Distribute chunks across multiple workers with furrr.
-* Store chunk results in your .cache directory with readr and rappdirs.
-* Avoid re-running stored chunks by filtering a tibble if files don't exist.
-* Monitor progress with a progress bar in furrr.
+and friends.
 
 You'll start setting up packages, options and helpers. Then you'll run an
 indicator in a compact way and without explanation, to see that the entire
 workflow is short. Finally you'll run a second indicator in a bit longer way and
 with a more gentle explanation, to better understand what's going on.
-
-Note most helpers are general and can be reused to run other long running
-processes.
 
 ### Setup
 
