@@ -97,20 +97,12 @@ approach saturates the computer memory or takes too long to run.</p>
 and beyond R</a>.</p>
 <p>Learning pipeline tools pays off but it isn’t trivial, so here you’ll
 use a basic, custom toolkit based on tools you already know – mostly the
-tidyverse and friends:</p>
-<ul>
-<li>You’ll split data in chunks with dplyr and tidyr.</li>
-<li>Distribute chunks across multiple workers with furrr.</li>
-<li>Store chunk results in your .cache directory with readr and
-rappdirs.</li>
-<li>Avoid re-running stored chunks by filtering a tibble if files don’t
-exist.</li>
-<li>Monitor progress with a progress bar in furrr.</li>
-</ul>
+tidyverse and friends.</p>
 <p>You’ll start setting up packages, options and helpers. Then you’ll
-run an indicator without explanation to see that the entire workflow is
-short. Finally you’ll run a second indicator with a more gentle
-explanation.</p>
+run an indicator in a compact way and without explanation, to see that
+the entire workflow is short. Finally you’ll run a second indicator in a
+bit longer way and with a more gentle explanation, to better understand
+what’s going on.</p>
 <div class="section level3">
 <h3 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h3>
@@ -137,6 +129,15 @@ explanation.</p>
 <span></span>
 <span><span class="va">cache_dir</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rappdirs.r-lib.org/reference/user_cache_dir.html" class="external-link">user_cache_dir</a></span><span class="op">(</span>appname <span class="op">=</span> <span class="st">"tiltIndicator"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">job_pmap</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">job</span>, <span class="va">.f</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">job</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">pick_undone</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">future_pwalk</a></span><span class="op">(</span><span class="va">.f</span>, .progress <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="va">istr_job</span><span class="op">$</span><span class="va">file</span>, <span class="va">read_rds</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">nest_chunk</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">.by</span>, <span class="va">chunks</span><span class="op">)</span> <span class="op">{</span></span>
@@ -168,25 +169,28 @@ explanation.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># TODO: Replace with `read_csv("/path/to/input/companies.csv")`</span></span>
 <span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/istr_datasets.html">istr_companies</a></span></span>
-<span></span>
-<span><span class="va">istr_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">nest_chunk</span><span class="op">(</span>.by <span class="op">=</span> <span class="st">"company_id"</span>, chunks <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">add_file</span><span class="op">(</span>parent <span class="op">=</span> <span class="fu">cache_path</span><span class="op">(</span><span class="st">"istr"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
 <span><span class="co"># TODO: Replace with `read_csv("/path/to/input/scenarios.csv")`</span></span>
 <span><span class="va">scenarios</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/xstr_scenarios.html">xstr_scenarios</a></span></span>
 <span><span class="co"># TODO: Replace with `read_csv("/path/to/input/inputs.csv")`</span></span>
 <span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/istr_datasets.html">istr_inputs</a></span></span>
-<span><span class="va">istr_rds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/istr.html">istr</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">scenarios</span>, <span class="va">inputs</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Write chunk results</span></span>
-<span><span class="va">istr_job</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">pick_undone</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">future_pwalk</a></span><span class="op">(</span><span class="va">istr_rds</span>, .progress <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># Create a "job" data frame where each row is a chunk of data</span></span>
+<span><span class="va">istr_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">nest_chunk</span><span class="op">(</span>.by <span class="op">=</span> <span class="st">"company_id"</span>, chunks <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">add_file</span><span class="op">(</span>parent <span class="op">=</span> <span class="fu">cache_path</span><span class="op">(</span><span class="st">"istr"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Read chunk results</span></span>
-<span><span class="va">istr_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="va">istr_job</span><span class="op">$</span><span class="va">file</span>, <span class="va">read_rds</span><span class="op">)</span></span>
+<span><span class="co"># Chunks of data will be distributed across workers and saved to a file</span></span>
+<span><span class="va">istr_job</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 3</span></span></span>
+<span><span class="co">#&gt;   chunk data             file                             </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span>                       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 <span style="color: #949494;">&lt;tibble [4 × 6]&gt;</span> ~/.cache/tiltIndicator/istr/1.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 <span style="color: #949494;">&lt;tibble [2 × 6]&gt;</span> ~/.cache/tiltIndicator/istr/2.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 <span style="color: #949494;">&lt;tibble [2 × 6]&gt;</span> ~/.cache/tiltIndicator/istr/3.rds</span></span>
+<span></span>
+<span><span class="co"># Run each indicator chunk across multiple workers and output a combined result</span></span>
+<span><span class="va">istr_result</span> <span class="op">&lt;-</span> <span class="va">istr_job</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">job_pmap</span><span class="op">(</span>\<span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/istr.html">istr</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">scenarios</span>, <span class="va">inputs</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/product.csv")`</span></span>
 <span><span class="va">istr_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -224,7 +228,14 @@ explanation.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 weo_announced … medium        0     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 weo_announced … low           1     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 weo_announced … high          0.076<span style="text-decoration: underline;">9</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 284 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 284 more rows</span></span></span>
+<span></span>
+<span><span class="co"># Each chunk result was saved to a file</span></span>
+<span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="fu">cache_path</span><span class="op">(</span><span class="st">"istr"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">~/.cache/tiltIndicator/istr</span></span></span>
+<span><span class="co">#&gt; ├── 1.rds</span></span>
+<span><span class="co">#&gt; ├── 2.rds</span></span>
+<span><span class="co">#&gt; └── 3.rds</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="pctr">PCTR<a class="anchor" aria-label="anchor" href="#pctr"></a>
@@ -273,6 +284,7 @@ match the names of the <code>*_rds()</code>. This allows to use
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># TODO: Replace with `read_csv("/path/to/input/products.csv")`</span></span>
 <span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/products.html">products</a></span></span>
+<span></span>
 <span><span class="va">pctr_rds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">products</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">pctr_job</span> <span class="op">|&gt;</span></span>
@@ -280,7 +292,8 @@ match the names of the <code>*_rds()</code>. This allows to use
 <span>  <span class="fu">pick_undone</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># `select(data, file)` matches `pctr_rds(data, file)` to use `*_pwalk()`</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># This shows a progress bar, but you won't see it here though</span></span>
+<span>  <span class="co"># Combined with `plan()` it distributes computations across multiple workers</span></span>
+<span>  <span class="co"># The progress bar won't appear in this .Rmd document.</span></span>
 <span>  <span class="fu"><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">future_pwalk</a></span><span class="op">(</span><span class="va">pctr_rds</span>, .progress <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Here is what you accomplished. Instead of saturating the memory you
 stored each chunk into a file.</p>
@@ -290,8 +303,8 @@ stored each chunk into a file.</p>
 <span><span class="co">#&gt; ├── 1.rds</span></span>
 <span><span class="co">#&gt; ├── 2.rds</span></span>
 <span><span class="co">#&gt; └── 3.rds</span></span></code></pre></div>
-<p>You can now read all the relevant files at once. If the data is too
-large you’ll need to do also do this in batches or work with <a href="https://arrow.apache.org/docs/r/reference/open_dataset.html" class="external-link">multi-file
+<p>You can now read all the saved files at once. If the results are too
+many you may also need to do this in batches or work with <a href="https://arrow.apache.org/docs/r/reference/open_dataset.html" class="external-link">multi-file
 datasets</a>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pctr_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="va">pctr_job</span><span class="op">$</span><span class="va">file</span>, <span class="va">read_rds</span><span class="op">)</span></span>
