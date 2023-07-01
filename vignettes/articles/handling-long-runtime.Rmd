@@ -37,8 +37,12 @@ and friends:
 * Monitor progress with a progress bar in furrr.
 
 You'll start setting up packages, options and helpers. Then you'll run an
-indicator without explanation to see that the entire workflow is short. Finally
-you'll run a second indicator with a more gentle explanation.
+indicator in a compact way and without explanation, to see that the entire
+workflow is short. Finally you'll run a second indicator in a bit longer way and
+with a more gentle explanation, to better understand what's going on.
+
+Note most helpers are general and can be reused to run other long running
+processes.
 
 ### Setup
 
@@ -65,6 +69,15 @@ cache_path <- function(..., parent = cache_dir()) {
 
 cache_dir <- function() {
   user_cache_dir(appname = "tiltIndicator")
+}
+
+job_pmap <- function(job, .f) {
+  job |>
+    pick_undone() |>
+    select(data, file) |>
+    future_pwalk(.f, .progress = TRUE)
+  
+  map_df(istr_job$file, read_rds)
 }
 
 nest_chunk <- function(data, .by, chunks) {
@@ -96,31 +109,31 @@ add_done <- function(data, file) {
 ```{r}
 # TODO: Replace with `read_csv("/path/to/input/companies.csv")`
 companies <- tiltIndicator::istr_companies
-
-istr_job <- companies |>
-  nest_chunk(.by = "company_id", chunks = 3) |>
-  add_file(parent = cache_path("istr"))
-
 # TODO: Replace with `read_csv("/path/to/input/scenarios.csv")`
 scenarios <- tiltIndicator::xstr_scenarios
 # TODO: Replace with `read_csv("/path/to/input/inputs.csv")`
 inputs <- tiltIndicator::istr_inputs
-istr_rds <- function(data, file) write_rds(istr(data, scenarios, inputs), file)
 
-# Write chunk results
-istr_job |>
-  pick_undone() |>
-  select(data, file) |>
-  future_pwalk(istr_rds, .progress = TRUE)
+# Create a "job" data frame where each row is a chunk of data
+istr_job <- companies |>
+  nest_chunk(.by = "company_id", chunks = 3) |>
+  add_file(parent = cache_path("istr"))
 
-# Read chunk results
-istr_result <- map_df(istr_job$file, read_rds)
+# Chunks of data will be distributed across workers and saved to a file
+istr_job
+
+# Run each indicator chunk across multiple workers and output a combined result
+istr_result <- istr_job |> 
+  job_pmap(\(data, file) write_rds(istr(data, scenarios, inputs), file))
 
 # TODO: `... |> write_csv("/path/to/output/product.csv")`
 istr_result |> unnest_product()
 
 # TODO: `... |> write_csv("/path/to/output/company.csv")`
 istr_result |> unnest_company()
+
+# Each chunk result was saved to a file
+dir_tree(cache_path("xctr"))
 ```
 
 ### PCTR
@@ -155,6 +168,7 @@ This allows to use `*_pmap()` in a very succinct way.
 ```{r}
 # TODO: Replace with `read_csv("/path/to/input/products.csv")`
 products <- tiltIndicator::products
+
 pctr_rds <- function(data, file) write_rds(xctr(data, products), file)
 
 pctr_job |>
@@ -162,7 +176,8 @@ pctr_job |>
   pick_undone() |>
   # `select(data, file)` matches `pctr_rds(data, file)` to use `*_pwalk()`
   select(data, file) |>
-  # This shows a progress bar, but you won't see it here though
+  # Combined with `plan()` it distributes computations across multiple workers
+  # The progress bar won't appear in this .Rmd document.
   future_pwalk(pctr_rds, .progress = TRUE)
 ```
 
@@ -173,8 +188,8 @@ chunk into a file.
 dir_tree(cache_path("xctr"))
 ```
 
-You can now read all the relevant files at once. If the data is too large you'll
-need to do also do this in batches or work with [multi-file
+You can now read all the saved files at once. If the results are too many you
+may also need to do this in batches or work with [multi-file
 datasets](https://arrow.apache.org/docs/r/reference/open_dataset.html).
 
 ```{r}
