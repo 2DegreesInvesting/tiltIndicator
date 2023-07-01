@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9082
+
+* The article "Handling a long runtime" now shows an enhanced approach (#450).
+
 # tiltIndicator 0.0.0.9081
 
 * In `pstr()` now warns if the `companies` has any semicolon ';' in `sector` or
