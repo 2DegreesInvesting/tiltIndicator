@@ -32,8 +32,11 @@ Imports:
 Suggests: 
     covr,
     fs,
+    furrr,
+    future,
     here,
     progress,
+    rappdirs,
     rmarkdown,
     roxygen2,
     testthat (>= 3.0.0),
