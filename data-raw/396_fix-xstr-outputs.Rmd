@@ -1,0 +1,283 @@
+---
+output: github_document
+params:
+  import_pstr_companies: "~/Downloads/tiltIndicator/bad/str_companies.csv"
+  import_product_level: "~/Downloads/tiltIndicator/bad/pstr_product_level_v2.csv"
+  import_company_level: "~/Downloads/tiltIndicator/bad/pstr_company_level_v2.csv"
+  export_product_level: "~/Downloads/tiltIndicator/fixed/pstr_product_level_v2_fixed.csv"
+  export_company_level: "~/Downloads/tiltIndicator/fixed/pstr_company_level_v2_fixed.csv"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  cache = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Fix XSTR outputs (#396)
+
+## Setup
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+library(stringr)
+
+options(readr.show_col_types = FALSE)
+```
+
+## Data
+
+```{r}
+pstr_companies <- params$import_pstr_companies |> 
+  # Avoid parsing problems
+  read_csv(col_select = -company_name)
+
+xstr_product_level <- read_csv(params$import_product_level)
+xstr_product_level |> glimpse()
+
+xstr_company_level <- read_csv(params$import_company_level)
+xstr_company_level |> glimpse()
+```
+
+## Helpers
+
+```{r}
+if_all_na_is_first_else_not_na <- function(x) {
+  if (all(is.na(x))) is_first(x) else !is.na(x)
+}
+
+is_first <- function(x) {
+  seq_along(x) == 1L
+}
+```
+
+## Fix
+
+### At product level, remove bad output
+
+* [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/391)
+* [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/431)
+
+Expect either 4 or 2.
+
+```{r}
+unique(count(xstr_product_level, companies_id, clustered)$n)
+```
+
+Fix.
+
+```{r}
+# The bad output resulted from duplicated data in the weo scenario
+bad_391 <- xstr_product_level |>
+  filter(
+    type == "weo",
+    # Exclude weo_flow = "energy" & weo_product = "total energy supply"
+    tilt_sector == "energy",
+    tilt_subsector == "total energy",
+    # Exclude the one that has low risk (because emission capture)
+    risk_category == "low",
+  )
+bad_391
+
+xstr_product_level2 <- anti_join(xstr_product_level, bad_391)
+xstr_product_level2
+```
+
+Test.
+
+```{r}
+unique(count(xstr_product_level2, companies_id, clustered)$n)
+```
+
+### At both levels, remove duplicated rows
+
+* [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/392)
+* [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/438)
+
+```{r}
+anyDuplicated(xstr_product_level2)
+
+anyDuplicated(xstr_company_level)
+```
+
+Fix.
+
+```{r}
+xstr_product_level3 <- distinct(xstr_product_level2)
+nrow(xstr_product_level2)
+nrow(xstr_product_level3)
+
+xstr_company_level2 <- distinct(xstr_company_level)
+nrow(xstr_company_level)
+nrow(xstr_company_level2)
+```
+
+Test.
+
+```{r}
+anyDuplicated(xstr_product_level3)
+
+anyDuplicated(xstr_company_level2)
+```
+
+Note this step makes product-level data to no longer have only 4 or 2 rows per company per product -- as we expected before.
+
+```{r}
+unique(count(xstr_product_level2, companies_id, clustered)$n)
+
+unique(count(xstr_product_level3, companies_id, clustered)$n)
+```
+
+### At company level, remove needless rows with missing values
+
+* [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/393)
+* [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/434)
+
+Expect either 12, 6, or 1.
+
+```{r}
+unique(count(xstr_company_level2, companies_id)$n)
+```
+
+Fix.
+
+```{r}
+# Rows where `value` is not `NA` from companies with at least one such `value`
+filtered_complete_data <- xstr_company_level2 |>
+  group_by(companies_id) |>
+  # Drop companies where all `value` is `NA`
+  filter(!all(is.na(value))) |>
+  # Drop rows where `value` is `NA`
+  filter(!is.na(value)) |>
+  ungroup()
+
+# In companies where all `value` is `NA`, make `type` & `risk_category` also `NA`
+filtered_incomplete_data <- xstr_company_level2 |>
+  group_by(companies_id) |>
+  # Where all `value` is `NA` ...
+  filter(all(is.na(value))) |>
+  # ... pick the first row and ...
+  slice(1) |>
+  # ... make `type` and `risk_category` also `NA`
+  mutate(type = NA_character_, risk_category = NA_character_) |>
+  ungroup()
+
+xstr_company_level3 <- bind_rows(filtered_complete_data, filtered_incomplete_data)
+```
+
+Test.
+
+```{r}
+unique(count(xstr_company_level3, companies_id)$n)
+```
+
+### At product level, each company should have 1, 2, or 4 rows per product
+
+* [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/402)
+* [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/436)
+
+Expect 1, 2, or 4.
+
+```{r}
+xstr_product_level3 |> 
+  count(companies_id, clustered) |> 
+  count(n)
+```
+
+Fix
+
+```{r}
+xstr_product_level4 <- xstr_product_level3 |> 
+  filter(
+    if_all_na_is_first_else_not_na(.data$risk_category), 
+    .by = c("companies_id", "clustered")
+  )
+```
+
+Test.
+
+```{r}
+xstr_product_level4 |> 
+  count(companies_id, clustered) |> 
+  count(n)
+
+# The companies with only 1 row should all have missing `risk_category`
+sum(is.na(xstr_product_level4$risk_category))
+```
+
+### At company level, remove `companies_id` with ";" in either of the relevant columns in `pstr_companies`
+
+* [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/405)
+* [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/439)
+
+```{r}
+semicolon <- pstr_companies |> 
+  select(-starts_with("tilt_")) |> 
+  filter(if_any(ends_with("sector"), ~ str_detect(.x, ";")))
+
+# Note ";"
+select(semicolon, ends_with("sector"))
+
+# Affected companies
+distinct(semicolon, companies_id)
+
+# Remove affected companies
+xstr_company_level4 <- xstr_company_level3 |> 
+  anti_join(distinct(semicolon, companies_id))
+```
+
+Test.
+
+```{r}
+# Compare
+nrow(xstr_company_level3)
+nrow(xstr_company_level4)
+
+# All gone
+inner_join(xstr_company_level4, semicolon)
+```
+
+### At both levels, remove companies affected by duplicated scenario data
+
+* [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/403)
+* [Issue](https://github.com/2DegreesInvesting/tiltIndicator/issues/391)
+* [PR](https://github.com/2DegreesInvesting/tiltIndicator/pull/431)
+
+```{r}
+# Affected companies
+ids_391 <- distinct(bad_391, companies_id)
+ids_391
+
+xstr_product_level5 <- xstr_product_level4 |> anti_join(ids_391)
+xstr_company_level5 <- xstr_company_level4 |> anti_join(ids_391)
+```
+
+Test.
+
+```{r}
+# Compare
+nrow(xstr_product_level4)
+nrow(xstr_product_level5)
+
+# Gone
+inner_join(xstr_product_level5, ids_391)
+
+# Compare
+nrow(xstr_company_level4)
+nrow(xstr_company_level5)
+
+# Gone
+inner_join(xstr_company_level5, ids_391)
+```
+
+## Export
+
+```{r}
+write_csv(xstr_product_level5, params$export_product_level)
+write_csv(xstr_company_level5, params$export_company_level)
+```
