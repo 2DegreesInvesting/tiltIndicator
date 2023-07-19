@@ -1,4 +1,9 @@
-The Input Product Carbon Transition Risk Indicator assesses the transition risk of the input products due to their relative carbon footprint to other input products. As a default option, each input product is compared to the carbon footprint of every other input product. Input products with a higher carbon footprint face a higher risk. On a company-level, the indicator proxies for the supply chain risk of a company - based on its inputs.
+The Input Product Carbon Transition Risk Indicator assesses the transition risk
+of the input products due to their relative carbon footprint to other input
+products. As a default option, each input product is compared to the carbon
+footprint of every other input product. Input products with a higher carbon
+footprint face a higher risk. On a company-level, the indicator proxies for the
+supply chain risk of a company - based on its inputs.
 
 The Input Product Carbon Transition Risk Indicator is therefore similar to the
 Product Carbon Transition Risk Indicator, but it focuses on the input products
