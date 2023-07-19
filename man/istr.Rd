@@ -45,13 +45,15 @@ A data frame with the column \code{companies_id}, and the nested columns \code{p
 \description{
 The Input Product Sector Risk Indicator assesses the transition risk of the
 input products based on the sector's emissions targets the input product belongs
-to. Those sector emission reduction targets vary across scenarios (e.g., net
-zero scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in
-2030, 2040, 2050 to achieve the targets). It, therefore, is similar to the
-Product Sector Risk Indicator but focuses on the input products that the company
-needs to produce its products.The input products are, for example, resources,
-packaging materials, energy and enabling services (such as tractor use on farm)
-to produce the product.
+to. This indicator can be aggregated on company level and as such inform about
+the supply chain risk of an SME, based on its inputs’ transition risk. The
+sector emission reduction targets vary across scenarios (e.g., net zero scenario
+or 1.5° scenario) and the time horizon (e.g., reduction needed in 2030, 2040,
+2050 to achieve the targets). It, therefore, is similar to the Product Sector
+Risk Indicator but focuses on the input products that the company needs to
+produce its products.The input products are, for example, resources, packaging
+materials, energy and enabling services (such as tractor use on farm) to produce
+the product.
 
 After identifying each carbon footprint for one input product, the input
 products are ranked according to their footprint. The ranking method is explained in the

@@ -5,7 +5,7 @@
 \alias{products}
 \title{PCTR datasets}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 7 rows and 6 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 5 rows and 6 columns.
 }
 \usage{
 products
