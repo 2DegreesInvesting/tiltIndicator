@@ -89,14 +89,24 @@ xctr_at_company_level <- function(data) {
     ) |>
     select(-"n")
 
-  if (identical(nrow(with_value), 0L)) {
-    empty <- tibble(
-      companies_id = unique(data$companies_id),
+  empty_companies_id <- function(x) {
+    tibble(
+      companies_id = unique(x),
       grouped_by = NA_character_,
       risk_category = NA_character_,
       value = NA_real_
     )
-    return(empty)
+  }
+
+  all_unmatched <- identical(nrow(with_value), 0L)
+  if (all_unmatched) {
+    return(empty_companies_id(data$companies_id))
+  }
+
+  unmatched <- setdiff(unique(data$companies_id), unique(with_value$companies_id))
+  some_unmatched <- length(unmatched) > 0L
+  if (some_unmatched) {
+    with_value <- bind_rows(with_value, empty_companies_id(unmatched))
   }
 
   levels <- risk_category_levels()

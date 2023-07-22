@@ -23,9 +23,9 @@
       16    bst-procontrol-gmbh_00000005104947-001
       17    bst-procontrol-gmbh_00000005104947-001
       18    bst-procontrol-gmbh_00000005104947-001
-      19              cheries-baqu_neu316541-00101
-      20              cheries-baqu_neu316541-00101
-      21              cheries-baqu_neu316541-00101
+      19        ca-coity-trg-aua-gmbh_00000384-001
+      20        ca-coity-trg-aua-gmbh_00000384-001
+      21        ca-coity-trg-aua-gmbh_00000384-001
       22              cheries-baqu_neu316541-00101
       23              cheries-baqu_neu316541-00101
       24              cheries-baqu_neu316541-00101
@@ -41,9 +41,9 @@
       34              cheries-baqu_neu316541-00101
       35              cheries-baqu_neu316541-00101
       36              cheries-baqu_neu316541-00101
-      37  fleischerei-stiefsohn_00000005219477-001
-      38  fleischerei-stiefsohn_00000005219477-001
-      39  fleischerei-stiefsohn_00000005219477-001
+      37              cheries-baqu_neu316541-00101
+      38              cheries-baqu_neu316541-00101
+      39              cheries-baqu_neu316541-00101
       40  fleischerei-stiefsohn_00000005219477-001
       41  fleischerei-stiefsohn_00000005219477-001
       42  fleischerei-stiefsohn_00000005219477-001
@@ -59,9 +59,9 @@
       52  fleischerei-stiefsohn_00000005219477-001
       53  fleischerei-stiefsohn_00000005219477-001
       54  fleischerei-stiefsohn_00000005219477-001
-      55     hoche-butter-gmbh_deu422723-693847001
-      56     hoche-butter-gmbh_deu422723-693847001
-      57     hoche-butter-gmbh_deu422723-693847001
+      55  fleischerei-stiefsohn_00000005219477-001
+      56  fleischerei-stiefsohn_00000005219477-001
+      57  fleischerei-stiefsohn_00000005219477-001
       58     hoche-butter-gmbh_deu422723-693847001
       59     hoche-butter-gmbh_deu422723-693847001
       60     hoche-butter-gmbh_deu422723-693847001
@@ -77,9 +77,9 @@
       70     hoche-butter-gmbh_deu422723-693847001
       71     hoche-butter-gmbh_deu422723-693847001
       72     hoche-butter-gmbh_deu422723-693847001
-      73            leider-gmbh_00000005064318-001
-      74            leider-gmbh_00000005064318-001
-      75            leider-gmbh_00000005064318-001
+      73     hoche-butter-gmbh_deu422723-693847001
+      74     hoche-butter-gmbh_deu422723-693847001
+      75     hoche-butter-gmbh_deu422723-693847001
       76            leider-gmbh_00000005064318-001
       77            leider-gmbh_00000005064318-001
       78            leider-gmbh_00000005064318-001
@@ -95,9 +95,9 @@
       88            leider-gmbh_00000005064318-001
       89            leider-gmbh_00000005064318-001
       90            leider-gmbh_00000005064318-001
-      91         pecheries-basques_fra316541-00101
-      92         pecheries-basques_fra316541-00101
-      93         pecheries-basques_fra316541-00101
+      91            leider-gmbh_00000005064318-001
+      92            leider-gmbh_00000005064318-001
+      93            leider-gmbh_00000005064318-001
       94         pecheries-basques_fra316541-00101
       95         pecheries-basques_fra316541-00101
       96         pecheries-basques_fra316541-00101
@@ -113,9 +113,9 @@
       106        pecheries-basques_fra316541-00101
       107        pecheries-basques_fra316541-00101
       108        pecheries-basques_fra316541-00101
-      109  vicquelin-espaces-verts_fra697272-00101
-      110  vicquelin-espaces-verts_fra697272-00101
-      111  vicquelin-espaces-verts_fra697272-00101
+      109        pecheries-basques_fra316541-00101
+      110        pecheries-basques_fra316541-00101
+      111        pecheries-basques_fra316541-00101
       112  vicquelin-espaces-verts_fra697272-00101
       113  vicquelin-espaces-verts_fra697272-00101
       114  vicquelin-espaces-verts_fra697272-00101
@@ -131,6 +131,9 @@
       124  vicquelin-espaces-verts_fra697272-00101
       125  vicquelin-espaces-verts_fra697272-00101
       126  vicquelin-espaces-verts_fra697272-00101
+      127  vicquelin-espaces-verts_fra697272-00101
+      128  vicquelin-espaces-verts_fra697272-00101
+      129  vicquelin-espaces-verts_fra697272-00101
       
       [[2]]
              grouped_by
@@ -152,114 +155,117 @@
       16  unit_tilt_sec
       17  unit_tilt_sec
       18  unit_tilt_sec
-      19            all
-      20            all
-      21            all
-      22       isic_sec
-      23       isic_sec
-      24       isic_sec
-      25       tilt_sec
-      26       tilt_sec
-      27       tilt_sec
-      28           unit
-      29           unit
-      30           unit
-      31  unit_isic_sec
-      32  unit_isic_sec
-      33  unit_isic_sec
-      34  unit_tilt_sec
-      35  unit_tilt_sec
-      36  unit_tilt_sec
-      37            all
-      38            all
-      39            all
-      40       isic_sec
-      41       isic_sec
-      42       isic_sec
-      43       tilt_sec
-      44       tilt_sec
-      45       tilt_sec
-      46           unit
-      47           unit
-      48           unit
-      49  unit_isic_sec
-      50  unit_isic_sec
-      51  unit_isic_sec
-      52  unit_tilt_sec
-      53  unit_tilt_sec
-      54  unit_tilt_sec
-      55            all
-      56            all
-      57            all
-      58       isic_sec
-      59       isic_sec
-      60       isic_sec
-      61       tilt_sec
-      62       tilt_sec
-      63       tilt_sec
-      64           unit
-      65           unit
-      66           unit
-      67  unit_isic_sec
-      68  unit_isic_sec
-      69  unit_isic_sec
-      70  unit_tilt_sec
-      71  unit_tilt_sec
-      72  unit_tilt_sec
-      73            all
-      74            all
-      75            all
-      76       isic_sec
-      77       isic_sec
-      78       isic_sec
-      79       tilt_sec
-      80       tilt_sec
-      81       tilt_sec
-      82           unit
-      83           unit
-      84           unit
-      85  unit_isic_sec
-      86  unit_isic_sec
-      87  unit_isic_sec
-      88  unit_tilt_sec
-      89  unit_tilt_sec
-      90  unit_tilt_sec
-      91            all
-      92            all
-      93            all
-      94       isic_sec
-      95       isic_sec
-      96       isic_sec
-      97       tilt_sec
-      98       tilt_sec
-      99       tilt_sec
-      100          unit
-      101          unit
-      102          unit
-      103 unit_isic_sec
-      104 unit_isic_sec
-      105 unit_isic_sec
-      106 unit_tilt_sec
-      107 unit_tilt_sec
-      108 unit_tilt_sec
-      109           all
-      110           all
-      111           all
-      112      isic_sec
-      113      isic_sec
-      114      isic_sec
-      115      tilt_sec
-      116      tilt_sec
-      117      tilt_sec
-      118          unit
-      119          unit
-      120          unit
-      121 unit_isic_sec
-      122 unit_isic_sec
-      123 unit_isic_sec
-      124 unit_tilt_sec
-      125 unit_tilt_sec
-      126 unit_tilt_sec
+      19           <NA>
+      20           <NA>
+      21           <NA>
+      22            all
+      23            all
+      24            all
+      25       isic_sec
+      26       isic_sec
+      27       isic_sec
+      28       tilt_sec
+      29       tilt_sec
+      30       tilt_sec
+      31           unit
+      32           unit
+      33           unit
+      34  unit_isic_sec
+      35  unit_isic_sec
+      36  unit_isic_sec
+      37  unit_tilt_sec
+      38  unit_tilt_sec
+      39  unit_tilt_sec
+      40            all
+      41            all
+      42            all
+      43       isic_sec
+      44       isic_sec
+      45       isic_sec
+      46       tilt_sec
+      47       tilt_sec
+      48       tilt_sec
+      49           unit
+      50           unit
+      51           unit
+      52  unit_isic_sec
+      53  unit_isic_sec
+      54  unit_isic_sec
+      55  unit_tilt_sec
+      56  unit_tilt_sec
+      57  unit_tilt_sec
+      58            all
+      59            all
+      60            all
+      61       isic_sec
+      62       isic_sec
+      63       isic_sec
+      64       tilt_sec
+      65       tilt_sec
+      66       tilt_sec
+      67           unit
+      68           unit
+      69           unit
+      70  unit_isic_sec
+      71  unit_isic_sec
+      72  unit_isic_sec
+      73  unit_tilt_sec
+      74  unit_tilt_sec
+      75  unit_tilt_sec
+      76            all
+      77            all
+      78            all
+      79       isic_sec
+      80       isic_sec
+      81       isic_sec
+      82       tilt_sec
+      83       tilt_sec
+      84       tilt_sec
+      85           unit
+      86           unit
+      87           unit
+      88  unit_isic_sec
+      89  unit_isic_sec
+      90  unit_isic_sec
+      91  unit_tilt_sec
+      92  unit_tilt_sec
+      93  unit_tilt_sec
+      94            all
+      95            all
+      96            all
+      97       isic_sec
+      98       isic_sec
+      99       isic_sec
+      100      tilt_sec
+      101      tilt_sec
+      102      tilt_sec
+      103          unit
+      104          unit
+      105          unit
+      106 unit_isic_sec
+      107 unit_isic_sec
+      108 unit_isic_sec
+      109 unit_tilt_sec
+      110 unit_tilt_sec
+      111 unit_tilt_sec
+      112           all
+      113           all
+      114           all
+      115      isic_sec
+      116      isic_sec
+      117      isic_sec
+      118      tilt_sec
+      119      tilt_sec
+      120      tilt_sec
+      121          unit
+      122          unit
+      123          unit
+      124 unit_isic_sec
+      125 unit_isic_sec
+      126 unit_isic_sec
+      127 unit_tilt_sec
+      128 unit_tilt_sec
+      129 unit_tilt_sec
       
       [[3]]
           risk_category
@@ -389,6 +395,9 @@
       124          high
       125        medium
       126           low
+      127          high
+      128        medium
+      129           low
       
       [[4]]
               value
@@ -410,113 +419,116 @@
       16  0.5714286
       17  0.2857143
       18  0.1428571
-      19  0.1666667
-      20  0.5000000
-      21  0.3333333
-      22  0.3333333
-      23  0.3333333
+      19         NA
+      20         NA
+      21         NA
+      22  0.1666667
+      23  0.5000000
       24  0.3333333
-      25  0.1666667
+      25  0.3333333
       26  0.3333333
-      27  0.5000000
-      28  0.5000000
-      29  0.5000000
-      30  0.0000000
+      27  0.3333333
+      28  0.1666667
+      29  0.3333333
+      30  0.5000000
       31  0.5000000
-      32  0.3333333
-      33  0.1666667
+      32  0.5000000
+      33  0.0000000
       34  0.5000000
       35  0.3333333
       36  0.1666667
-      37  0.5714286
-      38  0.2142857
-      39  0.2142857
-      40  0.3571429
-      41  0.3571429
-      42  0.2857143
-      43  0.4285714
+      37  0.5000000
+      38  0.3333333
+      39  0.1666667
+      40  0.5714286
+      41  0.2142857
+      42  0.2142857
+      43  0.3571429
       44  0.3571429
-      45  0.2142857
+      45  0.2857143
       46  0.4285714
-      47  0.2857143
-      48  0.2857143
-      49  0.3571429
-      50  0.3571429
+      47  0.3571429
+      48  0.2142857
+      49  0.4285714
+      50  0.2857143
       51  0.2857143
       52  0.3571429
-      53  0.2857143
-      54  0.3571429
-      55  0.1428571
-      56  0.4285714
-      57  0.4285714
-      58  0.4285714
-      59  0.2857143
-      60  0.2857143
+      53  0.3571429
+      54  0.2857143
+      55  0.3571429
+      56  0.2857143
+      57  0.3571429
+      58  0.1428571
+      59  0.4285714
+      60  0.4285714
       61  0.4285714
       62  0.2857143
       63  0.2857143
-      64  0.2857143
+      64  0.4285714
       65  0.2857143
-      66  0.4285714
-      67  0.5714286
+      66  0.2857143
+      67  0.2857143
       68  0.2857143
-      69  0.1428571
+      69  0.4285714
       70  0.5714286
       71  0.2857143
       72  0.1428571
-      73  0.1666667
-      74  0.5000000
-      75  0.3333333
-      76  0.3333333
-      77  0.3333333
+      73  0.5714286
+      74  0.2857143
+      75  0.1428571
+      76  0.1666667
+      77  0.5000000
       78  0.3333333
-      79  0.1666667
+      79  0.3333333
       80  0.3333333
-      81  0.5000000
-      82  0.5000000
-      83  0.5000000
-      84  0.0000000
+      81  0.3333333
+      82  0.1666667
+      83  0.3333333
+      84  0.5000000
       85  0.5000000
-      86  0.3333333
-      87  0.1666667
+      86  0.5000000
+      87  0.0000000
       88  0.5000000
       89  0.3333333
       90  0.1666667
-      91  0.1666667
+      91  0.5000000
       92  0.3333333
-      93  0.5000000
-      94  0.3333333
+      93  0.1666667
+      94  0.1666667
       95  0.3333333
-      96  0.3333333
+      96  0.5000000
       97  0.3333333
       98  0.3333333
       99  0.3333333
       100 0.3333333
       101 0.3333333
       102 0.3333333
-      103 0.6666667
-      104 0.1666667
-      105 0.1666667
+      103 0.3333333
+      104 0.3333333
+      105 0.3333333
       106 0.6666667
       107 0.1666667
       108 0.1666667
-      109 0.1428571
-      110 0.4285714
-      111 0.4285714
-      112 0.4285714
-      113 0.2857143
-      114 0.2857143
+      109 0.6666667
+      110 0.1666667
+      111 0.1666667
+      112 0.1428571
+      113 0.4285714
+      114 0.4285714
       115 0.4285714
       116 0.2857143
       117 0.2857143
-      118 0.2857143
+      118 0.4285714
       119 0.2857143
-      120 0.4285714
-      121 0.5714286
+      120 0.2857143
+      121 0.2857143
       122 0.2857143
-      123 0.1428571
+      123 0.4285714
       124 0.5714286
       125 0.2857143
       126 0.1428571
+      127 0.5714286
+      128 0.2857143
+      129 0.1428571
       
 
