@@ -169,6 +169,46 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   expect_equal(out$value, NA_real_)
 })
 
+test_that("no match preserves companies", {
+  co2 <- tibble(
+    activity_uuid_product_uuid = "a",
+    co2_footprint = 1,
+    tilt_sector = "a",
+    unit = "a",
+    isic_4digit = "a"
+  )
+
+  companies <- tibble(
+    activity_uuid_product_uuid = c("a", "unmatched"),
+    company_id = c("a", "b"),
+    clustered = "a"
+  )
+  product <- xctr_at_product_level(companies, co2)
+  expect_equal(companies$company_id, unique(product$companies_id))
+  company <- xctr_at_company_level(product)
+  expect_equal(companies$company_id, unique(company$companies_id))
+
+  companies <- tibble(
+    activity_uuid_product_uuid = "unmatched",
+    company_id = "a",
+    clustered = "a"
+  )
+  product <- xctr_at_product_level(companies, co2)
+  expect_equal(companies$company_id, product$companies_id)
+  company <- xctr_at_company_level(product)
+  expect_equal(companies$company_id, company$companies_id)
+
+  companies <- tibble(
+    activity_uuid_product_uuid = c("unmatched", "unmatched"),
+    company_id = c("a", "b"),
+    clustered = "a"
+  )
+  product <- xctr_at_product_level(companies, co2)
+  expect_equal(companies$company_id, unique(product$companies_id))
+  company <- xctr_at_company_level(product)
+  expect_equal(companies$company_id, unique(company$companies_id))
+})
+
 test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
   companies <- tibble(
     activity_uuid_product_uuid = c("a", "unmatched"),
