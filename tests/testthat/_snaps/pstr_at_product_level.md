@@ -1,4 +1,4 @@
-# with ';' in `*sector` throws an error
+# with ';' in `*sector` throws an warning
 
     The `*sector` columns used to match scenarios shouln't have semicolon ';'.
     x Unmatched values of `sector` and `subsector` result in `NA`s.
