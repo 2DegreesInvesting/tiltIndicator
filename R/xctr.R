@@ -89,14 +89,15 @@ xctr_at_company_level <- function(data) {
     ) |>
     select(-"n")
 
-  if (identical(nrow(with_value), 0L)) {
-    empty <- tibble(
-      companies_id = unique(data$companies_id),
-      grouped_by = NA_character_,
-      risk_category = NA_character_,
-      value = NA_real_
-    )
-    return(empty)
+  all_unmatched <- identical(nrow(with_value), 0L)
+  if (all_unmatched) {
+    return(empty_company_output_from(data$companies_id))
+  }
+
+  unmatched <- setdiff(unique(data$companies_id), unique(with_value$companies_id))
+  some_unmatched <- length(unmatched) > 0L
+  if (some_unmatched) {
+    with_value <- bind_rows(with_value, empty_company_output_from(unmatched))
   }
 
   levels <- risk_category_levels()
@@ -131,4 +132,13 @@ na_to_0_if_not_all_is_na <- function(x) {
     return(x)
   }
   replace_na(x, 0)
+}
+
+empty_company_output_from <- function(companies_id) {
+  tibble(
+    companies_id = unique(companies_id),
+    grouped_by = NA_character_,
+    risk_category = NA_character_,
+    value = NA_real_
+  )
 }
