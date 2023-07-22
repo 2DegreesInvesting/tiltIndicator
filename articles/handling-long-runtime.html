@@ -319,7 +319,7 @@ datasets</a>.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 5]&gt;</span>  <span style="color: #949494;">&lt;NULL&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [3 × 3]&gt;</span></span></span></code></pre></div>
 <p>Typically you’ll finish by writing one “*.csv” file with results at
 product level, and another one with results at company level.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -344,7 +344,7 @@ product level, and another one with results at company level.</p>
 <span></span>
 <span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/company.csv")`</span></span>
 <span><span class="va">pctr_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 126 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                             grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 all        high            1  </span></span>
@@ -357,7 +357,7 @@ product level, and another one with results at company level.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   medium          0.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   low             0  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 unit       high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 116 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span></code></pre></div>
 <p>Before the next time you run the same indicator you need to
 cleanup.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
