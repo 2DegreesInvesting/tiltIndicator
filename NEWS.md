@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9083
+
+* Results at company level now preserve unmatched companies (#466).
+
 # tiltIndicator 0.0.0.9082
 
 * The article "Handling a long runtime" now shows an enhanced approach (#450).
