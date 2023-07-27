@@ -1,4 +1,4 @@
-company_id,company_name,clustered,activity_uuid_product_uuid,isic_4digit,tilt_sector,tilt_subsector,ipr_sector,ipr_subsector,weo_product,weo_flow
+company_id,company_name,clustered,activity_uuid_product_uuid,isic_4digit,tilt_sector,tilt_subsector,ipr_sector,ipr_subsector,weo_sector,weo_subsector
 fleischerei-stiefsohn_00000005219477-001,fleischerei-stiefsohn,steel,0faa7ecb-fef2-5117-8993-387c1236-001e-49b5-aa3d-810c0214f9ce,2410,NA,NA,Industry,Iron and Steel,Total,Iron and steel
 pecheries-basques_fra316541-00101,pecheries-basques,nitrogen,03fbf989-9a1a-5e3d-a5bd-15f36f89b3-af52-4826-97f7-cc35f80f226f,2029,NA,NA,Industry,Chemicals,Total,Chemicals
 hoche-butter-gmbh_deu422723-693847001,hoche-butter-gmbh,waste,NA,NA,Energy,Bioenergy & Waste,Total,Energy,Bioenergy and Waste,Total Energy Supply

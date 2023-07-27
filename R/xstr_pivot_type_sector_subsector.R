@@ -23,7 +23,6 @@
 xstr_pivot_type_sector_subsector <- function(data) {
   data |>
     lowercase_characters() |>
-    rename(weo_sector = "weo_product", weo_subsector = "weo_flow") |>
     pivot_longer(c("ipr_sector", "ipr_subsector", "weo_sector", "weo_subsector")) |>
     separate_wider_delim("name", delim = "_", names = c("type", "tmp")) |>
     pivot_wider(names_from = "tmp")
