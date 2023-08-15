@@ -11,3 +11,14 @@
 #' @name internalish
 #' @aliases NULL
 NULL
+
+warn_internalish <- function() {
+  if (!is_testing()) {
+    warn(
+      c(
+        "All functions at product and company level are now internal.",
+        i = "Use the top level wrapper instead."
+      )
+    )
+  }
+}

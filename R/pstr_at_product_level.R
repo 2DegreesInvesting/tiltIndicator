@@ -4,16 +4,6 @@ pstr_at_product_level <- function(companies,
                                   scenarios,
                                   low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                   high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  warn_internalish <- function() {
-    if (!is_testing()) {
-      warn(
-        c(
-          "All functions at product and company level are now deprecated.",
-          i = "Use the top level wrapper instead."
-        )
-      )
-    }
-  }
   warn_internalish()
   xstr_check(companies, scenarios)
 

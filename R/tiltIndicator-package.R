@@ -71,5 +71,6 @@
 #' @importFrom tidyselect contains
 #' @importFrom utils hasName
 #' @importFrom vctrs vec_assert
+#' @importFrom withr local_envvar
 ## usethis namespace: end
 NULL

@@ -337,3 +337,10 @@ test_that("with a missing value in the co2* column errors gracefully", {
   inputs$input_co2_footprint <- NA
   expect_error(xctr_at_product_level(companies, inputs), "co2_footprint")
 })
+
+test_that("in a user-environment warns internalish", {
+  local_envvar(list("TESTTHAT" = ""))
+  companies <- slice(companies, 1)
+  inputs <- slice(inputs, 1)
+  expect_warning(xctr_at_product_level(companies, inputs), "internal")
+})
