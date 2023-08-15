@@ -121,6 +121,7 @@ xctr_at_company_level <- function(data) {
 }
 
 #' @rdname sector_profile
+#' @inheritParams xctr
 #' @export
 pstr_at_company_level <- xctr_at_company_level
 #' @rdname istr
