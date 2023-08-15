@@ -49,25 +49,3 @@ sector_profile <- function(companies,
   company <- xctr_at_company_level(product)
   nest_levels(product, company)
 }
-
-#' Calculate the sector profile indicator
-#'
-#' @description
-#' `r lifecycle::badge("deprecated")`
-#'
-#' `pstr()` was renamed to `sector_profile()`.
-#' @keywords internal
-#' @export
-pstr <- function(companies,
-                 scenarios,
-                 low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
-                 high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  lifecycle::deprecate_warn("0.0.0.9083", "pstr()", "sector_profile()")
-
-  sector_profile(
-    companies = companies,
-    scenarios = scenarios,
-    low_threshold = low_threshold,
-    high_threshold = high_threshold
-  )
-}
