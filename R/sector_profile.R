@@ -1,4 +1,4 @@
-#' Calculate the PSTR indicator
+#' Calculate the sector profile indicator
 #'
 #' ```{r child=extdata_path("child/intro-pstr.Rmd")}
 #' ```
@@ -50,13 +50,23 @@ sector_profile <- function(companies,
   company <- xctr_at_company_level(product)
   nest_levels(product, company)
 }
+
+
+
+#' Calculate the sector profile indicator
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' `pstr()` was renamed to `sector_profile()`.
+#' @keywords internal
 #' @export
-#' @rdname sector_profile
 pstr <- function(companies,
                  scenarios,
                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  .Deprecated("sector_profile")
+  lifecycle::deprecate_warn("0.0.0.9083", "pstr()", "sector_profile()")
+
   sector_profile(
     companies = companies,
     scenarios = scenarios,
