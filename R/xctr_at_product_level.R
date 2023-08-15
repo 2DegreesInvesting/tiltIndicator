@@ -1,10 +1,10 @@
 #' @export
-#' @rdname internalish
+#' @rdname deprecated
 xctr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 1 / 3,
                                   high_threshold = 2 / 3) {
-  warn_internalish()
+  warn_product_and_company_level_functions_are_now_deprecated()
   xctr_check(companies, co2)
 
   .companies <- prepare_companies(companies)

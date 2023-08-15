@@ -53,9 +53,9 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 }
 
 #' @export
-#' @rdname internalish
+#' @rdname deprecated
 xctr_at_company_level <- function(data) {
-  warn_internalish()
+  warn_product_and_company_level_functions_are_now_deprecated()
 
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
@@ -99,10 +99,10 @@ xctr_at_company_level <- function(data) {
 }
 
 #' @export
-#' @rdname internalish
+#' @rdname deprecated
 pstr_at_company_level <- xctr_at_company_level
 #' @export
-#' @rdname internalish
+#' @rdname deprecated
 istr_at_company_level <- xctr_at_company_level
 
 na_to_0_if_not_all_is_na <- function(x) {
