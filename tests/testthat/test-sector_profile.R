@@ -14,3 +14,10 @@ test_that("wraps the output at product and company levels", {
     arrange(expected, companies_id, grouped_by)
   )
 })
+
+test_that("using the old name throws a deprecation warning", {
+  companies <- pstr_companies
+  scenarios <- xstr_scenarios
+
+  expect_warning(sector_profile(companies, scenarios), "sector_profile")
+})
