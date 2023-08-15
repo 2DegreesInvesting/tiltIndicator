@@ -22,7 +22,8 @@ test_that("pstr() outputs the same with deprecation warning", {
   expect_warning(
     expect_equal(
       sector_profile(companies, scenarios),
-      pstr(companies, scenarios)),
+      pstr(companies, scenarios)
+    ),
     "sector_profile"
   )
 })
