@@ -1,5 +1,5 @@
-#' @rdname istr
 #' @export
+#' @rdname internalish
 istr_at_product_level <- function(companies,
                                   scenarios,
                                   inputs,

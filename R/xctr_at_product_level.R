@@ -1,5 +1,5 @@
 #' @export
-#' @rdname xctr
+#' @rdname internalish
 xctr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 1 / 3,

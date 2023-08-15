@@ -24,7 +24,6 @@
 #'   risk products.
 #' @param high_threshold A numeric value to segment medium and high transition
 #'   risk products.
-#' @param data A dataframe. The output at product level.
 #'
 #' @family XCTR functions
 #'
@@ -77,7 +76,7 @@ xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) 
 }
 
 #' @export
-#' @rdname xctr
+#' @rdname internalish
 xctr_at_company_level <- function(data) {
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
@@ -120,12 +119,11 @@ xctr_at_company_level <- function(data) {
     polish_output(cols_at_company_level())
 }
 
-#' @rdname sector_profile
-#' @inheritParams xctr
 #' @export
+#' @rdname internalish
 pstr_at_company_level <- xctr_at_company_level
-#' @rdname istr
 #' @export
+#' @rdname internalish
 istr_at_company_level <- xctr_at_company_level
 
 na_to_0_if_not_all_is_na <- function(x) {

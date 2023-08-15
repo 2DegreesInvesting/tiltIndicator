@@ -1,5 +1,5 @@
-#' @rdname sector_profile
 #' @export
+#' @rdname internalish
 pstr_at_product_level <- function(companies,
                                   scenarios,
                                   low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
