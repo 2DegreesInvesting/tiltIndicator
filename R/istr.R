@@ -19,16 +19,6 @@
 #' scenarios <- xstr_scenarios
 #' inputs <- istr_inputs
 #'
-#' # Product level
-#' companies |>
-#'   istr_at_product_level(scenarios, inputs)
-#'
-#' # Company level
-#' companies |>
-#'   istr_at_product_level(scenarios, inputs) |>
-#'   istr_at_company_level()
-#'
-#' # Same
 #' both <- istr(companies, scenarios, inputs)
 #' both
 #'

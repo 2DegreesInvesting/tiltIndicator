@@ -106,19 +106,6 @@ The output of this indicator contains the following:
 }
 }
 \examples{
-companies <- companies
-
-# ICTR
-inputs <- inputs
-
-companies |>
-  xctr_at_product_level(inputs)
-
-companies |>
-  xctr_at_product_level(inputs) |>
-  xctr_at_company_level()
-
-# Same
 both <- xctr(companies, inputs)
 both
 
@@ -126,17 +113,7 @@ both |> unnest_product()
 
 both |> unnest_company()
 
-# PCTR
 products <- products
-
-companies |>
-  xctr_at_product_level(products)
-
-companies |>
-  xctr_at_product_level(products) |>
-  xctr_at_company_level()
-
-# Same
 both <- xctr(companies, products)
 both
 
