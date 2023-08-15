@@ -74,7 +74,7 @@ companies |>
   pstr_at_company_level()
 
 # Or
-both <- pstr(companies, scenarios)
+both <- sector_profile(companies, scenarios)
 both
 
 # Product level
