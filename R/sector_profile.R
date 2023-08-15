@@ -10,7 +10,7 @@
 #' @param high_threshold A numeric value to segment medium and high reduction
 #'   targets.
 #'
-#' @family PSTR functions
+#' @family sector profile functions
 #'
 #' @return `r document_value()`
 #'

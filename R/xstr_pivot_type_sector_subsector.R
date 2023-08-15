@@ -8,7 +8,7 @@
 #'
 #' @family pre-processing helpers
 #'
-#' @return A `companies` dataset as required by PSTR functions.
+#' @return A `companies` dataset as required by sector profile functions.
 #' @export
 #'
 #' @examples

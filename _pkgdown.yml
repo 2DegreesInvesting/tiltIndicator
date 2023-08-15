@@ -15,7 +15,7 @@ reference:
   - title: XSTR functions and datasets
     contents:
       - has_concept("ISTR functions")
-      - has_concept("PSTR functions")
+      - has_concept("sector profile functions")
 
       - has_concept("XSTR datasets")
       - has_concept("ISTR datasets")

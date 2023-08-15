@@ -74,4 +74,4 @@ both |> unnest_product()
 # Company level
 both |> unnest_company()
 }
-\concept{PSTR functions}
+\concept{sector profile functions}
