@@ -42,7 +42,7 @@
 #'
 #' # Company level
 #' both |> unnest_company()
-pstr <- function(companies,
+sector_profile <- function(companies,
                  scenarios,
                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
@@ -51,5 +51,16 @@ pstr <- function(companies,
   nest_levels(product, company)
 }
 #' @export
-#' @rdname pstr
-sector_profile <- pstr
+#' @rdname sector_profile
+pstr <- function(companies,
+                 scenarios,
+                 low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
+                 high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+  .Deprecated("sector_profile")
+  sector_profile(
+    companies = companies,
+    scenarios = scenarios,
+    low_threshold = low_threshold,
+    high_threshold = high_threshold
+  )
+}
