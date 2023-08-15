@@ -2,11 +2,19 @@
 % Please edit documentation in R/pstr.R, R/pstr_at_product_level.R, R/xctr.R
 \name{pstr}
 \alias{pstr}
+\alias{sector_profile}
 \alias{pstr_at_product_level}
 \alias{pstr_at_company_level}
 \title{Calculate the PSTR indicator}
 \usage{
 pstr(
+  companies,
+  scenarios,
+  low_threshold = ifelse(scenarios$year == 2030, 1/9, 1/3),
+  high_threshold = ifelse(scenarios$year == 2030, 2/9, 2/3)
+)
+
+sector_profile(
   companies,
   scenarios,
   low_threshold = ifelse(scenarios$year == 2030, 1/9, 1/3),

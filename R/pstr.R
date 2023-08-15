@@ -50,3 +50,6 @@ pstr <- function(companies,
   company <- xctr_at_company_level(product)
   nest_levels(product, company)
 }
+#' @export
+#' @rdname pstr
+sector_profile <- pstr
