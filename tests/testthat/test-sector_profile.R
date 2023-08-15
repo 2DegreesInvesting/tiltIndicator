@@ -19,8 +19,10 @@ test_that("pstr() outputs the same with deprecation warning", {
   companies <- pstr_companies
   scenarios <- xstr_scenarios
 
-  expect_warning(expect_equal(
-    sector_profile(companies, scenarios),
-    pstr(companies, scenarios)
-  ), "sector_profile")
+  expect_warning(
+    expect_equal(
+      sector_profile(companies, scenarios),
+      pstr(companies, scenarios)),
+    "sector_profile"
+  )
 })
