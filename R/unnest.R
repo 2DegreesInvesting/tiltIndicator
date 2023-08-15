@@ -1,6 +1,6 @@
 #' Unnest product- and company-level results
 #'
-#' @param data A nested data frame, e.g. the output of [pstr()].
+#' @param data A nested data frame, e.g. the output of [sector_profile()].
 #'
 #' @family helpers
 #'
@@ -11,7 +11,7 @@
 #' companies <- pstr_companies
 #' scenarios <- xstr_scenarios
 #'
-#' both <- pstr(companies, scenarios)
+#' both <- sector_profile(companies, scenarios)
 #' both
 #'
 #' both |> unnest_product()

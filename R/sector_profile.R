@@ -1,4 +1,4 @@
-#' Calculate the PSTR indicator
+#' Calculate the sector profile indicator
 #'
 #' ```{r child=extdata_path("child/intro-pstr.Rmd")}
 #' ```
@@ -9,9 +9,8 @@
 #'   targets.
 #' @param high_threshold A numeric value to segment medium and high reduction
 #'   targets.
-#' @inheritParams xctr
 #'
-#' @family PSTR functions
+#' @family sector profile functions
 #'
 #' @return `r document_value()`
 #'
@@ -34,7 +33,7 @@
 #'   pstr_at_company_level()
 #'
 #' # Or
-#' both <- pstr(companies, scenarios)
+#' both <- sector_profile(companies, scenarios)
 #' both
 #'
 #' # Product level
@@ -42,10 +41,10 @@
 #'
 #' # Company level
 #' both |> unnest_company()
-pstr <- function(companies,
-                 scenarios,
-                 low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
-                 high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+sector_profile <- function(companies,
+                           scenarios,
+                           low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
+                           high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   product <- pstr_at_product_level(companies, scenarios, low_threshold, high_threshold)
   company <- xctr_at_company_level(product)
   nest_levels(product, company)

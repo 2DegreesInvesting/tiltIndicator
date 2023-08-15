@@ -16,7 +16,7 @@ A dataframe.
 Polish output at company level
 }
 \examples{
-pstr(pstr_companies, xstr_scenarios) |>
+sector_profile(pstr_companies, xstr_scenarios) |>
   unnest_company() |>
   xstr_polish_output_at_company_level()
 

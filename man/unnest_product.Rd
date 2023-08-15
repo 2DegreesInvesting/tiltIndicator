@@ -10,7 +10,7 @@ unnest_product(data)
 unnest_company(data)
 }
 \arguments{
-\item{data}{A nested data frame, e.g. the output of \code{\link[=pstr]{pstr()}}.}
+\item{data}{A nested data frame, e.g. the output of \code{\link[=sector_profile]{sector_profile()}}.}
 }
 \value{
 A data frame.
@@ -22,7 +22,7 @@ Unnest product- and company-level results
 companies <- pstr_companies
 scenarios <- xstr_scenarios
 
-both <- pstr(companies, scenarios)
+both <- sector_profile(companies, scenarios)
 both
 
 both |> unnest_product()

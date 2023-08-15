@@ -16,7 +16,7 @@ xstr_pivot_type_sector_subsector(data)
 }}
 }
 \value{
-A \code{companies} dataset as required by PSTR functions.
+A \code{companies} dataset as required by sector profile functions.
 }
 \description{
 Restructure XSTR \code{companies}
