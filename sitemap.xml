@@ -58,10 +58,13 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/products.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_datasets.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_datasets.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/rename.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/tidyeval.html</loc>
