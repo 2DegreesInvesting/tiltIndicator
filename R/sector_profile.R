@@ -9,7 +9,6 @@
 #'   targets.
 #' @param high_threshold A numeric value to segment medium and high reduction
 #'   targets.
-#' @inheritParams xctr
 #'
 #' @family PSTR functions
 #'
@@ -50,8 +49,6 @@ sector_profile <- function(companies,
   company <- xctr_at_company_level(product)
   nest_levels(product, company)
 }
-
-
 
 #' Calculate the sector profile indicator
 #'
