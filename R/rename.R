@@ -23,6 +23,7 @@
 #'
 #' Implementation changes:
 #' * v0.0.0.9084: `pstr()` -> `sector_profile()`
+#' * v0.0.0.9085: `istr()` -> `sector_profile_upstream()`
 #'
 #' @keywords internal
 #' @name rename
@@ -35,11 +36,29 @@ pstr <- function(companies,
                  scenarios,
                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  lifecycle::deprecate_warn("0.0.0.9084", "pstr()", "sector_profile()")
+  deprecate_warn("0.0.0.9084", "pstr()", "sector_profile()")
 
   sector_profile(
     companies = companies,
     scenarios = scenarios,
+    low_threshold = low_threshold,
+    high_threshold = high_threshold
+  )
+}
+
+#' @export
+#' @rdname rename
+istr <- function(companies,
+                 scenarios,
+                 inputs,
+                 low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
+                 high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+  deprecate_warn("0.0.0.9085", "istr()", "sector_profile_upstream()")
+
+  sector_profile_upstream(
+    companies = companies,
+    scenarios = scenarios,
+    inputs = inputs,
     low_threshold = low_threshold,
     high_threshold = high_threshold
   )

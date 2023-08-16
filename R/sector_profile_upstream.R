@@ -35,7 +35,7 @@
 #' both |> unnest_product()
 #'
 #' both |> unnest_company()
-istr <- function(companies,
+sector_profile_upstream <- function(companies,
                  scenarios,
                  inputs,
                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),

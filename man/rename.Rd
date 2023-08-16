@@ -2,11 +2,20 @@
 % Please edit documentation in R/rename.R
 \name{rename}
 \alias{pstr}
+\alias{istr}
 \title{Renamed functions and datasets renamed}
 \usage{
 pstr(
   companies,
   scenarios,
+  low_threshold = ifelse(scenarios$year == 2030, 1/9, 1/3),
+  high_threshold = ifelse(scenarios$year == 2030, 2/9, 2/3)
+)
+
+istr(
+  companies,
+  scenarios,
+  inputs,
   low_threshold = ifelse(scenarios$year == 2030, 1/9, 1/3),
   high_threshold = ifelse(scenarios$year == 2030, 2/9, 2/3)
 )
@@ -39,6 +48,7 @@ reporting, etc.
 Implementation changes:
 \itemize{
 \item v0.0.0.9084: \code{pstr()} -> \code{sector_profile()}
+\item v0.0.0.9085: \code{istr()} -> \code{sector_profile_upstream()}
 }
 }
 \keyword{internal}

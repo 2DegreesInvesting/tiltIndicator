@@ -3,7 +3,7 @@ test_that("wraps the output at product and company levels", {
   scenarios <- xstr_scenarios
   inputs <- istr_inputs
 
-  out <- istr(companies, scenarios, inputs)
+  out <- sector_profile_upstream(companies, scenarios, inputs)
 
   product <- unnest_product(out)
   expect_equal(product, istr_at_product_level(companies, scenarios, inputs))
@@ -13,5 +13,18 @@ test_that("wraps the output at product and company levels", {
   expect_equal(
     arrange(company, companies_id, grouped_by),
     arrange(expected, companies_id, grouped_by)
+  )
+})
+
+test_that("istr() outputs the same with a deprecation warning", {
+  companies <- slice(istr_companies, 3)
+  scenarios <- xstr_scenarios
+  inputs <- istr_inputs
+
+  expect_warning(
+    expect_equal(
+      istr(companies, scenarios, inputs),
+      sector_profile_upstream(companies, scenarios, inputs)
+    ), "sector_profile_upstream"
   )
 })
