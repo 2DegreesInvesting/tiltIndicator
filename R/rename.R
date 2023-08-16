@@ -1,4 +1,4 @@
-#' Functions and datasets renamed in tiltIndicator 0.0.1
+#' Renamed functions and datasets renamed
 #'
 #' @description
 #' `r lifecycle::badge('deprecated')`
@@ -22,7 +22,7 @@
 #' reporting, etc.
 #'
 #' Implementation changes:
-#' * `pstr()` -> `sector_profile()`
+#' * v0.0.0.9084: `pstr()` -> `sector_profile()`
 #'
 #' @keywords internal
 #' @name rename

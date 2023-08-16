@@ -2,7 +2,7 @@
 % Please edit documentation in R/rename.R
 \name{rename}
 \alias{pstr}
-\title{Functions and datasets renamed in tiltIndicator 0.0.1}
+\title{Renamed functions and datasets renamed}
 \usage{
 pstr(
   companies,
@@ -38,7 +38,7 @@ reporting, etc.
 
 Implementation changes:
 \itemize{
-\item \code{pstr()} -> \code{sector_profile()}
+\item v0.0.0.9084: \code{pstr()} -> \code{sector_profile()}
 }
 }
 \keyword{internal}
