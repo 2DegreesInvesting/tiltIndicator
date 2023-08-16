@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9085
+
+* `istr()` is now deprecated in favor of the new `sector_profile_upstream()`
+(#483).
+
 # tiltIndicator 0.0.0.9084
 
 * `pstr()` is now deprecated in favor of the new `sector_profile()` (#483).
