@@ -67,7 +67,7 @@ job_pmap <- function(job, .f) {
     pick_undone() |>
     select(data, file) |>
     future_pwalk(.f, .progress = TRUE)
-
+  
   map_df(istr_job$file, read_rds)
 }
 
@@ -114,7 +114,7 @@ istr_job <- companies |>
 istr_job
 
 # Run each indicator chunk across multiple workers and output a combined result
-istr_result <- istr_job |>
+istr_result <- istr_job |> 
   job_pmap(\(data, file) write_rds(sector_profile_upstream(data, scenarios, inputs), file))
 
 # TODO: `... |> write_csv("/path/to/output/product.csv")`

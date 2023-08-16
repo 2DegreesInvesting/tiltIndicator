@@ -64,20 +64,20 @@
 #'   xctr_at_company_level()
 #'
 #' # Same
-#' both <- xctr(companies, products)
+#' both <- emissions_profile(companies, products)
 #' both
 #'
 #' both |> unnest_product()
 #'
 #' both |> unnest_company()
-xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+emissions_profile <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
   product <- xctr_at_product_level(companies, co2, low_threshold, high_threshold)
   company <- xctr_at_company_level(product)
   nest_levels(product, company)
 }
 
 #' @export
-#' @rdname xctr
+#' @rdname emissions_profile
 xctr_at_company_level <- function(data) {
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
@@ -121,7 +121,7 @@ xctr_at_company_level <- function(data) {
 }
 
 #' @rdname sector_profile
-#' @inheritParams xctr
+#' @inheritParams emissions_profile
 #' @export
 pstr_at_company_level <- xctr_at_company_level
 #' @rdname sector_profile_upstream

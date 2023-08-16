@@ -25,6 +25,7 @@ test_that("istr() outputs the same with a deprecation warning", {
     expect_equal(
       istr(companies, scenarios, inputs),
       sector_profile_upstream(companies, scenarios, inputs)
-    ), "sector_profile_upstream"
+    ),
+    "sector_profile_upstream"
   )
 })

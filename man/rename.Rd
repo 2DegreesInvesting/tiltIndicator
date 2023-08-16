@@ -3,6 +3,7 @@
 \name{rename}
 \alias{pstr}
 \alias{istr}
+\alias{xctr}
 \title{Renamed functions and datasets renamed}
 \usage{
 pstr(
@@ -19,6 +20,8 @@ istr(
   low_threshold = ifelse(scenarios$year == 2030, 1/9, 1/3),
   high_threshold = ifelse(scenarios$year == 2030, 2/9, 2/3)
 )
+
+xctr(companies, co2, low_threshold = 1/3, high_threshold = 2/3)
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
