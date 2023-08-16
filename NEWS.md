@@ -1,8 +1,14 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9087
+
+* `xctr(data, inputs)` is now deprecated in favor or the new
+`emissions_profile_upstream()` (#481).
+
 # tiltIndicator 0.0.0.9086
 
-* `xctr(data, products)` is now deprecated for emissions_profile() (#481).
+* `xctr(data, products)` is now deprecated in favor or the new
+`emissions_profile()` (#481).
 
 # tiltIndicator 0.0.0.9085
 
