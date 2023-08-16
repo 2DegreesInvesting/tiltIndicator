@@ -12,7 +12,7 @@ test_that("wraps the output at product and company levels", {
   )
 })
 
-test_that("xctr() outputs the same with a deprecation warning", {
+test_that("xctr() with products outputs the same with a deprecation warning", {
   expect_warning(
     expect_equal(
       xctr(companies, products),

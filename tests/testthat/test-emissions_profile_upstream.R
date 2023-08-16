@@ -11,3 +11,13 @@ test_that("wraps the output at product and company levels", {
     arrange(expected, companies_id, grouped_by)
   )
 })
+
+test_that("xctr() with inputs outputs the same with a deprecation warning", {
+  expect_warning(
+    expect_equal(
+      xctr(companies, inputs),
+      emissions_profile(companies, inputs)
+    ),
+    "emissions_profile_upstream"
+  )
+})
