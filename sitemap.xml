@@ -37,6 +37,9 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/companies.html</loc>
   </url>
   <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/emissions_profile.html</loc>
+  </url>
+  <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/extdata_path.html</loc>
   </url>
   <url>
@@ -74,9 +77,6 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/unnest_product.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/xctr.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/xstr_pivot_type_sector_subsector.html</loc>

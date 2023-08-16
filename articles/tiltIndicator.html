@@ -237,7 +237,7 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #949494;">#   activity_uuid_product_uuid &lt;chr&gt;</span></span></span>
 <span></span>
 <span><span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span><span class="va">inputs</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/emissions_profile.html">xctr_at_product_level</a></span><span class="op">(</span><span class="va">inputs</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 319 × 7</span></span></span>
 <span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
@@ -257,8 +257,8 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #949494;">#   input_co2_footprint &lt;dbl&gt;</span></span></span>
 <span></span>
 <span><span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span><span class="va">inputs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_company_level</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/emissions_profile.html">xctr_at_product_level</a></span><span class="op">(</span><span class="va">inputs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/emissions_profile.html">xctr_at_company_level</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -275,7 +275,12 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Same</span></span>
-<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">inputs</span><span class="op">)</span></span>
+<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rename.html">xctr</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">inputs</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: `xctr()` was deprecated in tiltIndicator 0.0.0.9086.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `emissions_profile()` instead.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
 <span><span class="va">both</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
 <span><span class="co">#&gt;   companies_id                             product           company          </span></span>
@@ -337,7 +342,7 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: ei_activity_name &lt;chr&gt;</span></span></span>
 <span></span>
 <span><span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span><span class="va">products</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/emissions_profile.html">xctr_at_product_level</a></span><span class="op">(</span><span class="va">products</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 6</span></span></span>
 <span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
@@ -356,8 +361,8 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span></span>
 <span></span>
 <span><span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_product_level</a></span><span class="op">(</span><span class="va">products</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/xctr.html">xctr_at_company_level</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/emissions_profile.html">xctr_at_product_level</a></span><span class="op">(</span><span class="va">products</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/emissions_profile.html">xctr_at_company_level</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                           grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -374,7 +379,7 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Same</span></span>
-<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/xctr.html">xctr</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products</span><span class="op">)</span></span>
+<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rename.html">xctr</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products</span><span class="op">)</span></span>
 <span><span class="va">both</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
 <span><span class="co">#&gt;   companies_id                             product           company          </span></span>
