@@ -1,4 +1,4 @@
-#' @rdname istr
+#' @rdname sector_profile_upstream
 #' @export
 istr_at_product_level <- function(companies,
                                   scenarios,

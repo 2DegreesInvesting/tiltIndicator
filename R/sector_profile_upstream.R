@@ -46,19 +46,3 @@ sector_profile_upstream <- function(companies,
   company <- xctr_at_company_level(product)
   nest_levels(product, company)
 }
-
-istr <- function(companies,
-                 scenarios,
-                 inputs,
-                 low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
-                 high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  lifecycle::deprecate_warn("0.0.0.9085", "istr()", "sector_profile_upstream()")
-
-  sector_profile_upstream(
-    companies = companies,
-    scenarios = scenarios,
-    inputs = inputs,
-    low_threshold = low_threshold,
-    high_threshold = high_threshold
-  )
-}
