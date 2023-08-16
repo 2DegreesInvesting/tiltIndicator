@@ -52,6 +52,7 @@ Implementation changes:
 \itemize{
 \item v0.0.0.9084: \code{pstr()} -> \code{sector_profile()}
 \item v0.0.0.9085: \code{istr()} -> \code{sector_profile_upstream()}
+\item v0.0.0.9086: \code{xctr(companies, products)} -> \code{emissions_profile()}
 }
 }
 \keyword{internal}
