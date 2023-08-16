@@ -2,17 +2,16 @@
 
 # tiltIndicator 0.0.0.9086
 
-- Same as previous version.
-
+* `xctr(data, products)` is now deprecated for emissions_profile() (#481).
 
 # tiltIndicator 0.0.0.9085
 
 * `istr()` is now deprecated in favor of the new `sector_profile_upstream()`
-(#483).
+(#480).
 
 # tiltIndicator 0.0.0.9084
 
-* `pstr()` is now deprecated in favor of the new `sector_profile()` (#483).
+* `pstr()` is now deprecated in favor of the new `sector_profile()` (#479).
 
 # tiltIndicator 0.0.0.9083
 
