@@ -33,48 +33,20 @@
 #' @export
 #'
 #' @examples
-#' companies <- companies
+#' emissions_profile(companies, products)
+#' emissions_profile(companies, products) |> unnest_product()
+#' emissions_profile(companies, products) |> unnest_company()
 #'
-#' # ICTR
-#' inputs <- inputs
-#'
-#' companies |>
-#'   xctr_at_product_level(inputs)
-#'
-#' companies |>
-#'   xctr_at_product_level(inputs) |>
-#'   xctr_at_company_level()
-#'
-#' # Same
-#' both <- xctr(companies, inputs)
-#' both
-#'
-#' both |> unnest_product()
-#'
-#' both |> unnest_company()
-#'
-#' # PCTR
-#' products <- products
-#'
-#' companies |>
-#'   xctr_at_product_level(products)
-#'
-#' companies |>
-#'   xctr_at_product_level(products) |>
-#'   xctr_at_company_level()
-#'
-#' # Same
-#' both <- emissions_profile(companies, products)
-#' both
-#'
-#' both |> unnest_product()
-#'
-#' both |> unnest_company()
+#' emissions_profile_upstream(companies, inputs)
 emissions_profile <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
   product <- xctr_at_product_level(companies, co2, low_threshold, high_threshold)
   company <- xctr_at_company_level(product)
   nest_levels(product, company)
 }
+
+#' @export
+#' @rdname emissions_profile
+emissions_profile_upstream <- emissions_profile
 
 #' @export
 #' @rdname emissions_profile

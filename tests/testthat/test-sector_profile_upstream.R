@@ -16,7 +16,7 @@ test_that("wraps the output at product and company levels", {
   )
 })
 
-test_that("istr() outputs the same with a deprecation warning", {
+test_that("istr() yields the same with a deprecation warning", {
   companies <- slice(istr_companies, 3)
   scenarios <- xstr_scenarios
   inputs <- istr_inputs
