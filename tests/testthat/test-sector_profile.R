@@ -15,7 +15,7 @@ test_that("wraps the output at product and company levels", {
   )
 })
 
-test_that("pstr() outputs the same with deprecation warning", {
+test_that("pstr() yields the same with deprecation warning", {
   companies <- pstr_companies
   scenarios <- xstr_scenarios
 

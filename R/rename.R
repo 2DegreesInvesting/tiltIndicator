@@ -25,6 +25,7 @@
 #' * v0.0.0.9084: `pstr()` -> `sector_profile()`
 #' * v0.0.0.9085: `istr()` -> `sector_profile_upstream()`
 #' * v0.0.0.9086: `xctr(companies, products)` -> `emissions_profile()`
+#' * v0.0.0.9087: `xctr(companies, inputs)` -> `emissions_profile_upstream()`
 #'
 #' @keywords internal
 #' @name rename

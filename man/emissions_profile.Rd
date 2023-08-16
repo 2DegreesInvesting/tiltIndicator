@@ -2,11 +2,19 @@
 % Please edit documentation in R/emissions_profile.R, R/xctr_at_product_level.R
 \name{emissions_profile}
 \alias{emissions_profile}
+\alias{emissions_profile_upstream}
 \alias{xctr_at_company_level}
 \alias{xctr_at_product_level}
 \title{Calculate input (or product) carbon transition risk}
 \usage{
 emissions_profile(companies, co2, low_threshold = 1/3, high_threshold = 2/3)
+
+emissions_profile_upstream(
+  companies,
+  co2,
+  low_threshold = 1/3,
+  high_threshold = 2/3
+)
 
 xctr_at_company_level(data)
 
@@ -119,42 +127,10 @@ The output of this indicator contains the following:
 }
 }
 \examples{
-companies <- companies
+emissions_profile(companies, products)
+emissions_profile(companies, products) |> unnest_product()
+emissions_profile(companies, products) |> unnest_company()
 
-# ICTR
-inputs <- inputs
-
-companies |>
-  xctr_at_product_level(inputs)
-
-companies |>
-  xctr_at_product_level(inputs) |>
-  xctr_at_company_level()
-
-# Same
-both <- xctr(companies, inputs)
-both
-
-both |> unnest_product()
-
-both |> unnest_company()
-
-# PCTR
-products <- products
-
-companies |>
-  xctr_at_product_level(products)
-
-companies |>
-  xctr_at_product_level(products) |>
-  xctr_at_company_level()
-
-# Same
-both <- emissions_profile(companies, products)
-both
-
-both |> unnest_product()
-
-both |> unnest_company()
+emissions_profile_upstream(companies, inputs)
 }
 \concept{XCTR functions}
