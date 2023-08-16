@@ -3,7 +3,7 @@ test_that("wraps the output at product and company levels", {
   scenarios <- xstr_scenarios
   inputs <- istr_inputs
 
-  out <- istr(companies, scenarios, inputs)
+  out <- sector_profile_upstream(companies, scenarios, inputs)
 
   product <- unnest_product(out)
   expect_equal(product, istr_at_product_level(companies, scenarios, inputs))
