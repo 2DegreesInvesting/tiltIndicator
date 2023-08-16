@@ -47,11 +47,4 @@ both
 both |> unnest_product()
 
 both |> unnest_company()
-
-both <- emissions_profile_upstream(companies, inputs)
-both
-
-both |> unnest_product()
-
-both |> unnest_company()
 ```
