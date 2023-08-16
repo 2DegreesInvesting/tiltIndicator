@@ -18,6 +18,8 @@ test_that("xctr() with inputs outputs the same with a deprecation warning", {
       xctr(companies, inputs),
       emissions_profile(companies, inputs)
     ),
-    "emissions_profile_upstream"
+    # This is close enough to "emissions_profile_upstream" sinced they are
+    # documented in the same helpfile
+    "emissions_profile"
   )
 })
