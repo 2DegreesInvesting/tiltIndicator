@@ -46,9 +46,6 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/inputs.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr.html</loc>
-  </url>
-  <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_datasets.html</loc>
   </url>
   <url>
@@ -65,6 +62,9 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_upstream.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/tidyeval.html</loc>
