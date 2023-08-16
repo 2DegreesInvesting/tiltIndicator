@@ -1,5 +1,5 @@
 test_that("wraps the output at product and company levels", {
-  out <- xctr(companies, products)
+  out <- emissions_profile(companies, products)
 
   product <- unnest_product(out)
   expect_equal(product, xctr_at_product_level(companies, products))
@@ -9,5 +9,15 @@ test_that("wraps the output at product and company levels", {
   expect_equal(
     arrange(company, companies_id, grouped_by),
     arrange(expected, companies_id, grouped_by)
+  )
+})
+
+test_that("xctr() outputs the same with a deprecation warning", {
+  expect_warning(
+    expect_equal(
+      xctr(companies, products),
+      emissions_profile(companies, products)
+    ),
+    "emissions_profile"
   )
 })

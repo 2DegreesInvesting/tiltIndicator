@@ -6,7 +6,7 @@
 #' @param companies A dataframe like [istr_companies].
 #' @param scenarios A dataframe like [xstr_scenarios].
 #' @param inputs A dataframe like [istr_inputs].
-#' @inheritParams xctr
+#' @inheritParams emissions_profile
 #'
 #' @family ISTR functions
 #'
@@ -36,10 +36,10 @@
 #'
 #' both |> unnest_company()
 sector_profile_upstream <- function(companies,
-                                    scenarios,
-                                    inputs,
-                                    low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
-                                    high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+                 scenarios,
+                 inputs,
+                 low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
+                 high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   product <- istr_at_product_level(
     companies, scenarios, inputs, low_threshold, high_threshold
   )

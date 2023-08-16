@@ -63,3 +63,16 @@ istr <- function(companies,
     high_threshold = high_threshold
   )
 }
+
+#' @export
+#' @rdname rename
+xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
+  deprecate_warn("0.0.0.9086", "xctr()", "emissions_profile()")
+
+  emissions_profile(
+    companies = companies,
+    co2 = co2,
+    low_threshold = low_threshold,
+    high_threshold = high_threshold
+  )
+}
