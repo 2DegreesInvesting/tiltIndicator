@@ -190,17 +190,7 @@ what’s going on.</p>
 <span></span>
 <span><span class="co"># Run each indicator chunk across multiple workers and output a combined result</span></span>
 <span><span class="va">istr_result</span> <span class="op">&lt;-</span> <span class="va">istr_job</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">job_pmap</span><span class="op">(</span>\<span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/rename.html">istr</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">scenarios</span>, <span class="va">inputs</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: `istr()` was deprecated in tiltIndicator 0.0.0.9085.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `sector_profile_upstream()` instead.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
-<span><span class="co">#&gt; Warning: `istr()` was deprecated in tiltIndicator 0.0.0.9085.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `sector_profile_upstream()` instead.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
+<span>  <span class="fu">job_pmap</span><span class="op">(</span>\<span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/sector_profile_upstream.html">sector_profile_upstream</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">scenarios</span>, <span class="va">inputs</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/product.csv")`</span></span>
 <span><span class="va">istr_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>

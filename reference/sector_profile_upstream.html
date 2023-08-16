@@ -216,9 +216,7 @@ risk products.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 284 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same</span></span></span>
-<span class="r-in"><span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="rename.html">istr</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">inputs</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`istr()` was deprecated in tiltIndicator 0.0.0.9085.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use `sector_profile_upstream()` instead.</span>
+<span class="r-in"><span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu">sector_profile_upstream</span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">inputs</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">both</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   companies_id                             product             company          </span>
