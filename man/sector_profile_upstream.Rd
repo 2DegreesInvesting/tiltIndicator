@@ -82,7 +82,7 @@ companies |>
   istr_at_company_level()
 
 # Same
-both <- istr(companies, scenarios, inputs)
+both <- sector_profile_upstream(companies, scenarios, inputs)
 both
 
 both |> unnest_product()

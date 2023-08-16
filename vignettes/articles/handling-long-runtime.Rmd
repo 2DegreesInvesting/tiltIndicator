@@ -115,7 +115,7 @@ istr_job
 
 # Run each indicator chunk across multiple workers and output a combined result
 istr_result <- istr_job |> 
-  job_pmap(\(data, file) write_rds(istr(data, scenarios, inputs), file))
+  job_pmap(\(data, file) write_rds(sector_profile_upstream(data, scenarios, inputs), file))
 
 # TODO: `... |> write_csv("/path/to/output/product.csv")`
 istr_result |> unnest_product()
