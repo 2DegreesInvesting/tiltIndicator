@@ -49,7 +49,7 @@ emissions_profile <- function(companies, co2, low_threshold = 1 / 3, high_thresh
 emissions_profile_upstream <- emissions_profile
 
 #' @export
-#' @rdname emissions_profile
+#' @rdname deprecated
 xctr_at_company_level <- function(data) {
   warn_product_and_company_level_functions_are_now_deprecated()
 
@@ -94,12 +94,12 @@ xctr_at_company_level <- function(data) {
     polish_output(cols_at_company_level())
 }
 
-#' @rdname sector_profile
 #' @inheritParams emissions_profile
+#' @rdname deprecated
 #' @export
 pstr_at_company_level <- xctr_at_company_level
-#' @rdname sector_profile_upstream
 #' @export
+#' @rdname deprecated
 istr_at_company_level <- xctr_at_company_level
 
 na_to_0_if_not_all_is_na <- function(x) {

@@ -3,7 +3,6 @@
 \name{emissions_profile}
 \alias{emissions_profile}
 \alias{emissions_profile_upstream}
-\alias{xctr_at_company_level}
 \title{Calculate input (or product) carbon transition risk}
 \usage{
 emissions_profile(companies, co2, low_threshold = 1/3, high_threshold = 2/3)
@@ -14,8 +13,6 @@ emissions_profile_upstream(
   low_threshold = 1/3,
   high_threshold = 2/3
 )
-
-xctr_at_company_level(data)
 }
 \arguments{
 \item{companies}{A dataframe like \link{companies}.}
