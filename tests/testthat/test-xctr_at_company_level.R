@@ -231,11 +231,3 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
   expect_equal(n, 18L)
   expect_false(anyNA(out))
 })
-
-test_that("in a user-environment throws a deprecation warning", {
-  local_envvar(list("TESTTHAT" = ""))
-  companies <- slice(companies, 1)
-  inputs <- slice(inputs, 1)
-  out <- suppressWarnings(xctr_product(companies, inputs))
-  expect_warning(xctr_company(out), "deprecated")
-})

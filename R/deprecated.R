@@ -12,15 +12,6 @@
 #' @aliases NULL
 NULL
 
-warn_product_and_company_level_functions_are_now_deprecated <- function() {
-  if (TRUE) {
-    warn(c(
-      "`*at_company_level()` and `*at_product_level()` are now deprecated.",
-      i = "Instead use `emissions_profle()`, `sector_profile()`, etc."
-    ))
-  }
-}
-
 #' @export
 #' @rdname deprecated
 istr_at_product_level <- function(companies,
@@ -28,8 +19,7 @@ istr_at_product_level <- function(companies,
                                   inputs,
                                   low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                   high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  warn_product_and_company_level_functions_are_now_deprecated()
-
+  deprecate_warn("0.0.0.9088", "istr_at_product_level()")
   istr_product(
     companies = companies,
     scenarios = scenarios,
@@ -45,8 +35,7 @@ pstr_at_product_level <- function(companies,
                                   scenarios,
                                   low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                   high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  warn_product_and_company_level_functions_are_now_deprecated()
-
+  deprecate_warn("0.0.0.9088", "pstr_at_product_level()")
   pstr_product(
     companies = companies,
     scenarios = scenarios,
@@ -61,8 +50,7 @@ xctr_at_product_level <- function(companies,
                                   co2,
                                   low_threshold = 1 / 3,
                                   high_threshold = 2 / 3) {
-  warn_product_and_company_level_functions_are_now_deprecated()
-
+  deprecate_warn("0.0.0.9088", "xctr_at_product_level()")
   xctr_product(
     companies = companies,
     co2 = co2,
@@ -74,23 +62,20 @@ xctr_at_product_level <- function(companies,
 #' @export
 #' @rdname deprecated
  istr_at_company_level <- function(data) {
-  warn_product_and_company_level_functions_are_now_deprecated()
-
+  deprecate_warn("0.0.0.9088", "istr_at_company_level()")
   xctr_company(data)
 }
 
 #' @rdname deprecated
 #' @export
 pstr_at_company_level <- function(data) {
-  warn_product_and_company_level_functions_are_now_deprecated()
-
+  deprecate_warn("0.0.0.9088", "pstr_at_company_level()")
   xctr_company(data)
 }
 
 #' @export
 #' @rdname deprecated
 xctr_at_company_level <- function(data) {
-  warn_product_and_company_level_functions_are_now_deprecated()
-
+  deprecate_warn("0.0.0.9088", "xctr_at_company_level()")
   xctr_company(data)
 }
