@@ -48,8 +48,6 @@ emissions_profile <- function(companies, co2, low_threshold = 1 / 3, high_thresh
 emissions_profile_upstream <- emissions_profile
 
 xctr_company <- function(data) {
-  warn_product_and_company_level_functions_are_now_deprecated()
-
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
     filter(!is.na(.data$risk_category)) |>

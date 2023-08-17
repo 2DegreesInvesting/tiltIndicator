@@ -80,4 +80,8 @@ xctr_at_company_level <- function(data) {
 
 #' @rdname deprecated
 #' @export
-pstr_at_company_level <- xctr_company
+pstr_at_company_level <- function(data) {
+  warn_product_and_company_level_functions_are_now_deprecated()
+
+  xctr_company(data)
+}
