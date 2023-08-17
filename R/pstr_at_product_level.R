@@ -1,4 +1,4 @@
-pstr_product <- function(companies,
+spi_product <- function(companies,
                          scenarios,
                          low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                          high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {

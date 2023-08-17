@@ -1,7 +1,7 @@
 # still works but warns deprecation
 
     Code
-      product <- pstr_product(companies, scenarios)
+      product <- spi_product(companies, scenarios)
       out <- pstr_company(product)
       expect_named(out, cols_at_company_level())
 

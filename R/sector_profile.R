@@ -30,7 +30,7 @@ sector_profile <- function(companies,
                            scenarios,
                            low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                            high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  product <- pstr_product(companies, scenarios, low_threshold, high_threshold)
+  product <- spi_product(companies, scenarios, low_threshold, high_threshold)
   company <- xctr_company(product)
   nest_levels(product, company)
 }
