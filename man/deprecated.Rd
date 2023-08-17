@@ -40,8 +40,6 @@ xctr_at_product_level(
 )
 }
 \arguments{
-\item{data}{A dataframe. The output at product level.}
-
 \item{companies}{A dataframe like \link{companies}.}
 
 \item{low_threshold}{A numeric value to segment low and medium transition

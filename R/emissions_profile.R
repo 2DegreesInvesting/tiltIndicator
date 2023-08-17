@@ -24,7 +24,6 @@
 #'   risk products.
 #' @param high_threshold A numeric value to segment medium and high transition
 #'   risk products.
-#' @param data A dataframe. The output at product level.
 #'
 #' @family XCTR functions
 #'
