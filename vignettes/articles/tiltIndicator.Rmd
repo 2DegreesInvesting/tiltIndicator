@@ -69,7 +69,9 @@ both
 both |> unnest_product()
 
 both |> unnest_company()
+```
 
+```{r}
 products
 
 both <- xctr(companies, products)
@@ -79,3 +81,4 @@ both |> unnest_product()
 
 both |> unnest_company()
 ```
+
