@@ -4,7 +4,7 @@ test_that("hasn't changed", {
   inputs <- istr_inputs
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_snapshot(format_robust_snapshot(out))
 })
 
@@ -14,7 +14,7 @@ test_that("outputs expected columns at company level", {
   inputs <- slice(istr_inputs, 1)
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
 
   expected <- cols_at_company_level()
   expect_equal(names(out)[seq_along(expected)], expected)
@@ -26,7 +26,7 @@ test_that("the output is not grouped", {
   inputs <- istr_inputs
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_false(dplyr::is_grouped_df(out))
 })
 
@@ -61,35 +61,35 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 
   default_low_mid <- 1 / 3
   product <- spui_product(companies, mutate(scenarios, reductions = default_low_mid), inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_equal(1, filter(out, risk_category == "low")$value)
   expect_equal(0, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
   above_default_low_mid <- 1 / 3 + 0.001
   product <- spui_product(companies, mutate(scenarios, reductions = above_default_low_mid), inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(1, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
   default_mid_high <- 2 / 3
   product <- spui_product(companies, mutate(scenarios, reductions = default_mid_high), inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(1, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
 
   above_default_mid_high <- 2 / 3 + 0.001
   product <- spui_product(companies, mutate(scenarios, reductions = above_default_mid_high), inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_equal(0, filter(out, risk_category == "low")$value)
   expect_equal(0, filter(out, risk_category == "medium")$value)
   expect_equal(1, filter(out, risk_category == "high")$value)
 
   below_0 <- -0.001
   product <- spui_product(companies, mutate(scenarios, reductions = below_0), inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_equal(1, filter(out, risk_category == "low")$value)
   expect_equal(0, filter(out, risk_category == "medium")$value)
   expect_equal(0, filter(out, risk_category == "high")$value)
@@ -100,7 +100,7 @@ test_that("outputs values in proportion", {
   scenarios <- xstr_scenarios
   inputs <- istr_inputs
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_true(all(na.omit(out$value) <= 1.0))
 })
 
@@ -109,7 +109,7 @@ test_that("each company has risk categories low, medium, and high (#215)", {
   scenarios <- xstr_scenarios
   inputs <- istr_inputs
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   risk_categories <- sort(unique(out$risk_category))
   expect_equal(risk_categories, c("high", "low", "medium"))
 })
@@ -121,7 +121,7 @@ test_that("grouped_by includes the type of scenario", {
   inputs <- istr_inputs |> filter(type == .type)
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_true(all(grepl(.type, unique(out$grouped_by))))
 })
 
@@ -132,7 +132,7 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
   inputs <- istr_inputs |> filter(type == .type)
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   sum <- out |>
     summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
 
@@ -146,7 +146,7 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
   inputs <- istr_inputs |> filter(type == .type)
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   sum <- out |>
     summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
 
@@ -184,7 +184,7 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
   )
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   expect_true(all(is.na(out$value)))
 })
 
@@ -218,7 +218,7 @@ test_that("values sum 1", {
   )
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
   sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
   expect_equal(sum, 1)
 })
@@ -253,7 +253,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
   )
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
 
   expect_equal(nrow(out), 3L)
   n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
@@ -291,7 +291,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   )
 
   product <- spui_product(companies, scenarios, inputs)
-  out <- spui_company(product)
+  out <- any_indicator_at_company_level(product)
 
   expect_equal(nrow(out), 1)
   expect_equal(out$companies_id, "a")

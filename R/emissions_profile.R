@@ -91,7 +91,6 @@ any_indicator_at_company_level <- function(data) {
     ) |>
     polish_output(cols_at_company_level())
 }
-spi_company <- spui_company <- any_indicator_at_company_level
 
 na_to_0_if_not_all_is_na <- function(x) {
   if (all(is.na(x))) {

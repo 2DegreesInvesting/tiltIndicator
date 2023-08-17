@@ -9,7 +9,7 @@ test_that("wraps the output at product and company levels", {
   expect_equal(product, spui_product(companies, scenarios, inputs))
 
   company <- unnest_company(out)
-  expected <- spui_company(product)
+  expected <- any_indicator_at_company_level(product)
   expect_equal(
     arrange(company, companies_id, grouped_by),
     arrange(expected, companies_id, grouped_by)
