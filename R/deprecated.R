@@ -20,7 +20,7 @@ istr_at_product_level <- function(companies,
                                   low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                   high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   deprecate_warn("0.0.0.9088", "istr_at_product_level()")
-  istr_product(
+  spui_product(
     companies = companies,
     scenarios = scenarios,
     inputs = inputs,

@@ -1,4 +1,4 @@
-istr_product <- function(companies,
+spui_product <- function(companies,
                          scenarios,
                          inputs,
                          low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
