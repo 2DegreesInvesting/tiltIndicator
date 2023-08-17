@@ -88,12 +88,8 @@ xctr_company <- function(data) {
     ) |>
     polish_output(cols_at_company_level())
 }
-
 pstr_company <- xctr_company
-
-#' @export
-#' @rdname deprecated
-istr_at_company_level <- xctr_at_company_level
+istr_company <- xctr_company
 
 na_to_0_if_not_all_is_na <- function(x) {
   if (all(is.na(x))) {
