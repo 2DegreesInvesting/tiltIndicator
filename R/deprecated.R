@@ -3,8 +3,9 @@
 #' @description
 #' `r lifecycle::badge('deprecated')`
 #'
-#' All functions of the form `f_at_product_level()` or `f_at_company_level()`
-#' are now deprecated in favour of a function of the form `f()`.
+#' All functions of the form `f_at_product_level()` and `f_at_company_level()`
+#' are now deprecated in favor of higher-level wrappers (see
+#' `?tiltIndicator::rename`).
 #'
 #' @keywords internal
 #' @name deprecated

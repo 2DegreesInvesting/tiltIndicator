@@ -55,7 +55,8 @@ risk products.}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
-All functions of the form \code{f_at_product_level()} or \code{f_at_company_level()}
-are now deprecated in favour of a function of the form \code{f()}.
+All functions of the form \code{f_at_product_level()} and \code{f_at_company_level()}
+are now deprecated in favor of higher-level wrappers (see
+\code{?tiltIndicator::rename}).
 }
 \keyword{internal}
