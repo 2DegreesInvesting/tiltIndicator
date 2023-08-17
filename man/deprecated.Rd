@@ -39,17 +39,6 @@ xctr_at_product_level(
   high_threshold = 2/3
 )
 }
-\arguments{
-\item{companies}{A dataframe like \link{companies}.}
-
-\item{low_threshold}{A numeric value to segment low and medium transition
-risk products.}
-
-\item{high_threshold}{A numeric value to segment medium and high transition
-risk products.}
-
-\item{co2}{A dataframe like \link{inputs}.}
-}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 

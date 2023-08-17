@@ -93,7 +93,6 @@ xctr_at_company_level <- function(data) {
     polish_output(cols_at_company_level())
 }
 
-#' @inheritParams emissions_profile
 #' @rdname deprecated
 #' @export
 pstr_at_company_level <- xctr_at_company_level
