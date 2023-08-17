@@ -13,7 +13,7 @@
 NULL
 
 warn_product_and_company_level_functions_are_now_deprecated <- function() {
-  if (!is_testing()) {
+  if (TRUE) {
     warn(c(
       "`*at_company_level()` and `*at_product_level()` are now deprecated.",
       i = "Instead use `emissions_profle()`, `sector_profile()`, etc."

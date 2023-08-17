@@ -2,7 +2,7 @@ test_that("outputs expected columns at product level", {
   companies <- slice(istr_companies, 1)
   scenarios <- xstr_scenarios
   inputs <- istr_inputs
-  out <- istr_at_product_level(companies, scenarios, inputs)
+  out <- istr_product(companies, scenarios, inputs)
   expect_named(out, istr_cols_at_product_level())
 })
 
@@ -36,7 +36,7 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
     input_isic_4digit = "4578",
   )
 
-  out <- istr_at_product_level(companies, scenarios, inputs)
+  out <- istr_product(companies, scenarios, inputs)
 
   # Reductions > low = "medium"
   expect_equal(filter(out, year == 2030)$risk_category, "medium")
@@ -74,7 +74,7 @@ test_that("`high_threshold` and `year` yield the expected risk categories", {
     input_isic_4digit = "4578",
   )
 
-  out <- istr_at_product_level(companies, scenarios, inputs)
+  out <- istr_product(companies, scenarios, inputs)
 
   # Reductions > threshold = "high"
   expect_equal(filter(out, year == 2030)$risk_category, "high")
@@ -111,7 +111,7 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
     subsector = "c"
   )
 
-  out <- istr_at_product_level(companies, scenarios, inputs)
+  out <- istr_product(companies, scenarios, inputs)
   expect_equal(out$risk_category, NA_character_)
 })
 
@@ -142,7 +142,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
     input_isic_4digit = "a",
   )
 
-  out <- istr_at_product_level(companies, scenarios, inputs)
+  out <- istr_product(companies, scenarios, inputs)
 
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
@@ -183,7 +183,7 @@ test_that("with duplicated scenarios throws no error (#435)", {
     input_isic_4digit = "a",
   )
 
-  expect_no_error(istr_at_product_level(companies, scenarios, inputs))
+  expect_no_error(istr_product(companies, scenarios, inputs))
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
@@ -193,11 +193,11 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))
-  expect_error(istr_at_product_level(bad, scenarios, inputs), crucial)
+  expect_error(istr_product(bad, scenarios, inputs), crucial)
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(companies, -all_of(crucial))
-  expect_error(istr_at_product_level(bad, scenarios, inputs), crucial)
+  expect_error(istr_product(bad, scenarios, inputs), crucial)
 })
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
@@ -207,23 +207,23 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 
   crucial <- "type"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+  expect_error(istr_product(companies, bad, inputs), crucial)
 
   crucial <- "sector"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+  expect_error(istr_product(companies, bad, inputs), crucial)
 
   crucial <- "subsector"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+  expect_error(istr_product(companies, bad, inputs), crucial)
 
   crucial <- "year"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+  expect_error(istr_product(companies, bad, inputs), crucial)
 
   crucial <- "scenario"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(istr_at_product_level(companies, bad, inputs), crucial)
+  expect_error(istr_product(companies, bad, inputs), crucial)
 })
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
@@ -233,19 +233,19 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
 
   crucial <- "type"
   bad <- select(inputs, -all_of(crucial))
-  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+  expect_error(istr_product(companies, scenarios, bad), crucial)
 
   crucial <- "sector"
   bad <- select(inputs, -all_of(crucial))
-  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+  expect_error(istr_product(companies, scenarios, bad), crucial)
 
   crucial <- "subsector"
   bad <- select(inputs, -all_of(crucial))
-  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+  expect_error(istr_product(companies, scenarios, bad), crucial)
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(inputs, -all_of(crucial))
-  expect_error(istr_at_product_level(companies, scenarios, bad), crucial)
+  expect_error(istr_product(companies, scenarios, bad), crucial)
 })
 
 test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
@@ -277,19 +277,19 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
     year = 2030,
     reductions = 1,
   )
-  expect_error(istr_at_product_level(companies, scenarios, inputs), "sector.*subsector.*type")
+  expect_error(istr_product(companies, scenarios, inputs), "sector.*subsector.*type")
 })
 
 test_that("a 0-row `companies` yields an error", {
   expect_error(
-    istr_at_product_level(istr_companies[0L, ], xstr_scenarios, istr_inputs),
+    istr_product(istr_companies[0L, ], xstr_scenarios, istr_inputs),
     "companies.*can't have 0-row"
   )
 })
 
 test_that("a 0-row `scenarios` yields an error", {
   expect_error(
-    istr_at_product_level(istr_companies, xstr_scenarios[0L, ], istr_inputs),
+    istr_product(istr_companies, xstr_scenarios[0L, ], istr_inputs),
     "scenarios.*can't have 0-row"
   )
 })
