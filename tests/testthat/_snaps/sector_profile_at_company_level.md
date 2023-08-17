@@ -2,7 +2,7 @@
 
     Code
       product <- spi_product(companies, scenarios)
-      out <- pstr_company(product)
+      out <- spi_company(product)
       expect_named(out, cols_at_company_level())
 
 # hasn't changed

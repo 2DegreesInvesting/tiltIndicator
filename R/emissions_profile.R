@@ -91,8 +91,7 @@ epxi_company <- function(data) {
     ) |>
     polish_output(cols_at_company_level())
 }
-pstr_company <- epxi_company
-istr_company <- epxi_company
+spi_company <- spui_company <- epxi_company
 
 na_to_0_if_not_all_is_na <- function(x) {
   if (all(is.na(x))) {
