@@ -61,9 +61,9 @@ package: `companies`, `inputs`, and `products`.
 ```{r}
 companies
 
-inputs
+products
 
-both <- xctr(companies, inputs)
+both <- emissions_profile(companies, products)
 both
 
 both |> unnest_product()
@@ -72,9 +72,9 @@ both |> unnest_company()
 ```
 
 ```{r}
-products
+upstream_products <- inputs
 
-both <- xctr(companies, products)
+both <- emissions_profile_upstream(companies, upstream_products)
 both
 
 both |> unnest_product()
