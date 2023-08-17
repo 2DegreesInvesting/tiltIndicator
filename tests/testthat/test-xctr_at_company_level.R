@@ -1,6 +1,6 @@
 test_that("hasn't change", {
   out <- epxi_product(companies, products) |>
-    xctr_company() |>
+    epxi_company() |>
     dplyr::arrange(companies_id) |>
     format_robust_snapshot()
   expect_snapshot(out)
@@ -11,7 +11,7 @@ test_that("outputs expected columns at company level", {
   co2 <- slice(products, 1)
 
   product <- epxi_product(companies, co2)
-  out <- xctr_company(product)
+  out <- epxi_company(product)
 
   expected <- cols_at_company_level()
   expect_equal(names(out)[seq_along(expected)], expected)
@@ -21,9 +21,9 @@ test_that("is sensitive to low_threshold", {
   companies <- slice(companies, 1:2)
   co2 <- slice(products, 1:2)
   out1 <- epxi_product(companies, co2, low_threshold = .1) |>
-    xctr_company()
+    epxi_company()
   out2 <- epxi_product(companies, co2, low_threshold = .9) |>
-    xctr_company()
+    epxi_company()
   expect_false(identical(out1, out2))
 })
 
@@ -31,9 +31,9 @@ test_that("is sensitive to high_threshold", {
   companies <- slice(companies, 1:2)
   co2 <- slice(products, 1:2)
   out1 <- epxi_product(companies, co2, high_threshold = .1) |>
-    xctr_company()
+    epxi_company()
   out2 <- epxi_product(companies, co2, high_threshold = .9) |>
-    xctr_company()
+    epxi_company()
   expect_false(identical(out1, out2))
 })
 
@@ -42,28 +42,28 @@ test_that("no longer drops companies depending on co2 data (#122)", {
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(products, 1:5)
   product <- epxi_product(companies, co2)
-  out <- xctr_company(product)
+  out <- epxi_company(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(products, 1:4)
   product <- epxi_product(companies, co2)
-  out <- xctr_company(product)
+  out <- epxi_company(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(products, 1:10)
   product <- epxi_product(companies, co2)
-  out <- xctr_company(product)
+  out <- epxi_company(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(products, 1:9)
   product <- epxi_product(companies, co2)
-  out <- xctr_company(product)
+  out <- epxi_company(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 })
 
@@ -91,7 +91,7 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   )
 
   out <- epxi_product(companies, co2, low_threshold, high_threshold) |>
-    xctr_company()
+    epxi_company()
   expect_true(identical(unique(out$value), expected_value))
 })
 
@@ -116,7 +116,7 @@ test_that("for each company & benchmark, each risk category is unique (#285)", {
   # styler: on
 
   product <- epxi_product(companies, co2)
-  out <- xctr_company(product)
+  out <- epxi_company(product)
 
   bad <- out |>
     count(grouped_by, risk_category) |>
@@ -140,7 +140,7 @@ test_that("values sum 1", {
   )
 
   product <- epxi_product(companies, co2)
-  out <- xctr_company(product)
+  out <- epxi_company(product)
 
   sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
   expect_equal(sum, 1)
@@ -161,7 +161,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   )
 
   product <- epxi_product(companies, co2)
-  out <- xctr_company(product)
+  out <- epxi_company(product)
 
   expect_equal(out$companies_id, "a")
   expect_equal(out$grouped_by, NA_character_)
@@ -185,7 +185,7 @@ test_that("no match preserves companies", {
   )
   product <- epxi_product(companies, co2)
   expect_equal(companies$company_id, unique(product$companies_id))
-  company <- xctr_company(product)
+  company <- epxi_company(product)
   expect_equal(companies$company_id, unique(company$companies_id))
 
   companies <- tibble(
@@ -195,7 +195,7 @@ test_that("no match preserves companies", {
   )
   product <- epxi_product(companies, co2)
   expect_equal(companies$company_id, product$companies_id)
-  company <- xctr_company(product)
+  company <- epxi_company(product)
   expect_equal(companies$company_id, company$companies_id)
 
   companies <- tibble(
@@ -205,7 +205,7 @@ test_that("no match preserves companies", {
   )
   product <- epxi_product(companies, co2)
   expect_equal(companies$company_id, unique(product$companies_id))
-  company <- xctr_company(product)
+  company <- epxi_company(product)
   expect_equal(companies$company_id, unique(company$companies_id))
 })
 
@@ -224,7 +224,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
   )
 
   product <- epxi_product(companies, co2)
-  out <- xctr_company(product)
+  out <- epxi_company(product)
 
   expect_equal(nrow(out), 18L)
   n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))

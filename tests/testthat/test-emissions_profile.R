@@ -5,7 +5,7 @@ test_that("wraps the output at product and company levels", {
   expect_equal(product, epxi_product(companies, products))
 
   company <- unnest_company(out)
-  expected <- xctr_company(product)
+  expected <- epxi_company(product)
   expect_equal(
     arrange(company, companies_id, grouped_by),
     arrange(expected, companies_id, grouped_by)
@@ -29,7 +29,7 @@ test_that("*upstream() wraps the output at product and company levels", {
   expect_equal(product, epxi_product(companies, inputs))
 
   company <- unnest_company(out)
-  expected <- xctr_company(product)
+  expected <- epxi_company(product)
   expect_equal(
     arrange(company, companies_id, grouped_by),
     arrange(expected, companies_id, grouped_by)

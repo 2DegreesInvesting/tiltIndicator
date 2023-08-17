@@ -42,7 +42,7 @@ emissions_profile <- function(companies,
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
   product <- epxi_product(companies, co2, low_threshold, high_threshold)
-  company <- xctr_company(product)
+  company <- epxi_company(product)
   nest_levels(product, company)
 }
 
@@ -50,7 +50,7 @@ emissions_profile <- function(companies,
 #' @rdname emissions_profile
 emissions_profile_upstream <- emissions_profile
 
-xctr_company <- function(data) {
+epxi_company <- function(data) {
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
     filter(!is.na(.data$risk_category)) |>
@@ -91,8 +91,8 @@ xctr_company <- function(data) {
     ) |>
     polish_output(cols_at_company_level())
 }
-pstr_company <- xctr_company
-istr_company <- xctr_company
+pstr_company <- epxi_company
+istr_company <- epxi_company
 
 na_to_0_if_not_all_is_na <- function(x) {
   if (all(is.na(x))) {
