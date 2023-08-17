@@ -1,7 +1,7 @@
 xctr_product <- function(companies,
-                                  co2,
-                                  low_threshold = 1 / 3,
-                                  high_threshold = 2 / 3) {
+                         co2,
+                         low_threshold = 1 / 3,
+                         high_threshold = 2 / 3) {
   xctr_check(companies, co2)
 
   .companies <- prepare_companies(companies)
