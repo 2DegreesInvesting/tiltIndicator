@@ -46,7 +46,7 @@ istr_at_product_level <- function(companies,
                                   high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   warn_product_and_company_level_functions_are_now_deprecated()
 
-  istr_at_product_level(
+  istr_product(
     companies = companies,
     scenarios = scenarios,
     inputs = inputs,
