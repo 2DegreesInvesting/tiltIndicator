@@ -5,7 +5,7 @@ test_that("wraps the output at product and company levels", {
   out <- sector_profile(companies, scenarios)
 
   product <- unnest_product(out)
-  expect_equal(product, spi_product(companies, scenarios))
+  expect_equal(product, sector_profile_at_product_level(companies, scenarios))
 
   company <- unnest_company(out)
   expected <- any_indicator_at_company_level(product)

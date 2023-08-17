@@ -1,7 +1,7 @@
 # still works but warns deprecation
 
     Code
-      product <- spi_product(companies, scenarios)
+      product <- sector_profile_at_product_level(companies, scenarios)
       out <- any_indicator_at_company_level(product)
       expect_named(out, cols_at_company_level())
 
