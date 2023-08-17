@@ -47,9 +47,7 @@ emissions_profile <- function(companies, co2, low_threshold = 1 / 3, high_thresh
 #' @rdname emissions_profile
 emissions_profile_upstream <- emissions_profile
 
-#' @export
-#' @rdname deprecated
-xctr_at_company_level <- function(data) {
+xctr_company <- function(data) {
   warn_product_and_company_level_functions_are_now_deprecated()
 
   with_value <- data |>
