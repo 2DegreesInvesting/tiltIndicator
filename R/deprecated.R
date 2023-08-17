@@ -54,3 +54,18 @@ istr_at_product_level <- function(companies,
     high_threshold = high_threshold
   )
 }
+
+#' @export
+#' @rdname deprecated
+xctr_at_product_level <- function(companies,
+                                  co2,
+                                  low_threshold = 1 / 3,
+                                  high_threshold = 2 / 3) {
+  warn_product_and_company_level_functions_are_now_deprecated()
+  xctr_product(
+    companies =  companies,
+    co2 =  co2,
+    low_threshold =  low_threshold,
+    high_threshold =  high_threshold
+  )
+}
