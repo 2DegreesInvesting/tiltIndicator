@@ -17,29 +17,14 @@
 #' @export
 #'
 #' @examples
-#' library(dplyr, warn.conflicts = FALSE)
-#' library(tidyr)
-#'
 #' companies <- pstr_companies
 #' scenarios <- xstr_scenarios
 #'
-#' # Product level
-#' companies |>
-#'   pstr_at_product_level(scenarios)
-#'
-#' # Company level
-#' companies |>
-#'   pstr_at_product_level(scenarios) |>
-#'   pstr_at_company_level()
-#'
-#' # Or
 #' both <- sector_profile(companies, scenarios)
 #' both
 #'
-#' # Product level
 #' both |> unnest_product()
 #'
-#' # Company level
 #' both |> unnest_company()
 sector_profile <- function(companies,
                            scenarios,
