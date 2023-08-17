@@ -61,7 +61,7 @@ xctr_at_product_level <- function(companies,
 
 #' @export
 #' @rdname deprecated
- istr_at_company_level <- function(data) {
+istr_at_company_level <- function(data) {
   deprecate_warn("0.0.0.9088", "istr_at_company_level()")
   xctr_company(data)
 }
