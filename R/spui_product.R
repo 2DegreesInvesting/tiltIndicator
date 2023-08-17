@@ -1,4 +1,4 @@
-spui_product <- function(companies,
+sector_profile_upstream_at_product_level <- function(companies,
                          scenarios,
                          inputs,
                          low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
