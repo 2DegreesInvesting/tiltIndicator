@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9088
+
+* All `*_at_product_level()` and `*_at_company_level()` are now deprecated
+(#491).
+
 # tiltIndicator 0.0.0.9087
 
 * `xctr(data, inputs)` is now deprecated in favor or the new
