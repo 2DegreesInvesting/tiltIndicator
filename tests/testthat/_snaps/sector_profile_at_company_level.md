@@ -1,10 +1,3 @@
-# still works but warns deprecation
-
-    Code
-      product <- sector_profile_at_product_level(companies, scenarios)
-      out <- any_at_company_level(product)
-      expect_named(out, cols_at_company_level())
-
 # hasn't changed
 
     Code
