@@ -41,7 +41,7 @@ emissions_profile <- function(companies,
                               co2,
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
-  product <- xctr_product(companies, co2, low_threshold, high_threshold)
+  product <- epxi_product(companies, co2, low_threshold, high_threshold)
   company <- xctr_company(product)
   nest_levels(product, company)
 }

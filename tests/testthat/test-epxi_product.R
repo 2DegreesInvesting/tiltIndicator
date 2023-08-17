@@ -2,9 +2,9 @@ test_that("returns visibly (#238)", {
   companies <- slice(companies, 1)
 
   inputs <- slice(inputs, 1)
-  expect_visible(xctr_product(companies, inputs))
+  expect_visible(epxi_product(companies, inputs))
   products <- slice(products, 1)
-  expect_visible(xctr_product(companies, products))
+  expect_visible(epxi_product(companies, products))
 })
 
 test_that("outputs expected columns at product level", {
@@ -16,12 +16,12 @@ test_that("outputs expected columns at product level", {
     "input_activity_uuid_product_uuid",
     "input_co2_footprint"
   )
-  out <- xctr_product(companies, inputs)
+  out <- epxi_product(companies, inputs)
   expect_named(out, expected)
 
   products <- slice(products, 1)
   expected <- c(cols_at_product_level(), "co2_footprint")
-  out <- xctr_product(companies, products)
+  out <- epxi_product(companies, products)
   expect_named(out, expected)
 })
 
@@ -39,7 +39,7 @@ test_that("unmatched products don't introduce NA's (#266)", {
     input_unit = "metric ton*km",
     input_isic_4digit = "4575"
   )
-  out <- xctr_product(companies, inputs)
+  out <- epxi_product(companies, inputs)
   expect_false(anyNA(out$risk_category))
 
   products <- tibble(
@@ -49,7 +49,7 @@ test_that("unmatched products don't introduce NA's (#266)", {
     unit = "metric ton*km",
     isic_4digit = "4575"
   )
-  out <- xctr_product(companies, products)
+  out <- epxi_product(companies, products)
   expect_false(anyNA(out$risk_category))
 })
 
@@ -68,7 +68,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
   )
 
   # PCTR
-  out <- xctr_product(companies, products)
+  out <- epxi_product(companies, products)
 
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
@@ -90,7 +90,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
   )
 
   # ICTR
-  out <- xctr_product(companies, inputs)
+  out <- epxi_product(companies, inputs)
 
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
@@ -118,7 +118,7 @@ test_that("with duplicated co2 throws no error (#435)", {
     clustered = "a"
   )
 
-  expect_no_error(xctr_product(companies, co2))
+  expect_no_error(epxi_product(companies, co2))
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
@@ -137,11 +137,11 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(companies, -all_of(crucial))
-  expect_error(xctr_product(bad, co2), crucial)
+  expect_error(epxi_product(bad, co2), crucial)
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))
-  expect_error(xctr_product(bad, co2), crucial)
+  expect_error(epxi_product(bad, co2), crucial)
 })
 
 test_that("if `co2` lacks crucial columns, errors gracefully", {
@@ -160,23 +160,23 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
 
   crucial <- "co2_footprint"
   bad <- select(co2, -ends_with(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 
   crucial <- "tilt_sector"
   bad <- select(co2, -ends_with(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 
   crucial <- "unit"
   bad <- select(co2, -ends_with(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(co2, -all_of(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 
   crucial <- "isic_4digit"
   bad <- select(co2, -ends_with(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 })
 
 test_that("handles duplicated `companies` data (#230)", {
@@ -192,7 +192,7 @@ test_that("handles duplicated `companies` data (#230)", {
     unit = "metric ton*km",
     isic_4digit = "4575",
   )
-  expect_no_error(xctr_product(companies, co2))
+  expect_no_error(epxi_product(companies, co2))
 })
 
 test_that("handles duplicated `co2` data (#230)", {
@@ -208,7 +208,7 @@ test_that("handles duplicated `co2` data (#230)", {
     unit = "metric ton*km",
     isic_4digit = "4575",
   )
-  expect_no_error(xctr_product(companies, co2))
+  expect_no_error(epxi_product(companies, co2))
 })
 
 test_that("if the 'isic' column isn't a character, throws an error (#233)", {
@@ -226,19 +226,19 @@ test_that("if the 'isic' column isn't a character, throws an error (#233)", {
     isic_4digit = 4575,
   )
 
-  expect_error(xctr_product(companies, co2), "must be.*character")
+  expect_error(epxi_product(companies, co2), "must be.*character")
 })
 
 test_that("a 0-row `co2` yields an error", {
   expect_error(
-    xctr_product(companies[0L, ], products),
+    epxi_product(companies[0L, ], products),
     "companies.*can't have 0-row"
   )
 })
 
 test_that("a 0-row `co2` yields an error", {
   expect_error(
-    xctr_product(slice(companies, 1), products[0L, ]),
+    epxi_product(slice(companies, 1), products[0L, ]),
     "co2.*can't have 0-row"
   )
 })
@@ -246,14 +246,14 @@ test_that("a 0-row `co2` yields an error", {
 
 test_that("a 0-row `companies` yields an error", {
   expect_error(
-    xctr_product(companies[0L, ], inputs),
+    epxi_product(companies[0L, ], inputs),
     "companies.*can't have 0-row"
   )
 })
 
 test_that("a 0-row `inputs` yields an error", {
   expect_error(
-    xctr_product(slice(companies, 1), inputs[0L, ]),
+    epxi_product(slice(companies, 1), inputs[0L, ]),
     "co2.*can't have 0-row"
   )
 })
@@ -264,11 +264,11 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(companies, -all_of(crucial))
-  expect_error(xctr_product(bad, inputs), crucial)
+  expect_error(epxi_product(bad, inputs), crucial)
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))
-  expect_error(xctr_product(bad, inputs), crucial)
+  expect_error(epxi_product(bad, inputs), crucial)
 })
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
@@ -277,23 +277,23 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(inputs, -all_of(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 
   crucial <- "co2_footprint"
   bad <- select(inputs, -ends_with(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 
   crucial <- "unit"
   bad <- select(inputs, -ends_with(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 
   crucial <- "tilt_sector"
   bad <- select(inputs, -ends_with(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 
   crucial <- "isic_4digit"
   bad <- select(inputs, -ends_with(crucial))
-  expect_error(xctr_product(companies, bad), crucial)
+  expect_error(epxi_product(companies, bad), crucial)
 })
 
 
@@ -311,7 +311,7 @@ test_that("handles duplicated `companies` data (#230)", {
     input_unit = "metric ton*km",
     input_isic_4digit = "4575"
   )
-  expect_no_error(xctr_product(companies, co2))
+  expect_no_error(epxi_product(companies, co2))
 })
 
 test_that("handles duplicated `co2` data (#230)", {
@@ -328,12 +328,12 @@ test_that("handles duplicated `co2` data (#230)", {
     input_unit = "metric ton*km",
     input_isic_4digit = "4575"
   )
-  expect_no_error(xctr_product(companies, co2))
+  expect_no_error(epxi_product(companies, co2))
 })
 
 test_that("with a missing value in the co2* column errors gracefully", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1)
   inputs$input_co2_footprint <- NA
-  expect_error(xctr_product(companies, inputs), "co2_footprint")
+  expect_error(epxi_product(companies, inputs), "co2_footprint")
 })

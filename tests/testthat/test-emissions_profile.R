@@ -2,7 +2,7 @@ test_that("wraps the output at product and company levels", {
   out <- emissions_profile(companies, products)
 
   product <- unnest_product(out)
-  expect_equal(product, xctr_product(companies, products))
+  expect_equal(product, epxi_product(companies, products))
 
   company <- unnest_company(out)
   expected <- xctr_company(product)
@@ -26,7 +26,7 @@ test_that("*upstream() wraps the output at product and company levels", {
   out <- emissions_profile_upstream(companies, inputs)
 
   product <- unnest_product(out)
-  expect_equal(product, xctr_product(companies, inputs))
+  expect_equal(product, epxi_product(companies, inputs))
 
   company <- unnest_company(out)
   expected <- xctr_company(product)
