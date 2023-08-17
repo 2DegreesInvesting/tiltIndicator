@@ -61,39 +61,24 @@ package: `companies`, `inputs`, and `products`.
 ```{r}
 companies
 
-# ICTR
-inputs
-
-companies |>
-  xctr_at_product_level(inputs)
-
-companies |>
-  xctr_at_product_level(inputs) |>
-  xctr_at_company_level()
-
-# Same
-both <- xctr(companies, inputs)
-both
-
-both |> unnest_product()
-
-both |> unnest_company()
-
-# PCTR
 products
 
-companies |>
-  xctr_at_product_level(products)
-
-companies |>
-  xctr_at_product_level(products) |>
-  xctr_at_company_level()
-
-# Same
-both <- xctr(companies, products)
+both <- emissions_profile(companies, products)
 both
 
 both |> unnest_product()
 
 both |> unnest_company()
 ```
+
+```{r}
+upstream_products <- inputs
+
+both <- emissions_profile_upstream(companies, upstream_products)
+both
+
+both |> unnest_product()
+
+both |> unnest_company()
+```
+

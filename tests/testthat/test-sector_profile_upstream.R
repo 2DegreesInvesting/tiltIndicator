@@ -6,10 +6,10 @@ test_that("wraps the output at product and company levels", {
   out <- sector_profile_upstream(companies, scenarios, inputs)
 
   product <- unnest_product(out)
-  expect_equal(product, istr_at_product_level(companies, scenarios, inputs))
+  expect_equal(product, sector_profile_upstream_at_product_level(companies, scenarios, inputs))
 
   company <- unnest_company(out)
-  expected <- istr_at_company_level(product)
+  expected <- any_at_company_level(product)
   expect_equal(
     arrange(company, companies_id, grouped_by),
     arrange(expected, companies_id, grouped_by)

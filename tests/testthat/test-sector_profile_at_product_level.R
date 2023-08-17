@@ -1,7 +1,7 @@
 test_that("outputs expected columns at product level", {
   companies <- slice(pstr_companies, 1)
   scenarios <- slice(xstr_scenarios, 1)
-  out <- pstr_at_product_level(companies, scenarios)
+  out <- sector_profile_at_product_level(companies, scenarios)
   expect_named(out, pstr_cols_at_product_level())
 })
 
@@ -27,7 +27,7 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
     type = "ipr",
   )
 
-  out <- pstr_at_product_level(companies, scenarios)
+  out <- sector_profile_at_product_level(companies, scenarios)
 
   # Reductions > low = "medium"
   expect_equal(filter(out, year == 2030)$risk_category, "medium")
@@ -57,7 +57,7 @@ test_that("`high_threshold` and `year` yield the expected risk categories", {
     type = "ipr",
   )
 
-  out <- pstr_at_product_level(companies, scenarios)
+  out <- sector_profile_at_product_level(companies, scenarios)
 
   # Reductions > threshold = "high"
   expect_equal(filter(out, year == 2030)$risk_category, "high")
@@ -85,7 +85,7 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
     type = "a",
   )
 
-  out <- pstr_at_product_level(companies, scenarios)
+  out <- sector_profile_at_product_level(companies, scenarios)
   expect_equal(out$risk_category, NA_character_)
 })
 
@@ -109,7 +109,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
     reductions = 1,
   )
 
-  out <- pstr_at_product_level(companies, scenarios)
+  out <- sector_profile_at_product_level(companies, scenarios)
   some_match <- filter(out, companies_id == "a")
   expect_false(anyNA(some_match))
 
@@ -142,7 +142,7 @@ test_that("with duplicated scenarios throws no error (#435)", {
     tilt_subsector = "a",
   )
 
-  expect_no_error(pstr_at_product_level(companies, scenarios))
+  expect_no_error(sector_profile_at_product_level(companies, scenarios))
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
@@ -151,19 +151,19 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))
-  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+  expect_error(sector_profile_at_product_level(bad, scenarios), crucial)
 
   crucial <- "type"
   bad <- select(companies, -all_of(crucial))
-  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+  expect_error(sector_profile_at_product_level(bad, scenarios), crucial)
 
   crucial <- "sector"
   bad <- select(companies, -all_of(crucial))
-  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+  expect_error(sector_profile_at_product_level(bad, scenarios), crucial)
 
   crucial <- "subsector"
   bad <- select(companies, -all_of(crucial))
-  expect_error(pstr_at_product_level(bad, scenarios), crucial)
+  expect_error(sector_profile_at_product_level(bad, scenarios), crucial)
 })
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
@@ -172,23 +172,23 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 
   crucial <- "type"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr_at_product_level(companies, bad), crucial)
+  expect_error(sector_profile_at_product_level(companies, bad), crucial)
 
   crucial <- "sector"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr_at_product_level(companies, bad), crucial)
+  expect_error(sector_profile_at_product_level(companies, bad), crucial)
 
   crucial <- "subsector"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr_at_product_level(companies, bad), crucial)
+  expect_error(sector_profile_at_product_level(companies, bad), crucial)
 
   crucial <- "year"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr_at_product_level(companies, bad), crucial)
+  expect_error(sector_profile_at_product_level(companies, bad), crucial)
 
   crucial <- "scenario"
   bad <- select(scenarios, -all_of(crucial))
-  expect_error(pstr_at_product_level(companies, bad), crucial)
+  expect_error(sector_profile_at_product_level(companies, bad), crucial)
 })
 
 test_that("grouped_by includes the type of scenario", {
@@ -196,8 +196,8 @@ test_that("grouped_by includes the type of scenario", {
   companies <- filter(slice(pstr_companies, 1), type == .type)
   co2 <- filter(xstr_scenarios, type == .type)
 
-  product <- pstr_at_product_level(companies, co2)
-  out <- pstr_at_company_level(product)
+  product <- sector_profile_at_product_level(companies, co2)
+  out <- any_at_company_level(product)
 
   expect_true(all(grepl(.type, unique(out$grouped_by))))
 })
@@ -222,19 +222,19 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
     year = 2030,
     reductions = 1,
   )
-  expect_error(pstr_at_product_level(companies, scenarios), "sector.*subsector.*type")
+  expect_error(sector_profile_at_product_level(companies, scenarios), "sector.*subsector.*type")
 })
 
 test_that("a 0-row `companies` yields an error", {
   expect_error(
-    pstr_at_product_level(pstr_companies[0L, ], xstr_scenarios),
+    sector_profile_at_product_level(pstr_companies[0L, ], xstr_scenarios),
     "companies.*can't have 0-row"
   )
 })
 
 test_that("a 0-row `scenarios` yields an error", {
   expect_error(
-    pstr_at_product_level(slice(pstr_companies, 1), xstr_scenarios[0L, ]),
+    sector_profile_at_product_level(slice(pstr_companies, 1), xstr_scenarios[0L, ]),
     "scenario.*can't have 0-row"
   )
 })
@@ -260,5 +260,5 @@ test_that("with ';' in `*sector` throws an warning", {
     reductions = 1,
   )
 
-  expect_snapshot_warning(pstr_at_product_level(companies, scenarios))
+  expect_snapshot_warning(sector_profile_at_product_level(companies, scenarios))
 })

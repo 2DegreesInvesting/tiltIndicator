@@ -19,16 +19,6 @@
 #' scenarios <- xstr_scenarios
 #' inputs <- istr_inputs
 #'
-#' # Product level
-#' companies |>
-#'   istr_at_product_level(scenarios, inputs)
-#'
-#' # Company level
-#' companies |>
-#'   istr_at_product_level(scenarios, inputs) |>
-#'   istr_at_company_level()
-#'
-#' # Same
 #' both <- sector_profile_upstream(companies, scenarios, inputs)
 #' both
 #'
@@ -40,9 +30,8 @@ sector_profile_upstream <- function(companies,
                                     inputs,
                                     low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  product <- istr_at_product_level(
-    companies, scenarios, inputs, low_threshold, high_threshold
-  )
-  company <- xctr_at_company_level(product)
+  product <- companies |>
+    sector_profile_upstream_at_product_level(scenarios, inputs, low_threshold, high_threshold)
+  company <- any_at_company_level(product)
   nest_levels(product, company)
 }

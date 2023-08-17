@@ -1,9 +1,7 @@
-#' @export
-#' @rdname emissions_profile
-xctr_at_product_level <- function(companies,
-                                  co2,
-                                  low_threshold = 1 / 3,
-                                  high_threshold = 2 / 3) {
+emissions_profile_any_at_product_level <- function(companies,
+                                                   co2,
+                                                   low_threshold = 1 / 3,
+                                                   high_threshold = 2 / 3) {
   xctr_check(companies, co2)
 
   .companies <- prepare_companies(companies)

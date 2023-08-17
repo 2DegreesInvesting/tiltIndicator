@@ -1,10 +1,8 @@
-#' @rdname sector_profile_upstream
-#' @export
-istr_at_product_level <- function(companies,
-                                  scenarios,
-                                  inputs,
-                                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
-                                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+sector_profile_upstream_at_product_level <- function(companies,
+                                                     scenarios,
+                                                     inputs,
+                                                     low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
+                                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   xstr_check(companies, scenarios)
 
   .companies <- prepare_companies(companies)

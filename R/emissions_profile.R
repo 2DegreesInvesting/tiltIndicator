@@ -24,7 +24,6 @@
 #'   risk products.
 #' @param high_threshold A numeric value to segment medium and high transition
 #'   risk products.
-#' @param data A dataframe. The output at product level.
 #'
 #' @family XCTR functions
 #'
@@ -38,9 +37,12 @@
 #' emissions_profile(companies, products) |> unnest_company()
 #'
 #' emissions_profile_upstream(companies, inputs)
-emissions_profile <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
-  product <- xctr_at_product_level(companies, co2, low_threshold, high_threshold)
-  company <- xctr_at_company_level(product)
+emissions_profile <- function(companies,
+                              co2,
+                              low_threshold = 1 / 3,
+                              high_threshold = 2 / 3) {
+  product <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold)
+  company <- any_at_company_level(product)
   nest_levels(product, company)
 }
 
@@ -48,9 +50,7 @@ emissions_profile <- function(companies, co2, low_threshold = 1 / 3, high_thresh
 #' @rdname emissions_profile
 emissions_profile_upstream <- emissions_profile
 
-#' @export
-#' @rdname emissions_profile
-xctr_at_company_level <- function(data) {
+any_at_company_level <- function(data) {
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
     filter(!is.na(.data$risk_category)) |>
@@ -91,14 +91,6 @@ xctr_at_company_level <- function(data) {
     ) |>
     polish_output(cols_at_company_level())
 }
-
-#' @rdname sector_profile
-#' @inheritParams emissions_profile
-#' @export
-pstr_at_company_level <- xctr_at_company_level
-#' @rdname sector_profile_upstream
-#' @export
-istr_at_company_level <- xctr_at_company_level
 
 na_to_0_if_not_all_is_na <- function(x) {
   if (all(is.na(x))) {
