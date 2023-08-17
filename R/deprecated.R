@@ -51,7 +51,7 @@ xctr_at_product_level <- function(companies,
                                   low_threshold = 1 / 3,
                                   high_threshold = 2 / 3) {
   deprecate_warn("0.0.0.9088", "xctr_at_product_level()")
-  epxi_product(
+  emissions_x_at_product_level(
     companies = companies,
     co2 = co2,
     low_threshold = low_threshold,
