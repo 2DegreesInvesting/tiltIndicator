@@ -1,4 +1,4 @@
-emissions_profile_x_at_product_level <- function(companies,
+emissions_profile_any_at_product_level <- function(companies,
                                                  co2,
                                                  low_threshold = 1 / 3,
                                                  high_threshold = 2 / 3) {
