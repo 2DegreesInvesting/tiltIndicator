@@ -160,7 +160,7 @@ This allows to use `*_pmap()` in a very succinct way.
 # TODO: Replace with `read_csv("/path/to/input/products.csv")`
 products <- tiltIndicator::products
 
-pctr_rds <- function(data, file) write_rds(xctr(data, products), file)
+pctr_rds <- function(data, file) write_rds(emissions_profile(data, products), file)
 
 pctr_job |>
   # Skip what's already done (if anything)
