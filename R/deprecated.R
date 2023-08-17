@@ -77,3 +77,7 @@ xctr_at_company_level <- function(data) {
 
   xctr_company(data)
 }
+
+#' @rdname deprecated
+#' @export
+pstr_at_company_level <- xctr_company

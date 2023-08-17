@@ -91,9 +91,8 @@ xctr_company <- function(data) {
     polish_output(cols_at_company_level())
 }
 
-#' @rdname deprecated
-#' @export
-pstr_at_company_level <- xctr_at_company_level
+pstr_company <- xctr_company
+
 #' @export
 #' @rdname deprecated
 istr_at_company_level <- xctr_at_company_level
