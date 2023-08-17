@@ -1,6 +1,6 @@
 test_that("hasn't change", {
   out <- emissions_profile_any_at_product_level(companies, products) |>
-    any_indicator_at_company_level() |>
+    any_at_company_level() |>
     dplyr::arrange(companies_id) |>
     format_robust_snapshot()
   expect_snapshot(out)
@@ -11,7 +11,7 @@ test_that("outputs expected columns at company level", {
   co2 <- slice(products, 1)
 
   product <- emissions_profile_any_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
 
   expected <- cols_at_company_level()
   expect_equal(names(out)[seq_along(expected)], expected)
@@ -21,9 +21,9 @@ test_that("is sensitive to low_threshold", {
   companies <- slice(companies, 1:2)
   co2 <- slice(products, 1:2)
   out1 <- emissions_profile_any_at_product_level(companies, co2, low_threshold = .1) |>
-    any_indicator_at_company_level()
+    any_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, co2, low_threshold = .9) |>
-    any_indicator_at_company_level()
+    any_at_company_level()
   expect_false(identical(out1, out2))
 })
 
@@ -31,9 +31,9 @@ test_that("is sensitive to high_threshold", {
   companies <- slice(companies, 1:2)
   co2 <- slice(products, 1:2)
   out1 <- emissions_profile_any_at_product_level(companies, co2, high_threshold = .1) |>
-    any_indicator_at_company_level()
+    any_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, co2, high_threshold = .9) |>
-    any_indicator_at_company_level()
+    any_at_company_level()
   expect_false(identical(out1, out2))
 })
 
@@ -42,28 +42,28 @@ test_that("no longer drops companies depending on co2 data (#122)", {
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(products, 1:5)
   product <- emissions_profile_any_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
   co2 <- slice(products, 1:4)
   product <- emissions_profile_any_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(products, 1:10)
   product <- emissions_profile_any_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
   co2 <- slice(products, 1:9)
   product <- emissions_profile_any_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 })
 
@@ -91,7 +91,7 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   )
 
   out <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold) |>
-    any_indicator_at_company_level()
+    any_at_company_level()
   expect_true(identical(unique(out$value), expected_value))
 })
 
@@ -116,7 +116,7 @@ test_that("for each company & benchmark, each risk category is unique (#285)", {
   # styler: on
 
   product <- emissions_profile_any_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
 
   bad <- out |>
     count(grouped_by, risk_category) |>
@@ -140,7 +140,7 @@ test_that("values sum 1", {
   )
 
   product <- emissions_profile_any_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
 
   sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
   expect_equal(sum, 1)
@@ -161,7 +161,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   )
 
   product <- emissions_profile_any_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
 
   expect_equal(out$companies_id, "a")
   expect_equal(out$grouped_by, NA_character_)
@@ -185,7 +185,7 @@ test_that("no match preserves companies", {
   )
   product <- emissions_profile_any_at_product_level(companies, co2)
   expect_equal(companies$company_id, unique(product$companies_id))
-  company <- any_indicator_at_company_level(product)
+  company <- any_at_company_level(product)
   expect_equal(companies$company_id, unique(company$companies_id))
 
   companies <- tibble(
@@ -195,7 +195,7 @@ test_that("no match preserves companies", {
   )
   product <- emissions_profile_any_at_product_level(companies, co2)
   expect_equal(companies$company_id, product$companies_id)
-  company <- any_indicator_at_company_level(product)
+  company <- any_at_company_level(product)
   expect_equal(companies$company_id, company$companies_id)
 
   companies <- tibble(
@@ -205,7 +205,7 @@ test_that("no match preserves companies", {
   )
   product <- emissions_profile_any_at_product_level(companies, co2)
   expect_equal(companies$company_id, unique(product$companies_id))
-  company <- any_indicator_at_company_level(product)
+  company <- any_at_company_level(product)
   expect_equal(companies$company_id, unique(company$companies_id))
 })
 
@@ -224,7 +224,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
   )
 
   product <- emissions_profile_any_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
 
   expect_equal(nrow(out), 18L)
   n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))

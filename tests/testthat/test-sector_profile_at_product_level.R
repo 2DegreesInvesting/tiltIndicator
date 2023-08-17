@@ -197,7 +197,7 @@ test_that("grouped_by includes the type of scenario", {
   co2 <- filter(xstr_scenarios, type == .type)
 
   product <- sector_profile_at_product_level(companies, co2)
-  out <- any_indicator_at_company_level(product)
+  out <- any_at_company_level(product)
 
   expect_true(all(grepl(.type, unique(out$grouped_by))))
 })

@@ -63,19 +63,19 @@ xctr_at_product_level <- function(companies,
 #' @rdname deprecated
 istr_at_company_level <- function(data) {
   deprecate_warn("0.0.0.9088", "istr_at_company_level()")
-  any_indicator_at_company_level(data)
+  any_at_company_level(data)
 }
 
 #' @rdname deprecated
 #' @export
 pstr_at_company_level <- function(data) {
   deprecate_warn("0.0.0.9088", "pstr_at_company_level()")
-  any_indicator_at_company_level(data)
+  any_at_company_level(data)
 }
 
 #' @export
 #' @rdname deprecated
 xctr_at_company_level <- function(data) {
   deprecate_warn("0.0.0.9088", "xctr_at_company_level()")
-  any_indicator_at_company_level(data)
+  any_at_company_level(data)
 }

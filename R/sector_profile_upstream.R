@@ -32,6 +32,6 @@ sector_profile_upstream <- function(companies,
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   product <- companies |>
     sector_profile_upstream_at_product_level(scenarios, inputs, low_threshold, high_threshold)
-  company <- any_indicator_at_company_level(product)
+  company <- any_at_company_level(product)
   nest_levels(product, company)
 }
