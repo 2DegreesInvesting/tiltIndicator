@@ -1,14 +1,3 @@
-test_that("still works but warns deprecation", {
-  companies <- pstr_companies |> slice(1)
-  scenarios <- xstr_scenarios
-
-  expect_snapshot({
-    product <- sector_profile_at_product_level(companies, scenarios)
-    out <- any_at_company_level(product)
-    expect_named(out, cols_at_company_level())
-  })
-})
-
 test_that("hasn't changed", {
   scenarios <- xstr_scenarios
   companies <- pstr_companies |> slice(1)
