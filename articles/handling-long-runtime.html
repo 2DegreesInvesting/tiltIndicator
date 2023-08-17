@@ -285,7 +285,7 @@ match the names of the <code>*_rds()</code>. This allows to use
 <code class="sourceCode R"><span><span class="co"># TODO: Replace with `read_csv("/path/to/input/products.csv")`</span></span>
 <span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/products.html">products</a></span></span>
 <span></span>
-<span><span class="va">pctr_rds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/rename.html">xctr</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">products</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span></span>
+<span><span class="va">pctr_rds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">products</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">pctr_job</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Skip what's already done (if anything)</span></span>
@@ -294,17 +294,7 @@ match the names of the <code>*_rds()</code>. This allows to use
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Combined with `plan()` it distributes computations across multiple workers</span></span>
 <span>  <span class="co"># The progress bar won't appear in this .Rmd document.</span></span>
-<span>  <span class="fu"><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">future_pwalk</a></span><span class="op">(</span><span class="va">pctr_rds</span>, .progress <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: `xctr()` was deprecated in tiltIndicator 0.0.0.9086.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `emissions_profile()` instead.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
-<span><span class="co">#&gt; Warning: `xctr()` was deprecated in tiltIndicator 0.0.0.9086.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `emissions_profile()` instead.</span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">future_pwalk</a></span><span class="op">(</span><span class="va">pctr_rds</span>, .progress <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Here is what you accomplished. Instead of saturating the memory you
 stored each chunk into a file.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">

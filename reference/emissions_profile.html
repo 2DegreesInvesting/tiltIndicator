@@ -52,7 +52,7 @@ process is the same. What varies is the co2 dataset."><!-- mathjax --><script sr
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Calculate input (or product) carbon transition risk</h1>
-      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/emissions_profile.R" class="external-link"><code>R/emissions_profile.R</code></a>, <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/xctr_at_product_level.R" class="external-link"><code>R/xctr_at_product_level.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/emissions_profile.R" class="external-link"><code>R/emissions_profile.R</code></a></small>
       <div class="d-none name"><code>emissions_profile.Rd</code></div>
     </div>
 
@@ -66,15 +66,6 @@ process is the same. What varies is the <code>co2</code> dataset.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">emissions_profile</span><span class="op">(</span><span class="va">companies</span>, <span class="va">co2</span>, low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>, high_threshold <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">emissions_profile_upstream</span><span class="op">(</span></span>
-<span>  <span class="va">companies</span>,</span>
-<span>  <span class="va">co2</span>,</span>
-<span>  low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,</span>
-<span>  high_threshold <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">xctr_at_company_level</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">xctr_at_product_level</span><span class="op">(</span></span>
 <span>  <span class="va">companies</span>,</span>
 <span>  <span class="va">co2</span>,</span>
 <span>  low_threshold <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,</span>
@@ -100,10 +91,6 @@ risk products.</p></dd>
 <dt>high_threshold</dt>
 <dd><p>A numeric value to segment medium and high transition
 risk products.</p></dd>
-
-
-<dt>data</dt>
-<dd><p>A dataframe. The output at product level.</p></dd>
 
 </dl></div>
     <div class="section level2">
