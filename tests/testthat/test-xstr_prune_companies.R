@@ -36,7 +36,7 @@ test_that("preserves row order", {
   expect_equal(out$tilt_sector, c(companies$tilt_sector))
 })
 
-test_that("with example xstr `companies` yields the same input columns", {
+test_that("with example xstr `companies` outputs the same input columns", {
   out <- xstr_prune_companies(istr_companies)
   expect_equal(names(out), names(istr_companies))
 

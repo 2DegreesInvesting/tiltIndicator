@@ -12,3 +12,7 @@ format_robust_snapshot <- function(data) {
   row.names(data) <- NULL
   lapply(names(data), function(x) as.data.frame(data)[x])
 }
+
+is_testing <- function() {
+  identical(Sys.getenv("TESTTHAT"), "true")
+}

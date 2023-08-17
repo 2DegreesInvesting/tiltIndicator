@@ -51,6 +51,8 @@ emissions_profile_upstream <- emissions_profile
 #' @export
 #' @rdname emissions_profile
 xctr_at_company_level <- function(data) {
+  warn_product_and_company_level_functions_are_now_deprecated()
+
   with_value <- data |>
     select("companies_id", "grouped_by", "risk_category") |>
     filter(!is.na(.data$risk_category)) |>
