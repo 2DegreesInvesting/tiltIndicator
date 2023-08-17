@@ -1,5 +1,5 @@
 test_that("hasn't change", {
-  out <- emissions_x_at_product_level(companies, inputs) |>
+  out <- emissions_profile_x_at_product_level(companies, inputs) |>
     any_indicator_at_company_level() |>
     dplyr::arrange(companies_id) |>
     format_robust_snapshot()
@@ -10,7 +10,7 @@ test_that("outputs expected columns at company level", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1)
 
-  out <- emissions_x_at_product_level(companies, inputs) |>
+  out <- emissions_profile_x_at_product_level(companies, inputs) |>
     any_indicator_at_company_level()
 
   expected <- cols_at_company_level()
@@ -21,7 +21,7 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1)
 
-  out <- emissions_x_at_product_level(companies, inputs) |>
+  out <- emissions_profile_x_at_product_level(companies, inputs) |>
     any_indicator_at_company_level()
 
   expect_equal(out, arrange(out, companies_id, grouped_by))
@@ -30,9 +30,9 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
 test_that("is sensitive to low_threshold", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1:2)
-  out1 <- emissions_x_at_product_level(companies, inputs, low_threshold = .1) |>
+  out1 <- emissions_profile_x_at_product_level(companies, inputs, low_threshold = .1) |>
     any_indicator_at_company_level()
-  out2 <- emissions_x_at_product_level(companies, inputs, low_threshold = .9) |>
+  out2 <- emissions_profile_x_at_product_level(companies, inputs, low_threshold = .9) |>
     any_indicator_at_company_level()
   expect_false(identical(out1, out2))
 })
@@ -40,9 +40,9 @@ test_that("is sensitive to low_threshold", {
 test_that("is sensitive to high_threshold", {
   companies <- slice(companies, 1)
   inputs <- slice(inputs, 1:2)
-  out1 <- emissions_x_at_product_level(companies, inputs, high_threshold = .1) |>
+  out1 <- emissions_profile_x_at_product_level(companies, inputs, high_threshold = .1) |>
     any_indicator_at_company_level()
-  out2 <- emissions_x_at_product_level(companies, inputs, high_threshold = .9) |>
+  out2 <- emissions_profile_x_at_product_level(companies, inputs, high_threshold = .9) |>
     any_indicator_at_company_level()
   expect_false(identical(out1, out2))
 })
@@ -71,7 +71,7 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
     input_isic_4digit = "4575",
   )
 
-  product <- emissions_x_at_product_level(companies, co2, low_threshold, high_threshold)
+  product <- emissions_profile_x_at_product_level(companies, co2, low_threshold, high_threshold)
   out <- any_indicator_at_company_level(product)
   expect_true(identical(unique(out$value), expected_value))
 })
@@ -90,7 +90,7 @@ test_that("values sum 1", {
     input_isic_4digit = "a"
   )
 
-  out <- emissions_x_at_product_level(companies, co2) |>
+  out <- emissions_profile_x_at_product_level(companies, co2) |>
     any_indicator_at_company_level()
 
   sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
@@ -111,7 +111,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
     input_isic_4digit = "a"
   )
 
-  out <- emissions_x_at_product_level(companies, co2) |>
+  out <- emissions_profile_x_at_product_level(companies, co2) |>
     any_indicator_at_company_level()
 
   expect_equal(out$companies_id, "a")
@@ -134,7 +134,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
     input_isic_4digit = "a"
   )
 
-  out <- emissions_x_at_product_level(companies, co2) |>
+  out <- emissions_profile_x_at_product_level(companies, co2) |>
     any_indicator_at_company_level()
 
   expect_equal(nrow(out), 18L)
