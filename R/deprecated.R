@@ -20,3 +20,19 @@ warn_product_and_company_level_functions_are_now_deprecated <- function() {
     ))
   }
 }
+
+#' @export
+#' @rdname deprecated
+pstr_at_product_level <- function(companies,
+                                  scenarios,
+                                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
+                                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+  warn_product_and_company_level_functions_are_now_deprecated()
+
+  pstr_product(
+    companies = companies,
+    scenarios = scenarios,
+    low_threshold = low_threshold,
+    high_threshold = high_threshold
+  )
+}
