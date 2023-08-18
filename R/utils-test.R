@@ -12,3 +12,8 @@ format_robust_snapshot <- function(data) {
   row.names(data) <- NULL
   lapply(names(data), function(x) as.data.frame(data)[x])
 }
+
+skip_in_r_cmd <- function(new) {
+  on_r_cmd <- !identical(Sys.getenv("R_CMD"), "")
+  testthat::skip_if(on_r_cmd, "Skipping R CMD")
+}

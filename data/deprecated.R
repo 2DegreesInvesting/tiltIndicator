@@ -5,6 +5,9 @@ e$warn_deprecates <- function(new,
                               old,
                               when,
                               package = e$toy_package()) {
+  on_r_cmd <- !identical(Sys.getenv("R_CMD"), "")
+  if(on_r_cmd) return(invisible(new))
+
   .Deprecated(msg = glue::glue(
     "`{old}` was deprecated in {when}.
     Please use `{new}` in {package}."
