@@ -31,11 +31,6 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 ``` r
 library(tiltIndicator)
 library(tiltToyData)
-#> 
-#> Attaching package: 'tiltToyData'
-#> The following object is masked from 'package:tiltIndicator':
-#> 
-#>     toy_path
 library(readr)
 options(readr.show_col_types = FALSE)
 
