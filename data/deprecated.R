@@ -1,3 +1,4 @@
+#' @noRd
 warn_deprecates <- function(new,
                             old,
                             when,
@@ -10,24 +11,29 @@ warn_deprecates <- function(new,
   invisible(new)
 }
 
+#' @noRd
 read_toy_dataset <- function(dataset, ...) {
   file <- sprintf("%s.%s", dataset, toy_ext())
   path <- toy_path(file)
   readr::read_csv(path, show_col_types = FALSE, ...)
 }
 
+#' @noRd
 toy_path <- function(file) {
   system.file("extdata", file, package = toy_package(), mustWork = TRUE)
 }
 
+#' @noRd
 toy_package <- function() {
   "tiltToyData"
 }
 
+#' @noRd
 toy_ext <- function() {
   "csv.gz"
 }
 
+#' @noRd
 .when <- "tiltIndicator 0.0.0.9089"
 
 delayedAssign("companies", value = {
