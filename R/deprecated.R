@@ -98,6 +98,9 @@ xctr_at_company_level <- function(data) {
 #' @rdname deprecated
 "pstr_companies"
 
+#' @rdname deprecated
+"xstr_scenarios"
+
 #' Avoid R CMD Check warning about undocumented data sets
 #'
 #' R CMD check wants documentation for anything defined in this file. I stick

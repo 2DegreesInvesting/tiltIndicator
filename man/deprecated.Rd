@@ -14,6 +14,7 @@
 \alias{istr_companies}
 \alias{istr_inputs}
 \alias{pstr_companies}
+\alias{xstr_scenarios}
 \title{Deprecated}
 \format{
 An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 9 rows and 4 columns.
@@ -27,6 +28,8 @@ An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 74 rows and 10 columns.
 
 An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 28 rows and 10 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 388 rows and 8 columns.
 }
 \usage{
 istr_at_product_level(
@@ -68,6 +71,8 @@ istr_companies
 istr_inputs
 
 pstr_companies
+
+xstr_scenarios
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
