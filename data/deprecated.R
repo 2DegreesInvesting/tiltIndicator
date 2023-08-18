@@ -34,3 +34,8 @@ delayedAssign("products", read_new_toy_data_and_warn_deprecation(
   new = "emissions_profile_products", old = "products",
   col_types = readr::cols(isic_4digit = readr::col_character())
 ))
+
+delayedAssign("inputs", read_new_toy_data_and_warn_deprecation(
+  new = "emissions_profile_upstream_products", old = "inputs",
+  col_types = readr::cols(input_isic_4digit = readr::col_character())
+))
