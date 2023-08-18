@@ -6,6 +6,7 @@ warn_deprecates <- function(new,
     "`{old}` was deprecated in {when}.
     Please use `{new}` in {package}."
   ))
+
   invisible(new)
 }
 
