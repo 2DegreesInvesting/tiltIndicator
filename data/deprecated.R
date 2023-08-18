@@ -68,3 +68,9 @@ delayedAssign("istr_inputs", value = {
     e$warn_deprecates("istr_inputs", when = e$when) |>
     e$read_toy_dataset(col_types = readr::cols(input_isic_4digit = readr::col_character()))
 })
+
+delayedAssign("xstr_scenarios", value = {
+  "sector_profile_any_scenarios" |>
+    e$warn_deprecates("xstr_scenarios", when = e$when) |>
+    e$read_toy_dataset()
+})
