@@ -16,13 +16,17 @@
 #'
 #' companies <- toy_path("sector_profile_companies.csv.gz") |>
 #'   read_csv()
-#' sector_profile(companies, xstr_scenarios) |>
+#' scenarios <- toy_path("sector_profile_any_scenarios.csv.gz") |>
+#'   read_csv()
+#' sector_profile(companies, scenarios) |>
 #'   unnest_company() |>
 #'   xstr_polish_output_at_company_level()
 #'
 #' companies <- toy_path("sector_profile_upstream_companies.csv.gz") |>
 #'   read_csv()
-#' sector_profile_upstream(companies, xstr_scenarios, istr_inputs) |>
+#' upstream_products <- toy_path("sector_profile_upstream_products.csv.gz") |>
+#'   read_csv(col_types = cols(input_isic_4digit = col_character()))
+#' sector_profile_upstream(companies, scenarios, upstream_products) |>
 #'   unnest_company() |>
 #'   xstr_polish_output_at_company_level()
 xstr_polish_output_at_company_level <- function(data) {

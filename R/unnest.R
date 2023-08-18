@@ -16,7 +16,8 @@
 #'
 #' companies <- toy_path("sector_profile_companies.csv.gz") |>
 #'   read_csv()
-#' scenarios <- xstr_scenarios
+#' scenarios <- toy_path("sector_profile_any_scenarios.csv.gz") |>
+#'   read_csv()
 #'
 #' both <- sector_profile(companies, scenarios)
 #' both

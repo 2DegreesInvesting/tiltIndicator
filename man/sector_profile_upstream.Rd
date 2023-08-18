@@ -61,8 +61,10 @@ toy_files()
 
 companies <- toy_path("sector_profile_upstream_companies.csv.gz") |>
   read_csv()
-scenarios <- xstr_scenarios
-inputs <- istr_inputs
+scenarios <- toy_path("sector_profile_any_scenarios.csv.gz") |>
+  read_csv()
+inputs <- toy_path("sector_profile_upstream_products.csv.gz") |>
+  read_csv(col_types = cols(input_isic_4digit = col_character()))
 
 both <- sector_profile_upstream(companies, scenarios, inputs)
 both
