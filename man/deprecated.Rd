@@ -26,7 +26,7 @@ An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, 
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 74 rows and 10 columns.
 
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 28 rows and 10 columns.
+An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 28 rows and 10 columns.
 }
 \usage{
 istr_at_product_level(

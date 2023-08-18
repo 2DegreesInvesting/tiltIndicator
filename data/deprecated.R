@@ -53,3 +53,9 @@ delayedAssign("pstr_companies", value = {
     warn_deprecates("pstr_companies", when = .when) |>
     read_toy_dataset()
 })
+
+delayedAssign("istr_companies", value = {
+  "sector_profile_upstream_companies" |>
+    warn_deprecates("istr_companies", when = .when) |>
+    read_toy_dataset()
+})
