@@ -62,3 +62,9 @@ delayedAssign("istr_companies", value = {
     e$warn_deprecates("istr_companies", when = e$when) |>
     e$read_toy_dataset()
 })
+
+delayedAssign("istr_inputs", value = {
+  "sector_profile_upstream_products" |>
+    e$warn_deprecates("istr_inputs", when = e$when) |>
+    e$read_toy_dataset(col_types = readr::cols(input_isic_4digit = readr::col_character()))
+})
