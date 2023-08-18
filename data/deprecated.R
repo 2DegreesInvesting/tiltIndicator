@@ -1,4 +1,7 @@
-read_new_toy_data_and_warn_deprecation <- function(new, old, when, package) {
+read_new_toy_data_and_warn_deprecation <- function(new,
+                                                   old,
+                                                   when = "tiltIndicator 0.0.0.9089",
+                                                   package = "tiltToyData") {
   warn_new_deprecates_old(new, old, when, package)
   readr::read_csv(toy_path(toy_ext(new)), show_col_types = FALSE)
 }
@@ -19,13 +22,6 @@ toy_path <- function(file) {
   system.file("extdata", file, package = "tiltToyData", mustWork = TRUE)
 }
 
-delayedAssign(
-  "companies",
-  read_new_toy_data_and_warn_deprecation(
-    new = "emissions_profile_any_companies",
-    old = "companies",
-    when = "tiltIndicator 0.0.0.9089",
-    package = "tiltToyData"
-  )
-)
-
+delayedAssign("companies", read_new_toy_data_and_warn_deprecation(
+  new = "emissions_profile_any_companies", old = "companies"
+))
