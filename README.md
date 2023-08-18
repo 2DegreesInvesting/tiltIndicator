@@ -31,18 +31,28 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 ``` r
 library(tiltIndicator)
 library(tiltToyData)
+#> 
+#> Attaching package: 'tiltToyData'
+#> The following object is masked from 'package:tiltIndicator':
+#> 
+#>     toy_path
 library(readr)
+options(readr.show_col_types = FALSE)
 
-toy_datasets()
+toy_files()
 #> [1] "emissions_profile_any_companies.csv.gz"    
 #> [2] "emissions_profile_products.csv.gz"         
 #> [3] "emissions_profile_upstream_products.csv.gz"
+#> [4] "sector_profile_any_scenarios.csv.gz"       
+#> [5] "sector_profile_companies.csv.gz"           
+#> [6] "sector_profile_upstream_companies.csv.gz"  
+#> [7] "sector_profile_upstream_products.csv.gz"
 
-companies_path <- toy_dataset("emissions_profile_any_companies.csv.gz")
-companies <- read_csv(companies_path, show_col_types = FALSE)
+companies <- toy_path("emissions_profile_any_companies.csv.gz") |>
+  read_csv()
 
-products_path <- toy_dataset("emissions_profile_products.csv.gz")
-products <- read_csv(products_path, col_types = cols(isic_4digit = col_character()))
+products <- toy_path("emissions_profile_products.csv.gz") |>
+  read_csv(col_types = cols(isic_4digit = col_character()))
 
 both <- emissions_profile(companies, products)
 both
