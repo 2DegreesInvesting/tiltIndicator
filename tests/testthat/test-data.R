@@ -1,7 +1,3 @@
-test_that("`companies` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(tiltIndicator::companies))
-})
-
 test_that("`inputs` hasn't changed", {
   expect_snapshot(format_robust_snapshot(tiltIndicator::inputs))
 })

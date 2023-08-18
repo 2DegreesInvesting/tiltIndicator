@@ -114,6 +114,12 @@ The output of this indicator contains the following:
 }
 }
 \examples{
+library(tiltToyData)
+library(readr)
+options(readr.show_col_types = FALSE)
+
+companies <- read_csv(toy_dataset("emissions_profile_any_companies.csv.gz"))
+
 emissions_profile(companies, products)
 emissions_profile(companies, products) |> unnest_product()
 emissions_profile(companies, products) |> unnest_company()

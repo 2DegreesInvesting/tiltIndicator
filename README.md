@@ -30,9 +30,11 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 
 ``` r
 library(tiltIndicator)
+library(tiltToyData)
+library(readr)
+options(readr.show_col_types = FALSE)
 
-packageVersion("tiltIndicator")
-#> [1] '0.0.0.9086'
+companies <- read_csv(toy_dataset("emissions_profile_any_companies.csv.gz"))
 
 both <- emissions_profile(companies, products)
 both

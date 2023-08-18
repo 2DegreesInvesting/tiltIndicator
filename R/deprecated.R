@@ -79,3 +79,21 @@ xctr_at_company_level <- function(data) {
   deprecate_warn("0.0.0.9088", "xctr_at_company_level()")
   any_at_company_level(data)
 }
+
+#' @rdname deprecated
+"companies"
+
+#' @rdname deprecated
+"inputs"
+
+#' @rdname deprecated
+"products"
+
+#' @rdname deprecated
+"istr_companies"
+
+#' @rdname deprecated
+"istr_inputs"
+
+#' @rdname deprecated
+"pstr_companies"
