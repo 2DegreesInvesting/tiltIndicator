@@ -20,7 +20,9 @@
 #'   unnest_company() |>
 #'   xstr_polish_output_at_company_level()
 #'
-#' sector_profile_upstream(istr_companies, xstr_scenarios, istr_inputs) |>
+#' companies <- toy_path("sector_profile_upstream_companies.csv.gz") |>
+#'   read_csv()
+#' sector_profile_upstream(companies, xstr_scenarios, istr_inputs) |>
 #'   unnest_company() |>
 #'   xstr_polish_output_at_company_level()
 xstr_polish_output_at_company_level <- function(data) {
