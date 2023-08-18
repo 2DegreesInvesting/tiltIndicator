@@ -97,3 +97,11 @@ xctr_at_company_level <- function(data) {
 
 #' @rdname deprecated
 "pstr_companies"
+
+#' Avoid R CMD Check warning about undocumented data sets
+#'
+#' R CMD check wants documentation for anything defined in this file. I stick
+#' all objects in `e` so that I can document that single `e` object as internal.
+#' @keywords internal
+#' @name e
+"e"
