@@ -32,7 +32,6 @@
 #' @export
 #'
 #' @examples
-#' library(tiltIndicator)
 #' library(tiltToyData)
 #' library(readr)
 #' options(readr.show_col_types = FALSE)

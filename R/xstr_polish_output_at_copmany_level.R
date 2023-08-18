@@ -8,7 +8,15 @@
 #' @export
 #'
 #' @examples
-#' sector_profile(pstr_companies, xstr_scenarios) |>
+#' library(tiltToyData)
+#' library(readr)
+#' options(readr.show_col_types = FALSE)
+#'
+#' toy_files()
+#'
+#' companies <- toy_path("sector_profile_companies.csv.gz") |>
+#'   read_csv()
+#' sector_profile(companies, xstr_scenarios) |>
 #'   unnest_company() |>
 #'   xstr_polish_output_at_company_level()
 #'

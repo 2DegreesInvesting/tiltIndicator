@@ -37,7 +37,14 @@ aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 }
 \examples{
-companies <- pstr_companies
+library(tiltToyData)
+library(readr)
+options(readr.show_col_types = FALSE)
+
+toy_files()
+
+companies <- toy_path("sector_profile_companies.csv.gz") |>
+  read_csv()
 scenarios <- xstr_scenarios
 
 both <- sector_profile(companies, scenarios)
