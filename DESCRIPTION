@@ -28,7 +28,6 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
-    tiltToyData,
     utils,
     vctrs,
     withr
@@ -43,6 +42,7 @@ Suggests:
     rmarkdown,
     roxygen2,
     testthat (>= 3.0.0),
+    tiltToyData,
     usethis
 Config/testthat/edition: 3
 Encoding: UTF-8
