@@ -9,7 +9,3 @@ test_that("`istr_inputs` hasn't changed", {
 test_that("`istr_companies` hasn't changed", {
   expect_snapshot(format_robust_snapshot(tiltIndicator::istr_companies))
 })
-
-test_that("`pstr_companies` hasn't changed", {
-  expect_snapshot(format_robust_snapshot(tiltIndicator::pstr_companies))
-})

@@ -47,3 +47,9 @@ delayedAssign("inputs", value = {
     warn_deprecates("inputs", when = .when) |>
     read_toy_dataset(col_types = readr::cols(input_isic_4digit = readr::col_character()))
 })
+
+delayedAssign("pstr_companies", value = {
+  "sector_profile_companies" |>
+    warn_deprecates("pstr_companies", when = .when) |>
+    read_toy_dataset()
+})
