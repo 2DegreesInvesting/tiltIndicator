@@ -25,3 +25,7 @@ toy_path <- function(file) {
 delayedAssign("companies", read_new_toy_data_and_warn_deprecation(
   new = "emissions_profile_any_companies", old = "companies"
 ))
+
+delayedAssign("products", read_new_toy_data_and_warn_deprecation(
+  new = "emissions_profile_products", old = "products"
+))

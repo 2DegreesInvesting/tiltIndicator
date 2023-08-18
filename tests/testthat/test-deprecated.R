@@ -2,6 +2,10 @@ test_that("`companies` throws a deprecation warning", {
   expect_warning(companies, "deprecated.*use.*tiltToyData")
 })
 
+test_that("`products` throws a deprecation warning", {
+  expect_warning(products, "deprecated.*use.*tiltToyData")
+})
+
 test_that("istr_at_product_level() throws a deprecation warning", {
   companies <- slice(istr_companies, 1)
   scenarios <- slice(xstr_scenarios, 1)
