@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9089
+
+* Deprecate datasets. They all moved to tiltToyData with new names (#493).
+
 # tiltIndicator 0.0.0.9088
 
 * All `*_at_product_level()` and `*_at_company_level()` are now deprecated
