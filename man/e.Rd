@@ -5,7 +5,7 @@
 \alias{e}
 \title{Avoid R CMD Check warning about undocumented data sets}
 \format{
-An object of class \code{environment} of length 8.
+An object of class \code{environment} of length 11.
 }
 \usage{
 e

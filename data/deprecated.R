@@ -40,6 +40,12 @@ e$toy_ext <- function() {
   "csv.gz"
 }
 
+e$col_chr_name <- function(name) {
+  function() readr::cols(!!name := readr::col_character())
+}
+e$col_isic <- e$col_chr_name("isic_4digit")
+e$col_isic_upstream <- e$col_chr_name("input_isic_4digit")
+
 e$when <- "tiltIndicator 0.0.0.9089"
 
 delayedAssign("companies", value = {
@@ -51,13 +57,13 @@ delayedAssign("companies", value = {
 delayedAssign("products", value = {
   "emissions_profile_products" |>
     e$warn_deprecates("products", when = e$when) |>
-    e$read_toy_dataset(col_types = readr::cols(isic_4digit = readr::col_character()))
+    e$read_toy_dataset(col_types = e$col_isic())
 })
 
 delayedAssign("inputs", value = {
   "emissions_profile_upstream_products" |>
     e$warn_deprecates("inputs", when = e$when) |>
-    e$read_toy_dataset(col_types = readr::cols(input_isic_4digit = readr::col_character()))
+    e$read_toy_dataset(col_types = e$col_isic_upstream())
 })
 
 delayedAssign("pstr_companies", value = {
@@ -75,7 +81,7 @@ delayedAssign("istr_companies", value = {
 delayedAssign("istr_inputs", value = {
   "sector_profile_upstream_products" |>
     e$warn_deprecates("istr_inputs", when = e$when) |>
-    e$read_toy_dataset(col_types = readr::cols(input_isic_4digit = readr::col_character()))
+    e$read_toy_dataset(col_types = e$col_isic_upstream())
 })
 
 delayedAssign("xstr_scenarios", value = {
