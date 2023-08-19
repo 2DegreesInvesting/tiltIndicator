@@ -5,8 +5,7 @@ e$warn_deprecates <- function(new,
                               old,
                               when,
                               package = e$toy_package()) {
-  on_r_cmd <- !identical(Sys.getenv("R_CMD"), "")
-  if(on_r_cmd) return(invisible(new))
+  if(e$on_rcmd()) return(invisible(new))
 
   .Deprecated(msg = glue::glue(
     "`{old}` was deprecated in {when}.
@@ -14,6 +13,14 @@ e$warn_deprecates <- function(new,
   ))
 
   invisible(new)
+}
+
+e$toy_package <- function() {
+  "tiltToyData"
+}
+
+e$on_rcmd <- function() {
+  nzchar(Sys.getenv("R_CMD"))
 }
 
 e$read_toy_dataset <- function(dataset, ...) {
@@ -24,10 +31,6 @@ e$read_toy_dataset <- function(dataset, ...) {
 
 e$toy_path <- function(file) {
   system.file("extdata", file, package = e$toy_package(), mustWork = TRUE)
-}
-
-e$toy_package <- function() {
-  "tiltToyData"
 }
 
 e$toy_ext <- function() {
