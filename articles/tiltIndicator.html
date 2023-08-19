@@ -204,6 +204,8 @@ datasets that come with the tiltIndicator package:
 <code>products</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">companies</span></span>
+<span><span class="co">#&gt; Warning: `companies` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
+<span><span class="co">#&gt; `emissions_profile_any_companies` from tiltToyData.</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 4</span></span></span>
 <span><span class="co">#&gt;   activity_uuid_product_uuid                          clustered company_id unit </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
@@ -218,6 +220,8 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> <span style="color: #BB0000;">NA</span>                                                  apple     ca-coity-… <span style="color: #BB0000;">NA</span></span></span>
 <span></span>
 <span><span class="va">products</span></span>
+<span><span class="co">#&gt; Warning: `products` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
+<span><span class="co">#&gt; `emissions_profile_products` from tiltToyData.</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 6</span></span></span>
 <span><span class="co">#&gt;   co2_footprint tilt_sector    unit  isic_4digit activity_uuid_product_uuid     </span></span>
 <span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          </span></span>
@@ -277,6 +281,8 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">upstream_products</span> <span class="op">&lt;-</span> <span class="va">inputs</span></span>
+<span><span class="co">#&gt; Warning: `inputs` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
+<span><span class="co">#&gt; `emissions_profile_upstream_products` from tiltToyData.</span></span>
 <span></span>
 <span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile_upstream</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">upstream_products</span><span class="op">)</span></span>
 <span><span class="va">both</span></span>

@@ -34,10 +34,10 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/pull_request_template.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/companies.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/deprecated.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/deprecated.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/e.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/emissions_profile.html</loc>
@@ -49,19 +49,7 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/inputs.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/istr_datasets.html</loc>
-  </url>
-  <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/products.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pstr_datasets.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/rename.html</loc>
@@ -92,8 +80,5 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/xstr_prune_companies.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/xstr_scenarios.html</loc>
   </url>
 </urlset>

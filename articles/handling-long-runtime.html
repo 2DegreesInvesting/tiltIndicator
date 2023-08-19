@@ -168,11 +168,17 @@ what’s going on.</p>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># TODO: Replace with `read_csv("/path/to/input/companies.csv")`</span></span>
-<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/istr_datasets.html">istr_companies</a></span></span>
+<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/deprecated.html">istr_companies</a></span></span>
+<span><span class="co">#&gt; Warning: `istr_companies` was deprecated in tiltIndicator 0.0.0.9089. Please</span></span>
+<span><span class="co">#&gt; use `sector_profile_upstream_companies` from tiltToyData.</span></span>
 <span><span class="co"># TODO: Replace with `read_csv("/path/to/input/scenarios.csv")`</span></span>
-<span><span class="va">scenarios</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/xstr_scenarios.html">xstr_scenarios</a></span></span>
+<span><span class="va">scenarios</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/deprecated.html">xstr_scenarios</a></span></span>
+<span><span class="co">#&gt; Warning: `xstr_scenarios` was deprecated in tiltIndicator 0.0.0.9089. Please</span></span>
+<span><span class="co">#&gt; use `sector_profile_any_scenarios` from tiltToyData.</span></span>
 <span><span class="co"># TODO: Replace with `read_csv("/path/to/input/inputs.csv")`</span></span>
-<span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/istr_datasets.html">istr_inputs</a></span></span>
+<span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/deprecated.html">istr_inputs</a></span></span>
+<span><span class="co">#&gt; Warning: `istr_inputs` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
+<span><span class="co">#&gt; `sector_profile_upstream_products` from tiltToyData.</span></span>
 <span></span>
 <span><span class="co"># Create a "job" data frame where each row is a chunk of data</span></span>
 <span><span class="va">istr_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
@@ -244,7 +250,9 @@ what’s going on.</p>
 to later save them.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># TODO: Replace with `read_csv("/path/to/input/companies.csv")`</span></span>
-<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/companies.html">companies</a></span></span>
+<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/deprecated.html">companies</a></span></span>
+<span><span class="co">#&gt; Warning: `companies` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
+<span><span class="co">#&gt; `emissions_profile_any_companies` from tiltToyData.</span></span>
 <span></span>
 <span><span class="co"># TODO: Experiment to find the number of chunks that works best for you</span></span>
 <span><span class="va">pctr_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
@@ -283,7 +291,9 @@ match the names of the <code>*_rds()</code>. This allows to use
 </ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># TODO: Replace with `read_csv("/path/to/input/products.csv")`</span></span>
-<span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/products.html">products</a></span></span>
+<span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/deprecated.html">products</a></span></span>
+<span><span class="co">#&gt; Warning: `products` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
+<span><span class="co">#&gt; `emissions_profile_products` from tiltToyData.</span></span>
 <span></span>
 <span><span class="va">pctr_rds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">products</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span></span>
 <span></span>
