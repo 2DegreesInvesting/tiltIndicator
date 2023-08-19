@@ -8,7 +8,7 @@ e$warn_deprecates <- function(new,
   if(e$on_rcmd()) return(invisible(new))
 
   .Deprecated(msg = sprintf(
-    "`%s` was deprecated in %s. Please use `%s` in %s.",
+    "`%s` was deprecated in %s. Please use `%s` from %s.",
     old, when, new, package
   ))
 
