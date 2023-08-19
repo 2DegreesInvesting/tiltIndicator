@@ -7,9 +7,9 @@ e$warn_deprecates <- function(new,
                               package = e$toy_package()) {
   if(e$on_rcmd()) return(invisible(new))
 
-  .Deprecated(msg = glue::glue(
-    "`{old}` was deprecated in {when}.
-    Please use `{new}` in {package}."
+  .Deprecated(msg = sprintf(
+    "`%s` was deprecated in %s. Please use `%s` in %s.",
+    old, when, new, package
   ))
 
   invisible(new)
@@ -24,9 +24,12 @@ e$on_rcmd <- function() {
 }
 
 e$read_toy_dataset <- function(dataset, ...) {
-  file <- sprintf("%s.%s", dataset, e$toy_ext())
-  path <- e$toy_path(file)
+  path <- e$toy_path(e$toy_file(dataset))
   readr::read_csv(path, show_col_types = FALSE, ...)
+}
+
+e$toy_file <- function(dataset) {
+  sprintf("%s.%s", dataset, e$toy_ext())
 }
 
 e$toy_path <- function(file) {
