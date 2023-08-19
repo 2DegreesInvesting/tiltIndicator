@@ -28,6 +28,7 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
+    tiltToyData (>= 0.0.0.9000),
     utils,
     vctrs,
     withr
@@ -42,7 +43,6 @@ Suggests:
     rmarkdown,
     roxygen2,
     testthat (>= 3.0.0),
-    tiltToyData,
     usethis
 Config/testthat/edition: 3
 Encoding: UTF-8
@@ -50,3 +50,5 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Remotes:  
+    2degreesinvesting/tiltToyData
