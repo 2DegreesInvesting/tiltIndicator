@@ -139,7 +139,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
     sector = "a",
     subsector = "a",
     input_unit = "a",
-    input_isic_4digit = "a",
+    input_isic_4digit = "1234",
   )
 
   out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
@@ -180,7 +180,7 @@ test_that("with duplicated scenarios throws no error (#435)", {
     sector = "a",
     subsector = "a",
     input_unit = "a",
-    input_isic_4digit = "a",
+    input_isic_4digit = "1234",
   )
 
   expect_no_error(sector_profile_upstream_at_product_level(companies, scenarios, inputs))

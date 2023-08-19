@@ -87,7 +87,7 @@ test_that("values sum 1", {
     input_co2_footprint = 1,
     input_tilt_sector = "a",
     input_unit = "a",
-    input_isic_4digit = "a"
+    input_isic_4digit = "1234"
   )
 
   out <- emissions_profile_any_at_product_level(companies, co2) |>
@@ -108,7 +108,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
     input_co2_footprint = 1,
     input_tilt_sector = "a",
     input_unit = "a",
-    input_isic_4digit = "a"
+    input_isic_4digit = "1234"
   )
 
   out <- emissions_profile_any_at_product_level(companies, co2) |>
@@ -131,7 +131,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
     input_co2_footprint = 1,
     input_tilt_sector = "a",
     input_unit = "a",
-    input_isic_4digit = "a"
+    input_isic_4digit = "1234"
   )
 
   out <- emissions_profile_any_at_product_level(companies, co2) |>

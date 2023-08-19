@@ -64,7 +64,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
     co2_footprint = 1,
     tilt_sector = "a",
     unit = "a",
-    isic_4digit = "a"
+    isic_4digit = "1234"
   )
 
   # PCTR
@@ -86,7 +86,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
     input_co2_footprint = 1,
     input_tilt_sector = "a",
     input_unit = "a",
-    input_isic_4digit = "a"
+    input_isic_4digit = "1234"
   )
 
   # ICTR
@@ -110,7 +110,7 @@ test_that("with duplicated co2 throws no error (#435)", {
     co2_footprint = 1,
     tilt_sector = "a",
     unit = "a",
-    isic_4digit = "a"
+    isic_4digit = "1234"
   )
   companies <- tibble(
     company_id = "a",
@@ -211,22 +211,40 @@ test_that("handles duplicated `co2` data (#230)", {
   expect_no_error(emissions_profile_any_at_product_level(companies, co2))
 })
 
-test_that("if the 'isic' column isn't a character, throws an error (#233)", {
+test_that("if 'isic' column is numeric it knows how to handle it gracefully", {
   companies <- tibble(
-    company_id = c("a"),
-    clustered = c("b"),
-    activity_uuid_product_uuid = c("c"),
+    company_id = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a",
   )
   co2 <- tibble(
-    activity_uuid_product_uuid = c("c"),
+    activity_uuid_product_uuid = "a",
     co2_footprint = 1,
-    tilt_sector = "transport",
-    unit = "metric ton*km",
-    # Not a character
-    isic_4digit = 4575,
+    tilt_sector = "a",
+    unit = "a",
+    isic_4digit = 1234,
   )
 
-  expect_error(emissions_profile_any_at_product_level(companies, co2), "must be.*character")
+  expect_no_error(emissions_profile_any_at_product_level(companies, co2))
+})
+
+test_that("if the 'isic' column hasn't 4 digits throws an errors ", {
+  companies <- tibble(
+    company_id = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a",
+  )
+  co2 <- tibble(
+    activity_uuid_product_uuid = "a",
+    co2_footprint = 1,
+    tilt_sector = "a",
+    unit = "a",
+    isic_4digit = "123"
+  )
+  expect_error(
+    emissions_profile_any_at_product_level(companies, co2),
+    "must have length 4"
+  )
 })
 
 test_that("a 0-row `co2` yields an error", {

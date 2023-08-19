@@ -136,7 +136,7 @@ test_that("values sum 1", {
     co2_footprint = 1,
     tilt_sector = "a",
     unit = "a",
-    isic_4digit = "a"
+    isic_4digit = "1234"
   )
 
   product <- emissions_profile_any_at_product_level(companies, co2)
@@ -157,7 +157,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
     co2_footprint = 1,
     tilt_sector = "a",
     unit = "a",
-    isic_4digit = "a"
+    isic_4digit = "1234"
   )
 
   product <- emissions_profile_any_at_product_level(companies, co2)
@@ -175,7 +175,7 @@ test_that("no match preserves companies", {
     co2_footprint = 1,
     tilt_sector = "a",
     unit = "a",
-    isic_4digit = "a"
+    isic_4digit = "1234"
   )
 
   companies <- tibble(
@@ -220,7 +220,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
     tilt_sector = "a",
     unit = "a",
     activity_uuid_product_uuid = "a",
-    isic_4digit = "a"
+    isic_4digit = "1234"
   )
 
   product <- emissions_profile_any_at_product_level(companies, co2)
