@@ -114,10 +114,28 @@ The output of this indicator contains the following:
 }
 }
 \examples{
-emissions_profile(companies, products)
-emissions_profile(companies, products) |> unnest_product()
-emissions_profile(companies, products) |> unnest_company()
+library(tiltToyData)
+library(readr)
+options(readr.show_col_types = FALSE)
 
-emissions_profile_upstream(companies, inputs)
+toy_files()
+
+companies <- toy_path("emissions_profile_any_companies.csv.gz") |>
+  read_csv()
+
+products <- toy_path("emissions_profile_products.csv.gz") |>
+  read_csv(col_types = cols(isic_4digit = col_character()))
+
+both <- emissions_profile(companies, products)
+both
+
+both |> unnest_product()
+
+both |> unnest_company()
+
+upstream_products <- toy_path("emissions_profile_upstream_products.csv.gz") |>
+  read_csv(col_types = cols(input_isic_4digit = col_character()))
+
+emissions_profile_upstream(companies, upstream_products)
 }
 \concept{XCTR functions}

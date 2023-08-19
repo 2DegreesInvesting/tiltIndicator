@@ -12,3 +12,7 @@ format_robust_snapshot <- function(data) {
   row.names(data) <- NULL
   lapply(names(data), function(x) as.data.frame(data)[x])
 }
+
+on_rcmd <- function() {
+  nzchar(Sys.getenv("R_CMD"))
+}

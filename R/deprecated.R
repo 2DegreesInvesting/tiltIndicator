@@ -79,3 +79,32 @@ xctr_at_company_level <- function(data) {
   deprecate_warn("0.0.0.9088", "xctr_at_company_level()")
   any_at_company_level(data)
 }
+
+#' @rdname deprecated
+"companies"
+
+#' @rdname deprecated
+"inputs"
+
+#' @rdname deprecated
+"products"
+
+#' @rdname deprecated
+"istr_companies"
+
+#' @rdname deprecated
+"istr_inputs"
+
+#' @rdname deprecated
+"pstr_companies"
+
+#' @rdname deprecated
+"xstr_scenarios"
+
+#' Avoid R CMD Check warning about undocumented data sets
+#'
+#' R CMD check wants documentation for anything defined in this file. I stick
+#' all objects in `e` so that I can document that single `e` object as internal.
+#' @keywords internal
+#' @name e
+"e"

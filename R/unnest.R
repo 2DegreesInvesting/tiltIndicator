@@ -8,8 +8,16 @@
 #' @export
 #'
 #' @examples
-#' companies <- pstr_companies
-#' scenarios <- xstr_scenarios
+#' library(tiltToyData)
+#' library(readr)
+#' options(readr.show_col_types = FALSE)
+#'
+#' toy_files()
+#'
+#' companies <- toy_path("sector_profile_companies.csv.gz") |>
+#'   read_csv()
+#' scenarios <- toy_path("sector_profile_any_scenarios.csv.gz") |>
+#'   read_csv()
 #'
 #' both <- sector_profile(companies, scenarios)
 #' both
