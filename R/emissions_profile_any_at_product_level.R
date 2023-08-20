@@ -23,12 +23,12 @@ xctr_check <- function(companies, co2) {
   crucial <- c("company_id")
   walk(crucial, ~ check_matches_name(companies, .x))
 
-  crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
+  crucial <- c("co2_footprint", "tilt_sector", isic_pattern())
   walk(crucial, ~ check_matches_name(co2, .x))
 
   check_has_no_na(co2, find_co2_footprint(co2))
-  check_is_character(get_column(co2, "isic_4digit"))
-  check_string_lengh(get_column(co2, "isic_4digit"), 4L)
+  check_is_character(isic(co2))
+  check_string_lengh(isic(co2), 4L)
 }
 
 check_matches_name <- function(data, pattern) {
