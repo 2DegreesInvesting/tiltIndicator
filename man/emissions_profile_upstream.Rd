@@ -80,3 +80,8 @@ both |> unnest_product()
 
 both |> unnest_company()
 }
+\seealso{
+Other emissions functions: 
+\code{\link{emissions_profile}()}
+}
+\concept{emissions functions}

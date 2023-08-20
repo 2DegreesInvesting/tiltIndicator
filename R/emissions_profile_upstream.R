@@ -5,6 +5,7 @@
 #'
 #' @name emissions_profile_upstream
 #' @inherit emissions_profile
+#' @family emissions functions
 #'
 #' @examples
 #' library(tiltToyData)
