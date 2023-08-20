@@ -139,7 +139,7 @@ companies <- tiltIndicator::companies
 # TODO: Experiment to find the number of chunks that works best for you
 emissions_profile_job <- companies |>
   nest_chunk(.by = "company_id", chunks = 3) |>
-  add_file(parent = cache_path("xctr"))
+  add_file(parent = cache_path("emissions_profile"))
 
 # `nest_chunk()` ensures all rows of a company fall in the same chunk
 slice(emissions_profile_job, 1) |> unnest(data)
@@ -177,7 +177,7 @@ Here is what you accomplished. Instead of saturating the memory you stored each
 chunk into a file.
 
 ```{r}
-dir_tree(cache_path("xctr"))
+dir_tree(cache_path("emissions_profile"))
 ```
 
 You can now read all the saved files at once. If the results are too many you
