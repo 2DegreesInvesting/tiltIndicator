@@ -128,7 +128,7 @@ the preparation must be fixed.
 
 # tiltIndicator 0.0.0.9062
 
-* XSTR and XCTR functions now stop if `scenarios` or `co2` has 0-row (#337, #338).
+* XSTR and emissions functions now stop if `scenarios` or `co2` has 0-row (#337, #338).
 
 # tiltIndicator 0.0.0.9061
 

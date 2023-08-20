@@ -20,7 +20,7 @@
 #' @param high_threshold A numeric value to segment medium and high transition
 #'   risk products.
 #'
-#' @family XCTR functions
+#' @family emissions functions
 #'
 #' @return `r document_value()`
 #'

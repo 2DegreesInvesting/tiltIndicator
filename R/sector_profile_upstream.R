@@ -8,7 +8,7 @@
 #' @param inputs A dataframe like [istr_inputs].
 #' @inheritParams emissions_profile
 #'
-#' @family ISTR functions
+#' @family sector functions
 #'
 #' @return `r document_value()`
 #'

@@ -8,7 +8,7 @@
 #'
 #' @family pre-processing helpers
 #'
-#' @return A `companies` dataset as required by sector profile functions.
+#' @return A `companies` dataset as required by sector functions.
 #' @export
 #'
 #' @examples

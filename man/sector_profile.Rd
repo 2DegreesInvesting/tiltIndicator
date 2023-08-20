@@ -53,4 +53,8 @@ both |> unnest_product()
 
 both |> unnest_company()
 }
-\concept{sector profile functions}
+\seealso{
+Other sector functions: 
+\code{\link{sector_profile_upstream}()}
+}
+\concept{sector functions}

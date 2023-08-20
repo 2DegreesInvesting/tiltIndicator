@@ -70,4 +70,8 @@ both |> unnest_product()
 
 both |> unnest_company()
 }
-\concept{ISTR functions}
+\seealso{
+Other sector functions: 
+\code{\link{sector_profile}()}
+}
+\concept{sector functions}

@@ -134,4 +134,4 @@ upstream_products <- read_csv(toy_path("emissions_profile_upstream_products.csv.
 
 emissions_profile_upstream(companies, upstream_products)
 }
-\concept{XCTR functions}
+\concept{emissions functions}
