@@ -2,7 +2,7 @@ emissions_profile_any_at_product_level <- function(companies,
                                                    co2,
                                                    low_threshold = 1 / 3,
                                                    high_threshold = 2 / 3) {
-  co2 <- co2 |> pad_column("isic_4digit", width = 1, pad = "0")
+  co2 <- pad_column(co2, "isic_4digit", width = 4, pad = "0")
   xctr_check(companies, co2)
 
   .companies <- prepare_companies(companies)
@@ -14,17 +14,6 @@ emissions_profile_any_at_product_level <- function(companies,
     join_companies(.companies) |>
     xctr_select_cols_at_product_level() |>
     polish_output(cols_at_product_level())
-}
-
-pad_column <- function(data, pattern, width, pad) {
-  check_matches_name(data, pattern)
-
-  x <- get_column(data, pattern)
-  if (!is.character(x)) {
-    data[extract_name(data, pattern)] <- str_pad(x, width = width, pad = pad)
-  }
-
-  data
 }
 
 xctr_check <- function(companies, co2) {
