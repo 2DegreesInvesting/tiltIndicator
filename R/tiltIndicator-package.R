@@ -74,5 +74,6 @@
 #' @importFrom utils hasName
 #' @importFrom vctrs vec_assert
 #' @importFrom withr local_envvar
+#' @importFrom withr local_options
 ## usethis namespace: end
 NULL

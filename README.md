@@ -43,11 +43,9 @@ toy_files()
 #> [6] "sector_profile_upstream_companies.csv.gz"  
 #> [7] "sector_profile_upstream_products.csv.gz"
 
-companies <- toy_path("emissions_profile_any_companies.csv.gz") |>
-  read_csv()
+companies <- read_csv(toy_path("emissions_profile_any_companies.csv.gz"))
 
-products <- toy_path("emissions_profile_products.csv.gz") |>
-  read_csv(col_types = cols(isic_4digit = col_character()))
+products <- read_csv(toy_path("emissions_profile_products.csv.gz"))
 
 both <- emissions_profile(companies, products)
 both

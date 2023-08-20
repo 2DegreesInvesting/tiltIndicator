@@ -1,8 +1,6 @@
 test_that("snapshot", {
-  withr::local_options(list(readr.show_col_types = FALSE))
-  companies <- extdata_path("pstr_companies.csv") |>
-    read_csv(col_types = cols(isic_4digit = col_character())) |>
-    slice(1)
+  local_options(list(readr.show_col_types = FALSE), width = 1000)
+  companies <- read_csv(extdata_path("pstr_companies.csv"), n_max = 1)
   out <- xstr_pivot_type_sector_subsector(companies)
-  expect_snapshot(format_robust_snapshot(out))
+  expect_snapshot(as.data.frame(out))
 })
