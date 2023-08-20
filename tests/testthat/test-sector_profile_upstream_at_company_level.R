@@ -47,7 +47,7 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     sector = "total",
     subsector = "energy",
     input_unit = "any",
-    input_isic_4digit = "4578",
+    input_isic_4digit = "1234",
   )
 
   scenarios <- tibble(
@@ -177,7 +177,7 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
     input_tilt_sector = "any",
     input_tilt_subsector = "any",
     input_unit = "y",
-    input_isic_4digit = "y",
+    input_isic_4digit = "1234",
     type = "a",
     sector = "b",
     subsector = "c"
@@ -214,7 +214,7 @@ test_that("values sum 1", {
     sector = "a",
     subsector = "a",
     input_unit = "a",
-    input_isic_4digit = "a",
+    input_isic_4digit = "1234",
   )
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
@@ -249,7 +249,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
     sector = "a",
     subsector = c("a", "unmatched"),
     input_unit = "a",
-    input_isic_4digit = "a",
+    input_isic_4digit = "1234",
   )
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
@@ -287,7 +287,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
     sector = "a",
     subsector = "a",
     input_unit = "a",
-    input_isic_4digit = "a",
+    input_isic_4digit = "1234",
   )
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)

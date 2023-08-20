@@ -33,7 +33,7 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
     sector = "total",
     subsector = "energy",
     input_unit = "any",
-    input_isic_4digit = "4578",
+    input_isic_4digit = "1234",
   )
 
   out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
@@ -71,7 +71,7 @@ test_that("`high_threshold` and `year` yield the expected risk categories", {
     sector = "total",
     subsector = "energy",
     input_unit = "any",
-    input_isic_4digit = "4578",
+    input_isic_4digit = "1234",
   )
 
   out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
@@ -105,7 +105,7 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
     input_tilt_sector = "any",
     input_tilt_subsector = "any",
     input_unit = "y",
-    input_isic_4digit = "y",
+    input_isic_4digit = "1234",
     type = "a",
     sector = "b",
     subsector = "c"
@@ -139,7 +139,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
     sector = "a",
     subsector = "a",
     input_unit = "a",
-    input_isic_4digit = "a",
+    input_isic_4digit = "1234",
   )
 
   out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
@@ -180,7 +180,7 @@ test_that("with duplicated scenarios throws no error (#435)", {
     sector = "a",
     subsector = "a",
     input_unit = "a",
-    input_isic_4digit = "a",
+    input_isic_4digit = "1234",
   )
 
   expect_no_error(sector_profile_upstream_at_product_level(companies, scenarios, inputs))
@@ -265,7 +265,7 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
     sector = "c",
     subsector = "d",
     input_unit = "any",
-    input_isic_4digit = "4578",
+    input_isic_4digit = "1234",
   )
 
   # For type "b" all `sector` and `subsector` are `NA`

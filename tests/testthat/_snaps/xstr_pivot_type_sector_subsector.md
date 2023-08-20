@@ -30,13 +30,13 @@
       
       [[6]]
         tilt_sector
-      1        <NA>
-      2        <NA>
+      1          NA
+      2          NA
       
       [[7]]
         tilt_subsector
-      1           <NA>
-      2           <NA>
+      1             NA
+      2             NA
       
       [[8]]
         type

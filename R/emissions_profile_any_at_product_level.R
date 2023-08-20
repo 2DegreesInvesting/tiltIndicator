@@ -2,6 +2,7 @@ emissions_profile_any_at_product_level <- function(companies,
                                                    co2,
                                                    low_threshold = 1 / 3,
                                                    high_threshold = 2 / 3) {
+  co2 <- sanitize_co2(co2)
   xctr_check(companies, co2)
 
   .companies <- prepare_companies(companies)
@@ -22,11 +23,12 @@ xctr_check <- function(companies, co2) {
   crucial <- c("company_id")
   walk(crucial, ~ check_matches_name(companies, .x))
 
-  crucial <- c("co2_footprint", "tilt_sector", "isic_4digit")
+  crucial <- c("co2_footprint", "tilt_sector", isic_pattern())
   walk(crucial, ~ check_matches_name(co2, .x))
 
   check_has_no_na(co2, find_co2_footprint(co2))
-  check_is_character(get_column(co2, "isic_4digit"))
+  check_is_character(pull_isic(co2))
+  check_string_lengh(pull_isic(co2), 4L)
 }
 
 check_matches_name <- function(data, pattern) {

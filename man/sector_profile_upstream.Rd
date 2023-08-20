@@ -59,12 +59,9 @@ options(readr.show_col_types = FALSE)
 
 toy_files()
 
-companies <- toy_path("sector_profile_upstream_companies.csv.gz") |>
-  read_csv()
-scenarios <- toy_path("sector_profile_any_scenarios.csv.gz") |>
-  read_csv()
-inputs <- toy_path("sector_profile_upstream_products.csv.gz") |>
-  read_csv(col_types = cols(input_isic_4digit = col_character()))
+companies <- read_csv(toy_path("sector_profile_upstream_companies.csv.gz"))
+scenarios <- read_csv(toy_path("sector_profile_any_scenarios.csv.gz"))
+inputs <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
 
 both <- sector_profile_upstream(companies, scenarios, inputs)
 both

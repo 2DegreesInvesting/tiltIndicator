@@ -68,7 +68,7 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
     input_activity_uuid_product_uuid = "c",
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit = "4575",
+    input_isic_4digit = "1234",
   )
 
   product <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold)
@@ -87,7 +87,7 @@ test_that("values sum 1", {
     input_co2_footprint = 1,
     input_tilt_sector = "a",
     input_unit = "a",
-    input_isic_4digit = "a"
+    input_isic_4digit = "1234"
   )
 
   out <- emissions_profile_any_at_product_level(companies, co2) |>
@@ -108,7 +108,7 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
     input_co2_footprint = 1,
     input_tilt_sector = "a",
     input_unit = "a",
-    input_isic_4digit = "a"
+    input_isic_4digit = "1234"
   )
 
   out <- emissions_profile_any_at_product_level(companies, co2) |>
@@ -131,7 +131,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
     input_co2_footprint = 1,
     input_tilt_sector = "a",
     input_unit = "a",
-    input_isic_4digit = "a"
+    input_isic_4digit = "1234"
   )
 
   out <- emissions_profile_any_at_product_level(companies, co2) |>

@@ -120,11 +120,8 @@ options(readr.show_col_types = FALSE)
 
 toy_files()
 
-companies <- toy_path("emissions_profile_any_companies.csv.gz") |>
-  read_csv()
-
-products <- toy_path("emissions_profile_products.csv.gz") |>
-  read_csv(col_types = cols(isic_4digit = col_character()))
+companies <- read_csv(toy_path("emissions_profile_any_companies.csv.gz"))
+products <- read_csv(toy_path("emissions_profile_products.csv.gz"))
 
 both <- emissions_profile(companies, products)
 both
@@ -133,8 +130,7 @@ both |> unnest_product()
 
 both |> unnest_company()
 
-upstream_products <- toy_path("emissions_profile_upstream_products.csv.gz") |>
-  read_csv(col_types = cols(input_isic_4digit = col_character()))
+upstream_products <- read_csv(toy_path("emissions_profile_upstream_products.csv.gz"))
 
 emissions_profile_upstream(companies, upstream_products)
 }

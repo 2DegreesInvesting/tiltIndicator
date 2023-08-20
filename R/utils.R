@@ -80,17 +80,6 @@ prepare_companies <- function(companies) {
     rename(companies_id = "company_id")
 }
 
-prepare_co2 <- function(data, low_threshold, high_threshold) {
-  data |>
-    mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
-    distinct() |>
-    rename(
-      tilt_sec = ends_with("tilt_sector"),
-      unit = ends_with("unit"),
-      isic_sec = ends_with("isic_4digit")
-    )
-}
-
 lowercase_characters <- function(data) {
   mutate(data, across(where(is.character), tolower))
 }
@@ -191,4 +180,25 @@ nest_levels <- function(product, company) {
     nest(company, .by = all_of(.by), .key = "company"),
     by = .by
   )
+}
+
+pad_column <- function(data, pattern, width, pad) {
+  check_matches_name(data, pattern)
+
+  x <- get_column(data, pattern)
+  if (!is.character(x)) {
+    data[extract_name(data, pattern)] <- str_pad(x, width = width, pad = pad)
+  }
+
+  data
+}
+
+
+check_string_lengh <- function(x, length) {
+  label <- deparse(substitute(x))
+  if (!all(nchar(x) == length)) {
+    abort(glue("All values of `{label}` must have length {length}."))
+  }
+
+  invisible(x)
 }

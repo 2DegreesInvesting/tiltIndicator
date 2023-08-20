@@ -56,6 +56,7 @@
 #' @importFrom rlang abort
 #' @importFrom rlang set_names
 #' @importFrom rlang warn
+#' @importFrom stringr str_pad
 #' @importFrom tibble rowid_to_column
 #' @importFrom tibble tibble
 #' @importFrom tibble tribble
@@ -73,5 +74,6 @@
 #' @importFrom utils hasName
 #' @importFrom vctrs vec_assert
 #' @importFrom withr local_envvar
+#' @importFrom withr local_options
 ## usethis namespace: end
 NULL
