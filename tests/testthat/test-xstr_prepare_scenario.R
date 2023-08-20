@@ -14,7 +14,7 @@ test_that("takes any number of scenarios", {
 test_that("with duplicated scenario+year+sector+subsector errors gracefully (#391)", {
   local_options(list(readr.show_col_types = FALSE))
 
-  weo <- slice(read_csv(extdata_path("str_weo_targets.csv")), 1)
+  weo <- read_csv(extdata_path("str_weo_targets.csv"), n_max = 1)
   duplicated <- mutate(bind_rows(weo, weo), co2_reductions = 1:2)
   expect_error(
     xstr_prepare_scenario(list(weo = duplicated)),
@@ -27,6 +27,6 @@ test_that("with duplicated scenario+year+sector+subsector errors gracefully (#39
 test_that("returns visibly", {
   local_options(list(readr.show_col_types = FALSE))
 
-  weo <- slice(read_csv(extdata_path("str_weo_targets.csv")), 1)
+  weo <- read_csv(extdata_path("str_weo_targets.csv"), n_max = 1)
   expect_visible(xstr_prepare_scenario(list(weo = weo)))
 })
