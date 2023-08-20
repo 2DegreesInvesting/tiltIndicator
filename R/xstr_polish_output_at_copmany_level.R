@@ -20,10 +20,10 @@
 #'   unnest_company() |>
 #'   xstr_polish_output_at_company_level()
 #'
-#' companies <- read_csv(toy_path("sector_profile_upstream_companies.csv.gz"))
-#' upstream_products <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
+#' companies_upstream <- read_csv(toy_path("sector_profile_upstream_companies.csv.gz"))
+#' products_upstream <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
 #'
-#' sector_profile_upstream(companies, scenarios, upstream_products) |>
+#' sector_profile_upstream(companies_upstream, scenarios, products_upstream) |>
 #'   unnest_company() |>
 #'   xstr_polish_output_at_company_level()
 xstr_polish_output_at_company_level <- function(data) {
