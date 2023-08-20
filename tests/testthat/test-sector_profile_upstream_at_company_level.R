@@ -47,7 +47,7 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
     sector = "total",
     subsector = "energy",
     input_unit = "any",
-    input_isic_4digit = "4578",
+    input_isic_4digit = "1234",
   )
 
   scenarios <- tibble(

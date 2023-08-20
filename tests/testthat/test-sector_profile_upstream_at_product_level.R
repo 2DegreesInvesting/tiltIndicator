@@ -33,7 +33,7 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
     sector = "total",
     subsector = "energy",
     input_unit = "any",
-    input_isic_4digit = "4578",
+    input_isic_4digit = "1234",
   )
 
   out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
@@ -71,7 +71,7 @@ test_that("`high_threshold` and `year` yield the expected risk categories", {
     sector = "total",
     subsector = "energy",
     input_unit = "any",
-    input_isic_4digit = "4578",
+    input_isic_4digit = "1234",
   )
 
   out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
@@ -265,7 +265,7 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
     sector = "c",
     subsector = "d",
     input_unit = "any",
-    input_isic_4digit = "4578",
+    input_isic_4digit = "1234",
   )
 
   # For type "b" all `sector` and `subsector` are `NA`
