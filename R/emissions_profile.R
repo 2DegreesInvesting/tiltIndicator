@@ -1,21 +1,6 @@
-#' Calculate input (or product) carbon transition risk
+#' Calculate the indicator "emissions profile"
 #'
-#' These functions calculate the input (or product) carbon transition risk. The
-#' process is the same. What varies is the `co2` dataset.
-#'
-#' ### Deprecated
-#'
-#' The `ictr*()` and `pctr*()` functions are now deprecated. Use the `xctr*()`
-#' functions instead.
-#'
-#' ### Input carbon transition risk (ICTR)
-#'
-#' ```{r child=extdata_path("child/intro-ictr.Rmd")}
-#' ```
-#'
-#' ### Product carbon transition risk (PCTR)
-#'
-#' ```{r child=extdata_path("child/intro-pctr.Rmd")}
+#' ```{r child=extdata_path("child/intro-emissions-profile.Rmd")}
 #' ```
 #'
 #' @param companies A dataframe like [companies].
@@ -25,7 +10,7 @@
 #' @param high_threshold A numeric value to segment medium and high transition
 #'   risk products.
 #'
-#' @family XCTR functions
+#' @family emissions functions
 #'
 #' @return `r document_value()`
 #'
@@ -36,8 +21,6 @@
 #' library(readr)
 #' options(readr.show_col_types = FALSE)
 #'
-#' toy_files()
-#'
 #' companies <- read_csv(toy_path("emissions_profile_any_companies.csv.gz"))
 #' products <- read_csv(toy_path("emissions_profile_products.csv.gz"))
 #'
@@ -47,10 +30,6 @@
 #' both |> unnest_product()
 #'
 #' both |> unnest_company()
-#'
-#' upstream_products <- read_csv(toy_path("emissions_profile_upstream_products.csv.gz"))
-#'
-#' emissions_profile_upstream(companies, upstream_products)
 emissions_profile <- function(companies,
                               co2,
                               low_threshold = 1 / 3,
@@ -61,7 +40,7 @@ emissions_profile <- function(companies,
 }
 
 #' @export
-#' @rdname emissions_profile
+#' @rdname emissions_profile_upstream
 emissions_profile_upstream <- emissions_profile
 
 any_at_company_level <- function(data) {

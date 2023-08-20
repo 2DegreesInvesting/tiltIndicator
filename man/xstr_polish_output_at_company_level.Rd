@@ -20,18 +20,17 @@ library(tiltToyData)
 library(readr)
 options(readr.show_col_types = FALSE)
 
-toy_files()
-
 companies <- read_csv(toy_path("sector_profile_companies.csv.gz"))
 scenarios <- read_csv(toy_path("sector_profile_any_scenarios.csv.gz"))
+
 sector_profile(companies, scenarios) |>
   unnest_company() |>
   xstr_polish_output_at_company_level()
 
-companies_up <- read_csv(toy_path("sector_profile_upstream_companies.csv.gz"))
-products_up <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
+companies_upstream <- read_csv(toy_path("sector_profile_upstream_companies.csv.gz"))
+products_upstream <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
 
-sector_profile_upstream(companies_up, scenarios, products_up) |>
+sector_profile_upstream(companies_upstream, scenarios, products_upstream) |>
   unnest_company() |>
   xstr_polish_output_at_company_level()
 }

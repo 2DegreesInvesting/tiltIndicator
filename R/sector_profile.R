@@ -1,6 +1,6 @@
-#' Calculate the sector profile indicator
+#' Calculate the indicator "sector profile"
 #'
-#' ```{r child=extdata_path("child/intro-pstr.Rmd")}
+#' ```{r child=extdata_path("child/intro-sector-profile.Rmd")}
 #' ```
 #'
 #' @param companies A dataframe like [pstr_companies].
@@ -10,7 +10,7 @@
 #' @param high_threshold A numeric value to segment medium and high reduction
 #'   targets.
 #'
-#' @family sector profile functions
+#' @family sector functions
 #'
 #' @return `r document_value()`
 #'
@@ -20,8 +20,6 @@
 #' library(tiltToyData)
 #' library(readr)
 #' options(readr.show_col_types = FALSE)
-#'
-#' toy_files()
 #'
 #' companies <- read_csv(toy_path("sector_profile_companies.csv.gz"))
 #' scenarios <- read_csv(toy_path("sector_profile_any_scenarios.csv.gz"))

@@ -1,0 +1,33 @@
+The "emissions profile" measures the transition risk on the product-level of a
+company. The indicator is expressed in the percentage of all products that are
+at high risk, medium risk or low risk due to the products' relative carbon
+footprint. The assessment is first performed on a product-level and can then be
+aggregated to the company-level.
+
+The "emissions profile" measures the relative carbon footprint per product. As a
+default option each product is compared to the carbon footprint of every other
+product. Products with a higher carbon-footprint face a higher risk.
+
+After identifying each carbon footprint for one product, the products are ranked
+according to their carbon footprint. The ranking method is explained in the
+[Thresholds](https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds)
+section.
+
+After categorization, we aggregate all products from the same category and set
+them in relation to all products that the company produces. We derive the
+"emissions profile".
+
+Please note that carbon footprints, and emissions are used equivalently. Carbon
+footprint refers only on the emissions which occur at the production stage of
+the product and not the emissions from the inputs. The unit is CO2e in kg.
+
+This indicator provides the share of products with "low", "medium", or "high"
+relative production emissions per company.
+
+The output of this indicator contains the following:
+
+- a column with production emissions
+- a column indicating the percentile relative to (i) all products with same unit
+(ii) products in same sector (iii) products in same segment
+- a column indicating whether the product has "low", "medium" or "high" relative
+production emissions.

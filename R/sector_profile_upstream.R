@@ -1,6 +1,6 @@
-#' Calculate the ISTR indicator
+#' Calculate the indicator "sector profile upstream"
 #'
-#' ```{r child=extdata_path("child/intro-istr.Rmd")}
+#' ```{r child=extdata_path("child/intro-sector-profile-upstream.Rmd")}
 #' ```
 #'
 #' @param companies A dataframe like [istr_companies].
@@ -8,7 +8,7 @@
 #' @param inputs A dataframe like [istr_inputs].
 #' @inheritParams emissions_profile
 #'
-#' @family ISTR functions
+#' @family sector functions
 #'
 #' @return `r document_value()`
 #'
@@ -19,13 +19,11 @@
 #' library(readr)
 #' options(readr.show_col_types = FALSE)
 #'
-#' toy_files()
-#'
 #' companies <- read_csv(toy_path("sector_profile_upstream_companies.csv.gz"))
 #' scenarios <- read_csv(toy_path("sector_profile_any_scenarios.csv.gz"))
-#' inputs <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
+#' products_upstream <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
 #'
-#' both <- sector_profile_upstream(companies, scenarios, inputs)
+#' both <- sector_profile_upstream(companies, scenarios, products_upstream)
 #' both
 #'
 #' both |> unnest_product()

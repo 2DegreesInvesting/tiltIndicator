@@ -44,7 +44,6 @@ toy_files()
 #> [7] "sector_profile_upstream_products.csv.gz"
 
 companies <- read_csv(toy_path("emissions_profile_any_companies.csv.gz"))
-
 products <- read_csv(toy_path("emissions_profile_products.csv.gz"))
 
 both <- emissions_profile(companies, products)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sector_profile_upstream.R
 \name{sector_profile_upstream}
 \alias{sector_profile_upstream}
-\title{Calculate the ISTR indicator}
+\title{Calculate the indicator "sector profile upstream"}
 \usage{
 sector_profile_upstream(
   companies,
@@ -57,17 +57,19 @@ library(tiltToyData)
 library(readr)
 options(readr.show_col_types = FALSE)
 
-toy_files()
-
 companies <- read_csv(toy_path("sector_profile_upstream_companies.csv.gz"))
 scenarios <- read_csv(toy_path("sector_profile_any_scenarios.csv.gz"))
-inputs <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
+products_upstream <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
 
-both <- sector_profile_upstream(companies, scenarios, inputs)
+both <- sector_profile_upstream(companies, scenarios, products_upstream)
 both
 
 both |> unnest_product()
 
 both |> unnest_company()
 }
-\concept{ISTR functions}
+\seealso{
+Other sector functions: 
+\code{\link{sector_profile}()}
+}
+\concept{sector functions}
