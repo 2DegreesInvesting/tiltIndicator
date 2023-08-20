@@ -1,21 +1,16 @@
-#' Calculate input (or product) carbon transition risk
+#' Calculate "emissions" family of indicators
 #'
-#' These functions calculate the input (or product) carbon transition risk. The
-#' process is the same. What varies is the `co2` dataset.
+#' These functions calculate the "emissions" family of indicators. The process
+#' is the same. What varies is the `co2` dataset.
 #'
-#' ### Deprecated
+#' ### Emissions profile
 #'
-#' The `ictr*()` and `pctr*()` functions are now deprecated. Use the `xctr*()`
-#' functions instead.
-#'
-#' ### Input carbon transition risk (ICTR)
-#'
-#' ```{r child=extdata_path("child/intro-ictr.Rmd")}
+#' ```{r child=extdata_path("child/intro-emissions-profile.Rmd")}
 #' ```
 #'
-#' ### Product carbon transition risk (PCTR)
+#' ### Emissions profile upstream
 #'
-#' ```{r child=extdata_path("child/intro-pctr.Rmd")}
+#' ```{r child=extdata_path("child/intro-emissions-profile-upstream.Rmd")}
 #' ```
 #'
 #' @param companies A dataframe like [companies].

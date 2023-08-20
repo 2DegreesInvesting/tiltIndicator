@@ -2,7 +2,7 @@
 % Please edit documentation in R/sector_profile_upstream.R
 \name{sector_profile_upstream}
 \alias{sector_profile_upstream}
-\title{Calculate the ISTR indicator}
+\title{Calculate the indicator "sector profile upstream"}
 \usage{
 sector_profile_upstream(
   companies,
@@ -29,28 +29,7 @@ risk products.}
 A data frame with the column \code{companies_id}, and the nested columns \code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
 }
 \description{
-The Input Product Sector Risk Indicator assesses the transition risk of the
-input products based on the sector's emissions targets the input product belongs
-to. This indicator can be aggregated on company level and as such inform about
-the supply chain risk of an SME, based on its inputs’ transition risk. The
-sector emission reduction targets vary across scenarios (e.g., net zero scenario
-or 1.5° scenario) and the time horizon (e.g., reduction needed in 2030, 2040,
-2050 to achieve the targets). It, therefore, is similar to the Product Sector
-Risk Indicator but focuses on the input products that the company needs to
-produce its products.The input products are, for example, resources, packaging
-materials, energy and enabling services (such as tractor use on farm) to produce
-the product.
-
-After identifying each carbon footprint for one input product, the input
-products are ranked according to their footprint. The ranking method is explained in the
-\href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds} section.
-
-After assessing the input products for each product, they are aggregated at
-company-level to derive what percentage of the input products required by the
-company to produce its products have high, medium and low sector transition
-risk. We, therefore, derive the company-level information.
-
-Please note that carbon emissions or emissions always mean CO2e.
+\if{html}{\out{<div class="sourceCode {r child=extdata_path("child/intro-secor-profile-upstream.Rmd")}">}}\preformatted{}\if{html}{\out{</div>}}
 }
 \examples{
 library(tiltToyData)

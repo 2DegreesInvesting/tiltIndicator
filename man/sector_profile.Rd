@@ -2,7 +2,7 @@
 % Please edit documentation in R/sector_profile.R
 \name{sector_profile}
 \alias{sector_profile}
-\title{Calculate the sector profile indicator}
+\title{Calculate the indicator "sector profile"}
 \usage{
 sector_profile(
   companies,
@@ -26,15 +26,7 @@ targets.}
 A data frame with the column \code{companies_id}, and the nested columns \code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
 }
 \description{
-The Product Sector Transition Risk Indicator measures the transition risk of
-products based on the sector's emissions targets the product belongs to. Those
-sector emission reduction targets vary across scenarios (e.g., net zero
-scenario or 1.5° scenario) and the time horizon (e.g., reduction needed in
-2030, 2040, 2050 to achieve the targets).
-
-After assessing each product, all the products with the same category are
-aggregated and set in relation to all products of the company. We, therefore,
-derive company-level information.
+\if{html}{\out{<div class="sourceCode {r child=extdata_path("child/intro-sector-profile.Rmd")}">}}\preformatted{}\if{html}{\out{</div>}}
 }
 \examples{
 library(tiltToyData)

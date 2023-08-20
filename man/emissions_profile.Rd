@@ -3,7 +3,7 @@
 \name{emissions_profile}
 \alias{emissions_profile}
 \alias{emissions_profile_upstream}
-\title{Calculate input (or product) carbon transition risk}
+\title{Calculate "emissions" family of indicators}
 \usage{
 emissions_profile(companies, co2, low_threshold = 1/3, high_threshold = 2/3)
 
@@ -29,74 +29,30 @@ risk products.}
 A data frame with the column \code{companies_id}, and the nested columns \code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
 }
 \description{
-These functions calculate the input (or product) carbon transition risk. The
-process is the same. What varies is the \code{co2} dataset.
+These functions calculate the "emissions" family of indicators. The process
+is the same. What varies is the \code{co2} dataset.
 }
 \details{
-\subsection{Deprecated}{
+\subsection{Emissions profile}{
 
-The \verb{ictr*()} and \verb{pctr*()} functions are now deprecated. Use the \verb{xctr*()}
-functions instead.
-}
+The "emissions profile" measures the transition risk on the product-level of a
+company. The indicator is expressed in the percentage of all products that are
+at high risk, medium risk or low risk due to the products' relative carbon
+footprint. The assessment is first performed on a product-level and can then be
+aggregated to the company-level.
 
-\subsection{Input carbon transition risk (ICTR)}{
-
-The Input Product Carbon Transition Risk Indicator assesses the transition risk
-of the input products due to their relative carbon footprint to other input
-products. As a default option, each input product is compared to the carbon
-footprint of every other input product. Input products with a higher carbon
-footprint face a higher risk. On a company-level, the indicator proxies for the
-supply chain risk of a company - based on its inputs.
-
-The Input Product Carbon Transition Risk Indicator is therefore similar to the
-Product Carbon Transition Risk Indicator, but it focuses on the input products
-and not the product of the company. Input products are, for example, resources,
-packaging materials, energy and enabling services (such as tractor use on farm)
-to produce the product.
-
-After identifying each carbon footprint for one input product, the input
-products are ranked according to their footprint. The ranking method is explained
-in the \href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds} section.
-
-After assessing the input products' transition risk based on the carbon
-footprint of each product, they are aggregated at the company-level. We derive
-what percentage of the input products are high, medium and low transition risk.
-
-The transition risk indicator consists of 2 broad steps:
-\enumerate{
-\item Score input products: Identifying the input products for each product, and
-calculating the relative carbon footprint per input product.
-\item Score companies: Aggregating on the company-level.
-}
-
-The sample data set includes inputs and co2 footprints for each product from
-Ecoinvent and sectors from Europages. NOTE: the following columns are a
-completely random selection and do not reflect the true information:
-\itemize{
-\item co2 footprints (not allowed to share licensed data right now)
-\item sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)
-}
-}
-
-\subsection{Product carbon transition risk (PCTR)}{
-
-The Product Carbon Transition Risk measures the transition risk on the
-product-level of a company. The indicator is expressed in the percentage of all
-products that are at high risk, medium risk or low risk due to the products'
-relative carbon footprint. The assessment is first performed on a product-level
-and can then be aggregated to the company-level.
-
-The Product Carbon Transition Risk measures the relative carbon footprint per
-product. As a default option each product is compared to the carbon footprint of
-every other product. Products with a higher carbon-footprint face a higher risk.
+The "emissions profile" measures the relative carbon footprint per product. As a
+default option each product is compared to the carbon footprint of every other
+product. Products with a higher carbon-footprint face a higher risk.
 
 After identifying each carbon footprint for one product, the products are ranked
 according to their carbon footprint. The ranking method is explained in the
-\href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds} section.
+\href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds}
+section.
 
 After categorization, we aggregate all products from the same category and set
 them in relation to all products that the company produces. We derive the
-Product Carbon Transition Risks.
+"emissions profile".
 
 Please note that carbon footprints, and emissions are used equivalently. Carbon
 footprint refers only on the emissions which occur at the production stage of
@@ -108,8 +64,52 @@ relative production emissions per company.
 The output of this indicator contains the following:
 \itemize{
 \item a column with production emissions
-\item a column indicating the percentile relative to (i) all products with same unit (ii) products in same sector (iii) products in same segment
-\item a column indicating whether the product has "low", "medium" or "high" relative production emissions.
+\item a column indicating the percentile relative to (i) all products with same unit
+(ii) products in same sector (iii) products in same segment
+\item a column indicating whether the product has "low", "medium" or "high" relative
+production emissions.
+}
+}
+
+\subsection{Emissions profile upstream}{
+
+The indicator "emissions profile upstream" assesses the transition risk of the
+upstream products due to their relative carbon footprint to other upstream
+products. As a default option, each upstream product is compared to the carbon
+footprint of every other upstream product. Upstream products with a higher
+carbon footprint face a higher risk. On a company-level, the indicator proxies
+for the supply chain risk of a company - based on its inputs.
+
+The indicator "emissions profile upstream" is therefore similar to the Product
+Carbon Transition Risk Indicator, but it focuses on the upstream products and
+not the product of the company. Upstream products are, for example, resources,
+packaging materials, energy and enabling services (such as tractor use on farm)
+to produce the product.
+
+After identifying each carbon footprint for one upstream product, the input
+products are ranked according to their footprint. The ranking method is
+explained in the
+\href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds}
+section.
+
+After assessing the upstream products' transition risk based on the carbon
+footprint of each product, they are aggregated at the company-level. We derive
+what percentage of the upstream products are high, medium and low transition
+risk.
+
+This indicator consists of 2 broad steps:
+\enumerate{
+\item Score upstream products: Identifying the upstream products for each product,
+and calculating the relative carbon footprint per upstream product.
+\item Score companies: Aggregating on the company-level.
+}
+
+The sample data set includes inputs and co2 footprints for each product from
+Ecoinvent and sectors from Europages. NOTE: the following columns are a
+completely random selection and do not reflect the true information:
+\itemize{
+\item co2 footprints (not allowed to share licensed data right now)
+\item sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)
 }
 }
 }

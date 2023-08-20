@@ -1,6 +1,6 @@
-#' Calculate the sector profile indicator
+#' Calculate the indicator "sector profile"
 #'
-#' ```{r child=extdata_path("child/intro-pstr.Rmd")}
+#' ```{r child=extdata_path("child/intro-sector-profile.Rmd")}
 #' ```
 #'
 #' @param companies A dataframe like [pstr_companies].
