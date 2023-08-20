@@ -105,7 +105,7 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
     input_tilt_sector = "any",
     input_tilt_subsector = "any",
     input_unit = "y",
-    input_isic_4digit = "y",
+    input_isic_4digit = "1234",
     type = "a",
     sector = "b",
     subsector = "c"
