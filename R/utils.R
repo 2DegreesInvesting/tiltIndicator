@@ -80,17 +80,6 @@ prepare_companies <- function(companies) {
     rename(companies_id = "company_id")
 }
 
-prepare_co2 <- function(data, low_threshold, high_threshold) {
-  data |>
-    mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
-    distinct() |>
-    rename(
-      tilt_sec = ends_with("tilt_sector"),
-      unit = ends_with("unit"),
-      isic_sec = ends_with("isic_4digit")
-    )
-}
-
 lowercase_characters <- function(data) {
   mutate(data, across(where(is.character), tolower))
 }

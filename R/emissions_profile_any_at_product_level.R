@@ -2,7 +2,7 @@ emissions_profile_any_at_product_level <- function(companies,
                                                    co2,
                                                    low_threshold = 1 / 3,
                                                    high_threshold = 2 / 3) {
-  co2 <- pad_column(co2, "isic_4digit", width = 4, pad = "0")
+  co2 <- sanitize_co2(co2)
   xctr_check(companies, co2)
 
   .companies <- prepare_companies(companies)
