@@ -28,14 +28,6 @@ xctr_check <- function(companies, co2) {
 
   check_has_no_na(co2, find_co2_footprint(co2))
   check_is_character(get_column(co2, "isic_4digit"))
-
-  check_string_lengh <- function(x, length) {
-    label <- deparse(substitute(x))
-    if (!all(nchar(x) == length)) {
-      abort(glue("All values of `{label}` must have length {length}."))
-    }
-    invisible(x)
-  }
   check_string_lengh(get_column(co2, "isic_4digit"), 4L)
 }
 
