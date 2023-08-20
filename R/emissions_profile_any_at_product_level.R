@@ -27,8 +27,8 @@ xctr_check <- function(companies, co2) {
   walk(crucial, ~ check_matches_name(co2, .x))
 
   check_has_no_na(co2, find_co2_footprint(co2))
-  check_is_character(isic(co2))
-  check_string_lengh(isic(co2), 4L)
+  check_is_character(pull_isic(co2))
+  check_string_lengh(pull_isic(co2), 4L)
 }
 
 check_matches_name <- function(data, pattern) {

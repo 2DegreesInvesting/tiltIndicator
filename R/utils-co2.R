@@ -13,7 +13,7 @@ sanitize_co2 <- function(co2) {
   pad_column(co2, pattern = isic_pattern(), width = 4, pad = "0")
 }
 
-isic <- function(co2) {
+pull_isic <- function(co2) {
   get_column(co2, isic_pattern())
 }
 
