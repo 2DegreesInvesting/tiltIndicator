@@ -10,11 +10,11 @@ knitr::opts_chunk$set(
 ```
 
 This article helps you get started with the tiltIndicator package. Currently it
-supports two families of indicators: XCTR and XSTR. In the "emissions" family,
-you have two indicators: "Emissions profile" and "emissions profile upstream".
-They are both calculated in exactly the same way. The difference is not the
-process but the kind of `co2` data: Either comes from products or upstream
-products.
+supports two families of indicators: "emissions" and "sector". In the
+"emissions" family, you have two indicators: "Emissions profile" and "emissions
+profile upstream". They are both calculated in exactly the same way. The
+difference is not the process but the kind of `co2` data: Either comes from
+products or upstream products.
 
 In the "sector" family, you have two indicators: "Sector profile" and "sector
 profile upstream". They are both calculated in the same way, but "sector profile
