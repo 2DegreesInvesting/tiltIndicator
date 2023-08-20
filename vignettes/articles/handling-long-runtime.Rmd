@@ -127,7 +127,7 @@ istr_result |> unnest_company()
 dir_tree(cache_path("istr"))
 ```
 
-### PCTR
+### Emissions profile
 
 Read `companies` data, and define chunks and files where to later save them.
 
@@ -136,14 +136,14 @@ Read `companies` data, and define chunks and files where to later save them.
 companies <- tiltIndicator::companies
 
 # TODO: Experiment to find the number of chunks that works best for you
-pctr_job <- companies |>
+emissions_profile_job <- companies |>
   nest_chunk(.by = "company_id", chunks = 3) |>
   add_file(parent = cache_path("xctr"))
 
 # `nest_chunk()` ensures all rows of a company fall in the same chunk
-slice(pctr_job, 1) |> unnest(data)
+slice(emissions_profile_job, 1) |> unnest(data)
 
-slice(pctr_job, 2) |> unnest(data)
+slice(emissions_profile_job, 2) |> unnest(data)
 ```
 
 There is a lot going on here:
@@ -160,16 +160,16 @@ This allows to use `*_pmap()` in a very succinct way.
 # TODO: Replace with `read_csv("/path/to/input/products.csv")`
 products <- tiltIndicator::products
 
-pctr_rds <- function(data, file) write_rds(emissions_profile(data, products), file)
+emissions_profile_rds <- function(data, file) write_rds(emissions_profile(data, products), file)
 
-pctr_job |>
+emissions_profile_job |>
   # Skip what's already done (if anything)
   pick_undone() |>
-  # `select(data, file)` matches `pctr_rds(data, file)` to use `*_pwalk()`
+  # `select(data, file)` matches `emissions_profile_rds(data, file)` to use `*_pwalk()`
   select(data, file) |>
   # Combined with `plan()` it distributes computations across multiple workers
   # The progress bar won't appear in this .Rmd document.
-  future_pwalk(pctr_rds, .progress = TRUE)
+  future_pwalk(emissions_profile_rds, .progress = TRUE)
 ```
 
 Here is what you accomplished. Instead of saturating the memory you stored each
@@ -184,8 +184,8 @@ may also need to do this in batches or work with [multi-file
 datasets](https://arrow.apache.org/docs/r/reference/open_dataset.html).
 
 ```{r}
-pctr_result <- map_df(pctr_job$file, read_rds)
-pctr_result
+emissions_profile_result <- map_df(emissions_profile_job$file, read_rds)
+emissions_profile_result
 ```
 
 Typically you'll finish by writing one "*.csv" file with results at product
@@ -193,10 +193,10 @@ level, and another one with results at company level.
 
 ```{r}
 # TODO: `... |> write_csv("/path/to/output/product.csv")`
-pctr_result |> unnest_product()
+emissions_profile_result |> unnest_product()
 
 # TODO: `... |> write_csv("/path/to/output/company.csv")`
-pctr_result |> unnest_company()
+emissions_profile_result |> unnest_company()
 ```
 
 Before the next time you run the same indicator you need to cleanup.
