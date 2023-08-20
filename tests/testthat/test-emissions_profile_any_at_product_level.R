@@ -309,11 +309,10 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
   bad <- select(inputs, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- "isic_4digit"
+  crucial <- isic_pattern()
   bad <- select(inputs, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 })
-
 
 test_that("handles duplicated `companies` data (#230)", {
   companies <- tibble(
