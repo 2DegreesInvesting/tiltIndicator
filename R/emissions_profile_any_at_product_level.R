@@ -2,7 +2,7 @@ emissions_profile_any_at_product_level <- function(companies,
                                                    co2,
                                                    low_threshold = 1 / 3,
                                                    high_threshold = 2 / 3) {
-  co2 <- sanitize_co2(co2)
+  co2 <- co2 |> pad_column("isic_4digit", width = 1, pad = "0")
   xctr_check(companies, co2)
 
   .companies <- prepare_companies(companies)
@@ -16,13 +16,12 @@ emissions_profile_any_at_product_level <- function(companies,
     polish_output(cols_at_product_level())
 }
 
-sanitize_co2 <- function(data) {
-  pattern <- "isic_4digit"
+pad_column <- function(data, pattern, width, pad) {
   check_matches_name(data, pattern)
 
   x <- get_column(data, pattern)
   if (!is.character(x)) {
-    data[extract_name(data, pattern)] <- str_pad(x, width = 4, pad = "0")
+    data[extract_name(data, pattern)] <- str_pad(x, width = width, pad = pad)
   }
 
   data
@@ -44,7 +43,7 @@ xctr_check <- function(companies, co2) {
   check_string_lengh <- function(x, length) {
     label <- deparse(substitute(x))
     if (!all(nchar(x) == length)) {
-      abort(glue("All strings of `{label}` must have length {length}."))
+      abort(glue("All values of `{label}` must have length {length}."))
     }
     invisible(x)
   }

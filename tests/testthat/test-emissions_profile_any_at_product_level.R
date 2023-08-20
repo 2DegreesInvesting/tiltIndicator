@@ -239,12 +239,12 @@ test_that("if the 'isic' column hasn't 4 digits throws an errors ", {
     co2_footprint = 1,
     tilt_sector = "a",
     unit = "a",
-    isic_4digit = "123"
+    isic_4digit = "1234"
   )
-  expect_error(
-    emissions_profile_any_at_product_level(companies, co2),
-    "must have length 4"
-  )
+  expect_no_error(emissions_profile_any_at_product_level(companies, co2))
+
+  co2$isic_4digit <- "1"
+  expect_error(emissions_profile_any_at_product_level(companies, co2), "must.*4")
 })
 
 test_that("a 0-row `co2` yields an error", {
