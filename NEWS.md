@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9091
+
+* Rename indicators in public documentation (#496).
+
 # tiltIndicator 0.0.0.9090
 
 * `emissions_profile*()` now handles numeric values of `*isic_4digit`
