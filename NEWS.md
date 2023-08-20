@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9090
+
+* `emissions_profile*()` now handles numeric values of `*isic_4digit`
+(#494).
+
 # tiltIndicator 0.0.0.9089
 
 * Deprecate datasets. They all moved to tiltToyData with new names (#493).
