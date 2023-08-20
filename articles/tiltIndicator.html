@@ -84,51 +84,97 @@
     
     
 <p>This article helps you get started with the tiltIndicator package.
-Currently it supports two families of indicators: XCTR and XSTR. In the
-XCTR family, you have two indicators: Input Carbon Transition Risk
-(ICTR) and Product Carbon Transition Risk (PCTR). They are both
-calculated in exactly the same way. The difference is not the process
-but the kind of <code>co2</code> data: either comes from inputs or
+Currently it supports two families of indicators: “emissions” and
+“sector”. In the “emissions” family, you have two indicators: “Emissions
+profile” and “emissions profile upstream”. They are both calculated in
+exactly the same way. The difference is not the process but the kind of
+<code>co2</code> data: Either comes from products or upstream
 products.</p>
-<p>In the XSTR family, you have two indicators: Input Product Sector
-Transition Risk (ISTR) and Product Sector Transition Risk (PSTR). They
-are both calculated in the same way, but ISTR takes <code>inputs</code>
-data as an additional argument, since it focuses on the input products.
-You can find the main functions of the families <a href="https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#main-functions-and-datasets">here</a>.</p>
+<p>In the “sector” family, you have two indicators: “Sector profile” and
+“sector profile upstream”. They are both calculated in the same way, but
+“sector profile upstream” takes an additional argument for upstream
+products.</p>
+<p>You can find the main functions of the families <a href="https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#main-functions-and-datasets">here</a>.</p>
 <p>We’ll use general purpose tools from the dplyr package, and the
 experimental <a href="https://2degreesinvesting.github.io/tiltIndicator/index.html">tiltIndicator</a>
-package.</p>
+<a href="https://2degreesinvesting.github.io/tiltIndicator/index.html">tiltToyData</a>
+packages.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltToyData/" class="external-link">tiltToyData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
-<h2 id="input-carbon-transition-risk-ictr">Input carbon transition risk (ICTR)<a class="anchor" aria-label="anchor" href="#input-carbon-transition-risk-ictr"></a>
+<h2 id="emissions-profile">Emissions profile<a class="anchor" aria-label="anchor" href="#emissions-profile"></a>
 </h2>
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
-<p>The Input Product Carbon Transition Risk Indicator assesses the
-transition risk of the input products due to their relative carbon
-footprint to other input products. As a default option, each input
-product is compared to the carbon footprint of every other input
-product. Input products with a higher carbon footprint face a higher
-risk. On a company-level, the indicator proxies for the supply chain
-risk of a company - based on its inputs.</p>
-<p>The Input Product Carbon Transition Risk Indicator is therefore
-similar to the Product Carbon Transition Risk Indicator, but it focuses
-on the input products and not the product of the company. Input products
+<p>The “emissions profile” measures the transition risk on the
+product-level of a company. The indicator is expressed in the percentage
+of all products that are at high risk, medium risk or low risk due to
+the products’ relative carbon footprint. The assessment is first
+performed on a product-level and can then be aggregated to the
+company-level.</p>
+<p>The “emissions profile” measures the relative carbon footprint per
+product. As a default option each product is compared to the carbon
+footprint of every other product. Products with a higher
+carbon-footprint face a higher risk.</p>
+<p>After identifying each carbon footprint for one product, the products
+are ranked according to their carbon footprint. The ranking method is
+explained in the <a href="https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds">Thresholds</a>
+section.</p>
+<p>After categorization, we aggregate all products from the same
+category and set them in relation to all products that the company
+produces. We derive the “emissions profile”.</p>
+<p>Please note that carbon footprints, and emissions are used
+equivalently. Carbon footprint refers only on the emissions which occur
+at the production stage of the product and not the emissions from the
+inputs. The unit is CO2e in kg.</p>
+<p>This indicator provides the share of products with “low”, “medium”,
+or “high” relative production emissions per company.</p>
+<p>The output of this indicator contains the following:</p>
+<ul>
+<li>a column with production emissions</li>
+<li>a column indicating the percentile relative to (i) all products with
+same unit</li>
+</ul>
+<ol start="2" style="list-style-type: lower-roman">
+<li>products in same sector (iii) products in same segment</li>
+</ol>
+<ul>
+<li>a column indicating whether the product has “low”, “medium” or
+“high” relative production emissions.</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="emissions-profile-upstream">Emissions profile upstream<a class="anchor" aria-label="anchor" href="#emissions-profile-upstream"></a>
+</h2>
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+<p>The indicator “emissions profile upstream” assesses the transition
+risk of the upstream products due to their relative carbon footprint to
+other upstream products. As a default option, each upstream product is
+compared to the carbon footprint of every other upstream product.
+Upstream products with a higher carbon footprint face a higher risk. On
+a company-level, the indicator proxies for the supply chain risk of a
+company - based on its inputs.</p>
+<p>The indicator “emissions profile upstream” is therefore similar to
+the Product Carbon Transition Risk Indicator, but it focuses on the
+upstream products and not the product of the company. Upstream products
 are, for example, resources, packaging materials, energy and enabling
 services (such as tractor use on farm) to produce the product.</p>
-<p>After identifying each carbon footprint for one input product, the
+<p>After identifying each carbon footprint for one upstream product, the
 input products are ranked according to their footprint. The ranking
 method is explained in the <a href="https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds">Thresholds</a>
 section.</p>
-<p>After assessing the input products’ transition risk based on the
+<p>After assessing the upstream products’ transition risk based on the
 carbon footprint of each product, they are aggregated at the
-company-level. We derive what percentage of the input products are high,
-medium and low transition risk.</p>
-<p>The transition risk indicator consists of 2 broad steps:</p>
+company-level. We derive what percentage of the upstream products are
+high, medium and low transition risk.</p>
+<p>This indicator consists of 2 broad steps:</p>
 <ol style="list-style-type: decimal">
-<li>Score input products: Identifying the input products for each
-product, and calculating the relative carbon footprint per input
+<li>Score upstream products: Identifying the upstream products for each
+product, and calculating the relative carbon footprint per upstream
 product.</li>
 <li>Score companies: Aggregating on the company-level.</li>
 </ol>
@@ -140,43 +186,6 @@ information:</p>
 <li>co2 footprints (not allowed to share licensed data right now)</li>
 <li>sectors (as the matching with ecoinvent is not done yet, we do not
 have one sector per product yet)</li>
-</ul>
-</div>
-<div class="section level2">
-<h2 id="product-carbon-transition-risk-pctr">Product carbon transition risk (PCTR)<a class="anchor" aria-label="anchor" href="#product-carbon-transition-risk-pctr"></a>
-</h2>
-<!-- WARNING: Do not write here. Instead write in the `child` file -->
-<p>The Product Carbon Transition Risk measures the transition risk on
-the product-level of a company. The indicator is expressed in the
-percentage of all products that are at high risk, medium risk or low
-risk due to the products’ relative carbon footprint. The assessment is
-first performed on a product-level and can then be aggregated to the
-company-level.</p>
-<p>The Product Carbon Transition Risk measures the relative carbon
-footprint per product. As a default option each product is compared to
-the carbon footprint of every other product. Products with a higher
-carbon-footprint face a higher risk.</p>
-<p>After identifying each carbon footprint for one product, the products
-are ranked according to their carbon footprint. The ranking method is
-explained in the <a href="https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds">Thresholds</a>
-section.</p>
-<p>After categorization, we aggregate all products from the same
-category and set them in relation to all products that the company
-produces. We derive the Product Carbon Transition Risks.</p>
-<p>Please note that carbon footprints, and emissions are used
-equivalently. Carbon footprint refers only on the emissions which occur
-at the production stage of the product and not the emissions from the
-inputs. The unit is CO2e in kg.</p>
-<p>This indicator provides the share of products with “low”, “medium”,
-or “high” relative production emissions per company.</p>
-<p>The output of this indicator contains the following:</p>
-<ul>
-<li>a column with production emissions</li>
-<li>a column indicating the percentile relative to (i) all products with
-same unit (ii) products in same sector (iii) products in same
-segment</li>
-<li>a column indicating whether the product has “low”, “medium” or
-“high” relative production emissions.</li>
 </ul>
 </div>
 <div class="section level2">
@@ -192,48 +201,29 @@ products. Products in the lowest percentile (lower or equal than
 <code>low_threshold</code>) are classified as low transition risk
 products. For details about the default <code>low_threshold</code> and
 <code>high_threshold</code>, refer to the documentation of the
-corresponding <code>**tr()</code> function (e.g. <a href="https://2degreesinvesting.github.io/tiltIndicator/reference/xctr.html#ref-usage"><code>xctr()</code></a>).</p>
+corresponding <code>*_profile_*()</code> function (e.g. <a href="https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile.html#ref-usage"><code>sector_profile()</code></a>).</p>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>Use <code>xctr*()</code> to calculate both ICTR and PCTR. Their
-difference is in the <code>co2</code> dataset. Here we’ll use example
-datasets that come with the tiltIndicator package:
-<code>companies</code>, <code>inputs</code>, and
-<code>products</code>.</p>
+<p>Use <code><a href="../reference/emissions_profile.html">emissions_profile()</a></code> and
+<code><a href="../reference/emissions_profile_upstream.html">emissions_profile_upstream()</a></code> with example datasets that
+come with the tiltToyData package.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">companies</span></span>
-<span><span class="co">#&gt; Warning: `companies` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
-<span><span class="co">#&gt; `emissions_profile_any_companies` from tiltToyData.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 4</span></span></span>
-<span><span class="co">#&gt;   activity_uuid_product_uuid                          clustered company_id unit </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0… stove     fleischer… unit </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200… oven      fleischer… unit </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5… steel     pecheries… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c… aged che… hoche-but… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c… aged che… vicquelin… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c… cheese    bst-proco… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb… cream     leider-gm… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> 2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb… rubber    cheries-b… kg   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> <span style="color: #BB0000;">NA</span>                                                  apple     ca-coity-… <span style="color: #BB0000;">NA</span></span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_files</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "emissions_profile_any_companies.csv.gz"    </span></span>
+<span><span class="co">#&gt; [2] "emissions_profile_products.csv.gz"         </span></span>
+<span><span class="co">#&gt; [3] "emissions_profile_upstream_products.csv.gz"</span></span>
+<span><span class="co">#&gt; [4] "sector_profile_any_scenarios.csv.gz"       </span></span>
+<span><span class="co">#&gt; [5] "sector_profile_companies.csv.gz"           </span></span>
+<span><span class="co">#&gt; [6] "sector_profile_upstream_companies.csv.gz"  </span></span>
+<span><span class="co">#&gt; [7] "sector_profile_upstream_products.csv.gz"</span></span>
+<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_path</a></span><span class="op">(</span><span class="st">"emissions_profile_any_companies.csv.gz"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_path</a></span><span class="op">(</span><span class="st">"emissions_profile_products.csv.gz"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">products_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_path</a></span><span class="op">(</span><span class="st">"emissions_profile_upstream_products.csv.gz"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">products</span></span>
-<span><span class="co">#&gt; Warning: `products` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
-<span><span class="co">#&gt; `emissions_profile_products` from tiltToyData.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 6</span></span></span>
-<span><span class="co">#&gt;   co2_footprint tilt_sector    unit  isic_4digit activity_uuid_product_uuid     </span></span>
-<span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>        176.   Industry       unit  2560        0a242b09-772a-5edf-8e82-9cb4ba…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>         58.1  Industry       unit  2560        be06d25c-73dc-55fb-965b-0f3004…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>          4.95 Steel &amp; Metals kg    2870        977d997e-c257-5033-ba39-d0edee…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>         12.5  Agriculture    kg    1780        ebb8475e-ff57-5e4e-937b-b57881…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>          2.07 Industry       kg    2679        2f7b77a7-1556-5c1b-b0aa-c4534d…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: ei_activity_name &lt;chr&gt;</span></span></span>
-<span></span>
-<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products</span><span class="op">)</span></span>
-<span><span class="va">both</span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products</span><span class="op">)</span></span>
+<span><span class="va">result</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
 <span><span class="co">#&gt;   companies_id                             product           company          </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
@@ -246,7 +236,7 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [3 × 3]&gt;</span></span></span>
 <span></span>
-<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 6</span></span></span>
 <span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
@@ -264,7 +254,7 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span></span>
 <span></span>
-<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                             grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -278,14 +268,10 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   medium          0.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   low             0  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 unit       high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">upstream_products</span> <span class="op">&lt;-</span> <span class="va">inputs</span></span>
-<span><span class="co">#&gt; Warning: `inputs` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
-<span><span class="co">#&gt; `emissions_profile_upstream_products` from tiltToyData.</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span>
 <span></span>
-<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile_upstream</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">upstream_products</span><span class="op">)</span></span>
-<span><span class="va">both</span></span>
+<span><span class="va">result_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile_upstream.html">emissions_profile_upstream</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products_upstream</span><span class="op">)</span></span>
+<span><span class="va">result_upstream</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
 <span><span class="co">#&gt;   companies_id                             product           company          </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
@@ -298,7 +284,7 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [36 × 6]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 6]&gt;</span>  <span style="color: #949494;">&lt;tibble [3 × 3]&gt;</span></span></span>
 <span></span>
-<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">result_upstream</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 319 × 7</span></span></span>
 <span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
@@ -317,7 +303,7 @@ datasets that come with the tiltIndicator package:
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: input_activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   input_co2_footprint &lt;dbl&gt;</span></span></span>
 <span></span>
-<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">result_upstream</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                             grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>

@@ -116,6 +116,7 @@ what’s going on.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/DavisVaughan/furrr" class="external-link">furrr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltToyData/" class="external-link">tiltToyData</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co"># Enable computing over multiple workers in parallel</span></span>
@@ -137,7 +138,7 @@ what’s going on.</p>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">future_pwalk</a></span><span class="op">(</span><span class="va">.f</span>, .progress <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="va">istr_job</span><span class="op">$</span><span class="va">file</span>, <span class="va">read_rds</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="va">sector_profile_upstream_job</span><span class="op">$</span><span class="va">file</span>, <span class="va">read_rds</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">nest_chunk</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">.by</span>, <span class="va">chunks</span><span class="op">)</span> <span class="op">{</span></span>
@@ -164,42 +165,36 @@ what’s going on.</p>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="istr">ISTR<a class="anchor" aria-label="anchor" href="#istr"></a>
+<h3 id="sector-profile-upstream">Sector profile upstream<a class="anchor" aria-label="anchor" href="#sector-profile-upstream"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># TODO: Replace with `read_csv("/path/to/input/companies.csv")`</span></span>
-<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/deprecated.html">istr_companies</a></span></span>
-<span><span class="co">#&gt; Warning: `istr_companies` was deprecated in tiltIndicator 0.0.0.9089. Please</span></span>
-<span><span class="co">#&gt; use `sector_profile_upstream_companies` from tiltToyData.</span></span>
+<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_path</a></span><span class="op">(</span><span class="st">"sector_profile_upstream_companies.csv.gz"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># TODO: Replace with `read_csv("/path/to/input/scenarios.csv")`</span></span>
-<span><span class="va">scenarios</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/deprecated.html">xstr_scenarios</a></span></span>
-<span><span class="co">#&gt; Warning: `xstr_scenarios` was deprecated in tiltIndicator 0.0.0.9089. Please</span></span>
-<span><span class="co">#&gt; use `sector_profile_any_scenarios` from tiltToyData.</span></span>
-<span><span class="co"># TODO: Replace with `read_csv("/path/to/input/inputs.csv")`</span></span>
-<span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/deprecated.html">istr_inputs</a></span></span>
-<span><span class="co">#&gt; Warning: `istr_inputs` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
-<span><span class="co">#&gt; `sector_profile_upstream_products` from tiltToyData.</span></span>
+<span><span class="va">scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_path</a></span><span class="op">(</span><span class="st">"sector_profile_any_scenarios.csv.gz"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># TODO: Replace with `read_csv("/path/to/input/upstream_products.csv")`</span></span>
+<span><span class="va">products_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_path</a></span><span class="op">(</span><span class="st">"sector_profile_upstream_products.csv.gz"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create a "job" data frame where each row is a chunk of data</span></span>
-<span><span class="va">istr_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
+<span><span class="va">sector_profile_upstream_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">nest_chunk</span><span class="op">(</span>.by <span class="op">=</span> <span class="st">"company_id"</span>, chunks <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">add_file</span><span class="op">(</span>parent <span class="op">=</span> <span class="fu">cache_path</span><span class="op">(</span><span class="st">"istr"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">add_file</span><span class="op">(</span>parent <span class="op">=</span> <span class="fu">cache_path</span><span class="op">(</span><span class="st">"sector_profile_upstream"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Chunks of data will be distributed across workers and saved to a file</span></span>
-<span><span class="va">istr_job</span></span>
+<span><span class="va">sector_profile_upstream_job</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 3</span></span></span>
-<span><span class="co">#&gt;   chunk data             file                             </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span>                       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 <span style="color: #949494;">&lt;tibble [4 × 6]&gt;</span> ~/.cache/tiltIndicator/istr/1.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 <span style="color: #949494;">&lt;tibble [2 × 6]&gt;</span> ~/.cache/tiltIndicator/istr/2.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 <span style="color: #949494;">&lt;tibble [2 × 6]&gt;</span> ~/.cache/tiltIndicator/istr/3.rds</span></span>
+<span><span class="co">#&gt;   chunk data             file                                                </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span>                                          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 <span style="color: #949494;">&lt;tibble [4 × 6]&gt;</span> ~/.cache/tiltIndicator/sector_profile_upstream/1.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 <span style="color: #949494;">&lt;tibble [2 × 6]&gt;</span> ~/.cache/tiltIndicator/sector_profile_upstream/2.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3 <span style="color: #949494;">&lt;tibble [2 × 6]&gt;</span> ~/.cache/tiltIndicator/sector_profile_upstream/3.rds</span></span>
 <span></span>
 <span><span class="co"># Run each indicator chunk across multiple workers and output a combined result</span></span>
-<span><span class="va">istr_result</span> <span class="op">&lt;-</span> <span class="va">istr_job</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">job_pmap</span><span class="op">(</span>\<span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/sector_profile_upstream.html">sector_profile_upstream</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">scenarios</span>, <span class="va">inputs</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">sector_profile_upstream_result</span> <span class="op">&lt;-</span> <span class="va">sector_profile_upstream_job</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">job_pmap</span><span class="op">(</span>\<span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/sector_profile_upstream.html">sector_profile_upstream</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">scenarios</span>, <span class="va">products_upstream</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/product.csv")`</span></span>
-<span><span class="va">istr_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">sector_profile_upstream_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 704 × 12</span></span></span>
 <span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
@@ -220,7 +215,7 @@ what’s going on.</p>
 <span><span class="co">#&gt; <span style="color: #949494;">#   input_tilt_sector &lt;chr&gt;, input_tilt_subsector &lt;chr&gt;</span></span></span>
 <span></span>
 <span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/company.csv")`</span></span>
-<span><span class="va">istr_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">sector_profile_upstream_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 294 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                             grouped_by      risk_category  value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -237,14 +232,14 @@ what’s going on.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 284 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Each chunk result was saved to a file</span></span>
-<span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="fu">cache_path</span><span class="op">(</span><span class="st">"istr"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">~/.cache/tiltIndicator/istr</span></span></span>
+<span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="fu">cache_path</span><span class="op">(</span><span class="st">"sector_profile_upstream"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">~/.cache/tiltIndicator/sector_profile_upstream</span></span></span>
 <span><span class="co">#&gt; ├── 1.rds</span></span>
 <span><span class="co">#&gt; ├── 2.rds</span></span>
 <span><span class="co">#&gt; └── 3.rds</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="pctr">PCTR<a class="anchor" aria-label="anchor" href="#pctr"></a>
+<h3 id="emissions-profile">Emissions profile<a class="anchor" aria-label="anchor" href="#emissions-profile"></a>
 </h3>
 <p>Read <code>companies</code> data, and define chunks and files where
 to later save them.</p>
@@ -255,27 +250,27 @@ to later save them.</p>
 <span><span class="co">#&gt; `emissions_profile_any_companies` from tiltToyData.</span></span>
 <span></span>
 <span><span class="co"># TODO: Experiment to find the number of chunks that works best for you</span></span>
-<span><span class="va">pctr_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
+<span><span class="va">emissions_profile_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">nest_chunk</span><span class="op">(</span>.by <span class="op">=</span> <span class="st">"company_id"</span>, chunks <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">add_file</span><span class="op">(</span>parent <span class="op">=</span> <span class="fu">cache_path</span><span class="op">(</span><span class="st">"xctr"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">add_file</span><span class="op">(</span>parent <span class="op">=</span> <span class="fu">cache_path</span><span class="op">(</span><span class="st">"emissions_profile"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># `nest_chunk()` ensures all rows of a company fall in the same chunk</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">pctr_job</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">emissions_profile_job</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 6</span></span></span>
 <span><span class="co">#&gt;   chunk company_id             activity_uuid_produc…¹ clustered unit  file      </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 fleischerei-stiefsohn… 0a242b09-772a-5edf-8e… stove     unit  …ctr/1.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1 fleischerei-stiefsohn… be06d25c-73dc-55fb-96… oven      unit  …ctr/1.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1 pecheries-basques_fra… 977d997e-c257-5033-ba… steel     kg    …ctr/1.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1 hoche-butter-gmbh_deu… ebb8475e-ff57-5e4e-93… aged che… kg    …ctr/1.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 fleischerei-stiefsohn… 0a242b09-772a-5edf-8e… stove     unit  …ile/1.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1 fleischerei-stiefsohn… be06d25c-73dc-55fb-96… oven      unit  …ile/1.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1 pecheries-basques_fra… 977d997e-c257-5033-ba… steel     kg    …ile/1.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1 hoche-butter-gmbh_deu… ebb8475e-ff57-5e4e-93… aged che… kg    …ile/1.rds</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
 <span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">pctr_job</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">emissions_profile_job</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 6</span></span></span>
 <span><span class="co">#&gt;   chunk company_id             activity_uuid_produc…¹ clustered unit  file      </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     2 vicquelin-espaces-ver… ebb8475e-ff57-5e4e-93… aged che… kg    …ctr/2.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 bst-procontrol-gmbh_0… ebb8475e-ff57-5e4e-93… cheese    kg    …ctr/2.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     2 vicquelin-espaces-ver… ebb8475e-ff57-5e4e-93… aged che… kg    …ile/2.rds</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 bst-procontrol-gmbh_0… ebb8475e-ff57-5e4e-93… cheese    kg    …ile/2.rds</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span></code></pre></div>
 <p>There is a lot going on here:</p>
 <ul>
@@ -295,21 +290,21 @@ match the names of the <code>*_rds()</code>. This allows to use
 <span><span class="co">#&gt; Warning: `products` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
 <span><span class="co">#&gt; `emissions_profile_products` from tiltToyData.</span></span>
 <span></span>
-<span><span class="va">pctr_rds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">products</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span></span>
+<span><span class="va">emissions_profile_rds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_rds.html" class="external-link">write_rds</a></span><span class="op">(</span><span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">products</span><span class="op">)</span>, <span class="va">file</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">pctr_job</span> <span class="op">|&gt;</span></span>
+<span><span class="va">emissions_profile_job</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Skip what's already done (if anything)</span></span>
 <span>  <span class="fu">pick_undone</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># `select(data, file)` matches `pctr_rds(data, file)` to use `*_pwalk()`</span></span>
+<span>  <span class="co"># `select(data, file)` matches `emissions_profile_rds(data, file)` to use `*_pwalk()`</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Combined with `plan()` it distributes computations across multiple workers</span></span>
 <span>  <span class="co"># The progress bar won't appear in this .Rmd document.</span></span>
-<span>  <span class="fu"><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">future_pwalk</a></span><span class="op">(</span><span class="va">pctr_rds</span>, .progress <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">future_pwalk</a></span><span class="op">(</span><span class="va">emissions_profile_rds</span>, .progress <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Here is what you accomplished. Instead of saturating the memory you
 stored each chunk into a file.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="fu">cache_path</span><span class="op">(</span><span class="st">"xctr"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">~/.cache/tiltIndicator/xctr</span></span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="fu">cache_path</span><span class="op">(</span><span class="st">"emissions_profile"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">~/.cache/tiltIndicator/emissions_profile</span></span></span>
 <span><span class="co">#&gt; ├── 1.rds</span></span>
 <span><span class="co">#&gt; ├── 2.rds</span></span>
 <span><span class="co">#&gt; └── 3.rds</span></span></code></pre></div>
@@ -317,8 +312,8 @@ stored each chunk into a file.</p>
 many you may also need to do this in batches or work with <a href="https://arrow.apache.org/docs/r/reference/open_dataset.html" class="external-link">multi-file
 datasets</a>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pctr_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="va">pctr_job</span><span class="op">$</span><span class="va">file</span>, <span class="va">read_rds</span><span class="op">)</span></span>
-<span><span class="va">pctr_result</span></span>
+<code class="sourceCode R"><span><span class="va">emissions_profile_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="va">emissions_profile_job</span><span class="op">$</span><span class="va">file</span>, <span class="va">read_rds</span><span class="op">)</span></span>
+<span><span class="va">emissions_profile_result</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
 <span><span class="co">#&gt;   companies_id                             product           company          </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
@@ -334,7 +329,7 @@ datasets</a>.</p>
 product level, and another one with results at company level.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/product.csv")`</span></span>
-<span><span class="va">pctr_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">emissions_profile_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 6</span></span></span>
 <span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
@@ -353,7 +348,7 @@ product level, and another one with results at company level.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span></span>
 <span></span>
 <span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/company.csv")`</span></span>
-<span><span class="va">pctr_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">emissions_profile_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                             grouped_by risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
