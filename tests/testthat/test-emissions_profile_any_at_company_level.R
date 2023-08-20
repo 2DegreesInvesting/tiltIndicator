@@ -87,7 +87,7 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
     co2_footprint = varying_co2_footprint,
     tilt_sector = "transport",
     unit = "metric ton*km",
-    isic_4digit = "4575",
+    isic_4digit = "1234",
   )
 
   out <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold) |>

@@ -37,7 +37,7 @@ test_that("unmatched products don't introduce NA's (#266)", {
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
+    input_isic_4digit = "1234"
   )
   out <- emissions_profile_any_at_product_level(companies, inputs)
   expect_false(anyNA(out$risk_category))
@@ -47,7 +47,7 @@ test_that("unmatched products don't introduce NA's (#266)", {
     co2_footprint = 1,
     tilt_sector = "Transport",
     unit = "metric ton*km",
-    isic_4digit = "4575"
+    isic_4digit = "1234"
   )
   out <- emissions_profile_any_at_product_level(companies, products)
   expect_false(anyNA(out$risk_category))
@@ -132,7 +132,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit = "4575"
+    isic_4digit = "1234"
   )
 
   crucial <- "activity_uuid_product_uuid"
@@ -155,7 +155,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
     tilt_sector = "Transport",
     unit = "metric ton*km",
     activity_uuid_product_uuid = c("x"),
-    isic_4digit = "4575"
+    isic_4digit = "1234"
   )
 
   crucial <- "co2_footprint"
@@ -190,7 +190,7 @@ test_that("handles duplicated `companies` data (#230)", {
     co2_footprint = 1,
     tilt_sector = "transport",
     unit = "metric ton*km",
-    isic_4digit = "4575",
+    isic_4digit = "1234",
   )
   expect_no_error(emissions_profile_any_at_product_level(companies, co2))
 })
@@ -206,7 +206,7 @@ test_that("handles duplicated `co2` data (#230)", {
     co2_footprint = 1,
     tilt_sector = "transport",
     unit = "metric ton*km",
-    isic_4digit = "4575",
+    isic_4digit = "1234",
   )
   expect_no_error(emissions_profile_any_at_product_level(companies, co2))
 })
@@ -327,7 +327,7 @@ test_that("handles duplicated `companies` data (#230)", {
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
+    input_isic_4digit = "1234"
   )
   expect_no_error(emissions_profile_any_at_product_level(companies, co2))
 })
@@ -344,7 +344,7 @@ test_that("handles duplicated `co2` data (#230)", {
     input_co2_footprint = 1,
     input_tilt_sector = "transport",
     input_unit = "metric ton*km",
-    input_isic_4digit = "4575"
+    input_isic_4digit = "1234"
   )
   expect_no_error(emissions_profile_any_at_product_level(companies, co2))
 })
