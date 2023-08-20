@@ -41,7 +41,7 @@ options(readr.show_col_types = FALSE)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/intro-pctr.Rmd")}
+```{r child=extdata_path("child/intro-emissions-profile.Rmd")}
 ```
 
 ## Emissions profile upstream
