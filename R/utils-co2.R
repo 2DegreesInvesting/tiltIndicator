@@ -20,5 +20,3 @@ pull_isic <- function(co2) {
 isic_pattern <- function() {
   "isic_4digit"
 }
-
-
