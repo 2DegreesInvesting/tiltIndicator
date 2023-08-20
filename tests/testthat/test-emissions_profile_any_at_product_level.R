@@ -174,7 +174,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   bad <- select(co2, -all_of(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- "isic_4digit"
+  crucial <- isic_pattern()
   bad <- select(co2, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 })
