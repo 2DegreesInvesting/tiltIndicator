@@ -57,13 +57,11 @@ library(tiltToyData)
 library(readr)
 options(readr.show_col_types = FALSE)
 
-toy_files()
-
 companies <- read_csv(toy_path("sector_profile_upstream_companies.csv.gz"))
 scenarios <- read_csv(toy_path("sector_profile_any_scenarios.csv.gz"))
-inputs <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
+products_upstream <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
 
-both <- sector_profile_upstream(companies, scenarios, inputs)
+both <- sector_profile_upstream(companies, scenarios, products_upstream)
 both
 
 both |> unnest_product()

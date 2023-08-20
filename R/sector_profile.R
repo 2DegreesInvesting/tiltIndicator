@@ -21,8 +21,6 @@
 #' library(readr)
 #' options(readr.show_col_types = FALSE)
 #'
-#' toy_files()
-#'
 #' companies <- read_csv(toy_path("sector_profile_companies.csv.gz"))
 #' scenarios <- read_csv(toy_path("sector_profile_any_scenarios.csv.gz"))
 #'

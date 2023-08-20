@@ -1,16 +1,6 @@
-#' Calculate "emissions" family of indicators
-#'
-#' These functions calculate the "emissions" family of indicators. The process
-#' is the same. What varies is the `co2` dataset.
-#'
-#' ### Emissions profile
+#' Calculate the indicator "emissions profile"
 #'
 #' ```{r child=extdata_path("child/intro-emissions-profile.Rmd")}
-#' ```
-#'
-#' ### Emissions profile upstream
-#'
-#' ```{r child=extdata_path("child/intro-emissions-profile-upstream.Rmd")}
 #' ```
 #'
 #' @param companies A dataframe like [companies].
@@ -31,8 +21,6 @@
 #' library(readr)
 #' options(readr.show_col_types = FALSE)
 #'
-#' toy_files()
-#'
 #' companies <- read_csv(toy_path("emissions_profile_any_companies.csv.gz"))
 #' products <- read_csv(toy_path("emissions_profile_products.csv.gz"))
 #'
@@ -42,10 +30,6 @@
 #' both |> unnest_product()
 #'
 #' both |> unnest_company()
-#'
-#' upstream_products <- read_csv(toy_path("emissions_profile_upstream_products.csv.gz"))
-#'
-#' emissions_profile_upstream(companies, upstream_products)
 emissions_profile <- function(companies,
                               co2,
                               low_threshold = 1 / 3,
@@ -56,7 +40,7 @@ emissions_profile <- function(companies,
 }
 
 #' @export
-#' @rdname emissions_profile
+#' @rdname emissions_profile_upstream
 emissions_profile_upstream <- emissions_profile
 
 any_at_company_level <- function(data) {
