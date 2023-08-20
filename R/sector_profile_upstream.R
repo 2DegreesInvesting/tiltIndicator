@@ -1,6 +1,6 @@
 #' Calculate the indicator "sector profile upstream"
 #'
-#' ```{r child=extdata_path("child/intro-secor-profile-upstream.Rmd")}
+#' ```{r child=extdata_path("child/intro-sector-profile-upstream.Rmd")}
 #' ```
 #'
 #' @param companies A dataframe like [istr_companies].
