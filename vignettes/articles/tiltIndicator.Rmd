@@ -9,17 +9,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article helps you get started with the tiltIndicator package. Currently it 
-supports two families of indicators: XCTR and XSTR.
-In the XCTR family, you have two indicators: Input Carbon Transition Risk (ICTR) 
-and Product Carbon Transition Risk (PCTR). They are both calculated in exactly the 
-same way. The difference is not the process but the kind of `co2` data: either 
-comes from inputs or products.
+This article helps you get started with the tiltIndicator package. Currently it
+supports two families of indicators: XCTR and XSTR. In the "emissions" family,
+you have two indicators: "Emissions profile" and "emissions profile upstream".
+They are both calculated in exactly the same way. The difference is not the
+process but the kind of `co2` data: Either comes from products or upstream
+products.
 
 In the "sector" family, you have two indicators: "Sector profile" and "sector
 profile upstream". They are both calculated in the same way, but "sector profile
-upstream" takes `inputs` data as an additional argument, since it focuses on the
-upstream products.
+upstream" takes an additional argument for upstream products.
 
 You can find the main functions of the families
 [here](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#main-functions-and-datasets).
@@ -30,23 +29,26 @@ We'll use general purpose tools from the dplyr package, and the experimental
 packages.
 
 ```{r setup}
-library(dplyr, warn.conflicts = FALSE)
 library(tiltIndicator)
 library(tiltToyData)
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+
+options(readr.show_col_types = FALSE)
 ```
 
-## Input carbon transition risk (ICTR)
-
-<!-- WARNING: Do not write here. Instead write in the `child` file -->
-
-```{r child=extdata_path("child/intro-ictr.Rmd")}
-```
-
-## Product carbon transition risk (PCTR)
+## Emissions profile
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-pctr.Rmd")}
+```
+
+## Emissions profile upstream
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child=extdata_path("child/intro-ictr.Rmd")}
 ```
 
 ## Thresholds
@@ -58,31 +60,27 @@ library(tiltToyData)
 
 ## Example
 
-Use `xctr*()` to calculate both ICTR and PCTR. Their difference is in the `co2`
-dataset. Here we'll use example datasets that come with the tiltIndicator
-package: `companies`, `inputs`, and `products`.
+Use `emissions_profile()` and `emissions_profile_upstream()` with example
+datasets that come with the tiltToyData package.
 
 ```{r}
-companies
+toy_files()
+companies <- read_csv(toy_path("emissions_profile_any_companies.csv.gz"))
+products <- read_csv(toy_path("emissions_profile_products.csv.gz"))
+products_upstream <- read_csv(toy_path("emissions_profile_upstream_products.csv.gz"))
 
-products
+result <- emissions_profile(companies, products)
+result
 
-both <- emissions_profile(companies, products)
-both
+result |> unnest_product()
 
-both |> unnest_product()
+result |> unnest_company()
 
-both |> unnest_company()
-```
+result_upstream <- emissions_profile_upstream(companies, products_upstream)
+result_upstream
 
-```{r}
-upstream_products <- inputs
+result_upstream |> unnest_product()
 
-both <- emissions_profile_upstream(companies, upstream_products)
-both
-
-both |> unnest_product()
-
-both |> unnest_company()
+result_upstream |> unnest_company()
 ```
 
