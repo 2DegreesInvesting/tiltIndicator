@@ -1,30 +1,32 @@
-The Input Product Carbon Transition Risk Indicator assesses the transition risk
-of the input products due to their relative carbon footprint to other input
-products. As a default option, each input product is compared to the carbon
-footprint of every other input product. Input products with a higher carbon
-footprint face a higher risk. On a company-level, the indicator proxies for the
-supply chain risk of a company - based on its inputs.
+The indicator "emissions profile upstream" assesses the transition risk of the
+upstream products due to their relative carbon footprint to other upstream
+products. As a default option, each upstream product is compared to the carbon
+footprint of every other upstream product. Upstream products with a higher
+carbon footprint face a higher risk. On a company-level, the indicator proxies
+for the supply chain risk of a company - based on its inputs.
 
-The Input Product Carbon Transition Risk Indicator is therefore similar to the
-Product Carbon Transition Risk Indicator, but it focuses on the input products
-and not the product of the company. Input products are, for example, resources,
+The indicator "emissions profile upstream" is therefore similar to the Product
+Carbon Transition Risk Indicator, but it focuses on the upstream products and
+not the product of the company. Upstream products are, for example, resources,
 packaging materials, energy and enabling services (such as tractor use on farm)
 to produce the product.
 
-After identifying each carbon footprint for one input product, the input
-products are ranked according to their footprint. The ranking method is explained 
-in the [Thresholds](https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds) section.
+After identifying each carbon footprint for one upstream product, the input
+products are ranked according to their footprint. The ranking method is
+explained in the
+[Thresholds](https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds)
+section.
 
-After assessing the input products' transition risk based on the carbon
+After assessing the upstream products' transition risk based on the carbon
 footprint of each product, they are aggregated at the company-level. We derive
-what percentage of the input products are high, medium and low transition risk.
+what percentage of the upstream products are high, medium and low transition
+risk.
 
-The transition risk indicator consists of 2 broad steps:
+This indicator consists of 2 broad steps:
 
-1. Score input products: Identifying the input products for each product, and
-calculating the relative carbon footprint per input product. 
+1. Score upstream products: Identifying the upstream products for each product,
+and calculating the relative carbon footprint per upstream product.
 2. Score companies: Aggregating on the company-level.
-
 
 The sample data set includes inputs and co2 footprints for each product from
 Ecoinvent and sectors from Europages. NOTE: the following columns are a
