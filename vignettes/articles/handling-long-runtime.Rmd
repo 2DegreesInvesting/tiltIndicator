@@ -102,7 +102,7 @@ add_done <- function(data, file) {
 # TODO: Replace with `read_csv("/path/to/input/companies.csv")`
 companies <- read_csv(toy_sector_profile_upstream_companies())
 # TODO: Replace with `read_csv("/path/to/input/scenarios.csv")`
-scenarios <- read_csv(toy_path("sector_profile_any_scenarios.csv.gz"))
+scenarios <- read_csv(toy_sector_profile_any_scenarios())
 # TODO: Replace with `read_csv("/path/to/input/upstream_products.csv")`
 products_upstream <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
 
