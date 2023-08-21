@@ -1,3 +1,10 @@
+# document_dataset() outputs the expected text
+
+    Code
+      document_dataset()
+    Output
+      [1] "A dataframe like the dataset with a matching name in tiltToyData (see [Reference](https://2degreesinvesting.github.io/tiltToyData/reference/index.html))"
+
 # document_value() outputs the expected text
 
     Code
