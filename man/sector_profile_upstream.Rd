@@ -13,11 +13,11 @@ sector_profile_upstream(
 )
 }
 \arguments{
-\item{companies}{A dataframe like \link{istr_companies}.}
+\item{companies}{A dataframe like the dataset with a matching name in tiltToyData (see \href{https://2degreesinvesting.github.io/tiltToyData/reference/index.html}{Reference}).}
 
-\item{scenarios}{A dataframe like \link{xstr_scenarios}.}
+\item{scenarios}{A dataframe like the dataset with a matching name in tiltToyData (see \href{https://2degreesinvesting.github.io/tiltToyData/reference/index.html}{Reference}).}
 
-\item{inputs}{A dataframe like \link{istr_inputs}.}
+\item{inputs}{A dataframe like the dataset with a matching name in tiltToyData (see \href{https://2degreesinvesting.github.io/tiltToyData/reference/index.html}{Reference}).}
 
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}

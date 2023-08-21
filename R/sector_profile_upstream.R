@@ -3,9 +3,9 @@
 #' ```{r child=extdata_path("child/intro-sector-profile-upstream.Rmd")}
 #' ```
 #'
-#' @param companies A dataframe like [istr_companies].
-#' @param scenarios A dataframe like [xstr_scenarios].
-#' @param inputs A dataframe like [istr_inputs].
+#' @param companies `r document_dataset()`.
+#' @param scenarios `r document_dataset()`.
+#' @param inputs `r document_dataset()`.
 #' @inheritParams emissions_profile
 #'
 #' @family main functions
