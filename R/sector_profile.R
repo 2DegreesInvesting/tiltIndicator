@@ -3,8 +3,7 @@
 #' ```{r child=extdata_path("child/intro-sector-profile.Rmd")}
 #' ```
 #'
-#' @param companies A dataframe like [pstr_companies].
-#' @param scenarios A dataframe like [xstr_scenarios].
+#' @param companies,scenarios `r document_dataset()`.
 #' @param low_threshold A numeric value to segment low and medium reduction
 #'   targets.
 #' @param high_threshold A numeric value to segment medium and high reduction

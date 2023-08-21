@@ -1,3 +1,10 @@
+document_dataset <- function() {
+  paste0(
+    "A dataframe like the dataset with a matching name in tiltToyData (see ",
+   "[Reference](https://2degreesinvesting.github.io/tiltToyData/reference/index.html))"
+  )
+}
+
 document_value <- function() {
   paste0(
     "A data frame with the column `companies_id`, and the nested columns ",
