@@ -3,8 +3,7 @@
 #' ```{r child=extdata_path("child/intro-emissions-profile.Rmd")}
 #' ```
 #'
-#' @param companies `r document_dataset()`.
-#' @param co2 `r document_dataset()`.
+#' @param companies,co2 `r document_dataset()`.
 #' @param low_threshold A numeric value to segment low and medium transition
 #'   risk products.
 #' @param high_threshold A numeric value to segment medium and high transition

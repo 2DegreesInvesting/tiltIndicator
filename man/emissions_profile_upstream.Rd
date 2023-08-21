@@ -13,9 +13,7 @@ emissions_profile_upstream(
 )
 }
 \arguments{
-\item{companies}{A dataframe like the dataset with a matching name in tiltToyData (see \href{https://2degreesinvesting.github.io/tiltToyData/reference/index.html}{Reference}).}
-
-\item{co2}{A dataframe like the dataset with a matching name in tiltToyData (see \href{https://2degreesinvesting.github.io/tiltToyData/reference/index.html}{Reference}).}
+\item{companies, co2}{A dataframe like the dataset with a matching name in tiltToyData (see \href{https://2degreesinvesting.github.io/tiltToyData/reference/index.html}{Reference}).}
 
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}
