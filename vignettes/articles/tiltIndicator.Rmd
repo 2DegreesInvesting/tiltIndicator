@@ -20,9 +20,6 @@ In the "sector" family, you have two indicators: "Sector profile" and "sector
 profile upstream". They are both calculated in the same way, but "sector profile
 upstream" takes an additional argument for upstream products.
 
-You can find the main functions of the families
-[here](https://2degreesinvesting.github.io/tiltIndicator/reference/index.html#main-functions-and-datasets).
-
 We'll use general purpose tools from the dplyr package, and the experimental
 [tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html)
 [tiltToyData](https://2degreesinvesting.github.io/tiltIndicator/index.html)
