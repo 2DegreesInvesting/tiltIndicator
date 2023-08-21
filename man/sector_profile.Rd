@@ -52,7 +52,9 @@ both |> unnest_product()
 both |> unnest_company()
 }
 \seealso{
-Other sector functions: 
+Other main functions: 
+\code{\link{emissions_profile_upstream}()},
+\code{\link{emissions_profile}()},
 \code{\link{sector_profile_upstream}()}
 }
-\concept{sector functions}
+\concept{main functions}
