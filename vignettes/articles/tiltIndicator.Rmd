@@ -62,9 +62,9 @@ datasets that come with the tiltToyData package.
 
 ```{r}
 toy_files()
-companies <- read_csv(toy_path("emissions_profile_any_companies.csv.gz"))
-products <- read_csv(toy_path("emissions_profile_products.csv.gz"))
-products_upstream <- read_csv(toy_path("emissions_profile_upstream_products.csv.gz"))
+companies <- read_csv(toy_emissions_profile_any_companies())
+products <- read_csv(toy_emissions_profile_products())
+products_upstream <- read_csv(toy_emissions_profile_upstream_products())
 
 result <- emissions_profile(companies, products)
 result
