@@ -72,7 +72,9 @@ both |> unnest_product()
 both |> unnest_company()
 }
 \seealso{
-Other emissions functions: 
-\code{\link{emissions_profile_upstream}()}
+Other main functions: 
+\code{\link{emissions_profile_upstream}()},
+\code{\link{sector_profile_upstream}()},
+\code{\link{sector_profile}()}
 }
-\concept{emissions functions}
+\concept{main functions}

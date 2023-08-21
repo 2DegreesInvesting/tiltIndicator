@@ -4,13 +4,9 @@ template:
 
 reference:
 
-  - title: Emissions functions
+  - title: Main functions
     contents:
-      - has_concept("emissions functions")
-
-  - title: Sector functions
-    contents:
-      - has_concept("sector functions")
+      - has_concept("main functions")
 
   - title: Helpers
     contents:
