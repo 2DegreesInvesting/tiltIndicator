@@ -28,7 +28,7 @@ sector_profile(companies, scenarios) |>
   xstr_polish_output_at_company_level()
 
 companies_upstream <- read_csv(toy_sector_profile_upstream_companies())
-products_upstream <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
+products_upstream <- read_csv(toy_sector_profile_upstream_products())
 
 sector_profile_upstream(companies_upstream, scenarios, products_upstream) |>
   unnest_company() |>

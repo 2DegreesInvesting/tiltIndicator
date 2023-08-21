@@ -21,7 +21,7 @@
 #'
 #' companies <- read_csv(toy_sector_profile_upstream_companies())
 #' scenarios <- read_csv(toy_sector_profile_any_scenarios())
-#' products_upstream <- read_csv(toy_path("sector_profile_upstream_products.csv.gz"))
+#' products_upstream <- read_csv(toy_sector_profile_upstream_products())
 #'
 #' both <- sector_profile_upstream(companies, scenarios, products_upstream)
 #' both
