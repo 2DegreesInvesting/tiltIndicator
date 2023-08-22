@@ -3,7 +3,7 @@
 #' For each company, this function drops rows where the product information is
 #' missing and the sector information is duplicated.
 #'
-#' @param data Typically an XSTR `*companies` dataframe.
+#' @param data Typically a "sector profile" `*companies` dataframe.
 #'
 #' @family pre-processing helpers
 #'

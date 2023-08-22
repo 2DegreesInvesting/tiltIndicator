@@ -67,7 +67,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
     isic_4digit = "1234"
   )
 
-  # PCTR
+  # Emissions upstream
   out <- emissions_profile_any_at_product_level(companies, products)
 
   some_match <- filter(out, companies_id == "a")
@@ -89,7 +89,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
     input_isic_4digit = "1234"
   )
 
-  # ICTR
+  # Emissions
   out <- emissions_profile_any_at_product_level(companies, inputs)
 
   some_match <- filter(out, companies_id == "a")

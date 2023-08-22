@@ -7,7 +7,7 @@
 sector_profile_any_prune_companies(data)
 }
 \arguments{
-\item{data}{Typically an XSTR \verb{*companies} dataframe.}
+\item{data}{Typically a "sector profile" \verb{*companies} dataframe.}
 }
 \value{
 A dataframe with maybe fewer rows than the input \code{data}.
