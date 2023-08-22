@@ -20,7 +20,7 @@
 #'
 #' companies <- xstr_pivot_type_sector_subsector(raw_companies)
 #' companies
-xstr_pivot_type_sector_subsector <- function(data) {
+sector_profile_any_pivot_type_sector_subsector <- function(data) {
   data |>
     lowercase_characters() |>
     pivot_longer(c("ipr_sector", "ipr_subsector", "weo_sector", "weo_subsector")) |>

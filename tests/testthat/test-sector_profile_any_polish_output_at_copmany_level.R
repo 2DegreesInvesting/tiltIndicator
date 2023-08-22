@@ -8,7 +8,7 @@ test_that("outputs the expected columns", {
   )
   # styler: on
 
-  out <- xstr_polish_output_at_company_level(pstr)
+  out <- sector_profile_any_polish_output_at_company_level(pstr)
 
   exp <- c("companies_id", "type", "scenario", "year", "risk_category", "value")
   expect_named(out, exp)

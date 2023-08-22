@@ -25,8 +25,8 @@
 #' )
 #' # styler: on
 #'
-#' xstr_prune_companies(companies)
-xstr_prune_companies <- function(data) {
+#' sector_profile_any_prune_companies(companies)
+sector_profile_any_prune_companies <- function(data) {
   check_prune_companies(data)
 
   data |>

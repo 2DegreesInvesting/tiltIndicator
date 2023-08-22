@@ -108,3 +108,36 @@ xctr_at_company_level <- function(data) {
 #' @keywords internal
 #' @name e
 "e"
+
+#' @export
+#' @rdname deprecated
+xstr_pivot_type_sector_subsector <- function(data) {
+  deprecate_warn(
+    "0.0.0.9092",
+    what = "xstr_pivot_type_sector_subsector()",
+    with = "sector_profile_any_pivot_type_sector_subsector()"
+  )
+  sector_profile_any_pivot_type_sector_subsector(data)
+}
+
+#' @export
+#' @rdname deprecated
+xstr_prepare_scenario <- function(scenarios) {
+  deprecate_warn(
+    "0.0.0.9092",
+    what = "xstr_prepare_scenario()",
+    with = "sector_profile_any_prepare_scenario()"
+  )
+  sector_profile_any_prepare_scenario(scenarios)
+}
+
+#' @export
+#' @rdname deprecated
+xstr_prune_companies <- function(data) {
+  deprecate_warn(
+    "0.0.0.9092",
+    what = "xstr_prune_companies()",
+    with = "sector_profile_any_prune_companies()"
+  )
+  sector_profile_any_prune_companies(data)
+}

@@ -19,7 +19,7 @@ test_that("keeps the expected rows only", {
   )
   # styler: on
 
-  out <- xstr_prune_companies(companies)
+  out <- sector_profile_any_prune_companies(companies)
   expect_equal(out$row_id, c(1, 4, 6, 7))
 })
 
@@ -32,15 +32,15 @@ test_that("preserves row order", {
         1,         "a1",       "b1",                        "c1",          "x",
   )
   # styler: on
-  out <- xstr_prune_companies(companies)
+  out <- sector_profile_any_prune_companies(companies)
   expect_equal(out$tilt_sector, c(companies$tilt_sector))
 })
 
 test_that("with example xstr `companies` outputs the same input columns", {
-  out <- xstr_prune_companies(istr_companies)
+  out <- sector_profile_any_prune_companies(istr_companies)
   expect_equal(names(out), names(istr_companies))
 
-  out <- xstr_prune_companies(pstr_companies)
+  out <- sector_profile_any_prune_companies(pstr_companies)
   expect_equal(names(out), names(pstr_companies))
 })
 
@@ -49,17 +49,17 @@ test_that("without crucial columns errors gracefully", {
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))
-  expect_error(xstr_prune_companies(bad), crucial)
+  expect_error(sector_profile_any_prune_companies(bad), crucial)
 
   crucial <- "clustered"
   bad <- select(companies, -all_of(crucial))
-  expect_error(xstr_prune_companies(bad), crucial)
+  expect_error(sector_profile_any_prune_companies(bad), crucial)
 
   crucial <- "activity_uuid_product_uuid"
   bad <- select(companies, -all_of(crucial))
-  expect_error(xstr_prune_companies(bad), crucial)
+  expect_error(sector_profile_any_prune_companies(bad), crucial)
 
   crucial <- "tilt_sector"
   bad <- select(companies, -all_of(crucial))
-  expect_error(xstr_prune_companies(bad), crucial)
+  expect_error(sector_profile_any_prune_companies(bad), crucial)
 })

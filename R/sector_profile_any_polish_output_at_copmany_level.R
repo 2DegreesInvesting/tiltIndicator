@@ -17,19 +17,28 @@
 #'
 #' sector_profile(companies, scenarios) |>
 #'   unnest_company() |>
-#'   xstr_polish_output_at_company_level()
+#'   sector_profile_any_polish_output_at_company_level()
 #'
 #' companies_upstream <- read_csv(toy_sector_profile_upstream_companies())
 #' products_upstream <- read_csv(toy_sector_profile_upstream_products())
 #'
 #' sector_profile_upstream(companies_upstream, scenarios, products_upstream) |>
 #'   unnest_company() |>
-#'   xstr_polish_output_at_company_level()
-xstr_polish_output_at_company_level <- function(data) {
+#'   sector_profile_any_polish_output_at_company_level()
+sector_profile_any_polish_output_at_company_level <- function(data) {
   separate_wider_delim(
     data,
     cols = "grouped_by",
     delim = "_",
     names = c("type", "scenario", "year")
   )
+}
+
+xstr_polish_output_at_company_level <- function(data) {
+  deprecate_warn(
+    "0.0.0.9092",
+    what = "xstr_polish_output_at_company_level()",
+    with = "sector_profile_any_polish_output_at_company_level()"
+  )
+  sector_profile_any_polish_output_at_company_level(data)
 }

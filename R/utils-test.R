@@ -16,3 +16,7 @@ format_robust_snapshot <- function(data) {
 on_rcmd <- function() {
   nzchar(Sys.getenv("R_CMD"))
 }
+
+read_test_csv <- function(file, ..., show_col_types = FALSE, n_max = 1) {
+  read_csv(file, show_col_types = show_col_types, n_max = n_max)
+}
