@@ -1,81 +1,68 @@
-test_that("`companies` throws a deprecation warning", {
+test_that("pstr() throws a deprecation warning", {
   skip_if(on_rcmd())
-  expect_warning(companies, "deprecated.*use.*tiltToyData")
+  companies <- read_test_csv(toy_sector_profile_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  expect_warning(pstr(companies, scenarios), "deprecated")
 })
 
-test_that("`products` throws a deprecation warning", {
+test_that("istr() throws a deprecation warning", {
   skip_if(on_rcmd())
-  expect_warning(products, "deprecated.*use.*tiltToyData")
+  companies <- read_test_csv(toy_sector_profile_upstream_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  inputs <- read_test_csv(toy_sector_profile_upstream_products())
+  expect_warning(istr(companies, scenarios, inputs), "deprecated")
 })
 
-test_that("`inputs` throws a deprecation warning", {
+test_that("xctr() throws a deprecation warning", {
   skip_if(on_rcmd())
-  expect_warning(inputs, "deprecated.*use.*tiltToyData")
-})
-
-test_that("`pstr_companies` throws a deprecation warning", {
-  skip_if(on_rcmd())
-  expect_warning(pstr_companies, "deprecated.*use.*tiltToyData")
-})
-
-test_that("`istr_companies` throws a deprecation warning", {
-  skip_if(on_rcmd())
-  expect_warning(istr_companies, "deprecated.*use.*tiltToyData")
-})
-
-test_that("`istr_inputs` throws a deprecation warning", {
-  skip_if(on_rcmd())
-  expect_warning(istr_inputs, "deprecated.*use.*tiltToyData")
-})
-
-test_that("`xstr_scenarios` throws a deprecation warning", {
-  skip_if(on_rcmd())
-  expect_warning(xstr_scenarios, "deprecated.*use.*tiltToyData")
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  products <- read_test_csv(toy_emissions_profile_products())
+  expect_warning(xctr(companies, products), "deprecated")
 })
 
 test_that("istr_at_product_level() throws a deprecation warning", {
   skip_if(on_rcmd())
-  companies <- slice(istr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
-  inputs <- slice(istr_inputs, 1)
+  companies <- read_test_csv(toy_sector_profile_upstream_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  inputs <- read_test_csv(toy_sector_profile_upstream_products())
   expect_warning(istr_at_product_level(companies, scenarios, inputs), "deprecated")
 })
 
 test_that("pstr_at_product_level() throws a deprecation warning", {
   skip_if(on_rcmd())
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
+  companies <- read_test_csv(toy_sector_profile_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
   expect_warning(pstr_at_product_level(companies, scenarios), "deprecated")
 })
 
 test_that("xctr_at_product_level() throws a deprecation warning", {
   skip_if(on_rcmd())
-  companies <- slice(companies, 1)
-  inputs <- slice(inputs, 1)
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
   expect_warning(xctr_at_product_level(companies, inputs), "deprecated")
 })
 
 test_that("istr_at_company_level() throws a deprecation warning", {
   skip_if(on_rcmd())
-  companies <- slice(istr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
-  inputs <- slice(istr_inputs, 1)
+  companies <- read_test_csv(toy_sector_profile_upstream_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  inputs <- read_test_csv(toy_sector_profile_upstream_products())
   product <- suppressWarnings(istr_at_product_level(companies, scenarios, inputs))
   expect_warning(istr_at_company_level(product), "deprecated")
 })
 
 test_that("pstr_at_company_level() throws a deprecation warning", {
   skip_if(on_rcmd())
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
+  companies <- read_test_csv(toy_sector_profile_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
   product <- suppressWarnings(pstr_at_product_level(companies, scenarios))
   expect_warning(pstr_at_company_level(product), "deprecated")
 })
 
 test_that("xctr_at_company_level() throws a deprecation warning", {
   skip_if(on_rcmd())
-  companies <- slice(companies, 1)
-  inputs <- slice(inputs, 1)
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
   product <- suppressWarnings(xctr_at_product_level(companies, inputs))
   expect_warning(xctr_at_company_level(product), "deprecated")
 })
@@ -105,7 +92,7 @@ test_that("xstr_prune_companies() throws a deprecation warning", {
   expect_warning(xstr_prune_companies(companies), "deprecated")
 })
 
-test_that("xxxxxxxxxxx() throws a deprecation warning", {
+test_that("xstr_polish_output_at_company_level() throws a deprecation warning", {
   skip_if(on_rcmd())
   # styler: off
   pstr <- tribble(

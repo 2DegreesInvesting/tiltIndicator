@@ -1,6 +1,6 @@
 test_that("wraps the output at product and company levels", {
-  companies <- pstr_companies
-  scenarios <- xstr_scenarios
+  companies <- read_test_csv(toy_sector_profile_companies(), n_max = Inf)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
 
   out <- sector_profile(companies, scenarios)
 
@@ -16,8 +16,8 @@ test_that("wraps the output at product and company levels", {
 })
 
 test_that("pstr() yields the same with deprecation warning", {
-  companies <- pstr_companies
-  scenarios <- xstr_scenarios
+  companies <- read_test_csv(toy_sector_profile_companies(), n_max = Inf)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
 
   expect_warning(
     expect_equal(

@@ -1,7 +1,7 @@
 test_that("hasn't changed", {
-  companies <- istr_companies |> slice(1)
-  scenarios <- xstr_scenarios
-  inputs <- istr_inputs
+  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 1)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
@@ -9,9 +9,9 @@ test_that("hasn't changed", {
 })
 
 test_that("outputs expected columns at company level", {
-  companies <- slice(istr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
-  inputs <- slice(istr_inputs, 1)
+  companies <- read_test_csv(toy_sector_profile_upstream_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  inputs <- read_test_csv(toy_sector_profile_upstream_products())
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
@@ -21,9 +21,9 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("the output is not grouped", {
-  companies <- istr_companies |> slice(1)
-  scenarios <- xstr_scenarios
-  inputs <- istr_inputs
+  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 1)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
@@ -96,18 +96,18 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 })
 
 test_that("outputs values in proportion", {
-  companies <- istr_companies |> slice(1)
-  scenarios <- xstr_scenarios
-  inputs <- istr_inputs
+  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 1)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
   expect_true(all(na.omit(out$value) <= 1.0))
 })
 
 test_that("each company has risk categories low, medium, and high (#215)", {
-  companies <- istr_companies |> slice(1)
-  scenarios <- xstr_scenarios
-  inputs <- istr_inputs
+  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 1)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
   risk_categories <- sort(unique(out$risk_category))
@@ -116,9 +116,9 @@ test_that("each company has risk categories low, medium, and high (#215)", {
 
 test_that("grouped_by includes the type of scenario", {
   .type <- "ipr"
-  companies <- istr_companies |> slice(1)
-  scenarios <- xstr_scenarios |> filter(type == .type)
-  inputs <- istr_inputs |> filter(type == .type)
+  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 1)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf) |> filter(type == .type)
+  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf) |> filter(type == .type)
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
@@ -127,9 +127,9 @@ test_that("grouped_by includes the type of scenario", {
 
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
   .type <- "ipr"
-  companies <- istr_companies |> slice(1)
-  scenarios <- xstr_scenarios |> filter(type == .type)
-  inputs <- istr_inputs |> filter(type == .type)
+  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 1)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf) |> filter(type == .type)
+  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf) |> filter(type == .type)
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
@@ -141,9 +141,9 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
 
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
   .type <- "weo"
-  companies <- istr_companies |> slice(1)
-  scenarios <- xstr_scenarios |> filter(type == .type)
-  inputs <- istr_inputs |> filter(type == .type)
+  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 1)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf) |> filter(type == .type)
+  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf) |> filter(type == .type)
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)

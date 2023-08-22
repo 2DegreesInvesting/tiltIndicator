@@ -7,8 +7,8 @@ test_that("hasn't change", {
 })
 
 test_that("outputs expected columns at company level", {
-  companies <- slice(companies, 1)
-  inputs <- slice(inputs, 1)
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level()
@@ -18,8 +18,8 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("it's arranged by `companies_id` and `grouped_by`", {
-  companies <- slice(companies, 1)
-  inputs <- slice(inputs, 1)
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level()
@@ -28,8 +28,8 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
 })
 
 test_that("is sensitive to low_threshold", {
-  companies <- slice(companies, 1)
-  inputs <- slice(inputs, 1:2)
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products(), n_max = 2)
   out1 <- emissions_profile_any_at_product_level(companies, inputs, low_threshold = .1) |>
     any_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, inputs, low_threshold = .9) |>
@@ -38,8 +38,8 @@ test_that("is sensitive to low_threshold", {
 })
 
 test_that("is sensitive to high_threshold", {
-  companies <- slice(companies, 1)
-  inputs <- slice(inputs, 1:2)
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products(), n_max = 2)
   out1 <- emissions_profile_any_at_product_level(companies, inputs, high_threshold = .1) |>
     any_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, inputs, high_threshold = .9) |>

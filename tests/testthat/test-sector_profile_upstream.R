@@ -1,7 +1,7 @@
 test_that("wraps the output at product and company levels", {
-  companies <- slice(istr_companies, 3)
-  scenarios <- xstr_scenarios
-  inputs <- istr_inputs
+  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 3)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
 
   out <- sector_profile_upstream(companies, scenarios, inputs)
 
@@ -17,9 +17,9 @@ test_that("wraps the output at product and company levels", {
 })
 
 test_that("istr() yields the same with a deprecation warning", {
-  companies <- slice(istr_companies, 3)
-  scenarios <- xstr_scenarios
-  inputs <- istr_inputs
+  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 3)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
 
   expect_warning(
     expect_equal(

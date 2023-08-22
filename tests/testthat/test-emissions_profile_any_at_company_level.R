@@ -7,8 +7,8 @@ test_that("hasn't change", {
 })
 
 test_that("outputs expected columns at company level", {
-  companies <- slice(companies, 1)
-  co2 <- slice(products, 1)
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  co2 <- read_test_csv(toy_emissions_profile_products())
 
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
@@ -18,8 +18,8 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("is sensitive to low_threshold", {
-  companies <- slice(companies, 1:2)
-  co2 <- slice(products, 1:2)
+  companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = 2)
+  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 2)
   out1 <- emissions_profile_any_at_product_level(companies, co2, low_threshold = .1) |>
     any_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, co2, low_threshold = .9) |>
@@ -28,8 +28,8 @@ test_that("is sensitive to low_threshold", {
 })
 
 test_that("is sensitive to high_threshold", {
-  companies <- slice(companies, 1:2)
-  co2 <- slice(products, 1:2)
+  companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = 2)
+  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 2)
   out1 <- emissions_profile_any_at_product_level(companies, co2, high_threshold = .1) |>
     any_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, co2, high_threshold = .9) |>
@@ -40,28 +40,28 @@ test_that("is sensitive to high_threshold", {
 test_that("no longer drops companies depending on co2 data (#122)", {
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
-  co2 <- slice(products, 1:5)
+  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 5)
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 2)])
-  co2 <- slice(products, 1:4)
+  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 4)
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
-  co2 <- slice(products, 1:10)
+  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 10)
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- tiltIndicator::companies |>
     filter(company_id %in% unique(company_id)[c(1, 3)])
-  co2 <- slice(products, 1:9)
+  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 9)
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
