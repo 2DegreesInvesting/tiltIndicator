@@ -37,15 +37,17 @@ test_that("preserves row order", {
 })
 
 test_that("with example xstr `companies` outputs the same input columns", {
-  out <- sector_profile_any_prune_companies(istr_companies)
-  expect_equal(names(out), names(istr_companies))
+  companies <- read_test_csv(toy_sector_profile_companies())
+  out <- sector_profile_any_prune_companies(companies)
+  expect_equal(names(out), names(companies))
 
-  out <- sector_profile_any_prune_companies(pstr_companies)
-  expect_equal(names(out), names(pstr_companies))
+  companies <- read_test_csv(toy_sector_profile_upstream_companies())
+  out <- sector_profile_any_prune_companies(companies)
+  expect_equal(names(out), names(companies))
 })
 
 test_that("without crucial columns errors gracefully", {
-  companies <- slice(pstr_companies, 1)
+  companies <- read_test_csv(toy_sector_profile_companies())
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))

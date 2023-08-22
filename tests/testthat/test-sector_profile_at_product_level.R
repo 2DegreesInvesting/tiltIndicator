@@ -1,6 +1,6 @@
 test_that("outputs expected columns at product level", {
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
+  companies <- read_test_csv(toy_sector_profile_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
   out <- sector_profile_at_product_level(companies, scenarios)
   expect_named(out, pstr_cols_at_product_level())
 })
@@ -146,8 +146,8 @@ test_that("with duplicated scenarios throws no error (#435)", {
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
+  companies <- read_test_csv(toy_sector_profile_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
 
   crucial <- "company_id"
   bad <- select(companies, -all_of(crucial))
@@ -167,8 +167,8 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 })
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
-  companies <- slice(pstr_companies, 1)
-  scenarios <- slice(xstr_scenarios, 1)
+  companies <- read_test_csv(toy_sector_profile_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
 
   crucial <- "type"
   bad <- select(scenarios, -all_of(crucial))
@@ -193,10 +193,12 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 
 test_that("grouped_by includes the type of scenario", {
   .type <- "ipr"
-  companies <- filter(slice(pstr_companies, 1), type == .type)
-  co2 <- filter(xstr_scenarios, type == .type)
+  companies <- read_test_csv(toy_sector_profile_companies()) |>
+    filter(type == .type)
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf) |>
+    filter(type == .type)
 
-  product <- sector_profile_at_product_level(companies, co2)
+  product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
 
   expect_true(all(grepl(.type, unique(out$grouped_by))))
@@ -226,15 +228,20 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
 })
 
 test_that("a 0-row `companies` yields an error", {
+  companies <- read_test_csv(toy_sector_profile_companies())[0L, ]
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+
   expect_error(
-    sector_profile_at_product_level(pstr_companies[0L, ], xstr_scenarios),
+    sector_profile_at_product_level(companies, scenarios),
     "companies.*can't have 0-row"
   )
 })
 
 test_that("a 0-row `scenarios` yields an error", {
+  companies <- read_test_csv(toy_sector_profile_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)[0L, ]
   expect_error(
-    sector_profile_at_product_level(slice(pstr_companies, 1), xstr_scenarios[0L, ]),
+    sector_profile_at_product_level(companies, scenarios),
     "scenario.*can't have 0-row"
   )
 })
