@@ -1,4 +1,4 @@
-#' Renamed functions and datasets renamed
+#' Renamed functions and datasets
 #'
 #' @description
 #' `r lifecycle::badge('deprecated')`

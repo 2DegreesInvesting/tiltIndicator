@@ -4,7 +4,7 @@
 \alias{pstr}
 \alias{istr}
 \alias{xctr}
-\title{Renamed functions and datasets renamed}
+\title{Renamed functions and datasets}
 \usage{
 pstr(
   companies,
