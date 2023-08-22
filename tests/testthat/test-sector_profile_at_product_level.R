@@ -2,7 +2,7 @@ test_that("outputs expected columns at product level", {
   companies <- read_test_csv(toy_sector_profile_companies())
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
   out <- sector_profile_at_product_level(companies, scenarios)
-  expect_named(out, pstr_cols_at_product_level())
+  expect_named(out, sp_cols_at_product_level())
 })
 
 test_that("`low_threshold` and `year` yield the expected risk categories", {

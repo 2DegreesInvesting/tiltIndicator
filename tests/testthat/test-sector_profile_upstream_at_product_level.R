@@ -4,7 +4,7 @@ test_that("outputs expected columns at product level", {
   inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
   out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
 
-  expect_named(out, istr_cols_at_product_level())
+  expect_named(out, spu_cols_at_product_level())
 })
 
 test_that("`low_threshold` and `year` yield the expected risk categories", {
