@@ -1,7 +1,7 @@
 document_dataset <- function() {
   paste0(
     "A dataframe like the dataset with a matching name in tiltToyData (see ",
-   "[Reference](https://2degreesinvesting.github.io/tiltToyData/reference/index.html))"
+    "[Reference](https://2degreesinvesting.github.io/tiltToyData/reference/index.html))"
   )
 }
 

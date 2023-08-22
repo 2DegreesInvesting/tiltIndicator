@@ -79,3 +79,39 @@ test_that("xctr_at_company_level() throws a deprecation warning", {
   product <- suppressWarnings(xctr_at_product_level(companies, inputs))
   expect_warning(xctr_at_company_level(product), "deprecated")
 })
+
+test_that("xstr_pivot_type_sector_subsector() throws a deprecation warning", {
+  skip_if(on_rcmd())
+  raw_companies <- read_test_csv(extdata_path("pstr_companies.csv"))
+  expect_warning(xstr_pivot_type_sector_subsector(raw_companies), "deprecated")
+})
+
+test_that("xstr_prepare_scenario() throws a deprecation warning", {
+  skip_if(on_rcmd())
+  raw_weo <- read_test_csv(extdata_path("str_weo_targets.csv"))
+  raw_ipr <- read_test_csv(extdata_path("str_ipr_targets.csv"))
+  raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
+  expect_warning(xstr_prepare_scenario(raw_scenarios), "deprecated")
+})
+
+test_that("xstr_prune_companies() throws a deprecation warning", {
+  skip_if(on_rcmd())
+  companies <- tibble(
+    company_id = "a",
+    clustered = "a",
+    activity_uuid_product_uuid = "a",
+    tilt_sector = "a",
+  )
+  expect_warning(xstr_prune_companies(companies), "deprecated")
+})
+
+test_that("xxxxxxxxxxx() throws a deprecation warning", {
+  skip_if(on_rcmd())
+  # styler: off
+  pstr <- tribble(
+    ~companies_id,           ~grouped_by, ~risk_category, ~value,
+              "a", "ipr_some thing_2020",         "high",      0,
+  )
+  # styler: on
+  expect_warning(xstr_polish_output_at_company_level(pstr), "deprecated")
+})

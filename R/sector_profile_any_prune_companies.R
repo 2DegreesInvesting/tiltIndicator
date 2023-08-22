@@ -3,7 +3,7 @@
 #' For each company, this function drops rows where the product information is
 #' missing and the sector information is duplicated.
 #'
-#' @param data Typically an XSTR `*companies` dataframe.
+#' @param data Typically a "sector profile" `*companies` dataframe.
 #'
 #' @family pre-processing helpers
 #'
@@ -25,8 +25,8 @@
 #' )
 #' # styler: on
 #'
-#' xstr_prune_companies(companies)
-xstr_prune_companies <- function(data) {
+#' sector_profile_any_prune_companies(companies)
+sector_profile_any_prune_companies <- function(data) {
   check_prune_companies(data)
 
   data |>

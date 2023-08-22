@@ -15,6 +15,10 @@
 \alias{istr_inputs}
 \alias{pstr_companies}
 \alias{xstr_scenarios}
+\alias{xstr_pivot_type_sector_subsector}
+\alias{xstr_prepare_scenario}
+\alias{xstr_prune_companies}
+\alias{xstr_polish_output_at_company_level}
 \title{Deprecated}
 \format{
 An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 9 rows and 4 columns.
@@ -73,6 +77,14 @@ istr_inputs
 pstr_companies
 
 xstr_scenarios
+
+xstr_pivot_type_sector_subsector(data)
+
+xstr_prepare_scenario(scenarios)
+
+xstr_prune_companies(data)
+
+xstr_polish_output_at_company_level(data)
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}

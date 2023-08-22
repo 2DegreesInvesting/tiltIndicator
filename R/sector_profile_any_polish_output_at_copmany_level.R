@@ -1,6 +1,6 @@
 #' Polish output at company level
 #'
-#' @param data The output of `xstr*()` functions.
+#' @param data The output of `sector_profile*()` functions.
 #'
 #' @family post-processing helpers
 #'
@@ -17,15 +17,15 @@
 #'
 #' sector_profile(companies, scenarios) |>
 #'   unnest_company() |>
-#'   xstr_polish_output_at_company_level()
+#'   sector_profile_any_polish_output_at_company_level()
 #'
 #' companies_upstream <- read_csv(toy_sector_profile_upstream_companies())
 #' products_upstream <- read_csv(toy_sector_profile_upstream_products())
 #'
 #' sector_profile_upstream(companies_upstream, scenarios, products_upstream) |>
 #'   unnest_company() |>
-#'   xstr_polish_output_at_company_level()
-xstr_polish_output_at_company_level <- function(data) {
+#'   sector_profile_any_polish_output_at_company_level()
+sector_profile_any_polish_output_at_company_level <- function(data) {
   separate_wider_delim(
     data,
     cols = "grouped_by",
