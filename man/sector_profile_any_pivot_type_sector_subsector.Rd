@@ -3,7 +3,7 @@
 %   R/sector_profile_any_pivot_type_sector_subsector.R
 \name{sector_profile_any_pivot_type_sector_subsector}
 \alias{sector_profile_any_pivot_type_sector_subsector}
-\title{Restructure XSTR \code{companies}}
+\title{Restructure "sector profile" \code{companies}}
 \usage{
 sector_profile_any_pivot_type_sector_subsector(data)
 }
@@ -20,7 +20,7 @@ sector_profile_any_pivot_type_sector_subsector(data)
 A \code{companies} dataset as required by sector functions.
 }
 \description{
-Restructure XSTR \code{companies}
+Restructure "sector profile" \code{companies}
 }
 \examples{
 library(dplyr, warn.conflicts = FALSE)
@@ -29,7 +29,7 @@ library(readr, warn.conflicts = FALSE)
 raw_companies <- read_csv(extdata_path("pstr_companies.csv"))
 glimpse(raw_companies)
 
-companies <- xstr_pivot_type_sector_subsector(raw_companies)
+companies <- sector_profile_any_pivot_type_sector_subsector(raw_companies)
 companies
 }
 \seealso{
