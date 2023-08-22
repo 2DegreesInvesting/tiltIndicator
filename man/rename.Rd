@@ -54,6 +54,10 @@ Implementation changes:
 \item v0.0.0.9085: \code{istr()} -> \code{sector_profile_upstream()}
 \item v0.0.0.9086: \code{xctr(companies, products)} -> \code{emissions_profile()}
 \item v0.0.0.9087: \code{xctr(companies, inputs)} -> \code{emissions_profile_upstream()}
+\item v0.0.0.9092: \code{xstr_pivot_type_sector_subsector()} -> \code{sector_profile_any_pivot_type_sector_subsector()}
+\item v0.0.0.9092: \code{xstr_prepare_scenario()} -> \code{sector_profile_any_prepare_scenario()}
+\item v0.0.0.9092: \code{xstr_prune_companies()} -> \code{sector_profile_any_prune_companies()}
+\item v0.0.0.9092: \code{xstr_polish_output_at_company_level()} -> \code{sector_profile_any_polish_output_at_company_level()}
 }
 }
 \keyword{internal}

@@ -26,6 +26,10 @@
 #' * v0.0.0.9085: `istr()` -> `sector_profile_upstream()`
 #' * v0.0.0.9086: `xctr(companies, products)` -> `emissions_profile()`
 #' * v0.0.0.9087: `xctr(companies, inputs)` -> `emissions_profile_upstream()`
+#' * v0.0.0.9092: `xstr_pivot_type_sector_subsector()` -> `sector_profile_any_pivot_type_sector_subsector()`
+#' * v0.0.0.9092: `xstr_prepare_scenario()` -> `sector_profile_any_prepare_scenario()`
+#' * v0.0.0.9092: `xstr_prune_companies()` -> `sector_profile_any_prune_companies()`
+#' * v0.0.0.9092: `xstr_polish_output_at_company_level()` -> `sector_profile_any_polish_output_at_company_level()`
 #'
 #' @keywords internal
 #' @name rename
