@@ -1,4 +1,4 @@
-xstr_check <- function(companies, scenarios) {
+spa_check <- function(companies, scenarios) {
   stop_if_has_0_rows(companies)
   stop_if_has_0_rows(scenarios)
   crucial <- c("type", "sector", "subsector", "year", "scenario")
@@ -21,7 +21,7 @@ stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
     abort(c(
       "Each scenario `type` must have some `sector` and `subsector`.",
       x = glue("All `sector` and `subsector` are missing for `type` {bad}."),
-      i = "Did you need to prepare the data with `xstr_prepare_scenario()`?"
+      i = "Did you need to prepare the data with `spa_prepare_scenario()`?"
     ))
   }
   invisible(scenarios)
@@ -34,7 +34,7 @@ prepare_scenarios <- function(data, low_threshold, high_threshold) {
     rename(values_to_categorize = "reductions")
 }
 
-xstr_add_values_to_categorize <- function(data, scenarios) {
+spa_add_values_to_categorize <- function(data, scenarios) {
   left_join(
     data, scenarios,
     by = join_by("type", "sector", "subsector"),
@@ -42,7 +42,7 @@ xstr_add_values_to_categorize <- function(data, scenarios) {
   )
 }
 
-xstr_polish_output_at_product_level <- function(data) {
+spa_polish_output_at_product_level <- function(data) {
   data |>
     ungroup() |>
     unite(
@@ -56,7 +56,7 @@ xstr_polish_output_at_product_level <- function(data) {
     relocate(all_of(cols_at_all_levels()))
 }
 
-xstr_cols_at_product_level <- function() {
+spa_cols_at_product_level <- function() {
   c(
     cols_at_product_level(),
     "tilt_sector",

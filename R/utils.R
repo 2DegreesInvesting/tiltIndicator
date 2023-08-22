@@ -52,10 +52,6 @@ matches_name <- function(data, pattern) {
   nzchar(extract_name(data, pattern))
 }
 
-is_xctr <- function(data) {
-  any(grepl("co2_footprint", names(data)))
-}
-
 risk_category_levels <- function() {
   c("high", "medium", "low")
 }

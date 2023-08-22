@@ -3,20 +3,20 @@ emissions_profile_any_at_product_level <- function(companies,
                                                    low_threshold = 1 / 3,
                                                    high_threshold = 2 / 3) {
   co2 <- sanitize_co2(co2)
-  xctr_check(companies, co2)
+  epa_check(companies, co2)
 
   .companies <- prepare_companies(companies)
   .co2 <- prepare_co2(co2, low_threshold, high_threshold)
 
   .co2 |>
-    xctr_add_values_to_categorize() |>
+    epa_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
     join_companies(.companies) |>
-    xctr_select_cols_at_product_level() |>
+    epa_select_cols_at_product_level() |>
     polish_output(cols_at_product_level())
 }
 
-xctr_check <- function(companies, co2) {
+epa_check <- function(companies, co2) {
   stop_if_has_0_rows(companies)
   stop_if_has_0_rows(co2)
 
@@ -55,7 +55,7 @@ check_is_character <- function(x) {
   vec_assert(x, character())
 }
 
-xctr_add_values_to_categorize <- function(data) {
+epa_add_values_to_categorize <- function(data) {
   add_rank <- function(data, .by) {
     if (identical(.by, "all")) .by <- NULL
     mutate(
@@ -65,11 +65,11 @@ xctr_add_values_to_categorize <- function(data) {
     )
   }
 
-  benchmarks <- set_names(xctr_benchmarks(), flat_benchmarks())
+  benchmarks <- set_names(epa_benchmarks(), flat_benchmarks())
   map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
 }
 
-xctr_benchmarks <- function() {
+epa_benchmarks <- function() {
   list(
     "all",
     "isic_sec",
@@ -81,7 +81,7 @@ xctr_benchmarks <- function() {
 }
 
 flat_benchmarks <- function() {
-  map_chr(xctr_benchmarks(), ~ paste(.x, collapse = "_"))
+  map_chr(epa_benchmarks(), ~ paste(.x, collapse = "_"))
 }
 
 rank_proportion <- function(x) {
@@ -92,7 +92,7 @@ find_co2_footprint <- function(co2, pattern = "co2_footprint") {
   extract_name(co2, pattern)
 }
 
-xctr_select_cols_at_product_level <- function(data) {
+epa_select_cols_at_product_level <- function(data) {
   data |>
     select(
       all_of(cols_at_product_level()),
