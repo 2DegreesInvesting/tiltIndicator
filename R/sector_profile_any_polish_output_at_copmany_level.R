@@ -1,6 +1,6 @@
 #' Polish output at company level
 #'
-#' @param data The output of `xstr*()` functions.
+#' @param data The output of `sector_profile*()` functions.
 #'
 #' @family post-processing helpers
 #'

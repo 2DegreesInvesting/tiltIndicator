@@ -8,7 +8,7 @@
 sector_profile_any_polish_output_at_company_level(data)
 }
 \arguments{
-\item{data}{The output of \verb{xstr*()} functions.}
+\item{data}{The output of \verb{sector_profile*()} functions.}
 }
 \value{
 A dataframe.
