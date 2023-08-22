@@ -69,14 +69,14 @@ test_that("xctr_at_company_level() throws a deprecation warning", {
 
 test_that("xstr_pivot_type_sector_subsector() throws a deprecation warning", {
   skip_if(on_rcmd())
-  raw_companies <- read_test_csv(extdata_path("pstr_companies.csv"))
+  raw_companies <- read_test_csv(extdata_path("raw_sector_profile_companies.csv"))
   expect_warning(xstr_pivot_type_sector_subsector(raw_companies), "deprecated")
 })
 
 test_that("xstr_prepare_scenario() throws a deprecation warning", {
   skip_if(on_rcmd())
-  raw_weo <- read_test_csv(extdata_path("str_weo_targets.csv"))
-  raw_ipr <- read_test_csv(extdata_path("str_ipr_targets.csv"))
+  raw_weo <- read_test_csv(extdata_path("raw_sector_profile_any_weo_targets.csv"))
+  raw_ipr <- read_test_csv(extdata_path("raw_sector_profile_any_ipr_targets.csv"))
   raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
   expect_warning(xstr_prepare_scenario(raw_scenarios), "deprecated")
 })
