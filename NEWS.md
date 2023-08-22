@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9092
+
+* Rename pre- and post-processing helpers (#503).
+
 # tiltIndicator 0.0.0.9091
 
 * Rename indicators in public documentation (#496).
