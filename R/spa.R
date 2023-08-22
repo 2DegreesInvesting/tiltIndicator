@@ -21,7 +21,7 @@ stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
     abort(c(
       "Each scenario `type` must have some `sector` and `subsector`.",
       x = glue("All `sector` and `subsector` are missing for `type` {bad}."),
-      i = "Did you need to prepare the data with `spa_prepare_scenario()`?"
+      i = hint_needs_prep()
     ))
   }
   invisible(scenarios)

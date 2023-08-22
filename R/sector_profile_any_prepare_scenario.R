@@ -39,3 +39,7 @@ extract_scenario_type <- function(data) {
   types <- grep("sector", names(data), value = TRUE)
   unique(unlist(lapply(strsplit(types, "_"), "[[", 1)))
 }
+
+hint_needs_prep <- function() {
+  "Did you need to prepare the data with `sector_profile_any_prepare_scenario()`?"
+}
