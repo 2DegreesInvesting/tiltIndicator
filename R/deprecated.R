@@ -141,3 +141,14 @@ xstr_prune_companies <- function(data) {
   )
   sector_profile_any_prune_companies(data)
 }
+
+#' @export
+#' @rdname deprecated
+xstr_polish_output_at_company_level <- function(data) {
+  deprecate_warn(
+    "0.0.0.9092",
+    what = "xstr_polish_output_at_company_level()",
+    with = "sector_profile_any_polish_output_at_company_level()"
+  )
+  sector_profile_any_polish_output_at_company_level(data)
+}
