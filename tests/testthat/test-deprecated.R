@@ -69,7 +69,7 @@ test_that("xctr_at_company_level() throws a deprecation warning", {
 
 test_that("xstr_pivot_type_sector_subsector() throws a deprecation warning", {
   skip_if(on_rcmd())
-  raw_companies <- read_test_csv(extdata_path("pstr_companies.csv"))
+  raw_companies <- read_test_csv(extdata_path("raw_sector_profile_companies.csv"))
   expect_warning(xstr_pivot_type_sector_subsector(raw_companies), "deprecated")
 })
 
