@@ -4,13 +4,13 @@
       format_robust_snapshot(out)
     Output
       [[1]]
-                                    companies_id
-      1 fleischerei-stiefsohn_00000005219477-001
-      2 fleischerei-stiefsohn_00000005219477-001
-      3 fleischerei-stiefsohn_00000005219477-001
-      4 fleischerei-stiefsohn_00000005219477-001
-      5 fleischerei-stiefsohn_00000005219477-001
-      6 fleischerei-stiefsohn_00000005219477-001
+        companies_id
+      1            a
+      2            a
+      3            a
+      4            a
+      5            a
+      6            a
       
       [[2]]
                grouped_by

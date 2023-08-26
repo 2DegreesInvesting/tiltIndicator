@@ -7,7 +7,7 @@ test_that("hasn't change", {
 })
 
 test_that("outputs expected columns at company level", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
   co2 <- read_test_csv(toy_emissions_profile_products())
 
   product <- emissions_profile_any_at_product_level(companies, co2)
@@ -77,32 +77,25 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   # > Then the company should have values of 1/3 per risk category
   expected_value <- 1 / 3
 
-  companies <- tibble(
-    company_id = c("a"),
-    clustered = c("b"),
-    activity_uuid_product_uuid = three_products,
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = three_products,
-    co2_footprint = varying_co2_footprint,
-    tilt_sector = "transport",
-    unit = "metric ton*km",
-    isic_4digit = "1234",
+  companies <- example_companies(!!aka("uid") := three_products)
+  products <- example_products(
+    !!aka("uid") := three_products,
+    !!aka("co2footprint") := varying_co2_footprint
   )
 
-  out <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold) |>
+  out <- emissions_profile_any_at_product_level(companies, products, low_threshold, high_threshold) |>
     any_at_company_level()
   expect_true(identical(unique(out$value), expected_value))
 })
 
 test_that("for each company & benchmark, each risk category is unique (#285)", {
   # styler: off
-  companies <- tibble::tribble(
+  companies <- tribble(
                             ~company_id,          ~clustered,                                                 ~activity_uuid_product_uuid, ~unit,
     "-fred-sl_00000005407085-741049001",      "fish, frozen", "0fe31e67-346a-504c-a03d-64f85ccc2a64_a459eea1-4e62-4daf-9135-1aea9805aa90",  "kg",
     "-fred-sl_00000005407085-741049001", "fish, deep-frozen", "26104519-4d49-5d85-bc74-e8e03d1a7914_cdbf0bef-39f7-46c8-87a2-3f9f679b5bb7",  "kg"
   )
-  co2 <- tibble::tribble(
+  co2 <- tribble(
                                                     ~activity_uuid_product_uuid,  ~unit,            ~tilt_sector, ~isic_4digit,   ~co2_footprint,
     # In companies
     "0fe31e67-346a-504c-a03d-64f85ccc2a64_a459eea1-4e62-4daf-9135-1aea9805aa90",   "kg",                      NA,       "0311", 2.83222756713596,
@@ -126,20 +119,10 @@ test_that("for each company & benchmark, each risk category is unique (#285)", {
 })
 
 test_that("values sum 1", {
-  companies <- tibble(
-    activity_uuid_product_uuid = "a",
-    company_id = "a",
-    clustered = "a"
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = "a",
-    co2_footprint = 1,
-    tilt_sector = "a",
-    unit = "a",
-    isic_4digit = "1234"
-  )
+  companies <- example_companies()
+  products <- example_products()
 
-  product <- emissions_profile_any_at_product_level(companies, co2)
+  product <- emissions_profile_any_at_product_level(companies, products)
   out <- any_at_company_level(product)
 
   sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
@@ -147,20 +130,10 @@ test_that("values sum 1", {
 })
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
-  companies <- tibble(
-    activity_uuid_product_uuid = "unmatched",
-    company_id = "a",
-    clustered = "a"
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = "a",
-    co2_footprint = 1,
-    tilt_sector = "a",
-    unit = "a",
-    isic_4digit = "1234"
-  )
+  companies <- example_companies(!!aka("uid") := "unmatched")
+  products <- example_products()
 
-  product <- emissions_profile_any_at_product_level(companies, co2)
+  product <- emissions_profile_any_at_product_level(companies, products)
   out <- any_at_company_level(product)
 
   expect_equal(out$companies_id, "a")
@@ -170,60 +143,38 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
 })
 
 test_that("no match preserves companies", {
-  co2 <- tibble(
-    activity_uuid_product_uuid = "a",
-    co2_footprint = 1,
-    tilt_sector = "a",
-    unit = "a",
-    isic_4digit = "1234"
+  companies <- example_companies(
+    !!aka("id") := c("a", "b"),
+    !!aka("uid") := c("a", "unmatched")
   )
+  products <- example_products()
 
-  companies <- tibble(
-    activity_uuid_product_uuid = c("a", "unmatched"),
-    company_id = c("a", "b"),
-    clustered = "a"
-  )
-  product <- emissions_profile_any_at_product_level(companies, co2)
+  product <- emissions_profile_any_at_product_level(companies, products)
   expect_equal(companies$company_id, unique(product$companies_id))
   company <- any_at_company_level(product)
   expect_equal(companies$company_id, unique(company$companies_id))
 
-  companies <- tibble(
-    activity_uuid_product_uuid = "unmatched",
-    company_id = "a",
-    clustered = "a"
-  )
-  product <- emissions_profile_any_at_product_level(companies, co2)
+  companies <- example_companies(!!aka("uid") := "unmatched")
+  product <- emissions_profile_any_at_product_level(companies, products)
   expect_equal(companies$company_id, product$companies_id)
   company <- any_at_company_level(product)
   expect_equal(companies$company_id, company$companies_id)
 
-  companies <- tibble(
-    activity_uuid_product_uuid = c("unmatched", "unmatched"),
-    company_id = c("a", "b"),
-    clustered = "a"
+  companies <- example_companies(
+    !!aka("id") := c("a", "b"),
+    !!aka("uid") := "unmatched"
   )
-  product <- emissions_profile_any_at_product_level(companies, co2)
+  product <- emissions_profile_any_at_product_level(companies, products)
   expect_equal(companies$company_id, unique(product$companies_id))
   company <- any_at_company_level(product)
   expect_equal(companies$company_id, unique(company$companies_id))
 })
 
 test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
-  companies <- tibble(
-    activity_uuid_product_uuid = c("a", "unmatched"),
-    company_id = "a",
-    clustered = "a"
-  )
-  co2 <- tibble(
-    co2_footprint = 1,
-    tilt_sector = "a",
-    unit = "a",
-    activity_uuid_product_uuid = "a",
-    isic_4digit = "1234"
-  )
+  companies <- example_companies(!!aka("uid") := c("a", "unmatched"))
+  products <- example_products()
 
-  product <- emissions_profile_any_at_product_level(companies, co2)
+  product <- emissions_profile_any_at_product_level(companies, products)
   out <- any_at_company_level(product)
 
   expect_equal(nrow(out), 18L)

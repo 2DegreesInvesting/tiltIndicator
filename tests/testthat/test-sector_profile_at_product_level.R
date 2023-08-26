@@ -1,30 +1,17 @@
 test_that("outputs expected columns at product level", {
-  companies <- read_test_csv(toy_sector_profile_companies())
+  companies <- example_companies()
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
   out <- sector_profile_at_product_level(companies, scenarios)
   expect_named(out, sp_cols_at_product_level())
 })
 
 test_that("`low_threshold` and `year` yield the expected risk categories", {
-  companies <- tibble(
-    company_id = "a",
-    type = "ipr",
-    sector = "total",
-    subsector = "energy",
-    clustered = "any",
-    activity_uuid_product_uuid = "any",
-    tilt_sector = "any",
-    tilt_subsector = "any",
-  )
+  companies <- example_companies()
 
   between_low_2030_and_other_years <- 0.2
-  scenarios <- tibble(
-    reductions = between_low_2030_and_other_years,
-    year = c(2030, 2050),
-    scenario = "1.5c required policy scenario",
-    sector = "total",
-    subsector = "energy",
-    type = "ipr",
+  scenarios <- example_scenarios(
+    !!aka("co2reduce") := between_low_2030_and_other_years,
+    !!aka("xyear") := c(2030, 2050)
   )
 
   out <- sector_profile_at_product_level(companies, scenarios)
@@ -36,25 +23,12 @@ test_that("`low_threshold` and `year` yield the expected risk categories", {
 })
 
 test_that("`high_threshold` and `year` yield the expected risk categories", {
-  companies <- tibble(
-    company_id = "a",
-    type = "ipr",
-    sector = "total",
-    subsector = "energy",
-    clustered = "any",
-    activity_uuid_product_uuid = "any",
-    tilt_sector = "any",
-    tilt_subsector = "any",
-  )
+  companies <- example_companies()
 
   between_high_2030_and_other_years <- 0.4
-  scenarios <- tibble(
-    reductions = between_high_2030_and_other_years,
-    year = c(2030, 2050),
-    scenario = "1.5c required policy scenario",
-    sector = "total",
-    subsector = "energy",
-    type = "ipr",
+  scenarios <- example_scenarios(
+    !!aka("co2reduce") := between_high_2030_and_other_years,
+    !!aka("xyear") := c(2030, 2050)
   )
 
   out <- sector_profile_at_product_level(companies, scenarios)
@@ -66,48 +40,21 @@ test_that("`high_threshold` and `year` yield the expected risk categories", {
 })
 
 test_that("NA in the reductions column yields `NA` in risk_category at product level", {
-  companies <- tibble(
-    company_id = "1",
-    type = "a",
-    sector = "b",
-    subsector = "c",
-    clustered = "any",
-    activity_uuid_product_uuid = "x",
-    tilt_sector = "x",
-    tilt_subsector = "x",
-  )
-  scenarios <- tibble(
-    scenario = "2",
-    sector = "b",
-    subsector = "c",
-    year = 2020,
-    reductions = NA,
-    type = "a",
-  )
+  companies <- example_companies()
+  scenarios <- example_scenarios(!!aka("co2reduce") := NA)
 
   out <- sector_profile_at_product_level(companies, scenarios)
   expect_equal(out$risk_category, NA_character_)
 })
 
 test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)", {
-  companies <- tibble(
-    company_id = c("a", "a", "b", "b"),
-    sector = c("matched", "unmatched", "unmatched", "unmatched"),
-    type = "a",
-    subsector = "a",
-    clustered = letters[1:4],
-    activity_uuid_product_uuid = letters[1:4],
-    tilt_sector = "a",
-    tilt_subsector = "a",
+  companies <- example_companies(
+    !!aka("id") := c("a", "a", "b", "b"),
+    !!aka("uid") := c("a", "b", "c", "d"),
+    !!aka("cluster") := c("a", "b", "c", "d"),
+    !!aka("xsector") := c("total", "unmatched", "unmatched", "unmatched"),
   )
-  scenarios <- tibble(
-    sector = "matched",
-    type = "a",
-    subsector = "a",
-    scenario = "a",
-    year = 2050,
-    reductions = 1,
-  )
+  scenarios <- example_scenarios()
 
   out <- sector_profile_at_product_level(companies, scenarios)
   some_match <- filter(out, companies_id == "a")
@@ -122,78 +69,62 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
 })
 
 test_that("with duplicated scenarios throws no error (#435)", {
+  companies <- example_companies()
   duplicated <- c("a", "a")
-  scenarios <- tibble(
-    type = duplicated,
-    sector = "a",
-    subsector = "a",
-    scenario = "a",
-    year = 2050,
-    reductions = 1,
-  )
-  companies <- tibble(
-    company_id = "a",
-    type = "a",
-    sector = "a",
-    subsector = "a",
-    clustered = "a",
-    activity_uuid_product_uuid = "a",
-    tilt_sector = "a",
-    tilt_subsector = "a",
-  )
+  scenarios <- example_scenarios(!!aka("scenario_type") := duplicated)
 
   expect_no_error(sector_profile_at_product_level(companies, scenarios))
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- read_test_csv(toy_sector_profile_companies())
+  companies <- example_companies()
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
 
-  crucial <- "company_id"
+  crucial <- aka("id")
   bad <- select(companies, -all_of(crucial))
   expect_error(sector_profile_at_product_level(bad, scenarios), crucial)
 
-  crucial <- "type"
+  crucial <- aka("scenario_type")
   bad <- select(companies, -all_of(crucial))
   expect_error(sector_profile_at_product_level(bad, scenarios), crucial)
 
-  crucial <- "sector"
+  crucial <- aka("xsector")
   bad <- select(companies, -all_of(crucial))
   expect_error(sector_profile_at_product_level(bad, scenarios), crucial)
 
-  crucial <- "subsector"
+  crucial <- aka("xsubsector")
   bad <- select(companies, -all_of(crucial))
   expect_error(sector_profile_at_product_level(bad, scenarios), crucial)
 })
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
-  companies <- read_test_csv(toy_sector_profile_companies())
+  companies <- example_companies()
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
 
-  crucial <- "type"
+  crucial <- aka("scenario_type")
   bad <- select(scenarios, -all_of(crucial))
   expect_error(sector_profile_at_product_level(companies, bad), crucial)
 
-  crucial <- "sector"
+  crucial <- aka("xsector")
   bad <- select(scenarios, -all_of(crucial))
   expect_error(sector_profile_at_product_level(companies, bad), crucial)
 
-  crucial <- "subsector"
+  crucial <- aka("xsubsector")
   bad <- select(scenarios, -all_of(crucial))
   expect_error(sector_profile_at_product_level(companies, bad), crucial)
 
-  crucial <- "year"
+  crucial <- aka("xyear")
   bad <- select(scenarios, -all_of(crucial))
   expect_error(sector_profile_at_product_level(companies, bad), crucial)
 
-  crucial <- "scenario"
+  crucial <- aka("scenario_name")
   bad <- select(scenarios, -all_of(crucial))
   expect_error(sector_profile_at_product_level(companies, bad), crucial)
 })
 
 test_that("grouped_by includes the type of scenario", {
   .type <- "ipr"
-  companies <- read_test_csv(toy_sector_profile_companies()) |>
+  companies <- example_companies() |>
     filter(type == .type)
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf) |>
     filter(type == .type)
@@ -205,30 +136,19 @@ test_that("grouped_by includes the type of scenario", {
 })
 
 test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
-  companies <- tibble(
-    company_id = "a",
-    type = "b",
-    sector = "c",
-    subsector = "d",
-    clustered = "e",
-    activity_uuid_product_uuid = "f",
-    tilt_sector = "g",
-    tilt_subsector = "i",
+  companies <- example_companies()
+  bad <- c(NA_character_, NA_character_, "a", "a")
+  scenarios <- example_scenarios(
+    !!aka("scenario_type") := c("a", "a", "b", "b"),
+    !!aka("xsector") := bad,
+    !!aka("xsubsector") := bad
   )
-  # For type "b" all `sector` and `subsector` are `NA`
-  scenarios <- tibble(
-    type = c("b", "b", "x", "x"),
-    scenario = c("y", "y", "z", "z"),
-    sector = c(NA_character_, NA_character_, "c", "c"),
-    subsector = c(NA_character_, NA_character_, "d", "d"),
-    year = 2030,
-    reductions = 1,
-  )
+
   expect_error(sector_profile_at_product_level(companies, scenarios), "sector.*subsector.*type")
 })
 
 test_that("a 0-row `companies` yields an error", {
-  companies <- read_test_csv(toy_sector_profile_companies())[0L, ]
+  companies <- example_companies()[0L, ]
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
 
   expect_error(
@@ -238,7 +158,7 @@ test_that("a 0-row `companies` yields an error", {
 })
 
 test_that("a 0-row `scenarios` yields an error", {
-  companies <- read_test_csv(toy_sector_profile_companies())
+  companies <- example_companies()
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)[0L, ]
   expect_error(
     sector_profile_at_product_level(companies, scenarios),
@@ -248,24 +168,8 @@ test_that("a 0-row `scenarios` yields an error", {
 
 test_that("with ';' in `*sector` throws an warning", {
   bad <- "a; b"
-  companies <- tibble(
-    sector = bad,
-    company_id = "a",
-    type = "a",
-    subsector = "a",
-    clustered = "a",
-    activity_uuid_product_uuid = "a",
-    tilt_sector = "a",
-    tilt_subsector = "a",
-  )
-  scenarios <- tibble(
-    type = "a",
-    sector = "a",
-    subsector = "a",
-    scenario = "a",
-    year = 2050,
-    reductions = 1,
-  )
+  companies <- example_companies(!!aka("xsector") := bad)
+  scenarios <- example_scenarios()
 
   expect_snapshot_warning(sector_profile_at_product_level(companies, scenarios))
 })

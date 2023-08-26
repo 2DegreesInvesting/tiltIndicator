@@ -20,10 +20,10 @@ epa_check <- function(companies, co2) {
   stop_if_has_0_rows(companies)
   stop_if_has_0_rows(co2)
 
-  crucial <- c("company_id")
+  crucial <- c(aka("id"))
   walk(crucial, ~ check_matches_name(companies, .x))
 
-  crucial <- c("co2_footprint", "tilt_sector", isic_pattern())
+  crucial <- c(aka("co2footprint"), aka("tsector"), aka("isic"))
   walk(crucial, ~ check_matches_name(co2, .x))
 
   check_has_no_na(co2, find_co2_footprint(co2))
@@ -88,7 +88,7 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
-find_co2_footprint <- function(co2, pattern = "co2_footprint") {
+find_co2_footprint <- function(co2, pattern = aka("co2footprint")) {
   extract_name(co2, pattern)
 }
 
@@ -96,7 +96,7 @@ epa_select_cols_at_product_level <- function(data) {
   data |>
     select(
       all_of(cols_at_product_level()),
-      ends_with("activity_uuid_product_uuid"),
+      ends_with(aka("uid")),
       find_co2_footprint(data)
     )
 }

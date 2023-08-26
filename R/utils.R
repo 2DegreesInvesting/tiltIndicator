@@ -21,7 +21,7 @@ cols_at_all_levels <- function() {
 }
 
 cols_at_product_level <- function() {
-  c(cols_at_all_levels(), "clustered", "activity_uuid_product_uuid")
+  c(cols_at_all_levels(), aka("cluster"), aka("uid"))
 }
 
 cols_at_company_level <- function() {
@@ -80,7 +80,7 @@ stop_if_has_0_rows <- function(data) {
 prepare_companies <- function(companies) {
   companies |>
     distinct() |>
-    rename(companies_id = "company_id")
+    rename(companies_id = aka("id"))
 }
 
 lowercase_characters <- function(data) {
@@ -171,9 +171,16 @@ join_companies <- function(data, companies) {
   left_join(
     companies,
     data,
-    by = "activity_uuid_product_uuid",
+    by = aka("uid"),
     relationship = "many-to-many"
   )
+}
+
+remove_col_scenario <- function(companies) {
+  if (hasName(companies, aka("scenario_type"))) {
+    companies <- select(companies, -all_of(aka("scenario_type")))
+  }
+  companies
 }
 
 nest_levels <- function(product, company) {
