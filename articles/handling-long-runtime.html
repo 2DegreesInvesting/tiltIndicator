@@ -177,7 +177,7 @@ what’s going on.</p>
 <span></span>
 <span><span class="co"># Create a "job" data frame where each row is a chunk of data</span></span>
 <span><span class="va">sector_profile_upstream_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">nest_chunk</span><span class="op">(</span>.by <span class="op">=</span> <span class="st">"company_id"</span>, chunks <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">nest_chunk</span><span class="op">(</span>.by <span class="op">=</span> <span class="fu"><a href="../reference/aka.html">aka</a></span><span class="op">(</span><span class="st">"id"</span><span class="op">)</span>, chunks <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">add_file</span><span class="op">(</span>parent <span class="op">=</span> <span class="fu">cache_path</span><span class="op">(</span><span class="st">"sector_profile_upstream"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Chunks of data will be distributed across workers and saved to a file</span></span>
@@ -251,7 +251,7 @@ to later save them.</p>
 <span></span>
 <span><span class="co"># TODO: Experiment to find the number of chunks that works best for you</span></span>
 <span><span class="va">emissions_profile_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">nest_chunk</span><span class="op">(</span>.by <span class="op">=</span> <span class="st">"company_id"</span>, chunks <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">nest_chunk</span><span class="op">(</span>.by <span class="op">=</span> <span class="fu"><a href="../reference/aka.html">aka</a></span><span class="op">(</span><span class="st">"id"</span><span class="op">)</span>, chunks <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">add_file</span><span class="op">(</span>parent <span class="op">=</span> <span class="fu">cache_path</span><span class="op">(</span><span class="st">"emissions_profile"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># `nest_chunk()` ensures all rows of a company fall in the same chunk</span></span>
