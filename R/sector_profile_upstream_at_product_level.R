@@ -12,7 +12,7 @@ sector_profile_upstream_at_product_level <- function(companies,
   .inputs |>
     spa_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
-    join_companies(.companies) |>
+    join_companies(remove_col_scenario(.companies)) |>
     spa_polish_output_at_product_level() |>
     istr_select_cols_at_product_level() |>
     polish_output(cols_at_product_level())
@@ -29,8 +29,8 @@ istr_select_cols_at_product_level <- function(data) {
 spu_cols_at_product_level <- function() {
   c(
     spa_cols_at_product_level(),
-    "input_activity_uuid_product_uuid",
-    "input_tilt_sector",
-    "input_tilt_subsector"
+    aka("iuid"),
+    aka("itsector"),
+    aka("itsubsector")
   )
 }

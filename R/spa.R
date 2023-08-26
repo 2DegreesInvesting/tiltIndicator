@@ -1,7 +1,13 @@
 spa_check <- function(companies, scenarios) {
   stop_if_has_0_rows(companies)
   stop_if_has_0_rows(scenarios)
-  crucial <- c("type", "sector", "subsector", "year", "scenario")
+  crucial <- c(
+    aka("scenario_type"),
+    aka("scenario_name"),
+    aka("xsector"),
+    aka("xsubsector"),
+    aka("xyear")
+  )
   check_crucial_names(scenarios, crucial)
   stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
   check_no_semicolon(companies)
@@ -10,7 +16,7 @@ spa_check <- function(companies, scenarios) {
 stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {
   bad_type <- scenarios |>
     summarize(
-      all_na = all(is.na(.data$sector) & is.na(.data$subsector)), .by = "type"
+      all_na = all(is.na(.data$sector) & is.na(.data$subsector)), .by = aka("scenario_type")
     ) |>
     filter(.data$all_na) |>
     pull(.data$type)
@@ -31,13 +37,13 @@ prepare_scenarios <- function(data, low_threshold, high_threshold) {
   data |>
     mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
     distinct() |>
-    rename(values_to_categorize = "reductions")
+    rename(values_to_categorize = aka("co2reduce"))
 }
 
 spa_add_values_to_categorize <- function(data, scenarios) {
   left_join(
     data, scenarios,
-    by = join_by("type", "sector", "subsector"),
+    by = c(aka("scenario_type"), aka("xsector"), aka("xsubsector")),
     relationship = "many-to-many"
   )
 }
@@ -48,9 +54,9 @@ spa_polish_output_at_product_level <- function(data) {
     unite(
       "grouped_by",
       # hack #305
-      if (hasName(data, "type")) "type" else NULL,
-      "scenario",
-      "year",
+      if (hasName(data, aka("scenario_type"))) aka("scenario_type") else NULL,
+      aka("scenario_name"),
+      aka("xyear"),
       remove = FALSE
     ) |>
     relocate(all_of(cols_at_all_levels()))
@@ -59,17 +65,17 @@ spa_polish_output_at_product_level <- function(data) {
 spa_cols_at_product_level <- function() {
   c(
     cols_at_product_level(),
-    "tilt_sector",
-    "scenario",
-    "year",
-    "type"
+    aka("tsector"),
+    aka("scenario_name"),
+    aka("xyear"),
+    aka("scenario_type")
   )
 }
 
 check_no_semicolon <- function(data) {
   relevant_cols <- data |>
     select(-starts_with("tilt_")) |>
-    select(ends_with("sector"))
+    select(ends_with(aka("xsector")))
 
   has_relevant_cols <- ncol(relevant_cols) > 0L
   if (!has_relevant_cols) {

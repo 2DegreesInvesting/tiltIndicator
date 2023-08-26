@@ -1,5 +1,5 @@
 test_that("returns visibly (#238)", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
 
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())
   expect_visible(emissions_profile_any_at_product_level(companies, inputs))
@@ -8,66 +8,38 @@ test_that("returns visibly (#238)", {
 })
 
 test_that("outputs expected columns at product level", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
 
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())
-  expected <- c(
-    cols_at_product_level(),
-    "input_activity_uuid_product_uuid",
-    "input_co2_footprint"
-  )
+  expected <- c(cols_at_product_level(), aka("iuid"), aka("ico2footprint"))
   out <- emissions_profile_any_at_product_level(companies, inputs)
   expect_named(out, expected)
 
   products <- read_test_csv(toy_emissions_profile_products())
-  expected <- c(cols_at_product_level(), "co2_footprint")
+  expected <- c(cols_at_product_level(), aka("co2footprint"))
   out <- emissions_profile_any_at_product_level(companies, products)
   expect_named(out, expected)
 })
 
 test_that("unmatched products don't introduce NA's (#266)", {
-  companies <- tibble(
-    company_id = "x",
-    activity_uuid_product_uuid = c("a", "b"),
-    clustered = c("1", "2")
-  )
-  inputs <- tibble(
-    activity_uuid_product_uuid = c("a"),
-    input_activity_uuid_product_uuid = c("m"),
-    input_co2_footprint = 1,
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "1234"
-  )
-  out <- emissions_profile_any_at_product_level(companies, inputs)
+  companies <- example_companies(!!aka("uid") := c("a", "unmatched"))
+
+  products <- example_products()
+  out <- emissions_profile_any_at_product_level(companies, products)
   expect_false(anyNA(out$risk_category))
 
-  products <- tibble(
-    activity_uuid_product_uuid = c("a"),
-    co2_footprint = 1,
-    tilt_sector = "Transport",
-    unit = "metric ton*km",
-    isic_4digit = "1234"
-  )
-  out <- emissions_profile_any_at_product_level(companies, products)
+  inputs <- example_inputs()
+  out <- emissions_profile_any_at_product_level(companies, inputs)
   expect_false(anyNA(out$risk_category))
 })
 
 test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)", {
-  companies <- tibble(
-    company_id = c("a", "a", "b", "b"),
-    activity_uuid_product_uuid = c("matched", paste0("unmatched", 1:3)),
-    clustered = "a"
-  )
-  products <- tibble(
-    activity_uuid_product_uuid = "matched",
-    co2_footprint = 1,
-    tilt_sector = "a",
-    unit = "a",
-    isic_4digit = "1234"
+  companies <- example_companies(
+    !!aka("id") := c("a", "a", "b", "b"),
+    !!aka("uid") := c("a", paste0("unmatched", 1:3))
   )
 
-  # Emissions upstream
+  products <- example_products()
   out <- emissions_profile_any_at_product_level(companies, products)
 
   some_match <- filter(out, companies_id == "a")
@@ -80,16 +52,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
   all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
   expect_true(all_na_cols_are_na)
 
-  inputs <- tibble(
-    activity_uuid_product_uuid = "matched",
-    input_activity_uuid_product_uuid = "matched",
-    input_co2_footprint = 1,
-    input_tilt_sector = "a",
-    input_unit = "a",
-    input_isic_4digit = "1234"
-  )
-
-  # Emissions
+  inputs <- example_inputs()
   out <- emissions_profile_any_at_product_level(companies, inputs)
 
   some_match <- filter(out, companies_id == "a")
@@ -104,147 +67,78 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
 })
 
 test_that("with duplicated co2 throws no error (#435)", {
+  companies <- example_companies()
   duplicated <- c("a", "a")
-  co2 <- tibble(
-    activity_uuid_product_uuid = duplicated,
-    co2_footprint = 1,
-    tilt_sector = "a",
-    unit = "a",
-    isic_4digit = "1234"
-  )
-  companies <- tibble(
-    company_id = "a",
-    activity_uuid_product_uuid = "a",
-    clustered = "a"
-  )
+  products <- example_products(!!aka("uid") := duplicated)
 
-  expect_no_error(emissions_profile_any_at_product_level(companies, co2))
+  expect_no_error(emissions_profile_any_at_product_level(companies, products))
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- tibble(
-    activity_uuid_product_uuid = c("x"),
-    company_id = c("a"),
-    clustered = c("xyz")
-  )
-  co2 <- tibble(
-    co2_footprint = 1,
-    tilt_sector = "Transport",
-    unit = "metric ton*km",
-    activity_uuid_product_uuid = c("x"),
-    isic_4digit = "1234"
-  )
+  companies <- example_companies()
+  products <- example_products()
 
-  crucial <- "activity_uuid_product_uuid"
+  crucial <- aka("uid")
   bad <- select(companies, -all_of(crucial))
-  expect_error(emissions_profile_any_at_product_level(bad, co2), crucial)
+  expect_error(emissions_profile_any_at_product_level(bad, products), crucial)
 
-  crucial <- "company_id"
+  crucial <- aka("id")
   bad <- select(companies, -all_of(crucial))
-  expect_error(emissions_profile_any_at_product_level(bad, co2), crucial)
+  expect_error(emissions_profile_any_at_product_level(bad, products), crucial)
 })
 
 test_that("if `co2` lacks crucial columns, errors gracefully", {
-  companies <- tibble(
-    activity_uuid_product_uuid = c("x"),
-    company_id = c("a"),
-    clustered = c("xyz")
-  )
-  co2 <- tibble(
-    co2_footprint = 1,
-    tilt_sector = "Transport",
-    unit = "metric ton*km",
-    activity_uuid_product_uuid = c("x"),
-    isic_4digit = "1234"
-  )
+  companies <- example_companies()
+  products <- example_products()
 
-  crucial <- "co2_footprint"
-  bad <- select(co2, -ends_with(crucial))
+  crucial <- aka("co2footprint")
+  bad <- select(products, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- "tilt_sector"
-  bad <- select(co2, -ends_with(crucial))
+  crucial <- aka("tsector")
+  bad <- select(products, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- "unit"
-  bad <- select(co2, -ends_with(crucial))
+  crucial <- aka("xunit")
+  bad <- select(products, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- "activity_uuid_product_uuid"
-  bad <- select(co2, -all_of(crucial))
+  crucial <- aka("uid")
+  bad <- select(products, -all_of(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- isic_pattern()
-  bad <- select(co2, -ends_with(crucial))
+  crucial <- aka("isic")
+  bad <- select(products, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 })
 
 test_that("handles duplicated `companies` data (#230)", {
-  companies <- tibble(
-    company_id = rep("a", 2),
-    clustered = c("b"),
-    activity_uuid_product_uuid = c("c"),
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("c"),
-    co2_footprint = 1,
-    tilt_sector = "transport",
-    unit = "metric ton*km",
-    isic_4digit = "1234",
-  )
-  expect_no_error(emissions_profile_any_at_product_level(companies, co2))
+  companies <- example_companies(!!aka("id") := c("a", "a"))
+  products <- example_products()
+  expect_no_error(emissions_profile_any_at_product_level(companies, products))
 })
 
 test_that("handles duplicated `co2` data (#230)", {
-  companies <- tibble(
-    company_id = c("a"),
-    clustered = c("b"),
-    activity_uuid_product_uuid = c("c"),
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = rep("c", 2),
-    co2_footprint = 1,
-    tilt_sector = "transport",
-    unit = "metric ton*km",
-    isic_4digit = "1234",
-  )
-  expect_no_error(emissions_profile_any_at_product_level(companies, co2))
+  companies <- example_companies()
+  duplicated <- c("a", "a")
+  products <- example_products(!!aka("uid") := duplicated)
+  expect_no_error(emissions_profile_any_at_product_level(companies, products))
 })
 
 test_that("if 'isic' column is numeric it knows how to handle it gracefully", {
-  companies <- tibble(
-    company_id = "a",
-    clustered = "a",
-    activity_uuid_product_uuid = "a",
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = "a",
-    co2_footprint = 1,
-    tilt_sector = "a",
-    unit = "a",
-    isic_4digit = 1234,
-  )
-
-  expect_no_error(emissions_profile_any_at_product_level(companies, co2))
+  companies <- example_companies()
+  numeric <- 1234
+  products <- example_products(!!aka("isic") := numeric)
+  expect_no_error(emissions_profile_any_at_product_level(companies, products))
 })
 
 test_that("if the 'isic' column hasn't 4 digits throws an errors ", {
-  companies <- tibble(
-    company_id = "a",
-    clustered = "a",
-    activity_uuid_product_uuid = "a",
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = "a",
-    co2_footprint = 1,
-    tilt_sector = "a",
-    unit = "a",
-    isic_4digit = "1234"
-  )
-  expect_no_error(emissions_profile_any_at_product_level(companies, co2))
+  companies <- example_companies()
+  products <- example_products()
+  expect_no_error(emissions_profile_any_at_product_level(companies, products))
 
-  co2$isic_4digit <- "1"
-  expect_error(emissions_profile_any_at_product_level(companies, co2), "must.*4")
+  products$isic_4digit <- "1"
+  expect_error(emissions_profile_any_at_product_level(companies, products), "must.*4")
 })
 
 test_that("a 0-row `co2` yields an error", {
@@ -255,7 +149,7 @@ test_that("a 0-row `co2` yields an error", {
 })
 
 test_that("a 0-row `co2` yields an error", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
   products <- read_test_csv(toy_emissions_profile_products())[0L, ]
   expect_error(
     emissions_profile_any_at_product_level(companies, products),
@@ -272,7 +166,7 @@ test_that("a 0-row `companies` yields an error", {
 })
 
 test_that("a 0-row `inputs` yields an error", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())[0L, ]
   expect_error(
     emissions_profile_any_at_product_level(companies, inputs),
@@ -281,80 +175,60 @@ test_that("a 0-row `inputs` yields an error", {
 })
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())
 
-  crucial <- "activity_uuid_product_uuid"
+  crucial <- aka("uid")
   bad <- select(companies, -all_of(crucial))
   expect_error(emissions_profile_any_at_product_level(bad, inputs), crucial)
 
-  crucial <- "company_id"
+  crucial <- aka("id")
   bad <- select(companies, -all_of(crucial))
   expect_error(emissions_profile_any_at_product_level(bad, inputs), crucial)
 })
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())
 
-  crucial <- "activity_uuid_product_uuid"
+  crucial <- aka("uid")
   bad <- select(inputs, -all_of(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- "co2_footprint"
+  crucial <- aka("co2footprint")
   bad <- select(inputs, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- "unit"
+  crucial <- aka("xunit")
   bad <- select(inputs, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- "tilt_sector"
+  crucial <- aka("tsector")
   bad <- select(inputs, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- isic_pattern()
+  crucial <- aka("isic")
   bad <- select(inputs, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 })
 
 test_that("handles duplicated `companies` data (#230)", {
-  companies <- tibble(
-    company_id = rep("a", 2),
-    clustered = c("b"),
-    activity_uuid_product_uuid = c("c"),
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("c"),
-    input_activity_uuid_product_uuid = "d",
-    input_co2_footprint = 1,
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "1234"
-  )
-  expect_no_error(emissions_profile_any_at_product_level(companies, co2))
+  duplicated <- c("a", "a")
+  companies <- example_companies(!!aka("id") := duplicated)
+  inputs <- example_inputs()
+  expect_no_error(emissions_profile_any_at_product_level(companies, inputs))
 })
 
 test_that("handles duplicated `co2` data (#230)", {
-  companies <- tibble(
-    company_id = c("a"),
-    clustered = c("b"),
-    activity_uuid_product_uuid = c("c"),
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = rep("c", 2),
-    input_activity_uuid_product_uuid = "d",
-    input_co2_footprint = 1,
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "1234"
-  )
-  expect_no_error(emissions_profile_any_at_product_level(companies, co2))
+  companies <- example_companies()
+  duplicated <- c("a", "a")
+  inputs <- example_inputs(!!aka("id") := duplicated)
+  expect_no_error(emissions_profile_any_at_product_level(companies, inputs))
 })
 
 test_that("with a missing value in the co2* column errors gracefully", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())
   inputs$input_co2_footprint <- NA
-  expect_error(emissions_profile_any_at_product_level(companies, inputs), "co2_footprint")
+  expect_error(emissions_profile_any_at_product_level(companies, inputs), aka("co2footprint"))
 })

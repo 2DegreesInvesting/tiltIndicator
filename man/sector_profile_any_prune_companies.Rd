@@ -17,19 +17,23 @@ For each company, this function drops rows where the product information is
 missing and the sector information is duplicated.
 }
 \examples{
-# styler: off
-companies <- tibble::tribble(
-  ~row, ~company_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector,
-  # Keep: Has product info
-     1,         "a",       "b1",                        "c1",          "x",
-  # Drop: Lacks product info and sector info is duplicated
-     2,         "a",         NA,                          NA,          "x",
-  # Keep: Lacks product info but sector info is unique
-     3,         "a",         NA,                          NA,          "y",
-  # Drop: Lacks product info and sector info is duplicated
-     4,         "a",         NA,                          NA,          "y",
-)
-# styler: on
+library(dplyr)
+
+# `example_companies()` is internal -- don't use it.
+companies <- example_companies(
+  row = 1:4,
+  !!aka("id") := "a",
+  !!aka("cluster") := c("b1", rep(NA, 3)),
+  !!aka("uid") := c("c1", rep(NA, 3)),
+  !!aka("tsector") := c("x", "x", "y", "y")
+) |>
+  select(1:5)
+
+# Keep row 1: Has product info
+# Drop row 2: Lacks product info and sector info is duplicated
+# Keep row 3: Lacks product info but sector info is unique
+# Drop row 4: Lacks product info and sector info is duplicated
+companies
 
 sector_profile_any_prune_companies(companies)
 }

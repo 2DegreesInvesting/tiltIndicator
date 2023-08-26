@@ -24,7 +24,7 @@ sector_profile_any_prepare_scenario <- function(scenarios) {
 
 sector_profile_any_prepare_scenario_impl <- function(data) {
   data |>
-    select("scenario", "year", ends_with("sector")) |>
+    select(aka("scenario_name"), aka("xyear"), ends_with(aka("xsector"))) |>
     abort_if_duplicated()
 
   type <- extract_scenario_type(data)
@@ -36,7 +36,7 @@ sector_profile_any_prepare_scenario_impl <- function(data) {
 }
 
 extract_scenario_type <- function(data) {
-  types <- grep("sector", names(data), value = TRUE)
+  types <- grep(aka("xsector"), names(data), value = TRUE)
   unique(unlist(lapply(strsplit(types, "_"), "[[", 1)))
 }
 

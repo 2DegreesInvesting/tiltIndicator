@@ -10,6 +10,13 @@ test_that("outputs the expected columns", {
 
   out <- sector_profile_any_polish_output_at_company_level(pstr)
 
-  exp <- c("companies_id", "type", "scenario", "year", "risk_category", "value")
+  exp <- c(
+    "companies_id",
+    aka("scenario_type"),
+    aka("scenario_name"),
+    aka("xyear"),
+    "risk_category",
+    "value"
+  )
   expect_named(out, exp)
 })

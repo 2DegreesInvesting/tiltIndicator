@@ -1,14 +1,14 @@
 test_that("hasn't changed", {
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  companies <- read_test_csv(toy_sector_profile_companies())
-  companies <- read_test_csv(toy_sector_profile_companies())
+  companies <- example_companies()
+  companies <- example_companies()
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
   expect_snapshot(format_robust_snapshot(out))
 })
 
 test_that("outputs expected columns at company level", {
-  companies <- read_test_csv(toy_sector_profile_companies())
+  companies <- example_companies()
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
@@ -17,31 +17,15 @@ test_that("outputs expected columns at company level", {
 
 test_that("the output is not grouped", {
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  companies <- read_test_csv(toy_sector_profile_companies())
+  companies <- example_companies()
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
   expect_false(dplyr::is_grouped_df(out))
 })
 
 test_that("thresholds yield expected low, medium, and high risk categories", {
-  companies <- tibble(
-    company_id = "a",
-    type = "ipr",
-    sector = "total",
-    subsector = "energy",
-    clustered = "any",
-    activity_uuid_product_uuid = "any",
-    tilt_sector = "any",
-    tilt_subsector = "any",
-  )
-  scenarios <- tibble(
-    scenario = "1.5c required policy scenario",
-    sector = "total",
-    subsector = "energy",
-    year = 2020,
-    reductions = 0,
-    type = "ipr",
-  )
+  companies <- example_companies()
+  scenarios <- example_scenarios()
 
   default_low_mid <- 1 / 3
   product <- sector_profile_at_product_level(companies, mutate(scenarios, reductions = default_low_mid))
@@ -80,7 +64,7 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 })
 
 test_that("outputs values in proportion", {
-  companies <- read_test_csv(toy_sector_profile_companies())
+  companies <- example_companies()
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
@@ -88,7 +72,7 @@ test_that("outputs values in proportion", {
 })
 
 test_that("each company has risk categories low, medium, and high (#215)", {
-  companies <- read_test_csv(toy_sector_profile_companies())
+  companies <- example_companies()
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
@@ -129,24 +113,8 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
 })
 
 test_that("NA in reductions yields expected risk_category and NAs in value (#300)", {
-  companies <- tibble(
-    company_id = "1",
-    type = "a",
-    sector = "b",
-    subsector = "c",
-    clustered = "any",
-    activity_uuid_product_uuid = "x",
-    tilt_sector = "x",
-    tilt_subsector = "x",
-  )
-  scenarios <- tibble(
-    scenario = "2",
-    sector = "b",
-    subsector = "c",
-    year = 2020,
-    reductions = NA,
-    type = "a",
-  )
+  companies <- example_companies()
+  scenarios <- example_scenarios(!!aka("co2reduce") := NA)
 
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
@@ -154,25 +122,8 @@ test_that("NA in reductions yields expected risk_category and NAs in value (#300
 })
 
 test_that("values sum 1", {
-  companies <- tibble(
-    company_id = "a",
-    type = "a",
-    sector = "a",
-    subsector = "a",
-    clustered = "a",
-    activity_uuid_product_uuid = "a",
-    tilt_sector = "a",
-    tilt_subsector = "a",
-  )
-
-  scenarios <- tibble(
-    type = "a",
-    sector = "a",
-    subsector = "a",
-    scenario = "a",
-    year = 2050,
-    reductions = 1,
-  )
+  companies <- example_companies()
+  scenarios <- example_scenarios()
 
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
@@ -181,24 +132,12 @@ test_that("values sum 1", {
 })
 
 test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
-  companies <- tibble(
-    company_id = "a",
-    type = "a",
-    sector = c("a", "unmatched"),
-    subsector = "a",
-    clustered = c("a", "b"),
-    activity_uuid_product_uuid = c("a", "b"),
-    tilt_sector = "a",
-    tilt_subsector = "a",
+  companies <- example_companies(
+    !!aka("uid") := c("a", "b"),
+    !!aka("cluster") := c("a", "b"),
+    !!aka("xsector") := c("total", "unmatched")
   )
-  scenarios <- tibble(
-    type = "a",
-    sector = "a",
-    subsector = "a",
-    scenario = "a",
-    year = 2050,
-    reductions = 1,
-  )
+  scenarios <- example_scenarios()
 
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
@@ -210,24 +149,8 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
 })
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
-  companies <- tibble(
-    company_id = "a",
-    type = "a",
-    sector = "unmatched",
-    subsector = "a",
-    clustered = "a",
-    activity_uuid_product_uuid = "a",
-    tilt_sector = "a",
-    tilt_subsector = "a",
-  )
-  scenarios <- tibble(
-    type = "a",
-    sector = "a",
-    subsector = "a",
-    scenario = "a",
-    year = 2050,
-    reductions = 1,
-  )
+  companies <- example_companies(!!aka("xsector") := "unmatched")
+  scenarios <- example_scenarios()
 
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)

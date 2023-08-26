@@ -7,7 +7,7 @@ test_that("hasn't change", {
 })
 
 test_that("outputs expected columns at company level", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
@@ -18,7 +18,7 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("it's arranged by `companies_id` and `grouped_by`", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  companies <- example_companies()
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
@@ -57,40 +57,22 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   # > Then the company should have values of 1/3 per risk category
   expected_value <- 1 / 3
 
-  companies <- tibble(
-    company_id = c("a"),
-    clustered = c("b"),
-    activity_uuid_product_uuid = three_products,
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = three_products,
-    input_co2_footprint = varying_co2_footprint,
-    input_activity_uuid_product_uuid = "c",
-    input_tilt_sector = "transport",
-    input_unit = "metric ton*km",
-    input_isic_4digit = "1234",
+  companies <- example_companies(!!aka("uid") := three_products)
+  inputs <- example_inputs(
+    !!aka("uid") := three_products,
+    !!aka("ico2footprint") := varying_co2_footprint
   )
 
-  product <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold)
+  product <- emissions_profile_any_at_product_level(companies, inputs, low_threshold, high_threshold)
   out <- any_at_company_level(product)
   expect_true(identical(unique(out$value), expected_value))
 })
 
 test_that("values sum 1", {
-  companies <- tibble(
-    activity_uuid_product_uuid = "a",
-    company_id = "a",
-    clustered = "a"
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = "a",
-    input_co2_footprint = 1,
-    input_tilt_sector = "a",
-    input_unit = "a",
-    input_isic_4digit = "1234"
-  )
+  companies <- example_companies()
+  inputs <- example_inputs()
 
-  out <- emissions_profile_any_at_product_level(companies, co2) |>
+  out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level()
 
   sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
@@ -98,20 +80,10 @@ test_that("values sum 1", {
 })
 
 test_that("no match yields 1 row with NA in all columns (#393)", {
-  companies <- tibble(
-    activity_uuid_product_uuid = "unmatched",
-    company_id = "a",
-    clustered = "a"
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = "a",
-    input_co2_footprint = 1,
-    input_tilt_sector = "a",
-    input_unit = "a",
-    input_isic_4digit = "1234"
-  )
+  companies <- example_companies(!!aka("uid") := "unmatched")
+  inputs <- example_inputs()
 
-  out <- emissions_profile_any_at_product_level(companies, co2) |>
+  out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level()
 
   expect_equal(out$companies_id, "a")
@@ -121,20 +93,10 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
 })
 
 test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
-  companies <- tibble(
-    activity_uuid_product_uuid = c("a", "unmatched"),
-    company_id = "a",
-    clustered = "a"
-  )
-  co2 <- tibble(
-    activity_uuid_product_uuid = "a",
-    input_co2_footprint = 1,
-    input_tilt_sector = "a",
-    input_unit = "a",
-    input_isic_4digit = "1234"
-  )
+  companies <- example_companies(!!aka("uid") := c("a", "unmatched"))
+  inputs <- example_inputs()
 
-  out <- emissions_profile_any_at_product_level(companies, co2) |>
+  out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level()
 
   expect_equal(nrow(out), 18L)

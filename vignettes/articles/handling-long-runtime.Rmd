@@ -108,7 +108,7 @@ products_upstream <- read_csv(toy_sector_profile_upstream_products())
 
 # Create a "job" data frame where each row is a chunk of data
 sector_profile_upstream_job <- companies |>
-  nest_chunk(.by = "company_id", chunks = 3) |>
+  nest_chunk(.by = aka("id"), chunks = 3) |>
   add_file(parent = cache_path("sector_profile_upstream"))
 
 # Chunks of data will be distributed across workers and saved to a file
@@ -138,7 +138,7 @@ companies <- tiltIndicator::companies
 
 # TODO: Experiment to find the number of chunks that works best for you
 emissions_profile_job <- companies |>
-  nest_chunk(.by = "company_id", chunks = 3) |>
+  nest_chunk(.by = aka("id"), chunks = 3) |>
   add_file(parent = cache_path("emissions_profile"))
 
 # `nest_chunk()` ensures all rows of a company fall in the same chunk

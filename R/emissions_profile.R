@@ -70,7 +70,7 @@ any_at_company_level <- function(data) {
     mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
     expand(.data$risk_category) |>
     filter(!is.na(.data$risk_category)) |>
-    left_join(with_value, by = join_by("companies_id", "grouped_by", "risk_category")) |>
+    left_join(with_value, by = c("companies_id", "grouped_by", "risk_category")) |>
     ungroup() |>
     mutate(
       value = na_to_0_if_not_all_is_na(.data$value),

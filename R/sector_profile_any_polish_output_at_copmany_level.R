@@ -30,6 +30,6 @@ sector_profile_any_polish_output_at_company_level <- function(data) {
     data,
     cols = "grouped_by",
     delim = "_",
-    names = c("type", "scenario", "year")
+    names = c(aka("scenario_type"), aka("scenario_name"), aka("xyear"))
   )
 }
