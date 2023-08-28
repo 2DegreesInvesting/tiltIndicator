@@ -14,7 +14,9 @@
 #' library(readr, warn.conflicts = FALSE)
 #'
 #' raw_weo <- example_raw_weo()
-#' raw_ipr <- read_csv(extdata_path("raw_sector_profile_any_ipr_targets.csv")) |> head(2) |> select(-2, -6)
+#' raw_ipr <- read_csv(extdata_path("raw_sector_profile_any_ipr_targets.csv")) |>
+#'   head(2) |>
+#'   select(-2, -6)
 #' raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
 #'
 #' sector_profile_any_prepare_scenario(raw_scenarios)
