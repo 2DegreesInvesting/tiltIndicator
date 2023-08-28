@@ -1,5 +1,5 @@
 test_that("takes any number of scenarios", {
-  weo <- read_test_csv(extdata_path("raw_sector_profile_any_weo_targets.csv"), n_max = Inf)
+  weo <- bind_rows(example_raw_weo(), example_raw_weo())
   s1 <- set_names(slice(weo, 1), gsub("weo_", "s1_", names(weo)))
   s2 <- set_names(slice(weo, 2), gsub("weo_", "s2_", names(weo)))
   s3 <- set_names(slice(weo, 3), gsub("weo_", "s3_", names(weo)))
