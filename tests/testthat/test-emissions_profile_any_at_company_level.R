@@ -8,7 +8,7 @@ test_that("hasn't change", {
 
 test_that("outputs expected columns at company level", {
   companies <- example_companies()
-  co2 <- read_test_csv(toy_emissions_profile_products())
+  co2 <- example_products()
 
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
