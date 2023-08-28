@@ -11,6 +11,7 @@ test_that("takes any number of scenarios", {
 
 test_that("with duplicated scenario+year+sector+subsector errors gracefully (#391)", {
   weo <- read_test_csv(extdata_path("raw_sector_profile_any_weo_targets.csv"))
+  weo <- slice(example_raw_weo(), 1L)
   duplicated <- mutate(bind_rows(weo, weo), co2_reductions = 1:2)
   expect_error(
     sector_profile_any_prepare_scenario(list(weo = duplicated)),
