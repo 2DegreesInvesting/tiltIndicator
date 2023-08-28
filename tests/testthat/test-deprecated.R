@@ -65,7 +65,7 @@ test_that("xstr_pivot_type_sector_subsector() throws a deprecation warning", {
 
 test_that("xstr_prepare_scenario() throws a deprecation warning", {
   raw_weo <- example_raw_weo()
-  raw_ipr <- read_test_csv(extdata_path("raw_sector_profile_any_ipr_targets.csv"))
+  raw_ipr <- example_raw_ipr()
   raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
   expect_warning(xstr_prepare_scenario(raw_scenarios), "deprecated")
 })

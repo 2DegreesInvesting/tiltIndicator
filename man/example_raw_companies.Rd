@@ -2,17 +2,25 @@
 % Please edit documentation in R/raw-data.R
 \name{example_raw_companies}
 \alias{example_raw_companies}
-\title{Example raw companies}
+\alias{example_raw_weo}
+\alias{example_raw_ipr}
+\title{Example raw datasets}
 \usage{
 example_raw_companies()
+
+example_raw_weo()
+
+example_raw_ipr()
 }
 \value{
 A dataframe
 }
 \description{
-Example raw companies
+Example raw datasets
 }
 \examples{
 example_raw_companies()
+example_raw_weo()
+example_raw_ipr()
 }
 \keyword{internal}
