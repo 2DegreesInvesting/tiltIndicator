@@ -14,7 +14,7 @@ example_raw_companies <- function() {
     ~company_id, ~ipr_sector,   ~ipr_subsector, ~weo_sector,   ~weo_subsector,
             "a",  "Industry", "Iron and Steel",     "Total", "Iron and steel",
             "b",  "Industry",      "Chemicals",     "Total",      "Chemicals"
-  # styler: on
+    # styler: on
   )
 }
 
@@ -38,6 +38,6 @@ example_raw_ipr <- function() {
     ~scenario, ~ipr_sector, ~ipr_subsector, ~year, ~co2_reductions,
    "1.5C RPS",     "power",             NA,  2030,            0.58,
    "1.5C RPS",     "power",             NA,  2050,            1.06
-   # styler: on
+    # styler: on
   )
 }
