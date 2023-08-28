@@ -36,8 +36,8 @@ example_raw_ipr <- function() {
   tribble(
     # styler: off
     ~scenario, ~ipr_sector, ~ipr_subsector, ~year, ~co2_reductions,
-    "1.5C RPS",     "power",             NA,  2030,            0.58,
-    "1.5C RPS",     "power",             NA,  2050,            1.06
-    # styler: on
+   "1.5C RPS",     "power",             NA,  2030,            0.58,
+   "1.5C RPS",     "power",             NA,  2050,            1.06
+   # styler: on
   )
 }
