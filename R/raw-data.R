@@ -1,3 +1,11 @@
+#' Example raw companies
+#'
+#' @return A dataframe
+#' @export
+#' @keywords internal
+#'
+#' @examples
+#' example_raw_companies()
 example_raw_companies <- function() {
   tribble(
   # styler: off
