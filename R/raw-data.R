@@ -1,6 +1,6 @@
 #' Example raw datasets
 #'
-#' @return A dataframe
+#' @return A dataframe.
 #' @export
 #' @keywords internal
 #'

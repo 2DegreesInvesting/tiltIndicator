@@ -13,7 +13,7 @@ example_raw_weo()
 example_raw_ipr()
 }
 \value{
-A dataframe
+A dataframe.
 }
 \description{
 Example raw datasets
