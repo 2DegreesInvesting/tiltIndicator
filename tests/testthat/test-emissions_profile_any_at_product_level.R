@@ -1,6 +1,5 @@
 test_that("returns visibly (#238)", {
   companies <- example_companies()
-
   inputs <- example_inputs()
   expect_visible(emissions_profile_any_at_product_level(companies, inputs))
   products <- example_products()
