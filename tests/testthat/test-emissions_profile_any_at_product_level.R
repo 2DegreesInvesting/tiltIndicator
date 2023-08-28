@@ -3,7 +3,7 @@ test_that("returns visibly (#238)", {
 
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())
   expect_visible(emissions_profile_any_at_product_level(companies, inputs))
-  products <- read_test_csv(toy_emissions_profile_products())
+  products <- example_products()
   expect_visible(emissions_profile_any_at_product_level(companies, products))
 })
 
@@ -15,7 +15,7 @@ test_that("outputs expected columns at product level", {
   out <- emissions_profile_any_at_product_level(companies, inputs)
   expect_named(out, expected)
 
-  products <- read_test_csv(toy_emissions_profile_products())
+  products <- example_products()
   expected <- c(cols_at_product_level(), aka("co2footprint"))
   out <- emissions_profile_any_at_product_level(companies, products)
   expect_named(out, expected)
@@ -150,7 +150,7 @@ test_that("a 0-row `co2` yields an error", {
 
 test_that("a 0-row `co2` yields an error", {
   companies <- example_companies()
-  products <- read_test_csv(toy_emissions_profile_products())[0L, ]
+  products <- example_products()[0L, ]
   expect_error(
     emissions_profile_any_at_product_level(companies, products),
     "co2.*can't have 0-row"
