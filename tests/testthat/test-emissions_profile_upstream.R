@@ -8,7 +8,7 @@ test_that("hasn't change", {
 
 test_that("outputs expected columns at company level", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_inputs()
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level()
@@ -19,7 +19,7 @@ test_that("outputs expected columns at company level", {
 
 test_that("it's arranged by `companies_id` and `grouped_by`", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_inputs()
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level()
