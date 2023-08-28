@@ -32,7 +32,7 @@ test_that("pstr_at_product_level() throws a deprecation warning", {
 
 test_that("xctr_at_product_level() throws a deprecation warning", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_products()
   expect_warning(xctr_at_product_level(companies, inputs), "deprecated")
 })
 
@@ -53,7 +53,7 @@ test_that("pstr_at_company_level() throws a deprecation warning", {
 
 test_that("xctr_at_company_level() throws a deprecation warning", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_products()
   product <- suppressWarnings(xctr_at_product_level(companies, inputs))
   expect_warning(xctr_at_company_level(product), "deprecated")
 })
