@@ -1,12 +1,12 @@
 test_that("pstr() throws a deprecation warning", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  scenarios <- example_scenarios()
   expect_warning(pstr(companies, scenarios), "deprecated")
 })
 
 test_that("istr() throws a deprecation warning", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  scenarios <- example_scenarios()
   inputs <- read_test_csv(toy_sector_profile_upstream_products())
   expect_warning(istr(companies, scenarios, inputs), "deprecated")
 })
@@ -19,14 +19,14 @@ test_that("xctr() throws a deprecation warning", {
 
 test_that("istr_at_product_level() throws a deprecation warning", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  scenarios <- example_scenarios()
   inputs <- read_test_csv(toy_sector_profile_upstream_products())
   expect_warning(istr_at_product_level(companies, scenarios, inputs), "deprecated")
 })
 
 test_that("pstr_at_product_level() throws a deprecation warning", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  scenarios <- example_scenarios()
   expect_warning(pstr_at_product_level(companies, scenarios), "deprecated")
 })
 
@@ -38,7 +38,7 @@ test_that("xctr_at_product_level() throws a deprecation warning", {
 
 test_that("istr_at_company_level() throws a deprecation warning", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  scenarios <- example_scenarios()
   inputs <- read_test_csv(toy_sector_profile_upstream_products())
   product <- suppressWarnings(istr_at_product_level(companies, scenarios, inputs))
   expect_warning(istr_at_company_level(product), "deprecated")
@@ -46,7 +46,7 @@ test_that("istr_at_company_level() throws a deprecation warning", {
 
 test_that("pstr_at_company_level() throws a deprecation warning", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  scenarios <- example_scenarios()
   product <- suppressWarnings(pstr_at_product_level(companies, scenarios))
   expect_warning(pstr_at_company_level(product), "deprecated")
 })
