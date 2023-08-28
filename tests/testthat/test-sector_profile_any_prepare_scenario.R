@@ -21,6 +21,6 @@ test_that("with duplicated scenario+year+sector+subsector errors gracefully (#39
 })
 
 test_that("returns visibly", {
-  weo <- read_test_csv(extdata_path("raw_sector_profile_any_weo_targets.csv"))
-  expect_visible(sector_profile_any_prepare_scenario(list(weo = weo)))
+  raw_weo <- example_raw_weo()
+  expect_visible(sector_profile_any_prepare_scenario(list(weo = raw_weo)))
 })

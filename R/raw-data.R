@@ -15,3 +15,11 @@ example_raw_companies <- function() {
   # styler: on
   )
 }
+
+example_raw_weo <- function() {
+  tribble(
+                       ~scenario, ~weo_sector,                               ~weo_subsector, ~year, ~co2_reductions,
+      "Stated Policies Scenario",     "Total", "Biofuels production and direct air capture",  2020,               0,
+    "Announced Pledges Scenario",     "Total", "Biofuels production and direct air capture",  2020,               0
+  )
+}
