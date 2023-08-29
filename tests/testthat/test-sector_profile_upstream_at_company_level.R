@@ -104,10 +104,10 @@ test_that("grouped_by includes the type of scenario", {
 })
 
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
-  .type <- "ipr"
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf) |> filter(type == .type)
-  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf) |> filter(type == .type)
+  .type <- "ipr"
+  scenarios <- example_scenarios(!!aka("scenario_type") := .type)
+  inputs <- example_inputs(!!aka("scenario_type") := .type)
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
