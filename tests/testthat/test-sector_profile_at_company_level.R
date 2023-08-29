@@ -1,7 +1,6 @@
 test_that("hasn't changed", {
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
   companies <- example_companies()
-  companies <- example_companies()
+  scenarios <- example_scenarios()
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
   expect_snapshot(format_robust_snapshot(out))
