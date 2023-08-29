@@ -10,8 +10,8 @@ test_that("hasn't changed", {
 
 test_that("outputs expected columns at company level", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
-  inputs <- read_test_csv(toy_sector_profile_upstream_products())
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)

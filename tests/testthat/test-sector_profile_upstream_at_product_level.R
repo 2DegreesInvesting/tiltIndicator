@@ -161,7 +161,7 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
 
 test_that("a 0-row `companies` yields an error", {
   companies <- example_companies()[0L, ]
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  scenarios <- example_scenarios()
   inputs <- read_test_csv(toy_sector_profile_upstream_products())
 
   expect_error(
@@ -172,7 +172,7 @@ test_that("a 0-row `companies` yields an error", {
 
 test_that("a 0-row `scenarios` yields an error", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())[0L, ]
+  scenarios <- example_scenarios()[0L, ]
   inputs <- read_test_csv(toy_sector_profile_upstream_products())
 
   expect_error(
