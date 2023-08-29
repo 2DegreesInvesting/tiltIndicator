@@ -15,7 +15,7 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("the output is not grouped", {
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  scenarios <- example_scenarios()
   companies <- example_companies()
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
@@ -64,7 +64,7 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 
 test_that("outputs values in proportion", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  scenarios <- example_scenarios()
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
   expect_true(all(out$value <= 1.0))
@@ -72,7 +72,7 @@ test_that("outputs values in proportion", {
 
 test_that("each company has risk categories low, medium, and high (#215)", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  scenarios <- example_scenarios()
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
   risk_categories <- sort(unique(out$risk_category))
@@ -86,7 +86,6 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
     filter(company_id %in% first(company_id))
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf) |>
     filter(type == .type)
-
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
   sum <- out |>

@@ -159,7 +159,7 @@ test_that("a 0-row `companies` yields an error", {
 
 test_that("a 0-row `scenarios` yields an error", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)[0L, ]
+  scenarios[0L, ]
   expect_error(
     sector_profile_at_product_level(companies, scenarios),
     "scenario.*can't have 0-row"
