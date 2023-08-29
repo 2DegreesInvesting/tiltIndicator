@@ -104,8 +104,8 @@ test_that("grouped_by includes the type of scenario", {
 })
 
 test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", {
-  companies <- example_companies()
   .type <- "ipr"
+  companies <- example_companies(!!aka("scenario_type") := .type)
   scenarios <- example_scenarios(!!aka("scenario_type") := .type)
   inputs <- example_inputs(!!aka("scenario_type") := .type)
 
@@ -118,8 +118,8 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
 })
 
 test_that("with type weo, for each company and grouped_by value sums 1 (#308)", {
-  companies <- example_companies()
   .type <- "weo"
+  companies <- example_companies(!!aka("scenario_type") := .type)
   scenarios <- example_scenarios(!!aka("scenario_type") := .type)
   inputs <- example_inputs(!!aka("scenario_type") := .type)
 
