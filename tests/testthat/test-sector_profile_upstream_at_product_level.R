@@ -173,7 +173,7 @@ test_that("a 0-row `companies` yields an error", {
 test_that("a 0-row `scenarios` yields an error", {
   companies <- example_companies()
   scenarios <- example_scenarios()[0L, ]
-  inputs <- read_test_csv(toy_sector_profile_upstream_products())
+  inputs <- example_inputs()
 
   expect_error(
     sector_profile_upstream_at_product_level(companies, scenarios, inputs),
