@@ -1,5 +1,5 @@
 test_that("hasn't changed", {
-  companies <- read_test_csv(toy_sector_profile_upstream_companies())
+  companies <- example_companies()
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
   inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
 
