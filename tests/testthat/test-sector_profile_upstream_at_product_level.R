@@ -1,7 +1,7 @@
 test_that("outputs expected columns at product level", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
   out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
 
   expect_named(out, spu_cols_at_product_level())
