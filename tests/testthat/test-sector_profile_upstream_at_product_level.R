@@ -162,7 +162,7 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
 test_that("a 0-row `companies` yields an error", {
   companies <- example_companies()[0L, ]
   scenarios <- example_scenarios()
-  inputs <- read_test_csv(toy_sector_profile_upstream_products())
+  inputs <- example_inputs()
 
   expect_error(
     sector_profile_upstream_at_product_level(companies, scenarios, inputs),
