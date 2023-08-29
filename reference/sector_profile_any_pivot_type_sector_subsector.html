@@ -91,41 +91,25 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">raw_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="extdata_path.html">extdata_path</a></span><span class="op">(</span><span class="st">"raw_sector_profile_companies.csv"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">raw_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="example_raw_companies.html">example_raw_companies</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">raw_companies</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ company_id                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "fleischerei-stiefsohn_00000005219477-001",…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ company_name               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "fleischerei-stiefsohn", "pecheries-basques…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ clustered                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "steel", "nitrogen", "waste", "car", "heate…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ activity_uuid_product_uuid <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0faa7ecb-fef2-5117-8993-387c1236-001e-49b5…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ isic_4digit                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2410, 2029, NA, NA, NA, NA, NA, NA, 2029, 1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tilt_sector                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "Energy", "Transportation", "Constr…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tilt_subsector             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "Bioenergy &amp; Waste", "Transportatio…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ ipr_sector                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Industry", "Industry", "Total", "Transport…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ ipr_subsector              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Iron and Steel", "Chemicals", "Energy", "O…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ weo_sector                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Total", "Total", "Bioenergy and Waste", "T…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ weo_subsector              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Iron and steel", "Chemicals", "Total Energ…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ company_id    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "a", "b"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ ipr_sector    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Industry", "Industry"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ ipr_subsector <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Iron and Steel", "Chemicals"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ weo_sector    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Total", "Total"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ weo_subsector <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Iron and steel", "Chemicals"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">sector_profile_any_pivot_type_sector_subsector</span><span class="op">(</span><span class="va">raw_companies</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">companies</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 28 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    company_id          company_name clustered activity_uuid_produc…¹ isic_4digit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… fleischerei… steel     0faa7ecb-fef2-5117-89…        <span style="text-decoration: underline;">2</span>410</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… fleischerei… steel     0faa7ecb-fef2-5117-89…        <span style="text-decoration: underline;">2</span>410</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> pecheries-basques_… pecheries-b… nitrogen  03fbf989-9a1a-5e3d-a5…        <span style="text-decoration: underline;">2</span>029</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> pecheries-basques_… pecheries-b… nitrogen  03fbf989-9a1a-5e3d-a5…        <span style="text-decoration: underline;">2</span>029</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> hoche-butter-gmbh_… hoche-butte… waste     <span style="color: #BB0000;">NA</span>                              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> hoche-butter-gmbh_… hoche-butte… waste     <span style="color: #BB0000;">NA</span>                              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> hoche-butter-gmbh_… hoche-butte… car       <span style="color: #BB0000;">NA</span>                              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> hoche-butter-gmbh_… hoche-butte… car       <span style="color: #BB0000;">NA</span>                              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> hoche-butter-gmbh_… hoche-butte… heater    <span style="color: #BB0000;">NA</span>                              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> hoche-butter-gmbh_… hoche-butte… heater    <span style="color: #BB0000;">NA</span>                              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 18 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: tilt_sector &lt;chr&gt;, tilt_subsector &lt;chr&gt;, type &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sector &lt;chr&gt;, subsector &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   company_id type  sector   subsector     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a          ipr   industry iron and steel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> a          weo   total    iron and steel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> b          ipr   industry chemicals     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> b          weo   total    chemicals     </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
