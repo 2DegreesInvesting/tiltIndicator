@@ -124,10 +124,8 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 
 test_that("grouped_by includes the type of scenario", {
   .type <- "ipr"
-  companies <- example_companies() |>
-    filter(type == .type)
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf) |>
-    filter(type == .type)
+  companies <- example_companies(!!aka("scenario_type") := .type)
+  scenarios <- example_scenarios(!!aka("scenario_type") := .type)
 
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
