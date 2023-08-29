@@ -93,7 +93,8 @@ test_that("each company has risk categories low, medium, and high (#215)", {
 
 test_that("grouped_by includes the type of scenario", {
   .type <- "ipr"
-  companies <- read_test_csv(toy_sector_profile_upstream_companies())
+  uid <- "0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa"
+  companies <- example_companies(!!aka("uid") := uid)
   scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf) |> filter(type == .type)
   inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf) |> filter(type == .type)
 
