@@ -1,5 +1,5 @@
 test_that("wraps the output at product and company levels", {
-  companies <- read_test_csv(toy_sector_profile_upstream_companies(), n_max = 3)
+  companies <- example_companies()
   scenarios <- example_scenarios()
   inputs <- example_inputs()
 
