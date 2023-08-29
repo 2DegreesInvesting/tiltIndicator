@@ -8,7 +8,7 @@ test_that("hasn't changed", {
 
 test_that("outputs expected columns at company level", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  scenarios <- example_scenarios()
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
   expect_named(out, cols_at_company_level())
