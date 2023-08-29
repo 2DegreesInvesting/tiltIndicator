@@ -73,8 +73,8 @@ test_that("thresholds yield expected low, medium, and high risk categories", {
 
 test_that("outputs values in proportion", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
   expect_true(all(na.omit(out$value) <= 1.0))
