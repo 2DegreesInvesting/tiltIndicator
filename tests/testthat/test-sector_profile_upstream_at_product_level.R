@@ -124,8 +124,8 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
 
   crucial <- aka("scenario_type")
   bad <- select(inputs, -all_of(crucial))
