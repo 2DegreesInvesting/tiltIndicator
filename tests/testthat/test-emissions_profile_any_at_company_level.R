@@ -18,7 +18,12 @@ test_that("outputs expected columns at company level", {
 })
 
 test_that("is sensitive to low_threshold", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = 2)
+  uid <- c(
+    "0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa",
+    "be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc"
+  )
+  companies <- example_companies(!!aka("uid") := uid)
+
   co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 2)
   out1 <- emissions_profile_any_at_product_level(companies, co2, low_threshold = .1) |>
     any_at_company_level()
