@@ -83,8 +83,8 @@ test_that("with duplicated scenarios throws no error (#435)", {
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
 
   crucial <- aka("id")
   bad <- select(companies, -all_of(crucial))
