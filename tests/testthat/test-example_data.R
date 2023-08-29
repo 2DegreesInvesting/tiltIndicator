@@ -3,7 +3,6 @@ test_that("example_inputs() has the expected names", {
   sector <- names(read_test_csv(toy_sector_profile_upstream_products()))
   reference <- unique(c(emissions, sector))
   expect_true(all(names(example_inputs()) %in% reference))
-  setdiff(names(example_inputs()), reference)
 })
 
 test_that("example_inputs() adds a row", {

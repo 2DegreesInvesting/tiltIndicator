@@ -1,7 +1,7 @@
 test_that("outputs expected columns at product level", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
   out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
 
   expect_named(out, spu_cols_at_product_level())
@@ -83,8 +83,8 @@ test_that("with duplicated scenarios throws no error (#435)", {
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
 
   crucial <- aka("id")
   bad <- select(companies, -all_of(crucial))
@@ -97,8 +97,9 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
 test_that("if `scenarios` lacks crucial columns, errors gracefully", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
+
 
   crucial <- aka("scenario_type")
   bad <- select(scenarios, -all_of(crucial))
@@ -123,8 +124,8 @@ test_that("if `scenarios` lacks crucial columns, errors gracefully", {
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
-  inputs <- read_test_csv(toy_sector_profile_upstream_products(), n_max = Inf)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
 
   crucial <- aka("scenario_type")
   bad <- select(inputs, -all_of(crucial))
@@ -161,8 +162,8 @@ test_that("error if a `type` has all `NA` in `sector` & `subsector` (#310)", {
 
 test_that("a 0-row `companies` yields an error", {
   companies <- example_companies()[0L, ]
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
-  inputs <- read_test_csv(toy_sector_profile_upstream_products())
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
 
   expect_error(
     sector_profile_upstream_at_product_level(companies, scenarios, inputs),
@@ -172,8 +173,8 @@ test_that("a 0-row `companies` yields an error", {
 
 test_that("a 0-row `scenarios` yields an error", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())[0L, ]
-  inputs <- read_test_csv(toy_sector_profile_upstream_products())
+  scenarios <- example_scenarios()[0L, ]
+  inputs <- example_inputs()
 
   expect_error(
     sector_profile_upstream_at_product_level(companies, scenarios, inputs),

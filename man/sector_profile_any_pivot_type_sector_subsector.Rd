@@ -26,7 +26,7 @@ Restructure "sector profile" \code{companies}
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 
-raw_companies <- read_csv(extdata_path("raw_sector_profile_companies.csv"))
+raw_companies <- example_raw_companies()
 glimpse(raw_companies)
 
 companies <- sector_profile_any_pivot_type_sector_subsector(raw_companies)
