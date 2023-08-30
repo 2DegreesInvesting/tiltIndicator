@@ -11,12 +11,12 @@ test_that("outputs expected columns at product level", {
   companies <- example_companies()
 
   inputs <- read_test_csv(toy_emissions_profile_upstream_products())
-  expected <- c(cols_at_product_level(), aka("iuid"), aka("ico2footprint"))
+  expected <- c(ep_cols_at_product_level(), aka("iuid"), aka("ico2footprint"))
   out <- emissions_profile_any_at_product_level(companies, inputs)
   expect_named(out, expected)
 
   products <- read_test_csv(toy_emissions_profile_products())
-  expected <- c(cols_at_product_level(), aka("co2footprint"))
+  expected <- c(ep_cols_at_product_level(), aka("co2footprint"))
   out <- emissions_profile_any_at_product_level(companies, products)
   expect_named(out, expected)
 })

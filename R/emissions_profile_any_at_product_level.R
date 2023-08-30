@@ -13,7 +13,7 @@ emissions_profile_any_at_product_level <- function(companies,
     add_risk_category(low_threshold, high_threshold) |>
     join_companies(.companies) |>
     epa_select_cols_at_product_level() |>
-    polish_output(cols_at_product_level())
+    polish_output(ep_cols_at_product_level())
 }
 
 epa_check <- function(companies, co2) {
@@ -95,7 +95,7 @@ find_co2_footprint <- function(co2, pattern = aka("co2footprint")) {
 epa_select_cols_at_product_level <- function(data) {
   data |>
     select(
-      all_of(cols_at_product_level()),
+      all_of(ep_cols_at_product_level()),
       ends_with(aka("uid")),
       find_co2_footprint(data)
     )

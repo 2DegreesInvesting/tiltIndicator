@@ -24,6 +24,10 @@ cols_at_product_level <- function() {
   c(cols_at_all_levels(), aka("cluster"), aka("uid"))
 }
 
+ep_cols_at_product_level <- function() {
+  c(cols_at_product_level(), "tilt_sec", "isic_sec", "tilt_subsec")
+}
+
 cols_at_company_level <- function() {
   c(cols_at_all_levels(), "value")
 }

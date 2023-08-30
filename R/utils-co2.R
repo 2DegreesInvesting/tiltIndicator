@@ -4,6 +4,7 @@ prepare_co2 <- function(data, low_threshold, high_threshold) {
     distinct() |>
     rename(
       tilt_sec = ends_with(aka("tsector")),
+      tilt_subsec = ends_with(aka("tsubsector")),
       unit = ends_with(aka("xunit")),
       isic_sec = ends_with(aka("isic"))
     )
