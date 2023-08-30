@@ -1,6 +1,6 @@
 test_that("unnests", {
   companies <- example_companies()
-  scenarios <- read_test_csv(toy_sector_profile_any_scenarios(), n_max = Inf)
+  scenarios <- example_scenarios()
 
   out <- sector_profile(companies, scenarios)
 

@@ -1,22 +1,21 @@
 test_that("returns visibly (#238)", {
   companies <- example_companies()
-
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_inputs()
   expect_visible(emissions_profile_any_at_product_level(companies, inputs))
-  products <- read_test_csv(toy_emissions_profile_products())
+  products <- example_products()
   expect_visible(emissions_profile_any_at_product_level(companies, products))
 })
 
 test_that("outputs expected columns at product level", {
   companies <- example_companies()
-
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_inputs()
   expected <- c(ep_cols_at_product_level(), aka("iuid"), aka("ico2footprint"))
   out <- emissions_profile_any_at_product_level(companies, inputs)
   expect_named(out, expected)
 
-  products <- read_test_csv(toy_emissions_profile_products())
+  products <- example_products()
   expected <- c(ep_cols_at_product_level(), aka("co2footprint"))
+
   out <- emissions_profile_any_at_product_level(companies, products)
   expect_named(out, expected)
 })
@@ -150,7 +149,7 @@ test_that("a 0-row `co2` yields an error", {
 
 test_that("a 0-row `co2` yields an error", {
   companies <- example_companies()
-  products <- read_test_csv(toy_emissions_profile_products())[0L, ]
+  products <- example_products()[0L, ]
   expect_error(
     emissions_profile_any_at_product_level(companies, products),
     "co2.*can't have 0-row"
@@ -167,7 +166,7 @@ test_that("a 0-row `companies` yields an error", {
 
 test_that("a 0-row `inputs` yields an error", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())[0L, ]
+  inputs <- example_inputs()[0L, ]
   expect_error(
     emissions_profile_any_at_product_level(companies, inputs),
     "co2.*can't have 0-row"
@@ -176,7 +175,7 @@ test_that("a 0-row `inputs` yields an error", {
 
 test_that("if `companies` lacks crucial columns, errors gracefully", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_inputs()
 
   crucial <- aka("uid")
   bad <- select(companies, -all_of(crucial))
@@ -189,7 +188,7 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_inputs()
 
   crucial <- aka("uid")
   bad <- select(inputs, -all_of(crucial))
@@ -228,7 +227,7 @@ test_that("handles duplicated `co2` data (#230)", {
 
 test_that("with a missing value in the co2* column errors gracefully", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_inputs()
   inputs$input_co2_footprint <- NA
   expect_error(emissions_profile_any_at_product_level(companies, inputs), aka("co2footprint"))
 })

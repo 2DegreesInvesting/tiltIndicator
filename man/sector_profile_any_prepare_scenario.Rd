@@ -20,8 +20,8 @@ Given a named list of scenarios returns a cleaner \code{scenarios} dataframe
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 
-raw_weo <- read_csv(extdata_path("raw_sector_profile_any_weo_targets.csv"))
-raw_ipr <- read_csv(extdata_path("raw_sector_profile_any_ipr_targets.csv"))
+raw_weo <- example_raw_weo()
+raw_ipr <- example_raw_ipr()
 raw_scenarios <- list(weo = raw_weo, ipr = raw_ipr)
 
 sector_profile_any_prepare_scenario(raw_scenarios)

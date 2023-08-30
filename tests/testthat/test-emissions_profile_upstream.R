@@ -8,7 +8,7 @@ test_that("hasn't change", {
 
 test_that("outputs expected columns at company level", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_inputs()
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level()
@@ -19,7 +19,7 @@ test_that("outputs expected columns at company level", {
 
 test_that("it's arranged by `companies_id` and `grouped_by`", {
   companies <- example_companies()
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  inputs <- example_inputs()
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level()
@@ -28,8 +28,10 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
 })
 
 test_that("is sensitive to low_threshold", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products(), n_max = 2)
+  uid <- "0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa"
+  companies <- example_companies(!!aka("uid") := uid)
+  inputs <- example_inputs(!!aka("uid") := uid, !!aka("ico2footprint") := 1:2)
+
   out1 <- emissions_profile_any_at_product_level(companies, inputs, low_threshold = .1) |>
     any_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, inputs, low_threshold = .9) |>
@@ -38,8 +40,10 @@ test_that("is sensitive to low_threshold", {
 })
 
 test_that("is sensitive to high_threshold", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products(), n_max = 2)
+  uid <- "0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa"
+  companies <- example_companies(!!aka("uid") := uid)
+  inputs <- example_inputs(!!aka("uid") := uid, !!aka("ico2footprint") := 1:2)
+
   out1 <- emissions_profile_any_at_product_level(companies, inputs, high_threshold = .1) |>
     any_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, inputs, high_threshold = .9) |>
