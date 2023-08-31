@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9093
+
+* All profile functions allow passing `*rowid` columns from input tables to the
+output at product level (#511).
+
 # tiltIndicator 0.0.0.9092
 
 * Rename pre- and post-processing helpers (#503).
