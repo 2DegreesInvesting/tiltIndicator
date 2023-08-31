@@ -171,3 +171,12 @@ test_that("with ';' in `*sector` throws an warning", {
 
   expect_snapshot_warning(sector_profile_at_product_level(companies, scenarios))
 })
+
+test_that("`*rowid` columns are passed to the output", {
+  companies <- example_companies(companies_rowid = 1)
+
+  scenarios <- example_scenarios(scenarios_rowid = 1)
+  out <- sector_profile_at_product_level(companies, scenarios)
+  expect_true(hasName(out, "companies_rowid"))
+  expect_true(hasName(out, "scenarios_rowid"))
+})

@@ -95,6 +95,7 @@ find_co2_footprint <- function(co2, pattern = aka("co2footprint")) {
 epa_select_cols_at_product_level <- function(data) {
   data |>
     select(
+      ends_with("rowid"),
       all_of(cols_at_product_level()),
       ends_with(aka("uid")),
       find_co2_footprint(data)

@@ -14,7 +14,7 @@ sector_profile_upstream_at_product_level <- function(companies,
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     join_companies(remove_col_scenario(.companies)) |>
     spa_polish_output_at_product_level() |>
-    istr_select_cols_at_product_level() |>
+    spu_select_cols_at_product_level() |>
     polish_output(cols_at_product_level())
 }
 
@@ -22,8 +22,12 @@ prepare_inputs <- function(data) {
   distinct(data)
 }
 
-istr_select_cols_at_product_level <- function(data) {
-  select(data, all_of(spu_cols_at_product_level()))
+spu_select_cols_at_product_level <- function(data) {
+  data |>
+    select(
+      ends_with("rowid"),
+      all_of(spu_cols_at_product_level())
+    )
 }
 
 spu_cols_at_product_level <- function() {
