@@ -11,12 +11,16 @@ sector_profile_at_product_level <- function(companies,
     spa_add_values_to_categorize(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     spa_polish_output_at_product_level() |>
-    pstr_select_cols_at_product_level() |>
+    sp_select_cols_at_product_level() |>
     polish_output(cols_at_product_level())
 }
 
-pstr_select_cols_at_product_level <- function(data) {
-  select(data, all_of(sp_cols_at_product_level()))
+sp_select_cols_at_product_level <- function(data) {
+  data |>
+    select(
+      ends_with("rowid"),
+      all_of(sp_cols_at_product_level())
+    )
 }
 
 sp_cols_at_product_level <- function() {

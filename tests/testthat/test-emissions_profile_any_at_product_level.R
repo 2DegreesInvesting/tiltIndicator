@@ -231,3 +231,17 @@ test_that("with a missing value in the co2* column errors gracefully", {
   inputs$input_co2_footprint <- NA
   expect_error(emissions_profile_any_at_product_level(companies, inputs), aka("co2footprint"))
 })
+
+test_that("`*rowid` columns are passed to the output", {
+  companies <- example_companies(companies_rowid = 1)
+
+  products <- example_inputs(products_rowid = 1)
+  out <- emissions_profile_any_at_product_level(companies, products)
+  expect_true(hasName(out, "companies_rowid"))
+  expect_true(hasName(out, "products_rowid"))
+
+  inputs <- example_inputs(inputs_rowid = 1)
+  out <- emissions_profile_any_at_product_level(companies, inputs)
+  expect_true(hasName(out, "companies_rowid"))
+  expect_true(hasName(out, "inputs_rowid"))
+})

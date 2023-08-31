@@ -181,3 +181,13 @@ test_that("a 0-row `scenarios` yields an error", {
     "scenarios.*can't have 0-row"
   )
 })
+
+test_that("`*rowid` columns are passed to the output", {
+  companies <- example_companies(companies_rowid = 1)
+  scenarios <- example_scenarios(scenarios_rowid = 1)
+  inputs <- example_inputs(inputs_rowid = 1)
+  out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
+  expect_true(hasName(out, "companies_rowid"))
+  expect_true(hasName(out, "scenarios_rowid"))
+  expect_true(hasName(out, "inputs_rowid"))
+})
