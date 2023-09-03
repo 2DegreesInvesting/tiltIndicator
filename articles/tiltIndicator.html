@@ -44,6 +44,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/extending-outputs.html">Extending the output at product level with columns from the input</a>
     <a class="dropdown-item" href="../articles/handling-long-runtime.html">Handling a long runtime</a>
   </div>
 </li>
@@ -217,6 +218,7 @@ come with the tiltToyData package.</p>
 <span><span class="co">#&gt; [5] "sector_profile_companies.csv.gz"           </span></span>
 <span><span class="co">#&gt; [6] "sector_profile_upstream_companies.csv.gz"  </span></span>
 <span><span class="co">#&gt; [7] "sector_profile_upstream_products.csv.gz"</span></span>
+<span></span>
 <span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_any_companies</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_products</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">products_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_upstream_products</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>

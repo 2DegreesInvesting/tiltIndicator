@@ -41,6 +41,7 @@ derive company-level information."><!-- mathjax --><script src="https://cdnjs.cl
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/extending-outputs.html">Extending the output at product level with columns from the input</a>
     <a class="dropdown-item" href="../articles/handling-long-runtime.html">Handling a long runtime</a>
   </div>
 </li>
@@ -109,7 +110,7 @@ targets.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A data frame with the column <code>companies_id</code>, and the nested columns <code>product</code> and <code>company</code> holding the outputs at product and company level. Unnesting <code>product</code> yields a data frame with at least columns <code>companies_id</code>, <code>grouped_by</code>, <code>risk_category</code>. Unnesting <code>company</code> yields a data frame with at least columns <code>companies_id</code>, <code>grouped_by</code>, <code>risk_category</code>, <code>value</code>.</p>
+<p>A data frame with the column <code>companies_id</code>, and the nested columns<code>product</code> and <code>company</code> holding the outputs at product and company level.Unnesting <code>product</code> yields a data frame with at least columns <code>companies_id</code>, <code>grouped_by</code>, <code>risk_category</code>. Unnesting <code>company</code> yields a data frame with at least columns <code>companies_id</code>, <code>grouped_by</code>, <code>risk_category</code>, <code>value</code>. Any column in the input datasets ending with <code>*rowid</code> is also passed as is to the output. The exception is any column named exactly <code>rowid</code>-- which is a reserved name and throws an error.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
