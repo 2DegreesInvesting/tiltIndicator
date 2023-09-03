@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tiltIndicator</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9093</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9094</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,13 @@
       <small>Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.0.0.9094" id="tiltindicator-0009094">tiltIndicator 0.0.0.9094<a class="anchor" aria-label="anchor" href="#tiltindicator-0009094"></a></h2>
+<ul><li>The <code>*rowid</code> columns are now handled more rigurously (<a href="https://github.com/2DegreesInvesting/tiltIndicator/issues/516" class="external-link">#516</a>):
+<ul><li>The name <code>rowid</code> is now reserved. If any input dataset uses it, the result is an error.</li>
+<li>Each <code>*rowid</code> column now must be unique. Duplicated names now result in an error (<a href="https://github.com/2DegreesInvesting/tiltIndicator/issues/516" class="external-link">#516</a>).</li>
+</ul></li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.0.0.9093" id="tiltindicator-0009093">tiltIndicator 0.0.0.9093<a class="anchor" aria-label="anchor" href="#tiltindicator-0009093"></a></h2>
 <ul><li>All profile functions allow passing <code>*rowid</code> columns from input tables to the output at product level (<a href="https://github.com/2DegreesInvesting/tiltIndicator/issues/511" class="external-link">#511</a>).</li>
