@@ -62,6 +62,7 @@ datasets that come with the tiltToyData package.
 
 ```{r}
 toy_files()
+
 companies <- read_csv(toy_emissions_profile_any_companies())
 products <- read_csv(toy_emissions_profile_products())
 products_upstream <- read_csv(toy_emissions_profile_upstream_products())
@@ -80,4 +81,3 @@ result_upstream |> unnest_product()
 
 result_upstream |> unnest_company()
 ```
-

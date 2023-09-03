@@ -3,7 +3,8 @@ sector_profile_upstream_at_product_level <- function(companies,
                                                      inputs,
                                                      low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                                      high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  spa_check(companies, scenarios)
+  x <- list(companies = companies, scenarios = scenarios, inputs = inputs)
+  spa_check(x)
 
   .companies <- prepare_companies(companies)
   .scenarios <- prepare_scenarios(scenarios, low_threshold, high_threshold)
@@ -25,7 +26,7 @@ prepare_inputs <- function(data) {
 spu_select_cols_at_product_level <- function(data) {
   data |>
     select(
-      ends_with("rowid"),
+      ends_with(rowid()),
       all_of(spu_cols_at_product_level())
     )
 }

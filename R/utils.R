@@ -6,13 +6,19 @@ document_dataset <- function() {
 }
 
 document_value <- function() {
+  paste0(document_default_value(), " ", document_optional_rowid())
+}
+
+document_default_value <- function() {
+  at_all_levels <- toString(paste0("`", cols_at_all_levels(), "`"))
+  at_company_level <- toString(paste0("`", cols_at_company_level(), "`"))
+
   paste0(
-    "A data frame with the column `companies_id`, and the nested columns ",
+    "A data frame with the column `companies_id`, and the nested columns",
     "`product` and `company` holding the outputs at product and company level.",
-    " Unnesting `product` yields a data frame with at least columns ",
-    toString(paste0("`", cols_at_all_levels(), "`")), ". ",
-    "Unnesting `company` yields a data frame with at least columns ",
-    toString(paste0("`", cols_at_company_level(), "`")), "."
+    "Unnesting `product` yields a data frame with at least columns ",
+    at_all_levels, ". Unnesting `company` yields a data frame with at least ",
+    "columns ", at_company_level, "."
   )
 }
 
@@ -104,7 +110,7 @@ lowercase_characters <- function(data) {
 #' try(check_crucial_names(x, "bad"))
 #' @noRd
 check_crucial_names <- function(x, expected_names) {
-  stopifnot(rlang::is_named(x))
+  stopifnot(is_named(x))
   stopifnot(is.character(expected_names))
 
   ok <- all(unique(expected_names) %in% names(x))
@@ -116,9 +122,9 @@ check_crucial_names <- function(x, expected_names) {
 }
 
 abort_missing_names <- function(missing_names) {
-  rlang::abort(
+  abort(
     "missing_names",
-    message = glue::glue(
+    message = glue(
       "Must have missing names:
       {paste0('`', missing_names, '`', collapse = ', ')}"
     )
@@ -202,7 +208,6 @@ pad_column <- function(data, pattern, width, pad) {
 
   data
 }
-
 
 check_string_lengh <- function(x, length) {
   label <- deparse(substitute(x))

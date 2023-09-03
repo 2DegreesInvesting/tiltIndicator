@@ -2,7 +2,8 @@ sector_profile_at_product_level <- function(companies,
                                             scenarios,
                                             low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                             high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  spa_check(companies, scenarios)
+  x <- list(companies = companies, scenarios = scenarios)
+  spa_check(x)
 
   .companies <- prepare_companies(companies)
   .scenarios <- prepare_scenarios(scenarios, low_threshold, high_threshold)
@@ -18,7 +19,7 @@ sector_profile_at_product_level <- function(companies,
 sp_select_cols_at_product_level <- function(data) {
   data |>
     select(
-      ends_with("rowid"),
+      ends_with(rowid()),
       all_of(sp_cols_at_product_level())
     )
 }

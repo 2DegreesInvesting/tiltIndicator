@@ -54,6 +54,7 @@
 #' @importFrom readr read_csv
 #' @importFrom rlang .env
 #' @importFrom rlang abort
+#' @importFrom rlang is_named
 #' @importFrom rlang set_names
 #' @importFrom rlang warn
 #' @importFrom stringr str_pad
