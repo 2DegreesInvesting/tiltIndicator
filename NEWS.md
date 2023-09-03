@@ -2,11 +2,11 @@
 
 # tiltIndicator 0.0.0.9094
 
-* The `*rowid` columns are now handled more rigurously (#516):
-  * The name `rowid` is now reserved. If any input dataset uses it, the result
-is an error. 
+* The usage of `*rowid` columns is now documented and is more rigorous (#516):
+  * The name `rowid` is now reserved. If any input dataset uses it, the result is an
+  error.
   * Each `*rowid` column now must be unique. Duplicated names now result in an
-error (#516).
+  error.
 
 # tiltIndicator 0.0.0.9093
 
