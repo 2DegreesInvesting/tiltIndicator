@@ -21,7 +21,7 @@ targets.}
 targets.}
 }
 \value{
-A data frame with the column \code{companies_id}, and the nested columns \code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
+A data frame with the column \code{companies_id}, and the nested columns\code{product} and \code{company} holding the outputs at product and company level.Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}. Any column in the input datasets ending with \verb{*rowid} is also passed as is to the output. The exception is any column named exactly \code{rowid}-- which is a reserved name and throws an error.
 }
 \description{
 The indicator "sector profile" measures the transition risk of products based on

@@ -191,3 +191,35 @@ test_that("`*rowid` columns are passed to the output", {
   expect_true(hasName(out, "scenarios_rowid"))
   expect_true(hasName(out, "inputs_rowid"))
 })
+
+test_that("the same `*rowid` in multiple tables yields an error", {
+  companies <- example_companies(xrowid = 1)
+  scenarios <- example_scenarios(xrowid = 1)
+  inputs <- example_inputs()
+
+  expect_error(
+    sector_profile_upstream_at_product_level(companies, scenarios, inputs),
+    "rowid.*must be different"
+  )
+})
+
+test_that("with just one `*rowid` name throws no an error", {
+  companies <- example_companies(xrowid = 1)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
+
+  expect_no_error(
+    sector_profile_upstream_at_product_level(companies, scenarios, inputs)
+  )
+})
+
+test_that("with the reserved name `rowid` throws an error", {
+  companies <- example_companies(rowid = 1)
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
+
+  expect_error(
+    sector_profile_upstream_at_product_level(companies, scenarios, inputs),
+    "rowid.*reserved"
+  )
+})

@@ -57,7 +57,7 @@ flag_companies <- function(data) {
     arrange(.data$odd, .by_group = TRUE) |>
     mutate(odd_and_first = .data$odd & row_number() == 1L) |>
     arrange(.data$rowid) |>
-    select(-"rowid") |>
+    select(-rowid()) |>
     mutate(keep = case_when(
       !.data$odd ~ TRUE,
       .data$odd & .data$odd_and_first ~ TRUE,

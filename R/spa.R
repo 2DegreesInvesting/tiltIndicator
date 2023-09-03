@@ -1,6 +1,6 @@
-spa_check <- function(companies, scenarios) {
-  stop_if_has_0_rows(companies)
-  stop_if_has_0_rows(scenarios)
+spa_check <- function(x) {
+  stop_if_has_0_rows(x$companies)
+  stop_if_has_0_rows(x$scenarios)
   crucial <- c(
     aka("scenario_type"),
     aka("scenario_name"),
@@ -8,9 +8,11 @@ spa_check <- function(companies, scenarios) {
     aka("xsubsector"),
     aka("xyear")
   )
-  check_crucial_names(scenarios, crucial)
-  stop_if_all_sector_and_subsector_are_na_for_some_type(scenarios)
-  check_no_semicolon(companies)
+  check_crucial_names(x$scenarios, crucial)
+  stop_if_all_sector_and_subsector_are_na_for_some_type(x$scenarios)
+  check_no_semicolon(x$companies)
+
+  check_rowid(x)
 }
 
 stop_if_all_sector_and_subsector_are_na_for_some_type <- function(scenarios) {

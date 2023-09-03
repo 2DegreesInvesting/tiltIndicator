@@ -3,7 +3,8 @@ emissions_profile_any_at_product_level <- function(companies,
                                                    low_threshold = 1 / 3,
                                                    high_threshold = 2 / 3) {
   co2 <- sanitize_co2(co2)
-  epa_check(companies, co2)
+  x <- list(companies = companies, co2 = co2)
+  epa_check(x)
 
   .companies <- prepare_companies(companies)
   .co2 <- prepare_co2(co2, low_threshold, high_threshold)
@@ -16,19 +17,21 @@ emissions_profile_any_at_product_level <- function(companies,
     polish_output(cols_at_product_level())
 }
 
-epa_check <- function(companies, co2) {
-  stop_if_has_0_rows(companies)
-  stop_if_has_0_rows(co2)
+epa_check <- function(x) {
+  stop_if_has_0_rows(x$companies)
+  stop_if_has_0_rows(x$co2)
 
   crucial <- c(aka("id"))
-  walk(crucial, ~ check_matches_name(companies, .x))
+  walk(crucial, ~ check_matches_name(x$companies, .x))
 
   crucial <- c(aka("co2footprint"), aka("tsector"), aka("isic"))
-  walk(crucial, ~ check_matches_name(co2, .x))
+  walk(crucial, ~ check_matches_name(x$co2, .x))
 
-  check_has_no_na(co2, find_co2_footprint(co2))
-  check_is_character(pull_isic(co2))
-  check_string_lengh(pull_isic(co2), 4L)
+  check_has_no_na(x$co2, find_co2_footprint(x$co2))
+  check_is_character(pull_isic(x$co2))
+  check_string_lengh(pull_isic(x$co2), 4L)
+
+  check_rowid(x)
 }
 
 check_matches_name <- function(data, pattern) {
@@ -95,7 +98,7 @@ find_co2_footprint <- function(co2, pattern = aka("co2footprint")) {
 epa_select_cols_at_product_level <- function(data) {
   data |>
     select(
-      ends_with("rowid"),
+      ends_with(rowid()),
       all_of(cols_at_product_level()),
       ends_with(aka("uid")),
       find_co2_footprint(data)

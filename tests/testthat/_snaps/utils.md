@@ -10,5 +10,5 @@
     Code
       document_value()
     Output
-      [1] "A data frame with the column `companies_id`, and the nested columns `product` and `company` holding the outputs at product and company level. Unnesting `product` yields a data frame with at least columns `companies_id`, `grouped_by`, `risk_category`. Unnesting `company` yields a data frame with at least columns `companies_id`, `grouped_by`, `risk_category`, `value`."
+      [1] "A data frame with the column `companies_id`, and the nested columns`product` and `company` holding the outputs at product and company level.Unnesting `product` yields a data frame with at least columns `companies_id`, `grouped_by`, `risk_category`. Unnesting `company` yields a data frame with at least columns `companies_id`, `grouped_by`, `risk_category`, `value`. Any column in the input datasets ending with `*rowid` is also passed as is to the output. The exception is any column named exactly `rowid`-- which is a reserved name and throws an error."
 

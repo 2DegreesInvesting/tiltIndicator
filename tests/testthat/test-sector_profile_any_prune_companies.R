@@ -1,6 +1,6 @@
 test_that("keeps the expected rows only", {
   companies <- example_companies(
-    row_id = 1:7,
+    row_number = 1:7,
     !!aka("cluster") := c("b1", rep(NA, 4), "b6", "b7"),
     !!aka("uid") := c("c1", rep(NA, 4), "c6", NA),
     !!aka("tsector") := c(rep("x", 3), "y", "y", "z", "z")
@@ -15,7 +15,7 @@ test_that("keeps the expected rows only", {
   # Keep 4: Lacks product info but sector info is unique
   # Keep 6: Has product info
   # Keep 7: Has product info
-  expect_equal(out$row_id, c(1, 4, 6, 7))
+  expect_equal(out$row_number, c(1, 4, 6, 7))
 })
 
 test_that("preserves row order", {
