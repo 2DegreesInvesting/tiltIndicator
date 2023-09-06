@@ -93,9 +93,11 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Any column in the input datasets ending with <code>*rowid</code> is
-also passed as is to the output. The exception is any column named
-exactly <code>rowid</code>– which is a reserved name and throws an
-error.</p>
+also passed as is to the output at product level. The exception is any
+column named exactly <code>rowid</code>– which is a reserved name and
+throws an error. Note this feature makes no sense at company level
+because poetntally multiple rows in the input datasets are summarized
+into a single row in the output at company level.</p>
 <p>This example shows <code><a href="../reference/emissions_profile.html">emissions_profile()</a></code> but the same goes
 for other functions.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
