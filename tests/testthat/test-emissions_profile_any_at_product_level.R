@@ -274,3 +274,12 @@ test_that("with the reserved name `rowid` throws an error", {
     "rowid.*reserved"
   )
 })
+
+test_that("`*rowid` columns are passed through inputs with duplicates", {
+  companies <- example_companies(companies_rowid = 1:2)
+  products <- example_products(products_rowid = 1:2)
+
+  out <- emissions_profile_any_at_product_level(companies, products)
+  expect_true(hasName(out, "companies_rowid"))
+  expect_true(hasName(out, "products_rowid"))
+})
