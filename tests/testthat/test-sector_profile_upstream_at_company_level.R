@@ -112,7 +112,7 @@ test_that("with type ipr, for each company and grouped_by value sums 1 (#216)", 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
   sum <- out |>
-    summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
+    summarize(value_sum = sum(value), .by = cols_by())
 
   expect_true(all(na.omit(sum$value_sum) |> near(1)))
 })
@@ -126,7 +126,7 @@ test_that("with type weo, for each company and grouped_by value sums 1 (#308)", 
   product <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
   out <- any_at_company_level(product)
   sum <- out |>
-    summarize(value_sum = sum(value), .by = c("companies_id", "grouped_by"))
+    summarize(value_sum = sum(value), .by = cols_by())
 
   expect_true(all(na.omit(sum$value_sum) |> near(1)))
 })

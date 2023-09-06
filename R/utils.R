@@ -22,18 +22,6 @@ document_default_value <- function() {
   )
 }
 
-cols_at_all_levels <- function() {
-  c("companies_id", "grouped_by", "risk_category")
-}
-
-cols_at_product_level <- function() {
-  c(cols_at_all_levels(), aka("cluster"), aka("uid"))
-}
-
-cols_at_company_level <- function() {
-  c(cols_at_all_levels(), "value")
-}
-
 #' Get path to child extdata/
 #'
 #' @param path Character. Path to a directory in inst/extdata/.
