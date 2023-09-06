@@ -45,8 +45,11 @@ abort_duplicated_rowid <- function() {
 document_optional_rowid <- function() {
   paste0(
     "Any column in the input datasets ending with `*", rowid(), "` is also ",
-    "passed as is to the output. The exception is any column named exactly ",
-    "`", rowid(), "`", "-- which is a reserved name and throws an error."
+    "passed as is to the output at product level. The exception is any column ",
+    "named exactly `", rowid(), "`", "-- which is a reserved name and throws ",
+    "an error. Note this feature makes no sense at company level because ",
+    "poetntally multiple rows in the input datasets are summarized into a ",
+    "single row in the output at company level."
   )
 }
 
