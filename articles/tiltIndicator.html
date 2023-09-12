@@ -104,6 +104,7 @@ packages.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltToyData/" class="external-link">tiltToyData</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
@@ -319,6 +320,52 @@ come with the tiltToyData package.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   low           0.214</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 unit       high          0.429</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span></code></pre></div>
+<div class="section level3">
+<h3 id="enriching-the-output">Enriching the output<a class="anchor" aria-label="anchor" href="#enriching-the-output"></a>
+</h3>
+<p>All profile functions pass any <code>*rowid</code> column from the
+input to the output at product level. This allows you to enrich the
+default output.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">products_with_rowid</span> <span class="op">&lt;-</span> <span class="va">products</span> <span class="op">|&gt;</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html" class="external-link">rowid_to_column</a></span><span class="op">(</span><span class="st">"products_rowid"</span><span class="op">)</span></span>
+<span><span class="va">products_with_rowid</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 8</span></span></span>
+<span><span class="co">#&gt;   products_rowid co2_footprint tilt_sector    tilt_subsector unit  isic_4digit</span></span>
+<span><span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>              1        176.   Industry       Other          unit         <span style="text-decoration: underline;">2</span>560</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>              2         58.1  Industry       Other          unit         <span style="text-decoration: underline;">2</span>560</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>              3          4.95 Steel &amp; Metals Steel          kg           <span style="text-decoration: underline;">2</span>870</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>              4         12.5  Agriculture    Agriculture    kg           <span style="text-decoration: underline;">1</span>780</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>              5          2.07 Industry       Other          kg           <span style="text-decoration: underline;">2</span>679</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: activity_uuid_product_uuid &lt;chr&gt;, ei_activity_name &lt;chr&gt;</span></span></span>
+<span></span>
+<span><span class="va">result_with_rowid</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">products_with_rowid</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">rich_products_result</span> <span class="op">&lt;-</span> <span class="va">result_with_rowid</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">products_with_rowid</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Joining with `by = join_by(products_rowid, activity_uuid_product_uuid,</span></span>
+<span><span class="co">#&gt; co2_footprint)`</span></span>
+<span></span>
+<span><span class="va">rich_products_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html" class="external-link">relocate</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"sector"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 12</span></span></span>
+<span><span class="co">#&gt;    tilt_sector tilt_subsector companies_id             products_rowid grouped_by</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Industry    Other          fleischerei-stiefsohn_0…              1 all       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Industry    Other          fleischerei-stiefsohn_0…              1 isic_sec  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Industry    Other          fleischerei-stiefsohn_0…              1 tilt_sec  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Industry    Other          fleischerei-stiefsohn_0…              1 unit      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Industry    Other          fleischerei-stiefsohn_0…              1 unit_isic…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Industry    Other          fleischerei-stiefsohn_0…              1 unit_tilt…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Industry    Other          fleischerei-stiefsohn_0…              2 all       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Industry    Other          fleischerei-stiefsohn_0…              2 isic_sec  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Industry    Other          fleischerei-stiefsohn_0…              2 tilt_sec  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Industry    Other          fleischerei-stiefsohn_0…              2 unit      </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: risk_category &lt;chr&gt;, clustered &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   activity_uuid_product_uuid &lt;chr&gt;, co2_footprint &lt;dbl&gt;, unit &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   isic_4digit &lt;dbl&gt;, ei_activity_name &lt;chr&gt;</span></span></span></code></pre></div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
