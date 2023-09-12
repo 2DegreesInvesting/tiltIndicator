@@ -42,8 +42,7 @@ test_that("xctr() with inputs yields the same as *upstream() with a deprecation 
       xctr(companies, inputs),
       emissions_profile_upstream(companies, inputs)
     ),
-    # This is close enough to "emissions_profile_upstream" sinced they are
-    # documented in the same helpfile
+    # This is close enough to "emissions_profile_upstream"
     "emissions_profile"
   )
 })
