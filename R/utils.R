@@ -15,7 +15,7 @@ document_default_value <- function() {
 
   paste0(
     "A data frame with the column `companies_id`, and the nested columns",
-    "`product` and `company` holding the outputs at product and company level.",
+    "`product` and `company` holding the outputs at product and company level. ",
     "Unnesting `product` yields a data frame with at least columns ",
     at_all_levels, ". Unnesting `company` yields a data frame with at least ",
     "columns ", at_company_level, "."
