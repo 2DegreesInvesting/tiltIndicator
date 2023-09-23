@@ -1,5 +1,5 @@
 ---
-title: "Extending the output at product level with columns from the input"
+title: "Extending results at product level with columns from input datasets"
 editor_options: 
   chunk_output_type: console
 ---
@@ -10,6 +10,9 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+This article shows how to extend results at product level with columns from
+input datasets.
 
 ```{r setup}
 library(tiltIndicator)
@@ -30,20 +33,18 @@ companies <- read_csv(toy_emissions_profile_any_companies())
 products <- read_csv(toy_emissions_profile_products()) |>
   rowid_to_column("products_rowid")
 
-result <- emissions_profile(companies, products)
-result
+result_at_product_level <- emissions_profile(companies, products) |>
+  unnest_product()
+result_at_product_level
 ```
 
 The `*rowid` column allows you to extend the output at product level with
 columns from the input.
 
 ```{r}
-result |>
-  unnest_product() |>
-  left_join(
-    select(products, products_rowid, tilt_subsector),
-    by = "products_rowid"
-  ) |>
-  relocate(products_rowid, tilt_subsector)
-```
+extension <- products |> select(matches(c("rowid", "sector", "isic")))
+extension
 
+extended <- result_at_product_level |> left_join(extension)
+extended
+```
