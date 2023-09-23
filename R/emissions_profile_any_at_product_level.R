@@ -34,16 +34,6 @@ epa_check <- function(x) {
   check_rowid(x)
 }
 
-check_matches_name <- function(data, pattern) {
-  if (!matches_name(data, pattern)) {
-    abort(c(
-      glue("The data lacks a column matching the pattern '{pattern}'."),
-      i = "Are you using the correct data?"
-    ))
-  }
-  invisible(data)
-}
-
 check_has_no_na <- function(data, name) {
   if (anyNA(data[[name]])) {
     abort(c(

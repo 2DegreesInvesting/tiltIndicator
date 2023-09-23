@@ -34,24 +34,8 @@ extdata_path <- function(path) {
   system.file("extdata", path, package = "tiltIndicator", mustWork = TRUE)
 }
 
-extract_name <- function(data, pattern) {
-  out <- grep(pattern, names(data), value = TRUE)
-  if (identical(out, character(0))) {
-    out <- ""
-  }
-  out
-}
-
-matches_name <- function(data, pattern) {
-  nzchar(extract_name(data, pattern))
-}
-
 risk_category_levels <- function() {
   c("high", "medium", "low")
-}
-
-get_column <- function(data, pattern) {
-  data[[extract_name(data, pattern)]]
 }
 
 categorize_risk <- function(x, low_threshold, high_threshold, ...) {
