@@ -48,25 +48,6 @@ check_is_character <- function(x) {
   vec_assert(x, character())
 }
 
-epa_benchmarks <- function() {
-  list(
-    "all",
-    "isic_sec",
-    "tilt_sec",
-    "unit",
-    c("unit", "isic_sec"),
-    c("unit", "tilt_sec")
-  )
-}
-
-flat_benchmarks <- function() {
-  map_chr(epa_benchmarks(), ~ paste(.x, collapse = "_"))
-}
-
-rank_proportion <- function(x) {
-  rank(x) / length(x)
-}
-
 find_co2_footprint <- function(co2, pattern = aka("co2footprint")) {
   extract_name(co2, pattern)
 }
