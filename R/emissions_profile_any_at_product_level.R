@@ -11,6 +11,7 @@ emissions_profile_any_at_product_level <- function(companies,
 
   .co2 |>
     emissions_profile_any_add_values_to_categorize() |>
+    rename_benchmark_columns() |>
     add_risk_category(low_threshold, high_threshold) |>
     join_companies(.companies) |>
     epa_select_cols_at_product_level() |>
@@ -24,7 +25,7 @@ epa_check <- function(x) {
   crucial <- c(aka("id"))
   walk(crucial, ~ check_matches_name(x$companies, .x))
 
-  crucial <- c(aka("co2footprint"), aka("tsector"), aka("isic"))
+  crucial <- c(aka("co2footprint"), aka("tsector"), aka("isic"), aka("xunit"))
   walk(crucial, ~ check_matches_name(x$co2, .x))
 
   check_has_no_na(x$co2, find_co2_footprint(x$co2))
