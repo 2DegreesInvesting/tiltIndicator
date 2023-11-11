@@ -18,9 +18,8 @@ emissions_profile_any_add_values_to_categorize <- function(data) {
       .by = all_of(.by)
     )
   }
-  # browser()
 
-  benchmarks <- set_names(epa_benchmarks(), flat_benchmarks())
+  # benchmarks <- set_names(epa_benchmarks(), flat_benchmarks())
   epa_benchmarks <- function(data) {
     list(
       "all",
