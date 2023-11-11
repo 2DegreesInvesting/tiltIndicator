@@ -2,11 +2,7 @@ prepare_co2 <- function(data, low_threshold, high_threshold) {
   data |>
     mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
     distinct() |>
-    rename(
-      tilt_sec = ends_with(aka("tsector")),
-      unit = ends_with(aka("xunit")),
-      isic_sec = ends_with(aka("isic"))
-    )
+    rename_benchmark_columns()
 }
 
 sanitize_co2 <- function(co2) {
