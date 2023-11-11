@@ -10,7 +10,7 @@ emissions_profile_any_at_product_level <- function(companies,
   .co2 <- prepare_co2(co2, low_threshold, high_threshold)
 
   .co2 |>
-    epa_add_values_to_categorize() |>
+    emissions_profile_any_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
     join_companies(.companies) |>
     epa_select_cols_at_product_level() |>
