@@ -10,7 +10,7 @@ emissions_profile_any_at_product_level <- function(companies,
   .co2 <- prepare_co2(co2, low_threshold, high_threshold)
 
   .co2 |>
-    epa_add_values_to_categorize() |>
+    emissions_profile_any_add_values_to_categorize() |>
     add_risk_category(low_threshold, high_threshold) |>
     join_companies(.companies) |>
     epa_select_cols_at_product_level() |>
@@ -46,39 +46,6 @@ check_has_no_na <- function(data, name) {
 
 check_is_character <- function(x) {
   vec_assert(x, character())
-}
-
-epa_add_values_to_categorize <- function(data) {
-  add_rank <- function(data, .by) {
-    if (identical(.by, "all")) .by <- NULL
-    mutate(
-      data,
-      values_to_categorize = rank_proportion(.data[[find_co2_footprint(data)]]),
-      .by = all_of(.by)
-    )
-  }
-
-  benchmarks <- set_names(epa_benchmarks(), flat_benchmarks())
-  map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
-}
-
-epa_benchmarks <- function() {
-  list(
-    "all",
-    "isic_sec",
-    "tilt_sec",
-    "unit",
-    c("unit", "isic_sec"),
-    c("unit", "tilt_sec")
-  )
-}
-
-flat_benchmarks <- function() {
-  map_chr(epa_benchmarks(), ~ paste(.x, collapse = "_"))
-}
-
-rank_proportion <- function(x) {
-  rank(x) / length(x)
 }
 
 find_co2_footprint <- function(co2, pattern = aka("co2footprint")) {
