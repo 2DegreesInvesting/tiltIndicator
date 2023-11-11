@@ -24,7 +24,7 @@ epa_check <- function(x) {
   crucial <- c(aka("id"))
   walk(crucial, ~ check_matches_name(x$companies, .x))
 
-  crucial <- c(aka("co2footprint"), aka("tsector"), aka("isic"))
+  crucial <- c(aka("co2footprint"), aka("tsector"), aka("isic"), aka("xunit"))
   walk(crucial, ~ check_matches_name(x$co2, .x))
 
   check_has_no_na(x$co2, find_co2_footprint(x$co2))
