@@ -7,7 +7,6 @@ rank_proportion <- function(x) {
   rank(x) / length(x)
 }
 
-
 epa_benchmarks <- function() {
   list(
     "all",
