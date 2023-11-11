@@ -26,7 +26,7 @@ add_rank <- function(data, .by) {
   if (identical(.by, "all")) .by <- NULL
   mutate(
     data,
-    values_to_categorize = rank_proportion(.data[[find_co2_footprint(data)]]),
+    values_to_categorize = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
     .by = all_of(.by)
   )
 }
