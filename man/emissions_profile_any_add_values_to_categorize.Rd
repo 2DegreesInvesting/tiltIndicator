@@ -13,7 +13,7 @@ upstream-products (a.k.a. inputs).}
 }
 \value{
 The input data frame with the additional columns \code{grouped_by} and
-\code{values_to_categorize}.
+\code{values_to_categorize} and one row per benchmark per company.
 }
 \description{
 Add values to categorize
