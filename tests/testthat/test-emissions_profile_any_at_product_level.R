@@ -283,3 +283,27 @@ test_that("`*rowid` columns are passed through inputs with duplicates", {
   expect_true(hasName(out, "companies_rowid"))
   expect_true(hasName(out, "products_rowid"))
 })
+
+test_that("uses `co2$values_to_categorize` if present (#603)", {
+  companies <- example_companies()
+  co2 <- example_products(
+    !!aka("uid") := c("a", "b"),
+    !!aka("co2footprint") := c(1, 2)
+  )
+
+  lacks_values_to_categorize <- !hasName(co2, "values_to_categorize")
+  stopifnot(lacks_values_to_categorize)
+  out1 <- emissions_profile(companies, co2)
+  using_computed_values <- unique(unnest_product(out1)$risk_category)
+
+  pre_computed <- emissions_profile_any_add_values_to_categorize(co2)
+  has_values_to_categorize <- hasName(pre_computed, "values_to_categorize")
+  stopifnot(has_values_to_categorize)
+
+  yields_a_different_risk_category <- 999
+  pre_computed$values_to_categorize <- yields_a_different_risk_category
+  out2 <- emissions_profile(companies, pre_computed)
+  using_pre_computed_values <- unique(unnest_product(out2)$risk_category)
+
+  expect_false(identical(using_computed_values, using_pre_computed_values))
+})
