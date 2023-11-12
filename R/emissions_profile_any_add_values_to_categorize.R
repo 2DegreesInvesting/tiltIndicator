@@ -1,3 +1,27 @@
+#' Add values to categorize
+#'
+#' @param data A "co2-like" data frame -- i.e. containing products or
+#'   upstream-products (a.k.a. inputs).
+#'
+#' @family pre-processing helpers
+#'
+#' @return The input data frame with the additional column
+#'   `values_to_categorize`.
+#'
+#' @export
+#'
+#' @examples
+#' library(tiltToyData)
+#' library(readr, warn.conflicts = FALSE)
+#' options(readr.show_col_types = FALSE)
+#'
+#' companies <- read_csv(toy_emissions_profile_any_companies())
+#'
+#' products <- read_csv(toy_emissions_profile_products())
+#' products |> emissions_profile_any_add_values_to_categorize()
+#'
+#' inputs <- read_csv(toy_emissions_profile_upstream_products())
+#' inputs |> emissions_profile_any_add_values_to_categorize()
 emissions_profile_any_add_values_to_categorize <- function(data) {
   benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
   map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
