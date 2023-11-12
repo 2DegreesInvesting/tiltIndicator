@@ -5,8 +5,8 @@
 #'
 #' @family pre-processing helpers
 #'
-#' @return The input data frame with the additional column
-#'   `values_to_categorize`.
+#' @return The input data frame with the additional columns `grouped_by` and
+#'   `values_to_categorize` and one row per benchmark per company.
 #'
 #' @export
 #'

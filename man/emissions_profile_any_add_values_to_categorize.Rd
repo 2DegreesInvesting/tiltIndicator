@@ -12,7 +12,7 @@ emissions_profile_any_add_values_to_categorize(data)
 upstream-products (a.k.a. inputs).}
 }
 \value{
-The input data frame with the additional column
+The input data frame with the additional columns \code{grouped_by} and
 \code{values_to_categorize}.
 }
 \description{
