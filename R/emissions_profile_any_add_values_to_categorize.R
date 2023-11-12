@@ -5,8 +5,8 @@
 #'
 #' @family pre-processing helpers
 #'
-#' @return The input data frame with the additional column
-#'   `values_to_categorize`.
+#' @return The input data frame with the additional columns `grouped_by` and
+#'   `values_to_categorize` and one row per benchmark per company.
 #'
 #' @export
 #'
@@ -23,12 +23,19 @@
 #' inputs <- read_csv(toy_emissions_profile_upstream_products())
 #' inputs |> emissions_profile_any_add_values_to_categorize()
 emissions_profile_any_add_values_to_categorize <- function(data) {
+  check_emissions_profile_any_add_values_to_categorize(data)
+
   if (hasName(data, "values_to_categorize")) {
     return(data)
   }
 
   benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
   map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
+}
+
+check_emissions_profile_any_add_values_to_categorize <- function(data) {
+  crucial <- c(aka("tsector"), aka("xunit"), aka("isic"), aka("co2footprint"))
+  walk(crucial, \(pattern) check_matches_name(data, pattern))
 }
 
 rank_proportion <- function(x) {

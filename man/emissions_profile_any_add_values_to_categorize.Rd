@@ -12,8 +12,8 @@ emissions_profile_any_add_values_to_categorize(data)
 upstream-products (a.k.a. inputs).}
 }
 \value{
-The input data frame with the additional column
-\code{values_to_categorize}.
+The input data frame with the additional columns \code{grouped_by} and
+\code{values_to_categorize} and one row per benchmark per company.
 }
 \description{
 Add values to categorize
