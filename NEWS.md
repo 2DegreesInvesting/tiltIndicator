@@ -1,4 +1,14 @@
+# tiltIndicator (development version)
+
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# tiltIndicator 0.0.0.9095
+
+* The values of `grouped_by` are now less surprising (see related principle)
+(#601). They now simply refer to the full name of the corresponding columns in
+the "co2" dataset (products or inputs) passed to the `emissions_profile*()`
+functions. For example, passing a column `products$tilt_sector` now yields the
+value "tilt\_sector" in `group_by` -- which before got cropped to "tilt\_sec".
 
 # tiltIndicator 0.0.0.9094
 

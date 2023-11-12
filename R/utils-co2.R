@@ -1,8 +1,7 @@
 prepare_co2 <- function(data, low_threshold, high_threshold) {
   data |>
     mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
-    distinct() |>
-    rename_benchmark_columns()
+    distinct()
 }
 
 sanitize_co2 <- function(co2) {
