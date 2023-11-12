@@ -23,6 +23,10 @@
 #' inputs <- read_csv(toy_emissions_profile_upstream_products())
 #' inputs |> emissions_profile_any_add_values_to_categorize()
 emissions_profile_any_add_values_to_categorize <- function(data) {
+  if (hasName(data, "values_to_categorize")) {
+    return(data)
+  }
+
   benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
   map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
 }
