@@ -32,3 +32,23 @@ test_that("with two companies, adds one row per benchmark per company", {
   number_of_benchmarks <- length(flat_benchmarks(co2))
   expect_equal(nrow(out), 2 * number_of_benchmarks)
 })
+
+test_that("without crucial columns errors gracefully", {
+  co2 <- example_products()
+
+  crucial <- aka("tsector")
+  bad <- select(co2, -all_of(crucial))
+  expect_error(emissions_profile_any_add_values_to_categorize(bad), crucial)
+
+  crucial <- aka("xunit")
+  bad <- select(co2, -all_of(crucial))
+  expect_error(emissions_profile_any_add_values_to_categorize(bad), crucial)
+
+  crucial <- aka("isic")
+  bad <- select(co2, -all_of(crucial))
+  expect_error(emissions_profile_any_add_values_to_categorize(bad), crucial)
+
+  crucial <- aka("co2footprint")
+  bad <- select(co2, -all_of(crucial))
+  expect_error(emissions_profile_any_add_values_to_categorize(bad), crucial)
+})

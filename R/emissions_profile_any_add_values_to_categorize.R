@@ -23,6 +23,9 @@
 #' inputs <- read_csv(toy_emissions_profile_upstream_products())
 #' inputs |> emissions_profile_any_add_values_to_categorize()
 emissions_profile_any_add_values_to_categorize <- function(data) {
+  crucial <- c(aka("tsector"), aka("xunit"), aka("isic"), aka("co2footprint"))
+  walk(crucial, \(pattern) check_matches_name(data, pattern))
+
   benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
   map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
 }
