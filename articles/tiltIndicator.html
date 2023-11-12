@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tiltIndicator</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9094</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9095</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -243,14 +243,14 @@ come with the tiltToyData package.</p>
 <span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… tilt_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… isic_4dig… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… tilt_sect… high          stove     0a242b09-772a-5edf-8e…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… isic_sec   medium        oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sec   medium        oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… isic_4dig… medium        oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sect… medium        oven      be06d25c-73dc-55fb-96…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
@@ -258,18 +258,18 @@ come with the tiltToyData package.</p>
 <span></span>
 <span><span class="va">result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
-<span><span class="co">#&gt;    companies_id                             grouped_by risk_category value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 all        high            1  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 all        medium          0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 all        low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 isic_sec   high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 isic_sec   medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 isic_sec   low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 unit       high            0.5</span></span>
+<span><span class="co">#&gt;    companies_id                             grouped_by  risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 all         high            1  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 all         medium          0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 all         low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 isic_4digit high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 isic_4digit medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 isic_4digit low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 tilt_sector high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 tilt_sector medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 tilt_sector low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 unit        high            0.5</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span>
 <span></span>
 <span><span class="va">result_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile_upstream.html">emissions_profile_upstream</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products_upstream</span><span class="op">)</span></span>
@@ -298,8 +298,8 @@ come with the tiltToyData package.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… all        low           stove     0a242b09-772a-5edf-8e…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… all        low           stove     0a242b09-772a-5edf-8e…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… input_isi… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… input_isi… high          stove     0a242b09-772a-5edf-8e…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 309 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: input_activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
@@ -307,18 +307,18 @@ come with the tiltToyData package.</p>
 <span></span>
 <span><span class="va">result_upstream</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
-<span><span class="co">#&gt;    companies_id                             grouped_by risk_category value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 all        high          0.571</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 all        medium        0.214</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 all        low           0.214</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 isic_sec   high          0.357</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 isic_sec   medium        0.357</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 isic_sec   low           0.286</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   high          0.429</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   medium        0.357</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 tilt_sec   low           0.214</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 unit       high          0.429</span></span>
+<span><span class="co">#&gt;    companies_id                             grouped_by       risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 all              high          0.571</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 all              medium        0.214</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 all              low           0.214</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 input_isic_4dig… high          0.357</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 input_isic_4dig… medium        0.357</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 input_isic_4dig… low           0.286</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 input_tilt_sect… high          0.429</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 input_tilt_sect… medium        0.357</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 input_tilt_sect… low           0.214</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 input_unit       high          0.429</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span></code></pre></div>
 <div class="section level3">
 <h3 id="enriching-the-output">Enriching the output<a class="anchor" aria-label="anchor" href="#enriching-the-output"></a>
@@ -352,14 +352,14 @@ default output.</p>
 <span><span class="co">#&gt;    tilt_sector tilt_subsector companies_id             products_rowid grouped_by</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Industry    Other          fleischerei-stiefsohn_0…              1 all       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Industry    Other          fleischerei-stiefsohn_0…              1 isic_sec  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Industry    Other          fleischerei-stiefsohn_0…              1 tilt_sec  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Industry    Other          fleischerei-stiefsohn_0…              1 isic_4dig…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Industry    Other          fleischerei-stiefsohn_0…              1 tilt_sect…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Industry    Other          fleischerei-stiefsohn_0…              1 unit      </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Industry    Other          fleischerei-stiefsohn_0…              1 unit_isic…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Industry    Other          fleischerei-stiefsohn_0…              1 unit_tilt…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Industry    Other          fleischerei-stiefsohn_0…              2 all       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Industry    Other          fleischerei-stiefsohn_0…              2 isic_sec  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Industry    Other          fleischerei-stiefsohn_0…              2 tilt_sec  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Industry    Other          fleischerei-stiefsohn_0…              2 isic_4dig…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Industry    Other          fleischerei-stiefsohn_0…              2 tilt_sect…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Industry    Other          fleischerei-stiefsohn_0…              2 unit      </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: risk_category &lt;chr&gt;, clustered &lt;chr&gt;,</span></span></span>
