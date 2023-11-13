@@ -287,7 +287,7 @@ test_that("`*rowid` columns are passed through inputs with duplicates", {
   expect_true(hasName(out, "products_rowid"))
 })
 
-test_that("uses `co2$values_to_categorize` if present (#603)", {
+test_that("with products, uses `co2$values_to_categorize` if present (#603)", {
   companies <- example_companies()
   co2 <- example_products(!!aka("uid") := c("a", "b"))
   co2[extract_name(co2, aka("co2footprint"))] <- 1:2
@@ -309,9 +309,11 @@ test_that("uses `co2$values_to_categorize` if present (#603)", {
   expect_false(identical(using_computed_values, using_pre_computed_values))
 })
 
-test_that("uses `co2$values_to_categorize` if present (#603)", {
+test_that("with inputs, uses `co2$values_to_categorize` if present (#603)", {
   companies <- example_companies()
   co2 <- example_inputs(!!aka("uid") := c("a", "b"))
+  # This is wrong: names(example_inputs(!!aka("co2footprint") := 1:2))
+  # It yields two columns: `co2_footprint` AND `input_co2_footprint`
   co2[extract_name(co2, aka("co2footprint"))] <- 1:2
 
   lacks_values_to_categorize <- !hasName(co2, "values_to_categorize")
