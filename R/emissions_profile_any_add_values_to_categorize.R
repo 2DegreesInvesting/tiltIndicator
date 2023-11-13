@@ -28,13 +28,16 @@ emissions_profile_any_add_values_to_categorize <- function(data) {
   related_cols <- c("grouped_by", "values_to_categorize")
 
   if (hasName(data, "values_to_categorize")) {
-    check_crucial_names(data, "grouped_by")
-    return(move_left(data, related_cols))
+    out <- data |>
+      check_crucial_names("grouped_by") |>
+      relocate(all_of(related_cols))
+  } else {
+    benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
+    out <- map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by") |>
+      relocate(all_of(related_cols))
   }
 
-  benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
-  map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by") |>
-    move_left(related_cols)
+  out
 }
 
 move_left <- function(data, cols) {
