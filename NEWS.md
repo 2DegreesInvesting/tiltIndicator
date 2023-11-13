@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9097
+
+* `emissions_profile*()` uses `co2$values_to_categorize` if present (#605).
+
 # tiltIndicator 0.0.0.9096
 
 * New pre-processing helper `emissions_profile_any_add_values_to_categorize()`
