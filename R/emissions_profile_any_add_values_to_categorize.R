@@ -25,12 +25,20 @@
 emissions_profile_any_add_values_to_categorize <- function(data) {
   check_emissions_profile_any_add_values_to_categorize(data)
 
+  related_cols <- c("grouped_by", "values_to_categorize")
+
   if (hasName(data, "values_to_categorize")) {
-    return(data)
+    check_crucial_names(data, "grouped_by")
+    return(move_left(data, related_cols))
   }
 
   benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
-  map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
+  map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by") |>
+    move_left(related_cols)
+}
+
+move_left <- function(data, cols) {
+  relocate(data, all_of(cols))
 }
 
 check_emissions_profile_any_add_values_to_categorize <- function(data) {
