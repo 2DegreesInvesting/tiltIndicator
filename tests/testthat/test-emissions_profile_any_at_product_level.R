@@ -289,10 +289,8 @@ test_that("`*rowid` columns are passed through inputs with duplicates", {
 
 test_that("uses `co2$values_to_categorize` if present (#603)", {
   companies <- example_companies()
-  co2 <- example_products(
-    !!aka("uid") := c("a", "b"),
-    !!aka("co2footprint") := c(1, 2)
-  )
+  co2 <- example_products(!!aka("uid") := c("a", "b"))
+  co2[extract_name(co2, aka("co2footprint"))] <- 1:2
 
   lacks_values_to_categorize <- !hasName(co2, "values_to_categorize")
   stopifnot(lacks_values_to_categorize)
