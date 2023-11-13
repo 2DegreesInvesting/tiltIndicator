@@ -36,10 +36,6 @@ emissions_profile_any_add_values_to_categorize <- function(data) {
   relocate(out, all_of(related_cols))
 }
 
-move_left <- function(data, cols) {
-  relocate(data, all_of(cols))
-}
-
 check_emissions_profile_any_add_values_to_categorize <- function(data) {
   crucial <- c(aka("tsector"), aka("xunit"), aka("isic"), aka("co2footprint"))
   walk(crucial, \(pattern) check_matches_name(data, pattern))
