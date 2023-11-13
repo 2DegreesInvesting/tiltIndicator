@@ -15,6 +15,15 @@ test_that("adds columns `grouped_by` and `values_to_categorize`", {
   expect_equal(setdiff(names(out), names(co2)), new_names)
 })
 
+test_that("adds columns `grouped_by` and `values_to_categorize` to the left", {
+  co2 <- example_products()
+
+  out <- emissions_profile_any_add_values_to_categorize(co2)
+
+  new_names <- c("grouped_by", "values_to_categorize")
+  expect_equal(names(out)[1:2], new_names)
+})
+
 test_that("with one company, adds one row per benchmark per company", {
   co2 <- example_products()
 
@@ -51,4 +60,11 @@ test_that("without crucial columns errors gracefully", {
   crucial <- aka("co2footprint")
   bad <- select(co2, -all_of(crucial))
   expect_error(emissions_profile_any_add_values_to_categorize(bad), crucial)
+})
+
+test_that("if `values_to_categorize` is present, `grouped_by` must be present", {
+  co2 <- example_products(values_to_categorize = 1)
+
+  crucial <- "grouped_by"
+  expect_error(emissions_profile_any_add_values_to_categorize(co2), crucial)
 })

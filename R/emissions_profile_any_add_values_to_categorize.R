@@ -26,11 +26,14 @@ emissions_profile_any_add_values_to_categorize <- function(data) {
   check_emissions_profile_any_add_values_to_categorize(data)
 
   if (hasName(data, "values_to_categorize")) {
-    return(data)
+    out <- check_crucial_names(data, "grouped_by")
+  } else {
+    benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
+    out <- map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
   }
 
-  benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
-  map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
+  related_cols <- c("grouped_by", "values_to_categorize")
+  relocate(out, all_of(related_cols))
 }
 
 check_emissions_profile_any_add_values_to_categorize <- function(data) {
