@@ -64,6 +64,7 @@ test_that("without crucial columns errors gracefully", {
 
 test_that("if `values_to_categorize` is present, `grouped_by` must be present", {
   co2 <- example_products(values_to_categorize = 1)
+
   crucial <- "grouped_by"
   expect_error(emissions_profile_any_add_values_to_categorize(co2), crucial)
 })
