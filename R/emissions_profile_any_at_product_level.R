@@ -23,8 +23,6 @@ epa_check <- function(x) {
 
   crucial <- c(aka("id"))
   walk(crucial, ~ check_matches_name(x$companies, .x))
-  # FIXME: When the column isn't present I get the empty string.
-  # How did I solve this when co2 is proucts?
   crucial <- c(
     aka("co2footprint"),
     aka("tsector"),
