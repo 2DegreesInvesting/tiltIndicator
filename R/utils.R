@@ -105,7 +105,7 @@ abort_missing_names <- function(missing_names) {
 
 add_risk_category <- function(data, low_threshold, high_threshold, ...) {
   mutate(data, risk_category = categorize_risk(
-    .data$values_to_categorize, .data$low_threshold, .data$high_threshold, ...
+    .data$profile_ranking, .data$low_threshold, .data$high_threshold, ...
   ))
 }
 

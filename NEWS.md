@@ -2,16 +2,16 @@
 
 # tiltIndicator 0.0.0.9098
 
-* `emissions_profile_any_add_values_to_categorize()` now relocates the new
+* `emissions_profile_any_add_profile_ranking()` now relocates the new
 columns to the left.
 
 # tiltIndicator 0.0.0.9097
 
-* `emissions_profile*()` uses `co2$values_to_categorize` if present (#605).
+* `emissions_profile*()` uses `co2$profile_ranking` if present (#605).
 
 # tiltIndicator 0.0.0.9096
 
-* New pre-processing helper `emissions_profile_any_add_values_to_categorize()`
+* New pre-processing helper `emissions_profile_any_add_profile_ranking()`
 (#602).
 
 # tiltIndicator 0.0.0.9095

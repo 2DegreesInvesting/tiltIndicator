@@ -39,10 +39,10 @@ prepare_scenarios <- function(data, low_threshold, high_threshold) {
   data |>
     mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
     distinct() |>
-    rename(values_to_categorize = aka("co2reduce"))
+    rename(profile_ranking = aka("co2reduce"))
 }
 
-spa_add_values_to_categorize <- function(data, scenarios) {
+spa_add_profile_ranking <- function(data, scenarios) {
   left_join(
     data, scenarios,
     by = c(aka("scenario_type"), aka("xsector"), aka("xsubsector")),
