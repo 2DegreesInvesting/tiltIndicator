@@ -39,7 +39,7 @@ sector_profile_any_prune_companies(companies)
 }
 \seealso{
 Other pre-processing helpers: 
-\code{\link{emissions_profile_any_add_values_to_categorize}()},
+\code{\link{emissions_profile_any_compute_profile_ranking}()},
 \code{\link{sector_profile_any_pivot_type_sector_subsector}()},
 \code{\link{sector_profile_any_prepare_scenario}()}
 }

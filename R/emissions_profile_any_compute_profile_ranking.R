@@ -6,7 +6,7 @@
 #' @family pre-processing helpers
 #'
 #' @return The input data frame with the additional columns `grouped_by` and
-#'   `values_to_categorize` and one row per benchmark per company.
+#'   `profile_ranking` and one row per benchmark per company.
 #'
 #' @export
 #'
@@ -18,25 +18,25 @@
 #' companies <- read_csv(toy_emissions_profile_any_companies())
 #'
 #' products <- read_csv(toy_emissions_profile_products())
-#' products |> emissions_profile_any_add_values_to_categorize()
+#' products |> emissions_profile_any_compute_profile_ranking()
 #'
 #' inputs <- read_csv(toy_emissions_profile_upstream_products())
-#' inputs |> emissions_profile_any_add_values_to_categorize()
-emissions_profile_any_add_values_to_categorize <- function(data) {
-  check_emissions_profile_any_add_values_to_categorize(data)
+#' inputs |> emissions_profile_any_compute_profile_ranking()
+emissions_profile_any_compute_profile_ranking <- function(data) {
+  check_emissions_profile_any_compute_profile_ranking(data)
 
-  if (hasName(data, "values_to_categorize")) {
+  if (hasName(data, "profile_ranking")) {
     out <- check_crucial_names(data, "grouped_by")
   } else {
     benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
     out <- map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
   }
 
-  related_cols <- c("grouped_by", "values_to_categorize")
+  related_cols <- c("grouped_by", "profile_ranking")
   relocate(out, all_of(related_cols))
 }
 
-check_emissions_profile_any_add_values_to_categorize <- function(data) {
+check_emissions_profile_any_compute_profile_ranking <- function(data) {
   crucial <- c(aka("tsector"), aka("xunit"), aka("isic"), aka("co2footprint"))
   walk(crucial, \(pattern) check_matches_name(data, pattern))
 }
@@ -64,7 +64,7 @@ add_rank <- function(data, .by) {
   if (identical(.by, "all")) .by <- NULL
   mutate(
     data,
-    values_to_categorize = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
+    profile_ranking = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
     .by = all_of(.by)
   )
 }
