@@ -18,12 +18,12 @@
 #' companies <- read_csv(toy_emissions_profile_any_companies())
 #'
 #' products <- read_csv(toy_emissions_profile_products())
-#' products |> emissions_profile_any_add_profile_ranking()
+#' products |> emissions_profile_any_compute_profile_ranking()
 #'
 #' inputs <- read_csv(toy_emissions_profile_upstream_products())
-#' inputs |> emissions_profile_any_add_profile_ranking()
-emissions_profile_any_add_profile_ranking <- function(data) {
-  check_emissions_profile_any_add_profile_ranking(data)
+#' inputs |> emissions_profile_any_compute_profile_ranking()
+emissions_profile_any_compute_profile_ranking <- function(data) {
+  check_emissions_profile_any_compute_profile_ranking(data)
 
   if (hasName(data, "profile_ranking")) {
     out <- check_crucial_names(data, "grouped_by")
@@ -36,7 +36,7 @@ emissions_profile_any_add_profile_ranking <- function(data) {
   relocate(out, all_of(related_cols))
 }
 
-check_emissions_profile_any_add_profile_ranking <- function(data) {
+check_emissions_profile_any_compute_profile_ranking <- function(data) {
   crucial <- c(aka("tsector"), aka("xunit"), aka("isic"), aka("co2footprint"))
   walk(crucial, \(pattern) check_matches_name(data, pattern))
 }

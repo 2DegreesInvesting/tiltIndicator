@@ -11,7 +11,7 @@ sector_profile_upstream_at_product_level <- function(companies,
   .inputs <- prepare_inputs(inputs)
 
   .inputs |>
-    spa_add_profile_ranking(.scenarios) |>
+    spa_compute_profile_ranking(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     join_companies(remove_col_scenario(.companies)) |>
     spa_polish_output_at_product_level() |>

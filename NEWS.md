@@ -2,7 +2,7 @@
 
 # tiltIndicator 0.0.0.9098
 
-* `emissions_profile_any_add_profile_ranking()` now relocates the new
+* `emissions_profile_any_compute_profile_ranking()` now relocates the new
 columns to the left.
 
 # tiltIndicator 0.0.0.9097
@@ -11,7 +11,7 @@ columns to the left.
 
 # tiltIndicator 0.0.0.9096
 
-* New pre-processing helper `emissions_profile_any_add_profile_ranking()`
+* New pre-processing helper `emissions_profile_any_compute_profile_ranking()`
 (#602).
 
 # tiltIndicator 0.0.0.9095

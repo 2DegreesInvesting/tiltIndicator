@@ -297,7 +297,7 @@ test_that("with products, uses `co2$profile_ranking` if present (#603)", {
   out1 <- emissions_profile_any_at_product_level(companies, co2)
   using_computed_values <- unique(out1$risk_category)
 
-  pre_computed <- emissions_profile_any_add_profile_ranking(co2)
+  pre_computed <- emissions_profile_any_compute_profile_ranking(co2)
   has_profile_ranking <- hasName(pre_computed, "profile_ranking")
   stopifnot(has_profile_ranking)
 
@@ -321,7 +321,7 @@ test_that("with inputs, uses `co2$profile_ranking` if present (#603)", {
   out1 <- emissions_profile_any_at_product_level(companies, co2)
   using_computed_values <- unique(out1$risk_category)
 
-  pre_computed <- emissions_profile_any_add_profile_ranking(co2)
+  pre_computed <- emissions_profile_any_compute_profile_ranking(co2)
   has_profile_ranking <- hasName(pre_computed, "profile_ranking")
   stopifnot(has_profile_ranking)
 

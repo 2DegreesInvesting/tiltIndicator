@@ -9,7 +9,7 @@ sector_profile_at_product_level <- function(companies,
   .scenarios <- prepare_scenarios(scenarios, low_threshold, high_threshold)
 
   .companies |>
-    spa_add_profile_ranking(.scenarios) |>
+    spa_compute_profile_ranking(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     spa_polish_output_at_product_level() |>
     sp_select_cols_at_product_level() |>
