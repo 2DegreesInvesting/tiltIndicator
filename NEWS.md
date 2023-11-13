@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9098
+
+* `emissions_profile_any_add_values_to_categorize()` now relocates the new
+columns to the left.
+
 # tiltIndicator 0.0.0.9097
 
 * `emissions_profile*()` uses `co2$values_to_categorize` if present (#605).
