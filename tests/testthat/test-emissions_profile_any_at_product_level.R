@@ -141,6 +141,8 @@ test_that("if the 'isic' column hasn't 4 digits throws an errors ", {
 })
 
 test_that("a 0-row `co2` yields an error", {
+  companies <- example_companies()
+  products <- example_products()
   expect_error(
     emissions_profile_any_at_product_level(companies[0L, ], products),
     "companies.*can't have 0-row"
@@ -156,8 +158,9 @@ test_that("a 0-row `co2` yields an error", {
   )
 })
 
-
 test_that("a 0-row `companies` yields an error", {
+  companies <- example_companies()
+  inputs <- example_inputs()
   expect_error(
     emissions_profile_any_at_product_level(companies[0L, ], inputs),
     "companies.*can't have 0-row"
@@ -282,4 +285,50 @@ test_that("`*rowid` columns are passed through inputs with duplicates", {
   out <- emissions_profile_any_at_product_level(companies, products)
   expect_true(hasName(out, "companies_rowid"))
   expect_true(hasName(out, "products_rowid"))
+})
+
+test_that("with products, uses `co2$values_to_categorize` if present (#603)", {
+  companies <- example_companies()
+  co2 <- example_products(!!aka("uid") := c("a", "b"))
+  co2[extract_name(co2, aka("co2footprint"))] <- 1:2
+
+  lacks_values_to_categorize <- !hasName(co2, "values_to_categorize")
+  stopifnot(lacks_values_to_categorize)
+  out1 <- emissions_profile_any_at_product_level(companies, co2)
+  using_computed_values <- unique(out1$risk_category)
+
+  pre_computed <- emissions_profile_any_add_values_to_categorize(co2)
+  has_values_to_categorize <- hasName(pre_computed, "values_to_categorize")
+  stopifnot(has_values_to_categorize)
+
+  yields_a_different_risk_category <- 999
+  pre_computed$values_to_categorize <- yields_a_different_risk_category
+  out2 <- emissions_profile_any_at_product_level(companies, pre_computed)
+  using_pre_computed_values <- unique(out2$risk_category)
+
+  expect_false(identical(using_computed_values, using_pre_computed_values))
+})
+
+test_that("with inputs, uses `co2$values_to_categorize` if present (#603)", {
+  companies <- example_companies()
+  co2 <- example_inputs(!!aka("uid") := c("a", "b"))
+  # This is wrong: names(example_inputs(!!aka("co2footprint") := 1:2))
+  # It yields two columns: `co2_footprint` AND `input_co2_footprint`
+  co2[extract_name(co2, aka("co2footprint"))] <- 1:2
+
+  lacks_values_to_categorize <- !hasName(co2, "values_to_categorize")
+  stopifnot(lacks_values_to_categorize)
+  out1 <- emissions_profile_any_at_product_level(companies, co2)
+  using_computed_values <- unique(out1$risk_category)
+
+  pre_computed <- emissions_profile_any_add_values_to_categorize(co2)
+  has_values_to_categorize <- hasName(pre_computed, "values_to_categorize")
+  stopifnot(has_values_to_categorize)
+
+  yields_a_different_risk_category <- 999
+  pre_computed$values_to_categorize <- yields_a_different_risk_category
+  out2 <- emissions_profile_any_at_product_level(companies, pre_computed)
+  using_pre_computed_values <- unique(out2$risk_category)
+
+  expect_false(identical(using_computed_values, using_pre_computed_values))
 })
