@@ -14,7 +14,7 @@ emissions_profile_any_at_product_level <- function(companies,
     add_risk_category(low_threshold, high_threshold) |>
     join_companies(.companies) |>
     epa_select_cols_at_product_level() |>
-    polish_output(setdiff(cols_at_product_level(), "companies_id"))
+    polish_output(cols_na_at_product_level())
 }
 
 epa_check <- function(x) {
