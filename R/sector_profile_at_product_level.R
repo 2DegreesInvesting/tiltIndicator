@@ -13,7 +13,7 @@ sector_profile_at_product_level <- function(companies,
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     spa_polish_output_at_product_level() |>
     sp_select_cols_at_product_level() |>
-    # FIXME DRY
+    # FIXME DRY as cols_not_na_at_product_level()
     polish_output(setdiff(cols_at_product_level(), c("companies_id", "clustered")))
 }
 
