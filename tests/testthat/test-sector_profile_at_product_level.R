@@ -220,8 +220,8 @@ test_that("`*rowid` columns are passed through inputs with duplicates", {
 })
 
 test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", {
-  companies <- example_companies(type = NA)
-  scenarios <- example_scenarios()
+  companies <- example_companies()
+  scenarios <- example_scenarios(!!aka("co2reduce") := NA)
 
   out <- sector_profile_at_product_level(companies, scenarios)
 
