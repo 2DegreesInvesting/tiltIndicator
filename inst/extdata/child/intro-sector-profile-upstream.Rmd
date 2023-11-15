@@ -1,4 +1,4 @@
-The Input Product Sector Risk Indicator assesses the transition risk of the
+The indicator "sector profile upstream" assesses the transition risk of the
 input products based on the sector's emissions targets the input product belongs
 to. This indicator can be aggregated on company level and as such inform about
 the supply chain risk of an SME, based on its inputs’ transition risk. The
