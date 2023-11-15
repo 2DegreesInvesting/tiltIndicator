@@ -218,3 +218,10 @@ test_that("`*rowid` columns are passed through inputs with duplicates", {
   expect_true(hasName(out, "companies_rowid"))
   expect_true(hasName(out, "scenarios_rowid"))
 })
+
+test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", {
+  companies <- example_companies(type = NA)
+  scenarios <- example_scenarios()
+  out <- sector_profile(companies, scenarios) |> unnest_product()
+  expect_false(is.na(out$clustered))
+})
