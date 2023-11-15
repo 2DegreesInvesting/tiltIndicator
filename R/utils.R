@@ -129,7 +129,7 @@ is_first <- function(x) {
   seq_along(x) == 1L
 }
 
-polish_output <- function(data, level_cols = NULL, na_cols = setdiff(level_cols, "companies_id")) {
+polish_output <- function(data, level_cols = NULL, na_cols) {
   data |>
     prune_unmatched("risk_category", .by = "companies_id") |>
     spread_na_across(na_cols, from = "risk_category") |>
