@@ -335,18 +335,14 @@ test_that("with inputs, uses `co2$profile_ranking` if present (#603)", {
 
 test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", {
   companies <- example_companies(!!aka("uid") := NA)
-
   products <- example_products()
   out <- emissions_profile_any_at_product_level(companies, products)
-
   expect_true(is.na(out$risk_category))
   expect_false(is.na(out$clustered))
 
   companies <- example_companies(!!aka("uid") := NA)
-
   inputs <- example_inputs()
   out <- emissions_profile_any_at_product_level(companies, inputs)
-
   expect_true(is.na(out$risk_category))
   expect_false(is.na(out$clustered))
 })
