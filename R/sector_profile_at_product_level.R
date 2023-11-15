@@ -8,12 +8,14 @@ sector_profile_at_product_level <- function(companies,
   .companies <- prepare_companies(companies)
   .scenarios <- prepare_scenarios(scenarios, low_threshold, high_threshold)
 
-  .companies |>
+  out <- .companies |>
     spa_compute_profile_ranking(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     spa_polish_output_at_product_level() |>
-    sp_select_cols_at_product_level() |>
-    polish_output(cols_at_product_level())
+    sp_select_cols_at_product_level()
+  # FIXME
+  out |>
+    polish_output(setdiff(cols_at_product_level(), "clustered"))
 }
 
 sp_select_cols_at_product_level <- function(data) {
