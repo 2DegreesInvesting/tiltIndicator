@@ -15,5 +15,6 @@ cols_at_company_level <- function() {
 }
 
 cols_na_at_product_level <- function() {
-  setdiff(cols_at_product_level(), c("companies_id", "clustered"))
+  not_na <- c("companies_id", "clustered")
+  setdiff(cols_at_product_level(), not_na)
 }
