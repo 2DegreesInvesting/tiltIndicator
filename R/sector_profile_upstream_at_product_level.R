@@ -16,7 +16,7 @@ sector_profile_upstream_at_product_level <- function(companies,
     join_companies(remove_col_scenario(.companies)) |>
     spa_polish_output_at_product_level() |>
     spu_select_cols_at_product_level() |>
-    polish_output(setdiff(cols_at_product_level(), "companies_id"))
+    polish_output(setdiff(cols_at_product_level(), c("companies_id", "clustered")))
 }
 
 prepare_inputs <- function(data) {

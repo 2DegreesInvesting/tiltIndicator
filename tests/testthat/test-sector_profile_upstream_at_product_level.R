@@ -67,7 +67,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
   no_match <- filter(out, companies_id == "b")
   expect_equal(nrow(no_match), 1)
 
-  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  na_cols <- setdiff(cols_at_product_level(), c("companies_id", "clustered"))
   all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
   expect_true(all_na_cols_are_na)
 })
