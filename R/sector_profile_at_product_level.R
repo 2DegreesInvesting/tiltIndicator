@@ -14,8 +14,10 @@ sector_profile_at_product_level <- function(companies,
     spa_polish_output_at_product_level() |>
     sp_select_cols_at_product_level()
   # FIXME
+
+
   out |>
-    polish_output(setdiff(cols_at_product_level(), "clustered"))
+    polish_output(level_cols = setdiff(cols_at_product_level(), "clustered"), na_cols = setdiff(cols_at_product_level(), c("companies_id", "clustered")))
 }
 
 sp_select_cols_at_product_level <- function(data) {
