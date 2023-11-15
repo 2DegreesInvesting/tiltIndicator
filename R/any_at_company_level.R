@@ -34,7 +34,7 @@ any_at_company_level <- function(data) {
       value = sum(.data$value),
       .by = cols_at_all_levels()
     ) |>
-    polish_output(setdiff(cols_at_company_level(), "companies_id"))
+    polish_output(cols_na_at_company_level())
 }
 
 na_to_0_if_not_all_is_na <- function(x) {
