@@ -13,3 +13,7 @@ cols_at_product_level <- function() {
 cols_at_company_level <- function() {
   c(cols_at_all_levels(), "value")
 }
+
+cols_na_at_product_level <- function() {
+  setdiff(cols_at_product_level(), c("companies_id", "clustered"))
+}
