@@ -332,3 +332,13 @@ test_that("with inputs, uses `co2$profile_ranking` if present (#603)", {
 
   expect_false(identical(using_computed_values, using_pre_computed_values))
 })
+
+test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", {
+  companies <- example_companies(!!aka("uid") := NA)
+  co2 <- example_products()
+
+  out <- emissions_profile_any_at_product_level(companies, co2)
+
+  expect_true(is.na(out$risk_category))
+  expect_false(is.na(out$clustered))
+})
