@@ -29,11 +29,8 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 ## Example
 
 ``` r
+
 library(tiltIndicator)
-```
-
-``` r
-
 library(tiltToyData)
 library(readr)
 options(readr.show_col_types = FALSE)
