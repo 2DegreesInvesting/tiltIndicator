@@ -27,3 +27,9 @@ test_that("pstr() yields the same with deprecation warning", {
     "sector_profile"
   )
 })
+
+test_that("accepts `companies_id` (#564)", {
+  companies <- example_companies() |> dplyr::rename(companies_id = company_id)
+  scenarios <- example_scenarios()
+  expect_no_error(sector_profile(companies, scenarios))
+})
