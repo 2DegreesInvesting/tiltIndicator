@@ -1,4 +1,11 @@
 #' @examples
+#' update_roxygen_templates()
+#' @noRd
+update_roxygen_templates <- function() {
+  fs::dir_copy("man/roxygen", "inst/extdata/roxygen", overwrite = TRUE)
+}
+
+#' @examples
 #' tmp <- template_to_rmd("example-emissions_profile.R")
 #' writeLines(readLines(tmp))
 #' @noRd
@@ -13,5 +20,3 @@ template_to_rmd <- function(file) {
   tmp
 }
 
-
-fs::dir_copy("man/roxygen", "inst/extdata/roxygen", overwrite = TRUE)
