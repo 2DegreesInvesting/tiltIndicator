@@ -10,94 +10,69 @@ knitr::opts_chunk$set(
 ```
 
 This article helps you get started with the tiltIndicator package. Currently it
-supports two families of indicators: "emissions" and "sector". In the
-"emissions" family, you have two indicators: "Emissions profile" and "emissions
-profile upstream". They are both calculated in exactly the same way. The
-difference is not the process but the kind of `co2` data: Either comes from
-products or upstream products.
+supports two families of indicators: "emissions" and "sector". 
 
-In the "sector" family, you have two indicators: "Sector profile" and "sector
-profile upstream". They are both calculated in the same way, but "sector profile
-upstream" takes an additional argument for upstream products.
+In the "emissions" family, you have two indicators -- "emissions profile" and
+"emissions profile upstream". They are both calculated in exactly the same way.
+The difference is not in the process but in the dataset holding CO2 data: Either
+it has products or upstream-products (a.k.a. inputs), respectively.
 
-We'll use general purpose tools from the dplyr package, and the experimental
-[tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html)
-[tiltToyData](https://2degreesinvesting.github.io/tiltIndicator/index.html)
-packages.
-
-```{r setup}
-library(tiltIndicator)
-library(tiltToyData)
-library(dplyr, warn.conflicts = FALSE)
-library(readr, warn.conflicts = FALSE)
-library(tibble)
-
-options(readr.show_col_types = FALSE)
-```
+In the "sector" family, you also have two indicators: "Sector profile" and
+"sector profile upstream". Also they are calculated in the same way, but "sector
+profile upstream" takes an additional argument for upstream-products (a.k.a.
+inputs).
 
 ## Emissions profile
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/intro-emissions-profile.Rmd")}
+```{r child=tiltIndicator:::extdata_path("child/intro-emissions_profile.Rmd")}
+```
+
+### Example
+
+```{r child=tiltIndicator:::template_to_rmd("example-emissions_profile.R")}
 ```
 
 ## Emissions profile upstream
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/intro-emissions-profile-upstream.Rmd")}
+```{r child=tiltIndicator:::extdata_path("child/intro-emissions_profile_upstream.Rmd")}
+```
+
+### Example
+
+```{r child=tiltIndicator:::template_to_rmd("example-emissions_profile_upstream.R")}
+```
+
+## Sector profile
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child=tiltIndicator:::extdata_path("child/intro-sector_profile.Rmd")}
+```
+
+### Example
+
+```{r child=tiltIndicator:::template_to_rmd("example-sector_profile.R")}
+```
+
+## Sector profile upstream
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child=tiltIndicator:::extdata_path("child/intro-sector_profile_upstream.Rmd")}
+```
+
+### Example
+
+```{r child=tiltIndicator:::template_to_rmd("example-sector_profile_upstream.R")}
 ```
 
 ## Thresholds
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/thresholds.Rmd")}
+```{r child=tiltIndicator:::extdata_path("child/thresholds.Rmd")}
 ```
-
-## Example
-
-Use `emissions_profile()` and `emissions_profile_upstream()` with example
-datasets that come with the tiltToyData package.
-
-```{r}
-toy_files()
-
-companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products())
-products_upstream <- read_csv(toy_emissions_profile_upstream_products())
-
-result <- emissions_profile(companies, products)
-result
-
-result |> unnest_product()
-
-result |> unnest_company()
-
-result_upstream <- emissions_profile_upstream(companies, products_upstream)
-result_upstream
-
-result_upstream |> unnest_product()
-
-result_upstream |> unnest_company()
-```
-
-### Enriching the output
-
-All profile functions pass any `*rowid` column from the input to the output at
-product level. This allows you to enrich the default output.
-
-```{r}
-products_with_rowid <- products |> tibble::rowid_to_column("products_rowid")
-products_with_rowid
-
-result_with_rowid <- companies |> emissions_profile(products_with_rowid)
-
-rich_products_result <- result_with_rowid |>
-  unnest_product() |>
-  left_join(products_with_rowid)
-
-rich_products_result |> relocate(matches("sector"))
-```
-

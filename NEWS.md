@@ -171,7 +171,7 @@ the preparation must be fixed.
 
 # tiltIndicator 0.0.0.9063
 
-* XXTR functions now stop if 'copmanies' has 0-rows (#340).
+* XXTR functions now stop if `companies` has 0-rows (#340).
 
 # tiltIndicator 0.0.0.9062
 

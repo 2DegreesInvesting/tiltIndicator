@@ -18,16 +18,15 @@ missing and the sector information is duplicated.
 }
 \examples{
 library(dplyr)
-
-# `example_companies()` is internal -- don't use it.
-companies <- example_companies(
-  row = 1:4,
-  !!aka("id") := "a",
-  !!aka("cluster") := c("b1", rep(NA, 3)),
-  !!aka("uid") := c("c1", rep(NA, 3)),
-  !!aka("tsector") := c("x", "x", "y", "y")
-) |>
-  select(1:5)
+# styler: off
+companies <- tribble(
+  ~row, ~company_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector,
+    1L,         "a",       "b1",                        "c1",          "x",
+    2L,         "a",         NA,                          NA,          "x",
+    3L,         "a",         NA,                          NA,          "y",
+    4L,         "a",         NA,                          NA,          "y"
+  )
+# styler: off
 
 # Keep row 1: Has product info
 # Drop row 2: Lacks product info and sector info is duplicated
@@ -36,6 +35,7 @@ companies <- example_companies(
 companies
 
 sector_profile_any_prune_companies(companies)
+
 }
 \seealso{
 Other pre-processing helpers: 

@@ -36,21 +36,7 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 
 ## Example
 
-```{r}
-library(tiltIndicator)
-library(tiltToyData)
-library(readr)
-options(readr.show_col_types = FALSE)
-
-toy_files()
-
-companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products())
-
-both <- emissions_profile(companies, products)
-both
-
-both |> unnest_product()
-
-both |> unnest_company()
+```{r child=tiltIndicator:::template_to_rmd("example-emissions_profile.R")}
 ```
+
+For more examples see [Get started](https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html).
