@@ -1,5 +1,5 @@
 test_that("wraps the output at product and company levels", {
-  companies <- sanitize_id(companies)
+  companies <- companies |> sanitize_id(quiet = TRUE)
   out <- emissions_profile(companies, products)
 
   product <- unnest_product(out)
