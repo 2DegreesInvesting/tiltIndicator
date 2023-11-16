@@ -1,6 +1,6 @@
 #' Calculate the indicator "emissions profile"
 #'
-#' ```{r child=extdata_path("child/intro-emissions-profile.Rmd")}
+#' ```{r child=extdata_path("child/intro-emissions_profile.Rmd")}
 #' ```
 #'
 #' @param companies,co2 `r document_dataset()`.
@@ -15,20 +15,7 @@
 #'
 #' @export
 #'
-#' @examples
-#' library(tiltToyData)
-#' library(readr)
-#' options(readr.show_col_types = FALSE)
-#'
-#' companies <- read_csv(toy_emissions_profile_any_companies())
-#' products <- read_csv(toy_emissions_profile_products())
-#'
-#' both <- emissions_profile(companies, products)
-#' both
-#'
-#' both |> unnest_product()
-#'
-#' both |> unnest_company()
+#' @template example-emissions_profile
 emissions_profile <- function(companies,
                               co2,
                               low_threshold = 1 / 3,

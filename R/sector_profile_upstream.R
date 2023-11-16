@@ -1,6 +1,6 @@
 #' Calculate the indicator "sector profile upstream"
 #'
-#' ```{r child=extdata_path("child/intro-sector-profile-upstream.Rmd")}
+#' ```{r child=extdata_path("child/intro-sector_profile_upstream.Rmd")}
 #' ```
 #'
 #' @param companies,scenarios,inputs `r document_dataset()`.
@@ -12,21 +12,7 @@
 #'
 #' @export
 #'
-#' @examples
-#' library(tiltToyData)
-#' library(readr)
-#' options(readr.show_col_types = FALSE)
-#'
-#' companies <- read_csv(toy_sector_profile_upstream_companies())
-#' scenarios <- read_csv(toy_sector_profile_any_scenarios())
-#' products_upstream <- read_csv(toy_sector_profile_upstream_products())
-#'
-#' both <- sector_profile_upstream(companies, scenarios, products_upstream)
-#' both
-#'
-#' both |> unnest_product()
-#'
-#' both |> unnest_company()
+#' @template example-sector_profile_upstream
 sector_profile_upstream <- function(companies,
                                     scenarios,
                                     inputs,

@@ -67,7 +67,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
   no_match <- filter(out, companies_id == "b")
   expect_equal(nrow(no_match), 1)
 
-  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  na_cols <- cols_na_at_product_level()
   all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
   expect_true(all_na_cols_are_na)
 })
@@ -233,4 +233,15 @@ test_that("`*rowid` columns are passed through inputs with duplicates", {
   expect_true(hasName(out, "companies_rowid"))
   expect_true(hasName(out, "scenarios_rowid"))
   expect_true(hasName(out, "inputs_rowid"))
+})
+
+test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", {
+  companies <- example_companies()
+  scenarios <- example_scenarios(!!aka("co2reduce") := NA)
+  inputs <- example_inputs()
+
+  out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
+
+  expect_true(is.na(out$risk_category))
+  expect_false(is.na(out$clustered))
 })
