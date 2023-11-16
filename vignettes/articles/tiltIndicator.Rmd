@@ -46,7 +46,7 @@ options(readr.show_col_types = FALSE)
 
 ### Example
 
-```{r child=extdata_path("child/example-emissions-profile.Rmd")}
+```{r child=tiltIndicator:::template_to_rmd("example-emissions-profile.R")}
 ```
 
 ## Emissions profile upstream

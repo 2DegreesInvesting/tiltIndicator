@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' library(dplyr)
-#'
+#' # styler: off
 #' companies <- tribble(
 #'   ~row, ~company_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector,
 #'     1L,         "a",       "b1",                        "c1",          "x",
@@ -20,6 +20,7 @@
 #'     3L,         "a",         NA,                          NA,          "y",
 #'     4L,         "a",         NA,                          NA,          "y"
 #'   )
+#' # styler: off
 #'
 #' # Keep row 1: Has product info
 #' # Drop row 2: Lacks product info and sector info is duplicated
@@ -28,6 +29,7 @@
 #' companies
 #'
 #' sector_profile_any_prune_companies(companies)
+#'
 sector_profile_any_prune_companies <- function(data) {
   check_prune_companies(data)
 

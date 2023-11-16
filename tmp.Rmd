@@ -1,4 +1,5 @@
 ```{r}
+
 library(tiltToyData)
 library(readr)
 options(readr.show_col_types = FALSE)
@@ -13,4 +14,3 @@ both |> unnest_product()
 
 both |> unnest_company()
 ```
-

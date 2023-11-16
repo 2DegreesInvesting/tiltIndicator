@@ -15,9 +15,7 @@
 #'
 #' @export
 #'
-#' @examples
-#' ```{r child=extdata_path("child/example-emissions-profile.Rmd")}
-#' ```
+#' @template example-emissions-profile
 emissions_profile <- function(companies,
                               co2,
                               low_threshold = 1 / 3,
