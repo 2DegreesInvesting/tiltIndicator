@@ -12,3 +12,6 @@ template_to_rmd <- function(file) {
   writeLines(c("```{r}", lines, "```"), tmp)
   tmp
 }
+
+
+fs::dir_copy("man/roxygen", "inst/extdata", overwrite = TRUE)
