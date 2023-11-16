@@ -47,7 +47,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
   no_match <- filter(out, companies_id == "b")
   expect_equal(nrow(no_match), 1)
 
-  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  na_cols <- cols_na_at_product_level()
   all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
   expect_true(all_na_cols_are_na)
 
@@ -60,7 +60,7 @@ test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)",
   no_match <- filter(out, companies_id == "b")
   expect_equal(nrow(no_match), 1)
 
-  na_cols <- setdiff(cols_at_product_level(), "companies_id")
+  na_cols <- cols_na_at_product_level()
   all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
   expect_true(all_na_cols_are_na)
 })
@@ -331,4 +331,18 @@ test_that("with inputs, uses `co2$profile_ranking` if present (#603)", {
   using_pre_computed_values <- unique(out2$risk_category)
 
   expect_false(identical(using_computed_values, using_pre_computed_values))
+})
+
+test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", {
+  products <- example_products()
+  companies <- example_companies(!!aka("uid") := NA)
+  out <- emissions_profile_any_at_product_level(companies, products)
+  expect_true(is.na(out$risk_category))
+  expect_false(is.na(out$clustered))
+
+  inputs <- example_inputs()
+  companies <- example_companies(!!aka("uid") := NA)
+  out <- emissions_profile_any_at_product_level(companies, inputs)
+  expect_true(is.na(out$risk_category))
+  expect_false(is.na(out$clustered))
 })
