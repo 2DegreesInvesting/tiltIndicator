@@ -14,7 +14,7 @@ test_that("wraps the output at product and company levels", {
 })
 
 test_that("xctr() with products yields the same with a deprecation warning", {
-  companies <- sanitize_id(companies)
+  companies <- companies |> sanitize_id(quiet = TRUE)
   expect_warning(
     expect_equal(
       xctr(companies, products),
