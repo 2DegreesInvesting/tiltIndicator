@@ -86,27 +86,16 @@
     
 <p>This article helps you get started with the tiltIndicator package.
 Currently it supports two families of indicators: “emissions” and
-“sector”. In the “emissions” family, you have two indicators: “Emissions
+“sector”.</p>
+<p>In the “emissions” family, you have two indicators – “emissions
 profile” and “emissions profile upstream”. They are both calculated in
-exactly the same way. The difference is not the process but the kind of
-<code>co2</code> data: Either comes from products or upstream
-products.</p>
-<p>In the “sector” family, you have two indicators: “Sector profile” and
-“sector profile upstream”. They are both calculated in the same way, but
-“sector profile upstream” takes an additional argument for upstream
-products.</p>
-<p>We’ll use general purpose tools from the dplyr package, and the
-experimental <a href="https://2degreesinvesting.github.io/tiltIndicator/index.html">tiltIndicator</a>
-<a href="https://2degreesinvesting.github.io/tiltIndicator/index.html">tiltToyData</a>
-packages.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltToyData/" class="external-link">tiltToyData</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+exactly the same way. The difference is not in the process but in the
+dataset holding CO2 data: Either it has products or upstream-products
+(a.k.a. inputs), respectively.</p>
+<p>In the “sector” family, you also have two indicators: “Sector
+profile” and “sector profile upstream”. Also they are calculated in the
+same way, but “sector profile upstream” takes an additional argument for
+upstream-products (a.k.a. inputs).</p>
 <div class="section level2">
 <h2 id="emissions-profile">Emissions profile<a class="anchor" aria-label="anchor" href="#emissions-profile"></a>
 </h2>
@@ -147,6 +136,67 @@ same unit</li>
 <li>a column indicating whether the product has “low”, “medium” or
 “high” relative production emissions.</li>
 </ul>
+<div class="section level3">
+<h3 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h3>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltToyData/" class="external-link">tiltToyData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_any_companies</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_products</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products</span><span class="op">)</span></span>
+<span><span class="va">both</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
+<span><span class="co">#&gt;   companies_id                             product           company          </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fleischerei-stiefsohn_00000005219477-001 <span style="color: #949494;">&lt;tibble [12 × 5]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> pecheries-basques_fra316541-00101        <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [3 × 3]&gt;</span></span></span>
+<span></span>
+<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 6</span></span></span>
+<span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… isic_4dig… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… tilt_sect… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… isic_4dig… medium        oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sect… medium        oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span></span>
+<span></span>
+<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
+<span><span class="co">#&gt;    companies_id                             grouped_by  risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 all         high            1  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 all         medium          0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 all         low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 isic_4digit high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 isic_4digit medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 isic_4digit low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 tilt_sector high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 tilt_sector medium          0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 tilt_sector low             0  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 unit        high            0.5</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="emissions-profile-upstream">Emissions profile upstream<a class="anchor" aria-label="anchor" href="#emissions-profile-upstream"></a>
@@ -188,105 +238,22 @@ information:</p>
 <li>sectors (as the matching with ecoinvent is not done yet, we do not
 have one sector per product yet)</li>
 </ul>
-</div>
-<div class="section level2">
-<h2 id="thresholds">Thresholds<a class="anchor" aria-label="anchor" href="#thresholds"></a>
-</h2>
-<!-- WARNING: Do not write here. Instead write in the `child` file -->
-<p>Products in the highest percentile (greater than
-<code>high_threshold</code>) are classified as high transition risk
-products. Products in the medium percentile (greater than
-<code>low_threshold</code> and lower or equal than
-<code>high_threshold</code>) are classified as medium transition risk
-products. Products in the lowest percentile (lower or equal than
-<code>low_threshold</code>) are classified as low transition risk
-products. For details about the default <code>low_threshold</code> and
-<code>high_threshold</code>, refer to the documentation of the
-corresponding <code>*_profile_*()</code> function (e.g. <a href="https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile.html#ref-usage"><code>sector_profile()</code></a>).</p>
-</div>
-<div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
-</h2>
-<p>Use <code><a href="../reference/emissions_profile.html">emissions_profile()</a></code> and
-<code><a href="../reference/emissions_profile_upstream.html">emissions_profile_upstream()</a></code> with example datasets that
-come with the tiltToyData package.</p>
+<div class="section level3">
+<h3 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_files</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "emissions_profile_any_companies.csv.gz"    </span></span>
-<span><span class="co">#&gt; [2] "emissions_profile_products.csv.gz"         </span></span>
-<span><span class="co">#&gt; [3] "emissions_profile_upstream_products.csv.gz"</span></span>
-<span><span class="co">#&gt; [4] "sector_profile_any_scenarios.csv.gz"       </span></span>
-<span><span class="co">#&gt; [5] "sector_profile_companies.csv.gz"           </span></span>
-<span><span class="co">#&gt; [6] "sector_profile_upstream_companies.csv.gz"  </span></span>
-<span><span class="co">#&gt; [7] "sector_profile_upstream_products.csv.gz"</span></span>
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltToyData/" class="external-link">tiltToyData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_any_companies</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_products</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">products_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_upstream_products</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_upstream_products</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products</span><span class="op">)</span></span>
-<span><span class="va">result</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
-<span><span class="co">#&gt;   companies_id                             product           company          </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fleischerei-stiefsohn_00000005219477-001 <span style="color: #949494;">&lt;tibble [12 × 5]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> pecheries-basques_fra316541-00101        <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [3 × 3]&gt;</span></span></span>
+<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile_upstream.html">emissions_profile_upstream</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">inputs</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 6</span></span></span>
-<span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… isic_4dig… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… tilt_sect… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… isic_4dig… medium        oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sect… medium        oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span></span>
-<span></span>
-<span><span class="va">result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
-<span><span class="co">#&gt;    companies_id                             grouped_by  risk_category value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 all         high            1  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 all         medium          0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 all         low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 isic_4digit high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 isic_4digit medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 isic_4digit low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 tilt_sector high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 tilt_sector medium          0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 tilt_sector low             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 unit        high            0.5</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span>
-<span></span>
-<span><span class="va">result_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile_upstream.html">emissions_profile_upstream</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products_upstream</span><span class="op">)</span></span>
-<span><span class="va">result_upstream</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
-<span><span class="co">#&gt;   companies_id                             product           company          </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fleischerei-stiefsohn_00000005219477-001 <span style="color: #949494;">&lt;tibble [84 × 6]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> pecheries-basques_fra316541-00101        <span style="color: #949494;">&lt;tibble [36 × 6]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [42 × 6]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [42 × 6]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [42 × 6]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [36 × 6]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [36 × 6]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 6]&gt;</span>  <span style="color: #949494;">&lt;tibble [3 × 3]&gt;</span></span></span>
-<span></span>
-<span><span class="va">result_upstream</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 319 × 7</span></span></span>
 <span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
@@ -305,7 +272,7 @@ come with the tiltToyData package.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: input_activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   input_co2_footprint &lt;dbl&gt;</span></span></span>
 <span></span>
-<span><span class="va">result_upstream</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 129 × 4</span></span></span>
 <span><span class="co">#&gt;    companies_id                             grouped_by       risk_category value</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -320,52 +287,193 @@ come with the tiltToyData package.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 input_tilt_sect… low           0.214</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 input_unit       high          0.429</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span></code></pre></div>
-<div class="section level3">
-<h3 id="enriching-the-output">Enriching the output<a class="anchor" aria-label="anchor" href="#enriching-the-output"></a>
-</h3>
-<p>All profile functions pass any <code>*rowid</code> column from the
-input to the output at product level. This allows you to enrich the
-default output.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">products_with_rowid</span> <span class="op">&lt;-</span> <span class="va">products</span> <span class="op">|&gt;</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html" class="external-link">rowid_to_column</a></span><span class="op">(</span><span class="st">"products_rowid"</span><span class="op">)</span></span>
-<span><span class="va">products_with_rowid</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 8</span></span></span>
-<span><span class="co">#&gt;   products_rowid co2_footprint tilt_sector    tilt_subsector unit  isic_4digit</span></span>
-<span><span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>              1        176.   Industry       Other          unit         <span style="text-decoration: underline;">2</span>560</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>              2         58.1  Industry       Other          unit         <span style="text-decoration: underline;">2</span>560</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>              3          4.95 Steel &amp; Metals Steel          kg           <span style="text-decoration: underline;">2</span>870</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>              4         12.5  Agriculture    Agriculture    kg           <span style="text-decoration: underline;">1</span>780</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>              5          2.07 Industry       Other          kg           <span style="text-decoration: underline;">2</span>679</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: activity_uuid_product_uuid &lt;chr&gt;, ei_activity_name &lt;chr&gt;</span></span></span>
-<span></span>
-<span><span class="va">result_with_rowid</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">products_with_rowid</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">rich_products_result</span> <span class="op">&lt;-</span> <span class="va">result_with_rowid</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">products_with_rowid</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(products_rowid, activity_uuid_product_uuid,</span></span>
-<span><span class="co">#&gt; co2_footprint)`</span></span>
-<span></span>
-<span><span class="va">rich_products_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html" class="external-link">relocate</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"sector"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 12</span></span></span>
-<span><span class="co">#&gt;    tilt_sector tilt_subsector companies_id             products_rowid grouped_by</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Industry    Other          fleischerei-stiefsohn_0…              1 all       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Industry    Other          fleischerei-stiefsohn_0…              1 isic_4dig…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Industry    Other          fleischerei-stiefsohn_0…              1 tilt_sect…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Industry    Other          fleischerei-stiefsohn_0…              1 unit      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Industry    Other          fleischerei-stiefsohn_0…              1 unit_isic…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Industry    Other          fleischerei-stiefsohn_0…              1 unit_tilt…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Industry    Other          fleischerei-stiefsohn_0…              2 all       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Industry    Other          fleischerei-stiefsohn_0…              2 isic_4dig…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Industry    Other          fleischerei-stiefsohn_0…              2 tilt_sect…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Industry    Other          fleischerei-stiefsohn_0…              2 unit      </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: risk_category &lt;chr&gt;, clustered &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   activity_uuid_product_uuid &lt;chr&gt;, co2_footprint &lt;dbl&gt;, unit &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   isic_4digit &lt;dbl&gt;, ei_activity_name &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
+</div>
+<div class="section level2">
+<h2 id="sector-profile">Sector profile<a class="anchor" aria-label="anchor" href="#sector-profile"></a>
+</h2>
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+<p>The indicator “sector profile” measures the transition risk of
+products based on the sector’s emissions targets the product belongs to.
+Those sector emission reduction targets vary across scenarios (e.g., net
+zero scenario or 1.5° scenario) and the time horizon (e.g., reduction
+needed in 2030, 2040, 2050 to achieve the targets).</p>
+<p>After assessing each product, all the products with the same category
+are aggregated and set in relation to all products of the company. We,
+therefore, derive company-level information.</p>
+<div class="section level3">
+<h3 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a>
+</h3>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltToyData/" class="external-link">tiltToyData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_sector_profile_companies</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_sector_profile_any_scenarios</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sector_profile.html">sector_profile</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span><span class="op">)</span></span>
+<span><span class="va">both</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 14 × 3</span></span></span>
+<span><span class="co">#&gt;    companies_id                             product           company          </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> pecheries-basques_fra316541-00101        <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> hoche-butter-gmbh_deu422723-693847002    <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> hoche-butter-gmbh_deu422723-693847003    <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> vicquelin-espaces-verts_fra697272-00102  <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> vicquelin-espaces-verts_fra697272-00103  <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleisohn_0000000492-001                  <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> leider-gmbh_00000005064318-002           <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [14 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span></span>
+<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 196 × 10</span></span></span>
+<span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… ipr_1.5c … high          steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… ipr_1.5c … high          steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… weo_state… low           steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… weo_annou… low           steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… weo_net z… low           steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… weo_state… low           steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… weo_annou… low           steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… weo_net z… high          steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… weo_state… low           steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… weo_annou… medium        steel     0faa7ecb-fef2-5117-89…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 186 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5 more variables: tilt_sector &lt;chr&gt;, scenario &lt;chr&gt;, year &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   type &lt;chr&gt;, tilt_subsector &lt;chr&gt;</span></span></span>
+<span></span>
+<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 588 × 4</span></span></span>
+<span><span class="co">#&gt;    companies_id                             grouped_by       risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 weo_announced p… high              0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 weo_announced p… medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 weo_announced p… low               1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 weo_announced p… high              0</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 578 more rows</span></span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="sector-profile-upstream">Sector profile upstream<a class="anchor" aria-label="anchor" href="#sector-profile-upstream"></a>
+</h2>
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+<p>The indicator “sector profile upstream” assesses the transition risk
+of the input products based on the sector’s emissions targets the input
+product belongs to. This indicator can be aggregated on company level
+and as such inform about the supply chain risk of an SME, based on its
+inputs’ transition risk. The sector emission reduction targets vary
+across scenarios (e.g., net zero scenario or 1.5° scenario) and the time
+horizon (e.g., reduction needed in 2030, 2040, 2050 to achieve the
+targets). It, therefore, is similar to the Product Sector Risk Indicator
+but focuses on the input products that the company needs to produce its
+products.The input products are, for example, resources, packaging
+materials, energy and enabling services (such as tractor use on farm) to
+produce the product.</p>
+<p>After identifying each carbon footprint for one input product, the
+input products are ranked according to their footprint. The ranking
+method is explained in the <a href="https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds">Thresholds</a>
+section.</p>
+<p>After assessing the input products for each product, they are
+aggregated at company-level to derive what percentage of the input
+products required by the company to produce its products have high,
+medium and low sector transition risk. We, therefore, derive the
+company-level information.</p>
+<p>Please note that carbon emissions or emissions always mean CO2e.</p>
+<div class="section level3">
+<h3 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/2DegreesInvesting/tiltIndicator" class="external-link">tiltIndicator</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltToyData/" class="external-link">tiltToyData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_sector_profile_upstream_companies</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_sector_profile_any_scenarios</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">inputs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_sector_profile_upstream_products</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sector_profile_upstream.html">sector_profile_upstream</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span>, <span class="va">inputs</span><span class="op">)</span></span>
+<span><span class="va">both</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 3</span></span></span>
+<span><span class="co">#&gt;   companies_id                             product             company          </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fleischerei-stiefsohn_00000005219477-001 <span style="color: #949494;">&lt;tibble [180 × 11]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> pecheries-basques_fra316541-00101        <span style="color: #949494;">&lt;tibble [14 × 11]&gt;</span>  <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [70 × 11]&gt;</span>  <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [70 × 11]&gt;</span>  <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [70 × 11]&gt;</span>  <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [150 × 11]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [150 × 11]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span></span>
+<span></span>
+<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 704 × 12</span></span></span>
+<span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… weo_annou… low           stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… weo_annou… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… weo_annou… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… weo_annou… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… weo_net z… low           stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… weo_net z… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 694 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: tilt_sector &lt;chr&gt;, scenario &lt;chr&gt;, year &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   type &lt;chr&gt;, input_activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   input_tilt_sector &lt;chr&gt;, input_tilt_subsector &lt;chr&gt;</span></span></span>
+<span></span>
+<span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 294 × 4</span></span></span>
+<span><span class="co">#&gt;    companies_id                             grouped_by      risk_category  value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_2… high          0.333 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_2… medium        0.583 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_2… low           0.083<span style="text-decoration: underline;">3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_2… high          1     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_2… medium        0     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_2… low           0     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 weo_announced … high          0     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 weo_announced … medium        0     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 weo_announced … low           1     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 weo_announced … high          0.076<span style="text-decoration: underline;">9</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 284 more rows</span></span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="thresholds">Thresholds<a class="anchor" aria-label="anchor" href="#thresholds"></a>
+</h2>
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+<p>Products in the highest percentile (greater than
+<code>high_threshold</code>) are classified as high transition risk
+products. Products in the medium percentile (greater than
+<code>low_threshold</code> and lower or equal than
+<code>high_threshold</code>) are classified as medium transition risk
+products. Products in the lowest percentile (lower or equal than
+<code>low_threshold</code>) are classified as low transition risk
+products. For details about the default <code>low_threshold</code> and
+<code>high_threshold</code>, refer to the documentation of the
+corresponding <code>*_profile_*()</code> function (e.g. <a href="https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile.html#ref-usage"><code>sector_profile()</code></a>).</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
