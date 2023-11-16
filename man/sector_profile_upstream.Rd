@@ -50,7 +50,7 @@ Please note that carbon emissions or emissions always mean CO2e.
 }
 \examples{
 ```{r child=extdata_path("child/example-sector-profile-upstream.Rmd")}
-```
+````
 }
 \seealso{
 Other main functions: 

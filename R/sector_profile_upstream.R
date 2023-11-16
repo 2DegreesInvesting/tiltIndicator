@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' ```{r child=extdata_path("child/example-sector-profile-upstream.Rmd")}
-#' ```
+#' ````
 sector_profile_upstream <- function(companies,
                                     scenarios,
                                     inputs,
