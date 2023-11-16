@@ -1,6 +1,5 @@
 test_that("hasn't change", {
-  # FIXME: Replace with `read_test_csv()`
-  companies <- companies |> sanitize_id()
+  companies <- companies |> sanitize_id(quiet = TRUE)
   out <- emissions_profile_any_at_product_level(companies, products) |>
     any_at_company_level() |>
     dplyr::arrange(companies_id) |>

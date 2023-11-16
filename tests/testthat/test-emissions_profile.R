@@ -40,7 +40,7 @@ test_that("*upstream() wraps the output at product and company levels", {
 })
 
 test_that("xctr() with inputs yields the same as *upstream() with a deprecation warning", {
-  companies <- sanitize_id(companies)
+  companies <- companies |> sanitize_id(quiet = TRUE)
   expect_warning(
     expect_equal(
       xctr(companies, inputs),
