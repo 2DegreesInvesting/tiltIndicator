@@ -1,7 +1,6 @@
 test_that("hasn't change", {
   # FIXME: Replace with `read_test_csv()`
-  companies <- companies |>
-    rename(companies_id = company_id)
+  companies <- companies |> rename_id()
   out <- emissions_profile_any_at_product_level(companies, products) |>
     any_at_company_level() |>
     dplyr::arrange(companies_id) |>
@@ -52,7 +51,7 @@ test_that("is sensitive to high_threshold", {
 
 test_that("no longer drops companies depending on co2 data (#122)", {
   all <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf) |>
-    rename(companies_id = company_id)
+    rename_id()
   companies <- all |>
     filter(all[[aka("id")]] %in% unique(all[[aka("id")]])[c(1, 2)])
 

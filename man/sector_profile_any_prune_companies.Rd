@@ -20,11 +20,11 @@ missing and the sector information is duplicated.
 library(dplyr)
 # styler: off
 companies <- tribble(
-  ~row, ~company_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector,
-    1L,         "a",       "b1",                        "c1",          "x",
-    2L,         "a",         NA,                          NA,          "x",
-    3L,         "a",         NA,                          NA,          "y",
-    4L,         "a",         NA,                          NA,          "y"
+  ~row, ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector,
+    1L,           "a",       "b1",                        "c1",          "x",
+    2L,           "a",         NA,                          NA,          "x",
+    3L,           "a",         NA,                          NA,          "y",
+    4L,           "a",         NA,                          NA,          "y"
   )
 # styler: off
 
