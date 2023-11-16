@@ -76,24 +76,3 @@ inputs).
 
 ```{r child=tiltIndicator:::extdata_path("child/thresholds.Rmd")}
 ```
-
-## Enriching the output
-
-All profile functions pass any `*rowid` column from the input to the output at
-product level. This allows you to enrich the default output.
-
-```{r}
-library(dplyr, warn.conflicts = FALSE)
-
-products_with_rowid <- products |> tibble::rowid_to_column("products_rowid")
-products_with_rowid
-
-result_with_rowid <- companies |> emissions_profile(products_with_rowid)
-
-rich_products_result <- result_with_rowid |>
-  unnest_product() |>
-  left_join(products_with_rowid)
-
-rich_products_result |> relocate(matches("sector"))
-```
-
