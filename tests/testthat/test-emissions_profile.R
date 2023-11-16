@@ -48,7 +48,7 @@ test_that("xctr() with inputs yields the same as *upstream() with a deprecation 
 })
 
 test_that("accepts `companies_id` (#564)", {
-  companies <- example_companies() |> rename(companies_id = company_id)
+  companies <- example_companies() |> dplyr::rename(companies_id = company_id)
   co2 <- example_products()
   expect_no_error(emissions_profile(companies, co2))
 })
