@@ -1,5 +1,15 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9102
+
+* All functions at product level now output the new column `profile_ranking`
+(#613, @AnneSchoenauer).
+
+# tiltIndicator 0.0.0.9101
+
+* In results at product level, `clustered` is no longer  `NA` when `risk_category`
+is `NA` (#614, @AnneSchoenauer, @kalashsinghal).
+
 # tiltIndicator 0.0.0.9100
 
 Get started now shows `sector_profile*()` documentation (#619).
