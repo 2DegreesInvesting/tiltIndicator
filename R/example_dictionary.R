@@ -56,7 +56,7 @@ example_column <- function() {
             1L,                "uid",       "activity_uuid_product_uuid",
             2L,            "cluster",                        "clustered",
             3L,       "co2footprint",                    "co2_footprint",
-            4L,                 "id",                       "company_id",
+            4L,                 "id",                     "companies_id",
             5L,               "iuid", "input_activity_uuid_product_uuid",
             6L,      "ico2footprint",              "input_co2_footprint",
             7L,              "iisic",                "input_isic_4digit",

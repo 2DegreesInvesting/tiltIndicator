@@ -224,7 +224,7 @@ test_that("handles duplicated `companies` data (#230)", {
 test_that("handles duplicated `co2` data (#230)", {
   companies <- example_companies()
   duplicated <- c("a", "a")
-  inputs <- example_inputs(!!aka("id") := duplicated)
+  inputs <- example_inputs(!!aka("uid") := duplicated)
   expect_no_error(emissions_profile_any_at_product_level(companies, inputs))
 })
 

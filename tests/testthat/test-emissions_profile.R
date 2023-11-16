@@ -1,4 +1,5 @@
 test_that("wraps the output at product and company levels", {
+  companies <- sanitize_id(companies)
   out <- emissions_profile(companies, products)
 
   product <- unnest_product(out)
@@ -13,6 +14,7 @@ test_that("wraps the output at product and company levels", {
 })
 
 test_that("xctr() with products yields the same with a deprecation warning", {
+  companies <- sanitize_id(companies)
   expect_warning(
     expect_equal(
       xctr(companies, products),
@@ -23,6 +25,7 @@ test_that("xctr() with products yields the same with a deprecation warning", {
 })
 
 test_that("*upstream() wraps the output at product and company levels", {
+  companies <- sanitize_id(companies)
   out <- emissions_profile_upstream(companies, inputs)
 
   product <- unnest_product(out)
@@ -37,6 +40,7 @@ test_that("*upstream() wraps the output at product and company levels", {
 })
 
 test_that("xctr() with inputs yields the same as *upstream() with a deprecation warning", {
+  companies <- sanitize_id(companies)
   expect_warning(
     expect_equal(
       xctr(companies, inputs),

@@ -1,6 +1,9 @@
 spa_check <- function(x) {
   stop_if_has_0_rows(x$companies)
   stop_if_has_0_rows(x$scenarios)
+
+  check_matches_name(x$companies, pattern = id_pattern())
+
   crucial <- c(
     aka("scenario_type"),
     aka("scenario_name"),

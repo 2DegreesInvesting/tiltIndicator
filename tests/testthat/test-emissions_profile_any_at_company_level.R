@@ -1,4 +1,6 @@
 test_that("hasn't change", {
+  # FIXME: Replace with `read_test_csv()`
+  companies <- companies |> sanitize_id()
   out <- emissions_profile_any_at_product_level(companies, products) |>
     any_at_company_level() |>
     dplyr::arrange(companies_id) |>
@@ -48,8 +50,10 @@ test_that("is sensitive to high_threshold", {
 })
 
 test_that("no longer drops companies depending on co2 data (#122)", {
-  all <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf)
-  companies <- filter(all, company_id %in% unique(company_id)[c(1, 2)])
+  all <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf) |>
+    sanitize_id()
+  companies <- all |>
+    filter(all[[aka("id")]] %in% unique(all[[aka("id")]])[c(1, 2)])
 
   co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 5)
   product <- emissions_profile_any_at_product_level(companies, co2)
@@ -61,8 +65,8 @@ test_that("no longer drops companies depending on co2 data (#122)", {
   out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
-  companies <- filter(all, company_id %in% unique(company_id)[c(1, 3)])
-
+  companies <- all |>
+    filter(all[[aka("id")]] %in% unique(all[[aka("id")]])[c(1, 3)])
   co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 10)
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
@@ -98,7 +102,7 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
 test_that("for each company & benchmark, each risk category is unique (#285)", {
   # styler: off
   companies <- tribble(
-                            ~company_id,          ~clustered,                                                 ~activity_uuid_product_uuid, ~unit,
+                          ~companies_id,          ~clustered,                                                 ~activity_uuid_product_uuid, ~unit,
     "-fred-sl_00000005407085-741049001",      "fish, frozen", "0fe31e67-346a-504c-a03d-64f85ccc2a64_a459eea1-4e62-4daf-9135-1aea9805aa90",  "kg",
     "-fred-sl_00000005407085-741049001", "fish, deep-frozen", "26104519-4d49-5d85-bc74-e8e03d1a7914_cdbf0bef-39f7-46c8-87a2-3f9f679b5bb7",  "kg"
   )
@@ -157,24 +161,24 @@ test_that("no match preserves companies", {
   products <- example_products()
 
   product <- emissions_profile_any_at_product_level(companies, products)
-  expect_equal(companies$company_id, unique(product$companies_id))
+  expect_equal(companies[[aka("id")]], unique(product$companies_id))
   company <- any_at_company_level(product)
-  expect_equal(companies$company_id, unique(company$companies_id))
+  expect_equal(companies[[aka("id")]], unique(company$companies_id))
 
   companies <- example_companies(!!aka("uid") := "unmatched")
   product <- emissions_profile_any_at_product_level(companies, products)
-  expect_equal(companies$company_id, product$companies_id)
+  expect_equal(companies[[aka("id")]], product$companies_id)
   company <- any_at_company_level(product)
-  expect_equal(companies$company_id, company$companies_id)
+  expect_equal(companies[[aka("id")]], company$companies_id)
 
   companies <- example_companies(
     !!aka("id") := c("a", "b"),
     !!aka("uid") := "unmatched"
   )
   product <- emissions_profile_any_at_product_level(companies, products)
-  expect_equal(companies$company_id, unique(product$companies_id))
+  expect_equal(companies[[aka("id")]], unique(product$companies_id))
   company <- any_at_company_level(product)
-  expect_equal(companies$company_id, unique(company$companies_id))
+  expect_equal(companies[[aka("id")]], unique(company$companies_id))
 })
 
 test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)", {
