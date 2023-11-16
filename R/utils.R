@@ -56,13 +56,9 @@ stop_if_has_0_rows <- function(data) {
 }
 
 prepare_companies <- function(data) {
-  if (hasName(data, "companies_id")) {
-    out <- data
-  } else {
-    out <- data |> rename(companies_id = aka("id"))
-  }
-
-  distinct(out)
+  data |>
+    sanitize_id() |>
+    distinct()
 }
 
 lowercase_characters <- function(data) {
