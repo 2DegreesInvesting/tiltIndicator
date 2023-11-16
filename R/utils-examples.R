@@ -19,4 +19,3 @@ template_to_rmd <- function(file) {
   writeLines(c("```{r}", lines, "```"), tmp)
   tmp
 }
-
