@@ -248,3 +248,9 @@ test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", 
   expect_true(is.na(out$risk_category))
   expect_false(is.na(out$clustered))
 })
+
+test_that("accepts `company_id` (#564)", {
+  companies <- example_companies() |> rename(company_id = companies_id)
+  scenarios <- example_scenarios()
+  expect_no_error(sector_profile(companies, scenarios))
+})
