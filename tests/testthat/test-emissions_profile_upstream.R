@@ -1,5 +1,5 @@
 test_that("hasn't change", {
-  companies <- sanitize_id(companies)
+  companies <- companies |> sanitize_id(quiet = TRUE)
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level() |>
     dplyr::arrange(companies_id) |>
