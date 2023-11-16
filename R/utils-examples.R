@@ -3,7 +3,7 @@
 #' writeLines(readLines(tmp))
 #' @noRd
 template_to_rmd <- function(file) {
-  path <- here::here("man/roxygen/templates", file)
+  path <- extdata_path(file.path("roxygen/templates", file))
   lines <- readLines(path)
   lines <- gsub("@examples", "", lines)
   lines <- gsub("#'", "", lines)
