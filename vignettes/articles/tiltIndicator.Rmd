@@ -10,15 +10,17 @@ knitr::opts_chunk$set(
 ```
 
 This article helps you get started with the tiltIndicator package. Currently it
-supports two families of indicators: "emissions" and "sector". In the
-"emissions" family, you have two indicators: "Emissions profile" and "emissions
-profile upstream". They are both calculated in exactly the same way. The
-difference is not the process but the kind of `co2` data: Either comes from
-products or upstream products.
+supports two families of indicators: "emissions" and "sector". 
 
-In the "sector" family, you have two indicators: "Sector profile" and "sector
-profile upstream". They are both calculated in the same way, but "sector profile
-upstream" takes an additional argument for upstream products.
+In the "emissions" family, you have two indicators -- "emissions profile" and
+"emissions profile upstream". They are both calculated in exactly the same way.
+The difference is not in the process but in the dataset holding CO2 data: Either
+it has products or upstream-products (a.k.a. inputs), respectively.
+
+In the "sector" family, you also have two indicators: "Sector profile" and
+"sector profile upstream". Also they are calculated in the same way, but "sector
+profile upstream" takes an additional argument for upstream-products (a.ka.
+inputs).
 
 We'll use general purpose tools from the dplyr package, and the experimental
 [tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html)
@@ -42,11 +44,35 @@ options(readr.show_col_types = FALSE)
 ```{r child=extdata_path("child/intro-emissions-profile.Rmd")}
 ```
 
+### Example
+
+```{r child=extdata_path("child/example-emissions-profile.Rmd")}
+```
+
 ## Emissions profile upstream
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-emissions-profile-upstream.Rmd")}
+```
+
+### Example
+
+```{r child=extdata_path("child/example-emissions-profile-upstream.Rmd")}
+```
+
+## Sector profile
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child=extdata_path("child/intro-sector-profile.Rmd")}
+```
+
+## Sector profile upstream
+
+<!-- WARNING: Do not write here. Instead write in the `child` file -->
+
+```{r child=extdata_path("child/intro-sector-profile-upstream.Rmd")}
 ```
 
 ## Thresholds
@@ -83,7 +109,7 @@ result_upstream |> unnest_product()
 result_upstream |> unnest_company()
 ```
 
-### Enriching the output
+## Enriching the output
 
 All profile functions pass any `*rowid` column from the input to the output at
 product level. This allows you to enrich the default output.
