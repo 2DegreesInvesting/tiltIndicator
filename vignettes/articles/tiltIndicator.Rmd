@@ -22,19 +22,10 @@ In the "sector" family, you also have two indicators: "Sector profile" and
 profile upstream" takes an additional argument for upstream-products (a.k.a.
 inputs).
 
-We'll use general purpose tools from the dplyr package, and the experimental
-[tiltIndicator](https://2degreesinvesting.github.io/tiltIndicator/index.html)
-[tiltToyData](https://2degreesinvesting.github.io/tiltIndicator/index.html)
-packages.
+In all examples we'll use the tiltIndicator package.
 
 ```{r setup}
 library(tiltIndicator)
-library(tiltToyData)
-library(dplyr, warn.conflicts = FALSE)
-library(readr, warn.conflicts = FALSE)
-library(tibble)
-
-options(readr.show_col_types = FALSE)
 ```
 
 ## Emissions profile
@@ -92,39 +83,14 @@ options(readr.show_col_types = FALSE)
 ```{r child=extdata_path("child/thresholds.Rmd")}
 ```
 
-## Example
-
-Use `emissions_profile()` and `emissions_profile_upstream()` with example
-datasets that come with the tiltToyData package.
-
-```{r}
-toy_files()
-
-companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products())
-inputs <- read_csv(toy_emissions_profile_upstream_products())
-
-result <- emissions_profile(companies, products)
-result
-
-result |> unnest_product()
-
-result |> unnest_company()
-
-result_upstream <- emissions_profile_upstream(companies, inputs)
-result_upstream
-
-result_upstream |> unnest_product()
-
-result_upstream |> unnest_company()
-```
-
 ## Enriching the output
 
 All profile functions pass any `*rowid` column from the input to the output at
 product level. This allows you to enrich the default output.
 
 ```{r}
+library(dplyr, warn.conflicts = FALSE)
+
 products_with_rowid <- products |> tibble::rowid_to_column("products_rowid")
 products_with_rowid
 
