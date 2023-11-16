@@ -68,11 +68,21 @@ options(readr.show_col_types = FALSE)
 ```{r child=extdata_path("child/intro-sector-profile.Rmd")}
 ```
 
+### Example
+
+```{r child=extdata_path("child/example-sector-profile.Rmd")}
+```
+
 ## Sector profile upstream
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
 ```{r child=extdata_path("child/intro-sector-profile-upstream.Rmd")}
+```
+
+### Example
+
+```{r child=extdata_path("child/example-sector-profile-upstream.Rmd")}
 ```
 
 ## Thresholds

@@ -25,7 +25,7 @@ risk products.}
 A data frame with the column \code{companies_id}, and the nested columns\code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}. Any column in the input datasets ending with \verb{*rowid} is also passed as is to the output at product level. The exception is any column named exactly \code{rowid}-- which is a reserved name and throws an error. Note this feature makes no sense at company level because potentially multiple rows in the input datasets are summarized into a single row in the output at company level.
 }
 \description{
-The Input Product Sector Risk Indicator assesses the transition risk of the
+The indicator "sector profile upstream" assesses the transition risk of the
 input products based on the sector's emissions targets the input product belongs
 to. This indicator can be aggregated on company level and as such inform about
 the supply chain risk of an SME, based on its inputs’ transition risk. The
@@ -49,20 +49,8 @@ risk. We, therefore, derive the company-level information.
 Please note that carbon emissions or emissions always mean CO2e.
 }
 \examples{
-library(tiltToyData)
-library(readr)
-options(readr.show_col_types = FALSE)
-
-companies <- read_csv(toy_sector_profile_upstream_companies())
-scenarios <- read_csv(toy_sector_profile_any_scenarios())
-products_upstream <- read_csv(toy_sector_profile_upstream_products())
-
-both <- sector_profile_upstream(companies, scenarios, products_upstream)
-both
-
-both |> unnest_product()
-
-both |> unnest_company()
+```{r child=extdata_path("child/intro-sector-profile-upstream.Rmd")}
+```
 }
 \seealso{
 Other main functions: 
