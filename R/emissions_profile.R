@@ -1,6 +1,6 @@
 #' Calculate the indicator "emissions profile"
 #'
-#' ```{r child=extdata_path("child/intro-emissions-profile.Rmd")}
+#' ```{r child=extdata_path("child/intro-emissions_profile.Rmd")}
 #' ```
 #'
 #' @param companies,co2 `r document_dataset()`.

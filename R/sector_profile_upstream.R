@@ -1,6 +1,6 @@
 #' Calculate the indicator "sector profile upstream"
 #'
-#' ```{r child=extdata_path("child/intro-sector-profile-upstream.Rmd")}
+#' ```{r child=extdata_path("child/intro-sector-profile_upstream.Rmd")}
 #' ```
 #'
 #' @param companies,scenarios,inputs `r document_dataset()`.
@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' ```{r child=extdata_path("child/example-sector-profile-upstream.Rmd")}
+#' ```{r child=extdata_path("child/example-sector-profile_upstream.Rmd")}
 #' ```
 sector_profile_upstream <- function(companies,
                                     scenarios,

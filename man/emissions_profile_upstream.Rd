@@ -65,7 +65,7 @@ completely random selection and do not reflect the true information:
 }
 }
 \examples{
-```{r child=extdata_path("child/example-sector-profile-upstream.Rmd")}
+```{r child=extdata_path("child/example-sector-profile_upstream.Rmd")}
 ```
 }
 \seealso{

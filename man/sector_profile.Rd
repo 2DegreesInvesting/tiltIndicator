@@ -35,7 +35,7 @@ aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 }
 \examples{
-```{r child=extdata_path("child/example-sector-profile.Rmd")}
+```{r child=extdata_path("child/example-sector_profile.Rmd")}
 ```
 }
 \seealso{
