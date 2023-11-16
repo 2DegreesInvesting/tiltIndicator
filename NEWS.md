@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9100
+
+Get started now shows `sector_profile*()` documentation (#619).
+
 # tiltIndicator 0.0.0.9099
 
 * Rename `emissions_profile_any_add_values_to_categorize` to `emissions_profile_any_compute_profile_ranking` (#609). The old name is retired without deprecation since it had no users.
