@@ -15,9 +15,7 @@
 #'
 #' @export
 #'
-#' @examples
-#' ```{r child=extdata_path("child/example-sector_profile.Rmd")}
-#' ```
+#' @template example-sector_profile
 sector_profile <- function(companies,
                            scenarios,
                            low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),

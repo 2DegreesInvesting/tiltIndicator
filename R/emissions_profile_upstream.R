@@ -7,7 +7,5 @@
 #' @inherit emissions_profile
 #' @family main functions
 #'
-#' @examples
-#' ```{r child=extdata_path("child/example-sector-profile_upstream.Rmd")}
-#' ```
+#' @template example-emissions_profile_upstream
 NULL

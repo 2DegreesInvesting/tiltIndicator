@@ -12,9 +12,7 @@
 #'
 #' @export
 #'
-#' @examples
-#' ```{r child=extdata_path("child/example-sector-profile_upstream.Rmd")}
-#' ```
+#' @template example-sector_profile_upstream
 sector_profile_upstream <- function(companies,
                                     scenarios,
                                     inputs,
