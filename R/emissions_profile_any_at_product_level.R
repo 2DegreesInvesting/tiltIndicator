@@ -21,8 +21,8 @@ epa_check <- function(x) {
   stop_if_has_0_rows(x$companies)
   stop_if_has_0_rows(x$co2)
 
-  crucial <- c(aka("id"))
-  walk(crucial, ~ check_matches_name(x$companies, .x))
+  crucial <- id_pattern()
+  check_matches_name(x$companies, crucial)
 
   crucial <- c(aka("co2footprint"), aka("tsector"), aka("isic"), aka("xunit"))
   walk(crucial, ~ check_matches_name(x$co2, .x))

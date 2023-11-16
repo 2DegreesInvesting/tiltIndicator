@@ -83,7 +83,10 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- aka("id")
   bad <- select(companies, -all_of(crucial))
-  expect_error(emissions_profile_any_at_product_level(bad, products), crucial)
+  expect_error(
+    emissions_profile_any_at_product_level(bad, products),
+    class = "check_matches_name"
+  )
 })
 
 test_that("if `co2` lacks crucial columns, errors gracefully", {
@@ -186,7 +189,10 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- aka("id")
   bad <- select(companies, -all_of(crucial))
-  expect_error(emissions_profile_any_at_product_level(bad, inputs), crucial)
+  expect_error(
+    emissions_profile_any_at_product_level(bad, inputs),
+    class = "check_matches_name"
+  )
 })
 
 test_that("if `inputs` lacks crucial columns, errors gracefully", {
