@@ -23,3 +23,4 @@ cols_na_at_company_level <- function() {
   not_na <- c("companies_id")
   setdiff(cols_at_company_level(), not_na)
 }
+
