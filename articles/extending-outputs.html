@@ -110,21 +110,22 @@ for other functions.</p>
 <span><span class="va">result_at_product_level</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">result_at_product_level</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 7</span></span></span>
-<span><span class="co">#&gt;    companies_id                products_rowid grouped_by risk_category clustered</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_0000…              1 all        high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_0000…              1 isic_4dig… high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_0000…              1 tilt_sect… high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_0000…              1 unit       high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_0000…              1 unit_isic… high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_0000…              1 unit_tilt… high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_0000…              2 all        high          oven     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_0000…              2 isic_4dig… medium        oven     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_0000…              2 tilt_sect… medium        oven     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_0000…              2 unit       medium        oven     </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 8</span></span></span>
+<span><span class="co">#&gt;    companies_id          products_rowid grouped_by risk_category profile_ranking</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsoh…              1 all        high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsoh…              1 isic_4dig… high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsoh…              1 tilt_sect… high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsoh…              1 unit       high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsoh…              1 unit_isic… high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsoh…              1 unit_tilt… high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsoh…              2 all        high                    0.8  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsoh…              2 isic_4dig… medium                  0.5  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsoh…              2 tilt_sect… medium                  0.667</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsoh…              2 unit       medium                  0.5  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: activity_uuid_product_uuid &lt;chr&gt;, co2_footprint &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 more variables: clustered &lt;chr&gt;, activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   co2_footprint &lt;dbl&gt;</span></span></span></code></pre></div>
 <p>The <code>*rowid</code> column allows you to extend the output at
 product level with columns from the input.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -142,22 +143,23 @@ product level with columns from the input.</p>
 <span><span class="va">extended</span> <span class="op">&lt;-</span> <span class="va">result_at_product_level</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">extension</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(products_rowid)`</span></span>
 <span><span class="va">extended</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 10</span></span></span>
-<span><span class="co">#&gt;    companies_id                products_rowid grouped_by risk_category clustered</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_0000…              1 all        high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_0000…              1 isic_4dig… high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_0000…              1 tilt_sect… high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_0000…              1 unit       high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_0000…              1 unit_isic… high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_0000…              1 unit_tilt… high          stove    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_0000…              2 all        high          oven     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_0000…              2 isic_4dig… medium        oven     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_0000…              2 tilt_sect… medium        oven     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_0000…              2 unit       medium        oven     </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 11</span></span></span>
+<span><span class="co">#&gt;    companies_id          products_rowid grouped_by risk_category profile_ranking</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsoh…              1 all        high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsoh…              1 isic_4dig… high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsoh…              1 tilt_sect… high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsoh…              1 unit       high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsoh…              1 unit_isic… high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsoh…              1 unit_tilt… high                    1    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsoh…              2 all        high                    0.8  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsoh…              2 isic_4dig… medium                  0.5  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsoh…              2 tilt_sect… medium                  0.667</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsoh…              2 unit       medium                  0.5  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5 more variables: activity_uuid_product_uuid &lt;chr&gt;, co2_footprint &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   tilt_sector &lt;chr&gt;, tilt_subsector &lt;chr&gt;, isic_4digit &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6 more variables: clustered &lt;chr&gt;, activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   co2_footprint &lt;dbl&gt;, tilt_sector &lt;chr&gt;, tilt_subsector &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   isic_4digit &lt;dbl&gt;</span></span></span></code></pre></div>
   </main>
 </div>
 

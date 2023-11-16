@@ -196,24 +196,24 @@ what’s going on.</p>
 <span></span>
 <span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/product.csv")`</span></span>
 <span><span class="va">sector_profile_upstream_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 704 × 12</span></span></span>
-<span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… weo_state… low           stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… weo_annou… low           stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… weo_annou… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… weo_annou… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… weo_annou… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… weo_net z… low           stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… weo_net z… high          stove     0a242b09-772a-5edf-8e…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 704 × 13</span></span></span>
+<span><span class="co">#&gt;    companies_id               grouped_by risk_category profile_ranking clustered</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_000… weo_state… low                     0     stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_000… weo_state… low                    -<span style="color: #BB0000;">0.192</span> stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_000… weo_state… low                    -<span style="color: #BB0000;">0.517</span> stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_000… weo_state… low                    -<span style="color: #BB0000;">0.689</span> stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_000… weo_annou… low                     0     stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_000… weo_annou… high                    0.301 stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_000… weo_annou… high                    1.83  stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_000… weo_annou… high                    3.17  stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_000… weo_net z… low                     0     stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_000… weo_net z… high                    0.909 stove    </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 694 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: tilt_sector &lt;chr&gt;, scenario &lt;chr&gt;, year &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   type &lt;chr&gt;, input_activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   input_tilt_sector &lt;chr&gt;, input_tilt_subsector &lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: activity_uuid_product_uuid &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   scenario &lt;chr&gt;, year &lt;dbl&gt;, type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   input_activity_uuid_product_uuid &lt;chr&gt;, input_tilt_sector &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   input_tilt_subsector &lt;chr&gt;</span></span></span>
 <span></span>
 <span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/company.csv")`</span></span>
 <span><span class="va">sector_profile_upstream_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -318,35 +318,34 @@ datasets</a>.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 3</span></span></span>
 <span><span class="co">#&gt;   companies_id                             product           company          </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fleischerei-stiefsohn_00000005219477-001 <span style="color: #949494;">&lt;tibble [12 × 5]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> pecheries-basques_fra316541-00101        <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [6 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 5]&gt;</span>  <span style="color: #949494;">&lt;tibble [3 × 3]&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> fleischerei-stiefsohn_00000005219477-001 <span style="color: #949494;">&lt;tibble [12 × 6]&gt;</span> <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> pecheries-basques_fra316541-00101        <span style="color: #949494;">&lt;tibble [6 × 6]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [6 × 6]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [6 × 6]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [6 × 6]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [6 × 6]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [6 × 6]&gt;</span>  <span style="color: #949494;">&lt;tibble [18 × 3]&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [1 × 6]&gt;</span>  <span style="color: #949494;">&lt;tibble [3 × 3]&gt;</span></span></span></code></pre></div>
 <p>Typically you’ll finish by writing one “*.csv” file with results at
 product level, and another one with results at company level.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/product.csv")`</span></span>
 <span><span class="va">emissions_profile_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 6</span></span></span>
-<span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefs… isic_4dig… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefs… tilt_sect… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefs… isic_4dig… medium        oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefs… tilt_sect… medium        oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 7</span></span></span>
+<span><span class="co">#&gt;    companies_id               grouped_by risk_category profile_ranking clustered</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_000… all        high                    1     stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_000… isic_4dig… high                    1     stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_000… tilt_sect… high                    1     stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_000… unit       high                    1     stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_000… unit_isic… high                    1     stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_000… unit_tilt… high                    1     stove    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_000… all        high                    0.8   oven     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_000… isic_4dig… medium                  0.5   oven     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_000… tilt_sect… medium                  0.667 oven     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_000… unit       medium                  0.5   oven     </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: activity_uuid_product_uuid &lt;chr&gt;, co2_footprint &lt;dbl&gt;</span></span></span>
 <span></span>
 <span><span class="co"># TODO: `... |&gt; write_csv("/path/to/output/company.csv")`</span></span>
 <span><span class="va">emissions_profile_result</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
