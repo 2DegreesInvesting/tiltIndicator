@@ -23,6 +23,7 @@ test_that("xctr() with products yields the same with a deprecation warning", {
 })
 
 test_that("*upstream() wraps the output at product and company levels", {
+  companies <- rename_id(companies)
   out <- emissions_profile_upstream(companies, inputs)
 
   product <- unnest_product(out)
@@ -37,6 +38,8 @@ test_that("*upstream() wraps the output at product and company levels", {
 })
 
 test_that("xctr() with inputs yields the same as *upstream() with a deprecation warning", {
+  companies <- rename_id(companies)
+
   expect_warning(
     expect_equal(
       xctr(companies, inputs),
