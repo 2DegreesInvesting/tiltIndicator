@@ -30,9 +30,15 @@ test_that("istr() yields the same with a deprecation warning", {
   )
 })
 
-test_that("accepts `company_id` (#564)", {
+test_that("accepts `company_id` with a warning (#564)", {
   companies <- example_companies() |> rename(company_id = companies_id)
   inputs <- example_inputs()
   scenarios <- example_scenarios()
-  expect_no_error(sector_profile_upstream(companies, scenarios, inputs))
+
+  expect_no_error(
+    expect_warning(
+      sector_profile_upstream(companies, scenarios, inputs),
+      class = "sanitize_id"
+    )
+  )
 })

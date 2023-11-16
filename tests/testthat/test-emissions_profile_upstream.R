@@ -110,8 +110,14 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
   expect_false(anyNA(out))
 })
 
-test_that("accepts `company_id` (#564)", {
+test_that("accepts `company_id` with a warning (#564)", {
   companies <- example_companies() |> rename(company_id = companies_id)
   co2 <- example_inputs()
-  expect_no_error(emissions_profile_upstream(companies, co2))
+
+  expect_no_error(
+    expect_warning(
+      emissions_profile_upstream(companies, co2),
+      class = "sanitize_id"
+    )
+  )
 })

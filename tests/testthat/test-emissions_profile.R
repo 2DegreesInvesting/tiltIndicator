@@ -51,8 +51,14 @@ test_that("xctr() with inputs yields the same as *upstream() with a deprecation 
   )
 })
 
-test_that("accepts `company_id` (#564)", {
+test_that("accepts `company_id` with a warning (#564)", {
   companies <- example_companies() |> rename(company_id = companies_id)
   co2 <- example_products()
-  expect_no_error(emissions_profile(companies, co2))
+
+  expect_no_error(
+    expect_warning(
+      emissions_profile(companies, co2),
+      class = "sanitize_id"
+    )
+  )
 })

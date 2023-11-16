@@ -249,8 +249,14 @@ test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", 
   expect_false(is.na(out$clustered))
 })
 
-test_that("accepts `company_id` (#564)", {
+test_that("accepts `company_id` with a warning (#564)", {
   companies <- example_companies() |> rename(company_id = companies_id)
   scenarios <- example_scenarios()
-  expect_no_error(sector_profile(companies, scenarios))
+
+  expect_no_error(
+    expect_warning(
+      sector_profile(companies, scenarios),
+      class = "sanitize_id"
+    )
+  )
 })
