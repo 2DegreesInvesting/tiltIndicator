@@ -1,7 +1,7 @@
 The indicator "sector profile upstream" assesses the transition risk of the
 input products based on the sector's emissions targets the input product belongs
 to. This indicator can be aggregated on company level and as such inform about
-the supply chain risk of an SME, based on its inputs’ transition risk. The
+the supply chain risk of an SME, based on its inputs' transition risk. The
 sector emission reduction targets vary across scenarios (e.g., net zero scenario
 or 1.5° scenario) and the time horizon (e.g., reduction needed in 2030, 2040,
 2050 to achieve the targets). It, therefore, is similar to the Product Sector
