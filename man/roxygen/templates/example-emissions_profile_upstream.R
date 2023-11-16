@@ -4,10 +4,9 @@
 #' options(readr.show_col_types = FALSE)
 #'
 #' companies <- read_csv(toy_emissions_profile_any_companies())
-#' products <- read_csv(toy_emissions_profile_products())
+#' inputs <- read_csv(toy_emissions_profile_upstream_products())
 #'
-#' both <- emissions_profile(companies, products)
-#' both
+#' both <- emissions_profile_upstream(companies, inputs)
 #'
 #' both |> unnest_product()
 #'
