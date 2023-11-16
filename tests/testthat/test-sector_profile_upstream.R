@@ -31,7 +31,7 @@ test_that("istr() yields the same with a deprecation warning", {
 })
 
 test_that("accepts `companies_id` (#564)", {
-  companies <- example_companies() |> rename(companies_id = company_id)
+  companies <- example_companies()
   scenarios <- example_scenarios()
   expect_no_error(sector_profile(companies, scenarios))
 })
