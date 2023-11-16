@@ -14,4 +14,4 @@ template_to_rmd <- function(file) {
 }
 
 
-fs::dir_copy("man/roxygen", "inst/extdata", overwrite = TRUE)
+fs::dir_copy("man/roxygen", "inst/extdata/roxygen", overwrite = TRUE)
