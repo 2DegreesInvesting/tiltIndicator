@@ -7,7 +7,7 @@ cols_by <- function() {
 }
 
 cols_at_product_level <- function() {
-  c(cols_at_all_levels(), aka("cluster"), aka("uid"))
+  c(cols_at_all_levels(), "profile_ranking", aka("cluster"), aka("uid"))
 }
 
 cols_at_company_level <- function() {
