@@ -1,9 +1,9 @@
 check_matches_name <- function(data, pattern) {
   if (!matches_name(data, pattern)) {
-    abort(class = "check_matches_name", c(
+    abort(c(
       glue("The data lacks a column matching the pattern '{pattern}'."),
       i = "Are you using the correct data?"
-    ))
+    ), class = "check_matches_name")
   }
   invisible(data)
 }
