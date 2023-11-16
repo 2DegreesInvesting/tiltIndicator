@@ -256,7 +256,7 @@ test_that("accepts `company_id` with a warning (#564)", {
   expect_no_error(
     expect_warning(
       sector_profile(companies, scenarios),
-      class = "sanitize_id"
+      class = "rename_id"
     )
   )
 })
