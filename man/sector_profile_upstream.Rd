@@ -49,7 +49,7 @@ risk. We, therefore, derive the company-level information.
 Please note that carbon emissions or emissions always mean CO2e.
 }
 \examples{
-```{r child=extdata_path("child/intro-sector-profile-upstream.Rmd")}
+```{r child=extdata_path("child/example-sector-profile-upstream.Rmd")}
 ```
 }
 \seealso{

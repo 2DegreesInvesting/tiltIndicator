@@ -16,19 +16,8 @@
 #' @export
 #'
 #' @examples
-#' library(tiltToyData)
-#' library(readr)
-#' options(readr.show_col_types = FALSE)
-#'
-#' companies <- read_csv(toy_emissions_profile_any_companies())
-#' products <- read_csv(toy_emissions_profile_products())
-#'
-#' both <- emissions_profile(companies, products)
-#' both
-#'
-#' both |> unnest_product()
-#'
-#' both |> unnest_company()
+#' ```{r child=extdata_path("child/example-emissions-profile.Rmd")}
+#' ```
 emissions_profile <- function(companies,
                               co2,
                               low_threshold = 1 / 3,
