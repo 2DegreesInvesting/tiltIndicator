@@ -46,7 +46,7 @@ options(readr.show_col_types = FALSE)
 
 ### Example
 
-```{r child=tiltIndicator:::template_to_rmd("example-emissions-profile.R")}
+```{r child=tiltIndicator:::template_to_rmd("example-emissions_profile.R")}
 ```
 
 ## Emissions profile upstream
@@ -58,7 +58,7 @@ options(readr.show_col_types = FALSE)
 
 ### Example
 
-```{r child=extdata_path("child/example-emissions-profile-upstream.Rmd")}
+```{r child=extdata_path("child/example-emissions-profile_upstream.Rmd")}
 ```
 
 ## Sector profile

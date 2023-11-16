@@ -15,7 +15,7 @@
 #'
 #' @export
 #'
-#' @template example-emissions-profile
+#' @template example-emissions_profile
 emissions_profile <- function(companies,
                               co2,
                               low_threshold = 1 / 3,

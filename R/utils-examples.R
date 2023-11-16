@@ -1,5 +1,5 @@
 #' @examples
-#' tmp <- template_to_rmd("example-emissions-profile.R")
+#' tmp <- template_to_rmd("example-emissions_profile.R")
 #' writeLines(readLines(tmp))
 #' @noRd
 template_to_rmd <- function(file) {
