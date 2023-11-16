@@ -39,36 +39,37 @@ companies <- read_csv(toy_emissions_profile_any_companies())
 products <- read_csv(toy_emissions_profile_products())
 
 both <- emissions_profile(companies, products)
+#> Warning: Renaming from `company_id` to `companies_id`.
+#> ℹ Are you using outdated data?
 both
 #> # A tibble: 8 × 3
 #>   companies_id                             product           company          
 #>   <chr>                                    <list>            <list>           
-#> 1 fleischerei-stiefsohn_00000005219477-001 <tibble [12 × 5]> <tibble [18 × 3]>
-#> 2 pecheries-basques_fra316541-00101        <tibble [6 × 5]>  <tibble [18 × 3]>
-#> 3 hoche-butter-gmbh_deu422723-693847001    <tibble [6 × 5]>  <tibble [18 × 3]>
-#> 4 vicquelin-espaces-verts_fra697272-00101  <tibble [6 × 5]>  <tibble [18 × 3]>
-#> 5 bst-procontrol-gmbh_00000005104947-001   <tibble [6 × 5]>  <tibble [18 × 3]>
-#> 6 leider-gmbh_00000005064318-001           <tibble [6 × 5]>  <tibble [18 × 3]>
-#> 7 cheries-baqu_neu316541-00101             <tibble [6 × 5]>  <tibble [18 × 3]>
-#> 8 ca-coity-trg-aua-gmbh_00000384-001       <tibble [1 × 5]>  <tibble [3 × 3]>
+#> 1 fleischerei-stiefsohn_00000005219477-001 <tibble [12 × 6]> <tibble [18 × 3]>
+#> 2 pecheries-basques_fra316541-00101        <tibble [6 × 6]>  <tibble [18 × 3]>
+#> 3 hoche-butter-gmbh_deu422723-693847001    <tibble [6 × 6]>  <tibble [18 × 3]>
+#> 4 vicquelin-espaces-verts_fra697272-00101  <tibble [6 × 6]>  <tibble [18 × 3]>
+#> 5 bst-procontrol-gmbh_00000005104947-001   <tibble [6 × 6]>  <tibble [18 × 3]>
+#> 6 leider-gmbh_00000005064318-001           <tibble [6 × 6]>  <tibble [18 × 3]>
+#> 7 cheries-baqu_neu316541-00101             <tibble [6 × 6]>  <tibble [18 × 3]>
+#> 8 ca-coity-trg-aua-gmbh_00000384-001       <tibble [1 × 6]>  <tibble [3 × 3]>
 
 both |> unnest_product()
-#> # A tibble: 49 × 6
-#>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹
-#>    <chr>               <chr>      <chr>         <chr>     <chr>                 
-#>  1 fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…
-#>  2 fleischerei-stiefs… isic_4dig… high          stove     0a242b09-772a-5edf-8e…
-#>  3 fleischerei-stiefs… tilt_sect… high          stove     0a242b09-772a-5edf-8e…
-#>  4 fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…
-#>  5 fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…
-#>  6 fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…
-#>  7 fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…
-#>  8 fleischerei-stiefs… isic_4dig… medium        oven      be06d25c-73dc-55fb-96…
-#>  9 fleischerei-stiefs… tilt_sect… medium        oven      be06d25c-73dc-55fb-96…
-#> 10 fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…
+#> # A tibble: 49 × 7
+#>    companies_id               grouped_by risk_category profile_ranking clustered
+#>    <chr>                      <chr>      <chr>                   <dbl> <chr>    
+#>  1 fleischerei-stiefsohn_000… all        high                    1     stove    
+#>  2 fleischerei-stiefsohn_000… isic_4dig… high                    1     stove    
+#>  3 fleischerei-stiefsohn_000… tilt_sect… high                    1     stove    
+#>  4 fleischerei-stiefsohn_000… unit       high                    1     stove    
+#>  5 fleischerei-stiefsohn_000… unit_isic… high                    1     stove    
+#>  6 fleischerei-stiefsohn_000… unit_tilt… high                    1     stove    
+#>  7 fleischerei-stiefsohn_000… all        high                    0.8   oven     
+#>  8 fleischerei-stiefsohn_000… isic_4dig… medium                  0.5   oven     
+#>  9 fleischerei-stiefsohn_000… tilt_sect… medium                  0.667 oven     
+#> 10 fleischerei-stiefsohn_000… unit       medium                  0.5   oven     
 #> # ℹ 39 more rows
-#> # ℹ abbreviated name: ¹​activity_uuid_product_uuid
-#> # ℹ 1 more variable: co2_footprint <dbl>
+#> # ℹ 2 more variables: activity_uuid_product_uuid <chr>, co2_footprint <dbl>
 
 both |> unnest_company()
 #> # A tibble: 129 × 4
