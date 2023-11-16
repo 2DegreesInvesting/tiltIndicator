@@ -25,7 +25,7 @@ test_that("xctr() with products yields the same with a deprecation warning", {
 })
 
 test_that("*upstream() wraps the output at product and company levels", {
-  companies <- sanitize_id(companies)
+  companies <- companies |> sanitize_id(quiet = TRUE)
   out <- emissions_profile_upstream(companies, inputs)
 
   product <- unnest_product(out)
