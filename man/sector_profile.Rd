@@ -35,6 +35,7 @@ aggregated and set in relation to all products of the company. We, therefore,
 derive company-level information.
 }
 \examples{
+library(tiltIndicator)
 library(tiltToyData)
 library(readr)
 options(readr.show_col_types = FALSE)

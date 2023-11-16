@@ -30,18 +30,13 @@ devtools::install_github("2DegreesInvesting/tiltIndicator")
 
 ``` r
 library(tiltIndicator)
+```
+
+``` r
+
 library(tiltToyData)
 library(readr)
 options(readr.show_col_types = FALSE)
-
-toy_files()
-#> [1] "emissions_profile_any_companies.csv.gz"    
-#> [2] "emissions_profile_products.csv.gz"         
-#> [3] "emissions_profile_upstream_products.csv.gz"
-#> [4] "sector_profile_any_scenarios.csv.gz"       
-#> [5] "sector_profile_companies.csv.gz"           
-#> [6] "sector_profile_upstream_companies.csv.gz"  
-#> [7] "sector_profile_upstream_products.csv.gz"
 
 companies <- read_csv(toy_emissions_profile_any_companies())
 products <- read_csv(toy_emissions_profile_products())
@@ -65,14 +60,14 @@ both |> unnest_product()
 #>    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹
 #>    <chr>               <chr>      <chr>         <chr>     <chr>                 
 #>  1 fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…
-#>  2 fleischerei-stiefs… isic_sec   high          stove     0a242b09-772a-5edf-8e…
-#>  3 fleischerei-stiefs… tilt_sec   high          stove     0a242b09-772a-5edf-8e…
+#>  2 fleischerei-stiefs… isic_4dig… high          stove     0a242b09-772a-5edf-8e…
+#>  3 fleischerei-stiefs… tilt_sect… high          stove     0a242b09-772a-5edf-8e…
 #>  4 fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…
 #>  5 fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…
 #>  6 fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…
 #>  7 fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…
-#>  8 fleischerei-stiefs… isic_sec   medium        oven      be06d25c-73dc-55fb-96…
-#>  9 fleischerei-stiefs… tilt_sec   medium        oven      be06d25c-73dc-55fb-96…
+#>  8 fleischerei-stiefs… isic_4dig… medium        oven      be06d25c-73dc-55fb-96…
+#>  9 fleischerei-stiefs… tilt_sect… medium        oven      be06d25c-73dc-55fb-96…
 #> 10 fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…
 #> # ℹ 39 more rows
 #> # ℹ abbreviated name: ¹​activity_uuid_product_uuid
@@ -80,17 +75,20 @@ both |> unnest_product()
 
 both |> unnest_company()
 #> # A tibble: 129 × 4
-#>    companies_id                             grouped_by risk_category value
-#>    <chr>                                    <chr>      <chr>         <dbl>
-#>  1 fleischerei-stiefsohn_00000005219477-001 all        high            1  
-#>  2 fleischerei-stiefsohn_00000005219477-001 all        medium          0  
-#>  3 fleischerei-stiefsohn_00000005219477-001 all        low             0  
-#>  4 fleischerei-stiefsohn_00000005219477-001 isic_sec   high            0.5
-#>  5 fleischerei-stiefsohn_00000005219477-001 isic_sec   medium          0.5
-#>  6 fleischerei-stiefsohn_00000005219477-001 isic_sec   low             0  
-#>  7 fleischerei-stiefsohn_00000005219477-001 tilt_sec   high            0.5
-#>  8 fleischerei-stiefsohn_00000005219477-001 tilt_sec   medium          0.5
-#>  9 fleischerei-stiefsohn_00000005219477-001 tilt_sec   low             0  
-#> 10 fleischerei-stiefsohn_00000005219477-001 unit       high            0.5
+#>    companies_id                             grouped_by  risk_category value
+#>    <chr>                                    <chr>       <chr>         <dbl>
+#>  1 fleischerei-stiefsohn_00000005219477-001 all         high            1  
+#>  2 fleischerei-stiefsohn_00000005219477-001 all         medium          0  
+#>  3 fleischerei-stiefsohn_00000005219477-001 all         low             0  
+#>  4 fleischerei-stiefsohn_00000005219477-001 isic_4digit high            0.5
+#>  5 fleischerei-stiefsohn_00000005219477-001 isic_4digit medium          0.5
+#>  6 fleischerei-stiefsohn_00000005219477-001 isic_4digit low             0  
+#>  7 fleischerei-stiefsohn_00000005219477-001 tilt_sector high            0.5
+#>  8 fleischerei-stiefsohn_00000005219477-001 tilt_sector medium          0.5
+#>  9 fleischerei-stiefsohn_00000005219477-001 tilt_sector low             0  
+#> 10 fleischerei-stiefsohn_00000005219477-001 unit        high            0.5
 #> # ℹ 119 more rows
 ```
+
+For more examples see [Get
+started](https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html).

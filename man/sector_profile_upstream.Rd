@@ -49,6 +49,7 @@ risk. We, therefore, derive the company-level information.
 Please note that carbon emissions or emissions always mean CO2e.
 }
 \examples{
+library(tiltIndicator)
 library(tiltToyData)
 library(readr)
 options(readr.show_col_types = FALSE)

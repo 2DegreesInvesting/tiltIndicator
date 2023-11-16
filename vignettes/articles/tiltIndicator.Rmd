@@ -22,17 +22,11 @@ In the "sector" family, you also have two indicators: "Sector profile" and
 profile upstream" takes an additional argument for upstream-products (a.k.a.
 inputs).
 
-In all examples we'll use the tiltIndicator package.
-
-```{r setup}
-library(tiltIndicator)
-```
-
 ## Emissions profile
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/intro-emissions_profile.Rmd")}
+```{r child=tiltIndicator:::extdata_path("child/intro-emissions_profile.Rmd")}
 ```
 
 ### Example
@@ -44,7 +38,7 @@ library(tiltIndicator)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/intro-emissions_profile_upstream.Rmd")}
+```{r child=tiltIndicator:::extdata_path("child/intro-emissions_profile_upstream.Rmd")}
 ```
 
 ### Example
@@ -56,7 +50,7 @@ library(tiltIndicator)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/intro-sector_profile.Rmd")}
+```{r child=tiltIndicator:::extdata_path("child/intro-sector_profile.Rmd")}
 ```
 
 ### Example
@@ -68,7 +62,7 @@ library(tiltIndicator)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/intro-sector_profile_upstream.Rmd")}
+```{r child=tiltIndicator:::extdata_path("child/intro-sector_profile_upstream.Rmd")}
 ```
 
 ### Example
@@ -80,7 +74,7 @@ library(tiltIndicator)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/thresholds.Rmd")}
+```{r child=tiltIndicator:::extdata_path("child/thresholds.Rmd")}
 ```
 
 ## Enriching the output

@@ -65,6 +65,7 @@ completely random selection and do not reflect the true information:
 }
 }
 \examples{
+library(tiltIndicator)
 library(tiltToyData)
 library(readr)
 options(readr.show_col_types = FALSE)
