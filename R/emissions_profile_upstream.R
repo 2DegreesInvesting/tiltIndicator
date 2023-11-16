@@ -1,6 +1,6 @@
 #' Calculate the indicator "emissions profile upstream"
 #'
-#' ```{r child=extdata_path("child/intro-emissions-profile_upstream.Rmd")}
+#' ```{r child=extdata_path("child/intro-emissions_profile_upstream.Rmd")}
 #' ```
 #'
 #' @name emissions_profile_upstream

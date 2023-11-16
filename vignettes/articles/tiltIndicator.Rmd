@@ -53,12 +53,12 @@ options(readr.show_col_types = FALSE)
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/intro-emissions-profile_upstream.Rmd")}
+```{r child=extdata_path("child/intro-emissions_profile_upstream.Rmd")}
 ```
 
 ### Example
 
-```{r child=extdata_path("child/example-emissions_profile_upstream.Rmd")}
+```{r child=tiltIndicator:::template_to_rmd("example-emissions_profile_upstream.R")}
 ```
 
 ## Sector profile
@@ -70,19 +70,19 @@ options(readr.show_col_types = FALSE)
 
 ### Example
 
-```{r child=extdata_path("child/example-sector_profile.Rmd")}
+```{r child=tiltIndicator:::template_to_rmd("example-sector_profile.R")}
 ```
 
 ## Sector profile upstream
 
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
 
-```{r child=extdata_path("child/intro-sector-profile_upstream.Rmd")}
+```{r child=extdata_path("child/intro-sector_profile_upstream.Rmd")}
 ```
 
 ### Example
 
-```{r child=extdata_path("child/example-sector-profile_upstream.Rmd")}
+```{r child=tiltIndicator:::template_to_rmd("example-sector_profile_upstream.R")}
 ```
 
 ## Thresholds

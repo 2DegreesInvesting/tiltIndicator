@@ -25,7 +25,44 @@ risk products.}
 A data frame with the column \code{companies_id}, and the nested columns\code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}. Any column in the input datasets ending with \verb{*rowid} is also passed as is to the output at product level. The exception is any column named exactly \code{rowid}-- which is a reserved name and throws an error. Note this feature makes no sense at company level because potentially multiple rows in the input datasets are summarized into a single row in the output at company level.
 }
 \description{
-\if{html}{\out{<div class="sourceCode {r child=extdata_path("child/intro-emissions-profile_upstream.Rmd")}">}}\preformatted{}\if{html}{\out{</div>}}
+The indicator "emissions profile upstream" assesses the transition risk of the
+upstream products due to their relative carbon footprint to other upstream
+products. As a default option, each upstream product is compared to the carbon
+footprint of every other upstream product. Upstream products with a higher
+carbon footprint face a higher risk. On a company-level, the indicator proxies
+for the supply chain risk of a company - based on its inputs.
+
+The indicator "emissions profile upstream" is therefore similar to the Product
+Carbon Transition Risk Indicator, but it focuses on the upstream products and
+not the product of the company. Upstream products are, for example, resources,
+packaging materials, energy and enabling services (such as tractor use on farm)
+to produce the product.
+
+After identifying each carbon footprint for one upstream product, the input
+products are ranked according to their footprint. The ranking method is
+explained in the
+\href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds}
+section.
+
+After assessing the upstream products' transition risk based on the carbon
+footprint of each product, they are aggregated at the company-level. We derive
+what percentage of the upstream products are high, medium and low transition
+risk.
+
+This indicator consists of 2 broad steps:
+\enumerate{
+\item Score upstream products: Identifying the upstream products for each product,
+and calculating the relative carbon footprint per upstream product.
+\item Score companies: Aggregating on the company-level.
+}
+
+The sample data set includes inputs and co2 footprints for each product from
+Ecoinvent and sectors from Europages. NOTE: the following columns are a
+completely random selection and do not reflect the true information:
+\itemize{
+\item co2 footprints (not allowed to share licensed data right now)
+\item sectors (as the matching with ecoinvent is not done yet, we do not have one sector per product yet)
+}
 }
 \examples{
 library(tiltToyData)
