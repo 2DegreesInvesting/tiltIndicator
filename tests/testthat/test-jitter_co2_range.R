@@ -80,3 +80,19 @@ test_that("`lower_jitter` is lower than `lower`", {
   expect_true(all(out$upper_jitter > out$upper))
 })
 
+test_that("drops missing values of `*co2_footprint` with a warning", {
+  companies <- example_companies(
+    !!aka("id") := c("a", "b"),
+    !!aka("uid") := c("a", "unmatched")
+  )
+  co2 <- example_products()
+  data <- emissions_profile(companies, co2) |> unnest_product()
+
+
+  expect_warning(out <- jitter_co2_range(data))
+
+  expect_false(anyNA(out$grouped_by))
+  expect_false(anyNA(out$risk_category))
+  expect_false(anyNA(out$lower_jitter))
+  expect_false(anyNA(out$upper_jitter))
+})
