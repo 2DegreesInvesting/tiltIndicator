@@ -12,7 +12,7 @@ missing and the sector information is duplicated."><!-- mathjax --><script src="
     
     <a class="navbar-brand me-2" href="../index.html">tiltIndicator</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9102</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9103</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,11 +92,11 @@ missing and the sector information is duplicated.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># styler: off</span></span></span>
 <span class="r-in"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="op">~</span><span class="va">row</span>, <span class="op">~</span><span class="va">company_id</span>, <span class="op">~</span><span class="va">clustered</span>, <span class="op">~</span><span class="va">activity_uuid_product_uuid</span>, <span class="op">~</span><span class="va">tilt_sector</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">1L</span>,         <span class="st">"a"</span>,       <span class="st">"b1"</span>,                        <span class="st">"c1"</span>,          <span class="st">"x"</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">2L</span>,         <span class="st">"a"</span>,         <span class="cn">NA</span>,                          <span class="cn">NA</span>,          <span class="st">"x"</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">3L</span>,         <span class="st">"a"</span>,         <span class="cn">NA</span>,                          <span class="cn">NA</span>,          <span class="st">"y"</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">4L</span>,         <span class="st">"a"</span>,         <span class="cn">NA</span>,                          <span class="cn">NA</span>,          <span class="st">"y"</span></span></span>
+<span class="r-in"><span>  <span class="op">~</span><span class="va">row</span>, <span class="op">~</span><span class="va">companies_id</span>, <span class="op">~</span><span class="va">clustered</span>, <span class="op">~</span><span class="va">activity_uuid_product_uuid</span>, <span class="op">~</span><span class="va">tilt_sector</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">1L</span>,           <span class="st">"a"</span>,       <span class="st">"b1"</span>,                        <span class="st">"c1"</span>,          <span class="st">"x"</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">2L</span>,           <span class="st">"a"</span>,         <span class="cn">NA</span>,                          <span class="cn">NA</span>,          <span class="st">"x"</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">3L</span>,           <span class="st">"a"</span>,         <span class="cn">NA</span>,                          <span class="cn">NA</span>,          <span class="st">"y"</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">4L</span>,           <span class="st">"a"</span>,         <span class="cn">NA</span>,                          <span class="cn">NA</span>,          <span class="st">"y"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># styler: off</span></span></span>
 <span class="r-in"><span></span></span>
@@ -106,19 +106,19 @@ missing and the sector information is duplicated.</p>
 <span class="r-in"><span><span class="co"># Drop row 4: Lacks product info and sector info is duplicated</span></span></span>
 <span class="r-in"><span><span class="va">companies</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     row company_id clustered activity_uuid_product_uuid tilt_sector</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 a          b1        c1                         x          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 a          <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>                         x          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 a          <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>                         y          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 a          <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>                         y          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     row companies_id clustered activity_uuid_product_uuid tilt_sector</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 a            b1        c1                         x          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 a            <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>                         x          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 a            <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>                         y          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 a            <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>                         y          </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">sector_profile_any_prune_companies</span><span class="op">(</span><span class="va">companies</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     row company_id clustered activity_uuid_product_uuid tilt_sector</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 a          b1        c1                         x          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     3 a          <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>                         y          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     row companies_id clustered activity_uuid_product_uuid tilt_sector</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 a            b1        c1                         x          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     3 a            <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span>                         y          </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

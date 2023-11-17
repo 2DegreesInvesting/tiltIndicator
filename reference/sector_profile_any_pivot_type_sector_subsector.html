@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tiltIndicator</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9102</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9103</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,7 +97,7 @@
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">raw_companies</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ company_id    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "a", "b"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ companies_id  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "a", "b"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ ipr_sector    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Industry", "Industry"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ ipr_subsector <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Iron and Steel", "Chemicals"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ weo_sector    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Total", "Total"</span>
@@ -106,12 +106,12 @@
 <span class="r-in"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">sector_profile_any_pivot_type_sector_subsector</span><span class="op">(</span><span class="va">raw_companies</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">companies</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   company_id type  sector   subsector     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a          ipr   industry iron and steel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> a          weo   total    iron and steel</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> b          ipr   industry chemicals     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> b          weo   total    chemicals     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   companies_id type  sector   subsector     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a            ipr   industry iron and steel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> a            weo   total    iron and steel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> b            ipr   industry chemicals     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> b            weo   total    chemicals     </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

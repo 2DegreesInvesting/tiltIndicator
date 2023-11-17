@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">tiltIndicator</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9102</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9103</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,32 +103,31 @@
 <span><span class="co">#&gt; # A tibble: 8 × 3</span></span>
 <span><span class="co">#&gt;   companies_id                             product           company          </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;                                    &lt;list&gt;            &lt;list&gt;           </span></span>
-<span><span class="co">#&gt; 1 fleischerei-stiefsohn_00000005219477-001 &lt;tibble [12 × 5]&gt; &lt;tibble [18 × 3]&gt;</span></span>
-<span><span class="co">#&gt; 2 pecheries-basques_fra316541-00101        &lt;tibble [6 × 5]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
-<span><span class="co">#&gt; 3 hoche-butter-gmbh_deu422723-693847001    &lt;tibble [6 × 5]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
-<span><span class="co">#&gt; 4 vicquelin-espaces-verts_fra697272-00101  &lt;tibble [6 × 5]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
-<span><span class="co">#&gt; 5 bst-procontrol-gmbh_00000005104947-001   &lt;tibble [6 × 5]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
-<span><span class="co">#&gt; 6 leider-gmbh_00000005064318-001           &lt;tibble [6 × 5]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
-<span><span class="co">#&gt; 7 cheries-baqu_neu316541-00101             &lt;tibble [6 × 5]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
-<span><span class="co">#&gt; 8 ca-coity-trg-aua-gmbh_00000384-001       &lt;tibble [1 × 5]&gt;  &lt;tibble [3 × 3]&gt;</span></span>
+<span><span class="co">#&gt; 1 fleischerei-stiefsohn_00000005219477-001 &lt;tibble [12 × 6]&gt; &lt;tibble [18 × 3]&gt;</span></span>
+<span><span class="co">#&gt; 2 pecheries-basques_fra316541-00101        &lt;tibble [6 × 6]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
+<span><span class="co">#&gt; 3 hoche-butter-gmbh_deu422723-693847001    &lt;tibble [6 × 6]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
+<span><span class="co">#&gt; 4 vicquelin-espaces-verts_fra697272-00101  &lt;tibble [6 × 6]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
+<span><span class="co">#&gt; 5 bst-procontrol-gmbh_00000005104947-001   &lt;tibble [6 × 6]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
+<span><span class="co">#&gt; 6 leider-gmbh_00000005064318-001           &lt;tibble [6 × 6]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
+<span><span class="co">#&gt; 7 cheries-baqu_neu316541-00101             &lt;tibble [6 × 6]&gt;  &lt;tibble [18 × 3]&gt;</span></span>
+<span><span class="co">#&gt; 8 ca-coity-trg-aua-gmbh_00000384-001       &lt;tibble [1 × 6]&gt;  &lt;tibble [3 × 3]&gt;</span></span>
 <span></span>
 <span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 49 × 6</span></span>
-<span><span class="co">#&gt;    companies_id        grouped_by risk_category clustered activity_uuid_produc…¹</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;               &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;                 </span></span>
-<span><span class="co">#&gt;  1 fleischerei-stiefs… all        high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt;  2 fleischerei-stiefs… isic_4dig… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt;  3 fleischerei-stiefs… tilt_sect… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt;  4 fleischerei-stiefs… unit       high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt;  5 fleischerei-stiefs… unit_isic… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt;  6 fleischerei-stiefs… unit_tilt… high          stove     0a242b09-772a-5edf-8e…</span></span>
-<span><span class="co">#&gt;  7 fleischerei-stiefs… all        high          oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt;  8 fleischerei-stiefs… isic_4dig… medium        oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt;  9 fleischerei-stiefs… tilt_sect… medium        oven      be06d25c-73dc-55fb-96…</span></span>
-<span><span class="co">#&gt; 10 fleischerei-stiefs… unit       medium        oven      be06d25c-73dc-55fb-96…</span></span>
+<span><span class="co">#&gt; # A tibble: 49 × 7</span></span>
+<span><span class="co">#&gt;    companies_id               grouped_by risk_category profile_ranking clustered</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;                      &lt;chr&gt;      &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;    </span></span>
+<span><span class="co">#&gt;  1 fleischerei-stiefsohn_000… all        high                    1     stove    </span></span>
+<span><span class="co">#&gt;  2 fleischerei-stiefsohn_000… isic_4dig… high                    1     stove    </span></span>
+<span><span class="co">#&gt;  3 fleischerei-stiefsohn_000… tilt_sect… high                    1     stove    </span></span>
+<span><span class="co">#&gt;  4 fleischerei-stiefsohn_000… unit       high                    1     stove    </span></span>
+<span><span class="co">#&gt;  5 fleischerei-stiefsohn_000… unit_isic… high                    1     stove    </span></span>
+<span><span class="co">#&gt;  6 fleischerei-stiefsohn_000… unit_tilt… high                    1     stove    </span></span>
+<span><span class="co">#&gt;  7 fleischerei-stiefsohn_000… all        high                    0.8   oven     </span></span>
+<span><span class="co">#&gt;  8 fleischerei-stiefsohn_000… isic_4dig… medium                  0.5   oven     </span></span>
+<span><span class="co">#&gt;  9 fleischerei-stiefsohn_000… tilt_sect… medium                  0.667 oven     </span></span>
+<span><span class="co">#&gt; 10 fleischerei-stiefsohn_000… unit       medium                  0.5   oven     </span></span>
 <span><span class="co">#&gt; # ℹ 39 more rows</span></span>
-<span><span class="co">#&gt; # ℹ abbreviated name: ¹​activity_uuid_product_uuid</span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: co2_footprint &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: activity_uuid_product_uuid &lt;chr&gt;, co2_footprint &lt;dbl&gt;</span></span>
 <span></span>
 <span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 129 × 4</span></span>

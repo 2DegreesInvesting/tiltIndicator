@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tiltIndicator</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9102</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9103</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -246,9 +246,7 @@ what’s going on.</p>
 to later save them.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># TODO: Replace with `read_csv("/path/to/input/companies.csv")`</span></span>
-<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu">tiltIndicator</span><span class="fu">::</span><span class="va"><a href="../reference/deprecated.html">companies</a></span></span>
-<span><span class="co">#&gt; Warning: `companies` was deprecated in tiltIndicator 0.0.0.9089. Please use</span></span>
-<span><span class="co">#&gt; `emissions_profile_any_companies` from tiltToyData.</span></span>
+<span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_any_companies</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># TODO: Experiment to find the number of chunks that works best for you</span></span>
 <span><span class="va">emissions_profile_job</span> <span class="op">&lt;-</span> <span class="va">companies</span> <span class="op">|&gt;</span></span>
@@ -258,7 +256,7 @@ to later save them.</p>
 <span><span class="co"># `nest_chunk()` ensures all rows of a company fall in the same chunk</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">emissions_profile_job</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 6</span></span></span>
-<span><span class="co">#&gt;   chunk company_id             activity_uuid_produc…¹ clustered unit  file      </span></span>
+<span><span class="co">#&gt;   chunk companies_id           activity_uuid_produc…¹ clustered unit  file      </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 fleischerei-stiefsohn… 0a242b09-772a-5edf-8e… stove     unit  …ile/1.rds</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1 fleischerei-stiefsohn… be06d25c-73dc-55fb-96… oven      unit  …ile/1.rds</span></span>
@@ -268,7 +266,7 @@ to later save them.</p>
 <span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="va">emissions_profile_job</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 6</span></span></span>
-<span><span class="co">#&gt;   chunk company_id             activity_uuid_produc…¹ clustered unit  file      </span></span>
+<span><span class="co">#&gt;   chunk companies_id           activity_uuid_produc…¹ clustered unit  file      </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     2 vicquelin-espaces-ver… ebb8475e-ff57-5e4e-93… aged che… kg    …ile/2.rds</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2 bst-procontrol-gmbh_0… ebb8475e-ff57-5e4e-93… cheese    kg    …ile/2.rds</span></span>
