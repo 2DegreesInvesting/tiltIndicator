@@ -100,8 +100,7 @@ add_done <- function(data, file) {
 
 ```{r}
 # TODO: Replace with `read_csv("/path/to/input/companies.csv")`
-companies <- read_csv(toy_sector_profile_upstream_companies()) |>
-  tiltIndicator:::sanitize_id()
+companies <- read_csv(toy_sector_profile_upstream_companies())
 # TODO: Replace with `read_csv("/path/to/input/scenarios.csv")`
 scenarios <- read_csv(toy_sector_profile_any_scenarios())
 # TODO: Replace with `read_csv("/path/to/input/upstream_products.csv")`
@@ -135,8 +134,7 @@ Read `companies` data, and define chunks and files where to later save them.
 
 ```{r}
 # TODO: Replace with `read_csv("/path/to/input/companies.csv")`
-companies <- read_csv(toy_emissions_profile_any_companies()) |>
-  tiltIndicator:::sanitize_id()
+companies <- read_csv(toy_emissions_profile_any_companies())
 
 # TODO: Experiment to find the number of chunks that works best for you
 emissions_profile_job <- companies |>
