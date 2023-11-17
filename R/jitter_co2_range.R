@@ -2,11 +2,29 @@ jitter_co2_range <- function(data, amount = 0.1) {
   crucial <- c("grouped_by", "risk_category", aka("co2footprint"))
   walk(crucial, \(x) check_matches_name(data, x))
 
-  co2_col <- find_co2_footprint(data)
+  sanitize_col <- function(data, col) {
+    if (anyNA(data[[col]])) {
+      warn_removing_na_from(data, col)
+      filter(data, !is.na(data[[col]]))
+    }
+  }
 
-  if (anyNA(data[[co2_col]])) {
-    warn_removing_na_from(data, co2_col)
-    data <- filter(data, !is.na(data[[co2_col]]))
+  col <- "grouped_by"
+  if (anyNA(data[[col]])) {
+    warn_removing_na_from(data, col)
+    data <- filter(data, !is.na(data[[col]]))
+  }
+
+  col <- "risk_category"
+  if (anyNA(data[[col]])) {
+    warn_removing_na_from(data, col)
+    data <- filter(data, !is.na(data[[col]]))
+  }
+
+  col <- find_co2_footprint(data)
+  if (anyNA(data[[col]])) {
+    warn_removing_na_from(data, col)
+    data <- filter(data, !is.na(data[[col]]))
   }
 
   data |>
