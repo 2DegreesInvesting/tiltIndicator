@@ -30,10 +30,10 @@ check_jitter_co2_range <- function(data) {
   walk(crucial, \(x) check_matches_name(data, x))
 }
 
-remove_na_from <- function(data, col) {
-  if (anyNA(data[[col]])) {
-    warn_removing_na_from(data, col)
-    data <- filter(data, !is.na(data[[col]]))
+remove_na_from <- function(data, name) {
+  if (anyNA(data[[name]])) {
+    warn_removing_na_from(data, name)
+    data <- filter(data, !is.na(data[[name]]))
   }
   data
 }

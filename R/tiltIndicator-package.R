@@ -57,6 +57,7 @@
 #' @importFrom rlang is_named
 #' @importFrom rlang set_names
 #' @importFrom rlang warn
+#' @importFrom stats rnorm
 #' @importFrom stringr str_pad
 #' @importFrom tibble as_tibble
 #' @importFrom tibble rowid_to_column
