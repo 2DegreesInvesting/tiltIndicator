@@ -21,7 +21,7 @@ jitter_co2_range <- function(data, amount = 0.1) {
     data <- filter(data, !is.na(data[[col]]))
   }
 
-  col <- find_co2_footprint(data)
+  col <- co2_col <- find_co2_footprint(data)
   if (anyNA(data[[col]])) {
     warn_removing_na_from(data, col)
     data <- filter(data, !is.na(data[[col]]))
