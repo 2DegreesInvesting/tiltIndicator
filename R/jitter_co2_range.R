@@ -1,6 +1,5 @@
 jitter_co2_range <- function(data, amount = 0.1) {
-  crucial <- c("grouped_by", "risk_category", aka("co2footprint"))
-  walk(crucial, \(x) check_matches_name(data, x))
+  check_jitter_co2_range(data)
 
   co2_col <- find_co2_footprint(data)
 
@@ -20,6 +19,11 @@ jitter_co2_range <- function(data, amount = 0.1) {
       lower_jitter = jitter_left(lower, amount),
       upper_jitter = jitter_right(upper, amount)
     )
+}
+
+check_jitter_co2_range <- function(data) {
+  crucial <- c("grouped_by", "risk_category", aka("co2footprint"))
+  walk(crucial, \(x) check_matches_name(data, x))
 }
 
 remove_na_from <- function(data, col) {
