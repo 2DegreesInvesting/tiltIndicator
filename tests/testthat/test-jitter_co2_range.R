@@ -69,7 +69,7 @@ test_that("outputs `lower_jitter` and `upper_jitter`", {
   expect_true(hasName(out, "upper_jitter"))
 })
 
-test_that("`lower_jitter` is lowest and `upper_jitter` is highest", {
+test_that("with products, `lower_jitter` is lowest and `upper_jitter` is highest", {
   companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf)
   co2 <- read_test_csv(toy_emissions_profile_products(), n_max = Inf)
   data <- emissions_profile(companies, co2) |>
@@ -82,6 +82,20 @@ test_that("`lower_jitter` is lowest and `upper_jitter` is highest", {
   expect_true(all(out$upper_jitter > out$upper))
 })
 
+test_that("with inputs, `lower_jitter` is lowest and `upper_jitter` is highest", {
+  companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf)
+  co2 <- read_test_csv(toy_emissions_profile_upstream_products(), n_max = Inf)
+  data <- emissions_profile_upstream(companies, co2) |>
+    unnest_product() |>
+    filter(!is.na(grouped_by))
+
+  out <- jitter_co2_range(data)
+
+  # FIXME: lower_jitter should be lower evern when lower is negative!
+  expect_true(all(out$lower_jitter < out$lower))
+  expect_true(all(out$upper_jitter > out$upper))
+})
+
 test_that("drops missing values of `*co2_footprint` with a warning", {
   companies <- example_companies(
     !!aka("id") := c("a", "b"),
@@ -90,8 +104,7 @@ test_that("drops missing values of `*co2_footprint` with a warning", {
   co2 <- example_products()
   data <- emissions_profile(companies, co2) |> unnest_product()
 
-
-  expect_warning(out <- jitter_co2_range(data), class = "removing_na_from")
+expect_warning(out <- jitter_co2_range(data), class = "removing_na_from")
 
   expect_false(anyNA(out$grouped_by))
   expect_false(anyNA(out$risk_category))
