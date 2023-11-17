@@ -55,9 +55,7 @@ test_that("example_scenarios() adds columns via alias", {
 })
 
 test_that("example_companies() has the expected names", {
-  reference <- read_test_csv(toy_sector_profile_companies()) |>
-    sanitize_id(quiet = TRUE) |>
-    names()
+  reference <- names(read_test_csv(toy_sector_profile_companies()))
   expect_true(all(names(example_companies()) %in% reference))
 })
 

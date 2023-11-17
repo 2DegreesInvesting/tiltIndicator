@@ -52,10 +52,8 @@ test_that("is sensitive to high_threshold", {
 })
 
 test_that("no longer drops companies depending on co2 data (#122)", {
-  all <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf) |>
-    sanitize_id(quiet = TRUE)
-  companies <- all |>
-    filter(all[[aka("id")]] %in% unique(all[[aka("id")]])[c(1, 2)])
+  all <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf)
+  companies <- filter(all, all[[aka("id")]] %in% unique(all[[aka("id")]])[c(1, 2)])
 
   co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 5)
   product <- emissions_profile_any_at_product_level(companies, co2)
