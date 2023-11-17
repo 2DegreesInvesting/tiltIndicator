@@ -6,4 +6,12 @@ test_that("if data lacks crucial columns, errors gracefully", {
   crucial <- "grouped_by"
   bad <- select(data, -all_of(crucial))
   expect_error(jitter_co2_range(bad), class = "missing_names")
+
+  crucial <- "risk_category"
+  bad <- select(data, -all_of(crucial))
+  expect_error(jitter_co2_range(bad), class = "missing_names")
+
+  crucial <- find_co2_footprint(data)
+  bad <- select(data, -all_of(crucial))
+  expect_error(jitter_co2_range(bad), class = "missing_names")
 })
