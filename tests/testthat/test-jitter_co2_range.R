@@ -1,10 +1,7 @@
 test_that("with products, if data lacks crucial columns, errors gracefully", {
-  # styler: off
-  data <- tribble(
-    ~grouped_by, ~risk_category, ~co2_footprint,
-          "all",         "high",            "1"
-  )
-  # styler: on
+  companies <- example_companies()
+  co2 <- example_products()
+  data <- unnest_product(emissions_profile_upstream(companies, co2))
 
   crucial <- "grouped_by"
   bad <- select(data, -all_of(crucial))
@@ -20,12 +17,9 @@ test_that("with products, if data lacks crucial columns, errors gracefully", {
 })
 
 test_that("with inputs, if data lacks crucial columns, errors gracefully", {
-  # styler: off
-  data <- tribble(
-    ~grouped_by, ~risk_category, ~input_co2_footprint,
-          "all",         "high",                  "1"
-  )
-  # styler: on
+  companies <- example_companies()
+  co2 <- example_inputs()
+  data <- unnest_product(emissions_profile_upstream(companies, co2))
 
   crucial <- "grouped_by"
   bad <- select(data, -all_of(crucial))
