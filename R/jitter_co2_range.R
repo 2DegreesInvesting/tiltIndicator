@@ -40,7 +40,7 @@ remove_na_from <- function(data, name) {
 
 warn_removing_na_from <- function(data, name) {
   .n <- sum(is.na(data[[name]]))
-  warn(glue("Removing {.n} `NA` from `{name}`."))
+  warn(glue("Removing {.n} `NA` from `{name}`."), class = "removing_na_from")
   invisible(data)
 }
 

@@ -91,7 +91,7 @@ test_that("drops missing values of `*co2_footprint` with a warning", {
   data <- emissions_profile(companies, co2) |> unnest_product()
 
 
-  expect_warning(out <- jitter_co2_range(data))
+  expect_warning(out <- jitter_co2_range(data), class = "removing_na_from")
 
   expect_false(anyNA(out$grouped_by))
   expect_false(anyNA(out$risk_category))
