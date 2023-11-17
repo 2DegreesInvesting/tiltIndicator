@@ -23,3 +23,7 @@ cols_na_at_company_level <- function() {
   not_na <- c("companies_id")
   setdiff(cols_at_company_level(), not_na)
 }
+
+cols_crucial_jitter_co2_range <- function(data) {
+  crucial <- c("grouped_by", "risk_category", find_co2_footprint(data))
+}
