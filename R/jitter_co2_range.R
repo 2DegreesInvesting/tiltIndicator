@@ -1,5 +1,6 @@
 jitter_co2_range <- function(data) {
-  check_crucial_names(data, cols_crucial_jitter_co2_range(data))
+  crucial <- c("grouped_by", "risk_category", aka("co2footprint"))
+  walk(crucial, \(x) check_matches_name(data, x))
 
   data
 }
