@@ -6,14 +6,14 @@ jitter_co2_range <- function(data, amount = 0.1) {
   values <- get_column(data, find_co2_footprint(data))
   data |>
     mutate(
-      lower = min(values),
-      upper = max(values),
+      lower = min(values, na.rm = TRUE),
+      upper = max(values, na.rm = TRUE),
       .by = c("grouped_by", "risk_category")
     ) |>
     distinct(grouped_by, risk_category, lower, upper) |>
     mutate(
       lower_jitter = jitter_left(lower, amount),
-      upper_jitter = jitter_right(lower, amount)
+      upper_jitter = jitter_right(upper, amount)
     )
 }
 

@@ -57,3 +57,26 @@ test_that("outputs one row for each values of `grouped_by` and `risk_category`",
   expected <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
   expect_equal(nrow(out), expected)
 })
+
+test_that("outputs `lower_jitter` and `upper_jitter`", {
+  companies <- example_companies(!!aka("id") := 1:2)
+  co2 <- example_products()
+  data <- emissions_profile(companies, co2) |> unnest_product()
+
+  out <- jitter_co2_range(data)
+
+  expect_true(hasName(out, "lower_jitter"))
+  expect_true(hasName(out, "upper_jitter"))
+})
+
+test_that("`lower_jitter` is lower than `lower`", {
+  companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf)
+  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = Inf)
+  data <- emissions_profile(companies, co2) |> unnest_product()
+
+  out <- jitter_co2_range(data)
+
+  expect_true(all(out$lower_jitter < out$lower))
+  expect_true(all(out$upper_jitter > out$upper))
+})
+
