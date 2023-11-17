@@ -4,11 +4,11 @@
       format_robust_snapshot(out)
     Output
       [[1]]
-        company_id
-      1          a
-      2          a
-      3          b
-      4          b
+        companies_id
+      1            a
+      2            a
+      3            b
+      4            b
       
       [[2]]
         type

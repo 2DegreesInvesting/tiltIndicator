@@ -55,10 +55,10 @@ stop_if_has_0_rows <- function(data) {
   invisible(data)
 }
 
-prepare_companies <- function(companies) {
-  companies |>
-    distinct() |>
-    rename(companies_id = aka("id"))
+prepare_companies <- function(data) {
+  data |>
+    sanitize_id() |>
+    distinct()
 }
 
 lowercase_characters <- function(data) {

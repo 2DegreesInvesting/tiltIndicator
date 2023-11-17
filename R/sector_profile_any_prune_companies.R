@@ -14,11 +14,11 @@
 #' library(dplyr)
 #' # styler: off
 #' companies <- tribble(
-#'   ~row, ~company_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector,
-#'     1L,         "a",       "b1",                        "c1",          "x",
-#'     2L,         "a",         NA,                          NA,          "x",
-#'     3L,         "a",         NA,                          NA,          "y",
-#'     4L,         "a",         NA,                          NA,          "y"
+#'   ~row, ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector,
+#'     1L,           "a",       "b1",                        "c1",          "x",
+#'     2L,           "a",         NA,                          NA,          "x",
+#'     3L,           "a",         NA,                          NA,          "y",
+#'     4L,           "a",         NA,                          NA,          "y"
 #'   )
 #' # styler: off
 #'
@@ -47,7 +47,7 @@ check_prune_companies <- function(data) {
 
 flag_companies <- function(data) {
   data |>
-    group_by(.data$company_id, .data$tilt_sector) |>
+    group_by(.data[[aka("id")]], .data$tilt_sector) |>
     mutate(odd = ifelse(
       is.na(.data$clustered) & is.na(.data[[aka("uid")]]),
       TRUE,

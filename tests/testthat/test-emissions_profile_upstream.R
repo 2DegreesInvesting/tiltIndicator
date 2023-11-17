@@ -1,8 +1,12 @@
 test_that("hasn't change", {
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level() |>
-    dplyr::arrange(companies_id) |>
+    arrange(companies_id) |>
     format_robust_snapshot()
+
   expect_snapshot(out)
 })
 
@@ -107,4 +111,16 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
   n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
   expect_equal(n, 18L)
   expect_false(anyNA(out))
+})
+
+test_that("accepts `company_id` with a warning (#564)", {
+  companies <- example_companies() |> rename(company_id = companies_id)
+  co2 <- example_inputs()
+
+  expect_no_error(
+    expect_warning(
+      emissions_profile_upstream(companies, co2),
+      class = "rename_id"
+    )
+  )
 })

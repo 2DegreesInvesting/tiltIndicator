@@ -1,4 +1,7 @@
 test_that("wraps the output at product and company levels", {
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  products <- read_test_csv(toy_emissions_profile_products())
+
   out <- emissions_profile(companies, products)
 
   product <- unnest_product(out)
@@ -13,6 +16,9 @@ test_that("wraps the output at product and company levels", {
 })
 
 test_that("xctr() with products yields the same with a deprecation warning", {
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  products <- read_test_csv(toy_emissions_profile_products())
+
   expect_warning(
     expect_equal(
       xctr(companies, products),
@@ -23,6 +29,9 @@ test_that("xctr() with products yields the same with a deprecation warning", {
 })
 
 test_that("*upstream() wraps the output at product and company levels", {
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+
   out <- emissions_profile_upstream(companies, inputs)
 
   product <- unnest_product(out)
@@ -37,6 +46,9 @@ test_that("*upstream() wraps the output at product and company levels", {
 })
 
 test_that("xctr() with inputs yields the same as *upstream() with a deprecation warning", {
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+
   expect_warning(
     expect_equal(
       xctr(companies, inputs),
@@ -44,5 +56,17 @@ test_that("xctr() with inputs yields the same as *upstream() with a deprecation 
     ),
     # This is close enough to "emissions_profile_upstream"
     "emissions_profile"
+  )
+})
+
+test_that("accepts `company_id` with a warning (#564)", {
+  companies <- example_companies() |> rename(company_id = companies_id)
+  co2 <- example_products()
+
+  expect_no_error(
+    expect_warning(
+      emissions_profile(companies, co2),
+      class = "rename_id"
+    )
   )
 })

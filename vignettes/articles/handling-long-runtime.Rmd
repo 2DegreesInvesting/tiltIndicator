@@ -134,7 +134,7 @@ Read `companies` data, and define chunks and files where to later save them.
 
 ```{r}
 # TODO: Replace with `read_csv("/path/to/input/companies.csv")`
-companies <- tiltIndicator::companies
+companies <- read_csv(toy_emissions_profile_any_companies())
 
 # TODO: Experiment to find the number of chunks that works best for you
 emissions_profile_job <- companies |>

@@ -88,7 +88,10 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- aka("id")
   bad <- select(companies, -all_of(crucial))
-  expect_error(sector_profile_upstream_at_product_level(bad, scenarios, inputs), crucial)
+  expect_error(
+    sector_profile_upstream_at_product_level(bad, scenarios, inputs),
+    class = "check_matches_name"
+  )
 
   crucial <- aka("uid")
   bad <- select(companies, -all_of(crucial))
@@ -244,4 +247,16 @@ test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", 
 
   expect_true(is.na(out$risk_category))
   expect_false(is.na(out$clustered))
+})
+
+test_that("accepts `company_id` with a warning (#564)", {
+  companies <- example_companies() |> rename(company_id = companies_id)
+  scenarios <- example_scenarios()
+
+  expect_no_error(
+    expect_warning(
+      sector_profile(companies, scenarios),
+      class = "rename_id"
+    )
+  )
 })

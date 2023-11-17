@@ -82,7 +82,10 @@ test_that("if `companies` lacks crucial columns, errors gracefully", {
 
   crucial <- aka("id")
   bad <- select(companies, -all_of(crucial))
-  expect_error(sector_profile_at_product_level(bad, scenarios), crucial)
+  expect_error(
+    sector_profile_at_product_level(bad, scenarios),
+    class = "check_matches_name"
+  )
 
   crucial <- aka("scenario_type")
   bad <- select(companies, -all_of(crucial))
