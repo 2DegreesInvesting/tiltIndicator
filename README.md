@@ -39,8 +39,6 @@ companies <- read_csv(toy_emissions_profile_any_companies())
 products <- read_csv(toy_emissions_profile_products())
 
 both <- emissions_profile(companies, products)
-#> Warning: Renaming from `company_id` to `companies_id`.
-#> ℹ Are you using outdated data?
 both
 #> # A tibble: 8 × 3
 #>   companies_id                             product           company          
