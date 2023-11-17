@@ -1,9 +1,12 @@
 test_that("hasn't change", {
-  companies <- companies |> sanitize_id(quiet = TRUE)
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level() |>
-    dplyr::arrange(companies_id) |>
+    arrange(companies_id) |>
     format_robust_snapshot()
+
   expect_snapshot(out)
 })
 
