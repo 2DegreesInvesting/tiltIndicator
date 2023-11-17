@@ -10,8 +10,8 @@ jitter_co2_range <- function(data, amount = 0.1) {
 
   with_range <- clean |>
     mutate(
-    lower = min(clean[[co2_col]]),
-    upper = max(clean[[co2_col]]),
+      lower = min(clean[[co2_col]]),
+      upper = max(clean[[co2_col]]),
       .by = c("grouped_by", "risk_category")
     )
 
@@ -55,4 +55,3 @@ jitter_right <- function(x, amount = 0.1) {
 absolute_jitter <- function(x, amount = 0.1) {
   abs(amount * rnorm(length(x)))
 }
-

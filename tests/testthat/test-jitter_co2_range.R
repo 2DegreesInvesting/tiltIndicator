@@ -72,7 +72,8 @@ test_that("outputs `lower_jitter` and `upper_jitter`", {
 test_that("`lower_jitter` is lower than `lower`", {
   companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf)
   co2 <- read_test_csv(toy_emissions_profile_products(), n_max = Inf)
-  data <- emissions_profile(companies, co2) |> unnest_product() |>
+  data <- emissions_profile(companies, co2) |>
+    unnest_product() |>
     filter(!is.na(grouped_by))
 
   out <- jitter_co2_range(data)
