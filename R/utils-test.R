@@ -20,3 +20,15 @@ on_rcmd <- function() {
 read_test_csv <- function(file, ..., show_col_types = FALSE, n_max = 1) {
   read_csv(file, show_col_types = show_col_types, n_max = n_max)
 }
+
+example_emissions_profile <- function() {
+  companies <- example_companies()
+  co2 <- example_products()
+  emissions_profile(companies, co2)
+}
+
+example_emissions_profile_upstream <- function() {
+  companies <- example_companies()
+  co2 <- example_inputs()
+  emissions_profile_upstream(companies, co2)
+}
