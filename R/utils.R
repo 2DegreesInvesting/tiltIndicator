@@ -94,10 +94,13 @@ check_crucial_names <- function(x, expected_names) {
 }
 
 abort_missing_names <- function(missing_names) {
-  abort(glue(
-    "Must have missing names:
+  abort(
+    "missing_names",
+    message = glue(
+      "Must have missing names:
       {paste0('`', missing_names, '`', collapse = ', ')}"
-  ), class = "missing_names")
+    )
+  )
 }
 
 add_risk_category <- function(data, low_threshold, high_threshold, ...) {
