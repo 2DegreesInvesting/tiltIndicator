@@ -69,7 +69,7 @@ test_that("outputs `lower_jitter` and `upper_jitter`", {
   expect_true(hasName(out, "upper_jitter"))
 })
 
-test_that("`lower_jitter` is lower than `lower`", {
+test_that("`lower_jitter` is lowest and `upper_jitter` is highest", {
   companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf)
   co2 <- read_test_csv(toy_emissions_profile_products(), n_max = Inf)
   data <- emissions_profile(companies, co2) |>
