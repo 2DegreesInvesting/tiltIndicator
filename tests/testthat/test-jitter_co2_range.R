@@ -19,7 +19,7 @@ test_that("with products, if data lacks crucial columns, errors gracefully", {
   expect_error(jitter_co2_range(bad), crucial)
 })
 
-test_that("with upstream products, if data lacks crucial columns, errors gracefully", {
+test_that("with inputs, if data lacks crucial columns, errors gracefully", {
   # styler: off
   data <- tribble(
     ~grouped_by, ~risk_category, ~input_co2_footprint,
