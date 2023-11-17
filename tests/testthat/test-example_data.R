@@ -71,3 +71,13 @@ test_that("example_companies() adds columns via alias", {
   out <- example_companies(!!aka("id") := 1:2)
   expect_equal(out[[aka("id")]], 1:2)
 })
+
+test_that("example_products() has co2 data of class 'double'", {
+  out <- example_products()
+  expect_type(out[[find_co2_footprint(out)]], "double")
+})
+
+test_that("example_inputs() has co2 data of class 'double'", {
+  out <- example_inputs()
+  expect_type(out[[find_co2_footprint(out)]], "double")
+})
