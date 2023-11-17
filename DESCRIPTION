@@ -30,7 +30,7 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
-    tiltToyData,
+    tiltToyData (>= 0.0.0.9003),
     utils,
     vctrs,
     withr
