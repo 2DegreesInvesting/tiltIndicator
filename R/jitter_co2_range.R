@@ -3,18 +3,22 @@ jitter_co2_range <- function(data, amount = 0.1) {
 
   co2_col <- find_co2_footprint(data)
 
-  no_na <- data |>
+  clean <- data |>
     remove_na_from("grouped_by") |>
     remove_na_from("risk_category") |>
     remove_na_from(co2_col)
 
-  no_na |>
+  with_range <- clean |>
     mutate(
-      lower = min(no_na[[co2_col]]),
-      upper = max(no_na[[co2_col]]),
+    lower = min(clean[[co2_col]]),
+    upper = max(clean[[co2_col]]),
       .by = c("grouped_by", "risk_category")
-    ) |>
-    distinct(grouped_by, risk_category, lower, upper) |>
+    )
+
+  relevant_rows <- with_range |>
+    distinct(grouped_by, risk_category, lower, upper)
+
+  relevant_rows |>
     mutate(
       lower_jitter = jitter_left(lower, amount),
       upper_jitter = jitter_right(upper, amount)
