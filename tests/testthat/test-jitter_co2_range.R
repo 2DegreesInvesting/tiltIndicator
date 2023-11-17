@@ -1,7 +1,8 @@
 test_that("if data lacks crucial columns, errors gracefully", {
-  data <- emissions_profile(example_companies(), example_products()) |>
-    unnest_product() |>
-    slice(1)
+  data <- tribble(
+    ~grouped_by, ~risk_category, ~co2_footprint,
+          "all",         "high",            "1"
+  )
 
   crucial <- "grouped_by"
   bad <- select(data, -all_of(crucial))
