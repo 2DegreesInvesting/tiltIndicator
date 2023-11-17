@@ -1,6 +1,9 @@
-# tiltIndicator (development version)
-
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# tiltIndicator 0.0.0.9104
+
+* All functions now use `companies_id` but still accept `company_id` with a
+warning (#621).
 
 # tiltIndicator 0.0.0.9102
 
