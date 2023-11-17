@@ -47,3 +47,13 @@ test_that("with inputs, adds the new columns `lower` and `upper`", {
   expect_true(hasName(out, "lower"))
   expect_true(hasName(out, "upper"))
 })
+
+# FIXME
+# test_that("outputs distinct values", {
+#   data <- example_emissions_profile() |> unnest_product()
+#
+#   out <- jitter_co2_range(data)
+#
+#   expect_type(out$lower, "numeric")
+#   expect_type(out$upper, "numeric")
+# })
