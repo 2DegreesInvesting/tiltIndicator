@@ -48,12 +48,12 @@ test_that("with inputs, adds the new columns `lower` and `upper`", {
   expect_true(hasName(out, "upper"))
 })
 
-# FIXME
-# test_that("outputs distinct values", {
-#   data <- example_emissions_profile() |> unnest_product()
-#
-#   out <- jitter_co2_range(data)
-#
-#   expect_type(out$lower, "numeric")
-#   expect_type(out$upper, "numeric")
-# })
+test_that("outputs one row for each values of `grouped_by` and `risk_category`", {
+  companies <- example_companies(!!aka("id") := 1:2)
+  co2 <- example_products()
+  data <- emissions_profile(companies, co2) |> unnest_product()
+
+  out <- jitter_co2_range(data)
+  expected <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
+  expect_equal(nrow(out), expected)
+})
