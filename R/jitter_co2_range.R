@@ -16,12 +16,12 @@ jitter_co2_range <- function(data, amount = 0.1) {
     )
 
   relevant_rows <- with_range |>
-    distinct(grouped_by, risk_category, lower, upper)
+    distinct(.data$grouped_by, .data$risk_category, .data$lower, .data$upper)
 
   relevant_rows |>
     mutate(
-      lower_jitter = jitter_left(lower, amount),
-      upper_jitter = jitter_right(upper, amount)
+      lower_jitter = jitter_left(.data$lower, amount),
+      upper_jitter = jitter_right(.data$upper, amount)
     )
 }
 
