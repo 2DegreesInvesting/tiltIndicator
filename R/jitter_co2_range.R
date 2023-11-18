@@ -34,7 +34,9 @@ expand_jitter_range <- function(data, lower, upper, amount) {
 }
 
 remove_na_from <- function(data, name) {
-  if (!anyNA(data[[name]])) {
+  missing <- anyNA(data[[name]])
+
+  if (!missing) {
     return(data)
   } else {
     warn_removing_na_from(data, name)
@@ -45,5 +47,6 @@ remove_na_from <- function(data, name) {
 warn_removing_na_from <- function(data, name) {
   .n <- sum(is.na(data[[name]]))
   warn(glue("Removing {.n} `NA` from `{name}`."), class = "removing_na_from")
+
   invisible(data)
 }
