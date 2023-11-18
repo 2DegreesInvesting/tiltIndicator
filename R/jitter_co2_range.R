@@ -1,17 +1,17 @@
 jitter_co2_range <- function(data, amount = 0.1) {
   check_jitter_co2_range(data)
 
-  co2_col <- find_co2_footprint(data)
+  col_to_range <- find_co2_footprint(data)
 
   clean <- data |>
     remove_na_from("grouped_by") |>
     remove_na_from("risk_category") |>
-    remove_na_from(co2_col)
+    remove_na_from(col_to_range)
 
   with_range <- clean |>
     mutate(
-      lower = min(clean[[co2_col]]),
-      upper = max(clean[[co2_col]]),
+      lower = min(clean[[col_to_range]]),
+      upper = max(clean[[col_to_range]]),
       .by = c("grouped_by", "risk_category")
     )
 
