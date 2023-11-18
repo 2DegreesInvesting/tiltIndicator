@@ -1,5 +1,5 @@
 jitter_range <- function(data, amount = 0.1) {
-  # TODO generalize with `x`, `.by`
+  # TODO generalize with `x`, `.by`. That way we can remove reference to co2
 
   check_jitter_range(data)
 
