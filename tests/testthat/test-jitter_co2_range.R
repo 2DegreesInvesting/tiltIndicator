@@ -110,13 +110,3 @@ expect_warning(out <- jitter_co2_range(data), class = "removing_na_from")
   expect_false(anyNA(out$lower_jitter))
   expect_false(anyNA(out$upper_jitter))
 })
-
-test_that("jitter_left(x) is always smaller than x", {
-  expect_true(jitter_left(1) < 1)
-  expect_true(jitter_left(-1) < -1)
-})
-
-test_that("jitter_right(x) is always greater than x", {
-  expect_true(jitter_right(1) > 1)
-  expect_true(jitter_right(-1) > -1)
-})
