@@ -91,7 +91,6 @@ test_that("with inputs, `lower_jitter` is lowest and `upper_jitter` is highest",
 
   out <- jitter_co2_range(data)
 
-  # FIXME: lower_jitter should be lower evern when lower is negative!
   expect_true(all(out$lower_jitter < out$lower))
   expect_true(all(out$upper_jitter > out$upper))
 })
