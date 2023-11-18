@@ -45,11 +45,11 @@ warn_removing_na_from <- function(data, name) {
 }
 
 jitter_left <- function(x, amount = 0.1) {
-  x * (1 - absolute_jitter(x, amount))
+  x - absolute_jitter(x, amount)
 }
 
 jitter_right <- function(x, amount = 0.1) {
-  x * (1 + absolute_jitter(x, amount))
+  x + absolute_jitter(x, amount)
 }
 
 absolute_jitter <- function(x, amount = 0.1) {
