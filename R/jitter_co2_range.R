@@ -1,18 +1,20 @@
 jitter_co2_range <- function(data, amount = 0.1) {
   check_jitter_co2_range(data)
 
-
-
   clean <- remove_missing_values_from_crucial_cols(data)
 
   col_to_range <- find_co2_footprint(data)
-  with_range <- clean |>
-    mutate(
-      lower = min(clean[[col_to_range]]),
-      upper = max(clean[[col_to_range]]),
-      .by = c("grouped_by", "risk_category")
-    )
+  add_range_by <- function(data, .by = c("grouped_by", "risk_category")) {
+    col_to_range <- find_co2_footprint(data)
 
+    with_range <- data |>
+      mutate(
+        lower = min(data[[col_to_range]]),
+        upper = max(data[[col_to_range]]),
+        .by = all_of(.by)
+      )
+  }
+  with_range <- clean |> add_range_by(c("grouped_by", "risk_category"))
   relevant_rows <- with_range |>
     distinct(.data$grouped_by, .data$risk_category, .data$lower, .data$upper)
 
