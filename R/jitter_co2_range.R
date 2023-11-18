@@ -33,10 +33,6 @@ add_range_by <- function(data, .by = c("grouped_by", "risk_category")) {
   )
 }
 
-pick_crucial_data <- function(data) {
-  distinct(data, .data$grouped_by, .data$risk_category, .data$lower, .data$upper)
-}
-
 expand_jitter_range <- function(data, lower, upper, amount) {
   mutate(
     data,
@@ -46,11 +42,12 @@ expand_jitter_range <- function(data, lower, upper, amount) {
 }
 
 remove_na_from <- function(data, name) {
-  if (anyNA(data[[name]])) {
+  if (!anyNA(data[[name]])) {
+    data
+  } else {
     warn_removing_na_from(data, name)
-    data <- filter(data, !is.na(data[[name]]))
+    filter(data, !is.na(data[[name]]))
   }
-  data
 }
 
 warn_removing_na_from <- function(data, name) {
