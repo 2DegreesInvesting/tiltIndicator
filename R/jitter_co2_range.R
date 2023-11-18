@@ -35,7 +35,7 @@ expand_jitter_range <- function(data, lower, upper, amount) {
 
 remove_na_from <- function(data, name) {
   if (!anyNA(data[[name]])) {
-    data
+    return(data)
   } else {
     warn_removing_na_from(data, name)
     filter(data, !is.na(data[[name]]))
