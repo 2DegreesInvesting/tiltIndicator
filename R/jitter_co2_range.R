@@ -1,18 +1,29 @@
 jitter_co2_range <- function(data, amount = 0.1) {
   check_jitter_co2_range(data)
 
-  clean <- remove_missing_values_from_crucial_cols(data)
+  with_range <- data |>
+    remove_missing_values_from_crucial_cols() |>
+    add_range_by(c("grouped_by", "risk_category"))
 
-  col_to_range <- find_co2_footprint(data)
-  with_range <- clean |> add_range_by(c("grouped_by", "risk_category"))
-  relevant_rows <- with_range |>
+  relevant <- with_range |>
     distinct(.data$grouped_by, .data$risk_category, .data$lower, .data$upper)
 
-  relevant_rows |>
+  relevant |>
     mutate(
       lower_jitter = jitter_left(.data$lower, amount),
       upper_jitter = jitter_right(.data$upper, amount)
     )
+
+  expand_jitter_range <- function(data, lower, upper, amount) {
+    data |>
+      mutate(
+        lower_jitter = jitter_left(lower, amount),
+        upper_jitter = jitter_right(upper, amount)
+      )
+  }
+
+  relevant |>
+    expand_jitter_range(lower = .data$lower, upper = .data$upper, amount = 0.1)
 }
 
 remove_missing_values_from_crucial_cols <- function(data) {
