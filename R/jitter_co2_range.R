@@ -1,5 +1,7 @@
-jitter_co2_range <- function(data, amount = 0.1) {
-  check_jitter_co2_range(data)
+jitter_range <- function(data, amount = 0.1) {
+  # TODO generalize with `x`, `.by`
+
+  check_jitter_range(data)
 
   clean <- remove_missing_values_from_crucial_cols_to_range(data)
   x <- clean[[find_co2_footprint(clean)]]
@@ -9,7 +11,7 @@ jitter_co2_range <- function(data, amount = 0.1) {
     expand_jitter_range(lower = .data$lower, upper = .data$upper, amount = 0.1)
 }
 
-check_jitter_co2_range <- function(data) {
+check_jitter_range <- function(data) {
   crucial <- c(cols_to_range_by(), aka("co2footprint"))
   walk(crucial, \(x) check_matches_name(data, x))
 }
