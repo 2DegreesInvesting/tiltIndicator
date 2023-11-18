@@ -2,9 +2,9 @@ jitter_co2_range <- function(data, amount = 0.1) {
   check_jitter_co2_range(data)
 
   clean <- remove_missing_values_from_crucial_columns(data)
-
-  x <- clean[[find_co2_footprint(data)]]
+  x <- clean[[find_co2_footprint(clean)]]
   .by <- c("grouped_by", "risk_category")
+
   clean |>
     mutate(lower = min(x), upper = max(x), .by = all_of(.by)) |>
     distinct(.data$grouped_by, .data$risk_category, .data$lower, .data$upper) |>
