@@ -43,15 +43,3 @@ warn_removing_na_from <- function(data, name) {
   warn(glue("Removing {.n} `NA` from `{name}`."), class = "removing_na_from")
   invisible(data)
 }
-
-jitter_left <- function(x, amount = 0.1) {
-  x - absolute_jitter(x, amount)
-}
-
-jitter_right <- function(x, amount = 0.1) {
-  x + absolute_jitter(x, amount)
-}
-
-absolute_jitter <- function(x, amount = 0.1) {
-  abs(amount * rnorm(length(x)))
-}
