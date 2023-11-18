@@ -1,5 +1,7 @@
 jitter_range <- function(data, amount = 0.1) {
   # TODO generalize with `x`, `.by`. That way we can remove reference to co2
+  # TODO Document as a post-processing helper. Internal?
+  # TODO Discuss how to handle the licensed data. Rely on removing it later?
 
   check_jitter_range(data)
 
