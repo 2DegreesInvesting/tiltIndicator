@@ -8,7 +8,7 @@ jitter_range <- function(data, column = find_co2_footprint(data), .by = cols_to_
 }
 
 range_column <- function(data, column, .by) {
-  crucial <- c(.by, column)
+  crucial <- c(column, .by)
   check_jitter_range(data, crucial)
 
   clean <- remove_missing_values(data, crucial)
