@@ -75,3 +75,15 @@ test_that("drops missing values of crucial columns with a warning", {
   expect_false(anyNA(out$min_jitter))
   expect_false(anyNA(out$max_jitter))
 })
+
+test_that("is sensitive to `amount`", {
+  data <- tibble(x = 1:10, y = 1:10)
+  col <- "x"
+  .by <- "y"
+
+  out1 <- jitter_range(data, col, .by, amount = 0.1)
+  out2 <- jitter_range(data, col, .by, amount = 0.9)
+
+  expect_true(mean(out2$min_jitter) < mean(out1$min_jitter))
+  expect_true(mean(out2$max_jitter) > mean(out1$max_jitter))
+})
