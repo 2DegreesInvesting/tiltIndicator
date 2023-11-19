@@ -1,8 +1,6 @@
 # TODO Document as a post-processing helper. Internal?
 # TODO Discuss how to handle the licensed data. Rely on removing it later?
-jitter_range <- function(data, column_name = find_co2_footprint(data), amount = 0.1) {
-  .by <- cols_to_range_by()
-
+jitter_range <- function(data, column_name = find_co2_footprint(data), amount = 0.1, .by = cols_to_range_by()) {
   crucial <- c(.by, column_name)
   check_jitter_range(data, crucial)
 
