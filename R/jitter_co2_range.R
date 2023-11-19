@@ -10,9 +10,9 @@ jitter_range <- function(data, amount = 0.1) {
   clean <- remove_missing_values_from_crucial_cols_to_range(data)
   x <- clean[[name]]
   clean |>
-    mutate(lower = min(x), upper = max(x), .by = all_of(.by)) |>
-    distinct(.data$grouped_by, .data$risk_category, .data$lower, .data$upper) |>
-    expand_jitter_range(lower = .data$lower, upper = .data$upper, amount = 0.1)
+    mutate(minimum = min(x), maximum = max(x), .by = all_of(.by)) |>
+    distinct(.data$grouped_by, .data$risk_category, .data$minimum, .data$maximum) |>
+    expand_jitter_range(minimum = .data$minimum, maximum = .data$maximum, amount = 0.1)
 }
 
 check_jitter_range <- function(data) {
@@ -31,10 +31,10 @@ remove_missing_values_from_crucial_cols_to_range <- function(data) {
   data
 }
 
-expand_jitter_range <- function(data, lower, upper, amount) {
+expand_jitter_range <- function(data, minimum, maximum, amount) {
   mutate(
     data,
-    lower_jitter = jitter_left(lower, amount),
-    upper_jitter = jitter_right(upper, amount)
+    minimum_jitter = jitter_left(minimum, amount),
+    maximum_jitter = jitter_right(maximum, amount)
   )
 }
