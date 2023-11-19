@@ -9,17 +9,13 @@ jitter_range <- function(data, col, .by = NULL, amount = 0.1) {
 
 range_col <- function(data, col, .by) {
   crucial <- c(col, .by)
-  check_jitter_range(data, crucial)
+  walk(crucial, \(x) check_matches_name(data, x))
 
   clean <- remove_missing_values(data, crucial)
   vaules <- clean[[col]]
   with_range <- clean |>
     mutate(min = min(vaules), max = max(vaules), .by = all_of(.by)) |>
     distinct(!!!rlang::syms(.by), .data$min, .data$max)
-}
-
-check_jitter_range <- function(data, crucial) {
-  walk(crucial, \(x) check_matches_name(data, x))
 }
 
 remove_missing_values <- function(data, cols = NULL) {
