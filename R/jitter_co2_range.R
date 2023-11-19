@@ -7,7 +7,9 @@ jitter_range <- function(data, amount = 0.1) {
 
   check_jitter_range(data)
 
-  clean <- remove_missing_values_from_crucial_cols_to_range(data)
+  col_to_range <- find_co2_footprint(data)
+  cols <- c(cols_to_range_by(), col_to_range)
+  clean <- remove_missing_values_from_cols(data, cols)
   x <- clean[[name]]
   clean |>
     mutate(minimum = min(x), maximum = max(x), .by = all_of(.by)) |>
@@ -20,12 +22,9 @@ check_jitter_range <- function(data) {
   walk(crucial, \(x) check_matches_name(data, x))
 }
 
-remove_missing_values_from_crucial_cols_to_range <- function(data) {
-  col_to_range <- find_co2_footprint(data)
-  crucial <- c(cols_to_range_by(), col_to_range)
-
-  for (i in seq_along(crucial)) {
-    data <- remove_na_from(data, crucial[[i]])
+remove_missing_values_from_cols <- function(data, cols = NULL) {
+  for (i in seq_along(cols)) {
+    data <- remove_na_from(data, cols[[i]])
   }
 
   data
