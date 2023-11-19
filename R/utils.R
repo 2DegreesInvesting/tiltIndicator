@@ -177,21 +177,3 @@ check_string_lengh <- function(x, length) {
 
   invisible(x)
 }
-
-remove_na_from <- function(data, name) {
-  missing <- anyNA(data[[name]])
-
-  if (!missing) {
-    return(data)
-  } else {
-    warn_removing_na_from(data, name)
-    filter(data, !is.na(data[[name]]))
-  }
-}
-
-warn_removing_na_from <- function(data, name) {
-  .n <- sum(is.na(data[[name]]))
-  warn(glue("Removing {.n} `NA` from `{name}`."), class = "removing_na_from")
-
-  invisible(data)
-}
