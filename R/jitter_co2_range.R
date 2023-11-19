@@ -1,10 +1,9 @@
+# TODO Document as a post-processing helper. Internal?
+# TODO Discuss how to handle the licensed data. Rely on removing it later?
 jitter_range <- function(data, amount = 0.1) {
   column_name <- find_co2_footprint(data)
   .by <- cols_to_range_by()
 
-  # TODO Document as a post-processing helper. Internal?
-  # TODO Discuss how to handle the licensed data. Rely on removing it later?
-  crucial <- c(.by, aka("co2footprint"))
   crucial <- c(.by, aka("co2footprint"))
   check_jitter_range(data, crucial)
 
