@@ -1,11 +1,11 @@
 # TODO Document as a post-processing helper. Internal?
 # TODO Discuss how to handle the licensed data. Rely on removing it later?
-jitter_range <- function(data, column_name = find_co2_footprint(data), amount = 0.1, .by = cols_to_range_by()) {
+jitter_range <- function(data, column_name = find_co2_footprint(data), .by = cols_to_range_by(), amount = 0.1) {
   crucial <- c(.by, column_name)
   check_jitter_range(data, crucial)
 
   clean <- remove_missing_values(data, crucial)
-  new_cols <- c("minimum", "maximum")
+
   vaules <- clean[[column_name]]
   clean |>
     mutate(minimum = min(vaules), maximum = max(vaules), .by = all_of(.by)) |>
