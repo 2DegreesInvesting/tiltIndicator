@@ -26,7 +26,7 @@ test_that("with inputs, if data lacks crucial columns, errors gracefully", {
   expect_error(jitter_range(bad), crucial)
 
   crucial <- find_co2_footprint(data)
-  bad <- select(data, -matches(crucial_pattern))
+  bad <- select(data, -matches(crucial))
   expect_error(jitter_range(bad, crucial), crucial)
 })
 
