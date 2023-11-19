@@ -4,8 +4,9 @@ jitter_range <- function(data, amount = 0.1) {
 
   # TODO Document as a post-processing helper. Internal?
   # TODO Discuss how to handle the licensed data. Rely on removing it later?
-
-  check_jitter_range(data)
+  crucial <- c(.by, aka("co2footprint"))
+  crucial <- c(.by, aka("co2footprint"))
+  check_jitter_range(data, crucial)
 
   clean <- remove_missing_values(data, c(cols_to_range_by(), column_name))
   x <- clean[[column_name]]
@@ -15,8 +16,7 @@ jitter_range <- function(data, amount = 0.1) {
     expand_jitter_range(minimum = .data$minimum, maximum = .data$maximum, amount = 0.1)
 }
 
-check_jitter_range <- function(data) {
-  crucial <- c(cols_to_range_by(), aka("co2footprint"))
+check_jitter_range <- function(data, crucial) {
   walk(crucial, \(x) check_matches_name(data, x))
 }
 
