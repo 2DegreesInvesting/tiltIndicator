@@ -18,6 +18,18 @@ jitter_range <- function(data, column = find_co2_footprint(data), .by = cols_to_
     expand_jitter_range(minimum = .data$minimum, maximum = .data$maximum, amount = 0.1)
 }
 
+range_column <- function(data, column, .by) {
+  crucial <- c(.by, column)
+  check_jitter_range(data, crucial)
+
+  clean <- remove_missing_values(data, crucial)
+
+  vaules <- clean[[column]]
+  with_range <- clean |>
+    mutate(minimum = min(vaules), maximum = max(vaules), .by = all_of(.by)) |>
+    distinct(!!!rlang::syms(.by), .data$minimum, .data$maximum)
+}
+
 check_jitter_range <- function(data, crucial) {
   walk(crucial, \(x) check_matches_name(data, x))
 }
