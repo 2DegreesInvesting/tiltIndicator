@@ -1,21 +1,10 @@
 # TODO Document as a post-processing helper. Internal?
 # TODO Discuss how to handle the licensed data. Rely on removing it later?
 jitter_range <- function(data, column = find_co2_footprint(data), .by = cols_to_range_by(), amount = 0.1) {
-  range_column <- function(data, column, .by) {
-    crucial <- c(.by, column)
-    check_jitter_range(data, crucial)
-
-    clean <- remove_missing_values(data, crucial)
-
-    vaules <- clean[[column]]
-    with_range <- clean |>
-      mutate(min = min(vaules), max = max(vaules), .by = all_of(.by)) |>
-      distinct(!!!rlang::syms(.by), .data$min, .data$max)
-  }
-
   data |>
     range_column(column, .by = .by) |>
-    expand_jitter_range(min = .data$min, max = .data$max, amount = 0.1)
+    jitter_min("min", amount) |>
+    jitter_max("max", amount)
 }
 
 range_column <- function(data, column, .by) {
@@ -59,10 +48,16 @@ warn_removing_na_from <- function(data, name) {
   invisible(data)
 }
 
-expand_jitter_range <- function(data, min, max, amount) {
-  mutate(
-    data,
-    min_jitter = jitter_left(min, amount),
-    max_jitter = jitter_right(max, amount)
-  )
+jitter_min <- function(data, col = "min", amount = 0.1) {
+  x <- data[[col]]
+  mutate(data, min_jitter = x - jitter_abs(x, amount))
+}
+
+jitter_max <- function(data, col = "max", amount = 0.1) {
+  x <- data[[col]]
+  mutate(data, max_jitter = x + jitter_abs(x, amount))
+}
+
+jitter_abs <- function(x, amount = 0.1) {
+  abs(amount * rnorm(length(x)))
 }
