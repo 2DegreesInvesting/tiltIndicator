@@ -9,13 +9,13 @@ jitter_range <- function(data, column = find_co2_footprint(data), .by = cols_to_
 
     vaules <- clean[[column]]
     with_range <- clean |>
-      mutate(minimum = min(vaules), maximum = max(vaules), .by = all_of(.by)) |>
-      distinct(!!!rlang::syms(.by), .data$minimum, .data$maximum)
+      mutate(min = min(vaules), max = max(vaules), .by = all_of(.by)) |>
+      distinct(!!!rlang::syms(.by), .data$min, .data$max)
   }
 
   data |>
     range_column(column, .by = .by) |>
-    expand_jitter_range(minimum = .data$minimum, maximum = .data$maximum, amount = 0.1)
+    expand_jitter_range(min = .data$min, max = .data$max, amount = 0.1)
 }
 
 range_column <- function(data, column, .by) {
@@ -26,8 +26,8 @@ range_column <- function(data, column, .by) {
 
   vaules <- clean[[column]]
   with_range <- clean |>
-    mutate(minimum = min(vaules), maximum = max(vaules), .by = all_of(.by)) |>
-    distinct(!!!rlang::syms(.by), .data$minimum, .data$maximum)
+    mutate(min = min(vaules), max = max(vaules), .by = all_of(.by)) |>
+    distinct(!!!rlang::syms(.by), .data$min, .data$max)
 }
 
 check_jitter_range <- function(data, crucial) {
@@ -59,10 +59,10 @@ warn_removing_na_from <- function(data, name) {
   invisible(data)
 }
 
-expand_jitter_range <- function(data, minimum, maximum, amount) {
+expand_jitter_range <- function(data, min, max, amount) {
   mutate(
     data,
-    minimum_jitter = jitter_left(minimum, amount),
-    maximum_jitter = jitter_right(maximum, amount)
+    min_jitter = jitter_left(min, amount),
+    max_jitter = jitter_right(max, amount)
   )
 }
