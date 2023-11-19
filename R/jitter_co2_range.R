@@ -7,10 +7,10 @@ jitter_range <- function(data, amount = 0.1) {
   crucial <- c(.by, aka("co2footprint"))
   check_jitter_range(data, crucial)
 
-  clean <- remove_missing_values(data, c(cols_to_range_by(), column_name))
-  x <- clean[[column_name]]
+  clean <- remove_missing_values(data, crucial)
+  vaules <- clean[[column_name]]
   clean |>
-    mutate(minimum = min(x), maximum = max(x), .by = all_of(.by)) |>
+    mutate(minimum = min(vaules), maximum = max(vaules), .by = all_of(.by)) |>
     distinct(.data$grouped_by, .data$risk_category, .data$minimum, .data$maximum) |>
     expand_jitter_range(minimum = .data$minimum, maximum = .data$maximum, amount = 0.1)
 }
