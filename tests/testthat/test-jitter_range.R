@@ -1,43 +1,21 @@
-test_that("with products, if data lacks crucial columns, errors gracefully", {
-  data <- example_emissions_profile() |> unnest_product()
-  col <- find_co2_footprint(data)
-  .by <- c("grouped_by", "risk_category")
+test_that("if data lacks crucial columns, errors gracefully", {
+  data <- tibble(x = 1, y = 1)
+  col <- "x"
+  .by <- "y"
 
-  crucial <- "grouped_by"
+  crucial <- col
   bad <- select(data, -all_of(crucial))
   expect_error(jitter_range(bad, col, .by), crucial)
 
-  crucial <- "risk_category"
+  crucial <- .by
   bad <- select(data, -all_of(crucial))
   expect_error(jitter_range(bad, col, .by), crucial)
-
-  crucial <- find_co2_footprint(data)
-  bad <- select(data, -all_of(crucial))
-  expect_error(jitter_range(bad, col, .by, crucial), crucial)
 })
 
-test_that("with inputs, if data lacks crucial columns, errors gracefully", {
-  data <- example_emissions_profile_upstream() |> unnest_product()
-  col <- find_co2_footprint(data)
-  .by <- c("grouped_by", "risk_category")
-
-  crucial <- "grouped_by"
-  bad <- select(data, -all_of(crucial))
-  expect_error(jitter_range(bad, col, .by), crucial)
-
-  crucial <- "risk_category"
-  bad <- select(data, -all_of(crucial))
-  expect_error(jitter_range(bad, col, .by), crucial)
-
-  crucial <- find_co2_footprint(data)
-  bad <- select(data, -all_of(crucial))
-  expect_error(jitter_range(bad, col, .by, crucial), crucial)
-})
-
-test_that("with products, adds the new columns `min` and `max`", {
-  data <- example_emissions_profile() |> unnest_product()
-  col <- find_co2_footprint(data)
-  .by <- c("grouped_by", "risk_category")
+test_that("adds the new columns `min` and `max`", {
+  data <- tibble(x = 1, y = 1)
+  col <- "x"
+  .by <- "y"
 
   out <- jitter_range(data, col, .by)
 
