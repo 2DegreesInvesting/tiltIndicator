@@ -11,7 +11,7 @@ test_that("with products, if data lacks crucial columns, errors gracefully", {
 
   crucial <- find_co2_footprint(data)
   bad <- select(data, -all_of(crucial))
-  expect_error(jitter_range(bad), crucial)
+  expect_error(jitter_range(bad, crucial), crucial)
 })
 
 test_that("with inputs, if data lacks crucial columns, errors gracefully", {
@@ -25,9 +25,9 @@ test_that("with inputs, if data lacks crucial columns, errors gracefully", {
   bad <- select(data, -all_of(crucial))
   expect_error(jitter_range(bad), crucial)
 
-  crucial_pattern <- aka("co2footprint")
+  crucial <- find_co2_footprint(data)
   bad <- select(data, -matches(crucial_pattern))
-  expect_error(jitter_range(bad), crucial_pattern)
+  expect_error(jitter_range(bad, crucial), crucial)
 })
 
 test_that("with products, adds the new columns `minimum` and `maximum`", {
