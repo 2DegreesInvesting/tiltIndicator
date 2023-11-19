@@ -12,7 +12,6 @@ range_col <- function(data, col, .by) {
   check_jitter_range(data, crucial)
 
   clean <- remove_missing_values(data, crucial)
-
   vaules <- clean[[col]]
   with_range <- clean |>
     mutate(min = min(vaules), max = max(vaules), .by = all_of(.by)) |>
