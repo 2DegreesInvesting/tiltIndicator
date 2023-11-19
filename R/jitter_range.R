@@ -24,7 +24,7 @@ remove_missing_values <- function(data, cols = NULL) {
     if (!missing) {
       return(data)
     } else {
-      warn_removing_na_from(data, col)
+      warn_removing_missing_values(data, col)
       filter(data, !is.na(data[[col]]))
     }
   }
@@ -36,9 +36,9 @@ remove_missing_values <- function(data, cols = NULL) {
   data
 }
 
-warn_removing_na_from <- function(data, col) {
+warn_removing_missing_values <- function(data, col) {
   .n <- sum(is.na(data[[col]]))
-  warn(glue("Removing {.n} `NA` from `{col}`."), class = "removing_na_from")
+  warn(glue("Removing {.n} `NA` from `{col}`."))
 
   invisible(data)
 }
