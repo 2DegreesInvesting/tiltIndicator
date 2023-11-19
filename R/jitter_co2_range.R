@@ -1,14 +1,16 @@
 jitter_range <- function(data, amount = 0.1) {
-  # TODO generalize with `x`, `.by`. That way we can remove reference to co2
+  name <- find_co2_footprint(data)
+  .by <- cols_to_range_by()
+
   # TODO Document as a post-processing helper. Internal?
   # TODO Discuss how to handle the licensed data. Rely on removing it later?
 
   check_jitter_range(data)
 
   clean <- remove_missing_values_from_crucial_cols_to_range(data)
-  x <- clean[[find_co2_footprint(clean)]]
+  x <- clean[[name]]
   clean |>
-    mutate(lower = min(x), upper = max(x), .by = all_of(cols_to_range_by())) |>
+    mutate(lower = min(x), upper = max(x), .by = all_of(.by)) |>
     distinct(.data$grouped_by, .data$risk_category, .data$lower, .data$upper) |>
     expand_jitter_range(lower = .data$lower, upper = .data$upper, amount = 0.1)
 }
