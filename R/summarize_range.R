@@ -18,6 +18,8 @@
 #' @export
 #'
 #' @examples
+#' library(tibble)
+#'
 #' data <- tibble(x = 1:4, group = c(1, 1, 2, 2))
 #' data
 #'

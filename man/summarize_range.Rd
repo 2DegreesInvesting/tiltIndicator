@@ -30,6 +30,8 @@ A dataframe:
 This function is a shortcut to \code{dplyr::summarize(data, min = min(x), max = max(x))}.
 }
 \examples{
+library(tibble)
+
 data <- tibble(x = 1:4, group = c(1, 1, 2, 2))
 data
 
