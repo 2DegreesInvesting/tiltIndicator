@@ -3,7 +3,7 @@
 #' @param data A dataframe with columns `min` and `max`.
 #' @param amount Numeric. A single value giving the amount of jitter.
 #'
-#' @family post-processing helpers
+#' @family helpers
 #'
 #' @return The input dataframe with the additional columns `min_jitter` and
 #'   `max_jitter`.

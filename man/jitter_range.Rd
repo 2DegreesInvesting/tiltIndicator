@@ -28,8 +28,8 @@ data |> jitter_range()
 data |> jitter_range(amount = 0.9)
 }
 \seealso{
-Other post-processing helpers: 
-\code{\link{sector_profile_any_polish_output_at_company_level}()},
-\code{\link{summarize_range}()}
+Other helpers: 
+\code{\link{summarize_range}()},
+\code{\link{unnest_product}()}
 }
-\concept{post-processing helpers}
+\concept{helpers}

@@ -13,7 +13,7 @@
 #'   `max`.
 #'   * The groups are dropped.
 #'
-#' @family post-processing helpers
+#' @family helpers
 #'
 #' @export
 #'

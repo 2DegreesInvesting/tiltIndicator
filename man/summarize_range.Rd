@@ -38,8 +38,8 @@ data
 summarize_range(data, x, .by = group)
 }
 \seealso{
-Other post-processing helpers: 
+Other helpers: 
 \code{\link{jitter_range}()},
-\code{\link{sector_profile_any_polish_output_at_company_level}()}
+\code{\link{unnest_product}()}
 }
-\concept{post-processing helpers}
+\concept{helpers}
