@@ -37,7 +37,7 @@ sector_profile_upstream(companies_upstream, scenarios, inputs) |>
 }
 \seealso{
 Other post-processing helpers: 
-\code{\link{jitter_towards}()},
+\code{\link{jitter_range}()},
 \code{\link{summarize_range}()}
 }
 \concept{post-processing helpers}

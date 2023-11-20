@@ -1,20 +1,22 @@
-#' Add a small amount of random noise to a vector, towards the left or right
+#' Expand a range (towards the left and right) adding an amount of random noise
 #'
-#' @param x A numeric vector.
-#' @param towards Character. Either "left" (default) or "right".
+#' @param data A dataframe with columns `min` and `max`.
 #' @param amount Numeric. A single value giving the amount of jitter.
 #'
 #' @family post-processing helpers
 #'
-#' @return A numeric vector.
+#' @return The input dataframe with the additional columns `min_jitter` and
+#'   `max_jitter`.
 #' @export
 #'
 #' @examples
-#' 1:3 |> jitter_towards("left")
+#' library(tibble)
 #'
-#' 1:3 |> jitter_towards("right")
+#' data <- tibble(min = 1:2, max = 3:4)
 #'
-#' 1:3 |> jitter_towards("right", amount = 0.9)
+#' data |> jitter_range()
+#'
+#' data |> jitter_range(amount = 0.9)
 jitter_range <- function(data, amount = 0.1) {
   data |>
     mutate(min_jitter = min |> jitter_towards("left", amount = amount)) |>
