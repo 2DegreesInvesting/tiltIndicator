@@ -4,6 +4,8 @@
 #' @param towards Character. Either "left" (default) or "right".
 #' @param amount Numeric. A single value giving the amount of jitter.
 #'
+#' @family post-processing helpers
+#'
 #' @return A numeric vector.
 #' @export
 #'

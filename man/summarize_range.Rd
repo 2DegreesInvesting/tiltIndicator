@@ -37,6 +37,7 @@ summarize_range(data, x, .by = group)
 }
 \seealso{
 Other post-processing helpers: 
+\code{\link{jitter_towards}()},
 \code{\link{sector_profile_any_polish_output_at_company_level}()}
 }
 \concept{post-processing helpers}

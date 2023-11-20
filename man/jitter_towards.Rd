@@ -24,3 +24,9 @@ jitter_towards(1:3, "left")
 jitter_towards(1:3, "right")
 jitter_towards(1:3, "right", amount = 0.9)
 }
+\seealso{
+Other post-processing helpers: 
+\code{\link{sector_profile_any_polish_output_at_company_level}()},
+\code{\link{summarize_range}()}
+}
+\concept{post-processing helpers}
