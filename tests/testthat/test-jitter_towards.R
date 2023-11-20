@@ -31,3 +31,9 @@ test_that("towards right is sensitive to `amount`", {
 
   expect_true(mean(out1) < mean(out2))
 })
+
+test_that("with non-numeric input errors gracefully", {
+  expect_no_error(jitter_towards(1L))
+  expect_no_error(jitter_towards(0.1))
+  expect_error(jitter_towards("bad"), "must.*numeric")
+})
