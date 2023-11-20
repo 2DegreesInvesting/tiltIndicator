@@ -2,7 +2,7 @@
 % Please edit documentation in R/jitter_range.R
 \name{jitter_range}
 \alias{jitter_range}
-\title{Expand a range (towards the left and right) adding an amount of random noise}
+\title{Expand a range adding some random noise towards}
 \usage{
 jitter_range(data, amount = 0.1)
 }
@@ -16,7 +16,8 @@ The input dataframe with the additional columns \code{min_jitter} and
 \code{max_jitter}.
 }
 \description{
-Expand a range (towards the left and right) adding an amount of random noise
+This function expands a range by adding noise to the left of the minimum
+values and to the right of the maximum values.
 }
 \examples{
 library(tibble)

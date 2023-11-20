@@ -1,4 +1,7 @@
-#' Expand a range (towards the left and right) adding an amount of random noise
+#' Expand a range adding some random noise towards
+#'
+#' This function expands a range by adding noise to the left of the minimum
+#' values and to the right of the maximum values.
 #'
 #' @param data A dataframe with columns `min` and `max`.
 #' @param amount Numeric. A single value giving the amount of jitter.
