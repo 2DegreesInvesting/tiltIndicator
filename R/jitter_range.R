@@ -24,8 +24,6 @@ jitter_range <- function(data, amount = 0.1) {
 }
 
 jitter_towards <- function(x, towards = c("left", "right"), amount = 0.1) {
-  if (!is.numeric(x)) abort(glue("`x` must be numeric but it's a {typeof(x)}."))
-
   towards <- rlang::arg_match(towards)
   sign <- switch(towards,
     left = `-`,
