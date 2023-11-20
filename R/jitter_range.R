@@ -1,4 +1,4 @@
-#' Expand a range adding some random noise towards
+#' Expand a range adding some random noise
 #'
 #' This function expands a range by adding noise to the left of the minimum
 #' values and to the right of the maximum values.

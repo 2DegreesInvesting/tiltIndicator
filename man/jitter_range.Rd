@@ -2,7 +2,7 @@
 % Please edit documentation in R/jitter_range.R
 \name{jitter_range}
 \alias{jitter_range}
-\title{Expand a range adding some random noise towards}
+\title{Expand a range adding some random noise}
 \usage{
 jitter_range(data, amount = 0.1)
 }
