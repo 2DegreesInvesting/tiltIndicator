@@ -11,7 +11,7 @@ range_col <- function(data, col, .by) {
 
   clean <- remove_missing_values(data, crucial)
   vaules <- clean[[col]]
-  with_range <- clean |>
+  clean |>
     mutate(min = min(vaules), max = max(vaules), .by = all_of(.by)) |>
     distinct(!!!rlang::syms(.by), .data$min, .data$max)
 }
