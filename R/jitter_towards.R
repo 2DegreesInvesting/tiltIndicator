@@ -1,13 +1,16 @@
 #' Add a small amount of random noise to a vector, towards the left or right
 #'
 #' @param x A numeric vector.
-#' @param towards
-#' @param amount
+#' @param towards Character. Either "left" (default) or "right".
+#' @param amount Numeric. A single value giving the amount of jitter.
 #'
-#' @return
+#' @return A numeric vector.
 #' @export
 #'
 #' @examples
+#' jitter_towards(1:3, "left")
+#' jitter_towards(1:3, "right")
+#' jitter_towards(1:3, "right", amount = 0.9)
 jitter_towards <- function(x, towards = c("left", "right"), amount = 0.1) {
   if (!is.numeric(x)) abort(glue("`x` must be numeric but it's a {typeof(x)}."))
 
