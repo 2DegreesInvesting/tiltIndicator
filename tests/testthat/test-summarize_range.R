@@ -32,15 +32,3 @@ test_that("works with groups passed via .by", {
   expect_equal(filter(out, y == 2)$min, 3)
   expect_equal(filter(out, y == 2)$max, 4)
 })
-
-test_that("can remove `NA`s", {
-  data <- tibble(x = c(1, NA))
-
-  out <- summarize_range(data, x)
-  expect_true(is.na(out$min))
-  expect_true(is.na(out$max))
-
-  out <- summarize_range(data, x, na.rm = TRUE)
-  expect_false(is.na(out$min))
-  expect_false(is.na(out$max))
-})

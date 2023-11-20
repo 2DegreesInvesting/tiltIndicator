@@ -1,8 +1,3 @@
-summarize_range <- function(data, col, na.rm = FALSE, .by = NULL) {
-  data |>
-    summarize(
-      min = min({{ col }}, na.rm = na.rm),
-      max = max({{ col }}, na.rm = na.rm),
-      .by = {{ .by }}
-    )
+summarize_range <- function(data, col, .by = NULL) {
+  summarize(data, min = min({{ col }}), max = max({{ col }}), .by = {{ .by }})
 }
