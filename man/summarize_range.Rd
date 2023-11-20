@@ -2,7 +2,7 @@
 % Please edit documentation in R/summarize_range.R
 \name{summarize_range}
 \alias{summarize_range}
-\title{Summarize the range of a column in each group down to one row}
+\title{Summarize the range of a column by groups}
 \usage{
 summarize_range(data, col, .by = NULL)
 }

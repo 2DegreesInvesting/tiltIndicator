@@ -1,4 +1,4 @@
-#' Summarize the range of a column in each group down to one row
+#' Summarize the range of a column by groups
 #'
 #' This function is a shortcut to `dplyr::summarize(data, min = min(x), max =
 #' max(x))`.
