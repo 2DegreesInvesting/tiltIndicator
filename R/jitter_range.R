@@ -25,6 +25,7 @@ jitter_range <- function(data, amount = 0.1) {
 
 jitter_towards <- function(x, towards = c("left", "right"), amount = 0.1) {
   towards <- rlang::arg_match(towards)
+
   sign <- switch(towards,
     left = `-`,
     right = `+`
