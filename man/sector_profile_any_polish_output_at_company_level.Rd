@@ -35,4 +35,8 @@ sector_profile_upstream(companies_upstream, scenarios, inputs) |>
   unnest_company() |>
   sector_profile_any_polish_output_at_company_level()
 }
+\seealso{
+Other post-processing helpers: 
+\code{\link{summarize_range}()}
+}
 \concept{post-processing helpers}
