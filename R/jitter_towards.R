@@ -10,9 +10,11 @@
 #' @export
 #'
 #' @examples
-#' jitter_towards(1:3, "left")
-#' jitter_towards(1:3, "right")
-#' jitter_towards(1:3, "right", amount = 0.9)
+#' 1:3 |> jitter_towards("left")
+#'
+#' 1:3 |> jitter_towards("right")
+#'
+#' 1:3 |> jitter_towards("right", amount = 0.9)
 jitter_towards <- function(x, towards = c("left", "right"), amount = 0.1) {
   if (!is.numeric(x)) abort(glue("`x` must be numeric but it's a {typeof(x)}."))
 

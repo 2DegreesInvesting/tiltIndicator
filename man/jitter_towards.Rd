@@ -20,9 +20,11 @@ A numeric vector.
 Add a small amount of random noise to a vector, towards the left or right
 }
 \examples{
-jitter_towards(1:3, "left")
-jitter_towards(1:3, "right")
-jitter_towards(1:3, "right", amount = 0.9)
+1:3 |> jitter_towards("left")
+
+1:3 |> jitter_towards("right")
+
+1:3 |> jitter_towards("right", amount = 0.9)
 }
 \seealso{
 Other post-processing helpers: 
