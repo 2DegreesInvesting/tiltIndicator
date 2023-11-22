@@ -23,22 +23,17 @@
 jitter_range <- function(data, factor = 1, amount = NULL) {
   data |>
     mutate(
-      min_jitter = min |>
-        jitter_towards("left", factor = factor, amount = amount),
-      max_jitter = max |>
-        jitter_towards("right", factor = factor, amount = amount)
+      min_jitter = min |> jitter_left(factor = factor, amount = amount),
+      max_jitter = max |> jitter_right(factor = factor, amount = amount)
     )
 }
 
-jitter_towards <- function(x, towards = c("left", "right"), factor = 1, amount = NULL) {
-  towards <- rlang::arg_match(towards)
+jitter_left <- function(x, factor, amount) {
+  x - jitter_abs(x, factor, amount)
+}
 
-  sign <- switch(towards,
-    left = `-`,
-    right = `+`
-  )
-
-  sign(x, jitter_abs(x, factor = factor, amount = amount))
+jitter_right <- function(x, factor, amount) {
+  x + jitter_abs(x, factor, amount)
 }
 
 jitter_abs <- function(x, factor = 1, amount = NULL) {
