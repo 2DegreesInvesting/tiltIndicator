@@ -27,12 +27,13 @@ values and to the right of the maximum values.
 }
 \examples{
 library(tibble)
+set.seed(123)
 
-data <- tibble(min = 1:2, max = 3:4)
+data <- tibble(min = -2:2, max = -1:3)
 
-data |> jitter_range()
+data |> jitter_range(amount = 0.1)
 
-data |> jitter_range(amount = 0.9)
+data |> jitter_range(amount = 2)
 }
 \seealso{
 Other helpers: 
