@@ -4,12 +4,18 @@
 \alias{jitter_range}
 \title{Expand a range adding some random noise}
 \usage{
-jitter_range(data, ...)
+jitter_range(data, factor = 1, amount = NULL)
 }
 \arguments{
 \item{data}{A dataframe with columns \code{min} and \code{max}.}
 
-\item{...}{Arguments passed to \code{\link[=jitter]{jitter()}}.}
+\item{factor}{numeric.}
+
+\item{amount}{numeric; if positive, used as \emph{amount} (see below),
+    otherwise, if \code{= 0} the default is \code{factor * z/50}.
+
+    Default (\code{NULL}): \code{factor * d/5} where \code{d} is about
+    the smallest difference between \code{x} values.}
 }
 \value{
 The input dataframe with the additional columns \code{min_jitter} and

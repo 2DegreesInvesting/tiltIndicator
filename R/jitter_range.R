@@ -4,7 +4,7 @@
 #' values and to the right of the maximum values.
 #'
 #' @param data A dataframe with columns `min` and `max`.
-#' @param ... Arguments passed to [jitter()].
+#' @inheritParams base::jitter
 #'
 #' @family helpers
 #'
@@ -20,13 +20,13 @@
 #' data |> jitter_range()
 #'
 #' data |> jitter_range(amount = 0.9)
-jitter_range <- function(data, ...) {
+jitter_range <- function(data, factor = 1, amount = NULL) {
   data |>
-    mutate(min_jitter = min |> jitter_towards("left", ...)) |>
-    mutate(max_jitter = max |> jitter_towards("right", ...))
+    mutate(min_jitter = min |> jitter_towards("left", factor = factor, amount = amount)) |>
+    mutate(max_jitter = max |> jitter_towards("right", factor = factor, amount = amount))
 }
 
-jitter_towards <- function(x, towards = c("left", "right"), ...) {
+jitter_towards <- function(x, towards = c("left", "right"), factor = 1, amount = NULL) {
   towards <- rlang::arg_match(towards)
 
   sign <- switch(towards,
@@ -34,9 +34,9 @@ jitter_towards <- function(x, towards = c("left", "right"), ...) {
     right = `+`
   )
 
-  sign(x, jitter_abs(x, ...))
+  sign(x, jitter_abs(x, factor = factor, amount = amount))
 }
 
-jitter_abs <- function(x, ...) {
-  abs(abs(x) - abs(jitter(x, ...)))
+jitter_abs <- function(x, factor = 1, amount = NULL) {
+  abs(abs(x) - abs(jitter(x, factor = factor, amount = amount)))
 }
