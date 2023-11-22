@@ -38,5 +38,5 @@ jitter_towards <- function(x, towards = c("left", "right"), amount = 0.1) {
 }
 
 jitter_abs <- function(x, amount = 0.1) {
-  abs(amount * rnorm(length(x)))
+  abs(abs(x) - abs(jitter(x, amount = amount)))
 }
