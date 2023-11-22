@@ -4,7 +4,7 @@
 #' values and to the right of the maximum values.
 #'
 #' @param data A dataframe with columns `min` and `max`.
-#' @param amount Numeric. A single value giving the amount of jitter.
+#' @param ... Arguments passed to [jitter()].
 #'
 #' @family helpers
 #'
@@ -20,13 +20,13 @@
 #' data |> jitter_range()
 #'
 #' data |> jitter_range(amount = 0.9)
-jitter_range <- function(data, amount = 0.1) {
+jitter_range <- function(data, ...) {
   data |>
-    mutate(min_jitter = min |> jitter_towards("left", amount = amount)) |>
-    mutate(max_jitter = max |> jitter_towards("right", amount = amount))
+    mutate(min_jitter = min |> jitter_towards("left", ...)) |>
+    mutate(max_jitter = max |> jitter_towards("right", ...))
 }
 
-jitter_towards <- function(x, towards = c("left", "right"), amount = 0.1) {
+jitter_towards <- function(x, towards = c("left", "right"), ...) {
   towards <- rlang::arg_match(towards)
 
   sign <- switch(towards,
@@ -34,9 +34,9 @@ jitter_towards <- function(x, towards = c("left", "right"), amount = 0.1) {
     right = `+`
   )
 
-  sign(x, jitter_abs(x, amount))
+  sign(x, jitter_abs(x, ...))
 }
 
-jitter_abs <- function(x, amount = 0.1) {
-  abs(abs(x) - abs(jitter(x, amount = amount)))
+jitter_abs <- function(x, ...) {
+  abs(abs(x) - abs(jitter(x, ...)))
 }

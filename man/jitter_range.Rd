@@ -4,12 +4,12 @@
 \alias{jitter_range}
 \title{Expand a range adding some random noise}
 \usage{
-jitter_range(data, amount = 0.1)
+jitter_range(data, ...)
 }
 \arguments{
 \item{data}{A dataframe with columns \code{min} and \code{max}.}
 
-\item{amount}{Numeric. A single value giving the amount of jitter.}
+\item{...}{Arguments passed to \code{\link[=jitter]{jitter()}}.}
 }
 \value{
 The input dataframe with the additional columns \code{min_jitter} and
