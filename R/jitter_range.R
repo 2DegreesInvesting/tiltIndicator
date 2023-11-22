@@ -22,8 +22,12 @@
 #' data |> jitter_range(amount = 0.9)
 jitter_range <- function(data, factor = 1, amount = NULL) {
   data |>
-    mutate(min_jitter = min |> jitter_towards("left", factor = factor, amount = amount)) |>
-    mutate(max_jitter = max |> jitter_towards("right", factor = factor, amount = amount))
+    mutate(
+      min_jitter = min |>
+        jitter_towards("left", factor = factor, amount = amount),
+      max_jitter = max |>
+        jitter_towards("right", factor = factor, amount = amount)
+    )
 }
 
 jitter_towards <- function(x, towards = c("left", "right"), factor = 1, amount = NULL) {
