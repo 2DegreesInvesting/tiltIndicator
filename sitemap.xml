@@ -70,6 +70,9 @@
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/jitter_range.html</loc>
+  </url>
+  <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pipe.html</loc>
   </url>
   <url>
@@ -98,6 +101,9 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_upstream.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/summarize_range.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/tidyeval.html</loc>
