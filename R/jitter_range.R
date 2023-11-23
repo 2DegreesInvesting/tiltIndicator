@@ -22,6 +22,8 @@
 #'
 #' data |> jitter_range(amount = 2)
 jitter_range <- function(data, factor = 1, amount = NULL) {
+  check_crucial_names(data, c("min", "max"))
+
   mutate(
     data,
     min_jitter = jitter_left(min, factor = factor, amount = amount),
