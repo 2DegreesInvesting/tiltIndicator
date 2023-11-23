@@ -1,4 +1,4 @@
-test_that("withiout crucial columns errors gracefully", {
+test_that("if `data` lacks crucial columns, errors gracefully", {
   data <- tibble(bad = 1, max = 1)
   expect_error(jitter_range(data), class = "missing_names")
 
