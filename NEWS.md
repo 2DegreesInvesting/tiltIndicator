@@ -2,7 +2,7 @@
 
 # tiltIndicator 0.0.0.9105
 
-* New helpres `summarize_range()` and `jitter_range()` (#622, @AnneSchoenauer).
+* New helpers `summarize_range()` and `jitter_range()` (#622, @AnneSchoenauer).
 
 # tiltIndicator 0.0.0.9104
 
