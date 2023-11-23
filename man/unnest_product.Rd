@@ -33,4 +33,9 @@ both |> unnest_product()
 
 both |> unnest_company()
 }
+\seealso{
+Other helpers: 
+\code{\link{jitter_range}()},
+\code{\link{summarize_range}()}
+}
 \concept{helpers}
