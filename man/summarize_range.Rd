@@ -38,6 +38,8 @@ data
 summarize_range(data, x, .by = group)
 }
 \seealso{
+\code{\link[dplyr:summarise]{dplyr::summarize()}}
+
 Other helpers: 
 \code{\link{jitter_range}()},
 \code{\link{unnest_product}()}

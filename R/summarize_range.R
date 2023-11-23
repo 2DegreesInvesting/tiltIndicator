@@ -7,6 +7,8 @@
 #' @param col Unquoted expression giving the name of a column in `data`.
 #' @inheritParams dplyr::summarize
 #'
+#' @seealso [dplyr::summarize()]
+#'
 #' @return A dataframe:
 #'   * The rows come from the underlying groups.
 #'   * The columns come from the grouping keys plus the new columns `min` and

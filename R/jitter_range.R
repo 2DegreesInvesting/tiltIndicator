@@ -6,6 +6,8 @@
 #' @param data A dataframe with columns `min` and `max`.
 #' @inheritParams base::jitter
 #'
+#' @seealso [jitter()]
+#'
 #' @family helpers
 #'
 #' @return The input dataframe with the additional columns `min_jitter` and

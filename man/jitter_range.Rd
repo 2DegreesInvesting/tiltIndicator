@@ -36,6 +36,8 @@ data |> jitter_range(amount = 0.1)
 data |> jitter_range(amount = 2)
 }
 \seealso{
+\code{\link[=jitter]{jitter()}}
+
 Other helpers: 
 \code{\link{summarize_range}()},
 \code{\link{unnest_product}()}
