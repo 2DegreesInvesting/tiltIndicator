@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9105
+
+* New helpres `summarize_range()` and `jitter_range()` (#622, @AnneSchoenauer).
+
 # tiltIndicator 0.0.0.9104
 
 * All functions now use `companies_id` but still accept `company_id` with a
