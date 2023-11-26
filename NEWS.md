@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9106
+
+* The percent deviation caused by `jitter*()` is now more even (#627).
+
 # tiltIndicator 0.0.0.9105
 
 * New helpers `summarize_range()` and `jitter_range()` (#622, @AnneSchoenauer).
