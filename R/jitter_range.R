@@ -33,14 +33,28 @@ jitter_range <- function(data, factor = 1, amount = NULL) {
   )
 }
 
-jitter_left <- function(x, factor, amount) {
-  x - jitter_abs(x, factor = factor, amount = amount)
+deviation_impl <- function(x, factor, amount) {
+  factor <- abs(abs(x) - abs(jitter(x, factor, amount)))
+  abs(x * factor)
+}
+
+deviation <- function(x, factor, amount) {
+  ifelse(
+    x == 0,
+    abs(jitter(x, factor, amount) - abs(x)),
+    deviation_impl(x, factor, amount)
+  )
 }
 
 jitter_right <- function(x, factor, amount) {
-  x + jitter_abs(x, factor = factor, amount = amount)
+  x + deviation(x, factor, amount)
 }
 
-jitter_abs <- function(x, factor, amount) {
-  abs(abs(x) - abs(jitter(x, factor = factor, amount = amount)))
+jitter_left <- function(x, factor, amount) {
+  x - deviation(x, factor, amount)
+}
+
+percent_deviation <- function(x, j) {
+  deviation <- abs(abs(x) - abs(j))
+  deviation * 100 / x
 }
