@@ -40,6 +40,7 @@ jitter_right <- function(x, factor, amount) {
 jitter_left <- function(x, factor, amount) {
   x - noise(x, factor, amount)
 }
+
 noise <- function(x, factor, amount) {
   ifelse(
     x == 0,
@@ -47,9 +48,11 @@ noise <- function(x, factor, amount) {
     noise_other(x, factor, amount)
   )
 }
+
 noise_zero <- function(x, factor, amount) {
   abs(jitter(x, factor, amount) - abs(x))
 }
+
 noise_other <- function(x, factor, amount) {
   factor <- abs(abs(x) - abs(jitter(x, factor, amount)))
   abs(x * factor)
