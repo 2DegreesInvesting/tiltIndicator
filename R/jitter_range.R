@@ -33,14 +33,27 @@ jitter_range <- function(data, factor = 1, amount = NULL) {
   )
 }
 
-jitter_left <- function(x, factor, amount) {
-  x - jitter_abs(x, factor = factor, amount = amount)
-}
-
 jitter_right <- function(x, factor, amount) {
-  x + jitter_abs(x, factor = factor, amount = amount)
+  x + noise(x, factor, amount)
 }
 
-jitter_abs <- function(x, factor, amount) {
-  abs(abs(x) - abs(jitter(x, factor = factor, amount = amount)))
+jitter_left <- function(x, factor, amount) {
+  x - noise(x, factor, amount)
+}
+
+noise <- function(x, factor, amount) {
+  ifelse(
+    x == 0,
+    noise_zero(x, factor, amount),
+    noise_other(x, factor, amount)
+  )
+}
+
+noise_zero <- function(x, factor, amount) {
+  abs(jitter(x, factor, amount) - abs(x))
+}
+
+noise_other <- function(x, factor, amount) {
+  factor <- abs(abs(x) - abs(jitter(x, factor, amount)))
+  abs(x * factor)
 }
