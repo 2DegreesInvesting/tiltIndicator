@@ -18,12 +18,17 @@ Numeric vector.
 Calculate percent noise
 }
 \examples{
+withr::local_seed(123)
+
 x <- -10:10
 noisy <- jitter(x)
 out <- percent_noise(x, noisy)
 out
 
 finite <- out[is.finite(out)]
+
+barplot(finite)
+
 mean(finite)
 }
 \keyword{internal}
