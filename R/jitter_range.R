@@ -57,7 +57,7 @@ jitter_left <- function(x, factor, amount) {
   x - noise(x, factor, amount)
 }
 
-percent_noise <- function(x, j) {
-  noise <- abs(abs(x) - abs(j))
+percent_noise <- function(x, noisy) {
+  noise <- abs(abs(x) - abs(noisy))
   noise * 100 / x
 }
