@@ -35,14 +35,14 @@ test_that("is sensitive to `amount`", {
   expect_true(mean(out2$max_jitter) > mean(out1$max_jitter))
 })
 
-test_that("percent deviation is even not monotonically decreasing", {
+test_that("percent noise is even not monotonically decreasing", {
   local_seed(123)
   data <- tibble(min = c(0.1, 1, 10, 100, 1000), max = min)
 
   out <- jitter_range(data, factor = 1, amount = NULL)
 
   is_decreasing <- function(x) all(x == cummin(x))
-  expect_false(is_decreasing(percent_deviation(out$min, out$min_jitter)))
+  expect_false(is_decreasing(percent_noise(out$min, out$min_jitter)))
 })
 
 test_that("jittering 0 yields non-0", {
