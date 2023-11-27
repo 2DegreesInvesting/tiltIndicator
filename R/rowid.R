@@ -13,7 +13,7 @@ co2_rowid <- function() {
 }
 
 check_rowid <- function(x) {
-  check_reserved_name(x, reserved = c(rowid(), "co2_rowid"))
+  check_reserved_name(x, reserved = c(rowid(), co2_rowid()))
   check_unique_rowid(x)
 }
 
@@ -60,7 +60,7 @@ document_optional_rowid <- function() {
   )
 }
 
-check_reserved_name <- function(x, reserved = c(rowid(), "co2_rowid")) {
+check_reserved_name <- function(x, reserved = c(rowid(), co2_rowid())) {
   if (has_reserved_name(x, reserved)) {
     abort_reserved_name(reserved, hint = hint_specify_rowid())
   }
