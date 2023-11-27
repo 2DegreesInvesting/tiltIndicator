@@ -20,7 +20,3 @@ on_rcmd <- function() {
 read_test_csv <- function(file, ..., show_col_types = FALSE, n_max = 1) {
   read_csv(file, show_col_types = show_col_types, n_max = n_max)
 }
-
-test_manual <- function() {
-  testthat::test_dir(testthat::test_path("manual"))
-}
