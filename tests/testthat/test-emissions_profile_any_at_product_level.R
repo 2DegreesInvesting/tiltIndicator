@@ -10,12 +10,12 @@ test_that("outputs expected columns at product level", {
   companies <- example_companies()
 
   inputs <- example_inputs()
-  expected <- c(cols_at_product_level(), aka("iuid"), aka("ico2footprint"))
+  expected <- c(cols_at_product_level(), aka("iuid"), aka("ico2footprint"), "co2_rowid")
   out <- emissions_profile_any_at_product_level(companies, inputs)
   expect_named(out, expected)
 
   products <- example_products()
-  expected <- c(cols_at_product_level(), aka("co2footprint"))
+  expected <- c(cols_at_product_level(), aka("co2footprint"), "co2_rowid")
   out <- emissions_profile_any_at_product_level(companies, products)
   expect_named(out, expected)
 })
