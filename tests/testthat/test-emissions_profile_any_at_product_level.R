@@ -284,6 +284,16 @@ test_that("with the reserved name `rowid` throws an error", {
   )
 })
 
+test_that("with the reserved name `co2_rowid` throws an error", {
+  companies <- example_companies()
+  products <- example_products(co2_rowid = 1)
+
+  expect_error(
+    emissions_profile_any_at_product_level(companies, products),
+    "rowid.*reserved"
+  )
+})
+
 test_that("`*rowid` columns are passed through inputs with duplicates", {
   companies <- example_companies(companies_rowid = 1:2)
   products <- example_products(products_rowid = 1:2)
