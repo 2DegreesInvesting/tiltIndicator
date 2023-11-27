@@ -209,7 +209,7 @@ test_that("with the reserved name `rowid` throws an error", {
 
   expect_error(
     sector_profile_at_product_level(companies, scenarios),
-    "rowid.*reserved"
+    class = "reserved_name"
   )
 })
 

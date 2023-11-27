@@ -73,5 +73,8 @@ has_reserved_name <- function(x, reserved) {
 }
 
 abort_reserved_name <- function(reserved, hint) {
-  abort(c(glue("The name `{reserved}` is reserved."), i = hint))
+  abort(
+    c(glue("The name `{reserved}` is reserved."), i = hint),
+    class = "reserved_name"
+  )
 }

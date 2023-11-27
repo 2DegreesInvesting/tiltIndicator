@@ -280,7 +280,7 @@ test_that("with the reserved name `rowid` throws an error", {
 
   expect_error(
     emissions_profile_any_at_product_level(companies, products),
-    "rowid.*reserved"
+    class = "reserved_name"
   )
 })
 
@@ -290,7 +290,7 @@ test_that("with the reserved name `co2_rowid` throws an error", {
 
   expect_error(
     emissions_profile_any_at_product_level(companies, products),
-    "rowid.*reserved"
+    class = "reserved_name"
   )
 })
 
