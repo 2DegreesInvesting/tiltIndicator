@@ -7,7 +7,7 @@ test_that("handles tiltIndicator output", {
   co2 <- read_csv(toy_emissions_profile_products())
   output <- emissions_profile(companies, co2)
 
-  # FIXME: Handle this inside the new interface
+  # FIXME: Handle this inside the new interface of tiltIndicatorAfter
   extra_cols_pattern <- c("rowid", "isic", "sector")
   .co2 <- rowid_to_column(co2, "co2_rowid")
   product <- unnest_product(output) |>
@@ -33,8 +33,8 @@ test_that("emissions_profile_upstream() integratres with tiltIndicatorAfter", {
   co2 <- read_csv(toy_emissions_profile_upstream_products())
   output <- emissions_profile_upstream(companies, co2)
 
+  # FIXME: Handle this inside the new interface of tiltIndicatorAfter
   extra_cols_pattern <- c("rowid", "isic", "sector")
-  # FIXME: Handle this inside the new interface
   .co2 <- rowid_to_column(co2, "co2_rowid")
   product <- unnest_product(output) |>
     left_join(select(.co2, matches(extra_cols_pattern)), by = "co2_rowid")
