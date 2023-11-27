@@ -53,10 +53,10 @@ document_optional_rowid <- function() {
   paste0(
     "Any column in the input datasets ending with `*", rowid(), "` is also ",
     "passed as is to the output at product level. The exception is any column ",
-    "named exactly `", rowid(), "`", " or `co2_rowid` -- which are reserved names ",
-    "and throws an error. Note this feature makes no sense at company level ",
-    "because potentially multiple rows in the input datasets are summarized into ",
-    "a single row in the output at company level."
+    "named exactly `", rowid(), "`", " or `", co2_rowid(), "` -- which are ",
+    "reserved names and throws an error. Note this feature makes no sense at ",
+    "company level because potentially multiple rows in the input datasets are ",
+    "summarized into a single row in the output at company level."
   )
 }
 
