@@ -139,7 +139,7 @@ test_that("if the 'isic' column hasn't 4 digits throws no error", {
   values <- c(NA, "1", "12", "123", "1234", "12345")
   products <- example_products(!!aka("isic") := values)
 
-  expect_no_error(emissions_profile(companies, products))
+  expect_no_error(emissions_profile_any_at_product_level(companies, products))
 })
 
 test_that("a 0-row `co2` yields an error", {
