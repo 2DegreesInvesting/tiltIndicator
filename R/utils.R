@@ -168,12 +168,3 @@ nest_levels <- function(product, company) {
     by = .by
   )
 }
-
-check_string_lengh <- function(x, length) {
-  label <- deparse(substitute(x))
-  if (!all(nchar(x) == length)) {
-    abort(glue("All values of `{label}` must have length {length}."))
-  }
-
-  invisible(x)
-}

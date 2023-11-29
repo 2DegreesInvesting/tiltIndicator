@@ -29,7 +29,6 @@ epa_check <- function(x) {
 
   check_has_no_na(x$co2, find_co2_footprint(x$co2))
   check_is_character(pull_isic(x$co2))
-  check_string_lengh(pull_isic(x$co2), 4L)
 
   check_rowid(x)
 }
