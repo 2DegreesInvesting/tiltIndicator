@@ -137,7 +137,6 @@ test_that("if 'isic' column is numeric it knows how to handle it gracefully", {
 test_that("if the 'isic' column hasn't 4 digits throws no error", {
   companies <- example_companies()
   products <- example_products(!!aka("isic") := c(NA, "1", "12", "123", "12345"))
-
   expect_no_error(emissions_profile_any_at_product_level(companies, products))
 })
 
