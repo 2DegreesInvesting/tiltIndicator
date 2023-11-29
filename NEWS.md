@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9107
+
+* The column `*isic_4digit` can now have values of any length (#630
+@kalashsinghal).
+
 # tiltIndicator 0.0.0.9106
 
 * The percent deviation caused by `jitter*()` is now more even (#627).
