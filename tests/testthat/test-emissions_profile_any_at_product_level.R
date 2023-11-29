@@ -136,20 +136,10 @@ test_that("if 'isic' column is numeric it knows how to handle it gracefully", {
 
 test_that("if the 'isic' column hasn't 4 digits throws no error", {
   companies <- example_companies()
-  products <- example_products()
+  values <- c(NA, "1", "12", "123", "1234", "12345")
+  products <- example_products(!!aka("isic") := values)
 
-  products$isic_4digit <- NA
-  expect_no_error(emissions_profile_any_at_product_level(companies, products))
-  products$isic_4digit <- "1"
-  expect_no_error(emissions_profile_any_at_product_level(companies, products))
-  products$isic_4digit <- "12"
-  expect_no_error(emissions_profile_any_at_product_level(companies, products))
-  products$isic_4digit <- "123"
-  expect_no_error(emissions_profile_any_at_product_level(companies, products))
-  products$isic_4digit <- "1234"
-  expect_no_error(emissions_profile_any_at_product_level(companies, products))
-  products$isic_4digit <- "12345"
-  expect_no_error(emissions_profile_any_at_product_level(companies, products))
+  expect_no_error(emissions_profile(companies, products))
 })
 
 test_that("a 0-row `co2` yields an error", {
