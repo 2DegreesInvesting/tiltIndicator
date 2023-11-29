@@ -146,6 +146,10 @@ test_that("if the 'isic' column hasn't 4 digits throws no error", {
   expect_no_error(emissions_profile_any_at_product_level(companies, products))
   products$isic_4digit <- "123"
   expect_no_error(emissions_profile_any_at_product_level(companies, products))
+  products$isic_4digit <- "1234"
+  expect_no_error(emissions_profile_any_at_product_level(companies, products))
+  products$isic_4digit <- "12345"
+  expect_no_error(emissions_profile_any_at_product_level(companies, products))
 })
 
 test_that("a 0-row `co2` yields an error", {
