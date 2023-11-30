@@ -3,8 +3,8 @@
 #' @keywords internal
 #' @export
 #' @examples
-#' product <- tibble::tibble(companies_id = 1, x = 1)
-#' company <- tibble::tibble(companies_id = 1, x = 1)
+#' product <- data.frame(companies_id = 1, x = 1)
+#' company <- data.frame(companies_id = 1, x = 1)
 #' nest_levels(product, company)
 nest_levels <- function(product, company) {
   .by <- "companies_id"
