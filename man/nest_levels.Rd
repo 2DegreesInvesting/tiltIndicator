@@ -10,8 +10,8 @@ nest_levels(product, company)
 Nest levels
 }
 \examples{
-product <- tibble(companies_id = 1, x = 1)
-company <- tibble(companies_id = 1, x = 1)
+product <- tibble::tibble(companies_id = 1, x = 1)
+company <- tibble::tibble(companies_id = 1, x = 1)
 nest_levels(product, company)
 }
 \keyword{internal}
