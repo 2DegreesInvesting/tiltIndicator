@@ -9,6 +9,12 @@ document_value <- function() {
   paste0(document_default_value(), " ", document_optional_rowid())
 }
 
+#' Document the default return value
+#'
+#' @keywords internal
+#' @export
+#' @examples
+#' document_default_value()
 document_default_value <- function() {
   at_all_levels <- toString(paste0("`", cols_at_all_levels(), "`"))
   at_company_level <- toString(paste0("`", cols_at_company_level(), "`"))
