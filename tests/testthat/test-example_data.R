@@ -18,6 +18,11 @@ test_that("example_inputs() adds columns via alias", {
   expect_equal(out[[aka("id")]], 1:2)
 })
 
+test_that("example_inputs() single-quotes *isic* values", {
+  value <- pull_isic(example_inputs())
+  expect_equal(value, "'1234'")
+})
+
 test_that("example_products() has the expected names", {
   reference <- names(read_test_csv(toy_emissions_profile_products()))
   expect_true(all(names(example_products()) %in% reference))
@@ -34,6 +39,11 @@ test_that("example_products() adds a column", {
 test_that("example_products() adds columns via alias", {
   out <- example_products(!!aka("id") := 1:2)
   expect_equal(out[[aka("id")]], 1:2)
+})
+
+test_that("example_products() single-quotes *isic* values", {
+  value <- pull_isic(example_products())
+  expect_equal(value, "'1234'")
 })
 
 test_that("example_scenarios() has the expected names", {
