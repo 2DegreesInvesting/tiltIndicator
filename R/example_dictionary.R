@@ -44,7 +44,7 @@ example_value <- function() {
            4L,    "ipr",
            5L,   "2050",
            6L,      "1",
-           7L,   "1234"
+           7L,   "'1234'"
     # styler: on
   )
 }
