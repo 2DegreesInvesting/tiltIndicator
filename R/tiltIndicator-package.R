@@ -86,5 +86,6 @@
 #' @importFrom vctrs vec_assert
 #' @importFrom withr local_envvar
 #' @importFrom withr local_options
+#' @importFrom withr local_seed
 ## usethis namespace: end
 NULL

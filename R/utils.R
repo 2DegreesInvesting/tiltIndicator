@@ -9,6 +9,12 @@ document_value <- function() {
   paste0(document_default_value(), " ", document_optional_rowid())
 }
 
+#' Document the default return value
+#'
+#' @keywords internal
+#' @export
+#' @examples
+#' document_default_value()
 document_default_value <- function() {
   at_all_levels <- toString(paste0("`", cols_at_all_levels(), "`"))
   at_company_level <- toString(paste0("`", cols_at_company_level(), "`"))
@@ -158,22 +164,4 @@ remove_col_scenario <- function(companies) {
     companies <- select(companies, -all_of(aka("scenario_type")))
   }
   companies
-}
-
-nest_levels <- function(product, company) {
-  .by <- "companies_id"
-  left_join(
-    nest(product, .by = all_of(.by), .key = "product"),
-    nest(company, .by = all_of(.by), .key = "company"),
-    by = .by
-  )
-}
-
-check_string_lengh <- function(x, length) {
-  label <- deparse(substitute(x))
-  if (!all(nchar(x) == length)) {
-    abort(glue("All values of `{label}` must have length {length}."))
-  }
-
-  invisible(x)
 }
