@@ -69,7 +69,7 @@ job_pmap <- function(job, .f) {
     select(data, file) |>
     future_pwalk(.f, .progress = TRUE)
 
-  map_df(sector_profile_upstream_job$file, read_rds)
+  map_df(job$file, read_rds)
 }
 
 nest_chunk <- function(data, .by, chunks) {
