@@ -133,12 +133,12 @@ product level with columns from the input.</p>
 <span><span class="va">extension</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span></span>
 <span><span class="co">#&gt;   products_rowid tilt_sector    tilt_subsector isic_4digit</span></span>
-<span><span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>              1 Industry       Other                 <span style="text-decoration: underline;">2</span>560</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>              2 Industry       Other                 <span style="text-decoration: underline;">2</span>560</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>              3 Steel &amp; Metals Steel                 <span style="text-decoration: underline;">2</span>870</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>              4 Agriculture    Agriculture           <span style="text-decoration: underline;">1</span>780</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>              5 Industry       Other                 <span style="text-decoration: underline;">2</span>679</span></span>
+<span><span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>              1 Industry       Other          '2560'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>              2 Industry       Other          '2560'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>              3 Steel &amp; Metals Steel          '2870'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>              4 Agriculture    Agriculture    '1780'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>              5 Industry       Other          '2679'</span></span>
 <span></span>
 <span><span class="va">extended</span> <span class="op">&lt;-</span> <span class="va">result_at_product_level</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">extension</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(products_rowid)`</span></span>
@@ -159,7 +159,7 @@ product level with columns from the input.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6 more variables: clustered &lt;chr&gt;, activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   co2_footprint &lt;dbl&gt;, tilt_sector &lt;chr&gt;, tilt_subsector &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   isic_4digit &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;">#   isic_4digit &lt;chr&gt;</span></span></span></code></pre></div>
   </main>
 </div>
 

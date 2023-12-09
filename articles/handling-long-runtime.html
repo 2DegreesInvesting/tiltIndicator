@@ -139,7 +139,7 @@ what’s going on.</p>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">file</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://furrr.futureverse.org/reference/future_map2.html" class="external-link">future_pwalk</a></span><span class="op">(</span><span class="va">.f</span>, .progress <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="va">sector_profile_upstream_job</span><span class="op">$</span><span class="va">file</span>, <span class="va">read_rds</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html" class="external-link">map_df</a></span><span class="op">(</span><span class="va">job</span><span class="op">$</span><span class="va">file</span>, <span class="va">read_rds</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">nest_chunk</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">.by</span>, <span class="va">chunks</span><span class="op">)</span> <span class="op">{</span></span>
