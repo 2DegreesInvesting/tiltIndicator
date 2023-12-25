@@ -1,4 +1,5 @@
 test_that("hasn't change", {
+  withr::local_options(width = 500)
   companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = 3)
   inputs <- read_test_csv(toy_emissions_profile_upstream_products_ecoinvent(), n_max = 3)
 
