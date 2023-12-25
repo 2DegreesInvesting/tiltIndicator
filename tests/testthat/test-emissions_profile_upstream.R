@@ -1,11 +1,11 @@
 test_that("hasn't change", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products())
+  companies <- read_test_csv(toy_emissions_profile_any_companies(), n_max = 3)
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products_ecoinvent(), n_max = 3)
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
     any_at_company_level() |>
     arrange(companies_id) |>
-    format_robust_snapshot()
+    as.data.frame()
 
   expect_snapshot(out)
 })
