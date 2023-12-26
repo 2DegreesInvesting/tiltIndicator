@@ -25,13 +25,25 @@
 emissions_profile_any_compute_profile_ranking <- function(data) {
   check_emissions_profile_any_compute_profile_ranking(data)
 
-  if (hasName(data, "profile_ranking")) {
-    out <- check_crucial_names(data, "grouped_by")
-  } else {
-    benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
-    out <- map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
+  if (hasName(data, "input_activity_uuid_product_uuid")) {
+    data <- data |>
+      rename(
+        isic_4digit = "input_isic_4digit",
+        tilt_sector = "input_tilt_sector",
+        unit = "input_unit"
+      )
   }
+  benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
+  out <- map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
 
+  if (hasName(data, "input_activity_uuid_product_uuid")) {
+    out <- out |>
+      rename(
+        input_isic_4digit = "isic_4digit",
+        input_tilt_sector = "tilt_sector",
+        input_unit = "unit"
+      )
+  }
   related_cols <- c("grouped_by", "profile_ranking")
   relocate(out, all_of(related_cols))
 }
@@ -42,7 +54,7 @@ check_emissions_profile_any_compute_profile_ranking <- function(data) {
 }
 
 rank_proportion <- function(x) {
-  rank(x) / length(x)
+  dense_rank(x) / length(unique(x))
 }
 
 epa_benchmarks <- function(data) {
@@ -61,10 +73,26 @@ flat_benchmarks <- function(data) {
 }
 
 add_rank <- function(data, .by) {
-  if (identical(.by, "all")) .by <- NULL
-  mutate(
-    data,
-    profile_ranking = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
-    .by = all_of(.by)
-  )
+  if (identical(.by, "all") | (identical(.by, "unit"))) {
+    if (identical(.by, "all")) .by <- NULL
+    mutate(
+      data,
+      profile_ranking = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
+      .by = all_of(.by)
+    )
+  } else {
+    if ((identical(.by, "isic_4digit")) | (identical(.by, c("unit", "isic_4digit")))) {
+      filtered_df <- data %>% filter(str_length(.data[["isic_4digit"]]) %in% c(NA_character_, 4, 5))
+      df <- anti_join(data, filtered_df, by = c("isic_4digit"))
+    } else {
+      filtered_df <- data %>% filter(is.na(.data[["tilt_sector"]]))
+      df <- anti_join(data, filtered_df, by = c("tilt_sector"))
+    }
+    output <- mutate(
+      df,
+      profile_ranking = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
+      .by = all_of(.by)
+    )
+    bind_rows(output, filtered_df)
+  }
 }

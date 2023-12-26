@@ -17,33 +17,21 @@
       10 fleischerei-stiefsohn_00000005219477-001
       11 fleischerei-stiefsohn_00000005219477-001
       12 fleischerei-stiefsohn_00000005219477-001
-      13 fleischerei-stiefsohn_00000005219477-001
-      14 fleischerei-stiefsohn_00000005219477-001
-      15 fleischerei-stiefsohn_00000005219477-001
-      16 fleischerei-stiefsohn_00000005219477-001
-      17 fleischerei-stiefsohn_00000005219477-001
-      18 fleischerei-stiefsohn_00000005219477-001
       
       [[2]]
                grouped_by
       1               all
       2               all
       3               all
-      4       isic_4digit
-      5       isic_4digit
-      6       isic_4digit
-      7       tilt_sector
-      8       tilt_sector
-      9       tilt_sector
-      10             unit
-      11             unit
-      12             unit
-      13 unit_isic_4digit
-      14 unit_isic_4digit
-      15 unit_isic_4digit
-      16 unit_tilt_sector
-      17 unit_tilt_sector
-      18 unit_tilt_sector
+      4       tilt_sector
+      5       tilt_sector
+      6       tilt_sector
+      7              unit
+      8              unit
+      9              unit
+      10 unit_tilt_sector
+      11 unit_tilt_sector
+      12 unit_tilt_sector
       
       [[3]]
          risk_category
@@ -59,12 +47,6 @@
       10          high
       11        medium
       12           low
-      13          high
-      14        medium
-      15           low
-      16          high
-      17        medium
-      18           low
       
       [[4]]
          value
@@ -80,11 +62,5 @@
       10     1
       11     0
       12     0
-      13     1
-      14     0
-      15     0
-      16     1
-      17     0
-      18     0
       
 
