@@ -6,17 +6,17 @@ test_that("works with any 'co2-like' dataset", {
   expect_no_error(emissions_profile_any_compute_profile_ranking(co2))
 })
 
-test_that("adds columns `grouped_by` and `profile_ranking`", {
+test_that("with products, adds columns `grouped_by` and `profile_ranking` to the left", {
   co2 <- example_products()
 
   out <- emissions_profile_any_compute_profile_ranking(co2)
 
   new_names <- c("grouped_by", "profile_ranking")
-  expect_equal(setdiff(names(out), names(co2)), new_names)
+  expect_equal(names(out)[1:2], new_names)
 })
 
-test_that("adds columns `grouped_by` and `profile_ranking` to the left", {
-  co2 <- example_products()
+test_that("with inputs, adds columns `grouped_by` and `profile_ranking` to the left", {
+  co2 <- example_inputs()
 
   out <- emissions_profile_any_compute_profile_ranking(co2)
 
