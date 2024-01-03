@@ -84,8 +84,7 @@ short_isic_should_be_na <- function(data) {
 }
 
 is_benchmark_to_exclude <- function(data, pattern) {
-  col_name <- extract_name(data, pattern)
-  data$grouped_by %in% c(col_name, paste0("unit_", col_name))
+  grepl(pattern, data$grouped_by)
 }
 
 missing_isic_should_be_na <- function(data) {
