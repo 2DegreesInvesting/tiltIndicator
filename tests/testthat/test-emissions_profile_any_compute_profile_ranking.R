@@ -134,20 +134,15 @@ test_that("with inputs, yields `NA` in `profile_ranking` where `*isic_4digit` ha
   expect_false(any(is.na(filter(out, !special_cases)$profile_ranking)))
 })
 
-test_that("more than one highest co2 value should be ranked 1.0", {
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("a", "a", "a"),
-    co2_footprint = c(2, 3, 3),
-    ei_activity_name = c("a", "a", "b"),
-    ei_geography = c("a", "a", "a"),
-    isic_4digit = c("'1234'", "'1234'", "'1234'"),
-    tilt_sector = c("a", "a", "a"),
-    tilt_subsector = c("a", "a", "a"),
-    unit = c("a", "a", "a")
-  )
-  out <- emissions_profile_any_compute_profile_ranking(co2) |>
-    filter(co2_footprint == max(co2_footprint))
-  expect_equal(unique(out$profile_ranking), 1.0)
+test_that("`profile_ranking` is `1` for duplicated max values of *co2_footprint", {
+  co2 <- example_products(co2_footprint = c(2, 3, 3))
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+  max <- filter(out, co2_footprint == max(co2_footprint))
+  expect_true(all(max$profile_ranking == 1.0))
+
+  other <- filter(out, co2_footprint != max(co2_footprint))
+  expect_false(any(other$profile_ranking == 1.0))
 })
 
 test_that("input products outputs `profile_ranking` column", {
