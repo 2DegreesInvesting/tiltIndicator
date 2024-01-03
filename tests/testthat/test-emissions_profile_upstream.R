@@ -2,7 +2,7 @@ test_that("hasn't change", {
   skip_if_toy_data_is_old()
 
   companies <- read_test_csv(toy_emissions_profile_any_companies())
-  inputs <- toy_emissions_profile_upstream_products_ecoinvent() |>
+  inputs <- tiltToyData::toy_emissions_profile_upstream_products_ecoinvent() |>
     read_test_csv(n_max = 3)
 
   out <- emissions_profile_upstream(companies, inputs)

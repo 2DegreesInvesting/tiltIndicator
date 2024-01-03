@@ -2,7 +2,8 @@ test_that("hasn't change", {
   skip_if_toy_data_is_old()
 
   companies <- read_test_csv(toy_emissions_profile_any_companies())
-  inputs <- read_test_csv(toy_emissions_profile_products_ecoinvent(), n_max = 8)
+  inputs <- tiltToyData::toy_emissions_profile_products_ecoinvent() |>
+    read_test_csv(n_max = 8)
 
   out <- emissions_profile(companies, inputs)
   expect_snapshot(format_robust_snapshot(unnest_product(out)))
