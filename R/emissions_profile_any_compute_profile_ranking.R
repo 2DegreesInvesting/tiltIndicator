@@ -68,35 +68,32 @@ add_rank <- function(data, .by) {
 
 exclude_special_cases <- function(data) {
   data |>
-    mutate(profile_ranking = ifelse(isic_is_short(data), NA, profile_ranking)) |>
-    mutate(profile_ranking = ifelse(is_isic_na(data), NA, profile_ranking)) |>
-    mutate(profile_ranking = ifelse(is_tsector_na(data), NA, profile_ranking))
+    mutate(profile_ranking = case_when(
+      short_isic_should_be_na(data) ~ NA,
+      missing_isic_should_be_na(data) ~ NA,
+      missing_tsector_should_be_na(data) ~ NA,
+      .default = profile_ranking
+    ))
 }
 
-isic_is_short <- function(data) {
+short_isic_should_be_na <- function(data) {
   isic <- get_column(data, aka("isic"))
-  two_and_three_chars_plus_quotes <- 4:5
-  has_2_or_3_chars <- str_length(isic) %in% two_and_three_chars_plus_quotes
-
-  has_2_or_3_chars & is_isic_benchmark_to_exclude(data)
+  two_quotes_plus_2_or_3_digits <- c(4, 5)
+  short_isic <- str_length(isic) %in% two_quotes_plus_2_or_3_digits
+  short_isic & is_benchmark_to_exclude(data, aka("isic"))
 }
 
-is_isic_benchmark_to_exclude <- function(data) {
-  isic_name <- extract_name(data, aka("isic"))
-  is_col_to_exclude <- c(isic_name, paste0("unit_", isic_name))
-  data$grouped_by %in% is_col_to_exclude
+is_benchmark_to_exclude <- function(data, pattern) {
+  col_name <- extract_name(data, pattern)
+  data$grouped_by %in% c(col_name, paste0("unit_", col_name))
 }
 
-is_tsector_benchmark_to_exclude <- function(data) {
-  tsector_name <- extract_name(data, aka("tsector"))
-  is_col_to_exclude <- c(tsector_name, paste0("unit_", tsector_name))
-  data$grouped_by %in% is_col_to_exclude
+missing_isic_should_be_na <- function(data) {
+  pattern <- aka("isic")
+  is.na(get_column(data, pattern)) & is_benchmark_to_exclude(data, pattern)
 }
 
-is_isic_na <- function(data) {
-  is.na(get_column(data, aka("isic"))) & is_isic_benchmark_to_exclude(data)
-}
-
-is_tsector_na <- function(data) {
-  is.na(get_column(data, aka("tsector"))) & is_tsector_benchmark_to_exclude(data)
+missing_tsector_should_be_na <- function(data) {
+  pattern <- aka("tsector")
+  is.na(get_column(data, pattern)) & is_benchmark_to_exclude(data, pattern)
 }
