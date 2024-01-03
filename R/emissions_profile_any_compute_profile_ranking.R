@@ -25,27 +25,12 @@
 emissions_profile_any_compute_profile_ranking <- function(data) {
   check_emissions_profile_any_compute_profile_ranking(data)
 
-  if (hasName(data, "input_activity_uuid_product_uuid")) {
-    data <- data |>
-      rename(
-        isic_4digit = "input_isic_4digit",
-        tilt_sector = "input_tilt_sector",
-        unit = "input_unit"
-      )
-  }
   benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
   out <- map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
 
-  if (hasName(data, "input_activity_uuid_product_uuid")) {
-    out <- out |>
-      rename(
-        input_isic_4digit = "isic_4digit",
-        input_tilt_sector = "tilt_sector",
-        input_unit = "unit"
-      )
-  }
   related_cols <- c("grouped_by", "profile_ranking")
-  relocate(out, all_of(related_cols))
+  relocate(out, all_of(related_cols)) |>
+    exclude_special_cases()
 }
 
 check_emissions_profile_any_compute_profile_ranking <- function(data) {
@@ -73,26 +58,45 @@ flat_benchmarks <- function(data) {
 }
 
 add_rank <- function(data, .by) {
-  if (identical(.by, "all") | (identical(.by, "unit"))) {
-    if (identical(.by, "all")) .by <- NULL
-    mutate(
-      data,
-      profile_ranking = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
-      .by = all_of(.by)
-    )
-  } else {
-    if ((identical(.by, "isic_4digit")) | (identical(.by, c("unit", "isic_4digit")))) {
-      filtered_df <- data %>% filter(str_length(.data[["isic_4digit"]]) %in% c(NA_character_, 4, 5))
-      df <- anti_join(data, filtered_df, by = c("isic_4digit"))
-    } else {
-      filtered_df <- data %>% filter(is.na(.data[["tilt_sector"]]))
-      df <- anti_join(data, filtered_df, by = c("tilt_sector"))
-    }
-    output <- mutate(
-      df,
-      profile_ranking = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
-      .by = all_of(.by)
-    )
-    bind_rows(output, filtered_df)
-  }
+  if (identical(.by, "all")) .by <- NULL
+  mutate(
+    data,
+    profile_ranking = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
+    .by = all_of(.by)
+  )
+}
+
+exclude_special_cases <- function(data) {
+  data |>
+    mutate(profile_ranking = ifelse(isic_is_short(data), NA, profile_ranking)) |>
+    mutate(profile_ranking = ifelse(is_isic_na(data), NA, profile_ranking)) |>
+    mutate(profile_ranking = ifelse(is_tsector_na(data), NA, profile_ranking))
+}
+
+isic_is_short <- function(data) {
+  isic <- get_column(data, aka("isic"))
+  two_and_three_chars_plus_quotes <- 4:5
+  has_2_or_3_chars <- str_length(isic) %in% two_and_three_chars_plus_quotes
+
+  has_2_or_3_chars & is_isic_benchmark_to_exclude(data)
+}
+
+is_isic_benchmark_to_exclude <- function(data) {
+  isic_name <- extract_name(data, aka("isic"))
+  is_col_to_exclude <- c(isic_name, paste0("unit_", isic_name))
+  data$grouped_by %in% is_col_to_exclude
+}
+
+is_tsector_benchmark_to_exclude <- function(data) {
+  tsector_name <- extract_name(data, aka("tsector"))
+  is_col_to_exclude <- c(tsector_name, paste0("unit_", tsector_name))
+  data$grouped_by %in% is_col_to_exclude
+}
+
+is_isic_na <- function(data) {
+  is.na(get_column(data, aka("isic"))) & is_isic_benchmark_to_exclude(data)
+}
+
+is_tsector_na <- function(data) {
+  is.na(get_column(data, aka("tsector"))) & is_tsector_benchmark_to_exclude(data)
 }

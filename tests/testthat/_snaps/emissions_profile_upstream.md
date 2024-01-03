@@ -25,25 +25,25 @@
       18 fleischerei-stiefsohn_00000005219477-001
       
       [[2]]
-               grouped_by
-      1               all
-      2               all
-      3               all
-      4       isic_4digit
-      5       isic_4digit
-      6       isic_4digit
-      7       tilt_sector
-      8       tilt_sector
-      9       tilt_sector
-      10             unit
-      11             unit
-      12             unit
-      13 unit_isic_4digit
-      14 unit_isic_4digit
-      15 unit_isic_4digit
-      16 unit_tilt_sector
-      17 unit_tilt_sector
-      18 unit_tilt_sector
+                           grouped_by
+      1                           all
+      2                           all
+      3                           all
+      4             input_isic_4digit
+      5             input_isic_4digit
+      6             input_isic_4digit
+      7             input_tilt_sector
+      8             input_tilt_sector
+      9             input_tilt_sector
+      10                   input_unit
+      11                   input_unit
+      12                   input_unit
+      13 input_unit_input_isic_4digit
+      14 input_unit_input_isic_4digit
+      15 input_unit_input_isic_4digit
+      16 input_unit_input_tilt_sector
+      17 input_unit_input_tilt_sector
+      18 input_unit_input_tilt_sector
       
       [[3]]
          risk_category
