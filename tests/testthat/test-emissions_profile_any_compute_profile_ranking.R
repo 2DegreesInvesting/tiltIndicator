@@ -115,6 +115,7 @@ test_that("with products, yields `NA` in `profile_ranking` where `*isic_4digit` 
   special_cases <- isic_has_2_or_3_digits_plus_quotes & relevant_benchamrks
 
   expect_true(all(is.na(filter(out, special_cases)$profile_ranking)))
+  # In all other cases `profile_ranking` should not be NA
   expect_false(any(is.na(filter(out, !special_cases)$profile_ranking)))
 })
 
@@ -129,24 +130,8 @@ test_that("with inputs, yields `NA` in `profile_ranking` where `*isic_4digit` ha
   special_cases <- isic_has_2_or_3_digits_plus_quotes & relevant_benchamrks
 
   expect_true(all(is.na(filter(out, special_cases)$profile_ranking)))
+  # In all other cases `profile_ranking` should not be NA
   expect_false(any(is.na(filter(out, !special_cases)$profile_ranking)))
-})
-
-test_that("2 and 3 digit ISICs should be included for ranking
-          all benachmarks other than `isic_4digit` and `unit_isic_4digit` benchmarks", {
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("a", "a", "a"),
-    co2_footprint = c(2, 3, 3),
-    ei_activity_name = c("a", "a", "a"),
-    ei_geography = c("a", "a", "a"),
-    isic_4digit = c("'12'", "'123'", "'1234'"),
-    tilt_sector = c("a", "a", "a"),
-    tilt_subsector = c("a", "a", "a"),
-    unit = c("a", "a", "a")
-  )
-  isic <- emissions_profile_any_compute_profile_ranking(co2) |>
-    filter((str_length(isic_4digit) %in% c(4, 5)) & !(grouped_by %in% c("isic_4digit", "unit_isic_4digit")))
-  expect_false(any(is.na(isic$profile_ranking)))
 })
 
 test_that("more than one highest co2 value should be ranked 1.0", {
