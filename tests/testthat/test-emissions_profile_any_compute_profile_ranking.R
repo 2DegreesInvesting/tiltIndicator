@@ -53,7 +53,7 @@ test_that("without crucial columns errors gracefully", {
   expect_error(emissions_profile_any_compute_profile_ranking(bad), crucial)
 })
 
-test_that("yields `NA` in `profile_ranking` where `*isic_4digit` is `NA` and `grouped_by` matches *isic*", {
+test_that("yields `NA` in `profile_ranking` where `*isic_4digit` is `NA` and `grouped_by` matches *isic_4digit", {
   pattern <- aka("isic")
   co2 <- example_products(!!pattern := c(NA_character_, "'1234'"))
 
@@ -65,7 +65,7 @@ test_that("yields `NA` in `profile_ranking` where `*isic_4digit` is `NA` and `gr
   expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
 })
 
-test_that("yields `NA` in `profile_ranking` where `tilt_sector` is `NA` and `grouped_by` matches 'tilt_sector'", {
+test_that("yields `NA` in `profile_ranking` where `tilt_sector` is `NA` and `grouped_by` matches *tilt_sector", {
   pattern <- aka("tsector")
   co2 <- example_products(!!pattern := c(NA_character_, "a"))
 
@@ -77,7 +77,7 @@ test_that("yields `NA` in `profile_ranking` where `tilt_sector` is `NA` and `gro
   expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
 })
 
-test_that("yields `NA` in `profile_ranking` where `*isic_4digit` has 2-3 digits and `grouped_by` is `(*unit_*)isic_4digit`", {
+test_that("yields `NA` in `profile_ranking` where `*isic_4digit` has 2-3 digits and `grouped_by` matches *isic_4digit", {
   name <- "input_isic_4digit"
   co2 <- example_inputs(!!name := c("'12'", "'123'", "'1234'"))
 
