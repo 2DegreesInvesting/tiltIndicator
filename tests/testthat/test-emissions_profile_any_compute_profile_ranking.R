@@ -65,13 +65,14 @@ test_that("yields `NA` in `profile_ranking` where `*isic_4digit` is `NA` and `gr
 })
 
 test_that("yields `NA` in `profile_ranking` where `tilt_sector` is `NA` and `grouped_by` matches 'tilt_sector'", {
-  co2 <- example_products(!!aka("tsector") := c(NA_character_, "a"))
+  pattern <- aka("tsector")
+  co2 <- example_products(!!pattern := c(NA_character_, "a"))
 
   out <- emissions_profile_any_compute_profile_ranking(co2)
 
   should_be_na <- out |>
-    filter(is.na(get_column(out, aka("tsector")))) |>
-    filter(grepl(aka("tsector"), grouped_by))
+    filter(is.na(get_column(out, pattern))) |>
+    filter(grepl(pattern, grouped_by))
   expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
 })
 
