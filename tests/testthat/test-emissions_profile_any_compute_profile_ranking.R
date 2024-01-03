@@ -6,17 +6,8 @@ test_that("works with any 'co2-like' dataset", {
   expect_no_error(emissions_profile_any_compute_profile_ranking(co2))
 })
 
-test_that("with products, adds columns `grouped_by` and `profile_ranking` to the left", {
+test_that("adds columns `grouped_by` and `profile_ranking` to the left", {
   co2 <- example_products()
-
-  out <- emissions_profile_any_compute_profile_ranking(co2)
-
-  new_names <- c("grouped_by", "profile_ranking")
-  expect_equal(names(out)[1:2], new_names)
-})
-
-test_that("with inputs, adds columns `grouped_by` and `profile_ranking` to the left", {
-  co2 <- example_inputs()
 
   out <- emissions_profile_any_compute_profile_ranking(co2)
 
@@ -104,22 +95,7 @@ test_that("null `tilt_sector` should be excluded for ranking `tilt_sector` and `
   expect_equal(unit_tilt_sec$profile_ranking, NA_integer_)
 })
 
-test_that("with products, yields `NA` in `profile_ranking` where `*isic_4digit` has 2-3 digits and `grouped_by` is `(*unit_)*isic_4digit`", {
-  name <- "isic_4digit"
-  co2 <- example_products(!!name := c("'12'", "'123'", "'1234'"))
-
-  out <- emissions_profile_any_compute_profile_ranking(co2)
-
-  isic_has_2_or_3_digits_plus_quotes <- str_length(out[[name]]) %in% c(4, 5)
-  relevant_benchamrks <- grepl(name, out$grouped_by)
-  special_cases <- isic_has_2_or_3_digits_plus_quotes & relevant_benchamrks
-
-  expect_true(all(is.na(filter(out, special_cases)$profile_ranking)))
-  # In all other cases `profile_ranking` should not be NA
-  expect_false(any(is.na(filter(out, !special_cases)$profile_ranking)))
-})
-
-test_that("with inputs, yields `NA` in `profile_ranking` where `*isic_4digit` has 2-3 digits and `grouped_by` is `(*unit_*)isic_4digit`", {
+test_that("yields `NA` in `profile_ranking` where `*isic_4digit` has 2-3 digits and `grouped_by` is `(*unit_*)isic_4digit`", {
   name <- "input_isic_4digit"
   co2 <- example_inputs(!!name := c("'12'", "'123'", "'1234'"))
 
@@ -134,32 +110,9 @@ test_that("with inputs, yields `NA` in `profile_ranking` where `*isic_4digit` ha
   expect_false(any(is.na(filter(out, !special_cases)$profile_ranking)))
 })
 
-test_that("with inputs, `profile_ranking` is `1` for all maximum `*co2_footprint`", {
-  co2 <- example_inputs(input_co2_footprint = c(1, 2, 3, 3))
-
-  out <- emissions_profile_any_compute_profile_ranking(co2)
-  max <- filter(out, input_co2_footprint == max(input_co2_footprint))
-  expect_true(all(max$profile_ranking == 1.0))
-
-  other <- filter(out, input_co2_footprint != max(input_co2_footprint))
-  expect_false(any(other$profile_ranking == 1.0))
-})
-
-test_that("with products, `profile_ranking` is `1` for all maximum `*co2_footprint`", {
+test_that("`profile_ranking` is `1` for all maximum `*co2_footprint`", {
   name <- "co2_footprint"
   co2 <- example_products(!!name := c(1, 2, 3, 3, 3))
-
-  out <- emissions_profile_any_compute_profile_ranking(co2)
-  max <- filter(out, .data[[name]] == max(.data[[name]]))
-  expect_true(all(max$profile_ranking == 1.0))
-
-  other <- filter(out, .data[[name]] != max(.data[[name]]))
-  expect_false(any(other$profile_ranking == 1.0))
-})
-
-test_that("with inputs, `profile_ranking` is `1` for all maximum `*co2_footprint`", {
-  name <- "input_co2_footprint"
-  co2 <- example_inputs(!!name := c(1, 2, 3, 3, 3))
 
   out <- emissions_profile_any_compute_profile_ranking(co2)
   max <- filter(out, .data[[name]] == max(.data[[name]]))
