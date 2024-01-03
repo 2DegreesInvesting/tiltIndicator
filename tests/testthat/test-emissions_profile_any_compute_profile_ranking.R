@@ -53,28 +53,19 @@ test_that("without crucial columns errors gracefully", {
   expect_error(emissions_profile_any_compute_profile_ranking(bad), crucial)
 })
 
-test_that("null `isic_4digit` should be excluded for ranking `isic_4digit` and `unit_isic_4digit` benchmarks", {
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("a", "a"),
-    co2_footprint = c(1, 1),
-    ei_activity_name = c("a", "a"),
-    ei_geography = c("a", "a"),
-    isic_4digit = c(NA_character_, "'1375'"),
-    tilt_sector = c("a", "a"),
-    tilt_subsector = c("a", "a"),
-    unit = c("a", "a")
-  )
-  isic <- emissions_profile_any_compute_profile_ranking(co2) |>
-    filter(is.na(isic_4digit) & grouped_by == "isic_4digit")
+test_that("yields `NA` in `profile_ranking` where `*isic_4digit` is `NA` and `grouped_by` matches *isic*", {
+  co2 <- example_products(!!aka("isic") := c(NA_character_, "'1234'"))
 
-  unit_isic <- emissions_profile_any_compute_profile_ranking(co2) |>
-    filter(is.na(isic_4digit) & grouped_by == "unit_isic_4digit")
+  out <- emissions_profile_any_compute_profile_ranking(co2)
 
-  expect_equal(isic$profile_ranking, NA_integer_)
-  expect_equal(unit_isic$profile_ranking, NA_integer_)
+  should_be_na <- out |>
+    relocate(matches("isic")) |>
+    filter(is.na(get_column(out, aka("isic")))) |>
+    filter(grepl(aka("isic"), grouped_by))
+  expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
 })
 
-test_that("null `tilt_sector` should be excluded for ranking `tilt_sector` and `unit_tilt_sector` benchmarks", {
+test_that("yields `NA` in `profile_ranking` where `tilt_sector` is `NA` and `grouped_by` matches `*tilt_sector`", {
   co2 <- tibble(
     activity_uuid_product_uuid = c("a", "a"),
     co2_footprint = c(1, 1),
