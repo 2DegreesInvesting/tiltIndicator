@@ -145,6 +145,30 @@ test_that("with inputs, `profile_ranking` is `1` for duplicated max values of *c
   expect_false(any(other$profile_ranking == 1.0))
 })
 
+test_that("with products, `profile_ranking` is `1` for duplicated max values of *co2_footprint", {
+  name <- "co2_footprint"
+  co2 <- example_products(!!name := c(1, 2, 3, 3))
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+  max <- filter(out, .data[[name]] == max(.data[[name]]))
+  expect_true(all(max$profile_ranking == 1.0))
+
+  other <- filter(out, .data[[name]] != max(.data[[name]]))
+  expect_false(any(other$profile_ranking == 1.0))
+})
+
+test_that("with inputs, `profile_ranking` is `1` for duplicated max values of *co2_footprint", {
+  name <- "input_co2_footprint"
+  co2 <- example_inputs(!!name := c(1, 2, 3, 3))
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+  max <- filter(out, .data[[name]] == max(.data[[name]]))
+  expect_true(all(max$profile_ranking == 1.0))
+
+  other <- filter(out, .data[[name]] != max(.data[[name]]))
+  expect_false(any(other$profile_ranking == 1.0))
+})
+
 test_that("input products outputs `profile_ranking` column", {
   input_co2 <- tibble(
     activity_uuid_product_uuid = "a",
