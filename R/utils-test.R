@@ -20,3 +20,9 @@ on_rcmd <- function() {
 read_test_csv <- function(file, ..., show_col_types = FALSE, n_max = 1) {
   read_csv(file, show_col_types = show_col_types, n_max = n_max)
 }
+
+# FIXME: Delete once tiltToyData#19 is merged
+# Helps add snapshots of new toy datasets before tiltToyData#19 is merged
+skip_if_toy_data_is_old <- function() {
+  skip_if(packageVersion("tiltToyData") <= "0.0.0.9005")
+}
