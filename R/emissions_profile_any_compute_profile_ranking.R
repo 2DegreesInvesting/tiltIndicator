@@ -30,7 +30,7 @@ emissions_profile_any_compute_profile_ranking <- function(data) {
 
   related_cols <- c("grouped_by", "profile_ranking")
   relocate(out, all_of(related_cols)) |>
-    exclude_special_cases()
+    case_when_profile_ranking_should_be_na()
 }
 
 check_emissions_profile_any_compute_profile_ranking <- function(data) {
@@ -66,7 +66,7 @@ add_rank <- function(data, .by) {
   )
 }
 
-exclude_special_cases <- function(data) {
+case_when_profile_ranking_should_be_na <- function(data) {
   data |>
     mutate(profile_ranking = case_when(
       short_isic_should_be_na(data) ~ NA,
