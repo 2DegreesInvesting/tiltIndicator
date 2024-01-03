@@ -59,31 +59,20 @@ test_that("yields `NA` in `profile_ranking` where `*isic_4digit` is `NA` and `gr
   out <- emissions_profile_any_compute_profile_ranking(co2)
 
   should_be_na <- out |>
-    relocate(matches("isic")) |>
     filter(is.na(get_column(out, aka("isic")))) |>
     filter(grepl(aka("isic"), grouped_by))
   expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
 })
 
-test_that("yields `NA` in `profile_ranking` where `tilt_sector` is `NA` and `grouped_by` matches `*tilt_sector`", {
-  co2 <- tibble(
-    activity_uuid_product_uuid = c("a", "a"),
-    co2_footprint = c(1, 1),
-    ei_activity_name = c("a", "a"),
-    ei_geography = c("a", "a"),
-    isic_4digit = c("'1375'", "'1375'"),
-    tilt_sector = c(NA_character_, "a"),
-    tilt_subsector = c("a", "a"),
-    unit = c("a", "a")
-  )
-  tilt_sec <- emissions_profile_any_compute_profile_ranking(co2) |>
-    filter(is.na(tilt_sector) & grouped_by == "tilt_sector")
+test_that("yields `NA` in `profile_ranking` where `tilt_sector` is `NA` and `grouped_by` matches 'tilt_sector'", {
+  co2 <- example_products(!!aka("tsector") := c(NA_character_, "a"))
 
-  unit_tilt_sec <- emissions_profile_any_compute_profile_ranking(co2) |>
-    filter(is.na(tilt_sector) & grouped_by == "unit_tilt_sector")
+  out <- emissions_profile_any_compute_profile_ranking(co2)
 
-  expect_equal(tilt_sec$profile_ranking, NA_integer_)
-  expect_equal(unit_tilt_sec$profile_ranking, NA_integer_)
+  should_be_na <- out |>
+    filter(is.na(get_column(out, aka("tsector")))) |>
+    filter(grepl(aka("tsector"), grouped_by))
+  expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
 })
 
 test_that("yields `NA` in `profile_ranking` where `*isic_4digit` has 2-3 digits and `grouped_by` is `(*unit_*)isic_4digit`", {
