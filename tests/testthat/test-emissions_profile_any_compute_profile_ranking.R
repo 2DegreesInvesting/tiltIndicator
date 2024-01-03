@@ -134,14 +134,14 @@ test_that("with inputs, yields `NA` in `profile_ranking` where `*isic_4digit` ha
   expect_false(any(is.na(filter(out, !special_cases)$profile_ranking)))
 })
 
-test_that("`profile_ranking` is `1` for duplicated max values of *co2_footprint", {
-  co2 <- example_products(co2_footprint = c(2, 3, 3))
+test_that("with inputs, `profile_ranking` is `1` for duplicated max values of *co2_footprint", {
+  co2 <- example_inputs(input_co2_footprint = c(1, 2, 3, 3))
 
   out <- emissions_profile_any_compute_profile_ranking(co2)
-  max <- filter(out, co2_footprint == max(co2_footprint))
+  max <- filter(out, input_co2_footprint == max(input_co2_footprint))
   expect_true(all(max$profile_ranking == 1.0))
 
-  other <- filter(out, co2_footprint != max(co2_footprint))
+  other <- filter(out, input_co2_footprint != max(input_co2_footprint))
   expect_false(any(other$profile_ranking == 1.0))
 })
 
