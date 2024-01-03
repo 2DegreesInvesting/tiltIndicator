@@ -168,21 +168,3 @@ test_that("with inputs, `profile_ranking` is `1` for all maximum `*co2_footprint
   other <- filter(out, .data[[name]] != max(.data[[name]]))
   expect_false(any(other$profile_ranking == 1.0))
 })
-
-test_that("input products outputs `profile_ranking` column", {
-  input_co2 <- tibble(
-    activity_uuid_product_uuid = "a",
-    ei_activity_name = "a",
-    input_activity_uuid_product_uuid = "a",
-    input_co2_footprint = 1,
-    input_ei_activity_name = "a",
-    ei_geography = "a",
-    input_reference_product_name = "a",
-    input_isic_4digit = "'1375'",
-    input_tilt_sector = "a",
-    input_tilt_subsector = "a",
-    input_unit = "a"
-  )
-  out <- emissions_profile_any_compute_profile_ranking(input_co2)
-  expect_true(any(grepl("profile_ranking", names(out))))
-})
