@@ -25,12 +25,22 @@
 emissions_profile_any_compute_profile_ranking <- function(data) {
   check_emissions_profile_any_compute_profile_ranking(data)
 
+  exclude <- short_isic(data) |
+    is.na(get_column(data, aka("isic"))) |
+    is.na(get_column(data, aka("tsector")))
+
+  list(!exclude, exclude) |>
+    map(\(x) filter(data, x)) |>
+    map_df(\(data) emissions_profile_any_compute_profile_ranking_impl(data)) |>
+    assign_na_to_profile_ranking_in_special_cases()
+}
+
+emissions_profile_any_compute_profile_ranking_impl <- function(data) {
   benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
-  out <- map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
+  out <- map_df(benchmarks, \(x) add_rank(data, x), .id = "grouped_by")
 
   related_cols <- c("grouped_by", "profile_ranking")
-  relocate(out, all_of(related_cols)) |>
-    case_when_profile_ranking_should_be_na()
+  relocate(out, all_of(related_cols))
 }
 
 check_emissions_profile_any_compute_profile_ranking <- function(data) {
@@ -66,33 +76,29 @@ add_rank <- function(data, .by) {
   )
 }
 
-case_when_profile_ranking_should_be_na <- function(data) {
+assign_na_to_profile_ranking_in_special_cases <- function(data) {
   data |>
     mutate(profile_ranking = case_when(
-      short_isic_should_be_na(data) ~ NA,
-      missing_isic_should_be_na(data) ~ NA,
-      missing_tsector_should_be_na(data) ~ NA,
+      data |> should_be_na_when_isic_has_2_or_3_digits() ~ NA,
+      data |> should_be_na_when_missing(aka("isic")) ~ NA,
+      data |> should_be_na_when_missing(aka("tsector")) ~ NA,
       .default = .data$profile_ranking
     ))
 }
 
-short_isic_should_be_na <- function(data) {
-  isic <- get_column(data, aka("isic"))
+should_be_na_when_isic_has_2_or_3_digits <- function(data) {
+  short_isic(data) & is_benchmark_to_exclude(data, aka("isic"))
+}
+
+short_isic <- function(data) {
   two_quotes_plus_2_or_3_digits <- c(4, 5)
-  short_isic <- str_length(isic) %in% two_quotes_plus_2_or_3_digits
-  short_isic & is_benchmark_to_exclude(data, aka("isic"))
+  str_length(get_column(data, aka("isic"))) %in% two_quotes_plus_2_or_3_digits
 }
 
 is_benchmark_to_exclude <- function(data, pattern) {
   grepl(pattern, data$grouped_by)
 }
 
-missing_isic_should_be_na <- function(data) {
-  pattern <- aka("isic")
-  is.na(get_column(data, pattern)) & is_benchmark_to_exclude(data, pattern)
-}
-
-missing_tsector_should_be_na <- function(data) {
-  pattern <- aka("tsector")
+should_be_na_when_missing <- function(data, pattern) {
   is.na(get_column(data, pattern)) & is_benchmark_to_exclude(data, pattern)
 }
