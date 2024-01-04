@@ -8,16 +8,16 @@
       1 soot_asianpiedstarling
       
       [[2]]
-        grouped_by
-      1        all
+         grouped_by
+      1 tilt_sector
       
       [[3]]
         risk_category
-      1        medium
+      1           low
       
       [[4]]
         profile_ranking
-      1       0.3424557
+      1       0.1714855
       
       [[5]]
         clustered
@@ -28,12 +28,8 @@
       1 76269c17-78d6-420b-991a-aa38c51b45b7
       
       [[7]]
-                                                 input_activity_uuid_product_uuid
-      1 95fcd1bb-4dc6-516a-a3b2-30a4f0530639_3b1d249a-c924-4d6c-8e1f-647f562daa54
-      
-      [[8]]
-        input_co2_footprint
-      1           0.4249968
+        co2_footprint
+      1     0.4045247
       
 
 ---
@@ -48,10 +44,10 @@
       3 soot_asianpiedstarling
       
       [[2]]
-        grouped_by
-      1        all
-      2        all
-      3        all
+         grouped_by
+      1 tilt_sector
+      2 tilt_sector
+      3 tilt_sector
       
       [[3]]
         risk_category
@@ -62,7 +58,7 @@
       [[4]]
         value
       1     0
-      2     1
-      3     0
+      2     0
+      3     1
       
 

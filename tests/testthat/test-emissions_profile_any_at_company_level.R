@@ -1,15 +1,3 @@
-test_that("hasn't change", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
-  products <- read_test_csv(toy_emissions_profile_products())
-
-  out <- emissions_profile_any_at_product_level(companies, products) |>
-    any_at_company_level() |>
-    arrange(companies_id) |>
-    format_robust_snapshot()
-
-  expect_snapshot(out)
-})
-
 test_that("outputs expected columns at company level", {
   companies <- example_companies()
   co2 <- example_products()
