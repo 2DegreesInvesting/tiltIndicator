@@ -77,7 +77,22 @@ test_that("yields `NA` in `profile_ranking` where `tilt_sector` is `NA` and `gro
   expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
 })
 
-test_that("yields `NA` in `profile_ranking` where `*isic_4digit` has 2-3 digits and `grouped_by` matches *isic_4digit", {
+test_that("with products, yields `NA` in `profile_ranking` where `*isic_4digit` has 2-3 digits and `grouped_by` matches *isic_4digit", {
+  name <- "isic_4digit"
+  co2 <- example_products(!!name := c("'12'", "'123'", "'1234'"))
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+
+  isic_has_2_or_3_digits_plus_quotes <- str_length(out[[name]]) %in% c(4, 5)
+  relevant_benchamrks <- grepl(name, out$grouped_by)
+  special_cases <- isic_has_2_or_3_digits_plus_quotes & relevant_benchamrks
+
+  expect_true(all(is.na(filter(out, special_cases)$profile_ranking)))
+  # In all other cases `profile_ranking` should not be NA
+  expect_false(any(is.na(filter(out, !special_cases)$profile_ranking)))
+})
+
+test_that("with inputs, yields `NA` in `profile_ranking` where `*isic_4digit` has 2-3 digits and `grouped_by` matches *isic_4digit", {
   name <- "input_isic_4digit"
   co2 <- example_inputs(!!name := c("'12'", "'123'", "'1234'"))
 
