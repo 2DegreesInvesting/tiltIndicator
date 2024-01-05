@@ -2,7 +2,7 @@
 
 # tiltIndicator 0.0.0.9108
 
-* `emissions_profile_any_compute_profile_ranking()` now handles special cases (#644).
+* `emissions_profile_any_compute_profile_ranking()` now handles special cases (#644 @kalashsinghal).
 
 # tiltIndicator 0.0.0.9107
 
