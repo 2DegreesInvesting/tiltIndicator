@@ -6,15 +6,6 @@ test_that("works with any 'co2-like' dataset", {
   expect_no_error(emissions_profile_any_compute_profile_ranking(co2))
 })
 
-test_that("adds columns `grouped_by` and `profile_ranking`", {
-  co2 <- example_products()
-
-  out <- emissions_profile_any_compute_profile_ranking(co2)
-
-  new_names <- c("grouped_by", "profile_ranking")
-  expect_equal(setdiff(names(out), names(co2)), new_names)
-})
-
 test_that("adds columns `grouped_by` and `profile_ranking` to the left", {
   co2 <- example_products()
 
@@ -62,9 +53,134 @@ test_that("without crucial columns errors gracefully", {
   expect_error(emissions_profile_any_compute_profile_ranking(bad), crucial)
 })
 
-test_that("if `profile_ranking` is present, `grouped_by` must be present", {
-  co2 <- example_products(profile_ranking = 1)
+test_that("`profile_ranking` is `1` for all maximum `*co2_footprint`", {
+  pattern <- aka("co2footprint")
+  co2 <- example_products(!!pattern := c(1, 2, 3, 3, 3))
 
-  crucial <- "grouped_by"
-  expect_error(emissions_profile_any_compute_profile_ranking(co2), crucial)
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+  max <- filter(out, .data[[pattern]] == max(.data[[pattern]]))
+  expect_true(all(max$profile_ranking == 1.0))
+
+  other <- filter(out, .data[[pattern]] != max(.data[[pattern]]))
+  expect_false(any(other$profile_ranking == 1.0))
+})
+
+test_that("with inputs, `profile_ranking` is `1` for all maximum `*co2_footprint`", {
+  pattern <- paste0("input_", aka("co2footprint"))
+  co2 <- example_inputs(!!pattern := c(1, 2, 3, 3, 3))
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+  max <- filter(out, .data[[pattern]] == max(.data[[pattern]]))
+  expect_true(all(max$profile_ranking == 1.0))
+
+  other <- filter(out, .data[[pattern]] != max(.data[[pattern]]))
+  expect_false(any(other$profile_ranking == 1.0))
+})
+
+test_that("`profile_ranking` excludes-rows and is `NA` where `tilt_sector` is `NA` and `grouped_by` matches *tilt_sector", {
+  pattern <- aka("tsector")
+  exclude <- NA_character_
+  co2 <- example_products(!!pattern := c("'1234'", "'1234'", exclude))
+  co2[find_co2_footprint(co2)] <- c(3, 2, 1)
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+
+  ranking <- unique(out$profile_ranking)
+  expected <- c(rank_proportion(c(3, 2)), NA)
+  expect_equal(ranking, expected)
+
+  should_be_na <- out |>
+    filter(is.na(get_column(out, pattern))) |>
+    filter(grepl(pattern, grouped_by))
+  expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
+})
+
+test_that("with inputs, `profile_ranking` excludes-rows and is `NA` where `tilt_sector` is `NA` and `grouped_by` matches *tilt_sector", {
+  pattern <- paste0("input_", aka("tsector"))
+  exclude <- NA_character_
+  co2 <- example_inputs(!!pattern := c("'1234'", "'1234'", exclude))
+  co2[find_co2_footprint(co2)] <- c(3, 2, 1)
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+
+  ranking <- unique(out$profile_ranking)
+  expected <- c(rank_proportion(c(3, 2)), NA)
+  expect_equal(ranking, expected)
+
+  should_be_na <- out |>
+    filter(is.na(get_column(out, pattern))) |>
+    filter(grepl(pattern, grouped_by))
+  expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
+})
+
+test_that("`profile_ranking` excludes-rows and is `NA` where `*isic_4digit` is `NA` and `grouped_by` matches *isic_4digit", {
+  pattern <- aka("isic")
+  exclude <- NA_character_
+  co2 <- example_products(!!pattern := c("'1234'", "'1234'", exclude))
+  co2[find_co2_footprint(co2)] <- c(3, 2, 1)
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+
+  ranking <- unique(out$profile_ranking)
+  expected <- c(rank_proportion(c(3, 2)), NA)
+  expect_equal(ranking, expected)
+
+  excluded <- out |>
+    filter(is.na(get_column(out, pattern))) |>
+    filter(grepl(pattern, grouped_by))
+  expect_true(all(is.na(excluded$profile_ranking)))
+})
+
+test_that("with inputs, `profile_ranking` excludes-rows and is `NA` where `*isic_4digit` is `NA` and `grouped_by` matches *isic_4digit", {
+  pattern <- paste0("input_", aka("isic"))
+  exclude <- NA_character_
+  co2 <- example_inputs(!!pattern := c("'1234'", "'1234'", exclude))
+  co2[find_co2_footprint(co2)] <- c(3, 2, 1)
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+
+  ranking <- unique(out$profile_ranking)
+  expected <- c(rank_proportion(c(3, 2)), NA)
+  expect_equal(ranking, expected)
+
+  excluded <- out |>
+    filter(is.na(get_column(out, pattern))) |>
+    filter(grepl(pattern, grouped_by))
+  expect_true(all(is.na(excluded$profile_ranking)))
+})
+
+test_that("`profile_ranking` excludes-rows and is `NA` where `*isic_4digit` has 2-3 digits and `grouped_by` matches *isic_4digit", {
+  pattern <- aka("isic")
+  exclude <- "'12'"
+  co2 <- example_products(!!pattern := c("'1234'", "'1234'", exclude))
+  co2[find_co2_footprint(co2)] <- c(3, 2, 1)
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+
+  ranking <- unique(out$profile_ranking)
+  expected <- c(rank_proportion(c(3, 2)), NA)
+  expect_equal(ranking, expected)
+
+  excluded <- out |>
+    filter(short_isic(out)) |>
+    filter(grepl(pattern, grouped_by))
+  expect_true(all(is.na(excluded$profile_ranking)))
+})
+
+test_that("with inputs, `profile_ranking` excludes-rows and is `NA` where `*isic_4digit` has 2-3 digits and `grouped_by` matches *isic_4digit", {
+  pattern <- paste0("input_", aka("isic"))
+  exclude <- "'12'"
+  co2 <- example_inputs(!!pattern := c("'1234'", "'1234'", exclude))
+  co2[find_co2_footprint(co2)] <- c(3, 2, 1)
+
+  out <- emissions_profile_any_compute_profile_ranking(co2)
+
+  ranking <- unique(out$profile_ranking)
+  expected <- c(rank_proportion(c(3, 2)), NA)
+  expect_equal(ranking, expected)
+
+  excluded <- out |>
+    filter(short_isic(out)) |>
+    filter(grepl(pattern, grouped_by))
+  expect_true(all(is.na(excluded$profile_ranking)))
 })

@@ -25,12 +25,19 @@
 emissions_profile_any_compute_profile_ranking <- function(data) {
   check_emissions_profile_any_compute_profile_ranking(data)
 
-  if (hasName(data, "profile_ranking")) {
-    out <- check_crucial_names(data, "grouped_by")
-  } else {
-    benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
-    out <- map_df(benchmarks, ~ add_rank(data, .x), .id = "grouped_by")
-  }
+  exclude <- short_isic(data) |
+    is.na(get_column(data, aka("isic"))) |
+    is.na(get_column(data, aka("tsector")))
+
+  list(!exclude, exclude) |>
+    map(\(x) filter(data, x)) |>
+    map_df(\(data) emissions_profile_any_compute_profile_ranking_impl(data)) |>
+    assign_na_to_profile_ranking_in_special_cases()
+}
+
+emissions_profile_any_compute_profile_ranking_impl <- function(data) {
+  benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
+  out <- map_df(benchmarks, \(x) add_rank(data, x), .id = "grouped_by")
 
   related_cols <- c("grouped_by", "profile_ranking")
   relocate(out, all_of(related_cols))
@@ -42,7 +49,7 @@ check_emissions_profile_any_compute_profile_ranking <- function(data) {
 }
 
 rank_proportion <- function(x) {
-  rank(x) / length(x)
+  dense_rank(x) / length(unique(x))
 }
 
 epa_benchmarks <- function(data) {
@@ -67,4 +74,31 @@ add_rank <- function(data, .by) {
     profile_ranking = rank_proportion(.data[[extract_name(data, aka("co2footprint"))]]),
     .by = all_of(.by)
   )
+}
+
+assign_na_to_profile_ranking_in_special_cases <- function(data) {
+  data |>
+    mutate(profile_ranking = case_when(
+      data |> should_be_na_when_isic_has_2_or_3_digits() ~ NA,
+      data |> should_be_na_when_missing(aka("isic")) ~ NA,
+      data |> should_be_na_when_missing(aka("tsector")) ~ NA,
+      .default = .data$profile_ranking
+    ))
+}
+
+should_be_na_when_isic_has_2_or_3_digits <- function(data) {
+  short_isic(data) & is_benchmark_to_exclude(data, aka("isic"))
+}
+
+short_isic <- function(data) {
+  two_quotes_plus_2_or_3_digits <- c(4, 5)
+  str_length(get_column(data, aka("isic"))) %in% two_quotes_plus_2_or_3_digits
+}
+
+is_benchmark_to_exclude <- function(data, pattern) {
+  grepl(pattern, data$grouped_by)
+}
+
+should_be_na_when_missing <- function(data, pattern) {
+  is.na(get_column(data, pattern)) & is_benchmark_to_exclude(data, pattern)
 }

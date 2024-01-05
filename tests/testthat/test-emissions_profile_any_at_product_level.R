@@ -290,52 +290,6 @@ test_that("`*rowid` columns are passed through inputs with duplicates", {
   expect_true(hasName(out, "products_rowid"))
 })
 
-test_that("with products, uses `co2$profile_ranking` if present (#603)", {
-  companies <- example_companies()
-  co2 <- example_products(!!aka("uid") := c("a", "b"))
-  co2[extract_name(co2, aka("co2footprint"))] <- 1:2
-
-  lacks_profile_ranking <- !hasName(co2, "profile_ranking")
-  stopifnot(lacks_profile_ranking)
-  out1 <- emissions_profile_any_at_product_level(companies, co2)
-  using_computed_values <- unique(out1$risk_category)
-
-  pre_computed <- emissions_profile_any_compute_profile_ranking(co2)
-  has_profile_ranking <- hasName(pre_computed, "profile_ranking")
-  stopifnot(has_profile_ranking)
-
-  yields_a_different_risk_category <- 999
-  pre_computed$profile_ranking <- yields_a_different_risk_category
-  out2 <- emissions_profile_any_at_product_level(companies, pre_computed)
-  using_pre_computed_values <- unique(out2$risk_category)
-
-  expect_false(identical(using_computed_values, using_pre_computed_values))
-})
-
-test_that("with inputs, uses `co2$profile_ranking` if present (#603)", {
-  companies <- example_companies()
-  co2 <- example_inputs(!!aka("uid") := c("a", "b"))
-  # This is wrong: names(example_inputs(!!aka("co2footprint") := 1:2))
-  # It yields two columns: `co2_footprint` AND `input_co2_footprint`
-  co2[extract_name(co2, aka("co2footprint"))] <- 1:2
-
-  lacks_profile_ranking <- !hasName(co2, "profile_ranking")
-  stopifnot(lacks_profile_ranking)
-  out1 <- emissions_profile_any_at_product_level(companies, co2)
-  using_computed_values <- unique(out1$risk_category)
-
-  pre_computed <- emissions_profile_any_compute_profile_ranking(co2)
-  has_profile_ranking <- hasName(pre_computed, "profile_ranking")
-  stopifnot(has_profile_ranking)
-
-  yields_a_different_risk_category <- 999
-  pre_computed$profile_ranking <- yields_a_different_risk_category
-  out2 <- emissions_profile_any_at_product_level(companies, pre_computed)
-  using_pre_computed_values <- unique(out2$risk_category)
-
-  expect_false(identical(using_computed_values, using_pre_computed_values))
-})
-
 test_that("yields non-missing `clustered` when `risk_category` is `NA` (#587)", {
   products <- example_products()
   companies <- example_companies(!!aka("uid") := NA)
