@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9108
+
+* `emissions_profile_any_compute_profile_ranking()` now handles special cases (#644).
+
 # tiltIndicator 0.0.0.9107
 
 * The column `*isic_4digit` can now have values of any length (#630
