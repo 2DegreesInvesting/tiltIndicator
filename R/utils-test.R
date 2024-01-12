@@ -24,5 +24,5 @@ read_test_csv <- function(file, ..., show_col_types = FALSE, n_max = 1) {
 # FIXME: Delete once tiltToyData#23 is solved
 # Helps add snapshots of new toy datasets before tiltToyData#23 is merged
 skip_if_toy_data_is_old <- function() {
-  # testthat::skip_if(utils::packageVersion("tiltToyData") <= "0.0.0.9007")
+  testthat::skip_if(utils::packageVersion("tiltToyData") <= "0.0.0.9007")
 }
