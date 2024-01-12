@@ -3,7 +3,7 @@ test_that("hasn't change", {
 
   companies <- read_test_csv(toy_emissions_profile_any_companies())
   inputs <- tiltToyData::toy_emissions_profile_upstream_products_ecoinvent() |>
-    read_test_csv(n_max = 4)
+    read_test_csv(n_max = Inf)
 
   out <- emissions_profile_upstream(companies, inputs)
 
