@@ -2,7 +2,7 @@
 
 # tiltIndicator 0.0.0.9108
 
-* `emissions_profile_any_compute_profile_ranking()` now handles special cases (#644 @kalashsinghal).
+* `epa_compute_profile_ranking()` now handles special cases (#644 @kalashsinghal).
 
 # tiltIndicator 0.0.0.9107
 
@@ -38,7 +38,7 @@ Get started now shows `sector_profile*()` documentation (#619).
 
 # tiltIndicator 0.0.0.9099
 
-* Rename `emissions_profile_any_add_values_to_categorize` to `emissions_profile_any_compute_profile_ranking` (#609). The old name is retired without deprecation since it had no users.
+* Rename `emissions_profile_any_add_values_to_categorize` to `epa_compute_profile_ranking` (#609). The old name is retired without deprecation since it had no users.
 
 # tiltIndicator 0.0.0.9098
 

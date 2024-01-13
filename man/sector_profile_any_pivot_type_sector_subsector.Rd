@@ -34,7 +34,6 @@ companies
 }
 \seealso{
 Other pre-processing helpers: 
-\code{\link{emissions_profile_any_compute_profile_ranking}()},
 \code{\link{sector_profile_any_prepare_scenario}()},
 \code{\link{sector_profile_any_prune_companies}()}
 }

@@ -1,9 +1,15 @@
 #' Add values to categorize
 #'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' This function was deprecated because it's internal. Users don't need to
+#' interact with the function itself.
+#'
 #' @param data A "co2-like" data frame -- i.e. containing products or
 #'   upstream-products (a.k.a. inputs).
 #'
-#' @family pre-processing helpers
+#' @keywords internal
 #'
 #' @return The input data frame with the additional columns `grouped_by` and
 #'   `profile_ranking` and one row per benchmark per company.
@@ -23,7 +29,16 @@
 #' inputs <- read_csv(toy_emissions_profile_upstream_products_ecoinvent())
 #' inputs |> emissions_profile_any_compute_profile_ranking()
 emissions_profile_any_compute_profile_ranking <- function(data) {
-  check_emissions_profile_any_compute_profile_ranking(data)
+  lifecycle::deprecate_warn(
+    "0.0.0.9109",
+    "emissions_profile_any_compute_profile_ranking()",
+    details = "This function is now internal."
+  )
+  epa_compute_profile_ranking(data)
+}
+
+epa_compute_profile_ranking <- function(data) {
+  check_epa_compute_profile_ranking(data)
 
   exclude <- short_isic(data) |
     is.na(get_column(data, aka("isic"))) |
@@ -31,11 +46,11 @@ emissions_profile_any_compute_profile_ranking <- function(data) {
 
   list(!exclude, exclude) |>
     map(\(x) filter(data, x)) |>
-    map_df(\(data) emissions_profile_any_compute_profile_ranking_impl(data)) |>
+    map_df(\(data) epa_compute_profile_ranking_impl(data)) |>
     assign_na_to_profile_ranking_in_special_cases()
 }
 
-emissions_profile_any_compute_profile_ranking_impl <- function(data) {
+epa_compute_profile_ranking_impl <- function(data) {
   benchmarks <- set_names(epa_benchmarks(data), flat_benchmarks(data))
   out <- map_df(benchmarks, \(x) add_rank(data, x), .id = "grouped_by")
 
@@ -43,7 +58,7 @@ emissions_profile_any_compute_profile_ranking_impl <- function(data) {
   relocate(out, all_of(related_cols))
 }
 
-check_emissions_profile_any_compute_profile_ranking <- function(data) {
+check_epa_compute_profile_ranking <- function(data) {
   crucial <- c(aka("tsector"), aka("xunit"), aka("isic"), aka("co2footprint"))
   walk(crucial, \(pattern) check_matches_name(data, pattern))
 }
