@@ -40,50 +40,53 @@ products <- read_csv(toy_emissions_profile_products())
 
 both <- emissions_profile(companies, products)
 both
-#> # A tibble: 8 × 3
-#>   companies_id                             product           company          
-#>   <chr>                                    <list>            <list>           
-#> 1 fleischerei-stiefsohn_00000005219477-001 <tibble [12 × 6]> <tibble [18 × 3]>
-#> 2 pecheries-basques_fra316541-00101        <tibble [6 × 6]>  <tibble [18 × 3]>
-#> 3 hoche-butter-gmbh_deu422723-693847001    <tibble [6 × 6]>  <tibble [18 × 3]>
-#> 4 vicquelin-espaces-verts_fra697272-00101  <tibble [6 × 6]>  <tibble [18 × 3]>
-#> 5 bst-procontrol-gmbh_00000005104947-001   <tibble [6 × 6]>  <tibble [18 × 3]>
-#> 6 leider-gmbh_00000005064318-001           <tibble [6 × 6]>  <tibble [18 × 3]>
-#> 7 cheries-baqu_neu316541-00101             <tibble [6 × 6]>  <tibble [18 × 3]>
-#> 8 ca-coity-trg-aua-gmbh_00000384-001       <tibble [1 × 6]>  <tibble [3 × 3]>
+#> # A tibble: 72 × 3
+#>    companies_id                       product          company         
+#>    <chr>                              <list>           <list>          
+#>  1 antimonarchy_canine                <tibble [1 × 6]> <tibble [1 × 3]>
+#>  2 celestial_lovebird                 <tibble [1 × 6]> <tibble [1 × 3]>
+#>  3 nonphilosophical_llama             <tibble [1 × 6]> <tibble [1 × 3]>
+#>  4 asteria_megalotomusquinquespinosus <tibble [1 × 6]> <tibble [1 × 3]>
+#>  5 quasifaithful_amphiuma             <tibble [1 × 6]> <tibble [1 × 3]>
+#>  6 spectacular_americanriverotter     <tibble [1 × 6]> <tibble [1 × 3]>
+#>  7 contrite_silkworm                  <tibble [1 × 6]> <tibble [1 × 3]>
+#>  8 harmless_owlbutterfly              <tibble [1 × 6]> <tibble [1 × 3]>
+#>  9 fascist_maiasaura                  <tibble [1 × 6]> <tibble [1 × 3]>
+#> 10 charismatic_islandwhistler         <tibble [1 × 6]> <tibble [1 × 3]>
+#> # ℹ 62 more rows
 
 both |> unnest_product()
-#> # A tibble: 49 × 7
+#> # A tibble: 72 × 7
 #>    companies_id               grouped_by risk_category profile_ranking clustered
 #>    <chr>                      <chr>      <chr>                   <dbl> <chr>    
-#>  1 fleischerei-stiefsohn_000… all        high                    1     stove    
-#>  2 fleischerei-stiefsohn_000… isic_4dig… high                    1     stove    
-#>  3 fleischerei-stiefsohn_000… tilt_sect… high                    1     stove    
-#>  4 fleischerei-stiefsohn_000… unit       high                    1     stove    
-#>  5 fleischerei-stiefsohn_000… unit_isic… high                    1     stove    
-#>  6 fleischerei-stiefsohn_000… unit_tilt… high                    1     stove    
-#>  7 fleischerei-stiefsohn_000… all        high                    0.8   oven     
-#>  8 fleischerei-stiefsohn_000… isic_4dig… medium                  0.5   oven     
-#>  9 fleischerei-stiefsohn_000… tilt_sect… medium                  0.667 oven     
-#> 10 fleischerei-stiefsohn_000… unit       medium                  0.5   oven     
-#> # ℹ 39 more rows
+#>  1 antimonarchy_canine        <NA>       <NA>                       NA tent     
+#>  2 celestial_lovebird         <NA>       <NA>                       NA table hi…
+#>  3 nonphilosophical_llama     <NA>       <NA>                       NA surface …
+#>  4 asteria_megalotomusquinqu… <NA>       <NA>                       NA tent     
+#>  5 quasifaithful_amphiuma     <NA>       <NA>                       NA tent     
+#>  6 spectacular_americanriver… <NA>       <NA>                       NA open spa…
+#>  7 contrite_silkworm          <NA>       <NA>                       NA tent     
+#>  8 harmless_owlbutterfly      <NA>       <NA>                       NA tent     
+#>  9 fascist_maiasaura          <NA>       <NA>                       NA tent     
+#> 10 charismatic_islandwhistler <NA>       <NA>                       NA camper p…
+#> # ℹ 62 more rows
 #> # ℹ 2 more variables: activity_uuid_product_uuid <chr>, co2_footprint <dbl>
 
 both |> unnest_company()
-#> # A tibble: 129 × 4
-#>    companies_id                             grouped_by  risk_category value
-#>    <chr>                                    <chr>       <chr>         <dbl>
-#>  1 fleischerei-stiefsohn_00000005219477-001 all         high            1  
-#>  2 fleischerei-stiefsohn_00000005219477-001 all         medium          0  
-#>  3 fleischerei-stiefsohn_00000005219477-001 all         low             0  
-#>  4 fleischerei-stiefsohn_00000005219477-001 isic_4digit high            0.5
-#>  5 fleischerei-stiefsohn_00000005219477-001 isic_4digit medium          0.5
-#>  6 fleischerei-stiefsohn_00000005219477-001 isic_4digit low             0  
-#>  7 fleischerei-stiefsohn_00000005219477-001 tilt_sector high            0.5
-#>  8 fleischerei-stiefsohn_00000005219477-001 tilt_sector medium          0.5
-#>  9 fleischerei-stiefsohn_00000005219477-001 tilt_sector low             0  
-#> 10 fleischerei-stiefsohn_00000005219477-001 unit        high            0.5
-#> # ℹ 119 more rows
+#> # A tibble: 72 × 4
+#>    companies_id                       grouped_by risk_category value
+#>    <chr>                              <chr>      <chr>         <dbl>
+#>  1 antimonarchy_canine                <NA>       <NA>             NA
+#>  2 celestial_lovebird                 <NA>       <NA>             NA
+#>  3 nonphilosophical_llama             <NA>       <NA>             NA
+#>  4 asteria_megalotomusquinquespinosus <NA>       <NA>             NA
+#>  5 quasifaithful_amphiuma             <NA>       <NA>             NA
+#>  6 spectacular_americanriverotter     <NA>       <NA>             NA
+#>  7 contrite_silkworm                  <NA>       <NA>             NA
+#>  8 harmless_owlbutterfly              <NA>       <NA>             NA
+#>  9 fascist_maiasaura                  <NA>       <NA>             NA
+#> 10 charismatic_islandwhistler         <NA>       <NA>             NA
+#> # ℹ 62 more rows
 ```
 
 For more examples see [Get

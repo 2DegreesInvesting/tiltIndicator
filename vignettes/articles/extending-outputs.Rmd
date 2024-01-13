@@ -30,7 +30,7 @@ This example shows `emissions_profile()` but the same goes for other functions.
 
 ```{r}
 companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products()) |>
+products <- read_csv(toy_emissions_profile_products_ecoinvent()) |>
   rowid_to_column("products_rowid")
 
 result_at_product_level <- emissions_profile(companies, products) |>

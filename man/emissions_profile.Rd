@@ -61,7 +61,7 @@ library(readr)
 options(readr.show_col_types = FALSE)
 
 companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products())
+products <- read_csv(toy_emissions_profile_products_ecoinvent())
 
 both <- emissions_profile(companies, products)
 both

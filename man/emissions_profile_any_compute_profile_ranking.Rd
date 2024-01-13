@@ -24,10 +24,10 @@ options(readr.show_col_types = FALSE)
 
 companies <- read_csv(toy_emissions_profile_any_companies())
 
-products <- read_csv(toy_emissions_profile_products())
+products <- read_csv(toy_emissions_profile_products_ecoinvent())
 products |> emissions_profile_any_compute_profile_ranking()
 
-inputs <- read_csv(toy_emissions_profile_upstream_products())
+inputs <- read_csv(toy_emissions_profile_upstream_products_ecoinvent())
 inputs |> emissions_profile_any_compute_profile_ranking()
 }
 \seealso{
