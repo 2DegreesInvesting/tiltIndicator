@@ -104,26 +104,26 @@ into a single row in the output at company level.</p>
 for other functions.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_any_companies</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_products</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="va">products</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://2degreesinvesting.github.io/tiltToyData/reference/toy_files.html" class="external-link">toy_emissions_profile_products_ecoinvent</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html" class="external-link">rowid_to_column</a></span><span class="op">(</span><span class="st">"products_rowid"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">result_at_product_level</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/emissions_profile.html">emissions_profile</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">products</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">result_at_product_level</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 72 × 8</span></span></span>
-<span><span class="co">#&gt;    companies_id          products_rowid grouped_by risk_category profile_ranking</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> soot_asianpiedstarli…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> frightening_chrysome…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> hyperbrutal_flea                  <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> flexible_dolphin                  <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> paramilitary_racerun…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> level_meadowhawk                  <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> heartrending_attwate…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> traumatophobic_hanum…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> preliterary_toucan                <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> translunar_eelelepha…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 62 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,736 × 8</span></span></span>
+<span><span class="co">#&gt;    companies_id        products_rowid grouped_by  risk_category profile_ranking</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine              2 all         low                    0.167 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine              3 all         high                   1     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine              6 all         high                   0.778 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine              7 all         medium                 0.667 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine             11 all         low                    0.055<span style="text-decoration: underline;">6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine             16 all         medium                 0.611 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> antimonarchy_canine              2 isic_4digit medium                 0.5   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> antimonarchy_canine              3 isic_4digit high                   1     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> antimonarchy_canine              6 isic_4digit low                    0.333 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> antimonarchy_canine              7 isic_4digit high                   1     </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2,726 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 more variables: clustered &lt;chr&gt;, activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   co2_footprint &lt;dbl&gt;</span></span></span></code></pre></div>
 <p>The <code>*rowid</code> column allows you to extend the output at
@@ -131,32 +131,45 @@ product level with columns from the input.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">extension</span> <span class="op">&lt;-</span> <span class="va">products</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rowid"</span>, <span class="st">"sector"</span>, <span class="st">"isic"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">extension</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span></span>
-<span><span class="co">#&gt;   products_rowid tilt_sector    tilt_subsector isic_4digit</span></span>
-<span><span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>              1 Industry       Other          '2560'     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>              2 Industry       Other          '2560'     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>              3 Steel &amp; Metals Steel          '2870'     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>              4 Agriculture    Agriculture    '1780'     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>              5 Industry       Other          '2679'</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 18 × 4</span></span></span>
+<span><span class="co">#&gt;    products_rowid tilt_sector  tilt_subsector           isic_4digit</span></span>
+<span><span class="co">#&gt;             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>              1 metals       iron &amp; steel             '2410'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>              2 metals       other metals             '2591'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>              3 construction construction residential '4100'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>              4 metals       iron &amp; steel             '2410'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>              5 metals       other metals             '2591'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>              6 construction construction residential '4100'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>              7 metals       iron &amp; steel             '2410'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>              8 metals       other metals             '2591'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>              9 construction construction residential '4100'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>             10 metals       iron &amp; steel             '2410'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>             11 metals       other metals             '2591'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>             12 construction construction residential '4100'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span>             13 metals       iron &amp; steel             '2410'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span>             14 metals       other metals             '2591'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span>             15 construction construction residential '4100'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span>             16 metals       iron &amp; steel             '2410'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span>             17 metals       other metals             '2591'     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span>             18 construction construction residential '4100'</span></span>
 <span></span>
 <span><span class="va">extended</span> <span class="op">&lt;-</span> <span class="va">result_at_product_level</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">extension</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(products_rowid)`</span></span>
 <span><span class="va">extended</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 72 × 11</span></span></span>
-<span><span class="co">#&gt;    companies_id          products_rowid grouped_by risk_category profile_ranking</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> soot_asianpiedstarli…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> frightening_chrysome…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> hyperbrutal_flea                  <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> flexible_dolphin                  <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> paramilitary_racerun…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> level_meadowhawk                  <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> heartrending_attwate…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> traumatophobic_hanum…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> preliterary_toucan                <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> translunar_eelelepha…             <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>                         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 62 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,736 × 11</span></span></span>
+<span><span class="co">#&gt;    companies_id        products_rowid grouped_by  risk_category profile_ranking</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine              2 all         low                    0.167 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine              3 all         high                   1     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine              6 all         high                   0.778 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine              7 all         medium                 0.667 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine             11 all         low                    0.055<span style="text-decoration: underline;">6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine             16 all         medium                 0.611 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> antimonarchy_canine              2 isic_4digit medium                 0.5   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> antimonarchy_canine              3 isic_4digit high                   1     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> antimonarchy_canine              6 isic_4digit low                    0.333 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> antimonarchy_canine              7 isic_4digit high                   1     </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2,726 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6 more variables: clustered &lt;chr&gt;, activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   co2_footprint &lt;dbl&gt;, tilt_sector &lt;chr&gt;, tilt_subsector &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   isic_4digit &lt;chr&gt;</span></span></span></code></pre></div>
