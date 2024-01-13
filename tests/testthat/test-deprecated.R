@@ -84,3 +84,13 @@ test_that("xstr_polish_output_at_company_level() throws a deprecation warning", 
   )
   expect_warning(xstr_polish_output_at_company_level(result), "deprecated")
 })
+
+test_that("emissions_profile_any_compute_profile_ranking() is deprecated", {
+  co2 <- example_products()
+  expect_snapshot(
+    expect_equal(
+      epa_compute_profile_ranking(co2),
+      emissions_profile_any_compute_profile_ranking(co2)
+    )
+  )
+})

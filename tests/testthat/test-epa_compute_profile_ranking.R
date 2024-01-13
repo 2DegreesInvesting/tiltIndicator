@@ -1,15 +1,15 @@
 test_that("works with any 'co2-like' dataset", {
   co2 <- example_products()
-  expect_no_error(emissions_profile_any_compute_profile_ranking(co2))
+  expect_no_error(epa_compute_profile_ranking(co2))
 
   co2 <- example_inputs()
-  expect_no_error(emissions_profile_any_compute_profile_ranking(co2))
+  expect_no_error(epa_compute_profile_ranking(co2))
 })
 
 test_that("adds columns `grouped_by` and `profile_ranking` to the left", {
   co2 <- example_products()
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
 
   new_names <- c("grouped_by", "profile_ranking")
   expect_equal(names(out)[1:2], new_names)
@@ -18,7 +18,7 @@ test_that("adds columns `grouped_by` and `profile_ranking` to the left", {
 test_that("with one company, adds one row per benchmark per company", {
   co2 <- example_products()
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
 
   number_of_benchmarks <- length(flat_benchmarks(co2))
   expect_equal(nrow(out), number_of_benchmarks)
@@ -27,7 +27,7 @@ test_that("with one company, adds one row per benchmark per company", {
 test_that("with two companies, adds one row per benchmark per company", {
   co2 <- example_products(!!aka("id") := c("a", "b"))
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
 
   number_of_benchmarks <- length(flat_benchmarks(co2))
   expect_equal(nrow(out), 2 * number_of_benchmarks)
@@ -38,26 +38,26 @@ test_that("without crucial columns errors gracefully", {
 
   crucial <- aka("tsector")
   bad <- select(co2, -all_of(crucial))
-  expect_error(emissions_profile_any_compute_profile_ranking(bad), crucial)
+  expect_error(epa_compute_profile_ranking(bad), crucial)
 
   crucial <- aka("xunit")
   bad <- select(co2, -all_of(crucial))
-  expect_error(emissions_profile_any_compute_profile_ranking(bad), crucial)
+  expect_error(epa_compute_profile_ranking(bad), crucial)
 
   crucial <- aka("isic")
   bad <- select(co2, -all_of(crucial))
-  expect_error(emissions_profile_any_compute_profile_ranking(bad), crucial)
+  expect_error(epa_compute_profile_ranking(bad), crucial)
 
   crucial <- aka("co2footprint")
   bad <- select(co2, -all_of(crucial))
-  expect_error(emissions_profile_any_compute_profile_ranking(bad), crucial)
+  expect_error(epa_compute_profile_ranking(bad), crucial)
 })
 
 test_that("`profile_ranking` is `1` for all maximum `*co2_footprint`", {
   pattern <- aka("co2footprint")
   co2 <- example_products(!!pattern := c(1, 2, 3, 3, 3))
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
   max <- filter(out, .data[[pattern]] == max(.data[[pattern]]))
   expect_true(all(max$profile_ranking == 1.0))
 
@@ -69,7 +69,7 @@ test_that("with inputs, `profile_ranking` is `1` for all maximum `*co2_footprint
   pattern <- paste0("input_", aka("co2footprint"))
   co2 <- example_inputs(!!pattern := c(1, 2, 3, 3, 3))
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
   max <- filter(out, .data[[pattern]] == max(.data[[pattern]]))
   expect_true(all(max$profile_ranking == 1.0))
 
@@ -83,7 +83,7 @@ test_that("`profile_ranking` excludes-rows and is `NA` where `tilt_sector` is `N
   co2 <- example_products(!!pattern := c("'1234'", "'1234'", exclude))
   co2[find_co2_footprint(co2)] <- c(3, 2, 1)
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
 
   ranking <- unique(out$profile_ranking)
   expected <- c(rank_proportion(c(3, 2)), NA)
@@ -101,7 +101,7 @@ test_that("with inputs, `profile_ranking` excludes-rows and is `NA` where `tilt_
   co2 <- example_inputs(!!pattern := c("'1234'", "'1234'", exclude))
   co2[find_co2_footprint(co2)] <- c(3, 2, 1)
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
 
   ranking <- unique(out$profile_ranking)
   expected <- c(rank_proportion(c(3, 2)), NA)
@@ -119,7 +119,7 @@ test_that("`profile_ranking` excludes-rows and is `NA` where `*isic_4digit` is `
   co2 <- example_products(!!pattern := c("'1234'", "'1234'", exclude))
   co2[find_co2_footprint(co2)] <- c(3, 2, 1)
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
 
   ranking <- unique(out$profile_ranking)
   expected <- c(rank_proportion(c(3, 2)), NA)
@@ -137,7 +137,7 @@ test_that("with inputs, `profile_ranking` excludes-rows and is `NA` where `*isic
   co2 <- example_inputs(!!pattern := c("'1234'", "'1234'", exclude))
   co2[find_co2_footprint(co2)] <- c(3, 2, 1)
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
 
   ranking <- unique(out$profile_ranking)
   expected <- c(rank_proportion(c(3, 2)), NA)
@@ -155,7 +155,7 @@ test_that("`profile_ranking` excludes-rows and is `NA` where `*isic_4digit` has 
   co2 <- example_products(!!pattern := c("'1234'", "'1234'", exclude))
   co2[find_co2_footprint(co2)] <- c(3, 2, 1)
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
 
   ranking <- unique(out$profile_ranking)
   expected <- c(rank_proportion(c(3, 2)), NA)
@@ -173,7 +173,7 @@ test_that("with inputs, `profile_ranking` excludes-rows and is `NA` where `*isic
   co2 <- example_inputs(!!pattern := c("'1234'", "'1234'", exclude))
   co2[find_co2_footprint(co2)] <- c(3, 2, 1)
 
-  out <- emissions_profile_any_compute_profile_ranking(co2)
+  out <- epa_compute_profile_ranking(co2)
 
   ranking <- unique(out$profile_ranking)
   expected <- c(rank_proportion(c(3, 2)), NA)
