@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9109
+
+* `emissions_profile_any_compute_profile_ranking()` is now deprecated. This
+function is now internal (#669).
+
 # tiltIndicator 0.0.0.9108
 
 * `emissions_profile_any_compute_profile_ranking()` now handles special cases (#644 @kalashsinghal).
