@@ -94,4 +94,3 @@ test_that("emissions_profile_any_compute_profile_ranking() is deprecated", {
     )
   )
 })
-
