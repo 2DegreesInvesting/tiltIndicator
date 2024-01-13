@@ -1,5 +1,5 @@
 test_that("example_inputs() has the expected names", {
-  emissions <- names(read_test_csv(toy_emissions_profile_upstream_products()))
+  emissions <- names(read_test_csv(toy_emissions_profile_upstream_products_ecoinvent()))
   sector <- names(read_test_csv(toy_sector_profile_upstream_products()))
   reference <- unique(c(emissions, sector))
   expect_true(all(names(example_inputs()) %in% reference))
@@ -24,7 +24,7 @@ test_that("example_inputs() single-quotes *isic* values", {
 })
 
 test_that("example_products() has the expected names", {
-  reference <- names(read_test_csv(toy_emissions_profile_products()))
+  reference <- names(read_test_csv(toy_emissions_profile_products_ecoinvent()))
   expect_true(all(names(example_products()) %in% reference))
 })
 

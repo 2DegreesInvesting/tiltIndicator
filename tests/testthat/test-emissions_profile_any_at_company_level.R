@@ -43,24 +43,24 @@ test_that("no longer drops companies depending on co2 data (#122)", {
   all <- read_test_csv(toy_emissions_profile_any_companies(), n_max = Inf)
   companies <- filter(all, all[[aka("id")]] %in% unique(all[[aka("id")]])[c(1, 2)])
 
-  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 5)
+  co2 <- read_test_csv(toy_emissions_profile_products_ecoinvent(), n_max = 5)
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
-  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 4)
+  co2 <- read_test_csv(toy_emissions_profile_products_ecoinvent(), n_max = 4)
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
   companies <- all |>
     filter(all[[aka("id")]] %in% unique(all[[aka("id")]])[c(1, 3)])
-  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 10)
+  co2 <- read_test_csv(toy_emissions_profile_products_ecoinvent(), n_max = 10)
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
 
-  co2 <- read_test_csv(toy_emissions_profile_products(), n_max = 9)
+  co2 <- read_test_csv(toy_emissions_profile_products_ecoinvent(), n_max = 9)
   product <- emissions_profile_any_at_product_level(companies, co2)
   out <- any_at_company_level(product)
   expect_equal(length(unique(out$companies_id)), 2L)
