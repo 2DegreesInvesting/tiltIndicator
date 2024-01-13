@@ -55,13 +55,13 @@ delayedAssign("companies", value = {
 })
 
 delayedAssign("products", value = {
-  "emissions_profile_products" |>
+  "emissions_profile_products_ecoinvent" |>
     e$warn_deprecates("products", when = e$when) |>
     e$read_toy_dataset(col_types = e$col_isic())
 })
 
 delayedAssign("inputs", value = {
-  "emissions_profile_upstream_products" |>
+  "emissions_profile_upstream_products_ecoinvent" |>
     e$warn_deprecates("inputs", when = e$when) |>
     e$read_toy_dataset(col_types = e$col_isic_upstream())
 })
