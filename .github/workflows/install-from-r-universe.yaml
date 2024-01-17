@@ -36,5 +36,5 @@ jobs:
       - name: Install from r-universe
         run: |
           options(repos = c("https://2degreesinvesting.r-universe.dev", getOption("repos")))
-          install.packages("hello.world")
+          install.packages("tiltIndicator")
         shell: Rscript {0}
