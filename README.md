@@ -18,13 +18,23 @@ This repository hosts only public code and may only show only fake data.
 
 ## Installation
 
-You can install the development version of tiltIndicator from
-[GitHub](https://github.com/) with:
+You can install the development version from
+[r-universe](https://r-universe.dev/):
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("2DegreesInvesting/tiltIndicator")
+options(repos = c("https://2degreesinvesting.r-universe.dev", getOption("repos")))
+install.packages("tiltIndicator")
 ```
+
+Or from [GitHub](https://github.com/):
+
+``` r
+# install.packages("pak")
+pak::pak("2DegreesInvesting/tiltIndicator")
+```
+
+Having trouble? Try it on a fresh new project on <https://posit.cloud/>
+(free).
 
 ## Example
 
@@ -36,57 +46,57 @@ library(readr)
 options(readr.show_col_types = FALSE)
 
 companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products())
+products <- read_csv(toy_emissions_profile_products_ecoinvent())
 
 both <- emissions_profile(companies, products)
 both
 #> # A tibble: 72 × 3
-#>    companies_id                       product          company         
-#>    <chr>                              <list>           <list>          
-#>  1 antimonarchy_canine                <tibble [1 × 6]> <tibble [1 × 3]>
-#>  2 celestial_lovebird                 <tibble [1 × 6]> <tibble [1 × 3]>
-#>  3 nonphilosophical_llama             <tibble [1 × 6]> <tibble [1 × 3]>
-#>  4 asteria_megalotomusquinquespinosus <tibble [1 × 6]> <tibble [1 × 3]>
-#>  5 quasifaithful_amphiuma             <tibble [1 × 6]> <tibble [1 × 3]>
-#>  6 spectacular_americanriverotter     <tibble [1 × 6]> <tibble [1 × 3]>
-#>  7 contrite_silkworm                  <tibble [1 × 6]> <tibble [1 × 3]>
-#>  8 harmless_owlbutterfly              <tibble [1 × 6]> <tibble [1 × 3]>
-#>  9 fascist_maiasaura                  <tibble [1 × 6]> <tibble [1 × 3]>
-#> 10 charismatic_islandwhistler         <tibble [1 × 6]> <tibble [1 × 3]>
+#>    companies_id                       product           company          
+#>    <chr>                              <list>            <list>           
+#>  1 antimonarchy_canine                <tibble [36 × 6]> <tibble [18 × 3]>
+#>  2 celestial_lovebird                 <tibble [36 × 6]> <tibble [18 × 3]>
+#>  3 nonphilosophical_llama             <tibble [72 × 6]> <tibble [18 × 3]>
+#>  4 asteria_megalotomusquinquespinosus <tibble [36 × 6]> <tibble [18 × 3]>
+#>  5 quasifaithful_amphiuma             <tibble [36 × 6]> <tibble [18 × 3]>
+#>  6 spectacular_americanriverotter     <tibble [36 × 6]> <tibble [18 × 3]>
+#>  7 contrite_silkworm                  <tibble [36 × 6]> <tibble [18 × 3]>
+#>  8 harmless_owlbutterfly              <tibble [36 × 6]> <tibble [18 × 3]>
+#>  9 fascist_maiasaura                  <tibble [36 × 6]> <tibble [18 × 3]>
+#> 10 charismatic_islandwhistler         <tibble [36 × 6]> <tibble [18 × 3]>
 #> # ℹ 62 more rows
 
 both |> unnest_product()
-#> # A tibble: 72 × 7
-#>    companies_id               grouped_by risk_category profile_ranking clustered
-#>    <chr>                      <chr>      <chr>                   <dbl> <chr>    
-#>  1 antimonarchy_canine        <NA>       <NA>                       NA tent     
-#>  2 celestial_lovebird         <NA>       <NA>                       NA table hi…
-#>  3 nonphilosophical_llama     <NA>       <NA>                       NA surface …
-#>  4 asteria_megalotomusquinqu… <NA>       <NA>                       NA tent     
-#>  5 quasifaithful_amphiuma     <NA>       <NA>                       NA tent     
-#>  6 spectacular_americanriver… <NA>       <NA>                       NA open spa…
-#>  7 contrite_silkworm          <NA>       <NA>                       NA tent     
-#>  8 harmless_owlbutterfly      <NA>       <NA>                       NA tent     
-#>  9 fascist_maiasaura          <NA>       <NA>                       NA tent     
-#> 10 charismatic_islandwhistler <NA>       <NA>                       NA camper p…
-#> # ℹ 62 more rows
+#> # A tibble: 2,736 × 7
+#>    companies_id        grouped_by  risk_category profile_ranking clustered
+#>    <chr>               <chr>       <chr>                   <dbl> <chr>    
+#>  1 antimonarchy_canine all         low                    0.167  tent     
+#>  2 antimonarchy_canine all         high                   1      tent     
+#>  3 antimonarchy_canine all         high                   0.778  tent     
+#>  4 antimonarchy_canine all         medium                 0.667  tent     
+#>  5 antimonarchy_canine all         low                    0.0556 tent     
+#>  6 antimonarchy_canine all         medium                 0.611  tent     
+#>  7 antimonarchy_canine isic_4digit medium                 0.5    tent     
+#>  8 antimonarchy_canine isic_4digit high                   1      tent     
+#>  9 antimonarchy_canine isic_4digit low                    0.333  tent     
+#> 10 antimonarchy_canine isic_4digit high                   1      tent     
+#> # ℹ 2,726 more rows
 #> # ℹ 2 more variables: activity_uuid_product_uuid <chr>, co2_footprint <dbl>
 
 both |> unnest_company()
-#> # A tibble: 72 × 4
-#>    companies_id                       grouped_by risk_category value
-#>    <chr>                              <chr>      <chr>         <dbl>
-#>  1 antimonarchy_canine                <NA>       <NA>             NA
-#>  2 celestial_lovebird                 <NA>       <NA>             NA
-#>  3 nonphilosophical_llama             <NA>       <NA>             NA
-#>  4 asteria_megalotomusquinquespinosus <NA>       <NA>             NA
-#>  5 quasifaithful_amphiuma             <NA>       <NA>             NA
-#>  6 spectacular_americanriverotter     <NA>       <NA>             NA
-#>  7 contrite_silkworm                  <NA>       <NA>             NA
-#>  8 harmless_owlbutterfly              <NA>       <NA>             NA
-#>  9 fascist_maiasaura                  <NA>       <NA>             NA
-#> 10 charismatic_islandwhistler         <NA>       <NA>             NA
-#> # ℹ 62 more rows
+#> # A tibble: 1,296 × 4
+#>    companies_id        grouped_by  risk_category value
+#>    <chr>               <chr>       <chr>         <dbl>
+#>  1 antimonarchy_canine all         high          0.333
+#>  2 antimonarchy_canine all         medium        0.333
+#>  3 antimonarchy_canine all         low           0.333
+#>  4 antimonarchy_canine isic_4digit high          0.5  
+#>  5 antimonarchy_canine isic_4digit medium        0.167
+#>  6 antimonarchy_canine isic_4digit low           0.333
+#>  7 antimonarchy_canine tilt_sector high          0.5  
+#>  8 antimonarchy_canine tilt_sector medium        0    
+#>  9 antimonarchy_canine tilt_sector low           0.5  
+#> 10 antimonarchy_canine unit        high          0.5  
+#> # ℹ 1,286 more rows
 ```
 
 For more examples see [Get
