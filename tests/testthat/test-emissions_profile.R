@@ -83,7 +83,7 @@ test_that("accepts `company_id` with a warning (#564)", {
   )
 })
 
-test_that("in each benchmark `profile_ranking` increases with `*co2_footprint`", {
+test_that("in each benchmark, `profile_ranking` increases with `*co2_footprint`", {
   companies <- example_companies()
   co2 <- example_products(co2_footprint = -1:1)
 
