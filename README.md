@@ -17,13 +17,23 @@ The goal of tiltIndicator is to implement the core business logic of the
 
 ## Installation
 
-You can install the development version of tiltIndicator from
-[GitHub](https://github.com/) with:
+You can install the development version from
+[r-universe](https://r-universe.dev/):
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("2DegreesInvesting/tiltIndicator")
+options(repos = c("https://2degreesinvesting.r-universe.dev", getOption("repos")))
+install.packages("tiltIndicator")
 ```
+
+Or from [GitHub](https://github.com/):
+
+``` r
+# install.packages("pak")
+pak::pak("2DegreesInvesting/tiltIndicator")
+```
+
+Having trouble? Try it on a fresh new project on <https://posit.cloud/>
+(free).
 
 ## Example
 
