@@ -12,9 +12,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 coverage](https://codecov.io/gh/2DegreesInvesting/tiltIndicator/branch/main/graph/badge.svg)](https://app.codecov.io/gh/2DegreesInvesting/tiltIndicator?branch=main)
 <!-- badges: end -->
 
-The goal of tiltIndicator is to help you develop each TILT indicator.
-
-This repository hosts only public code and may only show only fake data.
+The goal of tiltIndicator is to implement the core business logic of the
+‘TILT’ indicators.
 
 ## Installation
 
