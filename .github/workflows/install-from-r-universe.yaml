@@ -38,4 +38,5 @@ jobs:
           install.packages("pak")
           pak::repo_add(r_universe = "https://2degreesinvesting.r-universe.dev")
           install.packages("tiltIndicator")
+          library(tiltIndicator)
         shell: Rscript {0}
