@@ -13,15 +13,15 @@ the products from our company dataset to the products from the LCA dataset. As a
 second step, all products are ranked according to their GHG emissions. Thirdly,
 the products are grouped by the following 6 benchmarks:
 
-- "all": all products
-- "unit": all products with the same unit (example: kg)
-- "tilt_sec": all products within the same tilt sector (example: agriculture)
-- "isic_4digit": all products within the same ISIC 4 digit code (example:
-0112 Growing of rice)
-- "unit_tilt_sec": all products with the same unit within the same tilt sector
-(example: kg + agriculture)
-- "unit_isic": all products with the same unit within the same ISIC 4 digit
-section (example: kg + 0112 Growing of rice)
+* "all": All products.
+* "unit": All products with the same unit (example: kg).
+* "tilt\_sec": All products within the same tilt sector (example: agriculture).
+* "isic\_4digit": All products within the same ISIC 4 digit code (example:
+0112 Growing of rice).
+* "unit\_tilt\_sec": All products with the same unit within the same tilt sector
+(example: kg + agriculture).
+* "unit\_isic": All products with the same unit within the same ISIC 4 digit
+section (example: kg + 0112 Growing of rice).
 
 Finally, for each benchmark, products are assigned to the emission profile
 category "low", "medium" or "high", depending on the GHG emissions arising from
