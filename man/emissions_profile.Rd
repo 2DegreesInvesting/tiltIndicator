@@ -9,11 +9,11 @@ emissions_profile(companies, co2, low_threshold = 1/3, high_threshold = 2/3)
 \arguments{
 \item{companies, co2}{A dataframe like the dataset with a matching name in tiltToyData (see \href{https://2degreesinvesting.github.io/tiltToyData/reference/index.html}{Reference}).}
 
-\item{low_threshold}{A numeric value to segment low and medium transition
-risk products.}
+\item{low_threshold}{A numeric value to segment low and medium emission
+profile products.}
 
-\item{high_threshold}{A numeric value to segment medium and high transition
-risk products.}
+\item{high_threshold}{A numeric value to segment medium and high emission
+profile products.}
 }
 \value{
 A data frame with the column \code{companies_id}, and the nested columns\code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}. Any column in the input datasets ending with \verb{*rowid} is also passed as is to the output at product level. The exception is any column named exactly \code{rowid}-- which is a reserved name and throws an error. Note this feature makes no sense at company level because potentially multiple rows in the input datasets are summarized into a single row in the output at company level.
