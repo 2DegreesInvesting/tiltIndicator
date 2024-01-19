@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9200
+
+* The documentation of `emissions_profile()` is now reviewed (#693 @Tilmon).
+
 # tiltIndicator 0.0.0.9110
 
 * Depend on R 4.1.0 (released on 2021-05-18) (#690).
