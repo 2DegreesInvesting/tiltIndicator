@@ -5,11 +5,13 @@
 
 <!-- badges: start -->
 
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![tiltIndicator status
+badge](https://2degreesinvesting.r-universe.dev/badges/tiltIndicator)](https://2degreesinvesting.r-universe.dev/tiltIndicator)
 [![R-CMD-check](https://github.com/2DegreesInvesting/tiltIndicator/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/2DegreesInvesting/tiltIndicator/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/2DegreesInvesting/tiltIndicator/branch/main/graph/badge.svg)](https://app.codecov.io/gh/2DegreesInvesting/tiltIndicator?branch=main)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 The goal of tiltIndicator is to implement the core business logic of the
@@ -17,8 +19,8 @@ The goal of tiltIndicator is to implement the core business logic of the
 
 ## Installation
 
-You can install the development version from
-[r-universe](https://r-universe.dev/):
+You can install the latest release from
+[r-universe](https://r-universe.dev/) with:
 
 ``` r
 # install.packages("pak")
@@ -26,7 +28,7 @@ pak::repo_add(r_universe = "https://2degreesinvesting.r-universe.dev")
 install.packages("tiltIndicator")
 ```
 
-Or from [GitHub](https://github.com/):
+Or the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
