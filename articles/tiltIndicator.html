@@ -100,35 +100,56 @@ upstream-products (a.k.a. inputs).</p>
 <h2 id="emissions-profile">Emissions profile<a class="anchor" aria-label="anchor" href="#emissions-profile"></a>
 </h2>
 <!-- WARNING: Do not write here. Instead write in the `child` file -->
-<p>The “emissions profile” measures the transition risk on the
-product-level of a company. The indicator is expressed in the percentage
-of all products that are at high risk, medium risk or low risk due to
-the products’ relative greenhouse gas (GHG) emissions. The assessment is
-first performed on a product-level and can then be aggregated to the
-company-level.</p>
-<p>The “emissions profile” measures the relative GHG emissions per
-product. As a default option, each product is compared to the GHG
-emissions of every other product. Products with higher GHG emissions are
-considered to have a higher emission profile and hence also face a
-higher climate risk.</p>
-<p>After identifying the GHG emissions for each product, the products
-are ranked according to their carbon footprint. The ranking method is
-explained in more detail in the <a href="https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds">Thresholds</a>
-section. In short, products with relatively low GHG emissions are
-assigned to the category “low”, products with relatively high GHG
-emissions to the category “high” and the products in between to the
-category “medium”.</p>
-<p>Note that for the ranking and categorization, we apply different
-benchmarks. Products are compared to (i) all other products, to (ii)
-products within the same tilt sector, to (iii) products within the same
-ISIC 4 digit sector, to (iv) products measured in the same unit, and a
-combination of (iv) with either (i), (ii) or (iii).</p>
+<p>The “emissions profile” measures the absolute GHG emissions of a
+product in comparison to a chosen benchmark of products. The assessment
+is first performed on a product-level and can then be aggregated to the
+company-level. The profile is expressed as the share of a company’s
+products that are in a “high”, “medium”, or “low” emission profile
+category, based on the comparison to the benchmark. A higher emission
+profile indicates a larger impact on climate change compared to the
+benchmark and can therefore also be interpreted as one climate risk
+component to assess products, companies, or loan portfolios.</p>
+<p>The “emission profile” is calculated in these steps:</p>
+<ul>
+<li>The relative GHG emissions per product are collected from a
+Life-Cycle-Analysis (LCA) database by matching the products from our
+company dataset to the products from the LCA dataset.</li>
+<li>All products are ranked according to their GHG emissions.</li>
+<li>The products are grouped by the following benchmarks:
+<ol style="list-style-type: decimal">
+<li>
+<code>all</code>: All products.</li>
+<li>
+<code>isic_4digit</code>: All products within the same ISIC 4 digit
+code (example: 0112 Growing of rice).</li>
+<li>
+<code>tilt_sector</code>: All products within the same tilt sector
+(example: agriculture).</li>
+<li>
+<code>unit</code>: All products with the same unit (example:
+kg).</li>
+<li>
+<code>unit_isic_4digit</code>: All products with the same unit
+within the same ISIC 4 digit section (example: kg + 0112 Growing of
+rice).</li>
+<li>
+<code>unit_tilt_sector</code>: All products with the same unit
+within the same tilt sector (example: kg + agriculture).</li>
+</ol>
+</li>
+<li>For each benchmark, products are assigned to the emission profile
+category “low”, “medium” or “high”, depending on the GHG emissions
+arising from their production process in comparison to all other
+products within the same benchmark. For the assignment of the three
+categories, thresholds are used. Please find more information about the
+thresholds in the <a href="https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds">Thresholds</a>
+section.</li>
+</ul>
 <p>For the company-level results, we aggregate all products from the
-same category and set them in relation to all products that the company
-produces. We derive the “emissions profile”, which is expressed as the
-share of products per category for each company.</p>
-<p>Finally, the indicator provides the share of products with “low”,
-“medium”, or “high” relative GHG emissions per company.</p>
+same category and benchmark and set them in relation to all products
+that the company produces. The company-level results are expressed as
+the company’s share of products per category “low”, “medium”, and “high”
+in comparison to each benchmark.</p>
 <p>The output of this indicator contains the following:</p>
 <ul>
 <li>A column indicating the benchmark to which a product is
