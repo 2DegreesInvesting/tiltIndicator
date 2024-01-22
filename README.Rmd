@@ -31,9 +31,7 @@ You can install the latest release from [r-universe](https://r-universe.dev/)
 with:
 
 ``` r
-# install.packages("pak")
-pak::repo_add(r_universe = "https://2degreesinvesting.r-universe.dev")
-install.packages("tiltIndicator")
+install.packages("tiltIndicator", repos = c("https://2degreesinvesting.r-universe.dev", getOption("repos")))
 ```
 
 Or the development version from [GitHub](https://github.com/) with:
