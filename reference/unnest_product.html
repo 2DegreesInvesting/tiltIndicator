@@ -96,57 +96,54 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">both</span> <span class="op">&lt;-</span> <span class="fu"><a href="sector_profile.html">sector_profile</a></span><span class="op">(</span><span class="va">companies</span>, <span class="va">scenarios</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">both</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                             product            company          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> pecheries-basques_fra316541-00101        <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> hoche-butter-gmbh_deu422723-693847001    <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> hoche-butter-gmbh_deu422723-693847002    <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> hoche-butter-gmbh_deu422723-693847003    <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> vicquelin-espaces-verts_fra697272-00101  <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> vicquelin-espaces-verts_fra697272-00102  <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> vicquelin-espaces-verts_fra697272-00103  <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleisohn_0000000492-001                  <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bst-procontrol-gmbh_00000005104947-001   <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> leider-gmbh_00000005064318-001           <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> leider-gmbh_00000005064318-002           <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> cheries-baqu_neu316541-00101             <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> ca-coity-trg-aua-gmbh_00000384-001       <span style="color: #949494;">&lt;tibble [14 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [42 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 72 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                       product           company          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine                <span style="color: #949494;">&lt;tibble [4 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> celestial_lovebird                 <span style="color: #949494;">&lt;tibble [4 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> nonphilosophical_llama             <span style="color: #949494;">&lt;tibble [8 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> asteria_megalotomusquinquespinosus <span style="color: #949494;">&lt;tibble [4 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> quasifaithful_amphiuma             <span style="color: #949494;">&lt;tibble [4 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> spectacular_americanriverotter     <span style="color: #949494;">&lt;tibble [4 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> contrite_silkworm                  <span style="color: #949494;">&lt;tibble [4 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> harmless_owlbutterfly              <span style="color: #949494;">&lt;tibble [4 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fascist_maiasaura                  <span style="color: #949494;">&lt;tibble [4 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> charismatic_islandwhistler         <span style="color: #949494;">&lt;tibble [4 × 10]&gt;</span> <span style="color: #949494;">&lt;tibble [12 × 3]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 62 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu">unnest_product</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 196 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id               grouped_by risk_category profile_ranking clustered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_000… ipr_1.5c … high                   0.23   steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_000… ipr_1.5c … high                   0.96   steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_000… weo_state… low                    0      steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_000… weo_annou… low                    0      steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_000… weo_net z… low                    0      steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_000… weo_state… low                   -<span style="color: #BB0000;">0.075</span><span style="color: #BB0000; text-decoration: underline;">2</span> steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_000… weo_annou… low                    0.078<span style="text-decoration: underline;">1</span> steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_000… weo_net z… high                   0.233  steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_000… weo_state… low                   -<span style="color: #BB0000;">0.027</span><span style="color: #BB0000; text-decoration: underline;">0</span> steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_000… weo_annou… medium                 0.336  steel    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 186 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 304 × 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id           grouped_by     risk_category profile_ranking clustered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine    ipr_1.5C RPS_… medium                   0.18 tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine    ipr_1.5C RPS_… high                     0.98 tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine    weo_NZ 2050_2… high                     0.4  tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine    weo_NZ 2050_2… high                     0.97 tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> celestial_lovebird     ipr_1.5C RPS_… medium                   0.18 table hi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> celestial_lovebird     ipr_1.5C RPS_… high                     0.98 table hi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> celestial_lovebird     weo_NZ 2050_2… high                     0.4  table hi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> celestial_lovebird     weo_NZ 2050_2… high                     0.97 table hi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> nonphilosophical_llama ipr_1.5C RPS_… low                      0.09 surface …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> nonphilosophical_llama ipr_1.5C RPS_… high                     0.95 surface …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 294 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: activity_uuid_product_uuid &lt;chr&gt;, tilt_sector &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   scenario &lt;chr&gt;, year &lt;dbl&gt;, type &lt;chr&gt;, tilt_subsector &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu">unnest_company</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 588 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id                             grouped_by       risk_category value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… high              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… low               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… high              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fleischerei-stiefsohn_00000005219477-001 ipr_1.5c rps_20… low               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> fleischerei-stiefsohn_00000005219477-001 weo_announced p… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> fleischerei-stiefsohn_00000005219477-001 weo_announced p… medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> fleischerei-stiefsohn_00000005219477-001 weo_announced p… low               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> fleischerei-stiefsohn_00000005219477-001 weo_announced p… high              0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 578 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 864 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by        risk_category value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine ipr_1.5C RPS_2030 high              0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine ipr_1.5C RPS_2030 medium            1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine ipr_1.5C RPS_2030 low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine ipr_1.5C RPS_2050 high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine ipr_1.5C RPS_2050 medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine ipr_1.5C RPS_2050 low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> antimonarchy_canine weo_NZ 2050_2030  high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> antimonarchy_canine weo_NZ 2050_2030  medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> antimonarchy_canine weo_NZ 2050_2030  low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> antimonarchy_canine weo_NZ 2050_2050  high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 854 more rows</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
