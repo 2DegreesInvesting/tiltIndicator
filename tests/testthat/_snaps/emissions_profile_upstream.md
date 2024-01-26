@@ -4,13 +4,13 @@
       format_robust_snapshot(unnest_product(out))
     Output
       [[1]]
-                  companies_id
-      1 supernatural_millipede
-      2 supernatural_millipede
-      3 supernatural_millipede
-      4 supernatural_millipede
-      5 supernatural_millipede
-      6 supernatural_millipede
+               companies_id
+      1 antimonarchy_canine
+      2 antimonarchy_canine
+      3 antimonarchy_canine
+      4 antimonarchy_canine
+      5 antimonarchy_canine
+      6 antimonarchy_canine
       
       [[2]]
                           grouped_by
@@ -82,25 +82,25 @@
       format_robust_snapshot(unnest_company(out))
     Output
       [[1]]
-                   companies_id
-      1  supernatural_millipede
-      2  supernatural_millipede
-      3  supernatural_millipede
-      4  supernatural_millipede
-      5  supernatural_millipede
-      6  supernatural_millipede
-      7  supernatural_millipede
-      8  supernatural_millipede
-      9  supernatural_millipede
-      10 supernatural_millipede
-      11 supernatural_millipede
-      12 supernatural_millipede
-      13 supernatural_millipede
-      14 supernatural_millipede
-      15 supernatural_millipede
-      16 supernatural_millipede
-      17 supernatural_millipede
-      18 supernatural_millipede
+                companies_id
+      1  antimonarchy_canine
+      2  antimonarchy_canine
+      3  antimonarchy_canine
+      4  antimonarchy_canine
+      5  antimonarchy_canine
+      6  antimonarchy_canine
+      7  antimonarchy_canine
+      8  antimonarchy_canine
+      9  antimonarchy_canine
+      10 antimonarchy_canine
+      11 antimonarchy_canine
+      12 antimonarchy_canine
+      13 antimonarchy_canine
+      14 antimonarchy_canine
+      15 antimonarchy_canine
+      16 antimonarchy_canine
+      17 antimonarchy_canine
+      18 antimonarchy_canine
       
       [[2]]
                            grouped_by
