@@ -58,13 +58,13 @@
       6 76269c17-78d6-420b-991a-aa38c51b45b7
       
       [[7]]
-                                                 input_activity_uuid_product_uuid
-      1 bc548877-9cc6-590d-ba72-1d1d2daeb5b9_e2ccc500-255f-448c-8c88-ed25177993df
-      2 bc548877-9cc6-590d-ba72-1d1d2daeb5b9_e2ccc500-255f-448c-8c88-ed25177993df
-      3 bc548877-9cc6-590d-ba72-1d1d2daeb5b9_e2ccc500-255f-448c-8c88-ed25177993df
-      4 bc548877-9cc6-590d-ba72-1d1d2daeb5b9_e2ccc500-255f-448c-8c88-ed25177993df
-      5 bc548877-9cc6-590d-ba72-1d1d2daeb5b9_e2ccc500-255f-448c-8c88-ed25177993df
-      6 bc548877-9cc6-590d-ba72-1d1d2daeb5b9_e2ccc500-255f-448c-8c88-ed25177993df
+            input_activity_uuid_product_uuid
+      1 44e5e288-4f81-40d0-88b4-e79eaea6574c
+      2 44e5e288-4f81-40d0-88b4-e79eaea6574c
+      3 44e5e288-4f81-40d0-88b4-e79eaea6574c
+      4 44e5e288-4f81-40d0-88b4-e79eaea6574c
+      5 44e5e288-4f81-40d0-88b4-e79eaea6574c
+      6 44e5e288-4f81-40d0-88b4-e79eaea6574c
       
       [[8]]
         input_co2_footprint
