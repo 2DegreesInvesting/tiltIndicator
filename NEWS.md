@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9201
+
+* Change license to GPLv3 (#674).
+
 # tiltIndicator 0.0.0.9200
 
 * The documentation of `emissions_profile()` is now reviewed (#693 @Tilmon).
