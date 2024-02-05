@@ -26,3 +26,11 @@ read_test_csv <- function(file, ..., show_col_types = FALSE, n_max = 1) {
 skip_if_toy_data_is_old <- function() {
   testthat::skip_if(utils::packageVersion("tiltToyData") <= "0.0.0.9007")
 }
+
+both_increasing <- function(x, y) {
+  increasing(x) && increasing(y)
+}
+
+increasing <- function(x) {
+  all(x == cummax(x))
+}

@@ -4,10 +4,10 @@
 #' ```
 #'
 #' @param companies,co2 `r document_dataset()`.
-#' @param low_threshold A numeric value to segment low and medium transition
-#'   risk products.
-#' @param high_threshold A numeric value to segment medium and high transition
-#'   risk products.
+#' @param low_threshold A numeric value to segment low and medium emission
+#'   profile products.
+#' @param high_threshold A numeric value to segment medium and high emission
+#'   profile products.
 #'
 #' @family main functions
 #'

@@ -82,3 +82,18 @@ test_that("accepts `company_id` with a warning (#564)", {
     )
   )
 })
+
+test_that("in each benchmark, `profile_ranking` increases with `*co2_footprint`", {
+  companies <- example_companies()
+  co2 <- example_products(co2_footprint = -1:1)
+
+  out <- unnest_product(emissions_profile(companies, co2))
+
+  in_all_benchmarks_profile_ranking_increases_with_co2_footprint <- out |>
+    group_by(grouped_by) |>
+    mutate(both_increasing = both_increasing(profile_ranking, co2_footprint)) |>
+    pull(both_increasing) |>
+    all()
+
+  expect_true(in_all_benchmarks_profile_ranking_increases_with_co2_footprint)
+})

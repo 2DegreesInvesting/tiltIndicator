@@ -9,49 +9,61 @@ emissions_profile(companies, co2, low_threshold = 1/3, high_threshold = 2/3)
 \arguments{
 \item{companies, co2}{A dataframe like the dataset with a matching name in tiltToyData (see \href{https://2degreesinvesting.github.io/tiltToyData/reference/index.html}{Reference}).}
 
-\item{low_threshold}{A numeric value to segment low and medium transition
-risk products.}
+\item{low_threshold}{A numeric value to segment low and medium emission
+profile products.}
 
-\item{high_threshold}{A numeric value to segment medium and high transition
-risk products.}
+\item{high_threshold}{A numeric value to segment medium and high emission
+profile products.}
 }
 \value{
 A data frame with the column \code{companies_id}, and the nested columns\code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}. Any column in the input datasets ending with \verb{*rowid} is also passed as is to the output at product level. The exception is any column named exactly \code{rowid}-- which is a reserved name and throws an error. Note this feature makes no sense at company level because potentially multiple rows in the input datasets are summarized into a single row in the output at company level.
 }
 \description{
-The "emissions profile" measures the transition risk on the product-level of a
-company. The indicator is expressed in the percentage of all products that are
-at high risk, medium risk or low risk due to the products' relative carbon
-footprint. The assessment is first performed on a product-level and can then be
-aggregated to the company-level.
+The "emissions profile" measures the absolute GHG emissions of a product in
+comparison to a chosen benchmark of products. The assessment is first performed
+on a product-level and can then be aggregated to the company-level. The profile
+is expressed as the share of a company's products that are in a "high",
+"medium", or "low" emission profile category, based on the comparison to the
+benchmark. A higher emission profile indicates a larger impact on climate change
+compared to the benchmark and can therefore also be interpreted as one climate
+risk component to assess products, companies, or loan portfolios.
 
-The "emissions profile" measures the relative carbon footprint per product. As a
-default option each product is compared to the carbon footprint of every other
-product. Products with a higher carbon-footprint face a higher risk.
-
-After identifying each carbon footprint for one product, the products are ranked
-according to their carbon footprint. The ranking method is explained in the
+The "emission profile" is calculated in these steps:
+\itemize{
+\item The relative GHG emissions per product are collected from a
+Life-Cycle-Analysis (LCA) database by matching the products from our company
+dataset to the products from the LCA dataset.
+\item All products are ranked according to their GHG emissions.
+\item The products are grouped by the following benchmarks:
+\enumerate{
+\item \code{all}: All products.
+\item \code{isic_4digit}: All products within the same ISIC 4 digit code (example: 0112 Growing of rice).
+\item \code{tilt_sector}: All products within the same tilt sector (example: agriculture).
+\item \code{unit}: All products with the same unit (example: kg).
+\item \code{unit_isic_4digit}: All products with the same unit within the same ISIC 4 digit section (example: kg + 0112 Growing of rice).
+\item \code{unit_tilt_sector}: All products with the same unit within the same tilt sector (example: kg + agriculture).
+}
+\item For each benchmark, products are assigned to the emission profile category
+"low", "medium" or "high", depending on the GHG emissions arising from their
+production process in comparison to all other products within the same
+benchmark. For the assignment of the three categories, thresholds are used.
+Please find more information about the thresholds in the
 \href{https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html#thresholds}{Thresholds}
 section.
+}
 
-After categorization, we aggregate all products from the same category and set
-them in relation to all products that the company produces. We derive the
-"emissions profile".
-
-Please note that carbon footprints, and emissions are used equivalently. Carbon
-footprint refers only on the emissions which occur at the production stage of
-the product and not the emissions from the inputs. The unit is CO2e in kg.
-
-This indicator provides the share of products with "low", "medium", or "high"
-relative production emissions per company.
+For the company-level results, we aggregate all products from the same category
+and benchmark and set them in relation to all products that the company
+produces. The company-level results are expressed as the company's share of
+products per category "low", "medium", and "high" in comparison to each
+benchmark.
 
 The output of this indicator contains the following:
 \itemize{
-\item a column with production emissions
-\item a column indicating the percentile relative to (i) all products with same unit
-(ii) products in same sector (iii) products in same segment
-\item a column indicating whether the product has "low", "medium" or "high" relative
-production emissions.
+\item A column indicating the benchmark to which a product is compared.
+\item A column indicating whether the product has "low", "medium" or "high" relative
+GHG emissions.
+\item A column indicating the share of the products per category and benchmark".
 }
 }
 \examples{
