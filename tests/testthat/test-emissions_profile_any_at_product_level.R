@@ -20,51 +20,6 @@ test_that("outputs expected columns at product level", {
   expect_named(out, expected)
 })
 
-test_that("unmatched products don't introduce NA's (#266)", {
-  companies <- example_companies(!!aka("uid") := c("a", "unmatched"))
-
-  products <- example_products()
-  out <- emissions_profile_any_at_product_level(companies, products)
-  expect_false(anyNA(out$risk_category))
-
-  inputs <- example_inputs()
-  out <- emissions_profile_any_at_product_level(companies, inputs)
-  expect_false(anyNA(out$risk_category))
-})
-
-test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)", {
-  companies <- example_companies(
-    !!aka("id") := c("a", "a", "b", "b"),
-    !!aka("uid") := c("a", paste0("unmatched", 1:3))
-  )
-
-  products <- example_products()
-  out <- emissions_profile_any_at_product_level(companies, products)
-
-  some_match <- filter(out, companies_id == "a")
-  expect_false(anyNA(some_match))
-
-  no_match <- filter(out, companies_id == "b")
-  expect_equal(nrow(no_match), 1)
-
-  na_cols <- cols_na_at_product_level()
-  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
-  expect_true(all_na_cols_are_na)
-
-  inputs <- example_inputs()
-  out <- emissions_profile_any_at_product_level(companies, inputs)
-
-  some_match <- filter(out, companies_id == "a")
-  expect_false(anyNA(some_match))
-
-  no_match <- filter(out, companies_id == "b")
-  expect_equal(nrow(no_match), 1)
-
-  na_cols <- cols_na_at_product_level()
-  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
-  expect_true(all_na_cols_are_na)
-})
-
 test_that("with duplicated co2 throws no error (#435)", {
   companies <- example_companies()
   duplicated <- c("a", "a")

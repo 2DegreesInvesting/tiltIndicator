@@ -97,3 +97,48 @@ test_that("in each benchmark, `profile_ranking` increases with `*co2_footprint`"
 
   expect_true(in_all_benchmarks_profile_ranking_increases_with_co2_footprint)
 })
+
+test_that("at product level, `NA` in a benchmark column yields `NA` in the corresponding `risk_category` and `profile_ranking` (#638)", {
+  companies <- example_companies()
+
+  benchmark <- "isic_4digit"
+  co2 <- example_products("{ benchmark }" := NA)
+
+  out <- emissions_profile(companies, co2)
+  product <- unnest_product(out)
+
+  corresponding <- filter(product, grouped_by == benchmark)
+  expect_true(is.na(corresponding$risk_category))
+  expect_true(is.na(corresponding$profile_ranking))
+})
+
+test_that("at product level, with no match preserves unmatched products, filling with `NA`s (#657)", {
+  companies <- example_companies(!!aka("uid") := c("unmatched"))
+
+  products <- example_products()
+  out <- emissions_profile(companies, products) |> unnest_product()
+
+  expect_equal(nrow(out), 1)
+  expect_equal(out[[aka("uid")]], "unmatched")
+
+  na_cols <- setdiff(cols_na_at_product_level(), aka("uid"))
+  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(out[[.x]])))
+  expect_true(all_na_cols_are_na)
+})
+
+test_that("at product level, with some match preserves unmatched products, filling with `NA`s (#657)", {
+  companies <- example_companies(!!aka("uid") := c("a", "unmatched"))
+
+  co2 <- example_products()
+  out <- emissions_profile(companies, co2) |> unnest_product()
+
+  expect_true("unmatched" %in% out[[aka("uid")]])
+
+  unmatched_row <- 1
+  expect_equal(nrow(out), length(flat_benchmarks(co2)) + unmatched_row)
+
+  unmatched <- filter(out, out[[aka("uid")]] == "unmatched")
+  na_cols <- setdiff(cols_na_at_product_level(), aka("uid"))
+  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(unmatched[[.x]])))
+  expect_true(all_na_cols_are_na)
+})
