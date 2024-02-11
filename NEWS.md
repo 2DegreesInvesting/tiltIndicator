@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9204
+
+* Remove the article 'Handling long runtime' (#723). The tiltIndicator package
+is no longer suitable for it.
+
 # tiltIndicator 0.0.0.9203
 
 * The `xxtr*()` functions are now retired (#719). They have been deprecated for
