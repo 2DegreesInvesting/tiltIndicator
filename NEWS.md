@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9203
+
+* The `xxtr*()` functions are now retired (#719). They have been deprecated for
+about 6 months now.
+
 # tiltIndicator 0.0.0.9201
 
 * Change license to GPLv3 (#674).
