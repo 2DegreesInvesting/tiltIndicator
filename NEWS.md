@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9206
+
+* The retired `xxtr()` functions now throw a defunc error (#724) which more
+clealy communicates to users the changes in #719.
+
 # tiltIndicator 0.0.0.9205
 
 * The datasets that moved to tiltToyData are now retired (#722). They have been
