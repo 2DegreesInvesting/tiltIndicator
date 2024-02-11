@@ -2,8 +2,8 @@
 
 # tiltIndicator 0.0.0.9206
 
-* The retired `xxtr()` functions now throw a defunc error (#724) which more
-claerly communicates to users the changes in #719.
+* The retired `xxtr()` functions now throw an error (#724) which more
+appropriately communicates to users the changes in #719.
 
 # tiltIndicator 0.0.0.9205
 
