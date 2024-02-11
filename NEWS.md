@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9205
+
+* The datasets that moved to tiltToyData are now retired (#722). They have been
+deprecated for about 6 months now.
+
 # tiltIndicator 0.0.0.9204
 
 * Remove the article 'Handling long runtime' (#723). The tiltIndicator package
