@@ -14,16 +14,3 @@ test_that("wraps the output at product and company levels", {
     arrange(expected, companies_id, grouped_by)
   )
 })
-
-test_that("pstr() yields the same with deprecation warning", {
-  companies <- example_companies()
-  scenarios <- example_scenarios()
-
-  expect_warning(
-    expect_equal(
-      pstr(companies, scenarios),
-      sector_profile(companies, scenarios)
-    ),
-    "sector_profile"
-  )
-})
