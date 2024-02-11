@@ -59,8 +59,8 @@ istr <- function(companies,
                  inputs,
                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  deprecate_warn("0.0.0.9085", "istr()", "sector_profile_upstream()")
-
+  lifecycle::deprecate_stop("0.0.0.9085", "istr()", "sector_profile_upstream()")
+  # TODO: Remoove body
   sector_profile_upstream(
     companies = companies,
     scenarios = scenarios,
