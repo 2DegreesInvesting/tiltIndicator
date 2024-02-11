@@ -23,29 +23,6 @@ e$on_rcmd <- function() {
   nzchar(Sys.getenv("R_CMD"))
 }
 
-e$read_toy_dataset <- function(dataset, ...) {
-  path <- e$toy_path(e$toy_file(dataset))
-  readr::read_csv(path, show_col_types = FALSE, ...)
-}
-
-e$toy_file <- function(dataset) {
-  sprintf("%s.%s", dataset, e$toy_ext())
-}
-
-e$toy_path <- function(file) {
-  system.file("extdata", file, package = e$toy_package(), mustWork = TRUE)
-}
-
-e$toy_ext <- function() {
-  "csv.gz"
-}
-
-e$col_chr_name <- function(name) {
-  function() readr::cols(!!name := readr::col_character())
-}
-e$col_isic <- e$col_chr_name("isic_4digit")
-e$col_isic_upstream <- e$col_chr_name("input_isic_4digit")
-
 e$when <- "tiltIndicator 0.0.0.9089"
 
 delayedAssign("companies", value = {
