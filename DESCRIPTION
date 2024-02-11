@@ -1,6 +1,6 @@
 Package: tiltIndicator
 Title: Indicators for the 'TILT' Project
-Version: 0.0.0.9203
+Version: 0.0.0.9206
 Authors@R: c(
     person("Mauro", "Lepore", , "maurolepore@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0002-1986-7988")),
@@ -54,4 +54,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.0
+RoxygenNote: 7.3.1

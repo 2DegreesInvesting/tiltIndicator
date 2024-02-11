@@ -27,19 +27,6 @@ test_that("wraps the output at product and company levels", {
   )
 })
 
-test_that("xctr() with products yields the same with a deprecation warning", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
-  products <- read_test_csv(toy_emissions_profile_products_ecoinvent())
-
-  expect_warning(
-    expect_equal(
-      xctr(companies, products),
-      emissions_profile(companies, products)
-    ),
-    "emissions_profile"
-  )
-})
-
 test_that("*upstream() wraps the output at product and company levels", {
   companies <- read_test_csv(toy_emissions_profile_any_companies())
   inputs <- read_test_csv(toy_emissions_profile_upstream_products_ecoinvent())
@@ -54,20 +41,6 @@ test_that("*upstream() wraps the output at product and company levels", {
   expect_equal(
     arrange(company, companies_id, grouped_by),
     arrange(expected, companies_id, grouped_by)
-  )
-})
-
-test_that("xctr() with inputs yields the same as *upstream() with a deprecation warning", {
-  companies <- read_test_csv(toy_emissions_profile_any_companies())
-  inputs <- read_test_csv(toy_emissions_profile_upstream_products_ecoinvent())
-
-  expect_warning(
-    expect_equal(
-      xctr(companies, inputs),
-      emissions_profile_upstream(companies, inputs)
-    ),
-    # This is close enough to "emissions_profile_upstream"
-    "emissions_profile"
   )
 })
 

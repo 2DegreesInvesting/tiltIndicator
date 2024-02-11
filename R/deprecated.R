@@ -97,32 +97,3 @@ xstr_polish_output_at_company_level <- function(data) {
     with = "sector_profile_any_polish_output_at_company_level()"
   )
 }
-
-#' Avoid R CMD Check warning about undocumented data sets
-#'
-#' R CMD check wants documentation for anything defined in this file. I stick
-#' all objects in `e` so that I can document that single `e` object as internal.
-#' @keywords internal
-#' @name e
-"e"
-
-#' @rdname deprecated
-"companies"
-
-#' @rdname deprecated
-"inputs"
-
-#' @rdname deprecated
-"products"
-
-#' @rdname deprecated
-"istr_companies"
-
-#' @rdname deprecated
-"istr_inputs"
-
-#' @rdname deprecated
-"pstr_companies"
-
-#' @rdname deprecated
-"xstr_scenarios"
