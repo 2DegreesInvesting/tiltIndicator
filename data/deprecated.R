@@ -1,16 +1,16 @@
 # Avoid R CMD Check warning about undocumented data sets. See `?e`.
 e <- new.env()
 
-e$warn_deprecates <- function(new,
+e$deprecate_stop <- function(new,
                               old,
                               when,
                               package = e$toy_package()) {
   if(e$on_rcmd()) return(invisible(new))
 
-  .Deprecated(msg = sprintf(
+  stop(sprintf(
     "`%s` was deprecated in %s. Please use `%s` from %s.",
     old, when, new, package
-  ))
+  ), call. = FALSE)
 
   invisible(new)
 }
@@ -50,42 +50,35 @@ e$when <- "tiltIndicator 0.0.0.9089"
 
 delayedAssign("companies", value = {
   "emissions_profile_any_companies" |>
-    e$warn_deprecates("companies", when = e$when) |>
-    e$read_toy_dataset()
+    e$deprecate_stop("companies", when = e$when)
 })
 
 delayedAssign("products", value = {
   "emissions_profile_products_ecoinvent" |>
-    e$warn_deprecates("products", when = e$when) |>
-    e$read_toy_dataset(col_types = e$col_isic())
+    e$deprecate_stop("products", when = e$when)
 })
 
 delayedAssign("inputs", value = {
   "emissions_profile_upstream_products_ecoinvent" |>
-    e$warn_deprecates("inputs", when = e$when) |>
-    e$read_toy_dataset(col_types = e$col_isic_upstream())
+    e$deprecate_stop("inputs", when = e$when)
 })
 
 delayedAssign("pstr_companies", value = {
   "sector_profile_companies" |>
-    e$warn_deprecates("pstr_companies", when = e$when) |>
-    e$read_toy_dataset()
+    e$deprecate_stop("pstr_companies", when = e$when)
 })
 
 delayedAssign("istr_companies", value = {
   "sector_profile_upstream_companies" |>
-    e$warn_deprecates("istr_companies", when = e$when) |>
-    e$read_toy_dataset()
+    e$deprecate_stop("istr_companies", when = e$when)
 })
 
 delayedAssign("istr_inputs", value = {
   "sector_profile_upstream_products" |>
-    e$warn_deprecates("istr_inputs", when = e$when) |>
-    e$read_toy_dataset(col_types = e$col_isic_upstream())
+    e$deprecate_stop("istr_inputs", when = e$when)
 })
 
 delayedAssign("xstr_scenarios", value = {
   "sector_profile_any_scenarios" |>
-    e$warn_deprecates("xstr_scenarios", when = e$when) |>
-    e$read_toy_dataset()
+    e$deprecate_stop("xstr_scenarios", when = e$when)
 })
