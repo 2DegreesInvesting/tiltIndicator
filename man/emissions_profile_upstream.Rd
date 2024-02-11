@@ -82,7 +82,7 @@ both |> unnest_company()
 \seealso{
 Other main functions: 
 \code{\link{emissions_profile}()},
-\code{\link{sector_profile_upstream}()},
-\code{\link{sector_profile}()}
+\code{\link{sector_profile}()},
+\code{\link{sector_profile_upstream}()}
 }
 \concept{main functions}
