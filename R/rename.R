@@ -42,14 +42,7 @@ pstr <- function(companies,
                  scenarios,
                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  deprecate_warn("0.0.0.9084", "pstr()", "sector_profile()")
-
-  sector_profile(
-    companies = companies,
-    scenarios = scenarios,
-    low_threshold = low_threshold,
-    high_threshold = high_threshold
-  )
+  lifecycle::deprecate_stop("0.0.0.9084", "pstr()", "sector_profile()")
 }
 
 #' @export
@@ -60,25 +53,10 @@ istr <- function(companies,
                  low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                  high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   lifecycle::deprecate_stop("0.0.0.9085", "istr()", "sector_profile_upstream()")
-  # TODO: Remoove body
-  sector_profile_upstream(
-    companies = companies,
-    scenarios = scenarios,
-    inputs = inputs,
-    low_threshold = low_threshold,
-    high_threshold = high_threshold
-  )
 }
 
 #' @export
 #' @rdname rename
 xctr <- function(companies, co2, low_threshold = 1 / 3, high_threshold = 2 / 3) {
-  deprecate_warn("0.0.0.9086", "xctr()", "emissions_profile()")
-
-  emissions_profile(
-    companies = companies,
-    co2 = co2,
-    low_threshold = low_threshold,
-    high_threshold = high_threshold
-  )
+  lifecycle::deprecate_stop("0.0.0.9086", "xctr()", "emissions_profile()")
 }

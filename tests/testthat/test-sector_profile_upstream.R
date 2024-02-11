@@ -16,20 +16,6 @@ test_that("wraps the output at product and company levels", {
   )
 })
 
-test_that("istr() yields the same with a deprecation warning", {
-  companies <- example_companies()
-  scenarios <- example_scenarios()
-  inputs <- example_inputs()
-
-  expect_warning(
-    expect_equal(
-      istr(companies, scenarios, inputs),
-      sector_profile_upstream(companies, scenarios, inputs)
-    ),
-    "sector_profile_upstream"
-  )
-})
-
 test_that("accepts `company_id` with a warning (#564)", {
   companies <- example_companies() |> rename(company_id = companies_id)
   inputs <- example_inputs()
