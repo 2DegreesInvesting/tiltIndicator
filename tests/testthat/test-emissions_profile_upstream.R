@@ -185,6 +185,21 @@ test_that("at product level, with some match preserves unmatched products, filli
   expect_true(all_na_cols_are_na)
 })
 
+test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` and not in `value` (#638)", {
+  companies <- example_companies()
+  benchmark <- "input_isic_4digit"
+  co2 <- example_inputs("{ benchmark }" := NA)
+
+  company <- emissions_profile_upstream(companies, co2) |> unnest_company()
+
+  corresponding <- filter(company, grepl(benchmark, grouped_by))
+  corresponding <- split(corresponding, corresponding$grouped_by)
+  risk_category <- unlist(unique(map(corresponding, "risk_category")))
+  expect_equal(risk_category, c("high", "medium", "low", NA))
+  value <- unlist(unique(map(corresponding, "value")))
+  expect_false(anyNA(value))
+})
+
 test_that("no match preserves companies", {
   products <- example_products()
 

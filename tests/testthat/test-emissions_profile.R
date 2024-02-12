@@ -82,7 +82,7 @@ test_that("at product level, with some match preserves unmatched products, filli
   expect_true(all_na_cols_are_na)
 })
 
-test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` (#638)", {
+test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` and not in `value` (#638)", {
   companies <- example_companies()
   benchmark <- "isic_4digit"
   co2 <- example_products("{ benchmark }" := NA)
