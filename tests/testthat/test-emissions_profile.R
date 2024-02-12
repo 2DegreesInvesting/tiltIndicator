@@ -84,22 +84,44 @@ test_that("at product level, with some match preserves unmatched products, filli
 
 test_that("at company level, `NA` in a benchmark column yields `NA` in the corresponding `risk_category` (#638)", {
   companies <- example_companies()
-
   benchmark <- "isic_4digit"
   co2 <- example_products("{ benchmark }" := NA)
 
-  out <- emissions_profile(companies, co2)
-  company <- unnest_company(out)
+  company <- emissions_profile(companies, co2) |> unnest_company()
 
-  expect_true(any(is.na(company$risk_category)))
-  expect_true(any(grepl(benchmark, company$grouped_by)))
+  corresponding <- filter(company, grepl(benchmark, grouped_by))
+  corresponding <- split(corresponding, corresponding$grouped_by)
+  risk_category <- unlist(unique(map(corresponding, "risk_category")))
+  expect_equal(risk_category, c("high", "medium", "low", NA))
+  value <- unlist(unique(map(corresponding, "value")))
+  expect_false(anyNA(value))
 })
 
 test_that("at company level, `NA` in a benchmark column yields the expected `value`s (#638)", {
   companies <- example_companies()
-  co2 <- example_products(tilt_sector = c(1.0, NA))
 
-  company <- emissions_profile(companies, co2) |> unnest_company()
-  out <- company |> filter(grepl("tilt_sector", grouped_by))
+  benchmark <- "isic_4digit"
+  co2 <- example_products(
+    "{ benchmark }" := c('1234', NA),
+    !!aka("uid") := c("a", "b")
+  )
+  out1 <- emissions_profile(companies, co2) |> unnest_company()
+
+
+  benchmark <- "isic_4digit"
+  co2 <- example_products("{ benchmark }" := NA)
+  out2 <- emissions_profile(companies, co2) |> unnest_company()
+
+  identical(out1, out2)
+
+  benchmark <- "tilt_sector"
+  co2 <- example_products("{ benchmark }" := c("a", NA))
+  emissions_profile(companies, co2) |> unnest_company() |>
+    filter(grepl(benchmark, grouped_by))
+  benchmark <- "unit"
+  co2 <- example_products("{ benchmark }" := c("a", NA))
+  emissions_profile(companies, co2) |> unnest_company() |>
+    filter(grepl(benchmark, grouped_by))
+
   expect_snapshot(out)
 })
