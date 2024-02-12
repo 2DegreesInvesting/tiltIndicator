@@ -157,7 +157,7 @@
       18     0
       
 
-# at company level, `NA` in a benchmark column yields the expected `value`s (#638)
+# at company level, `NA` in a benchmark yields the expected `value`s (#638)
 
     Code
       out

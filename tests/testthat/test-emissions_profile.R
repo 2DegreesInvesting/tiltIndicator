@@ -97,7 +97,7 @@ test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_false(anyNA(value))
 })
 
-test_that("at company level, `NA` in a benchmark column yields the expected `value`s (#638)", {
+test_that("at company level, `NA` in a benchmark yields the expected `value`s (#638)", {
   companies <- example_companies()
 
   benchmark <- "isic_4digit"
