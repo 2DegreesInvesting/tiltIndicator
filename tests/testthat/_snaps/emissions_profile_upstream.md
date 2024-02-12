@@ -175,14 +175,14 @@
       # A tibble: 8 x 4
         companies_id grouped_by                   risk_category value
         <chr>        <chr>                        <chr>         <dbl>
-      1 a            input_isic_4digit            high              0
-      2 a            input_isic_4digit            medium            0
-      3 a            input_isic_4digit            low               0
-      4 a            input_isic_4digit            <NA>              1
-      5 a            input_unit_input_isic_4digit high              0
-      6 a            input_unit_input_isic_4digit medium            0
-      7 a            input_unit_input_isic_4digit low               0
-      8 a            input_unit_input_isic_4digit <NA>              1
+      1 a            input_isic_4digit            high            0.5
+      2 a            input_isic_4digit            medium          0  
+      3 a            input_isic_4digit            low             0  
+      4 a            input_isic_4digit            <NA>            0.5
+      5 a            input_unit_input_isic_4digit high            0.5
+      6 a            input_unit_input_isic_4digit medium          0  
+      7 a            input_unit_input_isic_4digit low             0  
+      8 a            input_unit_input_isic_4digit <NA>            0.5
 
 ---
 
