@@ -37,7 +37,7 @@ test_that("in each benchmark, `profile_ranking` increases with `*co2_footprint`"
   expect_true(in_all_benchmarks_profile_ranking_increases_with_co2_footprint)
 })
 
-test_that("at product level, `NA` in a benchmark column yields `NA` in the corresponding `risk_category` and `profile_ranking` (#638)", {
+test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` and `profile_ranking` (#638)", {
   companies <- example_companies()
 
   benchmark <- "isic_4digit"
@@ -82,7 +82,7 @@ test_that("at product level, with some match preserves unmatched products, filli
   expect_true(all_na_cols_are_na)
 })
 
-test_that("at company level, `NA` in a benchmark column yields `NA` in the corresponding `risk_category` (#638)", {
+test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` (#638)", {
   companies <- example_companies()
   benchmark <- "isic_4digit"
   co2 <- example_products("{ benchmark }" := NA)
