@@ -21,7 +21,7 @@ emissions_profile <- function(companies,
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
   product <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold)
-  company <- any_at_company_level(product)
+  company <- epa_at_company_level(product)
   nest_levels(product, company)
 }
 
