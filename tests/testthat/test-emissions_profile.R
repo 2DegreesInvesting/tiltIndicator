@@ -97,31 +97,27 @@ test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_false(anyNA(value))
 })
 
-test_that("at company level, `NA` in a benchmark yields the expected `value`s (#638)", {
+test_that("FIXME? at company level, `NA` in a benchmark yields the expected `value`s (#638)", {
   companies <- example_companies()
 
   benchmark <- "isic_4digit"
-  co2 <- example_products(
-    "{ benchmark }" := c('1234', NA),
-    !!aka("uid") := c("a", "b")
-  )
-  out1 <- emissions_profile(companies, co2) |> unnest_company()
-
-
-  benchmark <- "isic_4digit"
-  co2 <- example_products("{ benchmark }" := NA)
-  out2 <- emissions_profile(companies, co2) |> unnest_company()
-
-  identical(out1, out2)
+  co2 <- example_products("{ benchmark }" := c('1234', NA))
+  emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grepl(benchmark, grouped_by)) |>
+    expect_snapshot()
 
   benchmark <- "tilt_sector"
   co2 <- example_products("{ benchmark }" := c("a", NA))
-  emissions_profile(companies, co2) |> unnest_company() |>
-    filter(grepl(benchmark, grouped_by))
+  emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grepl(benchmark, grouped_by)) |>
+    expect_snapshot()
+
   benchmark <- "unit"
   co2 <- example_products("{ benchmark }" := c("a", NA))
-  emissions_profile(companies, co2) |> unnest_company() |>
-    filter(grepl(benchmark, grouped_by))
-
-  expect_snapshot(out)
+  emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grepl(benchmark, grouped_by)) |>
+    expect_snapshot()
 })

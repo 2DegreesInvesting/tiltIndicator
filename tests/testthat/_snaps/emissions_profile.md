@@ -157,10 +157,29 @@
       18     0
       
 
-# at company level, `NA` in a benchmark yields the expected `value`s (#638)
+# FIXME? at company level, `NA` in a benchmark yields the expected `value`s (#638)
 
     Code
-      out
+      filter(unnest_company(emissions_profile(companies, co2)), grepl(benchmark,
+        grouped_by))
+    Output
+      # A tibble: 8 x 4
+        companies_id grouped_by       risk_category value
+        <chr>        <chr>            <chr>         <dbl>
+      1 a            isic_4digit      high              0
+      2 a            isic_4digit      medium            0
+      3 a            isic_4digit      low               0
+      4 a            isic_4digit      <NA>              1
+      5 a            unit_isic_4digit high              0
+      6 a            unit_isic_4digit medium            0
+      7 a            unit_isic_4digit low               0
+      8 a            unit_isic_4digit <NA>              1
+
+---
+
+    Code
+      filter(unnest_company(emissions_profile(companies, co2)), grepl(benchmark,
+        grouped_by))
     Output
       # A tibble: 8 x 4
         companies_id grouped_by       risk_category value
@@ -173,4 +192,23 @@
       6 a            unit_tilt_sector medium          0  
       7 a            unit_tilt_sector low             0  
       8 a            unit_tilt_sector <NA>            0.5
+
+---
+
+    Code
+      filter(unnest_company(emissions_profile(companies, co2)), grepl(benchmark,
+        grouped_by))
+    Output
+      # A tibble: 9 x 4
+        companies_id grouped_by       risk_category value
+        <chr>        <chr>            <chr>         <dbl>
+      1 a            unit             high              1
+      2 a            unit             medium            0
+      3 a            unit             low               0
+      4 a            unit_isic_4digit high              1
+      5 a            unit_isic_4digit medium            0
+      6 a            unit_isic_4digit low               0
+      7 a            unit_tilt_sector high              1
+      8 a            unit_tilt_sector medium            0
+      9 a            unit_tilt_sector low               0
 
