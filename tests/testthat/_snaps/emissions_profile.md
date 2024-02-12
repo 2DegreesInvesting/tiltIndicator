@@ -157,3 +157,20 @@
       18     0
       
 
+# at company level, `NA` in a benchmark column yields the expected `value`s (#638)
+
+    Code
+      out
+    Output
+      # A tibble: 8 x 4
+        companies_id grouped_by       risk_category value
+        <chr>        <chr>            <chr>         <dbl>
+      1 a            tilt_sector      high            0.5
+      2 a            tilt_sector      medium          0  
+      3 a            tilt_sector      low             0  
+      4 a            tilt_sector      <NA>            0.5
+      5 a            unit_tilt_sector high            0.5
+      6 a            unit_tilt_sector medium          0  
+      7 a            unit_tilt_sector low             0  
+      8 a            unit_tilt_sector <NA>            0.5
+

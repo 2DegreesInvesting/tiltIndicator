@@ -16,7 +16,7 @@ test_that("outputs expected columns at company level", {
   inputs <- example_inputs()
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
-    any_at_company_level()
+    epa_at_company_level()
 
   expected <- cols_at_company_level()
   expect_equal(names(out)[seq_along(expected)], expected)
@@ -27,7 +27,7 @@ test_that("it's arranged by `companies_id` and `grouped_by`", {
   inputs <- example_inputs()
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
-    any_at_company_level()
+    epa_at_company_level()
 
   expect_equal(out, arrange(out, companies_id, grouped_by))
 })
@@ -38,9 +38,9 @@ test_that("is sensitive to low_threshold", {
   inputs <- example_inputs(!!aka("uid") := uid, !!aka("ico2footprint") := 1:2)
 
   out1 <- emissions_profile_any_at_product_level(companies, inputs, low_threshold = .1) |>
-    any_at_company_level()
+    epa_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, inputs, low_threshold = .9) |>
-    any_at_company_level()
+    epa_at_company_level()
   expect_false(identical(out1, out2))
 })
 
@@ -50,9 +50,9 @@ test_that("is sensitive to high_threshold", {
   inputs <- example_inputs(!!aka("uid") := uid, !!aka("ico2footprint") := 1:2)
 
   out1 <- emissions_profile_any_at_product_level(companies, inputs, high_threshold = .1) |>
-    any_at_company_level()
+    epa_at_company_level()
   out2 <- emissions_profile_any_at_product_level(companies, inputs, high_threshold = .9) |>
-    any_at_company_level()
+    epa_at_company_level()
   expect_false(identical(out1, out2))
 })
 
@@ -73,7 +73,7 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   )
 
   product <- emissions_profile_any_at_product_level(companies, inputs, low_threshold, high_threshold)
-  out <- any_at_company_level(product)
+  out <- epa_at_company_level(product)
   expect_true(identical(unique(out$value), expected_value))
 })
 
@@ -82,7 +82,7 @@ test_that("values sum 1", {
   inputs <- example_inputs()
 
   out <- emissions_profile_any_at_product_level(companies, inputs) |>
-    any_at_company_level()
+    epa_at_company_level()
 
   sum <- unique(summarise(out, sum = sum(value), .by = grouped_by)$sum)
   expect_equal(sum, 1)
@@ -92,8 +92,8 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   companies <- example_companies(!!aka("uid") := "unmatched")
   inputs <- example_inputs()
 
-  out <- emissions_profile_any_at_product_level(companies, inputs) |>
-    any_at_company_level()
+  out <- emissions_profile_upstream(companies, inputs) |>
+    unnest_company()
 
   expect_equal(out$companies_id, "a")
   expect_equal(out$grouped_by, NA_character_)
@@ -105,8 +105,7 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
   companies <- example_companies(!!aka("uid") := c("a", "unmatched"))
   inputs <- example_inputs()
 
-  out <- emissions_profile_any_at_product_level(companies, inputs) |>
-    any_at_company_level()
+  out <- emissions_profile_upstream(companies, inputs) |> unnest_company()
 
   expect_equal(nrow(out), 18L)
   n <- length(unique(out$grouped_by)) * length(unique(out$risk_category))
@@ -184,4 +183,29 @@ test_that("at product level, with some match preserves unmatched products, filli
   na_cols <- setdiff(cols_na_at_product_level(), aka("uid"))
   all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(unmatched[[.x]])))
   expect_true(all_na_cols_are_na)
+})
+
+test_that("no match preserves companies", {
+  products <- example_products()
+
+  # Some match
+  companies <- example_companies(
+    !!aka("id") := c("a", "b"),
+    !!aka("uid") := c("a", "unmatched")
+  )
+  company <- emissions_profile_upstream(companies, products) |> unnest_company()
+  expect_equal(unique(company$companies_id), companies[[aka("id")]])
+
+  # No match
+  companies <- example_companies(!!aka("uid") := "unmatched")
+  company <- emissions_profile_upstream(companies, products) |> unnest_company()
+  expect_equal(company$companies_id, companies[[aka("id")]])
+
+  # No match
+  companies <- example_companies(
+    !!aka("id") := c("a", "b"),
+    !!aka("uid") := "unmatched"
+  )
+  company <- emissions_profile_upstream(companies, products) |> unnest_company()
+  expect_equal(unique(company$companies_id), companies[[aka("id")]])
 })

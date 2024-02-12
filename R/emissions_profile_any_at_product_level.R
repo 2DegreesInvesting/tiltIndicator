@@ -65,4 +65,3 @@ epa_select_cols_at_product_level <- function(data) {
 if_all_na_is_first_else_TRUE <- function(x) {
   if (all(is.na(x))) is_first(x) else rep(TRUE, length(x))
 }
-
