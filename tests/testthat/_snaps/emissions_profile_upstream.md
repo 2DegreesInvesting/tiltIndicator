@@ -166,3 +166,58 @@
       18     0
       
 
+# FIXME? at company level, `NA` in a benchmark yields the expected `value`s (#638)
+
+    Code
+      filter(unnest_company(emissions_profile(companies, co2)), grepl(benchmark,
+        grouped_by))
+    Output
+      # A tibble: 8 x 4
+        companies_id grouped_by                   risk_category value
+        <chr>        <chr>                        <chr>         <dbl>
+      1 a            input_isic_4digit            high              0
+      2 a            input_isic_4digit            medium            0
+      3 a            input_isic_4digit            low               0
+      4 a            input_isic_4digit            <NA>              1
+      5 a            input_unit_input_isic_4digit high              0
+      6 a            input_unit_input_isic_4digit medium            0
+      7 a            input_unit_input_isic_4digit low               0
+      8 a            input_unit_input_isic_4digit <NA>              1
+
+---
+
+    Code
+      filter(unnest_company(emissions_profile(companies, co2)), grepl(benchmark,
+        grouped_by))
+    Output
+      # A tibble: 8 x 4
+        companies_id grouped_by                   risk_category value
+        <chr>        <chr>                        <chr>         <dbl>
+      1 a            input_tilt_sector            high            0.5
+      2 a            input_tilt_sector            medium          0  
+      3 a            input_tilt_sector            low             0  
+      4 a            input_tilt_sector            <NA>            0.5
+      5 a            input_unit_input_tilt_sector high            0.5
+      6 a            input_unit_input_tilt_sector medium          0  
+      7 a            input_unit_input_tilt_sector low             0  
+      8 a            input_unit_input_tilt_sector <NA>            0.5
+
+---
+
+    Code
+      filter(unnest_company(emissions_profile(companies, co2)), grepl(benchmark,
+        grouped_by))
+    Output
+      # A tibble: 9 x 4
+        companies_id grouped_by                   risk_category value
+        <chr>        <chr>                        <chr>         <dbl>
+      1 a            input_unit                   high              1
+      2 a            input_unit                   medium            0
+      3 a            input_unit                   low               0
+      4 a            input_unit_input_isic_4digit high              1
+      5 a            input_unit_input_isic_4digit medium            0
+      6 a            input_unit_input_isic_4digit low               0
+      7 a            input_unit_input_tilt_sector high              1
+      8 a            input_unit_input_tilt_sector medium            0
+      9 a            input_unit_input_tilt_sector low               0
+

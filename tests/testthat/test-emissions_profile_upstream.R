@@ -200,27 +200,52 @@ test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_false(anyNA(value))
 })
 
-test_that("no match preserves companies", {
-  products <- example_products()
+test_that("FIXME? at company level, `NA` in a benchmark yields the expected `value`s (#638)", {
+  companies <- example_companies()
 
-  # Some match
+  benchmark <- "input_isic_4digit"
+  co2 <- example_inputs("{ benchmark }" := c("'1234'", NA))
+  emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grepl(benchmark, grouped_by)) |>
+    expect_snapshot()
+
+  benchmark <- "input_tilt_sector"
+  co2 <- example_inputs("{ benchmark }" := c("a", NA))
+  emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grepl(benchmark, grouped_by)) |>
+    expect_snapshot()
+
+  benchmark <- "input_unit"
+  co2 <- example_inputs("{ benchmark }" := c("a", NA))
+  emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grepl(benchmark, grouped_by)) |>
+    expect_snapshot()
+})
+
+test_that("at company level, unmatched companies are preserved", {
+  co2 <- example_inputs()
+
+  # Two companies, one match
   companies <- example_companies(
     !!aka("id") := c("a", "b"),
     !!aka("uid") := c("a", "unmatched")
   )
-  company <- emissions_profile_upstream(companies, products) |> unnest_company()
+  company <- emissions_profile_upstream(companies, co2) |> unnest_company()
   expect_equal(unique(company$companies_id), companies[[aka("id")]])
 
-  # No match
-  companies <- example_companies(!!aka("uid") := "unmatched")
-  company <- emissions_profile_upstream(companies, products) |> unnest_company()
-  expect_equal(company$companies_id, companies[[aka("id")]])
-
-  # No match
+  # Two companies, no match
   companies <- example_companies(
     !!aka("id") := c("a", "b"),
     !!aka("uid") := "unmatched"
   )
-  company <- emissions_profile_upstream(companies, products) |> unnest_company()
+  company <- emissions_profile_upstream(companies, co2) |> unnest_company()
   expect_equal(unique(company$companies_id), companies[[aka("id")]])
+
+  # One company, no match
+  companies <- example_companies(!!aka("uid") := "unmatched")
+  company <- emissions_profile_upstream(companies, co2) |> unnest_company()
+  expect_equal(company$companies_id, companies[[aka("id")]])
 })
