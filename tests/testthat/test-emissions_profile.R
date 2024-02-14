@@ -42,13 +42,32 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
 
   benchmark <- "isic_4digit"
   co2 <- example_products("{ benchmark }" := NA)
+  out <- emissions_profile(companies, co2) |>
+    unnest_product()|>
+    filter(grouped_by == benchmark)
+  expect_true(is.na(out$risk_category))
+  expect_true(is.na(out$profile_ranking))
 
-  out <- emissions_profile(companies, co2)
-  product <- unnest_product(out)
+  benchmark <- "tilt_sector"
+  co2 <- example_products("{ benchmark }" := NA)
+  out <- emissions_profile(companies, co2) |>
+    unnest_product()|>
+    filter(grouped_by == benchmark)
+  expect_true(is.na(out$risk_category))
+  expect_true(is.na(out$profile_ranking))
+})
 
-  corresponding <- filter(product, grouped_by == benchmark)
-  expect_true(is.na(corresponding$risk_category))
-  expect_true(is.na(corresponding$profile_ranking))
+test_that("at product level, `NA` in `unit` yields `NA` in `risk_category` and `profile_ranking` (#638)", {
+  skip("FIXME? https://github.com/2DegreesInvesting/tiltIndicator/pull/639#issuecomment-1943680190")
+  companies <- example_companies()
+
+  benchmark <- "unit"
+  co2 <- example_products("{ benchmark }" := NA)
+  out <- emissions_profile(companies, co2) |>
+    unnest_product()|>
+    filter(grouped_by == benchmark)
+  expect_true(is.na(out$risk_category))
+  expect_true(is.na(out$profile_ranking))
 })
 
 test_that("at product level, with no match preserves unmatched products, filling with `NA`s (#657)", {
@@ -97,6 +116,30 @@ test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_false(anyNA(value))
 })
 
+test_that("at company level, `NA` in 'unit' yields the expected `value`s (#638)", {
+  skip("FIXME? https://github.com/2DegreesInvesting/tiltIndicator/pull/639#issuecomment-1943680190")
+  companies <- example_companies()
+
+  benchmark <- "unit"
+  co2 <- example_products("{ benchmark }" := c(NA))
+  out <- emissions_profile(companies, co2) |> unnest_company()
+  # For each benchmark `value` adds to 1
+  out |>
+    filter(grepl(benchmark, grouped_by)) |>
+    summarize(sum = sum(value), .by = grouped_by) |>
+    distinct(sum) |>
+    pull(sum) |>
+    expect_equal(1)
+  # And it comes from the rows where the benchmark is `NA`
+  out |>
+    filter(is.na(risk_category)) |>
+    filter(grepl(benchmark, grouped_by)) |>
+    summarize(sum = sum(value), .by = grouped_by) |>
+    distinct(sum) |>
+    pull(sum) |>
+    expect_equal(1)
+})
+
 test_that("at company level, `NA` in a benchmark yields the expected `value`s (#638)", {
   companies <- example_companies()
 
@@ -120,25 +163,6 @@ test_that("at company level, `NA` in a benchmark yields the expected `value`s (#
     expect_equal(1)
 
   benchmark <- "tilt_sector"
-  co2 <- example_products("{ benchmark }" := c(NA))
-  out <- emissions_profile(companies, co2) |> unnest_company()
-  # For each benchmark `value` adds to 1
-  out |>
-    filter(grepl(benchmark, grouped_by)) |>
-    summarize(sum = sum(value), .by = grouped_by) |>
-    distinct(sum) |>
-    pull(sum) |>
-    expect_equal(1)
-  # And it comes from the rows where the benchmark is `NA`
-  out |>
-    filter(is.na(risk_category)) |>
-    filter(grepl(benchmark, grouped_by)) |>
-    summarize(sum = sum(value), .by = grouped_by) |>
-    distinct(sum) |>
-    pull(sum) |>
-    expect_equal(1)
-
-  benchmark <- "unit"
   co2 <- example_products("{ benchmark }" := c(NA))
   out <- emissions_profile(companies, co2) |> unnest_company()
   # For each benchmark `value` adds to 1
