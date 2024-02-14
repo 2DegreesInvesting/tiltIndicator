@@ -42,7 +42,8 @@ epa_compute_profile_ranking <- function(data) {
 
   exclude <- short_isic(data) |
     is.na(get_column(data, aka("isic"))) |
-    is.na(get_column(data, aka("tsector")))
+    is.na(get_column(data, aka("tsector"))) |
+    is.na(get_column(data, aka("xunit")))
 
   list(!exclude, exclude) |>
     map(\(x) filter(data, x)) |>
@@ -97,6 +98,7 @@ assign_na_to_profile_ranking_in_special_cases <- function(data) {
       data |> should_be_na_when_isic_has_2_or_3_digits() ~ NA,
       data |> should_be_na_when_missing(aka("isic")) ~ NA,
       data |> should_be_na_when_missing(aka("tsector")) ~ NA,
+      data |> should_be_na_when_missing(aka("xunit")) ~ NA,
       .default = .data$profile_ranking
     ))
 }
