@@ -78,7 +78,8 @@ test_that("for a company with 3 products of varying footprints, value is 1/3 (#2
   )
 
   out <- emissions_profile(companies, products, low_threshold, high_threshold) |>
-    unnest_company()
+    unnest_company() |>
+    filter(!is.na(risk_category))
   expect_true(identical(unique(out$value), expected_value))
 })
 

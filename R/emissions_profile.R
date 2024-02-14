@@ -21,10 +21,24 @@ emissions_profile <- function(companies,
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
   product <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold)
-  company <- epa_at_company_level(product)
+  company <- epa_at_company_level(product) |>
+    insert_row_with_na_in_risk_category()
   nest_levels(product, company)
 }
 
 #' @export
 #' @rdname emissions_profile_upstream
 emissions_profile_upstream <- emissions_profile
+
+insert_row_with_na_in_risk_category <- function(data) {
+  levels <- c(risk_category_levels(), NA)
+  data |>
+    mutate(has_na = anyNA(risk_category), .by = grouped_by) |>
+    filter(!has_na) |>
+    distinct(companies_id, grouped_by) |>
+    dplyr::bind_cols(risk_category = NA_character_, value = 0) |>
+    bind_rows(data) |>
+    mutate(risk_category = factor(risk_category, levels)) |>
+    arrange(companies_id, grouped_by, risk_category) |>
+    mutate(risk_category = as.character(risk_category))
+}
