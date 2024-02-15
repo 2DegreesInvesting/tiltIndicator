@@ -198,31 +198,66 @@ test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_false(anyNA(value))
 })
 
-test_that("FIXME? at company level, `NA` in a benchmark yields the expected `value`s (#638)", {
+test_that("at company level, `NA` in a benchmark yields `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA` (#638)", {
   companies <- example_companies()
 
   benchmark <- "input_isic_4digit"
-  co2 <- example_inputs("{ benchmark }" := c("'1234'", NA))
-  emissions_profile(companies, co2) |>
-    unnest_company() |>
+  co2 <- example_inputs("{ benchmark }" := c(NA))
+  out <- emissions_profile_upstream(companies, co2) |> unnest_company()
+  # For each benchmark `value` adds to 1
+  out |>
     filter(grepl(benchmark, grouped_by)) |>
-    expect_snapshot()
+    summarize(sum = sum(value), .by = grouped_by) |>
+    distinct(sum) |>
+    pull(sum) |>
+    expect_equal(1)
+  # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
+  out |>
+    filter(is.na(risk_category)) |>
+    filter(grepl(benchmark, grouped_by)) |>
+    summarize(sum = sum(value), .by = grouped_by) |>
+    distinct(sum) |>
+    pull(sum) |>
+    expect_equal(1)
 
   benchmark <- "input_tilt_sector"
-  co2 <- example_inputs("{ benchmark }" := c("a", NA))
-  emissions_profile(companies, co2) |>
-    unnest_company() |>
+  co2 <- example_inputs("{ benchmark }" := c(NA))
+  out <- emissions_profile_upstream(companies, co2) |> unnest_company()
+  # For each benchmark `value` adds to 1
+  out |>
     filter(grepl(benchmark, grouped_by)) |>
-    expect_snapshot()
+    summarize(sum = sum(value), .by = grouped_by) |>
+    distinct(sum) |>
+    pull(sum) |>
+    expect_equal(1)
+  # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
+  out |>
+    filter(is.na(risk_category)) |>
+    filter(grepl(benchmark, grouped_by)) |>
+    summarize(sum = sum(value), .by = grouped_by) |>
+    distinct(sum) |>
+    pull(sum) |>
+    expect_equal(1)
 
   benchmark <- "input_unit"
-  co2 <- example_inputs("{ benchmark }" := c("a", NA))
-  emissions_profile(companies, co2) |>
-    unnest_company() |>
+  co2 <- example_inputs("{ benchmark }" := c(NA))
+  out <- emissions_profile_upstream(companies, co2) |> unnest_company()
+  # For each benchmark `value` adds to 1
+  out |>
     filter(grepl(benchmark, grouped_by)) |>
-    expect_snapshot()
+    summarize(sum = sum(value), .by = grouped_by) |>
+    distinct(sum) |>
+    pull(sum) |>
+    expect_equal(1)
+  # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
+  out |>
+    filter(is.na(risk_category)) |>
+    filter(grepl(benchmark, grouped_by)) |>
+    summarize(sum = sum(value), .by = grouped_by) |>
+    distinct(sum) |>
+    pull(sum) |>
+    expect_equal(1)
 })
-
 test_that("at company level, unmatched companies are preserved", {
   co2 <- example_inputs()
 

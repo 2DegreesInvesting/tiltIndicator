@@ -111,7 +111,7 @@ test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_false(anyNA(value))
 })
 
-test_that("at company level, `NA` in a benchmark yields the expected `value`s (#638)", {
+test_that("at company level, `NA` in a benchmark yields `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA` (#638)", {
   companies <- example_companies()
 
   benchmark <- "isic_4digit"
@@ -124,7 +124,7 @@ test_that("at company level, `NA` in a benchmark yields the expected `value`s (#
     distinct(sum) |>
     pull(sum) |>
     expect_equal(1)
-  # And it comes from the rows where the benchmark is `NA`
+  # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
   out |>
     filter(is.na(risk_category)) |>
     filter(grepl(benchmark, grouped_by)) |>
@@ -143,7 +143,7 @@ test_that("at company level, `NA` in a benchmark yields the expected `value`s (#
     distinct(sum) |>
     pull(sum) |>
     expect_equal(1)
-  # And it comes from the rows where the benchmark is `NA`
+    # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
   out |>
     filter(is.na(risk_category)) |>
     filter(grepl(benchmark, grouped_by)) |>
@@ -162,7 +162,7 @@ test_that("at company level, `NA` in a benchmark yields the expected `value`s (#
     distinct(sum) |>
     pull(sum) |>
     expect_equal(1)
-  # And it comes from the rows where the benchmark is `NA`
+    # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
   out |>
     filter(is.na(risk_category)) |>
     filter(grepl(benchmark, grouped_by)) |>
