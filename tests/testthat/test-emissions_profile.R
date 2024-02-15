@@ -193,6 +193,30 @@ test_that("at company level, `risk_category` always has the value `NA` (#638)", 
   expect_equal(number_of_na_per_benchmark, 1)
 })
 
+test_that("the order of companies is preserved", {
+  expected_order <- c("a", "c", "b")
+
+  companies <- example_companies(!!aka("id") := expected_order)
+  co2 <- example_products()
+
+  both <- emissions_profile(companies, co2)
+
+  out <- both |> unnest_product()
+  expect_equal(  pull(distinct(out, companies_id)), expected_order)
+  out <- both |> unnest_company()
+  expect_equal(  pull(distinct(out, companies_id)), expected_order)
+
+  benchmark <- "isic_4digit"
+  co2 <- example_products("{ benchmark }" := c("a", NA))
+
+  both <- emissions_profile(companies, co2)
+
+  out <- both |> unnest_product()
+  expect_equal(  pull(distinct(out, companies_id)), expected_order)
+  out <- both |> unnest_company()
+  expect_equal(  pull(distinct(out, companies_id)), expected_order)
+})
+
 test_that("at company level, unmatched companies are preserved", {
   co2 <- example_products()
 

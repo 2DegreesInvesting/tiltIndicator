@@ -22,8 +22,6 @@ emissions_profile <- function(companies,
                               high_threshold = 2 / 3) {
   product <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold)
   company <- epa_at_company_level(product) |>
-    # TODO: Refactor
-    # TODO: Test that this preserves the order of companies
     insert_row_with_na_in_risk_category()
   nest_levels(product, company)
 }
