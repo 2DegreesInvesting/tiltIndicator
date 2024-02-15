@@ -258,6 +258,28 @@ test_that("at company level, `NA` in a benchmark yields `value = 1` where `group
     pull(sum) |>
     expect_equal(1)
 })
+
+test_that("at company level, `risk_category` always has the value `NA` (#638)", {
+  companies <- example_companies()
+
+  co2 <- example_inputs()
+  out <- emissions_profile_upstream(companies, co2) |> unnest_company()
+  out |>
+    distinct(risk_category) |>
+    anyNA() |>
+    expect_true()
+
+  benchmark <- "input_isic_4digit"
+  co2 <- example_inputs("{ benchmark }" := c("a", NA))
+  out <- emissions_profile_upstream(companies, co2) |> unnest_company()
+
+  number_of_na_per_benchmark <- out |>
+    summarize(n = sum(is.na(risk_category)), .by = grouped_by) |>
+    pull(n) |>
+    unique()
+  expect_equal(number_of_na_per_benchmark, 1)
+})
+
 test_that("at company level, unmatched companies are preserved", {
   co2 <- example_inputs()
 
