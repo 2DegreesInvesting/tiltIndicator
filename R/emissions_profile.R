@@ -33,8 +33,8 @@ emissions_profile_upstream <- emissions_profile
 insert_row_with_na_in_risk_category <- function(data) {
   levels <- c(risk_category_levels(), NA)
   data |>
-    mutate(has_na = anyNA(.data$risk_category), .by = grouped_by) |>
-    filter(!has_na) |>
+    mutate(has_na = anyNA(.data$risk_category), .by = "grouped_by") |>
+    filter(!.data$has_na) |>
     distinct(.data$companies_id, .data$grouped_by) |>
     dplyr::bind_cols(tibble::tibble(risk_category = NA_character_, value = 0)) |>
     bind_rows(data) |>
