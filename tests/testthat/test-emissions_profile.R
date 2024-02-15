@@ -43,7 +43,7 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
   benchmark <- "isic_4digit"
   co2 <- example_products("{ benchmark }" := NA)
   out <- emissions_profile(companies, co2) |>
-    unnest_product()|>
+    unnest_product() |>
     filter(grouped_by == benchmark)
   expect_true(is.na(out$risk_category))
   expect_true(is.na(out$profile_ranking))
@@ -51,7 +51,7 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
   benchmark <- "tilt_sector"
   co2 <- example_products("{ benchmark }" := NA)
   out <- emissions_profile(companies, co2) |>
-    unnest_product()|>
+    unnest_product() |>
     filter(grouped_by == benchmark)
   expect_true(is.na(out$risk_category))
   expect_true(is.na(out$profile_ranking))
@@ -59,7 +59,7 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
   benchmark <- "unit"
   co2 <- example_products("{ benchmark }" := NA)
   out <- emissions_profile(companies, co2) |>
-    unnest_product()|>
+    unnest_product() |>
     filter(grouped_by == benchmark)
   expect_true(is.na(out$risk_category))
   expect_true(is.na(out$profile_ranking))
@@ -202,9 +202,9 @@ test_that("the order of companies is preserved", {
   both <- emissions_profile(companies, co2)
 
   out <- both |> unnest_product()
-  expect_equal(  pull(distinct(out, companies_id)), expected_order)
+  expect_equal(pull(distinct(out, companies_id)), expected_order)
   out <- both |> unnest_company()
-  expect_equal(  pull(distinct(out, companies_id)), expected_order)
+  expect_equal(pull(distinct(out, companies_id)), expected_order)
 
   benchmark <- "isic_4digit"
   co2 <- example_products("{ benchmark }" := c("a", NA))
@@ -212,9 +212,9 @@ test_that("the order of companies is preserved", {
   both <- emissions_profile(companies, co2)
 
   out <- both |> unnest_product()
-  expect_equal(  pull(distinct(out, companies_id)), expected_order)
+  expect_equal(pull(distinct(out, companies_id)), expected_order)
   out <- both |> unnest_company()
-  expect_equal(  pull(distinct(out, companies_id)), expected_order)
+  expect_equal(pull(distinct(out, companies_id)), expected_order)
 })
 
 test_that("at company level, unmatched companies are preserved", {
