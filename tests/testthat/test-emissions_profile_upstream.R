@@ -152,6 +152,53 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_true(is.na(corresponding$profile_ranking))
 })
 
+test_that("at product level, `NA` in a benchmark yields `NA`s only in the corresponding product (#638)", {
+  companies <- example_companies(
+    !!aka("id")      := c("a", "a"),
+    !!aka("uid")     := c("a", "b"),
+    !!aka("cluster") := c("a", "b"),
+  )
+
+  benchmark <- "input_isic_4digit"
+  co2 <- example_inputs(
+    !!aka("uid")  := c("a", "b"),
+    "{ benchmark }" := c("'1234'", NA)
+  )
+
+  out <- emissions_profile_upstream(companies, co2) |>
+    unnest_product() |>
+    filter(grouped_by == benchmark)
+
+  expect_false(is.na(filter(out, clustered == "a")$risk_category))
+  expect_true(is.na(filter(out, clustered == "b")$risk_category))
+
+  benchmark <- "input_tilt_sector"
+  co2 <- example_inputs(
+    !!aka("uid")  := c("a", "b"),
+    "{ benchmark }" := c("a", NA)
+  )
+
+  out <- emissions_profile_upstream(companies, co2) |>
+    unnest_product() |>
+    filter(grouped_by == benchmark)
+
+  expect_false(is.na(filter(out, clustered == "a")$risk_category))
+  expect_true(is.na(filter(out, clustered == "b")$risk_category))
+
+  benchmark <- "input_unit"
+  co2 <- example_inputs(
+    !!aka("uid")  := c("a", "b"),
+    "{ benchmark }" := c("a", NA)
+  )
+
+  out <- emissions_profile_upstream(companies, co2) |>
+    unnest_product() |>
+    filter(grouped_by == benchmark)
+
+  expect_false(is.na(filter(out, clustered == "a")$risk_category))
+  expect_true(is.na(filter(out, clustered == "b")$risk_category))
+})
+
 test_that("at product level, with no match preserves unmatched products, filling with `NA`s (#657)", {
   companies <- example_companies(!!aka("uid") := c("unmatched"))
 
