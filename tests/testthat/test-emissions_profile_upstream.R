@@ -199,6 +199,38 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
   expect_true(is.na(filter(out, clustered == "b")$risk_category))
 })
 
+test_that("at company level, with two matched products and `NA` in one benchmark yields `value` of `0.5` where the corresponding `risk_category` is `NA`, `0.5` in one other `risk_category`, and `0` elsewhere (#638)", {
+  companies <- example_companies(
+    !!aka("id")      := c("a", "a"),
+    !!aka("uid")     := c("a", "b"),
+    !!aka("cluster") := c("a", "b"),
+  )
+
+  benchmark <- "input_isic_4digit"
+  co2 <- example_inputs(
+    !!aka("uid")  := c("a", "b"),
+    "{ benchmark }" := c("'1234'", NA)
+  )
+
+  out <- emissions_profile_upstream(companies, co2) |>
+    unnest_company()
+  # expect `0.5` where `risk_category` is `NA`
+  out |>
+    filter(grepl(benchmark, grouped_by)) |>
+    filter(is.na(risk_category)) |>
+    distinct(value) |>
+    pull() |>
+    expect_equal(0.5)
+  # expect `0.5` in one other `risk_category` and `0` elsewhere
+  out |>
+    filter(grepl(benchmark, grouped_by)) |>
+    filter(!is.na(risk_category)) |>
+    distinct(value) |>
+    pull() |>
+    sort() |>
+    expect_equal(c(0, 0.5))
+})
+
 test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` and not in `value` (#638)", {
   companies <- example_companies()
   benchmark <- "input_isic_4digit"
