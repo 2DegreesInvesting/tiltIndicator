@@ -231,6 +231,30 @@ test_that("at company level, with two matched products and `NA` in one benchmark
     expect_equal(c(0, 0.5))
 })
 
+test_that("at company level, `NA` in the benchmark of 1/3 products yields a `value` of `1/3` where the corresponding `risk_category` is `NA` (#638)", {
+  companies <- example_companies(
+    !!aka("id")      := c("a", "a", "a"),
+    !!aka("uid")     := c("a", "b", "c"),
+    !!aka("cluster") := c("a", "b", "c"),
+  )
+
+  benchmark <- "input_isic_4digit"
+  co2 <- example_inputs(
+    !!aka("uid") := c("a", "b", "c"),
+    "{ benchmark }" := c("'1234'", NA, "'1234'")
+  )
+
+  out <- emissions_profile_upstream(companies, co2) |>
+    unnest_company()
+  # expect `1/3` where `risk_category` is `NA`
+  out |>
+    filter(grepl(benchmark, grouped_by)) |>
+    filter(is.na(risk_category)) |>
+    distinct(value) |>
+    pull() |>
+    expect_equal(1/3)
+})
+
 test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` and not in `value` (#638)", {
   companies <- example_companies()
   benchmark <- "input_isic_4digit"
