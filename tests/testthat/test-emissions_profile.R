@@ -112,6 +112,63 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
   expect_true(is.na(filter(out, clustered == "b")$risk_category))
 })
 
+
+test_that("at company level, with two matched products and `NA` in one benchmark yields `value` of `0.5` where the corresponding `risk_category` is `NA`, `0.5` in one other `risk_category`, and `0` elsewhere (#638)", {
+  companies <- example_companies(
+    !!aka("id")      := c("a", "a"),
+    !!aka("uid")     := c("a", "b"),
+    !!aka("cluster") := c("a", "b"),
+  )
+
+  benchmark <- "isic_4digit"
+  co2 <- example_products(
+    !!aka("uid")  := c("a", "b"),
+    "{ benchmark }" := c("'1234'", NA)
+  )
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company()
+  # expect `0.5` where `risk_category` is `NA`
+  out |>
+    filter(grepl(benchmark, grouped_by)) |>
+    filter(is.na(risk_category)) |>
+    distinct(value) |>
+    pull() |>
+    expect_equal(0.5)
+  # expect `0.5` in one other `risk_category` and `0` elsewhere
+  out |>
+    filter(grepl(benchmark, grouped_by)) |>
+    filter(!is.na(risk_category)) |>
+    distinct(value) |>
+    pull() |>
+    sort() |>
+    expect_equal(c(0, 0.5))
+})
+
+test_that("at company level, `NA` in the benchmark of 1/3 products yields a `value` of `1/3` where the corresponding `risk_category` is `NA` (#638)", {
+  companies <- example_companies(
+    !!aka("id")      := c("a", "a", "a"),
+    !!aka("uid")     := c("a", "b", "c"),
+    !!aka("cluster") := c("a", "b", "c"),
+  )
+
+  benchmark <- "isic_4digit"
+  co2 <- example_products(
+    !!aka("uid") := c("a", "b", "c"),
+    "{ benchmark }" := c("'1234'", NA, "'1234'")
+  )
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company()
+  # expect `1/3` where `risk_category` is `NA`
+  out |>
+    filter(grepl(benchmark, grouped_by)) |>
+    filter(is.na(risk_category)) |>
+    distinct(value) |>
+    pull() |>
+    expect_equal(1/3)
+})
+
 test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` and not in `value` (#638)", {
   companies <- example_companies()
   benchmark <- "isic_4digit"
