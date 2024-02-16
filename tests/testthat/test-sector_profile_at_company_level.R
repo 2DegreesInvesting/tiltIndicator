@@ -130,7 +130,8 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
     !!aka("cluster") := c("a", "b"),
     !!aka("xsector") := c("total", "unmatched")
   )
-  scenarios <- example_scenarios()
+  scenarios <- example_scenarios() |>
+    mutate(across(reductions, as.double))
 
   product <- sector_profile_at_product_level(companies, scenarios)
   out <- any_at_company_level(product)
@@ -153,4 +154,13 @@ test_that("no match yields 1 row with NA in all columns (#393)", {
   expect_true(is.na(out$value))
   expect_true(is.na(out$risk_category))
   expect_true(is.na(out$grouped_by))
+})
+
+test_that("outputs `profile_ranking_avg` at company level", {
+  companies <- example_companies()
+  scenarios <- example_scenarios() |>
+    mutate(across(reductions, as.double))
+  product <- sector_profile_at_product_level(companies, scenarios)
+  out <- any_at_company_level(product)
+  expect_true(hasName(out, "profile_ranking_avg"))
 })

@@ -1,4 +1,11 @@
 any_at_company_level <- function(data) {
+  profile_ranking_average <- data |>
+    select(cols_by(), .data$profile_ranking) |>
+    mutate(profile_ranking_avg = round(mean(.data$profile_ranking, na.rm = TRUE), 3),
+           .by = cols_by()) |>
+    select(-c(.data$profile_ranking)) |>
+    distinct()
+
   with_value <- data |>
     select(all_of(cols_at_all_levels())) |>
     filter(!is.na(.data$risk_category)) |>
@@ -34,6 +41,7 @@ any_at_company_level <- function(data) {
       value = sum(.data$value),
       .by = cols_at_all_levels()
     ) |>
+    left_join(profile_ranking_average, by = cols_by()) |>
     polish_output(cols_na_at_company_level())
 }
 

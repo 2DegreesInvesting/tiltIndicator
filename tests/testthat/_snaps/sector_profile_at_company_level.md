@@ -27,4 +27,10 @@
       2     0
       3     0
       
+      [[5]]
+        profile_ranking_avg
+      1                  NA
+      2                  NA
+      3                  NA
+      
 

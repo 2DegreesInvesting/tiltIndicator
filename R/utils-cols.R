@@ -11,7 +11,7 @@ cols_at_product_level <- function() {
 }
 
 cols_at_company_level <- function() {
-  c(cols_at_all_levels(), "value")
+  c(cols_at_all_levels(), "value", "profile_ranking_avg")
 }
 
 cols_na_at_product_level <- function() {

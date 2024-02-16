@@ -181,3 +181,23 @@ test_that("some match yields (grouped_by * risk_category) rows with no NA (#393)
   expect_equal(n, 18L)
   expect_false(anyNA(out))
 })
+
+test_that("`profile_ranking_avg` is calculated correctly for benchmark `all`", {
+  local_options(readr.show_col_types = FALSE)
+  companies <- read_csv(toy_emissions_profile_any_companies()) |>
+    filter(companies_id %in% c("nonphilosophical_llama"))
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  product <- emissions_profile_any_at_product_level(companies, products) |>
+    filter(grouped_by == "all")
+  out <- any_at_company_level(product)
+  expected_value <- 0.333
+  expect_equal(unique(out$profile_ranking_avg), expected_value)
+})
+
+test_that("outputs `profile_ranking_avg` at company level", {
+  companies <- example_companies()
+  products <- example_products()
+  product <- emissions_profile_any_at_product_level(companies, products)
+  out <- any_at_company_level(product)
+  expect_true(hasName(out, "profile_ranking_avg"))
+})
