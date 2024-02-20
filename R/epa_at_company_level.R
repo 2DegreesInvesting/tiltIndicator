@@ -1,21 +1,30 @@
 epa_at_company_level <- function(data) {
+  count_of_na <- data |>
+    select(all_of(cols_at_all_levels())) |>
+    mutate(unmatched_products = sum(is.na(.data$grouped_by)), .by = aka("id")) |>
+    mutate(missing_benchmarks = sum(is.na(.data$risk_category)), .by = cols_by()) |>
+    mutate(na = .data$unmatched_products + .data$missing_benchmarks) |>
+    select(aka("id"), .data$grouped_by, .data$na) |>
+    filter(!is.na(.data$grouped_by)) |>
+    distinct() |>
+    mutate(risk_category = NA_character_)
+
+  if (all_na(count_of_na, "grouped_by", "risk_category")) {
+    return(empty_company_output_from(data[[aka("id")]]))
+  }
+
   with_value <- data |>
     select(all_of(cols_at_all_levels())) |>
-    add_count(.data$companies_id, .data$grouped_by) |>
+    filter(!is.na(.data$grouped_by), !is.na(.data$risk_category)) |>
+    bind_rows(tidyr::uncount(count_of_na, .data$na)) |>
+    dplyr::arrange(.data[[aka("id")]], .data$grouped_by) |>
+    add_count(.data[[aka("id")]], .data$grouped_by) |>
     mutate(value = .data$n / sum(.data$n), .by = cols_by()) |>
     select(-"n")
 
-  if (all_na(with_value, "grouped_by", "risk_category")) {
-    return(empty_company_output_from(data$companies_id))
-  }
-
-  with_value <- bind_rows(
-    pick_companies_with_no_match(with_value),
-    pick_companies_with_some_match(with_value)
-  )
-
   levels <- c(risk_category_levels(), NA)
   with_value |>
+    pick_companies_with_some_match() |>
     group_by(.data$companies_id, .data$grouped_by) |>
     mutate(risk_category = factor(.data$risk_category, levels = levels)) |>
     expand(.data$risk_category) |>
@@ -29,7 +38,8 @@ epa_at_company_level <- function(data) {
     summarize(
       value = sum(.data$value),
       .by = cols_at_all_levels()
-    )
+    ) |>
+    bind_rows(pick_companies_with_no_match(data))
 }
 
 all_na <- function(data, ...) {

@@ -216,7 +216,7 @@ test_that("at company level, `NA` in a benchmark yields `value = 1` where `group
     distinct(sum) |>
     pull(sum) |>
     expect_equal(1)
-    # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
+  # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
   out |>
     filter(is.na(risk_category)) |>
     filter(grepl(benchmark, grouped_by)) |>
@@ -235,7 +235,7 @@ test_that("at company level, `NA` in a benchmark yields `value = 1` where `group
     distinct(sum) |>
     pull(sum) |>
     expect_equal(1)
-    # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
+  # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
   out |>
     filter(is.na(risk_category)) |>
     filter(grepl(benchmark, grouped_by)) |>
@@ -321,6 +321,23 @@ test_that("at product level, with some match preserves unmatched products, filli
   expect_true(all_na_cols_are_na)
 })
 
+test_that("at company level, unmatched products are considered in the `value` (#657)", {
+  companies <- example_companies(!!aka("uid") := c("a", "b", "unmatched"))
+  # isic_4digit: expect 1/3 high and 2/3 NA
+  co2 <- example_products(
+    !!aka("uid") := c("a", "b"),
+    isic_4digit = c("'1234'", NA)
+  )
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grouped_by == "isic_4digit") |>
+    pull(value)
+
+  expected <- unname(c(high = 1/3, medium = 0, low = 0, na = 2/3))
+  expect_equal(out, expected)
+})
+
 test_that("at company level, unmatched companies are preserved", {
   co2 <- example_products()
 
@@ -344,4 +361,36 @@ test_that("at company level, unmatched companies are preserved", {
   companies <- example_companies(!!aka("uid") := "unmatched")
   company <- emissions_profile(companies, co2) |> unnest_company()
   expect_equal(company$companies_id, companies[[aka("id")]])
+})
+
+test_that("at company level, unmatched companies have a single row", {
+  co2 <- example_products()
+
+  # Two companies, one match
+  unmatched <- "b"
+  companies <- example_companies(
+    !!aka("id") := c("a", unmatched),
+    !!aka("uid") := c("a", "unmatched")
+  )
+  company <- emissions_profile(companies, co2) |> unnest_company()
+  n_unmatched <- sum(company[[aka("id")]] == unmatched)
+  expect_equal(n_unmatched, 1L)
+
+  # Two companies, no match
+  unmatched <- c("a", "b")
+  companies <- example_companies(
+    !!aka("id") := unmatched,
+    !!aka("uid") := "unmatched"
+  )
+  company <- emissions_profile(companies, co2) |> unnest_company()
+  n_unmatched <- sum(company[[aka("id")]] == unmatched[[1]])
+  expect_equal(n_unmatched, 1L)
+  n_unmatched <- sum(company[[aka("id")]] == unmatched[[2]])
+  expect_equal(n_unmatched, 1L)
+
+  # One company, no match
+  companies <- example_companies(!!aka("uid") := "unmatched")
+  company <- emissions_profile(companies, co2) |> unnest_company()
+  n_unmatched <- sum(company[[aka("id")]] == "a")
+  expect_equal(n_unmatched, 1L)
 })
