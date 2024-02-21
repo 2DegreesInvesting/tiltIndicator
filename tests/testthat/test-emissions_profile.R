@@ -321,17 +321,112 @@ test_that("at product level, with some match preserves unmatched products, filli
   expect_true(all_na_cols_are_na)
 })
 
-test_that("at company level, unmatched products are considered in the `value` (#657)", {
-  companies <- example_companies(!!aka("uid") := c("a", "b", "unmatched"))
-  # isic_4digit: expect 1/3 high and 2/3 NA
+test_that("at company level, 1 matched product yields `value` 1 in 1 `risk_category` (#657)", {
+  one_matched <- c("a")
+  companies <- example_companies(!!aka("uid") := one_matched)
+  matched <- one_matched
   co2 <- example_products(
-    !!aka("uid") := c("a", "b"),
-    isic_4digit = c("'1234'", NA)
+    !!aka("uid") := one_matched
   )
 
   out <- emissions_profile(companies, co2) |>
     unnest_company() |>
-    filter(grouped_by == "isic_4digit") |>
+    distinct(risk_category, value) |>
+    pull(value)
+
+  expect_equal(sort(out), c(0, 0, 0, 1))
+})
+
+test_that("at company level, 2 matched products yield `value` 1 in 1 `risk_category` (#657)", {
+  two_matched <- c("a", "b")
+  companies <- example_companies(!!aka("uid") := two_matched)
+  matched <- two_matched
+  co2 <- example_products(
+    !!aka("uid") := matched
+  )
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    distinct(risk_category, value) |>
+    pull(value)
+
+  expect_equal(sort(out), c(0, 0, 0, 1))
+})
+
+test_that("at company level, 1 matched and 1 unmatched products yield `value = 1/2` in `NA` and in 1 other `risk_category` (#657)", {
+  one_matched_one_unmatched <- c("a", "unmatched")
+  companies <- example_companies(!!aka("uid") := one_matched_one_unmatched)
+  matched <- one_matched_one_unmatched[1]
+  co2 <- example_products(!!aka("uid") := matched)
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    distinct(risk_category, value)
+
+  na <- pull(filter(out, is.na(risk_category)), value)
+  expect_equal(na, 1/2)
+  other <- pull(filter(out, !is.na(risk_category)), value)
+  expect_equal(sort(other), c(0, 0, 1/2))
+})
+
+test_that("at company level, 2 matched and 1 unmatched products yield `value = 1/3` in `NA` and `2/3` in 1 other `risk_category` (#657)", {
+  two_matched_and_one_unmatched <- c("a", "b", "unmatched")
+  companies <- example_companies(!!aka("uid") := two_matched_and_one_unmatched)
+  matched <- two_matched_and_one_unmatched[1:2]
+  co2 <- example_products(!!aka("uid") := matched)
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    distinct(risk_category, value)
+
+  na <- pull(filter(out, is.na(risk_category)), value)
+  expect_equal(na, 1/3)
+  other <- pull(filter(out, !is.na(risk_category)), value)
+  expect_equal(sort(other), c(0, 0, 2/3))
+})
+
+test_that("at company level, 1 matched product, one missing benchmark, and one unmatched product yield `value = 2/3` in `NA` and `1/3` in 1 other `risk_category` (#657)", {
+  missing_benchmark <- "b"
+  two_matched_and_one_unmatched <- c("a", missing_benchmark, "unmatched")
+  companies <- example_companies(!!aka("uid") := two_matched_and_one_unmatched)
+  matched <- two_matched_and_one_unmatched[1:2]
+  co2 <- example_products(
+    !!aka("uid") := matched,
+    !!aka("isic") := c("'1234'", NA)
+  )
+
+  isic <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grouped_by == aka("isic"))
+
+  na <- pull(filter(isic, is.na(risk_category)), value)
+  expect_equal(na, 2/3)
+  other <- pull(filter(isic, !is.na(risk_category)), value)
+  expect_equal(sort(other), c(0, 0, 1/3))
+
+  isic <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grepl(aka("isic"), grouped_by)) |>
+    distinct(risk_category, value)
+
+  na <- pull(filter(isic, is.na(risk_category)), value)
+  expect_equal(na, 2/3)
+  other <- pull(filter(isic, !is.na(risk_category)), value)
+  expect_equal(sort(other), c(0, 0, 1/3))
+})
+
+test_that("at company level, unmatched products are considered in the `value` (#657)", {
+  companies <- example_companies(!!aka("uid") := c("a", "b", "unmatched"))
+  # *isic_4digit: expect 1/3 high and 2/3 NA
+  isic <- aka("isic")
+  co2 <- example_products(
+    !!aka("uid") := c("a", "b"),
+    !!isic := c("'1234'", NA)
+  )
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grouped_by == isic) |>
     pull(value)
 
   expected <- unname(c(high = 1/3, medium = 0, low = 0, na = 2/3))

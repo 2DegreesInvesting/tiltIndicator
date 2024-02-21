@@ -4,7 +4,7 @@ epa_at_company_level <- function(data) {
     mutate(unmatched_products = sum(is.na(.data$grouped_by)), .by = aka("id")) |>
     mutate(missing_benchmarks = sum(is.na(.data$risk_category)), .by = cols_by()) |>
     mutate(na = .data$unmatched_products + .data$missing_benchmarks) |>
-    select(aka("id"), .data$grouped_by, .data$na) |>
+    select(aka("id"), "grouped_by", "na") |>
     filter(!is.na(.data$grouped_by)) |>
     distinct() |>
     mutate(risk_category = NA_character_)
