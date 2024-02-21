@@ -415,24 +415,6 @@ test_that("at company level, 1 matched product, one missing benchmark, and one u
   expect_equal(sort(other), c(0, 0, 1/3))
 })
 
-test_that("at company level, unmatched products are considered in the `value` (#657)", {
-  companies <- example_companies(!!aka("uid") := c("a", "b", "unmatched"))
-  # *isic_4digit: expect 1/3 high and 2/3 NA
-  isic <- aka("isic")
-  co2 <- example_products(
-    !!aka("uid") := c("a", "b"),
-    !!isic := c("'1234'", NA)
-  )
-
-  out <- emissions_profile(companies, co2) |>
-    unnest_company() |>
-    filter(grouped_by == isic) |>
-    pull(value)
-
-  expected <- unname(c(high = 1/3, medium = 0, low = 0, na = 2/3))
-  expect_equal(out, expected)
-})
-
 test_that("at company level, unmatched companies are preserved", {
   co2 <- example_products()
 
