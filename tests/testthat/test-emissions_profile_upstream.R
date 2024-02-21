@@ -154,14 +154,14 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
 
 test_that("at product level, `NA` in a benchmark yields `NA`s only in the corresponding product (#638)", {
   companies <- example_companies(
-    !!aka("id")      := c("a", "a"),
-    !!aka("uid")     := c("a", "b"),
+    !!aka("id") := c("a", "a"),
+    !!aka("uid") := c("a", "b"),
     !!aka("cluster") := c("a", "b"),
   )
 
   benchmark <- "input_isic_4digit"
   co2 <- example_inputs(
-    !!aka("uid")  := c("a", "b"),
+    !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("'1234'", NA)
   )
 
@@ -174,7 +174,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
 
   benchmark <- "input_tilt_sector"
   co2 <- example_inputs(
-    !!aka("uid")  := c("a", "b"),
+    !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("a", NA)
   )
 
@@ -187,7 +187,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
 
   benchmark <- "input_unit"
   co2 <- example_inputs(
-    !!aka("uid")  := c("a", "b"),
+    !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("a", NA)
   )
 
@@ -201,14 +201,14 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
 
 test_that("at company level, with two matched products and `NA` in one benchmark yields `value` of `0.5` where the corresponding `risk_category` is `NA`, `0.5` in one other `risk_category`, and `0` elsewhere (#638)", {
   companies <- example_companies(
-    !!aka("id")      := c("a", "a"),
-    !!aka("uid")     := c("a", "b"),
+    !!aka("id") := c("a", "a"),
+    !!aka("uid") := c("a", "b"),
     !!aka("cluster") := c("a", "b"),
   )
 
   benchmark <- "input_isic_4digit"
   co2 <- example_inputs(
-    !!aka("uid")  := c("a", "b"),
+    !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("'1234'", NA)
   )
 
@@ -233,8 +233,8 @@ test_that("at company level, with two matched products and `NA` in one benchmark
 
 test_that("at company level, `NA` in the benchmark of 1/3 products yields a `value` of `1/3` where the corresponding `risk_category` is `NA` (#638)", {
   companies <- example_companies(
-    !!aka("id")      := c("a", "a", "a"),
-    !!aka("uid")     := c("a", "b", "c"),
+    !!aka("id") := c("a", "a", "a"),
+    !!aka("uid") := c("a", "b", "c"),
     !!aka("cluster") := c("a", "b", "c"),
   )
 
@@ -252,7 +252,7 @@ test_that("at company level, `NA` in the benchmark of 1/3 products yields a `val
     filter(is.na(risk_category)) |>
     distinct(value) |>
     pull() |>
-    expect_equal(1/3)
+    expect_equal(1 / 3)
 })
 
 test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` and not in `value` (#638)", {
@@ -451,9 +451,9 @@ test_that("at company level, 1 matched and 1 unmatched products yield `value = 1
     distinct(risk_category, value)
 
   na <- pull(filter(out, is.na(risk_category)), value)
-  expect_equal(na, 1/2)
+  expect_equal(na, 1 / 2)
   other <- pull(filter(out, !is.na(risk_category)), value)
-  expect_equal(sort(other), c(0, 0, 1/2))
+  expect_equal(sort(other), c(0, 0, 1 / 2))
 })
 
 test_that("at company level, 2 matched and 1 unmatched products yield `value = 1/3` in `NA` and `2/3` in 1 other `risk_category` (#657)", {
@@ -467,9 +467,9 @@ test_that("at company level, 2 matched and 1 unmatched products yield `value = 1
     distinct(risk_category, value)
 
   na <- pull(filter(out, is.na(risk_category)), value)
-  expect_equal(na, 1/3)
+  expect_equal(na, 1 / 3)
   other <- pull(filter(out, !is.na(risk_category)), value)
-  expect_equal(sort(other), c(0, 0, 2/3))
+  expect_equal(sort(other), c(0, 0, 2 / 3))
 })
 
 test_that("at company level, 1 matched product, one missing benchmark, and one unmatched product yield `value = 2/3` in `NA` and `1/3` in 1 other `risk_category` (#657)", {
@@ -487,9 +487,9 @@ test_that("at company level, 1 matched product, one missing benchmark, and one u
     filter(grouped_by == aka("iisic"))
 
   na <- pull(filter(isic, is.na(risk_category)), value)
-  expect_equal(na, 2/3)
+  expect_equal(na, 2 / 3)
   other <- pull(filter(isic, !is.na(risk_category)), value)
-  expect_equal(sort(other), c(0, 0, 1/3))
+  expect_equal(sort(other), c(0, 0, 1 / 3))
 
   isic <- emissions_profile_upstream(companies, co2) |>
     unnest_company() |>
@@ -497,9 +497,9 @@ test_that("at company level, 1 matched product, one missing benchmark, and one u
     distinct(risk_category, value)
 
   na <- pull(filter(isic, is.na(risk_category)), value)
-  expect_equal(na, 2/3)
+  expect_equal(na, 2 / 3)
   other <- pull(filter(isic, !is.na(risk_category)), value)
-  expect_equal(sort(other), c(0, 0, 1/3))
+  expect_equal(sort(other), c(0, 0, 1 / 3))
 })
 
 test_that("at company level, unmatched companies are preserved", {
