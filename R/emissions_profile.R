@@ -23,6 +23,7 @@ emissions_profile <- function(companies,
   product <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold)
   company <- epa_at_company_level(product) |>
     insert_row_with_na_in_risk_category()
+
   nest_levels(product, company)
 }
 

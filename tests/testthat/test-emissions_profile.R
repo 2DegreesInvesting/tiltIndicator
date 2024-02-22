@@ -67,14 +67,14 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
 
 test_that("at product level, `NA` in a benchmark yields `NA`s only in the corresponding product (#638)", {
   companies <- example_companies(
-    !!aka("id")      := c("a", "a"),
-    !!aka("uid")     := c("a", "b"),
+    !!aka("id") := c("a", "a"),
+    !!aka("uid") := c("a", "b"),
     !!aka("cluster") := c("a", "b"),
   )
 
   benchmark <- "isic_4digit"
   co2 <- example_products(
-    !!aka("uid")  := c("a", "b"),
+    !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("'1234'", NA)
   )
 
@@ -87,7 +87,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
 
   benchmark <- "tilt_sector"
   co2 <- example_products(
-    !!aka("uid")  := c("a", "b"),
+    !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("a", NA)
   )
 
@@ -100,7 +100,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
 
   benchmark <- "unit"
   co2 <- example_products(
-    !!aka("uid")  := c("a", "b"),
+    !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("a", NA)
   )
 
@@ -113,16 +113,16 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
 })
 
 
-test_that("at company level, with two matched products and `NA` in one benchmark yields `value` of `0.5` where the corresponding `risk_category` is `NA`, `0.5` in one other `risk_category`, and `0` elsewhere (#638)", {
+test_that("at company level, with two matched products and `NA` in one benchmark yields `value = 0.5` where the corresponding `risk_category` is `NA`, `value = 0.5` in one other `risk_category`, and `value = 0` elsewhere (#638)", {
   companies <- example_companies(
-    !!aka("id")      := c("a", "a"),
-    !!aka("uid")     := c("a", "b"),
+    !!aka("id") := c("a", "a"),
+    !!aka("uid") := c("a", "b"),
     !!aka("cluster") := c("a", "b"),
   )
 
   benchmark <- "isic_4digit"
   co2 <- example_products(
-    !!aka("uid")  := c("a", "b"),
+    !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("'1234'", NA)
   )
 
@@ -135,7 +135,7 @@ test_that("at company level, with two matched products and `NA` in one benchmark
     distinct(value) |>
     pull() |>
     expect_equal(0.5)
-  # expect `0.5` in one other `risk_category` and `0` elsewhere
+  # expect `0.5` in one other `risk_category` and `value = 0` elsewhere
   out |>
     filter(grepl(benchmark, grouped_by)) |>
     filter(!is.na(risk_category)) |>
@@ -145,10 +145,10 @@ test_that("at company level, with two matched products and `NA` in one benchmark
     expect_equal(c(0, 0.5))
 })
 
-test_that("at company level, `NA` in the benchmark of 1/3 products yields a `value` of `1/3` where the corresponding `risk_category` is `NA` (#638)", {
+test_that("at company level, `NA` in the benchmark of 1/3 products yields a `value = 1/3` where the corresponding `risk_category` is `NA` (#638)", {
   companies <- example_companies(
-    !!aka("id")      := c("a", "a", "a"),
-    !!aka("uid")     := c("a", "b", "c"),
+    !!aka("id") := c("a", "a", "a"),
+    !!aka("uid") := c("a", "b", "c"),
     !!aka("cluster") := c("a", "b", "c"),
   )
 
@@ -166,7 +166,7 @@ test_that("at company level, `NA` in the benchmark of 1/3 products yields a `val
     filter(is.na(risk_category)) |>
     distinct(value) |>
     pull() |>
-    expect_equal(1/3)
+    expect_equal(1 / 3)
 })
 
 test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` and not in `value` (#638)", {
@@ -216,7 +216,7 @@ test_that("at company level, `NA` in a benchmark yields `value = 1` where `group
     distinct(sum) |>
     pull(sum) |>
     expect_equal(1)
-    # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
+  # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
   out |>
     filter(is.na(risk_category)) |>
     filter(grepl(benchmark, grouped_by)) |>
@@ -235,7 +235,7 @@ test_that("at company level, `NA` in a benchmark yields `value = 1` where `group
     distinct(sum) |>
     pull(sum) |>
     expect_equal(1)
-    # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
+  # `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA`
   out |>
     filter(is.na(risk_category)) |>
     filter(grepl(benchmark, grouped_by)) |>
@@ -321,6 +321,100 @@ test_that("at product level, with some match preserves unmatched products, filli
   expect_true(all_na_cols_are_na)
 })
 
+test_that("at company level, 1 matched product yields `value = 1` in 1 `risk_category` (#657)", {
+  one_matched <- c("a")
+  companies <- example_companies(!!aka("uid") := one_matched)
+  matched <- one_matched
+  co2 <- example_products(
+    !!aka("uid") := one_matched
+  )
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    distinct(risk_category, value) |>
+    pull(value)
+
+  expect_equal(sort(out), c(0, 0, 0, 1))
+})
+
+test_that("at company level, 2 matched products yield `value = 1` in 1 `risk_category` (#657)", {
+  two_matched <- c("a", "b")
+  companies <- example_companies(!!aka("uid") := two_matched)
+  matched <- two_matched
+  co2 <- example_products(
+    !!aka("uid") := matched
+  )
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    distinct(risk_category, value) |>
+    pull(value)
+
+  expect_equal(sort(out), c(0, 0, 0, 1))
+})
+
+test_that("at company level, one matched and one unmatched products yield `value = 1/2` where `risk_category = NA` and in one other `risk_category` (#657)", {
+  one_matched_one_unmatched <- c("a", "unmatched")
+  companies <- example_companies(!!aka("uid") := one_matched_one_unmatched)
+  matched <- one_matched_one_unmatched[1]
+  co2 <- example_products(!!aka("uid") := matched)
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    distinct(risk_category, value)
+
+  na <- pull(filter(out, is.na(risk_category)), value)
+  expect_equal(na, 1 / 2)
+  other <- pull(filter(out, !is.na(risk_category)), value)
+  expect_equal(sort(other), c(0, 0, 1 / 2))
+})
+
+test_that("at company level, two matched and one unmatched products yield `value = 1/3` where `risk_category = NA` and `value = 2/3` in one other `risk_category` (#657)", {
+  two_matched_and_one_unmatched <- c("a", "b", "unmatched")
+  companies <- example_companies(!!aka("uid") := two_matched_and_one_unmatched)
+  matched <- two_matched_and_one_unmatched[1:2]
+  co2 <- example_products(!!aka("uid") := matched)
+
+  out <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    distinct(risk_category, value)
+
+  na <- pull(filter(out, is.na(risk_category)), value)
+  expect_equal(na, 1 / 3)
+  other <- pull(filter(out, !is.na(risk_category)), value)
+  expect_equal(sort(other), c(0, 0, 2 / 3))
+})
+
+test_that("at company level, 1 matched product, one missing benchmark, and one unmatched product yield `value = 2/3` where `risk_category = NA` and `value = 1/3` in one other `risk_category` (#657)", {
+  missing_benchmark <- "b"
+  two_matched_and_one_unmatched <- c("a", missing_benchmark, "unmatched")
+  companies <- example_companies(!!aka("uid") := two_matched_and_one_unmatched)
+  matched <- two_matched_and_one_unmatched[1:2]
+  co2 <- example_products(
+    !!aka("uid") := matched,
+    !!aka("isic") := c("'1234'", NA)
+  )
+
+  isic <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grouped_by == aka("isic"))
+
+  na <- pull(filter(isic, is.na(risk_category)), value)
+  expect_equal(na, 2 / 3)
+  other <- pull(filter(isic, !is.na(risk_category)), value)
+  expect_equal(sort(other), c(0, 0, 1 / 3))
+
+  isic <- emissions_profile(companies, co2) |>
+    unnest_company() |>
+    filter(grepl(aka("isic"), grouped_by)) |>
+    distinct(risk_category, value)
+
+  na <- pull(filter(isic, is.na(risk_category)), value)
+  expect_equal(na, 2 / 3)
+  other <- pull(filter(isic, !is.na(risk_category)), value)
+  expect_equal(sort(other), c(0, 0, 1 / 3))
+})
+
 test_that("at company level, unmatched companies are preserved", {
   co2 <- example_products()
 
@@ -344,4 +438,36 @@ test_that("at company level, unmatched companies are preserved", {
   companies <- example_companies(!!aka("uid") := "unmatched")
   company <- emissions_profile(companies, co2) |> unnest_company()
   expect_equal(company$companies_id, companies[[aka("id")]])
+})
+
+test_that("at company level, unmatched companies have a single row", {
+  co2 <- example_products()
+
+  # Two companies, one match
+  unmatched <- "b"
+  companies <- example_companies(
+    !!aka("id") := c("a", unmatched),
+    !!aka("uid") := c("a", "unmatched")
+  )
+  company <- emissions_profile(companies, co2) |> unnest_company()
+  n_unmatched <- sum(company[[aka("id")]] == unmatched)
+  expect_equal(n_unmatched, 1L)
+
+  # Two companies, no match
+  unmatched <- c("a", "b")
+  companies <- example_companies(
+    !!aka("id") := unmatched,
+    !!aka("uid") := "unmatched"
+  )
+  company <- emissions_profile(companies, co2) |> unnest_company()
+  n_unmatched <- sum(company[[aka("id")]] == unmatched[[1]])
+  expect_equal(n_unmatched, 1L)
+  n_unmatched <- sum(company[[aka("id")]] == unmatched[[2]])
+  expect_equal(n_unmatched, 1L)
+
+  # One company, no match
+  companies <- example_companies(!!aka("uid") := "unmatched")
+  company <- emissions_profile(companies, co2) |> unnest_company()
+  n_unmatched <- sum(company[[aka("id")]] == "a")
+  expect_equal(n_unmatched, 1L)
 })
