@@ -199,7 +199,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
   expect_true(is.na(filter(out, clustered == "b")$risk_category))
 })
 
-test_that("at company level, with two matched products and `NA` in one benchmark yields `value` of `0.5` where the corresponding `risk_category` is `NA`, `0.5` in one other `risk_category`, and `0` elsewhere (#638)", {
+test_that("at company level, with two matched products and `NA` in one benchmark yields `value = 0.5` where the corresponding `risk_category` is `NA`, `value = 0.5` in one other `risk_category`, and `value = 0` elsewhere (#638)", {
   companies <- example_companies(
     !!aka("id") := c("a", "a"),
     !!aka("uid") := c("a", "b"),
@@ -221,7 +221,7 @@ test_that("at company level, with two matched products and `NA` in one benchmark
     distinct(value) |>
     pull() |>
     expect_equal(0.5)
-  # expect `0.5` in one other `risk_category` and `0` elsewhere
+  # expect `0.5` in one other `risk_category` and `value = 0` elsewhere
   out |>
     filter(grepl(benchmark, grouped_by)) |>
     filter(!is.na(risk_category)) |>
@@ -231,7 +231,7 @@ test_that("at company level, with two matched products and `NA` in one benchmark
     expect_equal(c(0, 0.5))
 })
 
-test_that("at company level, `NA` in the benchmark of 1/3 products yields a `value` of `1/3` where the corresponding `risk_category` is `NA` (#638)", {
+test_that("at company level, `NA` in the benchmark of 1/3 products yields a `value = 1/3` where the corresponding `risk_category` is `NA` (#638)", {
   companies <- example_companies(
     !!aka("id") := c("a", "a", "a"),
     !!aka("uid") := c("a", "b", "c"),
@@ -440,7 +440,7 @@ test_that("at company level, 2 matched products yield `value = 1` in 1 `risk_cat
   expect_equal(sort(out), c(0, 0, 0, 1))
 })
 
-test_that("at company level, one matched and one unmatched products yield `value = 1/2` where `risk_category = NA` and in 1 other `risk_category` (#657)", {
+test_that("at company level, one matched and one unmatched products yield `value = 1/2` where `risk_category = NA` and in one other `risk_category` (#657)", {
   one_matched_one_unmatched <- c("a", "unmatched")
   companies <- example_companies(!!aka("uid") := one_matched_one_unmatched)
   matched <- one_matched_one_unmatched[1]
@@ -456,7 +456,7 @@ test_that("at company level, one matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 1 / 2))
 })
 
-test_that("at company level, two matched and one unmatched products yield `value = 1/3` where `risk_category = NA` and `value = 2/3` in 1 other `risk_category` (#657)", {
+test_that("at company level, two matched and one unmatched products yield `value = 1/3` where `risk_category = NA` and `value = 2/3` in one other `risk_category` (#657)", {
   two_matched_and_one_unmatched <- c("a", "b", "unmatched")
   companies <- example_companies(!!aka("uid") := two_matched_and_one_unmatched)
   matched <- two_matched_and_one_unmatched[1:2]
@@ -472,7 +472,7 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
 
-test_that("at company level, 1 matched product, one missing benchmark, and one unmatched product yield `value = 2/3` where `risk_category = NA` and `value = 1/3` in 1 other `risk_category` (#657)", {
+test_that("at company level, 1 matched product, one missing benchmark, and one unmatched product yield `value = 2/3` where `risk_category = NA` and `value = 1/3` in one other `risk_category` (#657)", {
   missing_benchmark <- "b"
   two_matched_and_one_unmatched <- c("a", missing_benchmark, "unmatched")
   companies <- example_companies(!!aka("uid") := two_matched_and_one_unmatched)
