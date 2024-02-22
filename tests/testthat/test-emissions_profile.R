@@ -321,7 +321,7 @@ test_that("at product level, with some match preserves unmatched products, filli
   expect_true(all_na_cols_are_na)
 })
 
-test_that("at company level, 1 matched product yields `value` 1 in 1 `risk_category` (#657)", {
+test_that("at company level, 1 matched product yields `value = 1` in 1 `risk_category` (#657)", {
   one_matched <- c("a")
   companies <- example_companies(!!aka("uid") := one_matched)
   matched <- one_matched
@@ -337,7 +337,7 @@ test_that("at company level, 1 matched product yields `value` 1 in 1 `risk_categ
   expect_equal(sort(out), c(0, 0, 0, 1))
 })
 
-test_that("at company level, 2 matched products yield `value` 1 in 1 `risk_category` (#657)", {
+test_that("at company level, 2 matched products yield `value = 1` in 1 `risk_category` (#657)", {
   two_matched <- c("a", "b")
   companies <- example_companies(!!aka("uid") := two_matched)
   matched <- two_matched
