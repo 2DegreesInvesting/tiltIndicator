@@ -472,6 +472,27 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
 
+test_that("At company level, three products with different `co2_footprint` yields `value = 1/3` where `risk_category` is 'high', 'medium', and 'low'", {
+  companies <- example_companies(
+    !!aka("uid") := letters[1:3],
+  )
+
+  co2 <- example_inputs(
+    !!aka("uid") := letters[1:3],
+    !!aka("ico2footprint") := 1:3,
+  )
+
+  out <- emissions_profile_upstream(companies, co2) |> unnest_company()
+
+  actual <- out |>
+    filter(value != 0) |>
+    distinct(risk_category, value)
+
+  expect_equal(actual$risk_category, c("high", "medium", "low"))
+  expect_true(all(actual$value != 0))
+  expect_equal(unique(actual$value), 1 / 3)
+})
+
 test_that("at company level, 1 matched product, one missing benchmark, and one unmatched product yield `value = 2/3` where `risk_category = NA` and `value = 1/3` in one other `risk_category` (#657)", {
   missing_benchmark <- "b"
   two_matched_and_one_unmatched <- c("a", missing_benchmark, "unmatched")
