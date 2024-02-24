@@ -190,3 +190,45 @@
       24     0
       
 
+# At company level, three matched products with different `co2_footprint`, one missing benchmark, and one unmatched product yield the expected output
+
+    Code
+      missing_benchmark
+    Output
+      # A tibble: 8 x 4
+        companies_id grouped_by                   risk_category value
+        <chr>        <chr>                        <chr>         <dbl>
+      1 a            input_isic_4digit            high            0.2
+      2 a            input_isic_4digit            medium          0.2
+      3 a            input_isic_4digit            low             0.2
+      4 a            input_isic_4digit            <NA>            0.4
+      5 a            input_unit_input_isic_4digit high            0.2
+      6 a            input_unit_input_isic_4digit medium          0.2
+      7 a            input_unit_input_isic_4digit low             0.2
+      8 a            input_unit_input_isic_4digit <NA>            0.4
+
+---
+
+    Code
+      no_missing_benchmark
+    Output
+      # A tibble: 16 x 4
+         companies_id grouped_by                   risk_category value
+         <chr>        <chr>                        <chr>         <dbl>
+       1 a            all                          high            0.4
+       2 a            all                          medium          0.2
+       3 a            all                          low             0.2
+       4 a            all                          <NA>            0.2
+       5 a            input_tilt_sector            high            0.4
+       6 a            input_tilt_sector            medium          0.2
+       7 a            input_tilt_sector            low             0.2
+       8 a            input_tilt_sector            <NA>            0.2
+       9 a            input_unit                   high            0.4
+      10 a            input_unit                   medium          0.2
+      11 a            input_unit                   low             0.2
+      12 a            input_unit                   <NA>            0.2
+      13 a            input_unit_input_tilt_sector high            0.4
+      14 a            input_unit_input_tilt_sector medium          0.2
+      15 a            input_unit_input_tilt_sector low             0.2
+      16 a            input_unit_input_tilt_sector <NA>            0.2
+
