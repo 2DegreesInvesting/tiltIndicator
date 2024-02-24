@@ -472,7 +472,7 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
 
-test_that("At company level, three products with different `co2_footprint` yields `value = 1/3` where `risk_category` is 'high', 'medium', and 'low'", {
+test_that("at company level, three products with different `co2_footprint` yields `value = 1/3` where `risk_category` is 'high', 'medium', and 'low'", {
   companies <- example_companies(
     !!aka("uid") := letters[1:3],
   )
@@ -493,7 +493,7 @@ test_that("At company level, three products with different `co2_footprint` yield
   expect_equal(unique(actual$value), 1 / 3)
 })
 
-test_that("At company level, three matched products with different `co2_footprint`, one missing benchmark, and one unmatched product yield the expected output", {
+test_that("at company level, three matched products with different `co2_footprint`, one missing benchmark, and one unmatched product yield the expected output", {
   matched <- 1:3
   no_benchmark <- 4
   unmatched <- 5
