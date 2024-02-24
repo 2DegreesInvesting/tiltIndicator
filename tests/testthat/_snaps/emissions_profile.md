@@ -181,3 +181,45 @@
       24     0
       
 
+# At company level, three matched products with different `co2_footprint`, one missing benchmark, and one unmatched product yield the expected output
+
+    Code
+      missing_benchmark
+    Output
+      # A tibble: 8 x 4
+        companies_id grouped_by       risk_category value
+        <chr>        <chr>            <chr>         <dbl>
+      1 a            isic_4digit      high            0.2
+      2 a            isic_4digit      medium          0.2
+      3 a            isic_4digit      low             0.2
+      4 a            isic_4digit      <NA>            0.4
+      5 a            unit_isic_4digit high            0.2
+      6 a            unit_isic_4digit medium          0.2
+      7 a            unit_isic_4digit low             0.2
+      8 a            unit_isic_4digit <NA>            0.4
+
+---
+
+    Code
+      no_missing_benchmark
+    Output
+      # A tibble: 16 x 4
+         companies_id grouped_by       risk_category value
+         <chr>        <chr>            <chr>         <dbl>
+       1 a            all              high            0.4
+       2 a            all              medium          0.2
+       3 a            all              low             0.2
+       4 a            all              <NA>            0.2
+       5 a            tilt_sector      high            0.4
+       6 a            tilt_sector      medium          0.2
+       7 a            tilt_sector      low             0.2
+       8 a            tilt_sector      <NA>            0.2
+       9 a            unit             high            0.4
+      10 a            unit             medium          0.2
+      11 a            unit             low             0.2
+      12 a            unit             <NA>            0.2
+      13 a            unit_tilt_sector high            0.4
+      14 a            unit_tilt_sector medium          0.2
+      15 a            unit_tilt_sector low             0.2
+      16 a            unit_tilt_sector <NA>            0.2
+
