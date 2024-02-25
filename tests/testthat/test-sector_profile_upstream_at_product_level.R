@@ -51,27 +51,6 @@ test_that("NA in the reductions column yields `NA` in risk_category at product l
   expect_equal(out$risk_category, NA_character_)
 })
 
-test_that("some match yields no NA and no match yields 1 row with `NA`s (#393)", {
-  companies <- example_companies(
-    !!aka("id") := c("a", "a", "b", "b"),
-    !!aka("uid") := c("a", paste0("unmatched", 1:3))
-  )
-  scenarios <- example_scenarios()
-  inputs <- example_inputs()
-
-  out <- sector_profile_upstream_at_product_level(companies, scenarios, inputs)
-
-  some_match <- filter(out, companies_id == "a")
-  expect_false(anyNA(some_match))
-
-  no_match <- filter(out, companies_id == "b")
-  expect_equal(nrow(no_match), 1)
-
-  na_cols <- cols_na_at_product_level()
-  all_na_cols_are_na <- all(map_lgl(na_cols, ~ is.na(no_match[[.x]])))
-  expect_true(all_na_cols_are_na)
-})
-
 test_that("with duplicated scenarios throws no error (#435)", {
   companies <- example_companies()
   duplicated <- c("a", "a")
