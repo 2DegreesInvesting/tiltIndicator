@@ -92,68 +92,134 @@
       16 antimonarchy_canine
       17 antimonarchy_canine
       18 antimonarchy_canine
+      19 antimonarchy_canine
+      20 antimonarchy_canine
+      21 antimonarchy_canine
+      22 antimonarchy_canine
+      23 antimonarchy_canine
+      24 antimonarchy_canine
       
       [[2]]
                grouped_by
       1               all
       2               all
       3               all
-      4       isic_4digit
+      4               all
       5       isic_4digit
       6       isic_4digit
-      7       tilt_sector
-      8       tilt_sector
+      7       isic_4digit
+      8       isic_4digit
       9       tilt_sector
-      10             unit
-      11             unit
-      12             unit
-      13 unit_isic_4digit
-      14 unit_isic_4digit
-      15 unit_isic_4digit
-      16 unit_tilt_sector
-      17 unit_tilt_sector
-      18 unit_tilt_sector
+      10      tilt_sector
+      11      tilt_sector
+      12      tilt_sector
+      13             unit
+      14             unit
+      15             unit
+      16             unit
+      17 unit_isic_4digit
+      18 unit_isic_4digit
+      19 unit_isic_4digit
+      20 unit_isic_4digit
+      21 unit_tilt_sector
+      22 unit_tilt_sector
+      23 unit_tilt_sector
+      24 unit_tilt_sector
       
       [[3]]
          risk_category
       1           high
       2         medium
       3            low
-      4           high
-      5         medium
-      6            low
-      7           high
-      8         medium
-      9            low
-      10          high
-      11        medium
-      12           low
+      4           <NA>
+      5           high
+      6         medium
+      7            low
+      8           <NA>
+      9           high
+      10        medium
+      11           low
+      12          <NA>
       13          high
       14        medium
       15           low
-      16          high
-      17        medium
-      18           low
+      16          <NA>
+      17          high
+      18        medium
+      19           low
+      20          <NA>
+      21          high
+      22        medium
+      23           low
+      24          <NA>
       
       [[4]]
          value
       1      1
       2      0
       3      0
-      4      1
-      5      0
+      4      0
+      5      1
       6      0
-      7      1
+      7      0
       8      0
-      9      0
-      10     1
+      9      1
+      10     0
       11     0
       12     0
       13     1
       14     0
       15     0
-      16     1
-      17     0
+      16     0
+      17     1
       18     0
+      19     0
+      20     0
+      21     1
+      22     0
+      23     0
+      24     0
       
+
+# At company level, three matched products with different `co2_footprint`, one missing benchmark, and one unmatched product yield the expected output
+
+    Code
+      missing_benchmark
+    Output
+      # A tibble: 8 x 4
+        companies_id grouped_by       risk_category value
+        <chr>        <chr>            <chr>         <dbl>
+      1 a            isic_4digit      high            0.2
+      2 a            isic_4digit      medium          0.2
+      3 a            isic_4digit      low             0.2
+      4 a            isic_4digit      <NA>            0.4
+      5 a            unit_isic_4digit high            0.2
+      6 a            unit_isic_4digit medium          0.2
+      7 a            unit_isic_4digit low             0.2
+      8 a            unit_isic_4digit <NA>            0.4
+
+---
+
+    Code
+      no_missing_benchmark
+    Output
+      # A tibble: 16 x 4
+         companies_id grouped_by       risk_category value
+         <chr>        <chr>            <chr>         <dbl>
+       1 a            all              high            0.4
+       2 a            all              medium          0.2
+       3 a            all              low             0.2
+       4 a            all              <NA>            0.2
+       5 a            tilt_sector      high            0.4
+       6 a            tilt_sector      medium          0.2
+       7 a            tilt_sector      low             0.2
+       8 a            tilt_sector      <NA>            0.2
+       9 a            unit             high            0.4
+      10 a            unit             medium          0.2
+      11 a            unit             low             0.2
+      12 a            unit             <NA>            0.2
+      13 a            unit_tilt_sector high            0.4
+      14 a            unit_tilt_sector medium          0.2
+      15 a            unit_tilt_sector low             0.2
+      16 a            unit_tilt_sector <NA>            0.2
 
