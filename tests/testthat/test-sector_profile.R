@@ -1,3 +1,15 @@
+test_that("accepts `company_id` with a warning (#564)", {
+  companies <- example_companies() |> rename(company_id = companies_id)
+  scenarios <- example_scenarios()
+
+  expect_no_error(
+    expect_warning(
+      sector_profile(companies, scenarios),
+      class = "rename_id"
+    )
+  )
+})
+
 test_that("at product level, preserves unmatched companies", {
   companies <- example_companies(
     !!aka("id") := c("a", "unmatched"),
