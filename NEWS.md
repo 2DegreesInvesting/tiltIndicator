@@ -1,6 +1,10 @@
-# tiltIndicator (development version)
-
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# tiltIndicator 0.0.0.9211
+
+* The `sector*()` functions now preserve unmatched products (@AnneSchoenauer
+@Tilmon #639). This changes the structure of the output at company level, which
+now has four levels of risk_category: "high", "low", "medium", and `NA`.
 
 # tiltIndicator 0.0.0.9209
 
