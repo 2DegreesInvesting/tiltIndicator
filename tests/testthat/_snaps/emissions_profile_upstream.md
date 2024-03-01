@@ -190,7 +190,7 @@
       24     0
       
 
-# At company level, three matched products with different `co2_footprint`, one missing benchmark, and one unmatched product yield the expected output
+# at company level, three matched products with different `co2_footprint`, one missing benchmark, and one unmatched product yield the expected output
 
     Code
       missing_benchmark
