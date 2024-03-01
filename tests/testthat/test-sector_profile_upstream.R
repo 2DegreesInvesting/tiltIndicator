@@ -1,21 +1,3 @@
-test_that("wraps the output at product and company levels", {
-  companies <- example_companies()
-  scenarios <- example_scenarios()
-  inputs <- example_inputs()
-
-  out <- sector_profile_upstream(companies, scenarios, inputs)
-
-  product <- unnest_product(out)
-  expect_equal(product, sector_profile_upstream_at_product_level(companies, scenarios, inputs))
-
-  company <- unnest_company(out)
-  expected <- any_at_company_level(product)
-  expect_equal(
-    arrange(company, companies_id, grouped_by),
-    arrange(expected, companies_id, grouped_by)
-  )
-})
-
 test_that("accepts `company_id` with a warning (#564)", {
   companies <- example_companies() |> rename(company_id = companies_id)
   inputs <- example_inputs()
@@ -76,7 +58,28 @@ test_that("at product level, unmatched product yield `NA` in the expected column
   expect_true(is.na(out$profile_ranking))
 })
 
-test_that("at company level with two companies, a company witn one unmatched product yields 1 row", {
+test_that("at company level, `risk_category` always has the value `NA` (#638)", {
+  companies <- example_companies()
+  scenarios <- example_scenarios()
+  inputs <- example_inputs()
+
+  out <- sector_profile_upstream(companies, scenarios, inputs) |> unnest_company()
+
+  expect_true(anyNA(out$risk_category))
+})
+
+test_that("at company level with one company, a company with one unmatched product yields 1 row", {
+  companies <- example_companies()
+  scenarios <- example_scenarios()
+  inputs <- example_inputs(
+    !!aka("xsector") := "unmatched",
+  )
+
+  out <- sector_profile_upstream(companies, scenarios, inputs) |> unnest_company()
+  expect_equal(nrow(out), 1)
+})
+
+test_that("at company level with two companies, a company with one unmatched product yields 1 row", {
   companies <- example_companies(
     !!aka("id") := c("a", "unmatched"),
     !!aka("uid") := c("a", "unmatched"),

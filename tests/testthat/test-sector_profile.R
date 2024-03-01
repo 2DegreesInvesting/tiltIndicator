@@ -47,9 +47,8 @@ test_that("at company level, `risk_category` always has the value `NA` (#638)", 
   expect_true(anyNA(out$risk_category))
 })
 
-test_that("at company level with one company, a company witn one unmatched product yields 1 row", {
+test_that("at company level with one company, a company with one unmatched product yields 1 row", {
   companies <- example_companies(
-    !!aka("uid") := "a",
     !!aka("xsector") := "unmatched",
   )
   scenarios <- example_scenarios()
@@ -58,7 +57,7 @@ test_that("at company level with one company, a company witn one unmatched produ
   expect_equal(nrow(out), 1)
 })
 
-test_that("at company level with two companies, a company witn one unmatched product yields 1 row", {
+test_that("at company level with two companies, a company with one unmatched product yields 1 row", {
   companies <- example_companies(
     !!aka("id") := c("a", "unmatched"),
     !!aka("uid") := c("a", "unmatched"),

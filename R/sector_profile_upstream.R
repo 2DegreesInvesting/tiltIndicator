@@ -20,6 +20,8 @@ sector_profile_upstream <- function(companies,
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   product <- companies |>
     sector_profile_upstream_at_product_level(scenarios, inputs, low_threshold, high_threshold)
-  company <- epa_at_company_level(product)
+  company <- epa_at_company_level(product) |>
+    insert_row_with_na_in_risk_category()
+
   nest_levels(product, company)
 }
