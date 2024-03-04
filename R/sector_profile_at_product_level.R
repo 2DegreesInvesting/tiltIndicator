@@ -13,6 +13,12 @@ sector_profile_at_product_level <- function(companies,
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     spa_polish_output_at_product_level() |>
     sp_select_cols_at_product_level()
+    sp_select_cols_at_product_level() |>
+    mutate(grouped_by = ifelse(
+      grepl("NA", grouped_by),
+      NA_character_,
+      grouped_by
+    ))
 }
 
 sp_select_cols_at_product_level <- function(data) {
