@@ -132,6 +132,25 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_true(is.na(out$profile_ranking))
 })
 
+test_that("behaves as Tilman expects", {
+  companies <- example_companies(
+    !!aka("uid") := "unmatched",
+    !!aka("scenario_type") := c("ipr", "weo"),
+    !!aka("xsector") := c("land use", NA),
+    !!aka("xsubsector") := c("land use", NA)
+  )
+
+  scenarios <- example_scenarios(
+    !!aka("scenario_type") := c("weo", "ipr"),
+    !!aka("xsector") := c("total", "land use"),
+    !!aka("xsubsector") := c("energy", "land use")
+
+  )
+
+  sector_profile(companies, scenarios) |> unnest_product()
+  sector_profile(companies, scenarios) |> unnest_company()
+})
+
 test_that("at product level, `NA` in a benchmark yields `NA`s only in the corresponding product (#638)", {
   companies <- example_companies(
     !!aka("id") := c("a", "a"),
