@@ -148,4 +148,3 @@ example_companies <- example_data_factory(data = example_data("companies"))
 example_scenarios <- example_data_factory(data = example_data("scenarios"))
 example_products <- example_data_factory(data = example_co2("products"))
 example_inputs <- example_data_factory(data = example_co2("inputs"))
-
