@@ -1,4 +1,6 @@
 example_data_factory <- function(data) {
+  force(data)
+
   function(...) {
     new <- tibble(...)
     old <- as.list(data)
