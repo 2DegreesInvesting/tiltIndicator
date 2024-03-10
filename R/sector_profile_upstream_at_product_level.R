@@ -17,9 +17,9 @@ sector_profile_upstream_at_product_level <- function(companies,
     spa_polish_output_at_product_level() |>
     spu_select_cols_at_product_level() |>
     mutate(grouped_by = ifelse(
-      grepl("NA", grouped_by),
+      grepl("NA", .data$grouped_by),
       NA_character_,
-      grouped_by
+      .data$grouped_by
     ))
 }
 
