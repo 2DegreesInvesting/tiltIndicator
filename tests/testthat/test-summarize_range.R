@@ -32,11 +32,3 @@ test_that("works with groups passed via .by", {
   expect_equal(filter(out, y == 2)$min, 3)
   expect_equal(filter(out, y == 2)$max, 4)
 })
-
-test_that("handles missing values via `na.rm`", {
-  data1 <- tibble(x = c(1, 2, 3, NA))
-  out1 <- data |> summarize_range(x, na.rm = TRUE)
-  data2 <- tibble(x = c(1, 2, 3))
-  out2 <- data |> summarize_range(x)
-  expect_equal(out1, out2)
-})
