@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9212
+
+* `summarize_range()` gains `na.rm` and defaults to removing missing values
+(#743).
+
 # tiltIndicator 0.0.0.9211
 
 * The `sector*()` functions now preserve unmatched products (@AnneSchoenauer
