@@ -33,12 +33,14 @@ test_that("works with groups passed via .by", {
   expect_equal(filter(out, y == 2)$max, 4)
 })
 
-test_that("handles missing values via `na.rm`", {
-  data1 <- tibble(x = c(1, 2, 3, NA))
-  data2 <- tibble(x = c(1, 2, 3))
+test_that("is sensitive to `na.rm`", {
+  data <- tibble(x = c(1, 2, 3, NA))
 
-  out1 <- data1 |> summarize_range(x, na.rm = TRUE)
-  out2 <- data2 |> summarize_range(x)
+  out1 <- data |> summarize_range(x, na.rm = TRUE)
+  expect_equal(out1$min, 1)
+  expect_equal(out1$max, 3)
 
-  expect_equal(out1, out2)
+  out2 <- data |> summarize_range(x, na.rm = FALSE)
+  expect_equal(out2$min, NA_real_)
+  expect_equal(out2$max, NA_real_)
 })
