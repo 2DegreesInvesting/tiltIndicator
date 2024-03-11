@@ -6,6 +6,7 @@
 #' @param data A dataframe.
 #' @param col Unquoted expression giving the name of a column in `data`.
 #' @inheritParams dplyr::summarize
+#' @inheritParams base::min
 #'
 #' @seealso [dplyr::summarize()]
 #'
@@ -26,6 +27,11 @@
 #' data
 #'
 #' summarize_range(data, x, .by = group)
-summarize_range <- function(data, col, .by = NULL) {
-  summarize(data, min = min({{ col }}), max = max({{ col }}), .by = {{ .by }})
+summarize_range <- function(data, col, .by = NULL, na.rm = FALSE) {
+  summarize(
+    data,
+    min = min({{ col }}, na.rm = na.rm),
+    max = max({{ col }}, na.rm = na.rm),
+    .by = {{ .by }}
+  )
 }

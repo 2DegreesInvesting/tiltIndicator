@@ -4,7 +4,7 @@
 \alias{summarize_range}
 \title{Summarize the range of a column by groups}
 \usage{
-summarize_range(data, col, .by = NULL)
+summarize_range(data, col, .by = NULL, na.rm = FALSE)
 }
 \arguments{
 \item{data}{A dataframe.}
@@ -16,6 +16,9 @@ summarize_range(data, col, .by = NULL)
 <\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}> Optionally, a selection of columns to
 group by for just this operation, functioning as an alternative to \code{\link[dplyr:group_by]{group_by()}}. For
 details and examples, see \link[dplyr:dplyr_by]{?dplyr_by}.}
+
+\item{na.rm}{a logical indicating whether missing values should be
+    removed.}
 }
 \value{
 A dataframe:
