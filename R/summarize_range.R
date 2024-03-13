@@ -5,8 +5,8 @@
 #'
 #' @param data A dataframe.
 #' @param col Unquoted expression giving the name of a column in `data`.
-#' @param na.rm A logical indicating whether missing values should be removed.
 #' @inheritParams dplyr::summarize
+#' @inheritParams base::min
 #'
 #' @seealso [dplyr::summarize()]
 #'
