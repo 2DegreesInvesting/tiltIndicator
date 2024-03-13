@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9213
+
+* `summarize_range()` now defaults to `na.rm = FALSE` (#747). This is most common
+and conservative.
+
 # tiltIndicator 0.0.0.9212
 
 * `summarize_range()` gains `na.rm` and defaults to removing missing values
