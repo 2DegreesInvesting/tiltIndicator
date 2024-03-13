@@ -5,8 +5,8 @@
 #'
 #' @param data A dataframe.
 #' @param col Unquoted expression giving the name of a column in `data`.
-#' @param na.rm A logical indicating whether missing values should be removed.
 #' @inheritParams dplyr::summarize
+#' @inheritParams base::min
 #'
 #' @seealso [dplyr::summarize()]
 #'
@@ -27,7 +27,7 @@
 #' data
 #'
 #' summarize_range(data, x, .by = group)
-summarize_range <- function(data, col, .by = NULL, na.rm = TRUE) {
+summarize_range <- function(data, col, .by = NULL, na.rm = FALSE) {
   summarize(
     data,
     min = min({{ col }}, na.rm = na.rm),
