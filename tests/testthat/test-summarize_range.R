@@ -44,3 +44,12 @@ test_that("is sensitive to `na.rm`", {
   expect_equal(out2$min, NA_real_)
   expect_equal(out2$max, NA_real_)
 })
+
+test_that("defaults to `na.rm = FALSE`", {
+  data <- tibble(x = c(1, NA))
+
+  out <- data |> summarize_range(x)
+
+  expect_equal(out$min, NA_real_)
+  expect_equal(out$max, NA_real_)
+})

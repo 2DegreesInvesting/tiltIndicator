@@ -27,7 +27,7 @@
 #' data
 #'
 #' summarize_range(data, x, .by = group)
-summarize_range <- function(data, col, .by = NULL, na.rm = TRUE) {
+summarize_range <- function(data, col, .by = NULL, na.rm = FALSE) {
   summarize(
     data,
     min = min({{ col }}, na.rm = na.rm),
