@@ -134,3 +134,36 @@ test_that("at company level, two matched and one unmatched products yield `value
   other <- pull(filter(out, !is.na(risk_category)), value)
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
+
+test_that("with non-default thresholds for year 2030 throws a warning", {
+  companies <- example_companies()
+  scenarios <- example_scenarios(year = 2030)
+  inputs <- example_inputs()
+
+  custom <- 1/4
+  expect_warning(
+    sector_profile_upstream(companies, scenarios, inputs, low_threshold = custom),
+    "low"
+  )
+  expect_warning(
+    sector_profile_upstream(companies, scenarios, inputs, high_threshold = custom),
+    "high"
+  )
+})
+
+test_that("with non-default thresholds for year other than 2030 throws a warning", {
+  companies <- example_companies()
+  scenarios <- example_scenarios(year = 2050)
+  inputs <- example_inputs()
+
+  custom <- 1/4
+  expect_warning(
+    sector_profile_upstream(companies, scenarios, inputs, low_threshold = custom),
+    "low"
+  )
+  expect_warning(
+    sector_profile_upstream(companies, scenarios, inputs, high_threshold = custom),
+    "high"
+  )
+})
+
