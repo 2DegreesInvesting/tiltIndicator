@@ -514,3 +514,19 @@ test_that("at company level, unmatched companies have a single row", {
   n_unmatched <- sum(company[[aka("id")]] == "a")
   expect_equal(n_unmatched, 1L)
 })
+
+
+test_that("with non-default thresholds throws a warning", {
+  companies <- example_companies()
+  co2 <- example_products()
+
+  custom <- 1/4
+  expect_warning(
+    emissions_profile(companies, co2, low_threshold = custom),
+    "low"
+  )
+  expect_warning(
+    emissions_profile(companies, co2, low_threshold = custom),
+    "high"
+  )
+})
