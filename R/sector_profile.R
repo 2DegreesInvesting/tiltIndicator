@@ -21,14 +21,13 @@ sector_profile <- function(companies,
                            low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                            high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
 
-  warn_custom_threshold <- function(x) {
+  warn_custom_threshold <- function(x, type = "low") {
     thresholds <- tibble::tribble(
       ~year, ~low, ~high,
        2030,  1/9,   2/9,
          NA,  1/3,   2/3,
     )
 
-    type <- "low"
     default <- unique(x) %in% thresholds[[type]]
     if (!default) {
       rlang::warn(glue::glue("Using a non-default value of `{type}_threshold`: {x}."))
@@ -37,8 +36,8 @@ sector_profile <- function(companies,
     invisible(x)
   }
 
-  warn_custom_threshold(low_threshold)
-
+  x <- tibble::tibble(x = c(low_threshold, high_threshold), type = c("low", "high"))
+  purrr::pmap(x, warn_custom_threshold)
 
   product <- sector_profile_at_product_level(companies, scenarios, low_threshold, high_threshold)
   company <- epa_at_company_level(product) |>
