@@ -18,6 +18,8 @@ sector_profile_upstream <- function(companies,
                                     inputs,
                                     low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+  if (!missing(low_threshold) || !missing(high_threshold)) warn_thresholds()
+
   product <- companies |>
     sector_profile_upstream_at_product_level(scenarios, inputs, low_threshold, high_threshold)
   company <- epa_at_company_level(product) |>

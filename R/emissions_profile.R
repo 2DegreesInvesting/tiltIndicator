@@ -20,6 +20,8 @@ emissions_profile <- function(companies,
                               co2,
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
+  if (!missing(low_threshold) || !missing(high_threshold)) warn_thresholds()
+
   product <- emissions_profile_any_at_product_level(companies, co2, low_threshold, high_threshold)
   company <- epa_at_company_level(product) |>
     insert_row_with_na_in_risk_category()
