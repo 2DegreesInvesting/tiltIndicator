@@ -135,7 +135,6 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
 
-
 test_that("using the thresholds arguments throws a warning", {
   companies <- example_companies()
   scenarios <- example_scenarios()
