@@ -118,3 +118,21 @@ test_that("at company level, two matched and one unmatched products yield `value
   other <- pull(filter(out, !is.na(risk_category)), value)
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
+
+test_that("with default thresholds throws no warning", {
+  companies <- example_companies()
+  scenarios <- example_scenarios()
+
+  expect_no_warning(sector_profile(companies, scenarios))
+})
+
+test_that("with non-default thresholds throws a warning", {
+  companies <- example_companies()
+  scenarios <- example_scenarios()
+
+  custom <- 1/4
+  expect_warning(
+    sector_profile(companies, scenarios, low_threshold = custom),
+    "low"
+  )
+})
