@@ -133,3 +133,14 @@ test_that("with non-default thresholds throws a warning", {
     "high"
   )
 })
+
+test_that("with non-default threshold for year 2030 throws a warning", {
+  companies <- example_companies()
+  scenarios <- example_scenarios(year = 2030)
+
+  default_except_2030 <- 1/3
+  expect_warning(
+    sector_profile(companies, scenarios, low_threshold = default_except_2030),
+    "low"
+  )
+})
