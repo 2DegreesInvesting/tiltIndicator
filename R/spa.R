@@ -43,7 +43,7 @@ prepare_scenarios <- function(data, low_threshold, high_threshold) {
     mutate(low_threshold = low_threshold, high_threshold = high_threshold) |>
     distinct() |>
     rename(profile_ranking = aka("co2reduce")) |>
-    warn_non_default_thresholds()
+    warn_custom_threshold()
 }
 
 spa_compute_profile_ranking <- function(data, scenarios) {
