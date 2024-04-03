@@ -604,6 +604,8 @@ test_that("at company level, unmatched companies have a single row", {
 })
 
 test_that("using the thresholds arguments throws a warning", {
+  local_options(tiltIndicator.verbose = TRUE)
+
   companies <- example_companies()
   co2 <- example_inputs()
 

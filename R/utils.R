@@ -167,8 +167,17 @@ remove_col_scenario <- function(companies) {
 }
 
 warn_thresholds <- function() {
+  if (!verbose()) {
+    return()
+  }
+
   rlang::warn(c(
     "The default thresholds are generally the most useful.",
     i = "Do you really need to adjust them?"
   ))
 }
+
+verbose <- function() {
+  getOption("tiltIndicator.verbose", default = TRUE)
+}
+

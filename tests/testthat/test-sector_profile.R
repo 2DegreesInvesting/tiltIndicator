@@ -120,6 +120,8 @@ test_that("at company level, two matched and one unmatched products yield `value
 })
 
 test_that("using the thresholds arguments throws a warning", {
+  local_options(tiltIndicator.verbose = TRUE)
+
   companies <- example_companies()
   scenarios <- example_scenarios()
 
