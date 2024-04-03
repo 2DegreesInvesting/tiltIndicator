@@ -178,6 +178,7 @@ warn_thresholds <- function() {
 }
 
 verbose <- function() {
+  # Inspired by https://ropensci.org/blog/2024/02/06/verbosity-control-packages/#how-to-implement-package-level-verbosity-control-in-your-package
   getOption("tiltIndicator.verbose", default = TRUE)
 }
 
