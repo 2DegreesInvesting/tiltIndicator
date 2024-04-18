@@ -26,12 +26,17 @@
 #' data <- tibble(x = 1:4, group = c(1, 1, 2, 2))
 #' data
 #'
-#' summarize_range(data, x, .by = group)
+#' summarize_range(data, "x", .by = group)
 summarize_range <- function(data, col, .by = NULL, na.rm = FALSE) {
+  UseMethod("summarize_range")
+}
+
+#' @export
+summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
   summarize(
     data,
-    min = min({{ col }}, na.rm = na.rm),
-    max = max({{ col }}, na.rm = na.rm),
+    min = min(.data[[col]], na.rm = na.rm),
+    max = max(.data[[col]], na.rm = na.rm),
     .by = {{ .by }}
   )
 }

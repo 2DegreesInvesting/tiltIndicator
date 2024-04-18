@@ -38,7 +38,7 @@ library(tibble)
 data <- tibble(x = 1:4, group = c(1, 1, 2, 2))
 data
 
-summarize_range(data, x, .by = group)
+summarize_range(data, "x", .by = group)
 }
 \seealso{
 \code{\link[dplyr:summarise]{dplyr::summarize()}}
