@@ -1,3 +1,10 @@
+# ---
+# repo: 2DegreesInvesting/tiltIndicator
+# file: standalone-name-pattern.R
+# last-updated: 2024-04-18
+# license: https://unlicense.org
+# ---
+
 check_matches_name <- function(data, pattern) {
   if (!any(matches_name(data, pattern))) {
     abort(c(
