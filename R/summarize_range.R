@@ -41,7 +41,7 @@ summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
   msg <- "Passing `col` as a symbol is superseded. Use the string 'col' instead."
   .col <- rlang::quo_get_expr(enquo(col))
   if (is.symbol(.col)) {
-    warn(msg)
+    warn(msg, class = "passing_col_as_a_symbol_is_superseded")
     col <- rlang::as_name(.col)
   }
 
