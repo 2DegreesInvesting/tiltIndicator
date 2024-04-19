@@ -1,16 +1,21 @@
 #' Summarize the range of a column by groups
 #'
-#' This function is a shortcut to `dplyr::summarize(data, min = min(x), max =
-#' max(x))`.
+#' This funciton is a generic that includes support for dataframes and lists of
+#' dataframes. For dataframes, this function is a shortcut to
+#' `dplyr::summarize(data, min = min(x), max = max(x))`. For lists of dataframes
+#' that idea applies applies to each element of the list.
 #'
-#' @param data A dataframe.
+#' @param data A dataframe or a list of dataframes.
 #' @param col Unquoted expression giving the name of a column in `data`.
+#' @param .by A vector or list of vectors depending on whether `data` is a
+#' dataframe or list of dataframes, respective. For details see `.by` in
+#' [dplyr::summarize()].
 #' @inheritParams dplyr::summarize
 #' @inheritParams base::min
 #'
 #' @seealso [dplyr::summarize()]
 #'
-#' @return A dataframe:
+#' @return A dataframe or a list of dataframes:
 #'   * The rows come from the underlying groups.
 #'   * The columns come from the grouping keys plus the new columns `min` and
 #'   `max`.
@@ -28,10 +33,10 @@
 #'
 #' summarize_range(data, "x", .by = "group")
 #'
-#' lst <- split(data, data$group)
-#' lst
+#' list <- split(data, data$group)
+#' list
 #'
-#' summarize_range(lst, col = "x", .by = list(a = "group", b = "group"))
+#' summarize_range(list, col = "x", .by = list(a = "group", b = "group"))
 summarize_range <- function(data, col, .by = NULL, na.rm = FALSE) {
   UseMethod("summarize_range")
 }
