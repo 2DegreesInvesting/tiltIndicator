@@ -2,6 +2,7 @@
 
 S3method(rowid,default)
 S3method(summarize_range,data.frame)
+S3method(summarize_range,list)
 export("%>%")
 export(":=")
 export(.data)

@@ -66,3 +66,14 @@ test_that("with a column name or symbol outputs the same", {
     suppressWarnings(summarize_range(data, x, y))
   )
 })
+
+test_that("works with lists", {
+  data <- tibble(x = 1:4, y = letters[c(1, 1, 2, 2)], z = y)
+
+  out_dfm <- summarize_range(data, "x", "y")
+  .x <- split(data, data$y)
+  out_lst <- summarize_range(.x, col = "x", .by = list(a = "y", b = "y"))
+
+  expect_equal(filter(out_dfm, y == "a"), out_lst[["a"]])
+  expect_equal(filter(out_dfm, y == "b"), out_lst[["b"]])
+})

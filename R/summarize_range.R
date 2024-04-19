@@ -59,7 +59,7 @@ summarize_range.list <- function(data, col, .by = NULL, na.rm = FALSE) {
   for (i in names(data)) {
     out[[i]] <- summarize_range(
       data[[i]],
-      col = col,
+      col = {{ col }},
       .by = all_of(.by[[i]]),
       na.rm = na.rm
     )
