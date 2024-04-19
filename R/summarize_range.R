@@ -47,19 +47,3 @@ summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
     .by = {{ .by }}
   )
 }
-
-summarize_range_col_string <- function(data, col, .by = NULL, na.rm = FALSE) {
-}
-
-summarize_range_col_symbol <- function(data, col, .by = NULL, na.rm = FALSE) {
-  warn("Passing `col` as a symbol is superseded. Use the string 'col' instead.")
-
-  col <- rlang::quo_get_expr(enquo(col)) |> rlang::as_name()
-
-  summarize(
-    data,
-    min = min(.data[[col]], na.rm = na.rm),
-    max = max(.data[[col]], na.rm = na.rm),
-    .by = {{ .by }}
-  )
-}
