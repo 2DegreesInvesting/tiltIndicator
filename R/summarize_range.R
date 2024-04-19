@@ -34,10 +34,9 @@ summarize_range <- function(data, col, .by = NULL, na.rm = FALSE) {
 #' @export
 summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
   .col <- rlang::quo_get_expr(enquo(col))
-
   if (is.symbol(.col)) {
     warn("Passing `col` as a symbol is superseded. Use the string 'col' instead.")
-    col <- rlang::quo_get_expr(enquo(col)) |> rlang::as_name()
+    col <- rlang::as_name(.col)
   }
 
   summarize(
