@@ -43,8 +43,8 @@ summarize_range <- function(data, col, .by = NULL, na.rm = FALSE) {
 
 #' @export
 summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
-  .col <- rlang::quo_get_expr(enquo(col))
-  if (is.symbol(.col)) col <- rlang::as_name(.col)
+  .col <- quo_get_expr(enquo(col))
+  if (is.symbol(.col)) col <- as_name(.col)
 
   summarize(
     data,
@@ -54,14 +54,15 @@ summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
   )
 }
 
-# TODO check that .x is a list
-# TODO check that .by is a named list
-# TODO check the relationship between the names of .x and .by
 #' @export
 summarize_range.list <- function(data, col, .by = NULL, na.rm = FALSE) {
+  if (!is_named(.by)) abort("`.by` must be named.")
+
   out <- vector("list", length = length(data))
   names(out) <- names(data)
   for (i in names(data)) {
+    check_by(data[[i]], .by[[i]])
+
     out[[i]] <- summarize_range(
       data[[i]],
       col = {{ col }},
@@ -71,4 +72,10 @@ summarize_range.list <- function(data, col, .by = NULL, na.rm = FALSE) {
   }
 
   out
+}
+
+check_by <- function(data, .by) {
+  if (!is_empty(setdiff(.by, names(data)))) {
+    abort("Each value of `.by` must be a column in the corresponding `data`.")
+  }
 }

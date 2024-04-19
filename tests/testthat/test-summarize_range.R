@@ -84,11 +84,44 @@ test_that("with a column name or symbol outputs the same", {
 
 test_that("works with lists", {
   data <- tibble(x = 1:4, y = letters[c(1, 1, 2, 2)], z = y)
+  .x <- split(data, data$y)
 
   out_dfm <- summarize_range(data, "x", "y")
-  .x <- split(data, data$y)
   out_lst <- summarize_range(.x, col = "x", .by = list(a = "y", b = "y"))
 
   expect_equal(filter(out_dfm, y == "a"), out_lst[["a"]])
   expect_equal(filter(out_dfm, y == "b"), out_lst[["b"]])
+})
+
+test_that("with unnamed `.by` errors gracefully", {
+  data <- list(a = tibble(x = 1, y = "a"))
+  expect_error(summarize_range(data, "x", .by = list("y")), "must.*named")
+})
+
+test_that("`.by` can be a vector", {
+  data <- list(a = tibble(x = 1, y = "a"))
+
+  expect_equal(
+    summarize_range(data, "x", .by = list(a = "y", b = "y")),
+    summarize_range(data, "x", .by = c(a = "y", b = "y"))
+  )
+})
+
+test_that("`.by` can have `NULL` elements", {
+  data <- list(a = tibble(x = 1, y = "a"))
+
+  expect_no_error(summarize_range(data, "x", .by = list(a = "y", b = NULL)))
+})
+
+test_that("values of `.by` must be columns in the corresponding element", {
+  data <- list(a = tibble(x = 1, y = "a"))
+
+  expect_error(
+    summarize_range(data, "x", .by = list(a = "bad")),
+    "must.*column"
+  )
+})
+
+test_that("with unknown class throws a grecefull error", {
+  expect_error(summarize_range("bad"), "no.*summarize_range.*character")
 })
