@@ -47,3 +47,23 @@ summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
     .by = {{ .by }}
   )
 }
+
+# TODO: Move to tiltIndicator
+# TODO check that .x is a list
+# TODO check that .by is a named list
+# TODO check the relationship between the names of .x and .by
+#' @export
+summarize_range.list <- function(data, col, .by = NULL, na.rm = FALSE) {
+  out <- vector("list", length = length(data))
+  names(out) <- names(data)
+  for (i in names(data)) {
+    out[[i]] <- summarize_range(
+      data[[i]],
+      col = col,
+      .by = all_of(.by[[i]]),
+      na.rm = na.rm
+    )
+  }
+
+  out
+}
