@@ -58,3 +58,11 @@ test_that("for backward copmatibility works with unquoted x with a warning", {
   data <- tibble(x = 1)
   expect_warning(summarize_range(data, x), "string.*col")
 })
+
+test_that("with a column name or symbol outputs the same", {
+  data <- tibble(x = 1:4, y = c(1, 1, 2, 2))
+  expect_equal(
+    summarize_range(data, "x", y),
+    suppressWarnings(summarize_range(data, x, y))
+  )
+})

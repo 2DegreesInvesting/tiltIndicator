@@ -33,18 +33,13 @@ summarize_range <- function(data, col, .by = NULL, na.rm = FALSE) {
 
 #' @export
 summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
-  .col <- rlang::quo_squash(enquo(col))
-  switch(typeof(.col),
-    "symbol" = {
-      summarize_range_col_symbol(data, {{ col }}, .by = {{ .by }}, na.rm = na.rm)
-    },
-    "character" = {
-      summarize_range_col_string(data, col, .by = {{ .by }}, na.rm = na.rm)
-    }
-  )
-}
+  .col <- rlang::quo_get_expr(enquo(col))
 
-summarize_range_col_string <- function(data, col, .by = NULL, na.rm = FALSE) {
+  if (is.symbol(.col)) {
+    warn("Passing `col` as a symbol is superseded. Use the string 'col' instead.")
+    col <- rlang::quo_get_expr(enquo(col)) |> rlang::as_name()
+  }
+
   summarize(
     data,
     min = min(.data[[col]], na.rm = na.rm),
@@ -53,13 +48,18 @@ summarize_range_col_string <- function(data, col, .by = NULL, na.rm = FALSE) {
   )
 }
 
+summarize_range_col_string <- function(data, col, .by = NULL, na.rm = FALSE) {
+}
+
 summarize_range_col_symbol <- function(data, col, .by = NULL, na.rm = FALSE) {
   warn("Passing `col` as a symbol is superseded. Use the string 'col' instead.")
 
+  col <- rlang::quo_get_expr(enquo(col)) |> rlang::as_name()
+
   summarize(
     data,
-    min = min({{ col }}, na.rm = na.rm),
-    max = max({{ col }}, na.rm = na.rm),
+    min = min(.data[[col]], na.rm = na.rm),
+    max = max(.data[[col]], na.rm = na.rm),
     .by = {{ .by }}
   )
 }
