@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9215 (2024-04-19)
+
+* `summarize_range()` is now a generic function with methods for both data frames
+and list of data frames (#764).
+
 # tiltIndicator 0.0.0.9213
 
 * `summarize_range()` now defaults to `na.rm = FALSE` (#747). This is most common
