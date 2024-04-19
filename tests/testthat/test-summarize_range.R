@@ -53,3 +53,8 @@ test_that("defaults to `na.rm = FALSE`", {
   expect_equal(out$min, NA_real_)
   expect_equal(out$max, NA_real_)
 })
+
+test_that("for backward copmatibility works with unquoted x with a warning", {
+  data <- tibble(x = 1)
+  expect_warning(summarize_range(data, x), "string.*col")
+})
