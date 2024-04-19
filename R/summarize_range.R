@@ -54,11 +54,12 @@ summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
   )
 }
 
-# TODO check that .x is a list
 # TODO check that .by is a named list
 # TODO check the relationship between the names of .x and .by
 #' @export
 summarize_range.list <- function(data, col, .by = NULL, na.rm = FALSE) {
+  if (!rlang::is_named(.by)) abort("`.by` must be named.")
+
   out <- vector("list", length = length(data))
   names(out) <- names(data)
   for (i in names(data)) {
