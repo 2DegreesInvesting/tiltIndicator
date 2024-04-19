@@ -63,6 +63,12 @@ summarize_range.list <- function(data, col, .by = NULL, na.rm = FALSE) {
   out <- vector("list", length = length(data))
   names(out) <- names(data)
   for (i in names(data)) {
+    check_by <- function(data, .by) {
+      if (!rlang::is_empty(setdiff(.by, names(data)))) {
+        abort("Each value of `.by` must be a column in the corresponding `data`.")
+      }
+    }
+    check_by(data[[i]], .by[[i]])
     out[[i]] <- summarize_range(
       data[[i]],
       col = {{ col }},

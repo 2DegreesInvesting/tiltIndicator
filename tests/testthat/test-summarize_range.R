@@ -110,7 +110,16 @@ test_that("`.by` can be a vector", {
 test_that("`.by` can have `NULL` elements", {
   data <- list(a = tibble(x = 1, y = "a"))
 
-  summarize_range(data, "x", .by = list(a = "y", b = NULL))
+  expect_no_error(summarize_range(data, "x", .by = list(a = "y", b = NULL)))
+})
+
+test_that("values of `.by` must be columns in the corresponding element", {
+  data <- list(a = tibble(x = 1, y = "a"))
+
+  expect_error(
+    summarize_range(data, "x", .by = list(a = "bad")),
+    "must.*column"
+  )
 })
 
 test_that("with unknown class throws a grecefull error", {
