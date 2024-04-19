@@ -35,10 +35,15 @@ This function is a shortcut to \code{dplyr::summarize(data, min = min(x), max = 
 \examples{
 library(tibble)
 
-data <- tibble(x = 1:4, group = c(1, 1, 2, 2))
+data <- tibble(x = 1:4, group = letters[c(1, 1, 2, 2)])
 data
 
-summarize_range(data, "x", .by = group)
+summarize_range(data, "x", .by = "group")
+
+lst <- split(data, data$group)
+lst
+
+summarize_range(lst, col = "x", .by = list(a = "group", b = "group"))
 }
 \seealso{
 \code{\link[dplyr:summarise]{dplyr::summarize()}}

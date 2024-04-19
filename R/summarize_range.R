@@ -23,10 +23,15 @@
 #' @examples
 #' library(tibble)
 #'
-#' data <- tibble(x = 1:4, group = c(1, 1, 2, 2))
+#' data <- tibble(x = 1:4, group = letters[c(1, 1, 2, 2)])
 #' data
 #'
-#' summarize_range(data, "x", .by = group)
+#' summarize_range(data, "x", .by = "group")
+#'
+#' lst <- split(data, data$group)
+#' lst
+#'
+#' summarize_range(lst, col = "x", .by = list(a = "group", b = "group"))
 summarize_range <- function(data, col, .by = NULL, na.rm = FALSE) {
   UseMethod("summarize_range")
 }
@@ -48,7 +53,6 @@ summarize_range.data.frame <- function(data, col, .by = NULL, na.rm = FALSE) {
   )
 }
 
-# TODO: Move to tiltIndicator
 # TODO check that .x is a list
 # TODO check that .by is a named list
 # TODO check the relationship between the names of .x and .by
