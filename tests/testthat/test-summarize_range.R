@@ -54,9 +54,24 @@ test_that("defaults to `na.rm = FALSE`", {
   expect_equal(out$max, NA_real_)
 })
 
-test_that("for backward copmatibility works with unquoted x with a warning", {
+test_that("works with strings and symbols", {
   data <- tibble(x = 1)
-  expect_warning(summarize_range(data, x), "string.*col")
+  expect_equal(
+    summarize_range(data, x),
+    summarize_range(data, "x")
+  )
+
+  data <- tibble(x = 1:4, g = letters[c(1, 1, 2, 2)])
+  expect_equal(
+    summarize_range(data, x, .by = "g"),
+    summarize_range(data, "x", .by = "g")
+  )
+
+  # For data.frame .by can also be unquoted although it's best avoided
+  expect_equal(
+    summarize_range(data, x, .by = g),
+    summarize_range(data, "x", .by = "g")
+  )
 })
 
 test_that("with a column name or symbol outputs the same", {
