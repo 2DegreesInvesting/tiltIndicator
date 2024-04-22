@@ -1,6 +1,6 @@
 #' Create objects of class profile
 #'
-#' @param data `r document_profile()`
+#' @param data `r document_tilt_profile()`
 #'
 #' @return An object of class 'profile'.
 #' @export
@@ -48,15 +48,17 @@ new_tilt_profile <- function(data) {
   structure(data, class = c("tilt_profile", class(data)))
 }
 
-document_profile <- function() {
-  paste0(
-    "A data frame with the column `companies_id`, and the list columns ",
-    "`product` and `company` holding the outputs at product and company level."
-  )
-}
-
 #' @rdname tilt_profile
 #' @export
 is_tilt_profile <- function(data) {
   inherits(data, "tilt_profile")
+}
+
+#' @rdname document_default_value
+#' @export
+document_tilt_profile <- function() {
+  paste0(
+    "A data frame with the column `companies_id`, and the list columns ",
+    "`product` and `company` holding the outputs at product and company level."
+  )
 }
