@@ -16,7 +16,7 @@
 #' * The word "upstream" is more familiar for users in banks than "inputs".
 #' * The word "emissions" replaces "carbon" because the data that we use actually
 #' take into account CO2 equivalents, i.e. all green house gasses.
-#' * Compared to the phrase "transition risk", the word "tilt_profile" better reflects
+#' * Compared to the phrase "transition risk", the word "profile" better reflects
 #' that the indicators cannot only be used for risk assessment but also for
 #' other things, such as broader sustainability assessment, engagement,
 #' reporting, etc.
