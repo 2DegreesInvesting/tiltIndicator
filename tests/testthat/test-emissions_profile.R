@@ -10,6 +10,13 @@ test_that("hasn't change", {
   expect_snapshot(format_robust_snapshot(unnest_company(out)))
 })
 
+test_that("is a profile", {
+  companies <- example_companies()
+  co2 <- example_products()
+  out <- emissions_profile(companies, co2)
+  expect_s3_class(out, "profile")
+})
+
 test_that("accepts `company_id` with a warning (#564)", {
   companies <- example_companies() |> rename(company_id = companies_id)
   co2 <- example_products()
