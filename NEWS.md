@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9218 (2024-04-22)
+
+* New developer oriented (internal) function `document_tilt_profile()` (#770).
+This makes it easy to consistently document the output of any profile function.
+
 # tiltIndicator 0.0.0.9217 (2024-04-22)
 
 * Rename 'profile' to 'tilt_profile' to avoid clash the with `stats::profile()`
