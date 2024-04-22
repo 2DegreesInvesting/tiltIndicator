@@ -16,7 +16,7 @@ test_that("is a profile", {
 
   out <- emissions_profile(companies, co2)
 
-  expect_s3_class(out, "profile")
+  expect_s3_class(out, "tilt_profile")
 })
 
 test_that("accepts `company_id` with a warning (#564)", {

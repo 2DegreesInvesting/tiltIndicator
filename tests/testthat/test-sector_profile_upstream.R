@@ -18,7 +18,7 @@ test_that("is a profile", {
 
   out <- sector_profile_upstream(companies, scenarios, inputs)
 
-  expect_s3_class(out, "profile")
+  expect_s3_class(out, "tilt_profile")
 })
 
 test_that("at product level, preserves unmatched companies", {
