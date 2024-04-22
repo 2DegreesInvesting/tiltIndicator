@@ -3,6 +3,8 @@
 #' @keywords internal
 #' @export
 #' @examples
+#' document_tilt_profile()
+#'
 #' document_default_value()
 document_default_value <- function() {
   at_all_levels <- toString(paste0("`", cols_at_all_levels(), "`"))

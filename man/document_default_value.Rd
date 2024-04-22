@@ -13,6 +13,8 @@ document_tilt_profile()
 Document the default return value
 }
 \examples{
+document_tilt_profile()
+
 document_default_value()
 }
 \keyword{internal}
