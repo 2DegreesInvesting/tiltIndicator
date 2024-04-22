@@ -14,7 +14,9 @@ test_that("hasn't change", {
 test_that("is a profile", {
   companies <- example_companies()
   co2 <- example_inputs()
+
   out <- emissions_profile_upstream(companies, co2)
+
   expect_s3_class(out, "profile")
 })
 
