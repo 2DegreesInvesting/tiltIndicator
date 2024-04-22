@@ -50,7 +50,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Document the default return value</h1>
-      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/utils.R" class="external-link"><code>R/utils.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/document_default_value.R" class="external-link"><code>R/document_default_value.R</code></a>, <a href="https://github.com/2DegreesInvesting/tiltIndicator/blob/HEAD/R/tilt_profile.R" class="external-link"><code>R/tilt_profile.R</code></a></small>
       <div class="d-none name"><code>document_default_value.Rd</code></div>
     </div>
 
@@ -60,14 +60,19 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">document_default_value</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">document_default_value</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">document_tilt_profile</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
     </div>
 
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">document_default_value</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "A data frame with the column `companies_id`, and the nested columns`product` and `company` holding the outputs at product and company level. Unnesting `product` yields a data frame with at least columns `companies_id`, `grouped_by`, `risk_category`. Unnesting `company` yields a data frame with at least columns `companies_id`, `grouped_by`, `risk_category`, `value`."</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">document_tilt_profile</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "A data frame with the column `companies_id`, and the list columns `product` and `company` holding the outputs at product and company level."</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">document_default_value</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "A data frame with the column `companies_id`, and the list columns `product` and `company` holding the outputs at product and company level. Unnesting `product` yields a data frame with at least columns `companies_id`, `grouped_by`, `risk_category`. Unnesting `company` yields a data frame with at least columns `companies_id`, `grouped_by`, `risk_category`, `value`."</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
