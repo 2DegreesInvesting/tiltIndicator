@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9217 (2024-04-22)
+
+* Rename 'profile' to 'tilt_profile' to avoid clash with `stats::profile()` (#769). Specifically:
+
+    * The class 'profile' is now renamed to 'tilt_profile'.
+    * The constructor `profile()` is now renamed to `tilt_profile()`.
+    * The predicate `is_profile()` is now renamed to `is_tilt_profile()`.
+
 # tiltIndicator 0.0.0.9216 (2024-04-22)
 
 * New class 'profile', and friends `profile()` and `is_tilt_profile()` (#768).
