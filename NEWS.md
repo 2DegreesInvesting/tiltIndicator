@@ -6,12 +6,15 @@
 (#769). Specifically:
 
     * The class 'profile' is now renamed to 'tilt_profile'.
-    * The constructor `profile()` is now renamed to `tilt_profile()`.
-    * The predicate `is_profile()` is now renamed to `is_tilt_profile()`.
+    * The internal constructor `profile()` is now renamed to `tilt_profile()`.
+    * The internal predicate `is_profile()` is now renamed to `is_tilt_profile()`.
 
 # tiltIndicator 0.0.0.9216 (2024-04-22)
 
-* New class 'profile', and friends `profile()` and `is_tilt_profile()` (#768).
+* New class 'profile', and related developer-oriented (internal) functions (#768):
+
+  * New constructor `tilt_profile()`.
+  * New predicate `is_tilt_profile()`.
 
 # tiltIndicator 0.0.0.9215 (2024-04-19)
 
