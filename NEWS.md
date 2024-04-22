@@ -2,7 +2,7 @@
 
 # tiltIndicator 0.0.0.9216 (2024-04-22)
 
-* New class 'profile', and friends `profile()`, `is_profile()` (#768).
+* New class 'profile', and friends `profile()`, `is_tilt_profile()` (#768).
 
 # tiltIndicator 0.0.0.9215 (2024-04-19)
 
