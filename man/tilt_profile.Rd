@@ -2,9 +2,12 @@
 % Please edit documentation in R/tilt_profile.R
 \name{tilt_profile}
 \alias{tilt_profile}
+\alias{is_tilt_profile}
 \title{Create objects of class profile}
 \usage{
 tilt_profile(data)
+
+is_tilt_profile(data)
 }
 \arguments{
 \item{data}{A data frame with the column \code{companies_id}, and the list columns \code{product} and \code{company} holding the outputs at product and company level.}
@@ -24,8 +27,10 @@ data <- nest_levels(product, company)
 
 class(data)
 
-class(profile(data))
+new <- tilt_profile(data)
+class(new)
 
-is_tilt_profile(profile(data))
+tilt_profile(new)
+is_tilt_profile(new)
 }
 \keyword{internal}

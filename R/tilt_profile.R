@@ -15,9 +15,11 @@
 #'
 #' class(data)
 #'
-#' class(profile(data))
+#' new <- tilt_profile(data)
+#' class(new)
 #'
-#' is_tilt_profile(profile(data))
+#' tilt_profile(new)
+#' is_tilt_profile(new)
 tilt_profile <- function(data) {
   validate_tilt_profile(data)
   new_tilt_profile(data)
@@ -53,7 +55,7 @@ document_profile <- function() {
   )
 }
 
-#' @rdname profile
+#' @rdname tilt_profile
 #' @export
 is_tilt_profile <- function(data) {
   inherits(data, "tilt_profile")
