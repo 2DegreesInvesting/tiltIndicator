@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9216 (2024-04-22)
+
+* New class 'profile', and friends `profile()`, `is_profile()` (#768).
+
 # tiltIndicator 0.0.0.9215 (2024-04-19)
 
 * `summarize_range()` is now a generic function with methods for both data frames
