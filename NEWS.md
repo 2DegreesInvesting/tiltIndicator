@@ -5,9 +5,9 @@
 * Rename 'profile' to 'tilt_profile' to avoid clash the with `stats::profile()`
 (#769). Specifically:
 
-    * The class 'profile' is now renamed to 'tilt_profile'.
-    * The internal constructor `profile()` is now renamed to `tilt_profile()`.
-    * The internal predicate `is_profile()` is now renamed to `is_tilt_profile()`.
+    * The class 'profile' is now renamed to 'tilt\_profile'.
+    * The constructor `profile()` is now renamed to `tilt_profile()`.
+    * The predicate `is_profile()` is now renamed to `is_tilt_profile()`.
 
 # tiltIndicator 0.0.0.9216 (2024-04-22)
 
