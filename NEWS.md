@@ -2,7 +2,8 @@
 
 # tiltIndicator 0.0.0.9217 (2024-04-22)
 
-* Rename 'profile' to 'tilt_profile' to avoid clash with `stats::profile()` (#769). Specifically:
+* Rename 'profile' to 'tilt_profile' to avoid clash the with `stats::profile()`
+(#769). Specifically:
 
     * The class 'profile' is now renamed to 'tilt_profile'.
     * The constructor `profile()` is now renamed to `tilt_profile()`.
