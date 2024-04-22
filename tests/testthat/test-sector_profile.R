@@ -10,6 +10,15 @@ test_that("accepts `company_id` with a warning (#564)", {
   )
 })
 
+test_that("is a profile", {
+  companies <- example_companies()
+  scenarios <- example_scenarios()
+
+  out <- sector_profile(companies, scenarios)
+
+  expect_s3_class(out, "profile")
+})
+
 test_that("at product level, preserves unmatched companies", {
   companies <- example_companies(
     !!aka("id") := c("a", "unmatched"),

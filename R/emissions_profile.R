@@ -24,7 +24,7 @@ emissions_profile <- function(companies,
   company <- epa_at_company_level(product) |>
     insert_row_with_na_in_risk_category()
 
-  nest_levels(product, company)
+  profile(nest_levels(product, company))
 }
 
 #' @export
