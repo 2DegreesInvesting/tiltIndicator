@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9220 (2024-04-23)
+
+* New `exclude()` helps remove columns and resulting duplicated rows (#772).
+
 # tiltIndicator 0.0.0.9219 (2024-04-23)
 
 * New `join_to()` helps add a summary to a 'data.frame' or 'tilt\_profile' (#771).
