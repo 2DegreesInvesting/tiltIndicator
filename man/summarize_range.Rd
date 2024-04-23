@@ -51,6 +51,7 @@ summarize_range(list, col = "x", .by = list(a = "group", b = "group"))
 
 Other helpers: 
 \code{\link{jitter_range}()},
+\code{\link{join_to}()},
 \code{\link{unnest_product}()}
 }
 \concept{helpers}
