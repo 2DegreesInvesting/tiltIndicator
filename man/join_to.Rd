@@ -59,6 +59,7 @@ joint |> unnest_product()
 }
 \seealso{
 Other helpers: 
+\code{\link{exclude}()},
 \code{\link{jitter_range}()},
 \code{\link{summarize_range}()},
 \code{\link{unnest_product}()}

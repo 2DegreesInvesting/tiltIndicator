@@ -50,6 +50,7 @@ summarize_range(list, col = "x", .by = list(a = "group", b = "group"))
 \code{\link[dplyr:summarise]{dplyr::summarize()}}
 
 Other helpers: 
+\code{\link{exclude}()},
 \code{\link{jitter_range}()},
 \code{\link{join_to}()},
 \code{\link{unnest_product}()}

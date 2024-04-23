@@ -49,4 +49,11 @@ out <- result |> exclude("y")
 out |> unnest_product()
 out |> unnest_company()
 }
-\concept{composable friends}
+\seealso{
+Other helpers: 
+\code{\link{jitter_range}()},
+\code{\link{join_to}()},
+\code{\link{summarize_range}()},
+\code{\link{unnest_product}()}
+}
+\concept{helpers}

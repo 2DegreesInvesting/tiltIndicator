@@ -5,7 +5,7 @@
 #'
 #' @return A dataframe excluding the matching columns and duplicates.
 #' @export
-#' @family composable friends
+#' @family helpers
 #'
 #' @examples
 #' library(tibble)
