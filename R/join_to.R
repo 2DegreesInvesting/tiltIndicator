@@ -16,16 +16,38 @@
 #' @examples
 #' library(dplyr, warn.conflicts = FALSE)
 #'
-#' data <- tibble(x = rep(1, 4), y = letters[rep(c(1, 2), 2)], z = 1:4)
-#' data
 #'
-#' data |>
-#'   summarize(mean = mean(x), .by = "y") |>
-#'   join_to(data)
+#' product <- tibble(companies_id = 1:3, x = 11:13, y = letters[c(1, 1, 2)])
+#' product
 #'
-#' data |>
+#' # Easy to pipe
+#' product |>
 #'   summarize(mean = mean(x), .by = "y") |>
-#'   join_to(data |> exclude("z"))
+#'   join_to(product)
+#'
+#'
+#'
+#' # Special method for 'tilt_profile'
+#'
+#' company <- tibble(companies_id = 1:3)
+#' company
+#'
+#' result <- tilt_profile(nest_levels(product, company))
+#' result |> class()
+#' result
+#'
+#' # Easy to pipe.
+#' joint <- result |>
+#'   unnest_product() |>
+#'   summarise(mean = mean(x), .by = "y") |>
+#'   print() |>
+#'   join_to(result)
+#'
+#' # Note the summary has no shared columns with `company` so it joins nothing
+#' joint |> unnest_company()
+#'
+#' # Same as when joining to `product` (see avove)
+#' joint |> unnest_product()
 join_to <- function(x, y) {
   UseMethod("join_to", y)
 }
