@@ -35,6 +35,7 @@ both |> unnest_company()
 }
 \seealso{
 Other helpers: 
+\code{\link{exclude}()},
 \code{\link{jitter_range}()},
 \code{\link{join_to}()},
 \code{\link{summarize_range}()}

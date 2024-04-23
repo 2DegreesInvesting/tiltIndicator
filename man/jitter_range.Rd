@@ -39,6 +39,7 @@ data |> jitter_range(amount = 2)
 \code{\link[=jitter]{jitter()}}
 
 Other helpers: 
+\code{\link{exclude}()},
 \code{\link{join_to}()},
 \code{\link{summarize_range}()},
 \code{\link{unnest_product}()}
