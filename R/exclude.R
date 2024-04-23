@@ -20,6 +20,19 @@
 #' data
 #' data |> exclude("y")
 #' data |> exclude("y$")
+#'
+#'
+#'
+#' # With a 'tilt_profile' excludes at both levels in a single step
+#'
+#' product <- company <- tibble(companies_id = 1, y = "a", z = 1)
+#' result <- tilt_profile(nest_levels(product, company))
+#' result |> class()
+#' result
+#'
+#' out <- result |> exclude("y")
+#' out |> unnest_product()
+#' out |> unnest_company()
 exclude <- function(data, match) {
   UseMethod("exclude")
 }
