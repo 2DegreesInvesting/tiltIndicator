@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9219 (2024-04-23)
+
+* New `join_to()` helps add a summary to a 'data.frame' or 'tilt\_profile' (#771).
+
 # tiltIndicator 0.0.0.9218 (2024-04-22)
 
 * New developer oriented (internal) function `document_tilt_profile()` (#770).
