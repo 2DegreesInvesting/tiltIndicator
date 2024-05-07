@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9221 (2024-05-07)
+
+* The developer-oriented `example_data_factory()` is now exported so it can be
+reused elsewhere (#776).
+
 # tiltIndicator 0.0.0.9220 (2024-04-23)
 
 * New `exclude()` helps remove columns and resulting duplicated rows (#772).
