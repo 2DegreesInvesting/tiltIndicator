@@ -11,6 +11,15 @@ test_that("hasn't change", {
   expect_snapshot(format_robust_snapshot(unnest_company(out)))
 })
 
+test_that("is a profile", {
+  companies <- example_companies()
+  co2 <- example_inputs()
+
+  out <- emissions_profile_upstream(companies, co2)
+
+  expect_s3_class(out, "tilt_profile")
+})
+
 test_that("outputs expected columns at company level", {
   companies <- example_companies()
   inputs <- example_inputs()

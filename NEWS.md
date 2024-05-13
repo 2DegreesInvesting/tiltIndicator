@@ -1,5 +1,54 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9221 (2024-05-07)
+
+* The developer-oriented `example_data_factory()` is now exported so it can be
+reused elsewhere (#776).
+
+# tiltIndicator 0.0.0.9220 (2024-04-23)
+
+* New `exclude()` helps remove columns and resulting duplicated rows (#772).
+
+# tiltIndicator 0.0.0.9219 (2024-04-23)
+
+* New `join_to()` helps add a summary to a 'data.frame' or 'tilt\_profile' (#771).
+
+# tiltIndicator 0.0.0.9218 (2024-04-22)
+
+* New developer oriented (internal) function `document_tilt_profile()` (#770).
+This makes it easy to consistently document the output of any profile function.
+
+# tiltIndicator 0.0.0.9217 (2024-04-22)
+
+* Rename 'profile' to 'tilt_profile' to avoid clash the with `stats::profile()`
+(#769). Specifically:
+
+    * The class 'profile' is now renamed to 'tilt\_profile'.
+    * The constructor `profile()` is now renamed to `tilt_profile()`.
+    * The predicate `is_profile()` is now renamed to `is_tilt_profile()`.
+
+# tiltIndicator 0.0.0.9216 (2024-04-22)
+
+* New class 'profile', and related developer-oriented (internal) functions (#768):
+
+  * New constructor `tilt_profile()`.
+  * New predicate `is_tilt_profile()`.
+
+# tiltIndicator 0.0.0.9215 (2024-04-19)
+
+* `summarize_range()` is now a generic function with methods for both data frames
+and list of data frames (#764).
+
+# tiltIndicator 0.0.0.9213
+
+* `summarize_range()` now defaults to `na.rm = FALSE` (#747). This is most common
+and conservative.
+
+# tiltIndicator 0.0.0.9212
+
+* `summarize_range()` gains `na.rm` and defaults to removing missing values
+(#743).
+
 # tiltIndicator 0.0.0.9211
 
 * The `sector*()` functions now preserve unmatched products (@AnneSchoenauer

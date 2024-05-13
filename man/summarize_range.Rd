@@ -4,21 +4,22 @@
 \alias{summarize_range}
 \title{Summarize the range of a column by groups}
 \usage{
-summarize_range(data, col, .by = NULL)
+summarize_range(data, col, .by = NULL, na.rm = FALSE)
 }
 \arguments{
-\item{data}{A dataframe.}
+\item{data}{A dataframe or a list of dataframes.}
 
 \item{col}{Unquoted expression giving the name of a column in \code{data}.}
 
-\item{.by}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\item{.by}{A vector or list of vectors depending on whether \code{data} is a
+dataframe or list of dataframes, respective. For details see \code{.by} in
+\code{\link[dplyr:summarise]{dplyr::summarize()}}.}
 
-<\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}> Optionally, a selection of columns to
-group by for just this operation, functioning as an alternative to \code{\link[dplyr:group_by]{group_by()}}. For
-details and examples, see \link[dplyr:dplyr_by]{?dplyr_by}.}
+\item{na.rm}{a logical indicating whether missing values should be
+    removed.}
 }
 \value{
-A dataframe:
+A dataframe or a list of dataframes:
 \itemize{
 \item The rows come from the underlying groups.
 \item The columns come from the grouping keys plus the new columns \code{min} and
@@ -27,21 +28,31 @@ A dataframe:
 }
 }
 \description{
-This function is a shortcut to \code{dplyr::summarize(data, min = min(x), max = max(x))}.
+This funciton is a generic that includes support for dataframes and lists of
+dataframes. For dataframes, this function is a shortcut to
+\code{dplyr::summarize(data, min = min(x), max = max(x))}. For lists of dataframes
+that idea applies applies to each element of the list.
 }
 \examples{
 library(tibble)
 
-data <- tibble(x = 1:4, group = c(1, 1, 2, 2))
+data <- tibble(x = 1:4, group = letters[c(1, 1, 2, 2)])
 data
 
-summarize_range(data, x, .by = group)
+summarize_range(data, "x", .by = "group")
+
+list <- split(data, data$group)
+list
+
+summarize_range(list, col = "x", .by = list(a = "group", b = "group"))
 }
 \seealso{
 \code{\link[dplyr:summarise]{dplyr::summarize()}}
 
 Other helpers: 
+\code{\link{exclude}()},
 \code{\link{jitter_range}()},
+\code{\link{join_to}()},
 \code{\link{unnest_product}()}
 }
 \concept{helpers}
