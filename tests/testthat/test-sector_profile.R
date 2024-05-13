@@ -176,7 +176,7 @@ test_that("at product level, when `companies$tilt_sector` doesn't match `scenari
   expect_true(is.na(product$profile_ranking))
 })
 
-test_that("at product level, when `companies$sector`, `*$subsector`, and `*$type` match `scenarios$*`, then  `product$grouped_by` is '<type>_<scenario>_<year>' and `*risk_category` and *$profile_ranking are not `NA`", {
+test_that("at product level, when `companies$sector`, `companies$subsector`, and `companies$type` match the corresponding columns in `scenarios`, then  `product$grouped_by` is '<type>_<scenario>_<year>' and `product$risk_category` and `product$profile_ranking` are not `NA`", {
   # styler: off
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
