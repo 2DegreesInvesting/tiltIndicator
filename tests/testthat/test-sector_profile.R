@@ -182,7 +182,7 @@ test_that("at product level, when `companies$sector`, `companies$subsector`, and
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
               "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
   )
-  # mathing type, sector and subsector
+  # matching type, sector and subsector
   scenarios <- tribble(
     ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
     "total",     "energy",   2050,         1.0, "ipr",       "a",
