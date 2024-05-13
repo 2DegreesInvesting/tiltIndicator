@@ -184,7 +184,7 @@ test_that("at product level, when `companies$sector`, `*$subsector`, and `*$type
   # styler: off
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
-    "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
+              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
   )
   # mathing type, sector and subsector
   scenarios <- tribble(
