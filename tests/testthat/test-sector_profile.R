@@ -175,3 +175,29 @@ test_that("at product level, when `companies$tilt_sector` doesn't match `scenari
   expect_true(is.na(product$risk_category))
   expect_true(is.na(product$profile_ranking))
 })
+
+test_that("at product level, when `companies$sector`, `*$subsector`, and `*$type` match in `scenarios$*`, then  `product$grouped_by` is '<type>_<scenario>_<year>'", {
+  #' * Given: a value of `companies$clustered`, `companies$tilt_sector`, `companies$tilt_sector`, and `companies$type`([example](https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064&range=B3:F3))
+  #' * Where: the value of `companies$type` matches `scenarios$type`, and the values of `companies$sector` and `companies$subsector` ([example](https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064&range=G3:H3)) matches [the values of `scenarios$sector` and `scenarios$subsector`](https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064&range=A11:B11))
+  #' * Then: the value of `product$grouped_by` is '<type>_<scenario>_<year>' ([example](https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064&range=B17)).
+
+  # styler: off
+  companies <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+    "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
+  )
+  # mathing type, sector and subsector
+  scenarios <- tribble(
+    ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+    "total",     "energy",   2050,         1.0, "ipr",       "a",
+  )
+  # styler: on
+
+  product <- sector_profile(companies, scenarios) |> unnest_product()
+  product |> dplyr::glimpse()
+
+  expect_equal(product$grouped_by, "ipr_a_2050")
+  # Also
+  expect_false(is.na(product$risk_category))
+  expect_false(is.na(product$profile_ranking))
+})
