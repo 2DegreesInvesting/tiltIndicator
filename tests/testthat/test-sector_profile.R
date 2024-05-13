@@ -154,3 +154,24 @@ test_that("at product level, when `companies$tilt_sector` doesn't match `scenari
 
   expect_true(is.na(product$grouped_by))
 })
+
+test_that("at product level, when `companies$tilt_sector` doesn't match `scenarios$sector` then `product$risk_category` and  `product$profile_ranking` are `NA`", {
+  # TODO: DRY with the test above
+  # styler: off
+  companies <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
+  )
+  scenarios <- tribble(
+    ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+    "total",     "energy",   2050,         1.0, "ipr",       "a",
+  )
+  # styler: on
+
+  product <- sector_profile(companies, scenarios) |> unnest_product()
+
+  # Tilman's expectations
+  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064&range=B19:D19
+  expect_true(is.na(product$risk_category))
+  expect_true(is.na(product$profile_ranking))
+})
