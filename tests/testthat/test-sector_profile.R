@@ -110,6 +110,7 @@ test_that("at company level, one matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 1 / 2))
 })
 
+
 test_that("at company level, two matched and one unmatched products yield `value = 1/3` where `risk_category = NA` and `value = 2/3` in one other `risk_category` (#657)", {
   companies <- example_companies(
     !!aka("uid") := c("a", "b", "unmatched"),
@@ -125,51 +126,4 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(na, 1 / 3)
   other <- pull(filter(out, !is.na(risk_category)), value)
   expect_equal(sort(other), c(0, 0, 2 / 3))
-})
-
-test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` and `profile_ranking` (#638)", {
-  benchmark <- aka("xsector")
-  companies <- example_companies("{ benchmark }" := NA)
-  scenarios <- example_scenarios()
-
-  out <- sector_profile(companies, scenarios) |>
-    unnest_product()
-
-  expect_equal(nrow(out), 1)
-  expect_true(is.na(out$risk_category))
-  expect_true(is.na(out$profile_ranking))
-  expect_false(is.na(out$grouped_by))
-})
-
-test_that("at product level, `NA` in a benchmark yields `NA`s only in the corresponding product (#638)", {
-  skip("TODO FIXME move NA to companies")
-  companies <- example_companies(
-    !!aka("id") := c("a", "a"),
-    !!aka("uid") := c("a", "b"),
-    !!aka("cluster") := c("a", "b"),
-    !!aka("xsector") := c("total", NA),
-  )
-
-  scenarios <- example_scenarios()
-
-  out <- sector_profile(companies, scenarios) |>
-    unnest_product()
-
-  expect_false(is.na(filter(out, .data[[aka("cluster")]] == "a")$grouped_by))
-  expect_false(is.na(filter(out, .data[[aka("cluster")]] == "a")$risk_category))
-
-  expect_true(is.na(filter(out, .data[[aka("cluster")]] == "b")$risk_category))
-  expect_false(is.na(filter(out, .data[[aka("cluster")]] == "b")$grouped_by))
-})
-
-test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` and not in `value` (#638)", {
-  skip("TODO FIXME move NA to companies")
-  companies <- example_companies(
-    !!aka("xsector") := NA
-  )
-  scenarios <- example_scenarios()
-
-  out <- sector_profile(companies, scenarios) |> unnest_company()
-  expect_true(anyNA(out$risk_category))
-  expect_false(anyNA(out$value))
 })

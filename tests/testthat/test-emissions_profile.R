@@ -121,6 +121,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
   expect_true(is.na(filter(out, clustered == "b")$risk_category))
 })
 
+
 test_that("at company level, with two matched products and `NA` in one benchmark yields `value = 0.5` where the corresponding `risk_category` is `NA`, `value = 0.5` in one other `risk_category`, and `value = 0` elsewhere (#638)", {
   companies <- example_companies(
     !!aka("id") := c("a", "a"),
