@@ -189,10 +189,7 @@ test_that("at product level, an unmatched `type`, `sector`, or `subsector` yield
   expect_true(is.na(product$profile_ranking))
 })
 
-test_that("at product level, xxxxxxxxxxxxxxxxxxx", {
-  # > clustered c should have the grouped_by value "weo_a_2050" instead of "NA".
-  # > We have a tilt_sector for that clustered and hence should show all
-  # > benchmarks, even if they are NA.
+test_that("at product level, a product that matches `sector` and `subsector` for one `type` yields `groupd_by == <type>_<scenario>_<year>` for every `type` (i.e. no `type` is NA)", {
   # styler: off
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
