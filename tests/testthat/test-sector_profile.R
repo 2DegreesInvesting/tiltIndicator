@@ -264,3 +264,23 @@ test_that("at company level, when a single product is unmatched by `type`, `sect
   expect_equal(filter(company, !is.na(risk_category))$value, c(0, 0, 0))
 })
 
+test_that("at company level, when a single product matches by `sector` and `subsector` for only one of two values of `type`, then `value` is 1 for the matched `type` in a single `risk_category` different from `NA`, and it is 1 for the unmatched `type` where `risk_category` is `NA`", {
+  # styler: off
+  companies <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
+              "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA
+  )
+  scenarios <- tribble(
+       ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+    "land use",   "land use",   2050,         0.3, "ipr",       "a"
+  )
+  # styler: on
+
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+  matched <- filter(company, startsWith(grouped_by, "ipr"), !is.na(risk_category))
+  expect_equal(sort(matched$value), c(0, 0, 1))
+
+  unmatched <- filter(company, startsWith(grouped_by, "weo"), is.na(risk_category))
+  expect_equal(unmatched$value, 1)
+})
