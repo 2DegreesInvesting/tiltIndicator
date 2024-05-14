@@ -187,7 +187,7 @@ test_that("at product level, when a single product is unmatched by `type`, `sect
   expect_true(is.na(product$profile_ranking))
 })
 
-test_that("at product level, when a product matches `sector` and `subsector` for one `type`, then `groupd_by` has at least one value for every `type`", {
+test_that("at product level, when a single product matches by `sector` and `subsector` for only one of two values of `type`, then `grouped_by` still has at least one value for each of the two values of `type`", {
   # styler: off
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
