@@ -148,7 +148,7 @@ test_that("at product level, when a single product matches by `sector`, `subsect
   expect_false(is.na(product$profile_ranking))
 })
 
-test_that("at product level, an unmatched `type`, `sector`, or `subsector` yields `NA` in `risk_category`, and `profile_ranking`", {
+test_that("at product level, when a single product is unmatched by `type`, `sector`, or `subsector`, then `risk_category`, and `profile_ranking` are `NA`", {
   # Relevan row in Tilman's test-data:
   # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064&range=A5:I5
   # styler: off
