@@ -149,9 +149,7 @@ test_that("at product level, when a single product matches by `sector`, `subsect
 })
 
 test_that("at product level, when a single product is unmatched by `type`, `sector`, or `subsector`, then `risk_category`, and `profile_ranking` are `NA`", {
-  # Relevan row in Tilman's test-data:
-  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064&range=A5:I5
-  # styler: off
+  # Starting with a matched dataset, to later create different kinds of unmatched datasets
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
               "a",        "b",                       "any",        "any",           "any",       "ipr",     "total",    "energy",
@@ -163,8 +161,6 @@ test_that("at product level, when a single product is unmatched by `type`, `sect
   )
   # styler: on
 
-  # Relevant Tilman's expectations:
-  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064&range=B19:D19
   col <- "type"
   companies1 <- companies
   companies1[[col]] <- "unmatched"
@@ -232,3 +228,39 @@ test_that("at company level, when a single product matches by `sector`, `subsect
   values <- filter(company, !is.na(risk_category))$value
   expect_equal(sort(values), c(0, 0, 1))
 })
+
+test_that("at company level, when a single product is unmatched by `type`, `sector`, or `subsector`, then the `value` is 1 where `risk_category` is `NA` and it is 0 for every other `risk_category`", {
+  # Starting with a matched dataset, to later create different kinds of unmatched datasets
+  companies <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "b",                       "any",        "any",           "any",       "ipr",     "total",    "energy",
+  )
+
+  scenarios <- tribble(
+    ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+    "total",     "energy",   2050,         1.0, "ipr",       "a",
+  )
+  # styler: on
+
+  col <- "type"
+  companies1 <- companies
+  companies1[[col]] <- "unmatched"
+  company <- sector_profile(companies1, scenarios) |> unnest_company()
+  expect_equal(filter(company, is.na(risk_category))$value, 1L)
+  expect_equal(filter(company, !is.na(risk_category))$value, c(0, 0, 0))
+
+  col <- "sector"
+  companies1 <- companies
+  companies1[[col]] <- "unmatched"
+  company <- sector_profile(companies1, scenarios) |> unnest_company()
+  expect_equal(filter(company, is.na(risk_category))$value, 1L)
+  expect_equal(filter(company, !is.na(risk_category))$value, c(0, 0, 0))
+
+  col <- "subsector"
+  companies1 <- companies
+  companies1[[col]] <- "unmatched"
+  company <- sector_profile(companies1, scenarios) |> unnest_company()
+  expect_equal(filter(company, is.na(risk_category))$value, 1L)
+  expect_equal(filter(company, !is.na(risk_category))$value, c(0, 0, 0))
+})
+
