@@ -128,7 +128,7 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
 
-test_that("at product level, a matched `sector`, `subsector`, and `type` yields `<type>_<scenario>_<year>` in `groupd_by`, and not `NA` in `risk_category` and `profile_ranking`", {
+test_that("at product level, when a single product matches by `sector`, `subsector`, and `type`, then `grouped_by` has the format `<type>_<scenario>_<year>`, and `risk_category` and `profile_ranking` are not `NA`", {
   # styler: off
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
