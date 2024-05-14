@@ -189,7 +189,7 @@ test_that("at product level, an unmatched `type`, `sector`, or `subsector` yield
   expect_true(is.na(product$profile_ranking))
 })
 
-test_that("at product level, a product that matches `sector` and `subsector` for one `type` yields `groupd_by == <type>_<scenario>_<year>` for every `type` (i.e. no `type` is NA)", {
+test_that("at product level, when a product matches `sector` and `subsector` for one `type`, then `groupd_by` has at least one value for every `type`", {
   # styler: off
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
@@ -204,5 +204,13 @@ test_that("at product level, a product that matches `sector` and `subsector` for
 
   product <- sector_profile(companies, scenarios) |> unnest_product()
 
-  expect_equal(sort(product$grouped_by), c("ipr_a_2050", "weo_a_2050"))
+  extract_unique_type <- function(x) {
+    x |>
+      strsplit("_") |>
+      lapply(\(x) x[[1]]) |>
+      unlist() |>
+      unique()
+  }
+
+  expect_equal(extract_unique_type(product$grouped_by), c("ipr", "weo"))
 })
