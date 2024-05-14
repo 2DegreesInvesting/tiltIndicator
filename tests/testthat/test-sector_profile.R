@@ -212,5 +212,7 @@ test_that("at product level, when a product matches `sector` and `subsector` for
       unique()
   }
 
+  # TODO: This expectation may become more specific based on Tilman's answer to
+  # https://github.com/2DegreesInvesting/tiltIndicator/pull/739#issuecomment-2110919379
   expect_equal(extract_unique_type(product$grouped_by), c("ipr", "weo"))
 })
