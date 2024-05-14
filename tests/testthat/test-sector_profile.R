@@ -44,7 +44,7 @@ test_that("at product level, preserves unmatched products", {
   expect_true("unmatched" %in% out[[aka("uid")]])
 })
 
-test_that("at product level, unmatched product yield `NA` in the expected columns", {
+test_that("at product level, unmatched product yield `NA` in `risk_category` and `profile_ranking`", {
   companies <- example_companies(
     !!aka("uid") := c("a", "unmatched"),
     !!aka("xsector") := c("total", "unmatched"),
