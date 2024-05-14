@@ -154,7 +154,7 @@ test_that("at product level, an unmatched `type`, `sector`, or `subsector` yield
   # styler: off
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
-    "a",        "b",                       "any",        "any",           "any",       "ipr",     "total",    "energy",
+              "a",        "b",                       "any",        "any",           "any",       "ipr",     "total",    "energy",
   )
 
   scenarios <- tribble(
