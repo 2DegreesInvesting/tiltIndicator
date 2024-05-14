@@ -188,3 +188,10 @@ test_that("at product level, an unmatched `type`, `sector`, or `subsector` yield
   expect_true(is.na(product$risk_category))
   expect_true(is.na(product$profile_ranking))
 })
+
+test_that("at product level, xxxxxxxxxxxxxxxxxxx", {
+  # > clustered c should have the grouped_by value "weo_a_2050" instead of "NA".
+  # > We have a tilt_sector for that clustered and hence should show all
+  # > benchmarks, even if they are NA.
+  # styler: off
+})
