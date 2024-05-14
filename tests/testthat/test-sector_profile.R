@@ -194,4 +194,18 @@ test_that("at product level, xxxxxxxxxxxxxxxxxxx", {
   # > We have a tilt_sector for that clustered and hence should show all
   # > benchmarks, even if they are NA.
   # styler: off
+  companies <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
+              "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA
+  )
+  scenarios <- tribble(
+       ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+    "land use",   "land use",   2050,         0.3, "ipr",       "a"
+  )
+  # styler: on
+
+  product <- sector_profile(companies, scenarios) |> unnest_product()
+
+  expect_equal(sort(product$grouped_by), c("ipr_a_2050", "weo_a_2050"))
 })
