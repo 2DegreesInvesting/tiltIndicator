@@ -214,3 +214,21 @@ test_that("at product level, when a product matches `sector` and `subsector` for
   # https://github.com/2DegreesInvesting/tiltIndicator/pull/739#issuecomment-2110919379
   expect_equal(extract_unique_type(product$grouped_by), c("ipr", "weo"))
 })
+
+test_that("at company level, when a single product matches by `sector`, `subsector`, and `type` then the `value` is 1 in a single `risk_category` different from `NA`", {
+  # styler: off
+  companies <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
+  )
+  # type, sector and subsector all match
+  scenarios <- tribble(
+    ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+    "total",     "energy",   2050,         1.0, "ipr",       "a",
+  )
+  # styler: on
+
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+  values <- filter(company, !is.na(risk_category))$value
+  expect_equal(sort(values), c(0, 0, 1))
+})
