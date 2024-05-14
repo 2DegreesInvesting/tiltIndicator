@@ -134,7 +134,7 @@ test_that("at product level, a matched `sector`, `subsector`, and `type` yields 
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
               "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
   )
-  # matching type, sector and subsector
+  # type, sector and subsector all match
   scenarios <- tribble(
     ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
     "total",     "energy",   2050,         1.0, "ipr",       "a",
