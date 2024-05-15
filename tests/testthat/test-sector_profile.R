@@ -196,5 +196,5 @@ test_that("at company level, Tilman's example yields what he expects", {
   company <- sector_profile(companies, scenarios) |> unnest_company()
 
   # FIXME: Change for something less brittle
-  expect_snapshot(product)
+  expect_snapshot(company)
 })
