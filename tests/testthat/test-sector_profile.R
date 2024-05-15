@@ -146,3 +146,7 @@ test_that("at product level, given a `clustered` matching one but not a second `
   expect_true("ipr_i_2050" %in% product$grouped_by)
   expect_true("weo_w_2050" %in% product$grouped_by)
 })
+
+test_that("xxxxxx", {
+  expect_equal("TODO", "test cases 'a' and 'b' at product level")
+})
