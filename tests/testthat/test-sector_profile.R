@@ -128,7 +128,12 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
 
-test_that("at product level, given a companies dataset with two types of scenarios, when the scenarios dataset matches only one type, then the second type is still present in grouped_by", {
+test_that("at product level, given a companies dataset with two types of scenarios, when the scenarios dataset matches only one type, then the second type is still present in grouped_by (#739#issuecomment-1977426095)", {
+  # product-level: clustered c should have the grouped_by value "weo_a_2050"
+  # instead of "NA". We have a tilt_sector for that clustered and hence should
+  # show all benchmarks, even if they are NA.
+  # --https://github.com/2DegreesInvesting/tiltIndicator/pull/739#issuecomment-1977426095
+
   # styler: on
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
