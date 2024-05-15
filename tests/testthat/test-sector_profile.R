@@ -147,6 +147,54 @@ test_that("at product level, given a `clustered` matching one but not a second `
   expect_true("weo_w_2050" %in% product$grouped_by)
 })
 
-test_that("xxxxxx", {
-  expect_equal("TODO", "test cases 'a' and 'b' at product level")
+test_that("at product level, Tilman's example yields what he expects", {
+  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
+  # styler: off
+    companies <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
+              "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
+              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
+              "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
+              "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA
+  )
+  scenarios <- tribble(
+       ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+       "total",     "energy",   2050,         1.0, "ipr",       "a",
+       "total",     "energy",   2050,         0.6, "weo",       "a",
+    "land use",   "land use",   2050,         0.3, "ipr",       "a"
+  )
+  # styler: off
+
+  # FIXME: Change for something less brittle
+  product <- sector_profile(companies, scenarios) |>
+    unnest_product() |>
+    arrange(clustered)
+
+  expect_snapshot(product)
+})
+
+test_that("at company level, Tilman's example yields what he expects", {
+  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
+  # styler: off
+    companies <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
+              "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
+              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
+              "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
+              "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA
+  )
+  scenarios <- tribble(
+       ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+       "total",     "energy",   2050,         1.0, "ipr",       "a",
+       "total",     "energy",   2050,         0.6, "weo",       "a",
+    "land use",   "land use",   2050,         0.3, "ipr",       "a"
+  )
+  # styler: off
+
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+
+  # FIXME: Change for something less brittle
+  expect_snapshot(product)
 })
