@@ -128,27 +128,21 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
 
-test_that("at product level, given a companies dataset with two types of scenarios, when the scenarios dataset matches only one type, then the second type is still present in grouped_by (#739#issuecomment-1977426095)", {
-  # product-level: clustered c should have the grouped_by value "weo_a_2050"
-  # instead of "NA". We have a tilt_sector for that clustered and hence should
-  # show all benchmarks, even if they are NA.
-  # --https://github.com/2DegreesInvesting/tiltIndicator/pull/739#issuecomment-1977426095
-
+test_that("at product level, given a `clustered` matching one but not a second `type` of scenario, when the `scenarios` dataset has the two types, then the second `type` and its corresponding `scenario` are still present in `grouped_by` (#739#issuecomment-1977426095)", {
   # styler: on
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
-    "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
-    "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA
+              "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
+              "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA,
   )
   scenarios <- tribble(
-    ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
-    "land use",   "land use",   2050,         0.3, "ipr",       "a"
+       ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+    "land use",   "land use",   2050,         0.3, "ipr",       "i",
+       "total",     "energy",   2050,         0.6, "weo",       "w",
   )
   # styler: off
-  product <- sector_profile(case_c, scenarios) |> unnest_product()
+  product <- sector_profile(companies, scenarios) |> unnest_product()
 
-  has_ipr <- any(grepl("ipr", product$grouped_by))
-  expect_true(has_ipr)
-  has_weo <- any(grepl("weo", product$grouped_by))
-  expect_true(has_weo)
+  expect_true("ipr_i_2050" %in% product$grouped_by)
+  expect_true("weo_w_2050" %in% product$grouped_by)
 })

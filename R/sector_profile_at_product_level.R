@@ -8,7 +8,7 @@ sector_profile_at_product_level <- function(companies,
   .companies <- prepare_companies(companies)
   .scenarios <- prepare_scenarios(scenarios, low_threshold, high_threshold)
 
-  .companies |>
+  out <- .companies |>
     spa_compute_profile_ranking(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     spa_polish_output_at_product_level() |>
@@ -16,6 +16,8 @@ sector_profile_at_product_level <- function(companies,
     mutate(grouped_by = ifelse(
       grepl("NA", .data$grouped_by), NA_character_, .data$grouped_by
     ))
+
+  out
 }
 
 sp_select_cols_at_product_level <- function(data) {
