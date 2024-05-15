@@ -8,16 +8,15 @@ sector_profile_at_product_level <- function(companies,
   .companies <- prepare_companies(companies)
   .scenarios <- prepare_scenarios(scenarios, low_threshold, high_threshold)
 
-  out <- .companies |>
+  .companies |>
     spa_compute_profile_ranking(.scenarios) |>
     add_risk_category(low_threshold, high_threshold, .default = NA) |>
     spa_polish_output_at_product_level() |>
     sp_select_cols_at_product_level() |>
     mutate(grouped_by = ifelse(
       grepl("NA", .data$grouped_by), NA_character_, .data$grouped_by
-    ))
-
-  out
+    )) |>
+    handle_partially_matched_sector_types(scenarios)
 }
 
 sp_select_cols_at_product_level <- function(data) {
@@ -33,4 +32,42 @@ sp_cols_at_product_level <- function() {
     spa_cols_at_product_level(),
     aka("tsubsector")
   )
+}
+
+handle_partially_matched_sector_types <- function(data, scenarios) {
+  .out <- data |>
+    mutate(
+      all_na = all(is.na(.data$grouped_by)),
+      .by = c(aka("id"), aka("cluster"))
+    )
+  no_fill <- filter(.out, all_na)
+  to_fill <- filter(.out, !all_na)
+
+  levels <- pull(distinct_grouped_by(scenarios))
+  filled <- to_fill |>
+    filter(!is.na(grouped_by)) |>
+    group_by(.data[[aka("id")]], .data[[aka("cluster")]]) |>
+    mutate(grouped_by = factor(.data$grouped_by, levels = levels)) |>
+    expand(.data$grouped_by) |>
+    left_join(to_fill, by = c(aka("id"), aka("cluster"), "grouped_by")) |>
+    ungroup() |>
+    relocate(names(to_fill))
+
+  bind_rows(filled, no_fill) |>
+    select(-all_na)
+}
+
+distinct_grouped_by <- function(data) {
+  data |>
+    distinct(
+      .data[[aka("scenario_type")]],
+      .data[[aka("scenario_name")]],
+      .data[[aka("xyear")]]
+    ) |>
+    unite(
+      "grouped_by",
+      aka("scenario_type"),
+      aka("scenario_name"),
+      aka("xyear")
+    )
 }
