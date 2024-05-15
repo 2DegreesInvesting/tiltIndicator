@@ -127,3 +127,23 @@ test_that("at company level, two matched and one unmatched products yield `value
   other <- pull(filter(out, !is.na(risk_category)), value)
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
+
+test_that("at product level, given a companies dataset with two types of scenarios, when the scenarios dataset matches only one type, then the second type is still present in grouped_by", {
+  # styler: on
+  companies <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+    "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
+    "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA
+  )
+  scenarios <- tribble(
+    ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
+    "land use",   "land use",   2050,         0.3, "ipr",       "a"
+  )
+  # styler: off
+  product <- sector_profile(case_c, scenarios) |> unnest_product()
+
+  has_ipr <- any(grepl("ipr", product$grouped_by))
+  expect_true(has_ipr)
+  has_weo <- any(grepl("weo", product$grouped_by))
+  expect_true(has_weo)
+})
