@@ -118,10 +118,12 @@ test_that("at company level, one matched and one unmatched products yield `value
 
 test_that("at company level, two matched and one unmatched products yield `value = 1/3` where `risk_category = NA` and `value = 2/3` in one other `risk_category` (#657)", {
   companies <- example_companies(
-    !!aka("uid") := c("a", "b", "unmatched"),
-    !!aka("xsector") := c("total", "total", "unmatched"),
+    !!aka("cluster") := c("matched1", "matched2", "unmatched"),
+    !!aka("xsector") := c("matched1", "matched2", "unmatched")
   )
-  scenarios <- example_scenarios()
+  scenarios <- example_scenarios(
+    !!aka("xsector") := c("matched1", "matched2")
+  )
 
   out <- sector_profile(companies, scenarios) |>
     unnest_company() |>
