@@ -48,19 +48,22 @@ handle_partially_matched_type_of_scenario <- function(data, scenarios) {
   if (nothing_to_fill) {
     filled <- to_fill
   } else {
-    levels <- pull(distinct_grouped_by(scenarios))
-    filled <- to_fill |>
-      filter(!is.na(.data$grouped_by)) |>
-      group_by(.data[[aka("id")]], .data[[aka("cluster")]]) |>
-      mutate(grouped_by = factor(.data$grouped_by, levels = levels)) |>
-      expand(.data$grouped_by) |>
-      left_join(to_fill, by = c(aka("id"), aka("cluster"), "grouped_by")) |>
-      ungroup() |>
-      relocate(names(to_fill))
+    filled <- to_fill |> fill_grouped_by_with(scenarios)
   }
 
-  bind_rows(filled, no_fill) |>
-    select(-all_na)
+  bind_rows(filled, no_fill) |> select(-all_na)
+}
+
+fill_grouped_by_with <- function(data, scenarios) {
+  levels <- pull(distinct_grouped_by(scenarios))
+  data |>
+    filter(!is.na(.data$grouped_by)) |>
+    group_by(.data[[aka("id")]], .data[[aka("cluster")]]) |>
+    mutate(grouped_by = factor(.data$grouped_by, levels = levels)) |>
+    expand(.data$grouped_by) |>
+    left_join(data, by = c(aka("id"), aka("cluster"), "grouped_by")) |>
+    ungroup() |>
+    relocate(names(data))
 }
 
 distinct_grouped_by <- function(data) {
