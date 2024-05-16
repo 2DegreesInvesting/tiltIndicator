@@ -136,7 +136,7 @@ test_that("at company level, two matched and one unmatched products yield `value
 })
 
 test_that("at product level, given a `clustered` matching one but not a second `type` of scenario, when the `scenarios` dataset has the two types, then the second `type` and its corresponding `scenario` are still present in `grouped_by` (#739#issuecomment-1977426095)", {
-  # styler: on
+  # styler: off
   companies <- tribble(
     ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
               "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
@@ -147,7 +147,7 @@ test_that("at product level, given a `clustered` matching one but not a second `
     "land use",   "land use",   2050,         0.3, "ipr",       "i",
        "total",     "energy",   2050,         0.6, "weo",       "w",
   )
-  # styler: off
+  # styler: on
   product <- sector_profile(companies, scenarios) |> unnest_product()
 
   expect_true("ipr_i_2050" %in% product$grouped_by)
