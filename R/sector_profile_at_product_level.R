@@ -16,7 +16,7 @@ sector_profile_at_product_level <- function(companies,
     mutate(grouped_by = ifelse(
       grepl("NA", .data$grouped_by), NA_character_, .data$grouped_by
     )) |>
-    handle_partially_matched_type_of_scenario(scenarios)
+    if_necessary_fill_grouped_by_with(scenarios)
 }
 
 sp_select_cols_at_product_level <- function(data) {
@@ -34,7 +34,7 @@ sp_cols_at_product_level <- function() {
   )
 }
 
-handle_partially_matched_type_of_scenario <- function(data, scenarios) {
+if_necessary_fill_grouped_by_with <- function(data, scenarios) {
   .out <- data |>
     mutate(
       all_na = all(is.na(.data$grouped_by)),
