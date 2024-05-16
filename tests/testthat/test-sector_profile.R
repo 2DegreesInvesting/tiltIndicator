@@ -154,6 +154,8 @@ test_that("at product level, given a `clustered` matching one but not a second `
   expect_true("weo_w_2050" %in% product$grouped_by)
 })
 
+# TODO: Create a constructor for Tilman's example
+
 test_that("at product level, Tilman's example yields what he expects", {
   # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
   # styler: off
