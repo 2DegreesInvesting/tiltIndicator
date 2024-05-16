@@ -387,4 +387,3 @@ test_that("the order of companies is preserved", {
   out <- result |> unnest_company()
   expect_equal(pull(distinct(out, companies_id)), expected_order)
 })
-
