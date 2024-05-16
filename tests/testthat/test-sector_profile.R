@@ -374,4 +374,17 @@ test_that("at product level, Tilman's example with two companies yields what he 
   )
 })
 
-# TODO: Preserves row-order
+test_that("the order of companies is preserved", {
+  expected_order <- c("a", "c", "b")
+
+  companies <- example_companies(!!aka("id") := expected_order)
+  scenarios <- example_scenarios()
+
+  result <- sector_profile(companies, scenarios)
+
+  out <- result |> unnest_product()
+  expect_equal(pull(distinct(out, companies_id)), expected_order)
+  out <- result |> unnest_company()
+  expect_equal(pull(distinct(out, companies_id)), expected_order)
+})
+

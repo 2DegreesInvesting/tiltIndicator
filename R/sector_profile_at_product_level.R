@@ -16,7 +16,8 @@ sector_profile_at_product_level <- function(companies,
     mutate(grouped_by = ifelse(
       grepl("NA", .data$grouped_by), NA_character_, .data$grouped_by
     )) |>
-    if_necessary_fill_grouped_by_with(scenarios)
+    if_necessary_fill_grouped_by_with(scenarios) |>
+    arrange_id_using(.companies)
 }
 
 sp_select_cols_at_product_level <- function(data) {
@@ -79,4 +80,8 @@ distinct_grouped_by <- function(data) {
       aka("scenario_name"),
       aka("xyear")
     )
+}
+
+arrange_id_using <- function(x, y) {
+  x |> arrange(match(.data[[aka("id")]], y[[aka("id")]]))
 }
