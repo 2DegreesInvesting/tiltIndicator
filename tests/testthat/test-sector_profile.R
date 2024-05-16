@@ -48,14 +48,16 @@ test_that("at product level, preserves unmatched products", {
 
 test_that("at product level, unmatched product yield `NA` in the expected columns", {
   companies <- example_companies(
-    !!aka("uid") := c("a", "unmatched"),
-    !!aka("xsector") := c("total", "unmatched"),
+    !!aka("cluster") := c("matched", "unmatched"),
+    !!aka("xsector") := c("matched", "unmatched")
   )
-  scenarios <- example_scenarios()
+  scenarios <- example_scenarios(
+    !!aka("xsector") := c("matched")
+  )
 
   out <- sector_profile(companies, scenarios) |>
     unnest_product() |>
-    filter(.data[[aka("uid")]] == "unmatched")
+    filter(.data[[aka("cluster")]] == "unmatched")
 
   expect_true(is.na(out$grouped_by))
   expect_true(is.na(out$risk_category))
