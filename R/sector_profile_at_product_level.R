@@ -40,18 +40,24 @@ handle_partially_matched_type_of_scenario <- function(data, scenarios) {
       all_na = all(is.na(.data$grouped_by)),
       .by = c(aka("id"), aka("cluster"))
     )
+
   no_fill <- filter(.out, all_na)
   to_fill <- filter(.out, !all_na)
 
-  levels <- pull(distinct_grouped_by(scenarios))
-  filled <- to_fill |>
-    filter(!is.na(grouped_by)) |>
-    group_by(.data[[aka("id")]], .data[[aka("cluster")]]) |>
-    mutate(grouped_by = factor(.data$grouped_by, levels = levels)) |>
-    expand(.data$grouped_by) |>
-    left_join(to_fill, by = c(aka("id"), aka("cluster"), "grouped_by")) |>
-    ungroup() |>
-    relocate(names(to_fill))
+  nothing_to_fill <- identical(nrow(to_fill), 0L)
+  if (nothing_to_fill) {
+    filled <- to_fill
+  } else {
+    levels <- pull(distinct_grouped_by(scenarios))
+    filled <- to_fill |>
+      filter(!is.na(.data$grouped_by)) |>
+      group_by(.data[[aka("id")]], .data[[aka("cluster")]]) |>
+      mutate(grouped_by = factor(.data$grouped_by, levels = levels)) |>
+      expand(.data$grouped_by) |>
+      left_join(to_fill, by = c(aka("id"), aka("cluster"), "grouped_by")) |>
+      ungroup() |>
+      relocate(names(to_fill))
+  }
 
   bind_rows(filled, no_fill) |>
     select(-all_na)

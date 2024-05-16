@@ -205,3 +205,131 @@ test_that("at company level, Tilman's example yields what he expects", {
   # FIXME: Change for something less brittle
   expect_snapshot(company)
 })
+
+test_that("works with Tilman's example case 'a': match both", {
+  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
+  # styler: off
+  companies_full <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
+              "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
+              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
+              "a",        "c",                 "unmatched",          "c",             "c",       "ipr",  "land use",  "land use",
+              "a",        "c",                 "unmatched",          "c",             "c",       "weo",          NA,          NA
+  )
+  scenarios <- tribble(
+         ~sector, ~subsector, ~year, ~reductions, ~type, ~scenario,
+         "total",   "energy",  2050,           1, "ipr",       "a",
+         "total",   "energy",  2050,         0.6, "weo",       "a",
+      "land use", "land use",  2050,         0.3, "ipr",       "a"
+  )
+  # styler: on
+
+  # match both
+  case <- "a"
+  companies <- companies_full |> filter(clustered %in% case)
+  result <- sector_profile(companies, scenarios)
+
+  # has both types
+  product <- result |> unnest_product()
+  expect_equal(product$grouped_by, c("ipr_a_2050", "weo_a_2050"))
+  #
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+  value <- company |>
+    filter(grouped_by == "ipr_a_2050") |>
+    filter(!is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  # value is 1 in a risk_category different than NA
+  expect_equal(value, c(0, 0, 1))
+  value <- company |>
+    filter(grouped_by == "weo_a_2050") |>
+    filter(!is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  # value is 1 in a risk_category different than NA
+  expect_equal(value, c(0, 0, 1))
+})
+
+test_that("works with Tilman's example case 'b': match none", {
+  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
+  # styler: off
+  companies_full <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
+              "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
+              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
+              "a",        "c",                 "unmatched",          "c",             "c",       "ipr",  "land use",  "land use",
+              "a",        "c",                 "unmatched",          "c",             "c",       "weo",          NA,          NA
+  )
+  scenarios <- tribble(
+         ~sector, ~subsector, ~year, ~reductions, ~type, ~scenario,
+         "total",   "energy",  2050,           1, "ipr",       "a",
+         "total",   "energy",  2050,         0.6, "weo",       "a",
+      "land use", "land use",  2050,         0.3, "ipr",       "a"
+  )
+  # styler: on
+
+  # match none
+  case <- "b"
+  companies <- companies_full |> filter(clustered %in% case)
+  result <- sector_profile(companies, scenarios)
+
+  # has unmatched product and grouped_by is NA
+  product <- result |> unnest_product()
+  expect_equal(product$clustered, "b")
+  expect_equal(product$grouped_by, NA_character_)
+  # empty output for `company` "a"
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+  expect_equal(company, empty_company_output_from("a"))
+})
+
+test_that("works with Tilman's example case 'c': match one", {
+  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
+  # styler: off
+  companies_full <- tribble(
+    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
+              "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
+              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
+              "a",        "c",                 "unmatched",          "c",             "c",       "ipr",  "land use",  "land use",
+              "a",        "c",                 "unmatched",          "c",             "c",       "weo",          NA,          NA
+  )
+  scenarios <- tribble(
+         ~sector, ~subsector, ~year, ~reductions, ~type, ~scenario,
+         "total",   "energy",  2050,           1, "ipr",       "a",
+         "total",   "energy",  2050,         0.6, "weo",       "a",
+      "land use", "land use",  2050,         0.3, "ipr",       "a"
+  )
+  # styler: on
+
+  # match one
+  case <- "c"
+  companies <- companies_full |> filter(clustered %in% case)
+  result <- sector_profile(companies, scenarios)
+
+  product <- result |> unnest_product()
+  # has both types
+  expect_equal(product$grouped_by, c("ipr_a_2050", "weo_a_2050"))
+  # the matched type has a non-missing risk_category
+  expect_false(is.na(product$risk_category[product$grouped_by == "ipr_a_2050"]))
+  # the unmatched type has a missing risk_category
+  expect_true(is.na(product$risk_category[product$grouped_by == "weo_a_2050"]))
+
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+  # the matched type has value 1 where risk_category is not NA
+  value <- company |>
+    filter(grouped_by == "ipr_a_2050") |>
+    filter(!is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  expect_equal(value, c(0, 0, 1))
+
+  # the unmatched type has value 1 where risk_category is NA
+  value <- company |>
+    filter(grouped_by == "weo_a_2050") |>
+    filter(is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  expect_equal(value, 1)
+})
