@@ -286,12 +286,12 @@ test_that("works with Tilman's example case 'b': match none", {
   expect_equal(company, empty_company_output_from("a"))
 })
 
-test_that("works with Tilman's example case 'c': match one", {
-  case <- "c"
-  companies <- example_sector_companies() |> filter(clustered %in% case)
+test_that("at both levels, with a single produce that matches one of two types of scenarios yields the expected output", {
+  matches_one_of_two_types <- "c"
+  companies <- example_sector_companies() |>
+    filter(clustered %in% matches_one_of_two_types)
   scenarios <- example_sector_scenarios()
 
-  # match one
   result <- sector_profile(companies, scenarios)
 
   product <- result |> unnest_product()
