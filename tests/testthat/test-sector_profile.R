@@ -286,6 +286,40 @@ test_that("works with Tilman's example case 'b': match none", {
   expect_equal(company, empty_company_output_from("a"))
 })
 
+test_that("at product level, 1 product matching 1 of 2 `type` of scenarios yields both types in `grouped_by` with `NA` in the `risk_category` of the unmatched `type`", {
+  matches_one_of_two_types <- "c"
+  companies <- example_sector_companies() |>
+    filter(clustered %in% matches_one_of_two_types)
+  scenarios <- example_sector_scenarios()
+  result <- sector_profile(companies, scenarios)
+
+
+  product <- result |> unnest_product()
+  # has both types
+  expect_equal(sort(product$grouped_by), c("ipr_a_2050", "weo_a_2050"))
+  # the matched type has a non-missing risk_category
+  expect_false(is.na(product$risk_category[product$grouped_by == "ipr_a_2050"]))
+  # the unmatched type has a missing risk_category
+  expect_true(is.na(product$risk_category[product$grouped_by == "weo_a_2050"]))
+
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+  # the matched type has value 1 where risk_category is not NA
+  value <- company |>
+    filter(grouped_by == "ipr_a_2050") |>
+    filter(!is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  expect_equal(value, c(0, 0, 1))
+
+  # the unmatched type has value 1 where risk_category is NA
+  value <- company |>
+    filter(grouped_by == "weo_a_2050") |>
+    filter(is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  expect_equal(value, 1)
+})
+
 test_that("at both levels, with a single produce that matches one of two types of scenarios yields the expected output", {
   matches_one_of_two_types <- "c"
   companies <- example_sector_companies() |>

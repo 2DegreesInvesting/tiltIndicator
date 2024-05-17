@@ -28,8 +28,16 @@ sector_profile <- function(companies,
 }
 
 example_sector <- function() {
-  # https://github.com/2DegreesInvesting/tiltIndicator/pull/739
+  arrange_for_easier_comparison_in_the_console <- function(data) {
+    cols <- expr(type, sector, subsector)
+    data |>
+        relocate(type, sector, subsector) |>
+        arrange(type, sector, subsector)
+  }
+
   # styler: off
+  # The arrangement here is for identical match with the example here:
+  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
   list(
     companies = tribble(
       ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
@@ -38,13 +46,13 @@ example_sector <- function() {
                 "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
                 "a",        "c",                 "unmatched",          "c",             "c",       "ipr",  "land use",  "land use",
                 "a",        "c",                 "unmatched",          "c",             "c",       "weo",          NA,          NA
-    ),
+    ) |> arrange_for_easier_comparison_in_the_console(),
     scenarios = tribble(
          ~sector, ~subsector, ~year, ~reductions, ~type, ~scenario,
          "total",   "energy",  2050,           1, "ipr",       "a",
          "total",   "energy",  2050,         0.6, "weo",       "a",
       "land use", "land use",  2050,         0.3, "ipr",       "a"
-    )
+    ) |> arrange_for_easier_comparison_in_the_console()
   )
   # styler: off
 }
