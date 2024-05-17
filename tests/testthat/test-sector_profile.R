@@ -287,27 +287,11 @@ test_that("works with Tilman's example case 'b': match none", {
 })
 
 test_that("works with Tilman's example case 'c': match one", {
-  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
-  # styler: off
-  companies_full <- tribble(
-    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
-              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
-              "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
-              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
-              "a",        "c",                 "unmatched",          "c",             "c",       "ipr",  "land use",  "land use",
-              "a",        "c",                 "unmatched",          "c",             "c",       "weo",          NA,          NA
-  )
-  scenarios <- tribble(
-         ~sector, ~subsector, ~year, ~reductions, ~type, ~scenario,
-         "total",   "energy",  2050,           1, "ipr",       "a",
-         "total",   "energy",  2050,         0.6, "weo",       "a",
-      "land use", "land use",  2050,         0.3, "ipr",       "a"
-  )
-  # styler: on
+  case <- "c"
+  companies <- example_sector_companies() |> filter(clustered %in% case)
+  scenarios <- example_sector_scenarios()
 
   # match one
-  case <- "c"
-  companies <- companies_full |> filter(clustered %in% case)
   result <- sector_profile(companies, scenarios)
 
   product <- result |> unnest_product()

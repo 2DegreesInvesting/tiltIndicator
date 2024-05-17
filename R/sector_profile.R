@@ -26,3 +26,27 @@ sector_profile <- function(companies,
 
   tilt_profile(nest_levels(product, company))
 }
+
+example_sector <- function() {
+  # https://github.com/2DegreesInvesting/tiltIndicator/pull/739
+  # styler: off
+  list(
+    companies = tribble(
+      ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
+                "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
+                "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
+                "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
+                "a",        "c",                 "unmatched",          "c",             "c",       "ipr",  "land use",  "land use",
+                "a",        "c",                 "unmatched",          "c",             "c",       "weo",          NA,          NA
+    ),
+    scenarios = tribble(
+         ~sector, ~subsector, ~year, ~reductions, ~type, ~scenario,
+         "total",   "energy",  2050,           1, "ipr",       "a",
+         "total",   "energy",  2050,         0.6, "weo",       "a",
+      "land use", "land use",  2050,         0.3, "ipr",       "a"
+    )
+  )
+  # styler: off
+}
+example_sector_companies <- example_data_factory(example_sector()[["companies"]])
+example_sector_scenarios <- example_data_factory(example_sector()[["scenarios"]])
