@@ -209,14 +209,10 @@ test_that("at company level, Tilman's example yields what he expects", {
 })
 
 test_that("works with Tilman's example case 'a': match both", {
-  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
-  # styler: off
-  companies_full <- example_sector_companies()
+  match_both <- "a"
+  companies <- example_sector_companies() |> filter(clustered %in% match_both)
   scenarios <- example_sector_scenarios()
 
-  # match both
-  case <- "a"
-  companies <- companies_full |> filter(clustered %in% case)
   result <- sector_profile(companies, scenarios)
 
   # has both types
