@@ -208,7 +208,7 @@ test_that("at company level, Tilman's example yields what he expects", {
   expect_snapshot(company)
 })
 
-test_that("at product level, 1 product matching both `type` yields both `type` in `grouped_by`", {
+test_that("at product level case 'a', 1 product matching both `type` yields both `type` in `grouped_by`", {
   match_both <- "a"
   companies <- example_sector_companies() |> filter(clustered %in% match_both)
   scenarios <- example_sector_scenarios()
@@ -218,7 +218,7 @@ test_that("at product level, 1 product matching both `type` yields both `type` i
   expect_equal(product$grouped_by, c("ipr_a_2050", "weo_a_2050"))
 })
 
-test_that("at company level, 1 product matching both `type` yields 1 in 'one' `value` where `risk_category` is not `NA` for both values of `grouped_by`", {
+test_that("at company level case 'a', 1 product matching both `type` yields 1 in 'one' `value` where `risk_category` is not `NA` for both values of `grouped_by`", {
   match_both <- "a"
   companies <- example_sector_companies() |> filter(clustered %in% match_both)
   scenarios <- example_sector_scenarios()
@@ -240,7 +240,7 @@ test_that("at company level, 1 product matching both `type` yields 1 in 'one' `v
   expect_equal(value, c(0, 0, 1))
 })
 
-test_that("at product level, 1 product matching no `type` is preserved and yields `NA` in `risk_category`", {
+test_that("at product level case 'b', 1 product matching no `type` is preserved and yields `NA` in `risk_category`", {
   match_none <- "b"
   companies <- example_sector_companies() |> filter(clustered %in% match_none)
   scenarios <- example_sector_scenarios()
@@ -252,7 +252,7 @@ test_that("at product level, 1 product matching no `type` is preserved and yield
   expect_equal(product$grouped_by, NA_character_)
 })
 
-test_that("at company level, 1 product matching no `type` yields an 'empty_company_output()'", {
+test_that("at company level case 'b', 1 product matching no `type` yields an 'empty_company_output()'", {
   match_none <- "b"
   companies <- example_sector_companies() |> filter(clustered %in% match_none)
   scenarios <- example_sector_scenarios()
@@ -263,38 +263,20 @@ test_that("at company level, 1 product matching no `type` yields an 'empty_compa
   expect_equal(company, empty_company_output_from("a"))
 })
 
-test_that("at product level, 1 product matching 1 of 2 `type` of scenarios yields both types in `grouped_by` with `NA` in the `risk_category` of the unmatched `type`", {
+test_that("at product level case 'c', 1 product matching 1 of 2 `type` of scenarios yields both types in `grouped_by` with `NA` in the `risk_category` of the unmatched `type`", {
   match_one_of_two <- "c"
   companies <- example_sector_companies() |>
     filter(clustered %in% match_one_of_two)
   scenarios <- example_sector_scenarios()
 
-  result <- sector_profile(companies, scenarios)
+  product <- sector_profile(companies, scenarios) |> unnest_product()
 
-  product <- result |> unnest_product()
   expect_equal(sort(product$grouped_by), c("ipr_a_2050", "weo_a_2050"))
   expect_false(is.na(product$risk_category[product$grouped_by == "ipr_a_2050"]))
   expect_true(is.na(product$risk_category[product$grouped_by == "weo_a_2050"]))
-
-  company <- sector_profile(companies, scenarios) |> unnest_company()
-  # the matched type has value 1 where risk_category is not NA
-  value <- company |>
-    filter(grouped_by == "ipr_a_2050") |>
-    filter(!is.na(risk_category)) |>
-    pull(value) |>
-    sort()
-  expect_equal(value, c(0, 0, 1))
-
-  # the unmatched type has value 1 where risk_category is NA
-  value <- company |>
-    filter(grouped_by == "weo_a_2050") |>
-    filter(is.na(risk_category)) |>
-    pull(value) |>
-    sort()
-  expect_equal(value, 1)
 })
 
-test_that("at company level, 1 product matching 1 of 2 `type` of scenarios yields: 1 in 'the' `value` where `risk_category` is `NA` for the unmatched `type`, and 1 in 'one' `value` where `risk_category` is not `NA` for the matched `type`", {
+test_that("at company level case 'c', 1 product matching 1 of 2 `type` of scenarios yields: 1 in 'the' `value` where `risk_category` is `NA` for the unmatched `type`, and 1 in 'one' `value` where `risk_category` is not `NA` for the matched `type`", {
   match_one_of_two <- "c"
   companies <- example_sector_companies() |>
     filter(clustered %in% match_one_of_two)
@@ -303,6 +285,7 @@ test_that("at company level, 1 product matching 1 of 2 `type` of scenarios yield
   result <- sector_profile(companies, scenarios)
 
   company <- sector_profile(companies, scenarios) |> unnest_company()
+
   value <- company |>
     filter(grouped_by == "ipr_a_2050") |>
     filter(!is.na(risk_category)) |>
