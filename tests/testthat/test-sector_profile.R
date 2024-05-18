@@ -331,8 +331,8 @@ test_that("preserves the order of companies", {
 
   result <- sector_profile(companies, scenarios)
 
-  out <- result |> unnest_product()
-  expect_equal(pull(distinct(out, companies_id)), expected_order)
-  out <- result |> unnest_company()
-  expect_equal(pull(distinct(out, companies_id)), expected_order)
+  product <- result |> unnest_product()
+  expect_equal(pull(distinct(product, companies_id)), expected_order)
+  company <- result |> unnest_company()
+  expect_equal(pull(distinct(company, companies_id)), expected_order)
 })
