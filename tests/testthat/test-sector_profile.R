@@ -213,31 +213,30 @@ test_that("at product level, 1 product matching both `type` yields both `type` i
   companies <- example_sector_companies() |> filter(clustered %in% match_both)
   scenarios <- example_sector_scenarios()
 
-  result <- sector_profile(companies, scenarios)
+  product <- sector_profile(companies, scenarios) |> unnest_product()
 
-  product <- result |> unnest_product()
   expect_equal(product$grouped_by, c("ipr_a_2050", "weo_a_2050"))
 })
 
-test_that("at company level, 1 product matching both `type` yields ...", {
+test_that("at company level, 1 product matching both `type` yields 1 in 'one' `value` where `risk_category` is not `NA` for both values of `grouped_by`", {
   match_both <- "a"
   companies <- example_sector_companies() |> filter(clustered %in% match_both)
   scenarios <- example_sector_scenarios()
 
   company <- sector_profile(companies, scenarios) |> unnest_company()
+
   value <- company |>
     filter(grouped_by == "ipr_a_2050") |>
     filter(!is.na(risk_category)) |>
     pull(value) |>
     sort()
-  # value is 1 in a risk_category different than NA
   expect_equal(value, c(0, 0, 1))
+
   value <- company |>
     filter(grouped_by == "weo_a_2050") |>
     filter(!is.na(risk_category)) |>
     pull(value) |>
     sort()
-  # value is 1 in a risk_category different than NA
   expect_equal(value, c(0, 0, 1))
 })
 
