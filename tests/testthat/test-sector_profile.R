@@ -287,9 +287,9 @@ test_that("works with Tilman's example case 'b': match none", {
 })
 
 test_that("at product level, 1 product matching 1 of 2 `type` of scenarios yields both types in `grouped_by` with `NA` in the `risk_category` of the unmatched `type`", {
-  matches_one_of_two_types <- "c"
+  match_one_of_two <- "c"
   companies <- example_sector_companies() |>
-    filter(clustered %in% matches_one_of_two_types)
+    filter(clustered %in% match_one_of_two)
   scenarios <- example_sector_scenarios()
 
   result <- sector_profile(companies, scenarios)
@@ -318,9 +318,9 @@ test_that("at product level, 1 product matching 1 of 2 `type` of scenarios yield
 })
 
 test_that("at company level, 1 product matching 1 of 2 `type` of scenarios yields: 1 in 'the' `value` where `risk_category` is `NA` for the unmatched `type`, and 1 in 'one' `value` where `risk_category` is not `NA` for the matched `type`", {
-  matches_one_of_two_types <- "c"
+  match_one_of_two <- "c"
   companies <- example_sector_companies() |>
-    filter(clustered %in% matches_one_of_two_types)
+    filter(clustered %in% match_one_of_two)
   scenarios <- example_sector_scenarios()
 
   result <- sector_profile(companies, scenarios)
