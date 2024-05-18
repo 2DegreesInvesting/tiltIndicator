@@ -207,8 +207,6 @@ test_that("at company level case 'c', 1 product matching 1 of 2 `type` of scenar
     filter(clustered %in% match_one_of_two)
   scenarios <- example_sector_scenarios()
 
-  result <- sector_profile(companies, scenarios)
-
   company <- sector_profile(companies, scenarios) |> unnest_company()
 
   value <- company |>
