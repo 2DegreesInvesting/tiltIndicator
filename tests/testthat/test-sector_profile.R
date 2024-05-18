@@ -172,9 +172,8 @@ test_that("at product level case 'b', 1 product matching no `type` is preserved 
   companies <- example_sector_companies() |> filter(clustered %in% match_none)
   scenarios <- example_sector_scenarios()
 
-  result <- sector_profile(companies, scenarios)
+  product <- sector_profile(companies, scenarios) |> unnest_product()
 
-  product <- result |> unnest_product()
   expect_equal(product$clustered, "b")
   expect_equal(product$grouped_by, NA_character_)
 })
@@ -184,9 +183,8 @@ test_that("at company level case 'b', 1 product matching no `type` yields an 'em
   companies <- example_sector_companies() |> filter(clustered %in% match_none)
   scenarios <- example_sector_scenarios()
 
-  result <- sector_profile(companies, scenarios)
-
   company <- sector_profile(companies, scenarios) |> unnest_company()
+
   expect_equal(company, empty_company_output_from("a"))
 })
 
