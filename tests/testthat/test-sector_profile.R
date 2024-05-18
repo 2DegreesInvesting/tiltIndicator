@@ -301,38 +301,22 @@ test_that("at company level case 'c', 1 product matching 1 of 2 `type` of scenar
   expect_equal(value, 1)
 })
 
-test_that("at product level, Tilman's example with two companies yields what he expects", {
-  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
-  # styler: off
-    companies <- tribble(
-    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
-              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
-              "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
-              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
-              "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
-              "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA,
-
-              "b",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
-              "b",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
-              "b",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
-              "b",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
-              "b",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA
+test_that("at both levels, all cases, with two companies yields the expected result", {
+  companies <- bind_rows(
+    example_sector_companies(!!aka("id") := "a"),
+    example_sector_companies(!!aka("id") := "b")
   )
-  scenarios <- tribble(
-       ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
-       "total",     "energy",   2050,         1.0, "ipr",       "a",
-       "total",     "energy",   2050,         0.6, "weo",       "a",
-    "land use",   "land use",   2050,         0.3, "ipr",       "a"
-  )
-  # styler: on
+  scenarios <- example_sector_scenarios()
 
-  product <- sector_profile(companies, scenarios) |> unnest_product()
+  result <- sector_profile(companies, scenarios)
+
+  product <- result |> unnest_product()
   expect_equal(
     product |> filter(companies_id == "a") |> select(-companies_id),
     product |> filter(companies_id == "b") |> select(-companies_id)
   )
 
-  company <- sector_profile(companies, scenarios) |> unnest_company()
+  company <- result |> unnest_company()
   expect_equal(
     company |> filter(companies_id == "a") |> select(-companies_id),
     company |> filter(companies_id == "b") |> select(-companies_id)
