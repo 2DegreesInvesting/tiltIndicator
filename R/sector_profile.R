@@ -29,7 +29,7 @@ sector_profile <- function(companies,
 
 example_sector <- function() {
   arrange_for_easier_comparison_in_the_console <- function(data) {
-    cols <- rlang::exprs(type, sector, subsector)
+    cols <- rlang::exprs(.data$type, .data$sector, .data$subsector)
     arrange(relocate(data, !!!cols), !!!cols)
   }
 
