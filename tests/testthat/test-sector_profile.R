@@ -254,13 +254,11 @@ test_that("works with Tilman's example case 'a': match both", {
 })
 
 test_that("works with Tilman's example case 'b': match none", {
-  companies_full <- example_sector_companies()
-  scenarios <- example_sector_scenarios()
-  # styler: on
-
   # match none
   case <- "b"
-  companies <- companies_full |> filter(clustered %in% case)
+  companies <- example_sector_companies() |> filter(clustered %in% case)
+  scenarios <- example_sector_scenarios()
+
   result <- sector_profile(companies, scenarios)
 
   # has unmatched product and grouped_by is NA
