@@ -135,79 +135,6 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 2 / 3))
 })
 
-test_that("at product level, given a `clustered` matching one but not a second `type` of scenario, when the `scenarios` dataset has the two types, then the second `type` and its corresponding `scenario` are still present in `grouped_by` (#739#issuecomment-1977426095)", {
-  # styler: off
-  companies <- tribble(
-    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
-              "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
-              "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA,
-  )
-  scenarios <- tribble(
-       ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
-    "land use",   "land use",   2050,         0.3, "ipr",       "i",
-       "total",     "energy",   2050,         0.6, "weo",       "w",
-  )
-  # styler: on
-  product <- sector_profile(companies, scenarios) |> unnest_product()
-
-  expect_true("ipr_i_2050" %in% product$grouped_by)
-  expect_true("weo_w_2050" %in% product$grouped_by)
-})
-
-# TODO: Create a constructor for Tilman's example
-
-test_that("at product level, Tilman's example yields what he expects", {
-  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
-  # styler: off
-    companies <- tribble(
-    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
-              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
-              "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
-              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
-              "a",        "c",                 "unmatched",          "c",             "c",       "ipr", "land use",   "land use",
-              "a",        "c",                 "unmatched",          "c",             "c",       "weo",         NA,           NA
-  )
-  scenarios <- tribble(
-       ~sector,   ~subsector,  ~year, ~reductions, ~type, ~scenario,
-       "total",     "energy",   2050,         1.0, "ipr",       "a",
-       "total",     "energy",   2050,         0.6, "weo",       "a",
-    "land use",   "land use",   2050,         0.3, "ipr",       "a"
-  )
-  # styler: on
-
-  # FIXME: Change for something less brittle
-  product <- sector_profile(companies, scenarios) |>
-    unnest_product() |>
-    arrange(clustered)
-
-  expect_snapshot(product)
-})
-
-test_that("at company level, Tilman's example yields what he expects", {
-  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
-  # styler: off
-  companies <- tribble(
-    ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
-              "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
-              "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
-              "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
-              "a",        "c",                 "unmatched",          "c",             "c",       "ipr",  "land use",  "land use",
-              "a",        "c",                 "unmatched",          "c",             "c",       "weo",          NA,          NA
-  )
-  scenarios <- tribble(
-         ~sector, ~subsector, ~year, ~reductions, ~type, ~scenario,
-         "total",   "energy",  2050,           1, "ipr",       "a",
-         "total",   "energy",  2050,         0.6, "weo",       "a",
-      "land use", "land use",  2050,         0.3, "ipr",       "a"
-  )
-  # styler: on
-
-  company <- sector_profile(companies, scenarios) |> unnest_company()
-
-  # FIXME: Change for something less brittle
-  expect_snapshot(company)
-})
-
 test_that("at product level case 'a', 1 product matching both `type` yields both `type` in `grouped_by`", {
   match_both <- "a"
   companies <- example_sector_companies() |> filter(clustered %in% match_both)
@@ -301,7 +228,7 @@ test_that("at company level case 'c', 1 product matching 1 of 2 `type` of scenar
   expect_equal(value, 1)
 })
 
-test_that("at both levels, all cases, with two companies yields the expected result", {
+test_that("at both levels, all cases, with two companies yields the expected result for each company", {
   companies <- bind_rows(
     example_sector_companies(!!aka("id") := "a"),
     example_sector_companies(!!aka("id") := "b")
@@ -325,7 +252,6 @@ test_that("at both levels, all cases, with two companies yields the expected res
 
 test_that("preserves the order of companies", {
   expected_order <- c("a", "c", "b")
-
   companies <- example_companies(!!aka("id") := expected_order)
   scenarios <- example_scenarios()
 
