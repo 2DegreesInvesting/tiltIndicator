@@ -208,17 +208,22 @@ test_that("at company level, Tilman's example yields what he expects", {
   expect_snapshot(company)
 })
 
-test_that("works with Tilman's example case 'a': match both", {
+test_that("at product level, 1 product matching both `type` yields both `type` in `grouped_by`", {
   match_both <- "a"
   companies <- example_sector_companies() |> filter(clustered %in% match_both)
   scenarios <- example_sector_scenarios()
 
   result <- sector_profile(companies, scenarios)
 
-  # has both types
   product <- result |> unnest_product()
   expect_equal(product$grouped_by, c("ipr_a_2050", "weo_a_2050"))
-  #
+})
+
+test_that("at company level, 1 product matching both `type` yields ...", {
+  match_both <- "a"
+  companies <- example_sector_companies() |> filter(clustered %in% match_both)
+  scenarios <- example_sector_scenarios()
+
   company <- sector_profile(companies, scenarios) |> unnest_company()
   value <- company |>
     filter(grouped_by == "ipr_a_2050") |>
@@ -236,7 +241,7 @@ test_that("works with Tilman's example case 'a': match both", {
   expect_equal(value, c(0, 0, 1))
 })
 
-test_that("at product level, a product matching no `type` is preserved and yields `NA` in `risk_category`", {
+test_that("at product level, 1 product matching no `type` is preserved and yields `NA` in `risk_category`", {
   match_none <- "b"
   companies <- example_sector_companies() |> filter(clustered %in% match_none)
   scenarios <- example_sector_scenarios()
@@ -248,7 +253,7 @@ test_that("at product level, a product matching no `type` is preserved and yield
   expect_equal(product$grouped_by, NA_character_)
 })
 
-test_that("at company level, a product matching no `type` yields an 'empty_company_output()'", {
+test_that("at company level, 1 product matching no `type` yields an 'empty_company_output()'", {
   match_none <- "b"
   companies <- example_sector_companies() |> filter(clustered %in% match_none)
   scenarios <- example_sector_scenarios()
