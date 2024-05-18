@@ -323,7 +323,7 @@ test_that("at both levels, all cases, with two companies yields the expected res
   )
 })
 
-test_that("the order of companies is preserved", {
+test_that("preserves the order of companies", {
   expected_order <- c("a", "c", "b")
 
   companies <- example_companies(!!aka("id") := expected_order)
