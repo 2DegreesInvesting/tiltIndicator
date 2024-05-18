@@ -260,24 +260,18 @@ test_that("at product level, a product matching no `type` is preserved and yield
 
   result <- sector_profile(companies, scenarios)
 
-  # has unmatched product and grouped_by is NA
   product <- result |> unnest_product()
   expect_equal(product$clustered, "b")
   expect_equal(product$grouped_by, NA_character_)
 })
 
-test_that("at product level, a product matching no `type` is preserved and yields `NA` in `risk_category`", {
+test_that("at company level, a product matching no `type` yields an 'empty_company_output()'", {
   match_none <- "b"
   companies <- example_sector_companies() |> filter(clustered %in% match_none)
   scenarios <- example_sector_scenarios()
 
   result <- sector_profile(companies, scenarios)
 
-  # has unmatched product and grouped_by is NA
-  product <- result |> unnest_product()
-  expect_equal(product$clustered, "b")
-  expect_equal(product$grouped_by, NA_character_)
-  # empty output for `company` "a"
   company <- sector_profile(companies, scenarios) |> unnest_company()
   expect_equal(company, empty_company_output_from("a"))
 })
