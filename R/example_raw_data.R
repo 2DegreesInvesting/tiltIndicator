@@ -1,5 +1,8 @@
 #' Example raw datasets
 #'
+#' These datasets shows a state of the data prior to becoming an input for this
+#' package.
+#'
 #' @return A dataframe.
 #' @export
 #' @keywords internal
