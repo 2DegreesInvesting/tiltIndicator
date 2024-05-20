@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tiltIndicator</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9221</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9222</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,11 +135,13 @@ product level with columns from the input.</p>
 <span><span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>              1 metals       iron &amp; steel             '2410'     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>              2 metals       other metals             '2591'     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>              3 construction construction residential '4100'</span></span>
-<span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>              3 construction construction residential '4100'</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="va">extended</span> <span class="op">&lt;-</span> <span class="va">result_at_product_level</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">extension</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(products_rowid)`</span></span>
-<span><span class="va">extended</span></span>
+<span><span class="co">#&gt; Joining with `by = join_by(products_rowid)`</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">extended</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 456 × 11</span></span></span>
 <span><span class="co">#&gt;    companies_id        products_rowid grouped_by   risk_category profile_ranking</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
