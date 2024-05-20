@@ -34,26 +34,30 @@ test_that("at product level, preserves unmatched companies", {
 
 test_that("at product level, preserves unmatched products", {
   companies <- example_companies(
-    !!aka("uid") := c("a", "unmatched"),
-    !!aka("xsector") := c("total", "unmatched"),
+    !!aka("cluster") := c("matched", "unmatched"),
+    !!aka("xsector") := c("matched", "unmatched")
   )
-  scenarios <- example_scenarios()
+  scenarios <- example_scenarios(
+    !!aka("xsector") := c("matched")
+  )
 
   out <- sector_profile(companies, scenarios) |> unnest_product()
 
-  expect_true("unmatched" %in% out[[aka("uid")]])
+  expect_true("unmatched" %in% out[[aka("cluster")]])
 })
 
 test_that("at product level, unmatched product yield `NA` in the expected columns", {
   companies <- example_companies(
-    !!aka("uid") := c("a", "unmatched"),
-    !!aka("xsector") := c("total", "unmatched"),
+    !!aka("cluster") := c("matched", "unmatched"),
+    !!aka("xsector") := c("matched", "unmatched")
   )
-  scenarios <- example_scenarios()
+  scenarios <- example_scenarios(
+    !!aka("xsector") := c("matched")
+  )
 
   out <- sector_profile(companies, scenarios) |>
     unnest_product() |>
-    filter(.data[[aka("uid")]] == "unmatched")
+    filter(.data[[aka("cluster")]] == "unmatched")
 
   expect_true(is.na(out$grouped_by))
   expect_true(is.na(out$risk_category))
@@ -95,10 +99,12 @@ test_that("at company level with two companies, a company with one unmatched pro
 
 test_that("at company level, one matched and one unmatched products yield `value = 1/2` where `risk_category = NA` and in one other `risk_category` (#657)", {
   companies <- example_companies(
-    !!aka("uid") := c("a", "unmatched"),
-    !!aka("xsector") := c("total", "unmatched"),
+    !!aka("cluster") := c("matched", "unmatched"),
+    !!aka("xsector") := c("matched", "unmatched")
   )
-  scenarios <- example_scenarios()
+  scenarios <- example_scenarios(
+    !!aka("xsector") := c("matched")
+  )
 
   out <- sector_profile(companies, scenarios) |>
     unnest_company() |>
@@ -110,13 +116,14 @@ test_that("at company level, one matched and one unmatched products yield `value
   expect_equal(sort(other), c(0, 0, 1 / 2))
 })
 
-
 test_that("at company level, two matched and one unmatched products yield `value = 1/3` where `risk_category = NA` and `value = 2/3` in one other `risk_category` (#657)", {
   companies <- example_companies(
-    !!aka("uid") := c("a", "b", "unmatched"),
-    !!aka("xsector") := c("total", "total", "unmatched"),
+    !!aka("cluster") := c("matched1", "matched2", "unmatched"),
+    !!aka("xsector") := c("matched1", "matched2", "unmatched")
   )
-  scenarios <- example_scenarios()
+  scenarios <- example_scenarios(
+    !!aka("xsector") := c("matched1", "matched2")
+  )
 
   out <- sector_profile(companies, scenarios) |>
     unnest_company() |>
@@ -126,4 +133,128 @@ test_that("at company level, two matched and one unmatched products yield `value
   expect_equal(na, 1 / 3)
   other <- pull(filter(out, !is.na(risk_category)), value)
   expect_equal(sort(other), c(0, 0, 2 / 3))
+})
+
+test_that("at product level case 'a', 1 product matching both `type` yields both `type` in `grouped_by`", {
+  match_both <- "a"
+  companies <- example_sector_companies() |> filter(clustered %in% match_both)
+  scenarios <- example_sector_scenarios()
+
+  product <- sector_profile(companies, scenarios) |> unnest_product()
+
+  expect_equal(product$grouped_by, c("ipr_a_2050", "weo_a_2050"))
+})
+
+test_that("at company level case 'a', 1 product matching both `type` yields 1 in 'one' `value` where `risk_category` is not `NA` for both values of `grouped_by`", {
+  match_both <- "a"
+  companies <- example_sector_companies() |> filter(clustered %in% match_both)
+  scenarios <- example_sector_scenarios()
+
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+
+  value <- company |>
+    filter(grouped_by == "ipr_a_2050") |>
+    filter(!is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  expect_equal(value, c(0, 0, 1))
+
+  value <- company |>
+    filter(grouped_by == "weo_a_2050") |>
+    filter(!is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  expect_equal(value, c(0, 0, 1))
+})
+
+test_that("at product level case 'b', 1 product matching no `type` is preserved and yields `NA` in `risk_category`", {
+  match_none <- "b"
+  companies <- example_sector_companies() |> filter(clustered %in% match_none)
+  scenarios <- example_sector_scenarios()
+
+  product <- sector_profile(companies, scenarios) |> unnest_product()
+
+  expect_equal(product$clustered, "b")
+  expect_equal(product$grouped_by, NA_character_)
+})
+
+test_that("at company level case 'b', 1 product matching no `type` yields an 'empty_company_output()'", {
+  match_none <- "b"
+  companies <- example_sector_companies() |> filter(clustered %in% match_none)
+  scenarios <- example_sector_scenarios()
+
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+
+  expect_equal(company, empty_company_output_from("a"))
+})
+
+test_that("at product level case 'c', 1 product matching 1 of 2 `type` of scenarios yields both types in `grouped_by` with `NA` in the `risk_category` of the unmatched `type`", {
+  match_one_of_two <- "c"
+  companies <- example_sector_companies() |>
+    filter(clustered %in% match_one_of_two)
+  scenarios <- example_sector_scenarios()
+
+  product <- sector_profile(companies, scenarios) |> unnest_product()
+
+  expect_equal(sort(product$grouped_by), c("ipr_a_2050", "weo_a_2050"))
+  expect_false(is.na(product$risk_category[product$grouped_by == "ipr_a_2050"]))
+  expect_true(is.na(product$risk_category[product$grouped_by == "weo_a_2050"]))
+})
+
+test_that("at company level case 'c', 1 product matching 1 of 2 `type` of scenarios yields: 1 in 'the' `value` where `risk_category` is `NA` for the unmatched `type`, and 1 in 'one' `value` where `risk_category` is not `NA` for the matched `type`", {
+  match_one_of_two <- "c"
+  companies <- example_sector_companies() |>
+    filter(clustered %in% match_one_of_two)
+  scenarios <- example_sector_scenarios()
+
+  company <- sector_profile(companies, scenarios) |> unnest_company()
+
+  value <- company |>
+    filter(grouped_by == "ipr_a_2050") |>
+    filter(!is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  expect_equal(value, c(0, 0, 1))
+
+  value <- company |>
+    filter(grouped_by == "weo_a_2050") |>
+    filter(is.na(risk_category)) |>
+    pull(value) |>
+    sort()
+  expect_equal(value, 1)
+})
+
+test_that("at both levels, all cases, with two companies yields the expected result for each company", {
+  companies <- bind_rows(
+    example_sector_companies(!!aka("id") := "a"),
+    example_sector_companies(!!aka("id") := "b")
+  )
+  scenarios <- example_sector_scenarios()
+
+  result <- sector_profile(companies, scenarios)
+
+  product <- result |> unnest_product()
+  expect_equal(
+    product |> filter(companies_id == "a") |> select(-companies_id),
+    product |> filter(companies_id == "b") |> select(-companies_id)
+  )
+
+  company <- result |> unnest_company()
+  expect_equal(
+    company |> filter(companies_id == "a") |> select(-companies_id),
+    company |> filter(companies_id == "b") |> select(-companies_id)
+  )
+})
+
+test_that("at both levels, preserves the order of companies", {
+  expected_order <- c("a", "c", "b")
+  companies <- example_companies(!!aka("id") := expected_order)
+  scenarios <- example_scenarios()
+
+  result <- sector_profile(companies, scenarios)
+
+  product <- result |> unnest_product()
+  expect_equal(pull(distinct(product, companies_id)), expected_order)
+  company <- result |> unnest_company()
+  expect_equal(pull(distinct(company, companies_id)), expected_order)
 })
