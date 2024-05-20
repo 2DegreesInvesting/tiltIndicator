@@ -3,10 +3,10 @@
 # tiltIndicator 0.0.0.9223 (2024-05-20)
 
 * `sector_profile()` now accounts for unmatched `type`, `sector` or `subsector`
-(#739). For example, given a `clustered` matching one but not a second `type` of
-scenario, when the `scenarios` dataset has the two types, then the second `type`
-and its corresponding `scenario` are still present in `grouped_by`, and the
-mismatch is reflected correctly in the `value` (@Tilmon #739).
+(@Tilmon #739). For example, given a `clustered` matching one but not a second
+`type` of scenario, when the `scenarios` dataset has the two types, then the
+second `type` and its corresponding `scenario` are still present in
+`grouped_by`, and the mismatch is reflected correctly in the `value`.
 
 # tiltIndicator 0.0.0.9221 (2024-05-07)
 
