@@ -26,33 +26,3 @@ sector_profile <- function(companies,
 
   tilt_profile(nest_levels(product, company))
 }
-
-example_sector <- function() {
-  arrange_for_easier_comparison_in_the_console <- function(data) {
-    cols <- rlang::exprs(.data$type, .data$sector, .data$subsector)
-    arrange(relocate(data, !!!cols), !!!cols)
-  }
-
-  # styler: off
-  # The arrangement here is for identical match with the example here:
-  # https://docs.google.com/spreadsheets/d/16u9WNtVY-yDsq6kHANK3dyYGXTbNQ_Bn/edit#gid=156243064
-  list(
-    companies = tribble(
-      ~companies_id, ~clustered, ~activity_uuid_product_uuid, ~tilt_sector, ~tilt_subsector,       ~type,     ~sector,  ~subsector,
-                "a",        "a",                         "a",          "a",             "a",       "ipr",     "total",    "energy",
-                "a",        "a",                         "a",          "a",             "a",       "weo",     "total",    "energy",
-                "a",        "b",                 "unmatched",  "unmatched",     "unmatched", "unmatched", "unmatched", "unmatched",
-                "a",        "c",                 "unmatched",          "c",             "c",       "ipr",  "land use",  "land use",
-                "a",        "c",                 "unmatched",          "c",             "c",       "weo",          NA,          NA
-    ) |> arrange_for_easier_comparison_in_the_console(),
-    scenarios = tribble(
-         ~sector, ~subsector, ~year, ~reductions, ~type, ~scenario,
-         "total",   "energy",  2050,           1, "ipr",       "a",
-         "total",   "energy",  2050,         0.6, "weo",       "a",
-      "land use", "land use",  2050,         0.3, "ipr",       "a"
-    ) |> arrange_for_easier_comparison_in_the_console()
-  )
-  # styler: off
-}
-example_sector_companies <- example_data_factory(example_sector()[["companies"]])
-example_sector_scenarios <- example_data_factory(example_sector()[["scenarios"]])
