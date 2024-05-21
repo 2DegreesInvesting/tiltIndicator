@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   extending-outputs: extending-outputs.html
   tiltIndicator: tiltIndicator.html
-last_built: 2024-05-20T17:43Z
+last_built: 2024-05-21T16:34Z
 urls:
   reference: https://2degreesinvesting.github.io/tiltIndicator/reference
   article: https://2degreesinvesting.github.io/tiltIndicator/articles
