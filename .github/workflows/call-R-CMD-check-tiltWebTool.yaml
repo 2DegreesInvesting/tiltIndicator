@@ -8,11 +8,6 @@ on:
 name: R-CMD-check
 
 jobs:
-<<<<<<< HEAD
-  call-workflow-passing-data:
-    uses: 2DegreesInvesting/tiltDevTools/.github/workflows/reusable-R-CMD-check.yaml@main
-=======
   call:
-    uses: 2DegreesInvesting/tiltDevTools/.github/workflows/R-CMD-check.yaml@main
->>>>>>> main
+    uses: 2DegreesInvesting/tiltDevTools/.github/workflows/R-CMD-check-tiltWebTool.yaml@main
     secrets: inherit
