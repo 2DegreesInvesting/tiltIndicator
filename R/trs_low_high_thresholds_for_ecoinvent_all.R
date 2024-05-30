@@ -4,6 +4,8 @@
 #' @param all_uuids_scenario_sectors A dataframe
 #' @param scenarios A dataframe
 #'
+#' @keywords internal
+#'
 #' @return A dataframe.
 #' @export
 #'
