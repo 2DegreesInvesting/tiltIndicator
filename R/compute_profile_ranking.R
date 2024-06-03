@@ -1,42 +1,23 @@
-#' Add values to categorize
+#' Compute profile ranking
 #'
-#' @description
-#' `r lifecycle::badge("deprecated")`
-#'
-#' This function was deprecated because it's internal. Users don't need to
-#' interact with the function itself.
-#'
-#' @param data A "co2-like" data frame -- i.e. containing products or
-#'   upstream-products (a.k.a. inputs).
-#'
+#' @name compute_profile_ranking
 #' @keywords internal
-#'
-#' @return The input data frame with the additional columns `grouped_by` and
-#'   `profile_ranking` and one row per benchmark per company.
-#'
+NULL
+
+#' @rdname compute_profile_ranking
 #' @export
-#'
-#' @examples
-#' library(tiltToyData)
-#' library(readr, warn.conflicts = FALSE)
-#' options(readr.show_col_types = FALSE)
-#'
-#' companies <- read_csv(toy_emissions_profile_any_companies())
-#'
-#' products <- read_csv(toy_emissions_profile_products_ecoinvent())
-#' products |> emissions_profile_any_compute_profile_ranking()
-#'
-#' inputs <- read_csv(toy_emissions_profile_upstream_products_ecoinvent())
-#' inputs |> emissions_profile_any_compute_profile_ranking()
-emissions_profile_any_compute_profile_ranking <- function(data) {
-  lifecycle::deprecate_warn(
-    "0.0.0.9109",
-    "emissions_profile_any_compute_profile_ranking()",
-    details = "This function is now internal."
+#' @keywords internal
+spa_compute_profile_ranking <- function(data, scenarios) {
+  left_join(
+    data, scenarios,
+    by = c(aka("scenario_type"), aka("xsector"), aka("xsubsector")),
+    relationship = "many-to-many"
   )
-  epa_compute_profile_ranking(data)
 }
 
+#' @rdname compute_profile_ranking
+#' @export
+#' @keywords internal
 epa_compute_profile_ranking <- function(data) {
   check_epa_compute_profile_ranking(data)
 

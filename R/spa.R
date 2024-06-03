@@ -45,14 +45,6 @@ prepare_scenarios <- function(data, low_threshold, high_threshold) {
     rename(profile_ranking = aka("co2reduce"))
 }
 
-spa_compute_profile_ranking <- function(data, scenarios) {
-  left_join(
-    data, scenarios,
-    by = c(aka("scenario_type"), aka("xsector"), aka("xsubsector")),
-    relationship = "many-to-many"
-  )
-}
-
 spa_polish_output_at_product_level <- function(data) {
   data |>
     ungroup() |>
