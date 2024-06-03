@@ -2,9 +2,9 @@
 
 # tiltIndicator 0.0.0.9224 (2024-06-03)
 
-* `spa_compute_profile_ranking()` is now exported as internal, and documented
-along with `epa_compute_profile_ranking()` under the topic
-`?spa_compute_profile_ranking` (#TODO).
+* `spa_compute_profile_ranking()` and `spa_compute_profile_ranking()` is now
+exported as internal, and documented along with `epa_compute_profile_ranking()`
+under the topic `?spa_compute_profile_ranking` (#791).
 
 # tiltIndicator 0.0.0.9223 (2024-05-20)
 
