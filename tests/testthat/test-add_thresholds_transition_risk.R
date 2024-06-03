@@ -41,7 +41,7 @@ test_that("low and high tranistion risk thresholds distribute all activities in 
   high_threshold <- unique(output$transition_risk_high_threshold)
 
   # For benchmark `1.5C RPS_2030_isic_4digit`
-  one_third_number_of_activities <- nrow(output)/3
+  one_third_number_of_activities <- nrow(output) / 3
   # Number of activities below low threshold is 1/3rd the number of total activities
   expect_equal(nrow(filter(output, transition_risk_score <= low_threshold)), one_third_number_of_activities)
   # Number of activities above high threshold is 1/3rd the total number of activities
