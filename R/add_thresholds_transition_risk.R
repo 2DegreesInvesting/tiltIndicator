@@ -47,7 +47,7 @@ add_thresholds_transition_risk <- function(emissions_profile_products,
   ) |>
     create_tr_benchmarks_tr_score(.data$profile_ranking, .data$reductions) |>
     distinct() |>
-    add_transition_risk_thresholds(.by = "benchmark_tr_score")
+    add_low_high_transition_risk_thresholds(.by = "benchmark_tr_score")
 }
 
 #' Calulate `transition_risk_score` and `benchmark_tr_score` columns
@@ -73,7 +73,7 @@ create_tr_benchmarks_tr_score <- function(data, profile_ranking, reduction_targe
   )
 }
 
-add_transition_risk_thresholds <- function(data, .by) {
+add_low_high_transition_risk_thresholds <- function(data, .by) {
   mutate(data,
     transition_risk_low_threshold = quantile(.data$transition_risk_score,
       probs = c(1 / 3, 2 / 3),
