@@ -14,6 +14,10 @@ risk_category_levels <- function() {
   c("high", "medium", "low")
 }
 
+#' Categorize a variable into risk categories using low and high thresholds
+#'
+#' @keywords internal
+#' @export
 categorize_risk <- function(x, low_threshold, high_threshold, ...) {
   case_when(
     x > high_threshold ~ "high",
