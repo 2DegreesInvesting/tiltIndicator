@@ -14,11 +14,8 @@ risk_category_levels <- function() {
   c("high", "medium", "low")
 }
 
-#' Categorize variable into risk categories using low and high thresholds.
+#' Categorize a variable into risk categories using low and high thresholds
 #'
-#' @param x variable.
-#' @param low_threshold Dataframe column.
-#' @param high_threshold Dataframe column.
 #' @keywords internal
 #' @export
 categorize_risk <- function(x, low_threshold, high_threshold, ...) {
