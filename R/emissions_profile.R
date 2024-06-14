@@ -31,6 +31,14 @@ emissions_profile <- function(companies,
 #' @rdname emissions_profile_upstream
 emissions_profile_upstream <- emissions_profile
 
+
+#' Insert row with NA in risk category
+#'
+#' @param data A dataframe
+#'
+#' @return A dataframe
+#' @export
+#' @keywords internal
 insert_row_with_na_in_risk_category <- function(data) {
   levels <- c(risk_category_levels(), NA)
   data |>
