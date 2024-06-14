@@ -1,3 +1,10 @@
+#' Calculate indicator's profile output at company level
+#'
+#' @param data A dataframe
+#'
+#' @return A dataframe
+#' @export
+#' @keywords internal
 epa_at_company_level <- function(data) {
   count_of_na <- data |>
     select(all_of(cols_at_all_levels())) |>
