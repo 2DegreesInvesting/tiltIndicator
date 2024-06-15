@@ -41,44 +41,6 @@ lowercase_characters <- function(data) {
   mutate(data, across(where(is.character), tolower))
 }
 
-#' Check if a named object contains expected names
-#'
-#' Based on fgeo.tool::check_crucial_names()
-#'
-#' @param x A named object.
-#' @param expected_names String; expected names of `x`.
-#'
-#' @return Invisible `x`, or an error with informative message.
-#'
-#' Adapted from: https://github.com/RMI-PACTA/r2dii.match/blob/main/R/check_crucial_names.R
-#'
-#' @examples
-#' x <- c(a = 1)
-#' check_crucial_names(x, "a")
-#' try(check_crucial_names(x, "bad"))
-#' @noRd
-check_crucial_names <- function(x, expected_names) {
-  stopifnot(is_named(x))
-  stopifnot(is.character(expected_names))
-
-  ok <- all(unique(expected_names) %in% names(x))
-  if (!ok) {
-    abort_missing_names(sort(setdiff(expected_names, names(x))))
-  }
-
-  invisible(x)
-}
-
-abort_missing_names <- function(missing_names) {
-  abort(
-    "missing_names",
-    message = glue(
-      "Must have missing names:
-      {paste0('`', missing_names, '`', collapse = ', ')}"
-    )
-  )
-}
-
 add_risk_category <- function(data, low_threshold, high_threshold, ...) {
   mutate(data, risk_category = categorize_risk(
     .data$profile_ranking, .data$low_threshold, .data$high_threshold, ...
