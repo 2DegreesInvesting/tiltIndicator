@@ -1,6 +1,18 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9225 (2024-06-17)
+
+Developer-oriented changes for code reuse:
+
+* `check_crucial_names()` is now reusable via a standalone file (#796).
+
+* export `epa_at_company_level()` and `insert_row_with_na_in_risk_category()` are now exported as internal (@kalashsinghal #795).
+
+* `categorize_risk()` is now exported as internal (@kalashsinghal #793).
+
 # tiltIndicator 0.0.0.9224 (2024-06-03)
+
+Developer-oriented changes for code reuse:
 
 * `spa_compute_profile_ranking()` and `spa_compute_profile_ranking()` is now
 exported as internal, and documented along with `epa_compute_profile_ranking()`
