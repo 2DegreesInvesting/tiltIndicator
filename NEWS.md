@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9226 (2024-06-24)
+
+* Prune needless dependencies (ggplot2 and R/utils-tidy-eval.R) (#798).
+
 # tiltIndicator 0.0.0.9225 (2024-06-17)
 
 Developer-oriented changes for code reuse:
