@@ -181,7 +181,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
   expect_false(is.na(filter(out, clustered == "a")$risk_category))
   expect_true(is.na(filter(out, clustered == "b")$risk_category))
 
-  benchmark <- "input_tilt_sector"
+  benchmark <- "input_tilt_subsector"
   co2 <- example_inputs(
     !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("a", NA)
@@ -301,7 +301,7 @@ test_that("at company level, `NA` in a benchmark yields `value = 1` where `group
     pull(sum) |>
     expect_equal(1)
 
-  benchmark <- "input_tilt_sector"
+  benchmark <- "input_tilt_subsector"
   co2 <- example_inputs("{ benchmark }" := c(NA))
   out <- emissions_profile_upstream(companies, co2) |> unnest_company()
   # For each benchmark `value` adds to 1

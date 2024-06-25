@@ -52,7 +52,7 @@ test_that("if `co2` lacks crucial columns, errors gracefully", {
   bad <- select(products, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- aka("tsector")
+  crucial <- aka("tsubsector")
   bad <- select(products, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
@@ -163,7 +163,7 @@ test_that("if `inputs` lacks crucial columns, errors gracefully", {
   bad <- select(inputs, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
-  crucial <- aka("tsector")
+  crucial <- aka("tsubsector")
   bad <- select(inputs, -ends_with(crucial))
   expect_error(emissions_profile_any_at_product_level(companies, bad), crucial)
 
