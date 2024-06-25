@@ -40,6 +40,6 @@ spu_cols_at_product_level <- function() {
     spa_cols_at_product_level(),
     aka("iuid"),
     aka("itsector"),
-    aka("itsubsector")
+    aka("itsector_old")
   )
 }

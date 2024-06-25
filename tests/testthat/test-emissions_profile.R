@@ -49,7 +49,7 @@ test_that("in each benchmark, `profile_ranking` increases with `*co2_footprint`"
 test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` and `profile_ranking` (#638)", {
   companies <- example_companies()
 
-  benchmark <- "isic_4digit"
+  benchmark <- aka("isic")
   co2 <- example_products("{ benchmark }" := NA)
   out <- emissions_profile(companies, co2) |>
     unnest_product() |>
@@ -57,7 +57,7 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_true(is.na(out$risk_category))
   expect_true(is.na(out$profile_ranking))
 
-  benchmark <- "tilt_sector"
+  benchmark <- aka("tsector")
   co2 <- example_products("{ benchmark }" := NA)
   out <- emissions_profile(companies, co2) |>
     unnest_product() |>
@@ -65,7 +65,7 @@ test_that("at product level, `NA` in a benchmark yields `NA` in `risk_category` 
   expect_true(is.na(out$risk_category))
   expect_true(is.na(out$profile_ranking))
 
-  benchmark <- "unit"
+  benchmark <- aka("xunit")
   co2 <- example_products("{ benchmark }" := NA)
   out <- emissions_profile(companies, co2) |>
     unnest_product() |>
@@ -81,7 +81,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
     !!aka("cluster") := c("a", "b"),
   )
 
-  benchmark <- "isic_4digit"
+  benchmark <- aka("isic")
   co2 <- example_products(
     !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("'1234'", NA)
@@ -94,7 +94,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
   expect_false(is.na(filter(out, clustered == "a")$risk_category))
   expect_true(is.na(filter(out, clustered == "b")$risk_category))
 
-  benchmark <- "tilt_sector"
+  benchmark <- aka("tsector")
   co2 <- example_products(
     !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("a", NA)
@@ -107,7 +107,7 @@ test_that("at product level, `NA` in a benchmark yields `NA`s only in the corres
   expect_false(is.na(filter(out, clustered == "a")$risk_category))
   expect_true(is.na(filter(out, clustered == "b")$risk_category))
 
-  benchmark <- "unit"
+  benchmark <- aka("xunit")
   co2 <- example_products(
     !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("a", NA)
@@ -129,7 +129,7 @@ test_that("at company level, with two matched products and `NA` in one benchmark
     !!aka("cluster") := c("a", "b"),
   )
 
-  benchmark <- "isic_4digit"
+  benchmark <- aka("isic")
   co2 <- example_products(
     !!aka("uid") := c("a", "b"),
     "{ benchmark }" := c("'1234'", NA)
@@ -161,7 +161,7 @@ test_that("at company level, `NA` in the benchmark of 1/3 products yields a `val
     !!aka("cluster") := c("a", "b", "c"),
   )
 
-  benchmark <- "isic_4digit"
+  benchmark <- aka("isic")
   co2 <- example_products(
     !!aka("uid") := c("a", "b", "c"),
     "{ benchmark }" := c("'1234'", NA, "'1234'")
@@ -180,7 +180,7 @@ test_that("at company level, `NA` in the benchmark of 1/3 products yields a `val
 
 test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` and not in `value` (#638)", {
   companies <- example_companies()
-  benchmark <- "isic_4digit"
+  benchmark <- aka("isic")
   co2 <- example_products("{ benchmark }" := NA)
 
   company <- emissions_profile(companies, co2) |> unnest_company()
@@ -196,7 +196,7 @@ test_that("at company level, `NA` in a benchmark yields `NA` in `risk_category` 
 test_that("at company level, `NA` in a benchmark yields `value = 1` where `grouped_by` matches the benchmark and `risk_category` is `NA` (#638)", {
   companies <- example_companies()
 
-  benchmark <- "isic_4digit"
+  benchmark <- aka("isic")
   co2 <- example_products("{ benchmark }" := c(NA))
   out <- emissions_profile(companies, co2) |> unnest_company()
   # For each benchmark `value` adds to 1
@@ -215,7 +215,7 @@ test_that("at company level, `NA` in a benchmark yields `value = 1` where `group
     pull(sum) |>
     expect_equal(1)
 
-  benchmark <- "tilt_sector"
+  benchmark <- aka("tsector")
   co2 <- example_products("{ benchmark }" := c(NA))
   out <- emissions_profile(companies, co2) |> unnest_company()
   # For each benchmark `value` adds to 1
@@ -234,7 +234,7 @@ test_that("at company level, `NA` in a benchmark yields `value = 1` where `group
     pull(sum) |>
     expect_equal(1)
 
-  benchmark <- "unit"
+  benchmark <- aka("xunit")
   co2 <- example_products("{ benchmark }" := c(NA))
   out <- emissions_profile(companies, co2) |> unnest_company()
   # For each benchmark `value` adds to 1
@@ -264,7 +264,7 @@ test_that("at company level, `risk_category` always has the value `NA` (#638)", 
     anyNA() |>
     expect_true()
 
-  benchmark <- "isic_4digit"
+  benchmark <- aka("isic")
   co2 <- example_products("{ benchmark }" := c("a", NA))
   out <- emissions_profile(companies, co2) |> unnest_company()
 
@@ -288,7 +288,7 @@ test_that("the order of companies is preserved", {
   out <- both |> unnest_company()
   expect_equal(pull(distinct(out, companies_id)), expected_order)
 
-  benchmark <- "isic_4digit"
+  benchmark <- aka("isic")
   co2 <- example_products("{ benchmark }" := c("a", NA))
 
   both <- emissions_profile(companies, co2)

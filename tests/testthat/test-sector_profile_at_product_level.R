@@ -3,6 +3,7 @@ test_that("outputs expected columns at product level", {
   scenarios <- example_scenarios()
   out <- sector_profile_at_product_level(companies, scenarios)
   expect_named(out, sp_cols_at_product_level())
+  expect_snapshot(names(out))
 })
 
 test_that("`low_threshold` and `year` yield the expected risk categories", {

@@ -31,7 +31,7 @@ sp_select_cols_at_product_level <- function(data) {
 sp_cols_at_product_level <- function() {
   c(
     spa_cols_at_product_level(),
-    aka("tsubsector")
+    aka("tsector_old")
   )
 }
 

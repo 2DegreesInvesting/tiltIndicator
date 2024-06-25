@@ -91,7 +91,7 @@ test_that("for each company & benchmark, each risk category is unique (#285)", {
     "-fred-sl_00000005407085-741049001", "fish, deep-frozen", "26104519-4d49-5d85-bc74-e8e03d1a7914_cdbf0bef-39f7-46c8-87a2-3f9f679b5bb7",  "kg"
   )
   co2 <- tribble(
-                                                    ~activity_uuid_product_uuid,  ~unit,            ~tilt_sector, ~isic_4digit,   ~co2_footprint,
+                                                    ~activity_uuid_product_uuid,  ~unit,        ~tilt_subsector, ~isic_4digit,   ~co2_footprint,
     # In companies
     "0fe31e67-346a-504c-a03d-64f85ccc2a64_a459eea1-4e62-4daf-9135-1aea9805aa90",   "kg",                      NA,       "0311", 2.83222756713596,
     "26104519-4d49-5d85-bc74-e8e03d1a7914_cdbf0bef-39f7-46c8-87a2-3f9f679b5bb7",   "kg",                      NA,       "0311",  2.1156617059259,

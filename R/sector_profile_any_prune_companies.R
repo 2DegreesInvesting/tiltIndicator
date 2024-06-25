@@ -47,7 +47,7 @@ check_prune_companies <- function(data) {
 
 flag_companies <- function(data) {
   data |>
-    group_by(.data[[aka("id")]], .data$tilt_sector) |>
+    group_by(.data[[aka("id")]], .data[[aka("tsector")]]) |>
     mutate(odd = ifelse(
       is.na(.data$clustered) & is.na(.data[[aka("uid")]]),
       TRUE,

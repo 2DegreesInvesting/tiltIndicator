@@ -22,7 +22,7 @@ test_that("preserves row order", {
   special_order <- c("z", "y", "x")
   companies <- example_companies(!!aka("tsector") := special_order)
   out <- sector_profile_any_prune_companies(companies)
-  expect_equal(out$tilt_sector, c(companies$tilt_sector))
+  expect_equal(out[[aka("tsector")]], c(companies[[aka("tsector")]]))
 })
 
 test_that("with example xstr `companies` outputs the same input columns", {
