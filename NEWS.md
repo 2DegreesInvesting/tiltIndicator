@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9228 (2024-06-25)
+
+* All used of the column `*tilt_sector` now use `*tilt_subsector` instead 
+(@Tilmon #797).
+
 # tiltIndicator 0.0.0.9227 (2024-06-25)
 
 Developer-oriented changes:
