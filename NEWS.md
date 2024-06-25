@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9227 (2024-06-25)
+
+Developer-oriented changes:
+
+* `example_products()` gains  the column `tilt_subsector()` (@kalashsinghal #803).
+
 # tiltIndicator 0.0.0.9226 (2024-06-24)
 
 * Prune needless dependencies (ggplot2 and R/utils-tidy-eval.R) (#798).
