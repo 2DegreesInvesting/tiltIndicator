@@ -88,6 +88,7 @@ example_id <- function() {
            15L,        3L,        1L,
            16L,        1L,        1L,
            17L,        1L,        1L,
+           17L,        1L,        3L,
            18L,        4L,        1L,
            14L,        2L,        2L,
            15L,        3L,        2L,
