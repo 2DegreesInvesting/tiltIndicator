@@ -91,3 +91,8 @@ test_that("example_inputs() has co2 data of class 'double'", {
   out <- example_inputs()
   expect_type(out[[find_co2_footprint(out)]], "double")
 })
+
+test_that("example_products() has column 'tilt_subsector'", {
+  out <- example_products()
+  expect_true(hasName(out, "tilt_subsector"))
+})
