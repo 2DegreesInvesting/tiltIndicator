@@ -1,4 +1,12 @@
-<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
+
+# tiltIndicator 0.0.0.9228 (2024-06-26)
+
+* The benchmark for `emissions_profile()` is changed from `tilt_sector` to 
+`tilt_subsector` (@kalashsinghal #799).
+
+* The benchmark for `emissions_profile_upstream()` is changed from `input_tilt_sector` 
+to `input_tilt_subsector` (@kalashsinghal #799).
 
 # tiltIndicator 0.0.0.9227 (2024-06-25)
 
@@ -643,4 +651,3 @@ ownership (#41).
 * New `pstr_*()` family of PSTR functions.
 
 * New article "Product sector transition risk" (@lindadelacombaz, #18, #22).
-
