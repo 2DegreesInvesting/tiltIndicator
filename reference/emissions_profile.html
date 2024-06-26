@@ -15,10 +15,10 @@ All products are ranked according to their GHG emissions.
 The products are grouped by the following benchmarks:
 all: All products.
 isic_4digit: All products within the same ISIC 4 digit code (example: 0112 Growing of rice).
-tilt_sector: All products within the same tilt sector (example: agriculture).
+tilt_subsector: All products within the same tilt sector (example: agriculture).
 unit: All products with the same unit (example: kg).
 unit_isic_4digit: All products with the same unit within the same ISIC 4 digit section (example: kg + 0112 Growing of rice).
-unit_tilt_sector: All products with the same unit within the same tilt sector (example: kg + agriculture).
+unit_tilt_subsector: All products with the same unit within the same tilt sector (example: kg + agriculture).
 
 For each benchmark, products are assigned to the emission profile category
 &quot;low&quot;, &quot;medium&quot; or &quot;high&quot;, depending on the GHG emissions arising from their
@@ -56,10 +56,10 @@ All products are ranked according to their GHG emissions.
 The products are grouped by the following benchmarks:
 all: All products.
 isic_4digit: All products within the same ISIC 4 digit code (example: 0112 Growing of rice).
-tilt_sector: All products within the same tilt sector (example: agriculture).
+tilt_subsector: All products within the same tilt sector (example: agriculture).
 unit: All products with the same unit (example: kg).
 unit_isic_4digit: All products with the same unit within the same ISIC 4 digit section (example: kg + 0112 Growing of rice).
-unit_tilt_sector: All products with the same unit within the same tilt sector (example: kg + agriculture).
+unit_tilt_subsector: All products with the same unit within the same tilt sector (example: kg + agriculture).
 
 For each benchmark, products are assigned to the emission profile category
 &quot;low&quot;, &quot;medium&quot; or &quot;high&quot;, depending on the GHG emissions arising from their
@@ -151,10 +151,10 @@ dataset to the products from the LCA dataset.</p></li>
 <li><p>All products are ranked according to their GHG emissions.</p></li>
 <li><p>The products are grouped by the following benchmarks:</p><ol><li><p><code>all</code>: All products.</p></li>
 <li><p><code>isic_4digit</code>: All products within the same ISIC 4 digit code (example: 0112 Growing of rice).</p></li>
-<li><p><code>tilt_sector</code>: All products within the same tilt sector (example: agriculture).</p></li>
+<li><p><code>tilt_subsector</code>: All products within the same tilt sector (example: agriculture).</p></li>
 <li><p><code>unit</code>: All products with the same unit (example: kg).</p></li>
 <li><p><code>unit_isic_4digit</code>: All products with the same unit within the same ISIC 4 digit section (example: kg + 0112 Growing of rice).</p></li>
-<li><p><code>unit_tilt_sector</code>: All products with the same unit within the same tilt sector (example: kg + agriculture).</p></li>
+<li><p><code>unit_tilt_subsector</code>: All products with the same unit within the same tilt sector (example: kg + agriculture).</p></li>
 </ol></li>
 <li><p>For each benchmark, products are assigned to the emission profile category
 "low", "medium" or "high", depending on the GHG emissions arising from their
@@ -238,35 +238,35 @@ profile products.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 456 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by       risk_category profile_ranking clustered </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all              high                        1 tent      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine isic_4digit      high                        1 tent      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine tilt_sector      high                        1 tent      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine unit             high                        1 tent      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine unit_isic_4digit high                        1 tent      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine unit_tilt_sector high                        1 tent      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> celestial_lovebird  all              high                        1 table hir…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> celestial_lovebird  isic_4digit      high                        1 table hir…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> celestial_lovebird  tilt_sector      high                        1 table hir…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> celestial_lovebird  unit             high                        1 table hir…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by        risk_category profile_ranking clustered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all               high                        1 tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine isic_4digit       high                        1 tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine tilt_subsector    high                        1 tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine unit              high                        1 tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine unit_isic_4digit  high                        1 tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine unit_tilt_subsec… high                        1 tent     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> celestial_lovebird  all               high                        1 table hi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> celestial_lovebird  isic_4digit       high                        1 table hi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> celestial_lovebird  tilt_subsector    high                        1 table hi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> celestial_lovebird  unit              high                        1 table hi…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 446 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: activity_uuid_product_uuid &lt;chr&gt;, co2_footprint &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,728 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by  risk_category value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all         high              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine all         medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine all         low               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine all         <span style="color: #BB0000;">NA</span>                0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine isic_4digit high              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine isic_4digit medium            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> antimonarchy_canine isic_4digit low               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> antimonarchy_canine isic_4digit <span style="color: #BB0000;">NA</span>                0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> antimonarchy_canine tilt_sector high              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> antimonarchy_canine tilt_sector medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    companies_id        grouped_by     risk_category value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all            high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine all            medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine all            low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine all            <span style="color: #BB0000;">NA</span>                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine isic_4digit    high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine isic_4digit    medium            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> antimonarchy_canine isic_4digit    low               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> antimonarchy_canine isic_4digit    <span style="color: #BB0000;">NA</span>                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> antimonarchy_canine tilt_subsector high              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> antimonarchy_canine tilt_subsector medium            0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1,718 more rows</span></span>
 </code></pre></div>
     </div>

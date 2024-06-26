@@ -122,8 +122,8 @@ company dataset to the products from the LCA dataset.</li>
 <code>isic_4digit</code>: All products within the same ISIC 4 digit
 code (example: 0112 Growing of rice).</li>
 <li>
-<code>tilt_sector</code>: All products within the same tilt sector
-(example: agriculture).</li>
+<code>tilt_subsector</code>: All products within the same tilt
+sector (example: agriculture).</li>
 <li>
 <code>unit</code>: All products with the same unit (example:
 kg).</li>
@@ -132,7 +132,7 @@ kg).</li>
 within the same ISIC 4 digit section (example: kg + 0112 Growing of
 rice).</li>
 <li>
-<code>unit_tilt_sector</code>: All products with the same unit
+<code>unit_tilt_subsector</code>: All products with the same unit
 within the same tilt sector (example: kg + agriculture).</li>
 </ol>
 </li>
@@ -191,36 +191,36 @@ benchmark”.</li>
 <code class="sourceCode R"><span></span>
 <span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 456 × 7</span></span></span>
-<span><span class="co">#&gt;    companies_id        grouped_by       risk_category profile_ranking clustered </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all              high                        1 tent      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine isic_4digit      high                        1 tent      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine tilt_sector      high                        1 tent      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine unit             high                        1 tent      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine unit_isic_4digit high                        1 tent      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine unit_tilt_sector high                        1 tent      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> celestial_lovebird  all              high                        1 table hir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> celestial_lovebird  isic_4digit      high                        1 table hir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> celestial_lovebird  tilt_sector      high                        1 table hir…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> celestial_lovebird  unit             high                        1 table hir…</span></span>
+<span><span class="co">#&gt;    companies_id        grouped_by        risk_category profile_ranking clustered</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all               high                        1 tent     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine isic_4digit       high                        1 tent     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine tilt_subsector    high                        1 tent     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine unit              high                        1 tent     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine unit_isic_4digit  high                        1 tent     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine unit_tilt_subsec… high                        1 tent     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> celestial_lovebird  all               high                        1 table hi…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> celestial_lovebird  isic_4digit       high                        1 table hi…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> celestial_lovebird  tilt_subsector    high                        1 table hi…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> celestial_lovebird  unit              high                        1 table hi…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 446 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: activity_uuid_product_uuid &lt;chr&gt;, co2_footprint &lt;dbl&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,728 × 4</span></span></span>
-<span><span class="co">#&gt;    companies_id        grouped_by  risk_category value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all         high              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine all         medium            0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine all         low               0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine all         <span style="color: #BB0000;">NA</span>                0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine isic_4digit high              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine isic_4digit medium            0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> antimonarchy_canine isic_4digit low               0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> antimonarchy_canine isic_4digit <span style="color: #BB0000;">NA</span>                0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> antimonarchy_canine tilt_sector high              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> antimonarchy_canine tilt_sector medium            0</span></span>
+<span><span class="co">#&gt;    companies_id        grouped_by     risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all            high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine all            medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine all            low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine all            <span style="color: #BB0000;">NA</span>                0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine isic_4digit    high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine isic_4digit    medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> antimonarchy_canine isic_4digit    low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> antimonarchy_canine isic_4digit    <span style="color: #BB0000;">NA</span>                0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> antimonarchy_canine tilt_subsector high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> antimonarchy_canine tilt_subsector medium            0</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,718 more rows</span></span></span></code></pre></div>
 </div>
 </div>
@@ -285,13 +285,13 @@ have one sector per product yet)</li>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all               high                    0.938 tent     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine input_isic_4digit high                    1     tent     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine input_tilt_sector high                    1     tent     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine input_tilt_subse… high                    1     tent     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine input_unit        high                    1     tent     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine input_unit_input… high                    1     tent     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine input_unit_input… high                    1     tent     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> celestial_lovebird  all               high                    0.938 table hi…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> celestial_lovebird  input_isic_4digit high                    1     table hi…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> celestial_lovebird  input_tilt_sector high                    1     table hi…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> celestial_lovebird  input_tilt_subse… high                    1     table hi…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> celestial_lovebird  input_unit        high                    1     table hi…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 680 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 more variables: activity_uuid_product_uuid &lt;chr&gt;,</span></span></span>
@@ -300,18 +300,18 @@ have one sector per product yet)</li>
 <code class="sourceCode R"><span></span>
 <span><span class="va">both</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/unnest_product.html">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,728 × 4</span></span></span>
-<span><span class="co">#&gt;    companies_id        grouped_by        risk_category value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all               high              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine all               medium            0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine all               low               0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine all               <span style="color: #BB0000;">NA</span>                0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine input_isic_4digit high              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine input_isic_4digit medium            0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> antimonarchy_canine input_isic_4digit low               0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> antimonarchy_canine input_isic_4digit <span style="color: #BB0000;">NA</span>                0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> antimonarchy_canine input_tilt_sector high              1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> antimonarchy_canine input_tilt_sector medium            0</span></span>
+<span><span class="co">#&gt;    companies_id        grouped_by           risk_category value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> antimonarchy_canine all                  high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> antimonarchy_canine all                  medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> antimonarchy_canine all                  low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> antimonarchy_canine all                  <span style="color: #BB0000;">NA</span>                0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> antimonarchy_canine input_isic_4digit    high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> antimonarchy_canine input_isic_4digit    medium            0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> antimonarchy_canine input_isic_4digit    low               0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> antimonarchy_canine input_isic_4digit    <span style="color: #BB0000;">NA</span>                0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> antimonarchy_canine input_tilt_subsector high              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> antimonarchy_canine input_tilt_subsector medium            0</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,718 more rows</span></span></span></code></pre></div>
 </div>
 </div>
