@@ -38,10 +38,10 @@ dataset to the products from the LCA dataset.
 \enumerate{
 \item \code{all}: All products.
 \item \code{isic_4digit}: All products within the same ISIC 4 digit code (example: 0112 Growing of rice).
-\item \code{tilt_sector}: All products within the same tilt sector (example: agriculture).
+\item \code{tilt_subsector}: All products within the same tilt sector (example: agriculture).
 \item \code{unit}: All products with the same unit (example: kg).
 \item \code{unit_isic_4digit}: All products with the same unit within the same ISIC 4 digit section (example: kg + 0112 Growing of rice).
-\item \code{unit_tilt_sector}: All products with the same unit within the same tilt sector (example: kg + agriculture).
+\item \code{unit_tilt_subsector}: All products with the same unit within the same tilt sector (example: kg + agriculture).
 }
 \item For each benchmark, products are assigned to the emission profile category
 "low", "medium" or "high", depending on the GHG emissions arising from their

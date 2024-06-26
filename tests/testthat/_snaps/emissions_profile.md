@@ -13,13 +13,13 @@
       6 antimonarchy_canine
       
       [[2]]
-              grouped_by
-      1              all
-      2      isic_4digit
-      3      tilt_sector
-      4             unit
-      5 unit_isic_4digit
-      6 unit_tilt_sector
+                 grouped_by
+      1                 all
+      2         isic_4digit
+      3      tilt_subsector
+      4                unit
+      5    unit_isic_4digit
+      6 unit_tilt_subsector
       
       [[3]]
         risk_category
@@ -100,31 +100,31 @@
       24 antimonarchy_canine
       
       [[2]]
-               grouped_by
-      1               all
-      2               all
-      3               all
-      4               all
-      5       isic_4digit
-      6       isic_4digit
-      7       isic_4digit
-      8       isic_4digit
-      9       tilt_sector
-      10      tilt_sector
-      11      tilt_sector
-      12      tilt_sector
-      13             unit
-      14             unit
-      15             unit
-      16             unit
-      17 unit_isic_4digit
-      18 unit_isic_4digit
-      19 unit_isic_4digit
-      20 unit_isic_4digit
-      21 unit_tilt_sector
-      22 unit_tilt_sector
-      23 unit_tilt_sector
-      24 unit_tilt_sector
+                  grouped_by
+      1                  all
+      2                  all
+      3                  all
+      4                  all
+      5          isic_4digit
+      6          isic_4digit
+      7          isic_4digit
+      8          isic_4digit
+      9       tilt_subsector
+      10      tilt_subsector
+      11      tilt_subsector
+      12      tilt_subsector
+      13                unit
+      14                unit
+      15                unit
+      16                unit
+      17    unit_isic_4digit
+      18    unit_isic_4digit
+      19    unit_isic_4digit
+      20    unit_isic_4digit
+      21 unit_tilt_subsector
+      22 unit_tilt_subsector
+      23 unit_tilt_subsector
+      24 unit_tilt_subsector
       
       [[3]]
          risk_category
@@ -204,22 +204,22 @@
       no_missing_benchmark
     Output
       # A tibble: 16 x 4
-         companies_id grouped_by       risk_category value
-         <chr>        <chr>            <chr>         <dbl>
-       1 a            all              high            0.4
-       2 a            all              medium          0.2
-       3 a            all              low             0.2
-       4 a            all              <NA>            0.2
-       5 a            tilt_sector      high            0.4
-       6 a            tilt_sector      medium          0.2
-       7 a            tilt_sector      low             0.2
-       8 a            tilt_sector      <NA>            0.2
-       9 a            unit             high            0.4
-      10 a            unit             medium          0.2
-      11 a            unit             low             0.2
-      12 a            unit             <NA>            0.2
-      13 a            unit_tilt_sector high            0.4
-      14 a            unit_tilt_sector medium          0.2
-      15 a            unit_tilt_sector low             0.2
-      16 a            unit_tilt_sector <NA>            0.2
+         companies_id grouped_by          risk_category value
+         <chr>        <chr>               <chr>         <dbl>
+       1 a            all                 high            0.4
+       2 a            all                 medium          0.2
+       3 a            all                 low             0.2
+       4 a            all                 <NA>            0.2
+       5 a            tilt_subsector      high            0.4
+       6 a            tilt_subsector      medium          0.2
+       7 a            tilt_subsector      low             0.2
+       8 a            tilt_subsector      <NA>            0.2
+       9 a            unit                high            0.4
+      10 a            unit                medium          0.2
+      11 a            unit                low             0.2
+      12 a            unit                <NA>            0.2
+      13 a            unit_tilt_subsector high            0.4
+      14 a            unit_tilt_subsector medium          0.2
+      15 a            unit_tilt_subsector low             0.2
+      16 a            unit_tilt_subsector <NA>            0.2
 

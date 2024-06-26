@@ -36,7 +36,7 @@ test_that("with two companies, adds one row per benchmark per company", {
 test_that("without crucial columns errors gracefully", {
   co2 <- example_products()
 
-  crucial <- aka("tsector")
+  crucial <- aka("tsubsector")
   bad <- select(co2, -all_of(crucial))
   expect_error(epa_compute_profile_ranking(bad), crucial)
 
@@ -77,8 +77,8 @@ test_that("with inputs, `profile_ranking` is `1` for all maximum `*co2_footprint
   expect_false(any(other$profile_ranking == 1.0))
 })
 
-test_that("`profile_ranking` excludes-rows and is `NA` where `tilt_sector` is `NA` and `grouped_by` matches *tilt_sector", {
-  pattern <- aka("tsector")
+test_that("`profile_ranking` excludes-rows and is `NA` where `tilt_subsector` is `NA` and `grouped_by` matches *tilt_subsector", {
+  pattern <- aka("tsubsector")
   exclude <- NA_character_
   co2 <- example_products(!!pattern := c("'1234'", "'1234'", exclude))
   co2[find_co2_footprint(co2)] <- c(3, 2, 1)
@@ -95,8 +95,8 @@ test_that("`profile_ranking` excludes-rows and is `NA` where `tilt_sector` is `N
   expect_equal(unique(should_be_na$profile_ranking), NA_integer_)
 })
 
-test_that("with inputs, `profile_ranking` excludes-rows and is `NA` where `tilt_sector` is `NA` and `grouped_by` matches *tilt_sector", {
-  pattern <- paste0("input_", aka("tsector"))
+test_that("with inputs, `profile_ranking` excludes-rows and is `NA` where `tilt_subsector` is `NA` and `grouped_by` matches *tilt_subsector", {
+  pattern <- paste0("input_", aka("tsubsector"))
   exclude <- NA_character_
   co2 <- example_inputs(!!pattern := c("'1234'", "'1234'", exclude))
   co2[find_co2_footprint(co2)] <- c(3, 2, 1)

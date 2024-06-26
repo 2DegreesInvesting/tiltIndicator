@@ -23,7 +23,7 @@ epa_compute_profile_ranking <- function(data) {
 
   exclude <- short_isic(data) |
     is.na(get_column(data, aka("isic"))) |
-    is.na(get_column(data, aka("tsector"))) |
+    is.na(get_column(data, aka("tsubsector"))) |
     is.na(get_column(data, aka("xunit")))
 
   list(!exclude, exclude) |>
@@ -41,7 +41,7 @@ epa_compute_profile_ranking_impl <- function(data) {
 }
 
 check_epa_compute_profile_ranking <- function(data) {
-  crucial <- c(aka("tsector"), aka("xunit"), aka("isic"), aka("co2footprint"))
+  crucial <- c(aka("tsubsector"), aka("xunit"), aka("isic"), aka("co2footprint"))
   walk(crucial, \(pattern) check_matches_name(data, pattern))
 }
 
@@ -53,10 +53,10 @@ epa_benchmarks <- function(data) {
   list(
     "all",
     extract_name(data, aka("isic")),
-    extract_name(data, aka("tsector")),
+    extract_name(data, aka("tsubsector")),
     extract_name(data, aka("xunit")),
     c(extract_name(data, aka("xunit")), extract_name(data, aka("isic"))),
-    c(extract_name(data, aka("xunit")), extract_name(data, aka("tsector")))
+    c(extract_name(data, aka("xunit")), extract_name(data, aka("tsubsector")))
   )
 }
 
@@ -78,7 +78,7 @@ assign_na_to_profile_ranking_in_special_cases <- function(data) {
     mutate(profile_ranking = case_when(
       data |> should_be_na_when_isic_has_2_or_3_digits() ~ NA,
       data |> should_be_na_when_missing(aka("isic")) ~ NA,
-      data |> should_be_na_when_missing(aka("tsector")) ~ NA,
+      data |> should_be_na_when_missing(aka("tsubsector")) ~ NA,
       data |> should_be_na_when_missing(aka("xunit")) ~ NA,
       .default = .data$profile_ranking
     ))

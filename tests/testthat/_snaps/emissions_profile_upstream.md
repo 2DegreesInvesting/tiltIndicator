@@ -13,13 +13,13 @@
       6 antimonarchy_canine
       
       [[2]]
-                          grouped_by
-      1                          all
-      2            input_isic_4digit
-      3            input_tilt_sector
-      4                   input_unit
-      5 input_unit_input_isic_4digit
-      6 input_unit_input_tilt_sector
+                             grouped_by
+      1                             all
+      2               input_isic_4digit
+      3            input_tilt_subsector
+      4                      input_unit
+      5    input_unit_input_isic_4digit
+      6 input_unit_input_tilt_subsector
       
       [[3]]
         risk_category
@@ -109,31 +109,31 @@
       24 antimonarchy_canine
       
       [[2]]
-                           grouped_by
-      1                           all
-      2                           all
-      3                           all
-      4                           all
-      5             input_isic_4digit
-      6             input_isic_4digit
-      7             input_isic_4digit
-      8             input_isic_4digit
-      9             input_tilt_sector
-      10            input_tilt_sector
-      11            input_tilt_sector
-      12            input_tilt_sector
-      13                   input_unit
-      14                   input_unit
-      15                   input_unit
-      16                   input_unit
-      17 input_unit_input_isic_4digit
-      18 input_unit_input_isic_4digit
-      19 input_unit_input_isic_4digit
-      20 input_unit_input_isic_4digit
-      21 input_unit_input_tilt_sector
-      22 input_unit_input_tilt_sector
-      23 input_unit_input_tilt_sector
-      24 input_unit_input_tilt_sector
+                              grouped_by
+      1                              all
+      2                              all
+      3                              all
+      4                              all
+      5                input_isic_4digit
+      6                input_isic_4digit
+      7                input_isic_4digit
+      8                input_isic_4digit
+      9             input_tilt_subsector
+      10            input_tilt_subsector
+      11            input_tilt_subsector
+      12            input_tilt_subsector
+      13                      input_unit
+      14                      input_unit
+      15                      input_unit
+      16                      input_unit
+      17    input_unit_input_isic_4digit
+      18    input_unit_input_isic_4digit
+      19    input_unit_input_isic_4digit
+      20    input_unit_input_isic_4digit
+      21 input_unit_input_tilt_subsector
+      22 input_unit_input_tilt_subsector
+      23 input_unit_input_tilt_subsector
+      24 input_unit_input_tilt_subsector
       
       [[3]]
          risk_category
@@ -213,22 +213,22 @@
       no_missing_benchmark
     Output
       # A tibble: 16 x 4
-         companies_id grouped_by                   risk_category value
-         <chr>        <chr>                        <chr>         <dbl>
-       1 a            all                          high            0.4
-       2 a            all                          medium          0.2
-       3 a            all                          low             0.2
-       4 a            all                          <NA>            0.2
-       5 a            input_tilt_sector            high            0.4
-       6 a            input_tilt_sector            medium          0.2
-       7 a            input_tilt_sector            low             0.2
-       8 a            input_tilt_sector            <NA>            0.2
-       9 a            input_unit                   high            0.4
-      10 a            input_unit                   medium          0.2
-      11 a            input_unit                   low             0.2
-      12 a            input_unit                   <NA>            0.2
-      13 a            input_unit_input_tilt_sector high            0.4
-      14 a            input_unit_input_tilt_sector medium          0.2
-      15 a            input_unit_input_tilt_sector low             0.2
-      16 a            input_unit_input_tilt_sector <NA>            0.2
+         companies_id grouped_by                      risk_category value
+         <chr>        <chr>                           <chr>         <dbl>
+       1 a            all                             high            0.4
+       2 a            all                             medium          0.2
+       3 a            all                             low             0.2
+       4 a            all                             <NA>            0.2
+       5 a            input_tilt_subsector            high            0.4
+       6 a            input_tilt_subsector            medium          0.2
+       7 a            input_tilt_subsector            low             0.2
+       8 a            input_tilt_subsector            <NA>            0.2
+       9 a            input_unit                      high            0.4
+      10 a            input_unit                      medium          0.2
+      11 a            input_unit                      low             0.2
+      12 a            input_unit                      <NA>            0.2
+      13 a            input_unit_input_tilt_subsector high            0.4
+      14 a            input_unit_input_tilt_subsector medium          0.2
+      15 a            input_unit_input_tilt_subsector low             0.2
+      16 a            input_unit_input_tilt_subsector <NA>            0.2
 
