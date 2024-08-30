@@ -20,3 +20,6 @@ reference:
     contents:
       - has_concept("post-processing helpers")
 
+authors:
+  Mauro Lepore:
+    href: https://github.com/maurolepore
