@@ -1,135 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/404.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/articles/extending-outputs.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/aka.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/categorize_risk.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/compute_profile_ranking.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/deprecated.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/document_default_value.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/emissions_profile.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/emissions_profile_any_compute_profile_ranking.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/emissions_profile_upstream.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/epa_at_company_level.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/example_companies.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/example_data_factory.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/example_dictionary.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/example_raw_companies.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/exclude.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/extdata_path.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/insert_row_with_na_in_risk_category.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/jitter_range.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/join_to.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/nest_levels.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/percent_noise.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/rename.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/rowid.default.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/rowid.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_any_pivot_type_sector_subsector.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_any_polish_output_at_company_level.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_any_prepare_scenario.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_any_prune_companies.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_upstream.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/summarize_range.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/tiltIndicator-package.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/tilt_profile.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltIndicator/reference/unnest_product.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/404.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/CONTRIBUTING.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/LICENSE.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/articles/extending-outputs.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/articles/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/articles/tiltIndicator.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/authors.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/news/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/aka.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/categorize_risk.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/compute_profile_ranking.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/deprecated.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/document_default_value.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/emissions_profile.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/emissions_profile_any_compute_profile_ranking.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/emissions_profile_upstream.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/epa_at_company_level.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/example_companies.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/example_data_factory.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/example_dictionary.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/example_raw_companies.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/exclude.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/extdata_path.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/insert_row_with_na_in_risk_category.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/jitter_range.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/join_to.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/nest_levels.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/percent_noise.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/pipe.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/rename.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/rowid.default.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/rowid.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_any_pivot_type_sector_subsector.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_any_polish_output_at_company_level.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_any_prepare_scenario.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_any_prune_companies.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/sector_profile_upstream.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/summarize_range.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/tiltIndicator-package.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/tilt_profile.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltIndicator/reference/unnest_product.html</loc></url>
 </urlset>
+
