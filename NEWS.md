@@ -1,4 +1,9 @@
-<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# tiltIndicator 0.0.0.9229 (2025-02-16)
+
+* For `emission_profile()` indicator, include all products with no results for a 
+company at product level (#822).
 
 # tiltIndicator 0.0.0.9228 (2024-06-26)
 
