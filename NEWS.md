@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltIndicator 0.0.0.9230 (2025-02-19)
+
+* Assign `NA` to profile ranking for products which have only one 
+`activity_uuid_product_uuid` for reference group `unit_isic_4digit` (#823).
+
 # tiltIndicator 0.0.0.9229 (2025-02-16)
 
 * For `emission_profile()` indicator, include all products with no results for a 
