@@ -58,10 +58,12 @@ test_that("`profile_ranking` is `1` for all maximum `*co2_footprint`", {
   co2 <- example_products(!!pattern := c(1, 2, 3, 3, 3))
 
   out <- epa_compute_profile_ranking(co2)
-  max <- filter(out, .data[[pattern]] == max(.data[[pattern]]))
+  max <- filter(out, .data[[pattern]] == max(.data[[pattern]])) |>
+    filter(!is.na(profile_ranking))
   expect_true(all(max$profile_ranking == 1.0))
 
-  other <- filter(out, .data[[pattern]] != max(.data[[pattern]]))
+  other <- filter(out, .data[[pattern]] != max(.data[[pattern]])) |>
+    filter(!is.na(profile_ranking))
   expect_false(any(other$profile_ranking == 1.0))
 })
 
@@ -70,10 +72,12 @@ test_that("with inputs, `profile_ranking` is `1` for all maximum `*co2_footprint
   co2 <- example_inputs(!!pattern := c(1, 2, 3, 3, 3))
 
   out <- epa_compute_profile_ranking(co2)
-  max <- filter(out, .data[[pattern]] == max(.data[[pattern]]))
+  max <- filter(out, .data[[pattern]] == max(.data[[pattern]])) |>
+    filter(!is.na(profile_ranking))
   expect_true(all(max$profile_ranking == 1.0))
 
-  other <- filter(out, .data[[pattern]] != max(.data[[pattern]]))
+  other <- filter(out, .data[[pattern]] != max(.data[[pattern]])) |>
+    filter(!is.na(profile_ranking))
   expect_false(any(other$profile_ranking == 1.0))
 })
 

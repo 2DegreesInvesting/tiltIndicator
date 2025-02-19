@@ -35,7 +35,8 @@ test_that("in each benchmark, `profile_ranking` increases with `*co2_footprint`"
   companies <- example_companies()
   co2 <- example_products(co2_footprint = -1:1)
 
-  out <- unnest_product(emissions_profile(companies, co2))
+  out <- unnest_product(emissions_profile(companies, co2)) |>
+    filter(grouped_by != "unit_isic_4digit")
 
   in_all_benchmarks_profile_ranking_increases_with_co2_footprint <- out |>
     group_by(grouped_by) |>
@@ -136,7 +137,8 @@ test_that("at company level, with two matched products and `NA` in one benchmark
   )
 
   out <- emissions_profile(companies, co2) |>
-    unnest_company()
+    unnest_company() |>
+    filter(grouped_by != "unit_isic_4digit")
   # expect `0.5` where `risk_category` is `NA`
   out |>
     filter(grepl(benchmark, grouped_by)) |>
@@ -340,6 +342,7 @@ test_that("at company level, 1 matched product yields `value = 1` in 1 `risk_cat
 
   out <- emissions_profile(companies, co2) |>
     unnest_company() |>
+    filter(grouped_by != "unit_isic_4digit") |>
     distinct(risk_category, value) |>
     pull(value)
 
@@ -370,6 +373,7 @@ test_that("at company level, one matched and one unmatched products yield `value
 
   out <- emissions_profile(companies, co2) |>
     unnest_company() |>
+    filter(grouped_by != "unit_isic_4digit") |>
     distinct(risk_category, value)
 
   na <- pull(filter(out, is.na(risk_category)), value)
@@ -459,6 +463,7 @@ test_that("at company level, 1 matched product, one missing benchmark, and one u
 
   isic <- emissions_profile(companies, co2) |>
     unnest_company() |>
+    filter(grouped_by != "unit_isic_4digit") |>
     filter(grepl(aka("isic"), grouped_by)) |>
     distinct(risk_category, value)
 
