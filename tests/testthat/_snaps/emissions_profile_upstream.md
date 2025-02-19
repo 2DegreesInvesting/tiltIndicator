@@ -27,7 +27,7 @@
       2          high
       3          high
       4          high
-      5          high
+      5          <NA>
       6          high
       
       [[4]]
@@ -36,7 +36,7 @@
       2          1.0000
       3          1.0000
       4          1.0000
-      5          1.0000
+      5              NA
       6          1.0000
       
       [[5]]
@@ -180,10 +180,10 @@
       14     0
       15     0
       16     0
-      17     1
+      17     0
       18     0
       19     0
-      20     0
+      20     1
       21     1
       22     0
       23     0
@@ -202,10 +202,10 @@
       2 a            input_isic_4digit            medium          0.2
       3 a            input_isic_4digit            low             0.2
       4 a            input_isic_4digit            <NA>            0.4
-      5 a            input_unit_input_isic_4digit high            0.2
-      6 a            input_unit_input_isic_4digit medium          0.2
-      7 a            input_unit_input_isic_4digit low             0.2
-      8 a            input_unit_input_isic_4digit <NA>            0.4
+      5 a            input_unit_input_isic_4digit high            0  
+      6 a            input_unit_input_isic_4digit medium          0  
+      7 a            input_unit_input_isic_4digit low             0  
+      8 a            input_unit_input_isic_4digit <NA>            1  
 
 ---
 

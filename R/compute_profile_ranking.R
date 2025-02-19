@@ -82,7 +82,11 @@ assign_na_to_profile_ranking_in_special_cases <- function(data, excluded_uuids) 
       data |> should_be_na_when_missing(aka("isic")) ~ NA,
       data |> should_be_na_when_missing(aka("tsubsector")) ~ NA,
       data |> should_be_na_when_missing(aka("xunit")) ~ NA,
-      data |> should_be_na_when_unique_uuids_is_1_for_unit_isic(excluded_uuids, "unit_isic_4digit") ~ NA,
+      data |> should_be_na_when_unique_uuids_is_1_for_unit_isic(
+        excluded_uuids,
+        extract_name(data, aka("xunit")),
+        extract_name(data, aka("isic"))
+      ) ~ NA,
       .default = .data$profile_ranking
     ))
 }
@@ -105,13 +109,28 @@ should_be_na_when_missing <- function(data, pattern) {
 }
 
 pull_uuids_with_unique_uuid_count_unit_isic_1 <- function(data) {
+  if ("input_activity_uuid_product_uuid" %in% colnames(data)) {
+    uuid <- "input_activity_uuid_product_uuid"
+  } else {
+    uuid <- "activity_uuid_product_uuid"
+  }
+
   data |>
-    mutate(unique_uuid_count_unit_isic = n_distinct(.data$activity_uuid_product_uuid), .by = c("unit", "isic_4digit")) |>
+    mutate(
+      unique_uuid_count_unit_isic = n_distinct(.data[[uuid]]),
+      .by = all_of(c(extract_name(data, aka("xunit")), extract_name(data, aka("isic"))))
+    ) |>
     filter(.data$unique_uuid_count_unit_isic == 1) |>
-    pull(activity_uuid_product_uuid) |>
+    pull(.data[[uuid]]) |>
     unique()
 }
 
-should_be_na_when_unique_uuids_is_1_for_unit_isic <- function(data, excluded_uuids, pattern) {
-  (get_column(data, aka("uid")) %in% excluded_uuids) & is_benchmark_to_exclude(data, pattern)
+should_be_na_when_unique_uuids_is_1_for_unit_isic <- function(data, excluded_uuids, pattern_unit, pattern_isic) {
+  if ("input_activity_uuid_product_uuid" %in% colnames(data)) {
+    uuid <- "input_activity_uuid_product_uuid"
+  } else {
+    uuid <- "activity_uuid_product_uuid"
+  }
+
+  (get_column(data, uuid) %in% excluded_uuids) & is_benchmark_to_exclude(data, paste0(pattern_unit, "_", pattern_isic))
 }

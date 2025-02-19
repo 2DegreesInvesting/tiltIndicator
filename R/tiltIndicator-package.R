@@ -21,6 +21,7 @@
 #' @importFrom dplyr left_join
 #' @importFrom dplyr mutate
 #' @importFrom dplyr n
+#' @importFrom dplyr n_distinct
 #' @importFrom dplyr near
 #' @importFrom dplyr pull
 #' @importFrom dplyr reframe
